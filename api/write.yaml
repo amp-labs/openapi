@@ -1,0 +1,239 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public write API
+  version: 1.0.0
+servers:
+  - url: https://write.withampersand.com/v1
+paths:
+  /projects/{projectId}/integrations/{integrationId}/objects/{objectName}:
+    post:
+      summary: Create, update, upsert or delete records
+      operationId: writeRecords
+      tags: ["Write"]
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Write request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WriteRequest"
+      responses:
+        200:
+          description: The success response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/WriteResponseSingleSuccess"
+                  - $ref: "#/components/schemas/WriteResponseAsync"
+        400:
+          description: The failure response for bad request.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "required field not found"
+        422:
+          description: Error encountered while creating records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WriteResponseSingleFail"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /generate-upload-url:
+    get:
+      summary: Generate a signed URL to upload write data to.
+      operationId: generateUploadUrl
+      tags: ["Upload URL"]
+      parameters:
+        - name: fileName
+          in: query
+          required: false
+          schema:
+            type: string
+            description: The name of the file to upload
+            example: records.csv
+        - name: md5
+          in: query
+          required: false
+          schema:
+            type: string
+            description: The base64-encoded MD5 hash of the file to upload (optional). If you attach this, you must also attach the Content-MD5 header to the upload request.
+            example: NBLgJpN1XXun5+BsVUs/AA==
+      responses:
+        200:
+          description: Signed URL
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SignedWriteUrl"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+components:
+  schemas:
+    WriteResponseAsync:
+      type: object
+      required:
+        - operationId
+      additionalProperties: false
+      properties:
+        operationId:
+          type: string
+          description: The operation ID
+          example: 1234567890
+    WriteRequest:
+      required:
+        - groupRef
+        - type
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description:
+            The ID of the user group whose SaaS instance you'd like to write data to. This is the ID that was provided
+            during installation creation.
+        type:
+          type: string
+          description: The type of write operation.
+          enum: [create, update, upsert, delete]
+          example: delete
+        mode:
+          type: string
+          description: The mode of write operation. Default is synchronous.
+          enum: [synchronous, bulk] #          enum: [synchronous, async, bulk]
+          example: single
+        record:
+          type: object
+          description: The record to write in case of non-bulk writes.
+          example:
+            {
+              "email": "david@withampersand.com",
+              "warmthScore": "ready-for-close",
+            }
+#        records:
+#          type: array
+#          description: The records to write in case of non-bulk writes.
+#          example:
+#            [{
+#             "email": "david@withampersand.com",
+#             "warmthScore": "ready-for-close",
+#           }]
+        recordsCSV:
+          type: string
+          description:
+            The records to write, in a CSV string. Max size limit of data is 10 MiB.
+            For bulk writes, you must provide either recordsCSV or recordsURL.
+          example: "column1,column2\nvalue1,value2\nvalue3,value4"
+        recordsURL:
+          type: string
+          description:
+            Either a public URL to download the records in CSV format, or a `reference` returned by `/generate-upload-url`.
+            Max size limit of CSV data is 150 MiB.
+            You can provide either recordsCSV or recordsURL.
+            For bulk writes, you must provide either recordsCSV or recordsURL.
+          example: https://example.com/records.csv
+        primaryKey:
+          type: string
+          description: The name of the primary key field for bulk write (required for upsert, update and delete)
+          example: id
+    WriteResponseSingleSuccess:
+      type: object
+      required:
+        - result
+      additionalProperties: false
+      properties:
+        result:
+          $ref: "#/components/schemas/WriteResult"
+    WriteResponseSingleFail:
+      type: object
+      required:
+        - errors
+      additionalProperties: false
+      properties:
+        errors:
+          type: array
+          description: Error messages resulted in failures
+          items:
+            type: string
+            description: errors messages when some unexpected event happened, but write to provider was successful
+            example: "The record with ID 003Dp0X#@RG7IAP was not found"
+        result:
+          $ref: "#/components/schemas/WriteResult"
+        warnings:
+          type: array
+          description: Warnings messages when some unexpected event happened, but not blocking failures
+          items:
+            type: string
+            description: Warning messages for unexpected events
+            example: "Ampersand Operation failed to be updated"
+        operationId:
+          type: string
+          description: The operation ID
+          example: acb0d75a-1b59-4aad-a191-48c5b75ea9e4
+    WriteResult:
+      type: object
+      required:
+        - success
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful
+          example: true
+        data:
+          type: object
+          description: The data returned by the operation
+          example: { "email": "david@ampersand.com" }
+        recordId:
+          type: string
+          description: The ID of the object
+          example: 003Dp0X#@RG7IAP
+    SignedWriteUrl:
+      type: object
+      required:
+        - url
+        - reference
+      properties:
+        url:
+          type: string
+          description: The signed URL to upload the zip file to.
+        reference:
+          type: string
+          description: The WriteRequest.RecordsURL value to pass back in the write request. It will start with "gs://".
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    APIKeyQueryParam:
+      type: apiKey
+      name: apiKey
+      in: query
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
