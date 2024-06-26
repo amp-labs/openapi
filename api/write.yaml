@@ -134,14 +134,14 @@ components:
               "email": "david@withampersand.com",
               "warmthScore": "ready-for-close",
             }
-#        records:
-#          type: array
-#          description: The records to write in case of non-bulk writes.
-#          example:
-#            [{
-#             "email": "david@withampersand.com",
-#             "warmthScore": "ready-for-close",
-#           }]
+        #        records:
+        #          type: array
+        #          description: The records to write in case of non-bulk writes.
+        #          example:
+        #            [{
+        #             "email": "david@withampersand.com",
+        #             "warmthScore": "ready-for-close",
+        #           }]
         recordsCSV:
           type: string
           description:
