@@ -70,10 +70,8 @@ components:
           example: '{ phoneNumber: phone, faxNumber: fax }'
           additionalProperties:
             type: string
-        history:
-          type: string
-          description: The history configuration for the object.
-          example: '7 days'
+        backfill: 
+          $ref: '#/components/schemas/Backfill'
     BaseWriteConfig:
       type: object
       properties:
@@ -154,3 +152,17 @@ components:
     UpdateInstallationReadConfigObject:
       allOf:
         - $ref: '#/components/schemas/BaseReadConfigObject'
+
+    Backfill:
+      type: object
+      properties:
+        defaultPeriod:
+          $ref: '#/components/schemas/DefaultPeriod'
+            
+    DefaultPeriod:
+      type: object
+      properties:
+        days:
+          type: integer
+          minimum: 1
+          example: 30
