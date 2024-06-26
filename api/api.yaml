@@ -1410,7 +1410,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "https://raw.githubusercontent.com/amp-labs/connectors/main/providers/types.yaml#/components/schemas/CatalogType"
+                $ref: "../catalog/catalog.yaml#/components/schemas/CatalogType"
         default:
           description: Error
           content:
@@ -1434,7 +1434,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "https://raw.githubusercontent.com/amp-labs/connectors/main/providers/types.yaml#/components/schemas/ProviderInfo"
+                $ref: "../catalog/catalog.yaml#/components/schemas/ProviderInfo"
         default:
           description: Error
           content:
