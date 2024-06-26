@@ -127,7 +127,7 @@ paths:
                   example: MailMonkey
                 name:
                   type: string
-                  description: The project name.
+                  description: The project name. Must be alphanumerics and hyphens only. Project names will be save in lowercase.
                   example: mailmonkey-staging
                 orgId:
                   type: string
@@ -151,15 +151,15 @@ paths:
           content:
             application/problem+json:
               schema:
-                  $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: project
-  /projects/{projectId}:
+  /projects/{projectIdOrName}:
     get:
       summary: Get a project
       operationId: getProject
       tags: ["Project"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -188,7 +188,7 @@ paths:
       operationId: deleteProject
       tags: ["Project"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -213,7 +213,7 @@ paths:
       operationId: updateProject
       tags: ["Project"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -274,13 +274,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: projectUpdate
-  /projects/{projectId}/provider-apps:
+  /projects/{projectIdOrName}/provider-apps:
     get:
       summary: List provider apps
       operationId: listProviderApps
       tags: ["Provider App"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -311,7 +311,7 @@ paths:
       operationId: createProviderApp
       tags: ["Provider App"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -377,13 +377,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: providerApp
-  /projects/{projectId}/provider-apps/{providerAppId}:
+  /projects/{projectIdOrName}/provider-apps/{providerAppId}:
     delete:
       summary: Delete a provider app
       operationId: deleteProviderApp
       tags: ["Provider App"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -413,7 +413,7 @@ paths:
       operationId: updateProviderApp
       tags: ["Provider App"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -495,13 +495,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: providerAppUpdate
-  /projects/{projectId}/integrations:
+  /projects/{projectIdOrName}/integrations:
     get:
       summary: List integrations
       operationId: listIntegrations
       tags: ["Integration"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -532,7 +532,7 @@ paths:
       operationId: createIntegration
       tags: ["Integration"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -589,13 +589,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: integration
-  /projects/{projectId}/integrations/{integrationId}:
+  /projects/{projectIdOrName}/integrations/{integrationId}:
     delete:
       summary: Delete an integration
       operationId: deleteIntegration
       tags: ["Integration"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -626,13 +626,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/integrations:batch:
+  /projects/{projectIdOrName}/integrations:batch:
     put:
       summary: Batch upsert a group of integrations
       operationId: batchUpsertIntegrations
       tags: ["Integration"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -671,13 +671,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/integrations/{integrationId}/revisions:
+  /projects/{projectIdOrName}/integrations/{integrationId}/revisions:
     post:
       summary: Create a new revision
       operationId: createRevision
       tags: ["Revision"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -723,65 +723,65 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: revision
-  ? /projects/{projectId}/integrations/{integrationId}/revisions/{revisionId}:hydrate
-  : get:
-      summary: Hydrate a revision
-      description: Hydrate a revision with information from the consumer's SaaS instance.
-      operationId: getHydratedRevision
-      tags: ["Revision"]
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: integrationId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: revisionId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: connectionId
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        200:
-          description: Hydrated revision
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/HydratedRevision"
-        400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        422:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/integrations/{integrationId}/installations:
+  /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate:
+    get:
+        summary: Hydrate a revision
+        description: Hydrate a revision with information from the consumer's SaaS instance.
+        operationId: getHydratedRevision
+        tags: ["Revision"]
+        parameters:
+          - name: projectIdOrName
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: integrationId
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: revisionId
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: connectionId
+            in: query
+            required: true
+            schema:
+              type: string
+        responses:
+          200:
+            description: Hydrated revision
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/HydratedRevision"
+          400:
+            description: Bad Request
+            content:
+              application/problem+json:
+                schema:
+                  $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+          422:
+            description: Unprocessable Entity
+            content:
+              application/problem+json:
+                schema:
+                  $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+          default:
+            description: Error
+            content:
+              application/problem+json:
+                schema:
+                  $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations:
     get:
       summary: List installations
       operationId: listInstallations
       tags: ["Installation"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -821,7 +821,7 @@ paths:
       operationId: createInstallation
       tags: ["Installation"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -894,13 +894,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installation
-  /projects/{projectId}/integrations/{integrationId}/installations:import:
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations:import:
     post:
       summary: Import an existing installation
       operationId: importInstallation
       tags: ["Installation"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -926,7 +926,6 @@ paths:
                   example: salesforce
                 connection:
                   $ref: "#/components/schemas/ImportConnectionRequest"
-                  description: The OAuth credentials to use to connect to this customer's SaaS instance.
                 config:
                   required:
                     - content
@@ -961,52 +960,52 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installation
-  ? /projects/{projectId}/integrations/{integrationId}/installations/{installationId}
-  : get:
-      summary: Get an installation
-      operationId: getInstallation
-      tags: ["Installation"]
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: integrationId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: installationId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        200:
-          description: The installation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Installation"
-        400:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:
+    get:
+        summary: Get an installation
+        operationId: getInstallation
+        tags: ["Installation"]
+        parameters:
+          - name: projectIdOrName
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: integrationId
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: installationId
+            in: path
+            required: true
+            schema:
+              type: string
+        responses:
+          200:
+            description: The installation
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Installation"
+          400:
+            description: Unprocessable Entity
+            content:
+              application/problem+json:
+                schema:
+                  $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+          default:
+            description: Error
+            content:
+              application/problem+json:
+                schema:
+                  $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       summary: Delete an installation
       operationId: deleteInstallation
       tags: ["Installation"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1035,7 +1034,7 @@ paths:
       operationId: updateInstallation
       tags: ["Installation"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1089,6 +1088,7 @@ paths:
                             of "consumer:{consumer-id}" or "builder:{builder-id}".
                         content:
                           $ref: "../config/config.yaml#/components/schemas/UpdateInstallationConfigContent"
+                          description: The content of the config.
                       description: The config of the installation.
                   description:
                     The installation fields to update. (Only include the
@@ -1120,13 +1120,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installationUpdate
-  ? /projects/{projectId}/integrations/{integrationId}/installations/{installationId}/operations
-  : get:
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations:
+    get:
       summary: List operations
       operationId: listOperations
       tags: ["Operation"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1168,13 +1168,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/operations/{operationId}:
+  /projects/{projectIdOrName}/operations/{operationId}:
     get:
       summary: Get an operation
       operationId: getOperation
       tags: ["Operation"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1209,13 +1209,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/operations/{operationId}/events/{eventId}:
+  /projects/{projectIdOrName}/operations/{operationId}/events/{eventId}:
     get:
       summary: Get an operation event
       operationId: getOperationEvent
       tags: [ "Operation Event" ]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1229,7 +1229,7 @@ paths:
           in: path
           required: true
           schema:
-              type: string
+            type: string
       responses:
         200:
           description: OperationEvent
@@ -1255,13 +1255,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/operations/{operationId}/logs:
+  /projects/{projectIdOrName}/operations/{operationId}/logs:
     get:
       summary: List logs for an operation
       operationId: listOperationLogs
       tags: [ "Operation" ]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1298,13 +1298,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/integrations/{integrationId}/installations/{installationId}/operations/{operationId}/events:
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations/{operationId}/events:
     get:
       summary: List events for an operation
       operationId: listOperationEvents
       tags: [ "Operation Event" ]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1351,13 +1351,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/operations/{operationId}/events/{eventId}/logs:
+  /projects/{projectIdOrName}/operations/{operationId}/events/{eventId}/logs:
     get:
       summary: List logs for an operation event
       operationId: listOperationEventLogs
       tags: [ "Operation Event" ]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1441,13 +1441,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/api-keys:
+  /projects/{projectIdOrName}/api-keys:
     get:
       summary: List API keys
       operationId: listApiKeys
       tags: ["API Key"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1483,7 +1483,7 @@ paths:
       operationId: createApiKey
       tags: ["API Key"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1514,13 +1514,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: apiKey
-  /projects/{projectId}/api-keys/{apiKey}:
+  /projects/{projectIdOrName}/api-keys/{apiKey}:
     get:
       summary: Get an API key
       operationId: getApiKey
       tags: ["API Key"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1554,7 +1554,7 @@ paths:
       operationId: deleteApiKey
       tags: ["API Key"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1578,7 +1578,7 @@ paths:
       operationId: updateApiKey
       tags: ["API Key"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1625,13 +1625,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/connections:
+  /projects/{projectIdOrName}/connections:
     get:
       summary: List connections
       operationId: listConnections
       tags: ["Connection"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1672,13 +1672,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/connections/{connectionId}:
+  /projects/{projectIdOrName}/connections/{connectionId}:
     get:
       summary: Get a connection
       operationId: getConnection
       tags: ["Connection"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1707,13 +1707,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/groups:
+  /projects/{projectIdOrName}/groups:
     post:
       summary: Create a new group
       operationId: createGroup
       tags: ["Group"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1755,13 +1755,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: group
-  /projects/{projectId}/consumers:
+  /projects/{projectIdOrName}/consumers:
     post:
       summary: Create a new consumer
       operationId: createConsumer
       tags: ["Consumer"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1801,13 +1801,13 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: consumer
-  /projects/{projectId}/destinations:
+  /projects/{projectIdOrName}/destinations:
     post:
       summary: Create a new destination
       operationId: createDestination
       tags: ["Destination"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1872,7 +1872,7 @@ paths:
       operationId: listDestinations
       tags: ["Destination"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1892,13 +1892,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/destinations/{destinationName}:
+  /projects/{projectIdOrName}/destinations/{destinationName}:
     get:
       summary: Get a destination
       operationId: getDestination
       tags: ["Destination"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -1927,13 +1927,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectId}/destinations/{destinationId}:
+  /projects/{projectIdOrName}/destinations/{destinationId}:
     patch:
       summary: Update a destination
       operationId: updateDestination
       tags: ["Destination"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -2015,7 +2015,7 @@ paths:
       operationId: deleteDestination
       tags: ["Destination"]
       parameters:
-        - name: projectId
+        - name: projectIdOrName
           in: path
           required: true
           schema:
@@ -2244,30 +2244,30 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         x-codegen-request-body-name: invite
     get:
-        summary: List invites for an organization
-        operationId: listOrgInvites
-        tags: ["Org"]
-        parameters:
-          - name: orgId
-            in: path
-            required: true
-            schema:
-              type: string
-        responses:
-          200:
-            description: List of invites
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/Invite"
-          default:
-            description: Error
-            content:
-              application/problem+json:
-                schema:
-                  $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      summary: List invites for an organization
+      operationId: listOrgInvites
+      tags: ["Org"]
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: List of invites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Invite"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/invites/{inviteId}:
     get:
       summary: Get an invite
