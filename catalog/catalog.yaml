@@ -19,7 +19,7 @@ components:
   schemas:
     AuthType:
       type: string
-      enum: [oauth2, api_key, basic, none]
+      enum: [oauth2, apiKey, basic, none]
       x-oapi-codegen-extra-tags:
         validate: required
 
@@ -80,6 +80,7 @@ components:
 
     Oauth2Opts:
       type: object
+      description: Configuration for OAuth2.0. Must be provided if authType is oauth2.
       required:
           - grantType
           - tokenURL
@@ -93,51 +94,87 @@ components:
         authURL:
           type: string
           example: https://login.salesforce.com/services/oauth2/authorize
+          description: The authorization URL.
           x-go-type-skip-optional-pointer: true
         tokenURL:
           type: string
           example: https://login.salesforce.com/services/oauth2/token
+          description: The token URL.
           x-oapi-codegen-extra-tags:
             validate: required
         explicitScopesRequired:
           type: boolean
+          description: Whether scopes are required to be known ahead of the OAuth flow.
           example: true
         explicitWorkspaceRequired:
           type: boolean
+          description: Whether the workspace is required to be known ahead of the OAuth flow.
           example: true
         audience:
-          type: string
-          example: https://api.mparticle.com
+          type: array
+          items:
+            type: string
+          example: ["https://api.mparticle.com"]
+          description: A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.
           x-go-type-skip-optional-pointer: true
         tokenMetadataFields:
+          description: Fields to be used to extract token metadata from the token response.
           $ref: '#/components/schemas/TokenMetadataFields'
+        docsURL:
+          type: string
+          description: URL with more information about where to retrieve Client ID and Client Secret, etc.
+          example: https://docs.example.com/client-credentials
+          x-go-type-skip-optional-pointer: true
 
     ApiKeyOpts:
       type: object
+      description: Configuration for API key. Must be provided if authType is apiKey.
       required:
-        - type
+        - attachmentType
       properties:
-        type:
+        attachmentType:
           type: string
-          enum: [in-query, in-header]
+          description: How the API key should be attached to requests.
+          enum: [query, header]
           x-oapi-codegen-extra-tags:
             validate: required
-        queryParamName:
-          type: string
-          example: api_key
-          x-go-type-skip-optional-pointer: true
-        headerName:
-          type: string
-          example: X-Api-Key
-          x-go-type-skip-optional-pointer: true
-        valuePrefix:
-          type: string
-          example: "Bearer "
-          x-go-type-skip-optional-pointer: true
+        query:
+          description: Configuration for API key in query parameter. Must be provided if type is in-query.
+          $ref: '#/components/schemas/ApiKeyOptsQuery'
+        header:
+          description: Configuration for API key in header. Must be provided if type is in-header.
+          $ref: '#/components/schemas/ApiKeyOptsHeader'
         docsURL:
           type: string
           description: URL with more information about how to get or use an API key.
           example: https://docs.example.com/api-key
+          x-go-type-skip-optional-pointer: true
+
+    ApiKeyOptsQuery:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: api_key
+          description: The name of the query parameter to be used for the API key.
+          x-go-type-skip-optional-pointer: true
+
+    ApiKeyOptsHeader:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: X-Api-Key
+          description: The name of the header to be used for the API key.
+          x-go-type-skip-optional-pointer: true
+        valuePrefix:
+          type: string
+          example: "Bearer "
+          description: The prefix to be added to the API key value when it is sent in the header.
           x-go-type-skip-optional-pointer: true
 
     ProviderOpts:
@@ -163,18 +200,24 @@ components:
           # so you don't need to worry about it. Add it for completeness if you want.
           type: string
         authType:
+          description: The type of authentication required by the provider.
           $ref: '#/components/schemas/AuthType'
         baseURL:
+          description: The base URL for making API requests.
           type: string
           x-oapi-codegen-extra-tags:
             validate: required
         oauth2Opts:
+          description: Configuration for OAuth2.0. Must be provided if authType is oauth2.
           $ref: '#/components/schemas/Oauth2Opts'
         apiKeyOpts:
+          description: Configuration for API key. Must be provided if authType is api_key.
           $ref: '#/components/schemas/ApiKeyOpts'
         support:
+          description: The supported features for the provider.
           $ref: '#/components/schemas/Support'
         providerOpts:
+          description: Additional provider-specific metadata.
           $ref: '#/components/schemas/ProviderOpts'
         displayName:
           type: string
