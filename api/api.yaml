@@ -1674,7 +1674,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/connections:create:
     post:
-      summary: Create a new connection (only valid for certain providers)
+      summary: Generate a new connection (only valid for providers with auth types which are not OAuth2 Authorization Code)
       operationId: createConnection
       tags: ["Connection"]
       parameters:
