@@ -1672,10 +1672,10 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/connections:create:
+  /projects/{projectIdOrName}/connections:generate:
     post:
       summary: Generate a new connection (only valid for providers with auth types which are not OAuth2 Authorization Code)
-      operationId: createConnection
+      operationId: generateConnection
       tags: ["Connection"]
       parameters:
         - name: projectIdOrName
@@ -1740,7 +1740,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-      x-codegen-request-body-name: createConnectionParams
+      x-codegen-request-body-name: generateConnectionParams
   /projects/{projectIdOrName}/connections/{connectionId}:
     get:
       summary: Get a connection
