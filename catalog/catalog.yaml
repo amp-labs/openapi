@@ -125,6 +125,14 @@ components:
           description: URL with more information about where to retrieve Client ID and Client Secret, etc.
           example: https://docs.example.com/client-credentials
           x-go-type-skip-optional-pointer: true
+        authURLParams:
+          type: object
+          additionalProperties:
+            type: string
+          x-go-type-skip-optional-pointer: true
+          example:
+            access_type: offline
+            duration: permanent
 
     ApiKeyOpts:
       type: object
