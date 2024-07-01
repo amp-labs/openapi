@@ -1672,6 +1672,75 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/connections:generate:
+    post:
+      summary: Generate a new connection (only valid for providers with auth types which are not OAuth2 Authorization Code)
+      operationId: generateConnection
+      tags: ["Connection"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - projectId
+                - groupRef
+                - consumerRef
+                - provider
+              properties:
+                projectId:
+                  type: string
+                  description: The ID of the project that this connection belongs to.
+                providerWorkspaceRef:
+                  type: string
+                  description: The ID of the provider workspace that this connection belongs to.
+                groupName:
+                  type: string
+                  description: The name of the user group that has access to this installation.
+                groupRef:
+                  type: string
+                  description: The ID of the user group that has access to this installation.
+                consumerName:
+                  type: string
+                  description: The name of the consumer that has access to this installation.
+                consumerRef:
+                  type: string
+                  description: The consumer reference.
+                provider:
+                  type: string
+                  description: The provider name (e.g. "salesforce", "hubspot")
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Connection"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: generateConnectionParams
   /projects/{projectIdOrName}/connections/{connectionId}:
     get:
       summary: Get a connection
