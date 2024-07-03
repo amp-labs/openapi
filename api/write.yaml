@@ -120,12 +120,12 @@ components:
           type: string
           description: The type of write operation.
           enum: [create, update, upsert, delete]
-          example: delete
+          example: create
         mode:
           type: string
           description: The mode of write operation. Default is synchronous.
           enum: [synchronous, bulk] #          enum: [synchronous, async, bulk]
-          example: single
+          example: synchronous
         record:
           type: object
           description: The record to write in case of non-bulk writes.
