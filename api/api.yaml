@@ -1715,6 +1715,33 @@ paths:
                 provider:
                   type: string
                   description: The provider name (e.g. "salesforce", "hubspot")
+                apiKey:
+                  type: string
+                  description: The API key to use for the connection.
+                basicAuth:
+                  type: object
+                  required:
+                    - username
+                    - password
+                  properties:
+                    username:
+                      type: string
+                      description: The username to use for the connection.
+                    password:
+                      type: string
+                      description: The password to use for the connection.
+                oauth2ClientCredentials:
+                  type: object
+                  required:
+                    - clientId
+                    - clientSecret
+                  properties:
+                    clientId:
+                      type: string
+                      description: The client ID to use for the connection.
+                    clientSecret:
+                      type: string
+                      description: The client secret to use for the connection.
       responses:
         201:
           description: Created
