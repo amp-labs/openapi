@@ -1742,6 +1742,26 @@ paths:
                     clientSecret:
                       type: string
                       description: The client secret to use for the connection.
+                oauth2Password:
+                  type: object
+                  required:
+                    - username
+                    - password
+                    - clientId
+                    - clientSecret
+                  properties:
+                    username:
+                      type: string
+                      description: The username to use for the connection.
+                    password:
+                      type: string
+                      description: The password to use for the connection.
+                    clientId:
+                      type: string
+                      description: The client ID to use for the connection.
+                    clientSecret:
+                      type: string
+                      description: The client secret to use for the connection.
       responses:
         201:
           description: Created
