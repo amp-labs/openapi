@@ -164,7 +164,7 @@ components:
       properties:
         days:
           type: integer
-          minimum: 1
+          minimum: 0
           example: 30
           x-oapi-codegen-extra-tags:
             validate: required_without=FullHistory,omitempty,min=0
