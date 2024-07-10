@@ -166,3 +166,10 @@ components:
           type: integer
           minimum: 1
           example: 30
+          x-oapi-codegen-extra-tags:
+            validate: required_without=fullHistory,omitempty,min=0
+        fullHistory:
+          type: boolean
+          example: false
+          x-oapi-codegen-extra-tags:
+            validate: required_without=days
