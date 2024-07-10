@@ -7,7 +7,7 @@ servers:
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:
-      summary: Create, update, upsert or delete records
+      summary: Create read operation for records
       operationId: createRead
       tags: ["Read"]
       parameters:
@@ -63,7 +63,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-
 
 components:
   schemas:
