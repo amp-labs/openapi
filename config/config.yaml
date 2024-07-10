@@ -155,14 +155,25 @@ components:
 
     Backfill:
       type: object
+      required:
+        - defaultPeriod
       properties:
         defaultPeriod:
           $ref: '#/components/schemas/DefaultPeriod'
-            
+
     DefaultPeriod:
       type: object
       properties:
         days:
           type: integer
-          minimum: 1
+          description: Number of days in past to backfill from. 0 is no backfill. e.g) if 10, then backfill last 10 days of data. Required if fullHistory is not set.
+          minimum: 0
           example: 30
+          x-oapi-codegen-extra-tags:
+            validate: required_without=FullHistory,omitempty,min=0
+        fullHistory:
+          type: boolean
+          description: If true, backfill all history. Required if days is not set.
+          example: false
+          x-oapi-codegen-extra-tags:
+            validate: required_without=Days
