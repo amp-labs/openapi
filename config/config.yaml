@@ -158,7 +158,7 @@ components:
       properties:
         defaultPeriod:
           $ref: '#/components/schemas/DefaultPeriod'
-            
+
     DefaultPeriod:
       type: object
       properties:
@@ -167,9 +167,9 @@ components:
           minimum: 1
           example: 30
           x-oapi-codegen-extra-tags:
-            validate: required_without=fullHistory,omitempty,min=0
+            validate: required_without=FullHistory,omitempty,min=0
         fullHistory:
           type: boolean
           example: false
           x-oapi-codegen-extra-tags:
-            validate: required_without=days
+            validate: required_without=Days
