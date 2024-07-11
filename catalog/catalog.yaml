@@ -86,6 +86,7 @@ components:
           - tokenURL
           - explicitScopesRequired
           - explicitWorkspaceRequired
+          - workspaceDisplayName
           - tokenMetadataFields
       properties:
         grantType:
@@ -110,6 +111,11 @@ components:
           type: boolean
           description: Whether the workspace is required to be known ahead of the OAuth flow.
           example: true
+        workspaceDisplayName:
+          type: string
+          example: Account ID
+          description: The display name of the workspace.
+          x-go-type-skip-optional-pointer: true
         audience:
           type: array
           items:
