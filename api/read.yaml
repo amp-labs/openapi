@@ -1,0 +1,92 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public read API
+  version: 1.0.0
+servers:
+  - url: https://read.withampersand.com/v1
+paths:
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
+    post:
+      summary: Read records
+      operationId: readRecords
+      tags: ["Read"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Read Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReadRequest"
+      responses:
+        201:
+          description: The success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadResultAsync"
+        400:
+          description: The failure response for bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+
+components:
+  schemas:
+    ReadRequest:
+      required:
+        - groupRef
+        - mode
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description:
+            The ID of the user group whose SaaS instance you'd like to read data from. This is the ID that was provided
+            during installation creation.
+        mode:
+          type: string
+          description: The mode of read operation. Currently only asynchronus operation is supported.
+          enum: [async]
+          example: async
+        since:
+          type: string
+          description: The timestamp from which to read data. If omitted, we will read all data.
+          example: "2024-07-01T18:22:30.323771761Z"
+    ReadResultAsync:
+      type: object
+      required:
+        - operationId
+      properties:
+        operationId:
+          type: string
+          description: The operation ID
+          example: 60deaf48-3856-4a2b-bfd4-3de85125eca8
+
