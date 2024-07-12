@@ -7,8 +7,8 @@ servers:
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:
-      summary: Create read operation for records
-      operationId: createRead
+      summary: Read records
+      operationId: readRecords
       tags: ["Read"]
       parameters:
         - name: projectIdOrName
@@ -26,18 +26,12 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Amp-Request-Type
-          in: header
-          required: true
-          schema:
-            type: string
-            enum: [read]
       requestBody:
         description: Read Request
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateReadAsync"
+              $ref: "#/components/schemas/ReadRequest"
       responses:
         201:
           description: The success response
@@ -66,7 +60,7 @@ paths:
 
 components:
   schemas:
-    CreateReadAsync:
+    ReadRequest:
       required:
         - groupRef
         - mode
@@ -85,6 +79,7 @@ components:
         since:
           type: string
           description: The timestamp from which to read data. If omitted, we will read all data.
+          example: "2024-07-01T18:22:30.323771761Z"
     ReadResultAsync:
       type: object
       required:
