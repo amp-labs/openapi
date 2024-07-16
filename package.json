@@ -1,0 +1,13 @@
+{
+    "dependencies": {
+        "@apidevtools/json-schema-ref-parser": "^11.6.4",
+        "@apidevtools/swagger-parser": "^10.1.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.14.10",
+        "typescript": "^5.4.5"
+    },
+    "scripts": {
+        "dereference": "npx tsx dereference.ts"
+    }
+}

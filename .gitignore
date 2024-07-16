@@ -163,3 +163,6 @@ tags
 # Persistent undo
 [._]*.un~
 
+#node modules
+node_modules
+
