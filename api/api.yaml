@@ -1788,6 +1788,114 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: generateConnectionParams
+  /projects/{projectIdOrName}/connections/connections/{connectionId}:regenerate:
+    patch:
+      summary: Update an existing connection (only valid for providers with auth types which are not OAuth2 Authorization Code)
+      operationId: regenerateConnection
+      tags: ["Connection"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: connectionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - updateMask
+              properties:
+                updateMask:
+                  type: array
+                  example:
+                    - apiKey
+                  items:
+                    type: string
+                    description: fields to update.
+                    example: apiKey
+                providerWorkspaceRef:
+                  type: string
+                  description: The ID of the provider workspace that this connection belongs to.
+                apiKey:
+                  type: string
+                  description: The API key to use for the connection.
+                basicAuth:
+                  type: object
+                  required:
+                    - username
+                    - password
+                  properties:
+                    username:
+                      type: string
+                      description: The username to use for the connection.
+                    password:
+                      type: string
+                      description: The password to use for the connection.
+                oauth2ClientCredentials:
+                  type: object
+                  required:
+                    - clientId
+                    - clientSecret
+                  properties:
+                    clientId:
+                      type: string
+                      description: The client ID to use for the connection.
+                    clientSecret:
+                      type: string
+                      description: The client secret to use for the connection.
+                oauth2Password:
+                  type: object
+                  required:
+                    - username
+                    - password
+                    - clientId
+                    - clientSecret
+                  properties:
+                    username:
+                      type: string
+                      description: The username to use for the connection.
+                    password:
+                      type: string
+                      description: The password to use for the connection.
+                    clientId:
+                      type: string
+                      description: The client ID to use for the connection.
+                    clientSecret:
+                      type: string
+                      description: The client secret to use for the connection.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Connection"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: regenerateConnectionParams
   /projects/{projectIdOrName}/connections/{connectionId}:
     get:
       summary: Get a connection
