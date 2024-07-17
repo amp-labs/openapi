@@ -8,6 +8,6 @@
         "typescript": "^5.4.5"
     },
     "scripts": {
-        "dereference": "npx tsx dereference.ts"
+        "gen:json": "npx tsx scripts/generate-json.ts"
     }
 }
