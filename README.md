@@ -18,3 +18,12 @@ make lint
 ## Adding a new OpenAPI definition
 * Create a new pull request with the new OpenAPI definition file and the rationale for the change.
 * Create a github action to lint the new OpenAPI definition file (https://docs.readme.com/main/docs/rdme#quick-start)
+
+
+## Generating OpenAPI json definition
+
+To generate json version of the openapi spec run the following
+
+```shell
+pnpm run gen:json
+```
