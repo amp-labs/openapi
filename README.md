@@ -22,6 +22,12 @@ make lint
 
 ## Generating OpenAPI json definition
 
+Ensure you have pnpm installed globally 
+
+```shell 
+npm install -g pnpm
+```
+
 To generate json version of the openapi spec run the following
 
 ```shell
