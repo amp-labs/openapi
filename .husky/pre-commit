@@ -1,0 +1,2 @@
+pnpm run gen:json
+git add api/generated
