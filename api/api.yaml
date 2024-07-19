@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Ampersand platform API
+  title: Ampersand public API
   version: 1.0.0
 servers:
   - url: https://api.withampersand.com/v1
@@ -72,20 +72,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: connectOAuthParams
-    options:
-      summary: Options endpoint
-      description: Options endpoint for CORS preflight request
-      operationId: oauthConnectCors
-      tags: ["OAuth"]
-      responses:
-        204:
-          description: No content
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects:
     get:
       summary: List all projects that the API key or user credential has access to
@@ -725,56 +711,56 @@ paths:
       x-codegen-request-body-name: revision
   /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate:
     get:
-        summary: Hydrate a revision
-        description: Hydrate a revision with information from the consumer's SaaS instance.
-        operationId: getHydratedRevision
-        tags: ["Revision"]
-        parameters:
-          - name: projectIdOrName
-            in: path
-            required: true
-            schema:
-              type: string
-          - name: integrationId
-            in: path
-            required: true
-            schema:
-              type: string
-          - name: revisionId
-            in: path
-            required: true
-            schema:
-              type: string
-          - name: connectionId
-            in: query
-            required: true
-            schema:
-              type: string
-        responses:
-          200:
-            description: Hydrated revision
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/HydratedRevision"
-          400:
-            description: Bad Request
-            content:
-              application/problem+json:
-                schema:
-                  $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-          422:
-            description: Unprocessable Entity
-            content:
-              application/problem+json:
-                schema:
-                  $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-          default:
-            description: Error
-            content:
-              application/problem+json:
-                schema:
-                  $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      summary: Hydrate a revision
+      description: Hydrate a revision with information from the consumer's SaaS instance.
+      operationId: getHydratedRevision
+      tags: ["Revision"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: revisionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: connectionId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Hydrated revision
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HydratedRevision"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/installations:
     get:
       summary: List installations
@@ -962,44 +948,44 @@ paths:
       x-codegen-request-body-name: installation
   /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:
     get:
-        summary: Get an installation
-        operationId: getInstallation
-        tags: ["Installation"]
-        parameters:
-          - name: projectIdOrName
-            in: path
-            required: true
-            schema:
-              type: string
-          - name: integrationId
-            in: path
-            required: true
-            schema:
-              type: string
-          - name: installationId
-            in: path
-            required: true
-            schema:
-              type: string
-        responses:
-          200:
-            description: The installation
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/Installation"
-          400:
-            description: Unprocessable Entity
-            content:
-              application/problem+json:
-                schema:
-                  $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-          default:
-            description: Error
-            content:
-              application/problem+json:
-                schema:
-                  $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      summary: Get an installation
+      operationId: getInstallation
+      tags: ["Installation"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: installationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: The installation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Installation"
+        400:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       summary: Delete an installation
       operationId: deleteInstallation
@@ -1213,7 +1199,7 @@ paths:
     get:
       summary: Get an operation event
       operationId: getOperationEvent
-      tags: [ "Operation Event" ]
+      tags: ["Operation Event"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -1259,7 +1245,7 @@ paths:
     get:
       summary: List logs for an operation
       operationId: listOperationLogs
-      tags: [ "Operation" ]
+      tags: ["Operation"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -1302,7 +1288,7 @@ paths:
     get:
       summary: List events for an operation
       operationId: listOperationEvents
-      tags: [ "Operation Event" ]
+      tags: ["Operation Event"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -1355,7 +1341,7 @@ paths:
     get:
       summary: List logs for an operation event
       operationId: listOperationEventLogs
-      tags: [ "Operation Event" ]
+      tags: ["Operation Event"]
       parameters:
         - name: projectIdOrName
           in: path
