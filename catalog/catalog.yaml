@@ -78,6 +78,20 @@ components:
           example: scopes
           x-go-type-skip-optional-pointer: true
 
+    Media:
+      type: object
+      properties:
+        iconURL:
+          type: string
+          example: https://example.com/icon.png
+          description: URL to the icon for the provider.
+          x-go-type-skip-optional-pointer: true
+        logoURL:
+          type: string
+          example: https://example.com/logo.png
+          description: URL to the logo for the provider.
+          x-go-type-skip-optional-pointer: true
+
     Oauth2Opts:
       type: object
       description: Configuration for OAuth2.0. Must be provided if authType is oauth2.
@@ -237,6 +251,8 @@ components:
           example: true
           description: If true, we require additional information after auth to start making requests.
           x-go-type-skip-optional-pointer: true
+        media:
+          $ref: '#/components/schemas/Media'
 
     CatalogType:
       type: object
