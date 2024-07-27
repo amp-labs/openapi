@@ -45,7 +45,7 @@ paths:
                   type: string
                   description:
                     ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call.
-                    If omitted, the default provider app that was set up on the Ampersand Console is assumed.
+                    If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
                 provider:
                   type: string
                   description: The provider that this app connects to.
@@ -2835,7 +2835,7 @@ components:
         providerAppId:
           description:
             ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call.
-            If omitted, the default provider app that was set up on the Ampersand Console is assumed.
+            If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
           type: string
         groupRef:
           description:
