@@ -222,6 +222,16 @@ components:
           description: The prefix to be added to the API key value when it is sent in the header.
           x-go-type-skip-optional-pointer: true
 
+    BasicAuthOpts:
+      type: object
+      description: Configuration for Basic Auth. Optional.
+      properties:
+        docsURL:
+          type: string
+          description: URL with more information about how to get or use an API key.
+          example: https://docs.example.com/api-key
+          x-go-type-skip-optional-pointer: true
+
     ProviderOpts:
         type: object
         additionalProperties:
@@ -258,6 +268,9 @@ components:
         apiKeyOpts:
           description: Configuration for API key. Must be provided if authType is api_key.
           $ref: '#/components/schemas/ApiKeyOpts'
+        BasicAuthOpts:
+          description: Configuration for Basic Auth. Optional.
+          $ref: '#/components/schemas/BasicAuthOpts'
         support:
           description: The supported features for the provider.
           $ref: '#/components/schemas/Support'
