@@ -22041,7 +22041,7 @@
                           }
                         }
                       },
-                      "BasicAuthOpts": {
+                      "basicOpts": {
                         "description": "Configuration for Basic Auth. Optional.",
                         "type": "object",
                         "properties": {
@@ -22520,7 +22520,7 @@
                         }
                       }
                     },
-                    "BasicAuthOpts": {
+                    "basicOpts": {
                       "description": "Configuration for Basic Auth. Optional.",
                       "type": "object",
                       "properties": {

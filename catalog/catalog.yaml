@@ -268,7 +268,7 @@ components:
         apiKeyOpts:
           description: Configuration for API key. Must be provided if authType is api_key.
           $ref: '#/components/schemas/ApiKeyOpts'
-        BasicAuthOpts:
+        basicOpts:
           description: Configuration for Basic Auth. Optional.
           $ref: '#/components/schemas/BasicAuthOpts'
         support:
