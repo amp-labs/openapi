@@ -12,3 +12,6 @@ lint:
 	cd manifest && rdme openapi:validate manifest.yaml && cd ..
 	cd problem && rdme openapi:validate problem.yaml
 
+.PHONY: gen
+gen:
+	pnpm run gen:json
