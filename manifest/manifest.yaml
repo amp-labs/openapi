@@ -94,6 +94,8 @@ components:
             $ref: '#/components/schemas/IntegrationField'
         optionalFieldsAuto:
           $ref: '#/components/schemas/OptionalFieldsAutoOption'
+        backfill:
+          $ref: '../config/config.yaml#/components/schemas/Backfill'
 
     # We might end up using the same IntegrationObject type for both read and write,
     # but for now we're introducing a new type to keep them separate, and not renaming the
