@@ -245,7 +245,6 @@ components:
         displayName:
           type: string
 
-
     Backfill:
       type: object
       required:
