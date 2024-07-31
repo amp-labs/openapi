@@ -118,7 +118,9 @@ components:
             during installation creation.
         type:
           type: string
-          description: The type of write operation.
+          description: 
+            The type of write operation. Synchronous mode only supports create and update.
+            Bulk mode only supports upsert and delete.
           enum: [create, update, upsert, delete]
           example: create
         mode:
