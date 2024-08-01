@@ -71,7 +71,7 @@ components:
           additionalProperties:
             type: string
         backfill: 
-          $ref: '#/components/schemas/Backfill'
+          $ref: '#/components/schemas/BackfillConfig'
     BaseWriteConfig:
       type: object
       properties:
@@ -153,15 +153,15 @@ components:
       allOf:
         - $ref: '#/components/schemas/BaseReadConfigObject'
 
-    Backfill:
+    BackfillConfig:
       type: object
       required:
         - defaultPeriod
       properties:
         defaultPeriod:
-          $ref: '#/components/schemas/DefaultPeriod'
+          $ref: '#/components/schemas/DefaultPeriodConfig'
 
-    DefaultPeriod:
+    DefaultPeriodConfig:
       type: object
       properties:
         days:
