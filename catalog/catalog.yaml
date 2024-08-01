@@ -64,6 +64,7 @@ components:
           type: boolean
     TokenMetadataFields:
       type: object
+      description: Fields to be used to extract token metadata from the token response.
       properties:
         workspaceRefField:
           type: string
@@ -194,6 +195,7 @@ components:
 
     ApiKeyOptsQuery:
       type: object
+      description: Configuration for API key in query parameter. Must be provided if type is in-query.
       required:
         - name
       properties:
@@ -205,6 +207,7 @@ components:
 
     ApiKeyOptsHeader:
       type: object
+      description: Configuration for API key in header. Must be provided if type is in-header.
       required:
         - name
       properties:
@@ -287,7 +290,7 @@ components:
         media:
           $ref: '#/components/schemas/Media'
 
-    CatalogDescriptor:
+    CatalogWrapper:
       type: object
       required:
         - timestamp

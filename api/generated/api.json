@@ -22001,6 +22001,7 @@
                           },
                           "tokenMetadataFields": {
                             "type": "object",
+                            "description": "Fields to be used to extract token metadata from the token response.",
                             "properties": {
                               "workspaceRefField": {
                                 "type": "string",
@@ -22058,6 +22059,7 @@
                           },
                           "query": {
                             "type": "object",
+                            "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
                             "required": [
                               "name"
                             ],
@@ -22072,6 +22074,7 @@
                           },
                           "header": {
                             "type": "object",
+                            "description": "Configuration for API key in header. Must be provided if type is in-header.",
                             "required": [
                               "name"
                             ],
@@ -22477,6 +22480,7 @@
                         },
                         "tokenMetadataFields": {
                           "type": "object",
+                          "description": "Fields to be used to extract token metadata from the token response.",
                           "properties": {
                             "workspaceRefField": {
                               "type": "string",
@@ -22534,6 +22538,7 @@
                         },
                         "query": {
                           "type": "object",
+                          "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
                           "required": [
                             "name"
                           ],
@@ -22548,6 +22553,7 @@
                         },
                         "header": {
                           "type": "object",
+                          "description": "Configuration for API key in header. Must be provided if type is in-header.",
                           "required": [
                             "name"
                           ],
