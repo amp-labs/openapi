@@ -64,6 +64,7 @@ components:
           type: boolean
     TokenMetadataFields:
       type: object
+      description: Fields to be used to extract token metadata from the token response.
       properties:
         workspaceRefField:
           type: string
@@ -155,7 +156,6 @@ components:
           description: A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.
           x-go-type-skip-optional-pointer: true
         tokenMetadataFields:
-          description: Fields to be used to extract token metadata from the token response.
           $ref: '#/components/schemas/TokenMetadataFields'
         docsURL:
           type: string
@@ -184,10 +184,8 @@ components:
           x-oapi-codegen-extra-tags:
             validate: required
         query:
-          description: Configuration for API key in query parameter. Must be provided if type is in-query.
           $ref: '#/components/schemas/ApiKeyOptsQuery'
         header:
-          description: Configuration for API key in header. Must be provided if type is in-header.
           $ref: '#/components/schemas/ApiKeyOptsHeader'
         docsURL:
           type: string
@@ -197,6 +195,7 @@ components:
 
     ApiKeyOptsQuery:
       type: object
+      description: Configuration for API key in query parameter. Must be provided if type is in-query.
       required:
         - name
       properties:
@@ -208,6 +207,7 @@ components:
 
     ApiKeyOptsHeader:
       type: object
+      description: Configuration for API key in header. Must be provided if type is in-header.
       required:
         - name
       properties:
@@ -289,6 +289,21 @@ components:
           x-go-type-skip-optional-pointer: true
         media:
           $ref: '#/components/schemas/Media'
+
+    CatalogWrapper:
+      type: object
+      required:
+        - timestamp
+        - catalog
+      properties:
+        timestamp:
+          type: string
+          example: 2024-07-30T15:14:51-07:00
+          description: An RFC3339 formatted timestamp of when the catalog was generated.
+          x-oapi-codegen-extra-tags:
+            validate: required
+        catalog:
+          $ref: '#/components/schemas/CatalogType'
 
     CatalogType:
       type: object
