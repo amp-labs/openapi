@@ -22147,6 +22147,16 @@
                             "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
                             "x-go-type-skip-optional-pointer": true
                           },
+                          "apiKeyField": {
+                            "type": "enum",
+                            "enum": [
+                              "username",
+                              "password"
+                            ],
+                            "example": "username",
+                            "description": "When apiKeyLike is true, this field specifies whether the API key should be used as the username or password.",
+                            "x-go-type-skip-optional-pointer": true
+                          },
                           "docsURL": {
                             "type": "string",
                             "description": "URL with more information about how to get or use an API key.",
@@ -22636,6 +22646,16 @@
                           "type": "string",
                           "example": "api:%s",
                           "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "apiKeyField": {
+                          "type": "enum",
+                          "enum": [
+                            "username",
+                            "password"
+                          ],
+                          "example": "username",
+                          "description": "When apiKeyLike is true, this field specifies whether the API key should be used as the username or password.",
                           "x-go-type-skip-optional-pointer": true
                         },
                         "docsURL": {
