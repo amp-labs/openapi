@@ -22148,7 +22148,7 @@
                             "x-go-type-skip-optional-pointer": true
                           },
                           "apiKeyField": {
-                            "type": "enum",
+                            "type": "string",
                             "enum": [
                               "username",
                               "password"
@@ -22649,7 +22649,7 @@
                           "x-go-type-skip-optional-pointer": true
                         },
                         "apiKeyField": {
-                          "type": "enum",
+                          "type": "string",
                           "enum": [
                             "username",
                             "password"
