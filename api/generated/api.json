@@ -22135,6 +22135,18 @@
                         "description": "Configuration for Basic Auth. Optional.",
                         "type": "object",
                         "properties": {
+                          "apiKeyLike": {
+                            "type": "boolean",
+                            "example": true,
+                            "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "apiKeyFormat": {
+                            "type": "string",
+                            "example": "api:%s",
+                            "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                            "x-go-type-skip-optional-pointer": true
+                          },
                           "docsURL": {
                             "type": "string",
                             "description": "URL with more information about how to get or use an API key.",
@@ -22614,6 +22626,18 @@
                       "description": "Configuration for Basic Auth. Optional.",
                       "type": "object",
                       "properties": {
+                        "apiKeyLike": {
+                          "type": "boolean",
+                          "example": true,
+                          "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "apiKeyFormat": {
+                          "type": "string",
+                          "example": "api:%s",
+                          "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                          "x-go-type-skip-optional-pointer": true
+                        },
                         "docsURL": {
                           "type": "string",
                           "description": "URL with more information about how to get or use an API key.",
