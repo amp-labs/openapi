@@ -237,7 +237,7 @@ components:
           description: How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.
           x-go-type-skip-optional-pointer: true
         apiKeyField:
-          type: enum
+          type: string
           enum: [username, password]
           example: username
           description: When apiKeyLike is true, this field specifies whether the API key should be used as the username or password.
