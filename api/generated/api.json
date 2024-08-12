@@ -22141,21 +22141,27 @@
                             "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
                             "x-go-type-skip-optional-pointer": true
                           },
-                          "apiKeyFormat": {
-                            "type": "string",
-                            "example": "api:%s",
-                            "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
-                            "x-go-type-skip-optional-pointer": true
-                          },
-                          "apiKeyField": {
-                            "type": "string",
-                            "enum": [
-                              "username",
-                              "password"
-                            ],
-                            "example": "username",
-                            "description": "When apiKeyLike is true, this field specifies whether the API key should be used as the username or password.",
-                            "x-go-type-skip-optional-pointer": true
+                          "apiKeyAsBasicOpts": {
+                            "type": "object",
+                            "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
+                            "properties": {
+                              "fieldUsed": {
+                                "type": "string",
+                                "enum": [
+                                  "username",
+                                  "password"
+                                ],
+                                "example": "username",
+                                "description": "whether the API key should be used as the username or password.",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "keyFormat": {
+                                "type": "string",
+                                "example": "api:%s",
+                                "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                                "x-go-type-skip-optional-pointer": true
+                              }
+                            }
                           },
                           "docsURL": {
                             "type": "string",
@@ -22642,21 +22648,27 @@
                           "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
                           "x-go-type-skip-optional-pointer": true
                         },
-                        "apiKeyFormat": {
-                          "type": "string",
-                          "example": "api:%s",
-                          "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
-                          "x-go-type-skip-optional-pointer": true
-                        },
-                        "apiKeyField": {
-                          "type": "string",
-                          "enum": [
-                            "username",
-                            "password"
-                          ],
-                          "example": "username",
-                          "description": "When apiKeyLike is true, this field specifies whether the API key should be used as the username or password.",
-                          "x-go-type-skip-optional-pointer": true
+                        "apiKeyAsBasicOpts": {
+                          "type": "object",
+                          "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
+                          "properties": {
+                            "fieldUsed": {
+                              "type": "string",
+                              "enum": [
+                                "username",
+                                "password"
+                              ],
+                              "example": "username",
+                              "description": "whether the API key should be used as the username or password.",
+                              "x-go-type-skip-optional-pointer": true
+                            },
+                            "keyFormat": {
+                              "type": "string",
+                              "example": "api:%s",
+                              "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
                         },
                         "docsURL": {
                           "type": "string",
