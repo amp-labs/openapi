@@ -22135,7 +22135,7 @@
                         "description": "Configuration for Basic Auth. Optional.",
                         "type": "object",
                         "properties": {
-                          "apiKeyLike": {
+                          "apiKeyAsBasic": {
                             "type": "boolean",
                             "example": true,
                             "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
@@ -22642,7 +22642,7 @@
                       "description": "Configuration for Basic Auth. Optional.",
                       "type": "object",
                       "properties": {
-                        "apiKeyLike": {
+                        "apiKeyAsBasic": {
                           "type": "boolean",
                           "example": true,
                           "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
