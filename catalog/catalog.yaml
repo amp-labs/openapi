@@ -222,10 +222,33 @@ components:
           description: The prefix to be added to the API key value when it is sent in the header.
           x-go-type-skip-optional-pointer: true
 
+    ApiKeyAsBasicOpts:
+      type: object
+      description: when this object is present, it means that this provider uses Basic Auth to actually collect an API key
+      properties:
+        fieldUsed:
+          type: string
+          enum: [username, password]
+          example: username
+          description: whether the API key should be used as the username or password.
+          x-go-type-skip-optional-pointer: true
+        keyFormat:
+          type: string
+          example: "api:%s"
+          description: How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.
+          x-go-type-skip-optional-pointer: true
+
     BasicAuthOpts:
       type: object
       description: Configuration for Basic Auth. Optional.
       properties:
+        apiKeyAsBasic:
+          type: boolean
+          example: true
+          description: If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.
+          x-go-type-skip-optional-pointer: true
+        apiKeyAsBasicOpts:
+          $ref: '#/components/schemas/ApiKeyAsBasicOpts'
         docsURL:
           type: string
           description: URL with more information about how to get or use an API key.
