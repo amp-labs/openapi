@@ -1,5 +1,6 @@
+# Ampersand OpenAPI spec
 
-This package contains OpenAPI definitions for our API endpoints and schemas.
+This package contains OpenAPI definitions for Ampersand's API endpoints and schemas.
 
 ## Setup 
 
@@ -15,11 +16,10 @@ Install dependencies
 pnpm i
 ```
 
+## Making a change
 
-## Adding a new OpenAPI definition
-* Create a new pull request with the new OpenAPI definition file and the rationale for the change.
-* Create a github action to lint the new OpenAPI definition file (https://docs.readme.com/main/docs/rdme#quick-start)
-
+* Create a new pull request, once it is approved, merge it.
+* In order to update the [online references](https://docs.withampersand.com/reference), go to the [docs repo](https://github.com/amp-labs/docs), check out a new branch, run `pnpm run gen` and create a PR with the change.
 
 ## Generating OpenAPI json definition
 
@@ -27,18 +27,4 @@ The json spec is auto generated on a commit (setup as a pre-commit hook) but if 
 
 ```shell
 pnpm run gen:json
-```
-
-## Linting [soon to be deprecated]
-
-First, you'll need to install the rdme CLI:
-
-```shell
-npm install -g rdme
-```
-
-To lint, run
-
-```shell
-make lint
 ```
