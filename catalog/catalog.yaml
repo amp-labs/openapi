@@ -115,6 +115,16 @@ components:
           example: https://example.com/logo.png
           description: URL to the logo for the provider.
           x-go-type-skip-optional-pointer: true
+    
+    Metadata:
+      type: object
+      additionalProperties:
+        type: string
+
+    Tags:
+      type: array
+      items:
+        type: string
 
     Oauth2Opts:
       type: object
@@ -312,6 +322,10 @@ components:
           x-go-type-skip-optional-pointer: true
         media:
           $ref: '#/components/schemas/Media'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        tags:
+          $ref: '#/components/schemas/Tags'
 
     CatalogWrapper:
       type: object
