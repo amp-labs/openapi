@@ -21975,8 +21975,8 @@
                         }
                       },
                       "oauth2Opts": {
-                        "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
                         "type": "object",
+                        "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
                         "required": [
                           "grantType",
                           "tokenURL",
@@ -22070,8 +22070,8 @@
                         }
                       },
                       "apiKeyOpts": {
-                        "description": "Configuration for API key. Must be provided if authType is api_key.",
                         "type": "object",
+                        "description": "Configuration for API key. Must be provided if authType is apiKey.",
                         "required": [
                           "attachmentType"
                         ],
@@ -22132,8 +22132,8 @@
                         }
                       },
                       "basicOpts": {
-                        "description": "Configuration for Basic Auth. Optional.",
                         "type": "object",
+                        "description": "Configuration for Basic Auth. Optional.",
                         "properties": {
                           "apiKeyAsBasic": {
                             "type": "boolean",
@@ -22153,7 +22153,11 @@
                                 ],
                                 "example": "username",
                                 "description": "whether the API key should be used as the username or password.",
-                                "x-go-type-skip-optional-pointer": true
+                                "x-go-type-skip-optional-pointer": true,
+                                "x-enum-varnames": [
+                                  "UsernameField",
+                                  "PasswordField"
+                                ]
                               },
                               "keyFormat": {
                                 "type": "string",
@@ -22172,8 +22176,8 @@
                         }
                       },
                       "support": {
-                        "description": "The supported features for the provider.",
                         "type": "object",
+                        "description": "The supported features for the provider.",
                         "x-oapi-codegen-extra-tags": {
                           "validate": "required"
                         },
@@ -22482,8 +22486,8 @@
                       }
                     },
                     "oauth2Opts": {
-                      "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
                       "type": "object",
+                      "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
                       "required": [
                         "grantType",
                         "tokenURL",
@@ -22577,8 +22581,8 @@
                       }
                     },
                     "apiKeyOpts": {
-                      "description": "Configuration for API key. Must be provided if authType is api_key.",
                       "type": "object",
+                      "description": "Configuration for API key. Must be provided if authType is apiKey.",
                       "required": [
                         "attachmentType"
                       ],
@@ -22639,8 +22643,8 @@
                       }
                     },
                     "basicOpts": {
-                      "description": "Configuration for Basic Auth. Optional.",
                       "type": "object",
+                      "description": "Configuration for Basic Auth. Optional.",
                       "properties": {
                         "apiKeyAsBasic": {
                           "type": "boolean",
@@ -22660,7 +22664,11 @@
                               ],
                               "example": "username",
                               "description": "whether the API key should be used as the username or password.",
-                              "x-go-type-skip-optional-pointer": true
+                              "x-go-type-skip-optional-pointer": true,
+                              "x-enum-varnames": [
+                                "UsernameField",
+                                "PasswordField"
+                              ]
                             },
                             "keyFormat": {
                               "type": "string",
@@ -22679,8 +22687,8 @@
                       }
                     },
                     "support": {
-                      "description": "The supported features for the provider.",
                       "type": "object",
+                      "description": "The supported features for the provider.",
                       "x-oapi-codegen-extra-tags": {
                         "validate": "required"
                       },

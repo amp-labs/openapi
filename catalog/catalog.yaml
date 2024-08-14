@@ -18,6 +18,7 @@ paths: {}
 components:
   schemas:
     AuthType:
+      description: The type of authentication required by the provider.
       type: string
       enum: [oauth2, apiKey, basic, none]
       x-oapi-codegen-extra-tags:
@@ -25,6 +26,7 @@ components:
 
     Support:
       type: object
+      description: The supported features for the provider.
       x-oapi-codegen-extra-tags:
         validate: required
       required:
@@ -232,6 +234,9 @@ components:
           example: username
           description: whether the API key should be used as the username or password.
           x-go-type-skip-optional-pointer: true
+          x-enum-varnames:
+            - UsernameField
+            - PasswordField
         keyFormat:
           type: string
           example: "api:%s"
@@ -256,9 +261,10 @@ components:
           x-go-type-skip-optional-pointer: true
 
     ProviderOpts:
-        type: object
-        additionalProperties:
-          type: string
+      description: Additional provider-specific metadata.
+      type: object
+      additionalProperties:
+        type: string
 
     Provider:
       type: string
@@ -278,7 +284,6 @@ components:
           # so you don't need to worry about it. Add it for completeness if you want.
           type: string
         authType:
-          description: The type of authentication required by the provider.
           $ref: '#/components/schemas/AuthType'
         baseURL:
           description: The base URL for making API requests.
@@ -286,19 +291,14 @@ components:
           x-oapi-codegen-extra-tags:
             validate: required
         oauth2Opts:
-          description: Configuration for OAuth2.0. Must be provided if authType is oauth2.
           $ref: '#/components/schemas/Oauth2Opts'
         apiKeyOpts:
-          description: Configuration for API key. Must be provided if authType is api_key.
           $ref: '#/components/schemas/ApiKeyOpts'
         basicOpts:
-          description: Configuration for Basic Auth. Optional.
           $ref: '#/components/schemas/BasicAuthOpts'
         support:
-          description: The supported features for the provider.
           $ref: '#/components/schemas/Support'
         providerOpts:
-          description: Additional provider-specific metadata.
           $ref: '#/components/schemas/ProviderOpts'
         displayName:
           type: string
