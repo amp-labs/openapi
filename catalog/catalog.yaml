@@ -117,6 +117,11 @@ components:
           example: https://example.com/logo.png
           description: URL to the logo for the provider.
           x-go-type-skip-optional-pointer: true
+    
+    Labels:
+      type: object
+      additionalProperties:
+        type: string
 
     Oauth2Opts:
       type: object
@@ -312,7 +317,9 @@ components:
           x-go-type-skip-optional-pointer: true
         media:
           $ref: '#/components/schemas/Media'
-
+        labels:
+          $ref: '#/components/schemas/Labels'
+          
     CatalogWrapper:
       type: object
       required:
