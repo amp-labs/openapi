@@ -1724,6 +1724,11 @@ paths:
                     clientSecret:
                       type: string
                       description: The client secret to use for the connection.
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                      description: The scopes to use for the connection (optional).
                 oauth2Password:
                   type: object
                   required:
@@ -1744,6 +1749,11 @@ paths:
                     clientSecret:
                       type: string
                       description: The client secret to use for the connection.
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                      description: The scopes to use for the connection (optional).
       responses:
         201:
           description: Created
