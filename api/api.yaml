@@ -11,6 +11,7 @@ paths:
       summary: Get URL for OAuth flow
       description: Generate a URL for the browser to render to kick off OAuth flow.
       tags: ["OAuth"]
+      security: []  # This overrides the global security
       requestBody:
         content:
           application/json:
@@ -1390,6 +1391,7 @@ paths:
       summary: List providers
       operationId: listProviders
       tags: ["Provider"]
+      security: []  # This overrides the global security
       responses:
         200:
           description: List of providers & their information
@@ -1408,6 +1410,7 @@ paths:
       summary: Get provider
       operationId: getProvider
       tags: ["Provider"]
+      security: []  # This overrides the global security
       parameters:
         - name: provider
           in: path
@@ -2440,6 +2443,7 @@ paths:
       summary: Get information about the current user
       operationId: getMyInfo
       tags: ["User"]
+      security: []  # This overrides the global security
       responses:
         200:
           description: Information about the current user and their organizations and projects
@@ -2458,6 +2462,7 @@ paths:
       summary: Accept an invite
       operationId: acceptInvite
       tags: ["User"]
+      security: []  # This overrides the global security
       requestBody:
         content:
           application/json:

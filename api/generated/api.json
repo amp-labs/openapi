@@ -18,6 +18,7 @@
         "tags": [
           "OAuth"
         ],
+        "security": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -21934,6 +21935,7 @@
         "tags": [
           "Provider"
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "List of providers & their information",
@@ -22443,6 +22445,7 @@
         "tags": [
           "Provider"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "provider",
@@ -36034,6 +36037,7 @@
         "tags": [
           "User"
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Information about the current user and their organizations and projects",
@@ -36373,6 +36377,7 @@
         "tags": [
           "User"
         ],
+        "security": [],
         "requestBody": {
           "content": {
             "application/json": {
