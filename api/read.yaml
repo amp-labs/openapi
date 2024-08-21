@@ -89,4 +89,18 @@ components:
           type: string
           description: The operation ID
           example: 60deaf48-3856-4a2b-bfd4-3de85125eca8
-
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    APIKeyQueryParam:
+      type: apiKey
+      name: apiKey
+      in: query
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+security:
+  - APIKeyHeader: []

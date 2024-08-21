@@ -39133,5 +39133,10 @@
         "in": "header"
       }
     }
-  }
+  },
+  "security": [
+    {
+      "APIKeyHeader": []
+    }
+  ]
 }
