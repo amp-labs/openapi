@@ -1391,7 +1391,6 @@ paths:
       summary: List providers
       operationId: listProviders
       tags: ["Provider"]
-      security: []  # This overrides the global security
       responses:
         200:
           description: List of providers & their information
@@ -1410,7 +1409,6 @@ paths:
       summary: Get provider
       operationId: getProvider
       tags: ["Provider"]
-      security: []  # This overrides the global security
       parameters:
         - name: provider
           in: path

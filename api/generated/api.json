@@ -21935,7 +21935,6 @@
         "tags": [
           "Provider"
         ],
-        "security": [],
         "responses": {
           "200": {
             "description": "List of providers & their information",
@@ -22445,7 +22444,6 @@
         "tags": [
           "Provider"
         ],
-        "security": [],
         "parameters": [
           {
             "name": "provider",
