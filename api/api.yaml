@@ -11,6 +11,7 @@ paths:
       summary: Get URL for OAuth flow
       description: Generate a URL for the browser to render to kick off OAuth flow.
       tags: ["OAuth"]
+      security: []  # This overrides the global security
       requestBody:
         content:
           application/json:
@@ -2440,6 +2441,7 @@ paths:
       summary: Get information about the current user
       operationId: getMyInfo
       tags: ["User"]
+      security: []  # This overrides the global security
       responses:
         200:
           description: Information about the current user and their organizations and projects
@@ -2458,6 +2460,7 @@ paths:
       summary: Accept an invite
       operationId: acceptInvite
       tags: ["User"]
+      security: []  # This overrides the global security
       requestBody:
         content:
           application/json:
@@ -3277,3 +3280,5 @@ components:
       type: apiKey
       name: Authorization
       in: header
+security:
+  - APIKeyHeader: []
