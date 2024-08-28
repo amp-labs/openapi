@@ -550,7 +550,7 @@ paths:
                     sourceYaml:
                       type: string
                       description:
-                        The source YAML file that defines the integration.
+                        A YAML string that defines the integration.
                   description:
                     If included, creating this integration will also create
                     a new revision of the integration. For LatestRevision, one of souceZipUrl or
