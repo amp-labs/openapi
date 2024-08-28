@@ -96,6 +96,8 @@ components:
           $ref: '#/components/schemas/OptionalFieldsAutoOption'
         backfill:
           $ref: '#/components/schemas/Backfill'
+        delivery:
+          $ref: '#/components/schemas/Delivery'
 
     # We might end up using the same IntegrationObject type for both read and write,
     # but for now we're introducing a new type to keep them separate, and not renaming the
@@ -271,3 +273,17 @@ components:
           example: false
           x-oapi-codegen-extra-tags:
             validate: required_without=Days
+
+    Delivery:
+      type: object
+      properties:
+        mode:
+          type: string
+          default: auto
+          enum: [onRequest, auto]
+          description: The data delivery mode for this object. If not specified, defaults to automatic.
+        pageSize:
+            type: integer
+            description: The number of records to receive per data delivery.
+            minimum: 50
+            maximum: 500
