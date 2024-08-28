@@ -641,7 +641,7 @@ paths:
                 sourceYaml:
                   type: string
                   description:
-                    The source YAML file that defines the integrations.
+                    A YAML string that defines the integrations.
               description:
                 The source of the integrations to upsert. One of sourceZipUrl or sourceYaml is required.
       responses:
