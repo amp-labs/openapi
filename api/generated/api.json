@@ -6456,7 +6456,7 @@
                       },
                       "sourceYaml": {
                         "type": "string",
-                        "description": "The source YAML file that defines the integration."
+                        "description": "A YAML string that defines the integration."
                       }
                     },
                     "description": "If included, creating this integration will also create a new revision of the integration. For LatestRevision, one of souceZipUrl or sourceYaml is required."
@@ -8075,7 +8075,7 @@
                   },
                   "sourceYaml": {
                     "type": "string",
-                    "description": "The source YAML file that defines the integrations."
+                    "description": "A YAML string that defines the integrations."
                   }
                 },
                 "description": "The source of the integrations to upsert. One of sourceZipUrl or sourceYaml is required."
