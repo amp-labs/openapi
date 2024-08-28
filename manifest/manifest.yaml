@@ -187,6 +187,8 @@ components:
             $ref: '#/components/schemas/HydratedIntegrationField'
         backfill:
           $ref: '#/components/schemas/Backfill'
+        delivery:
+          $ref: '#/components/schemas/Delivery'
 
     # We might end up using the same HydratedIntegrationObject type for both read and write,
     # but for now we're introducing a new type to keep them separate, and not renaming the

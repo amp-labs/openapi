@@ -72,6 +72,9 @@ components:
             type: string
         backfill: 
           $ref: '#/components/schemas/BackfillConfig'
+        delivery:
+          $ref: '#/components/schemas/DeliveryConfig'
+
     BaseWriteConfig:
       type: object
       properties:
@@ -160,6 +163,20 @@ components:
       properties:
         defaultPeriod:
           $ref: '#/components/schemas/DefaultPeriodConfig'
+    
+    DeliveryConfig:
+      type: object
+      properties:
+        mode:
+          type: string
+          default: auto
+          enum: [onRequest, auto]
+          description: The data delivery mode for this object. If not specified, defaults to automatic.
+        pageSize:
+            type: integer
+            description: The number of records to receive per data delivery.
+            minimum: 50
+            maximum: 500
 
     DefaultPeriodConfig:
       type: object

@@ -5917,6 +5917,26 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "delivery": {
+                                          "type": "object",
+                                          "properties": {
+                                            "mode": {
+                                              "type": "string",
+                                              "default": "auto",
+                                              "enum": [
+                                                "onRequest",
+                                                "auto"
+                                              ],
+                                              "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                            },
+                                            "pageSize": {
+                                              "type": "integer",
+                                              "description": "The number of records to receive per data delivery.",
+                                              "minimum": 50,
+                                              "maximum": 500
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -8304,6 +8324,26 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "delivery": {
+                                          "type": "object",
+                                          "properties": {
+                                            "mode": {
+                                              "type": "string",
+                                              "default": "auto",
+                                              "enum": [
+                                                "onRequest",
+                                                "auto"
+                                              ],
+                                              "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                            },
+                                            "pageSize": {
+                                              "type": "integer",
+                                              "description": "The number of records to receive per data delivery.",
+                                              "minimum": 50,
+                                              "maximum": 500
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -9899,6 +9939,26 @@
                                         }
                                       }
                                     }
+                                  },
+                                  "delivery": {
+                                    "type": "object",
+                                    "properties": {
+                                      "mode": {
+                                        "type": "string",
+                                        "default": "auto",
+                                        "enum": [
+                                          "onRequest",
+                                          "auto"
+                                        ],
+                                        "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                      },
+                                      "pageSize": {
+                                        "type": "integer",
+                                        "description": "The number of records to receive per data delivery.",
+                                        "minimum": 50,
+                                        "maximum": 500
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -11133,6 +11193,26 @@
                                                   }
                                                 }
                                               }
+                                            },
+                                            "delivery": {
+                                              "type": "object",
+                                              "properties": {
+                                                "mode": {
+                                                  "type": "string",
+                                                  "default": "auto",
+                                                  "enum": [
+                                                    "onRequest",
+                                                    "auto"
+                                                  ],
+                                                  "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                                },
+                                                "pageSize": {
+                                                  "type": "integer",
+                                                  "description": "The number of records to receive per data delivery.",
+                                                  "minimum": 50,
+                                                  "maximum": 500
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -11787,6 +11867,26 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "delivery": {
+                                          "type": "object",
+                                          "properties": {
+                                            "mode": {
+                                              "type": "string",
+                                              "default": "auto",
+                                              "enum": [
+                                                "onRequest",
+                                                "auto"
+                                              ],
+                                              "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                            },
+                                            "pageSize": {
+                                              "type": "integer",
+                                              "description": "The number of records to receive per data delivery.",
+                                              "minimum": 50,
+                                              "maximum": 500
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -12232,6 +12332,26 @@
                                                     }
                                                   }
                                                 }
+                                              }
+                                            }
+                                          },
+                                          "delivery": {
+                                            "type": "object",
+                                            "properties": {
+                                              "mode": {
+                                                "type": "string",
+                                                "default": "auto",
+                                                "enum": [
+                                                  "onRequest",
+                                                  "auto"
+                                                ],
+                                                "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                              },
+                                              "pageSize": {
+                                                "type": "integer",
+                                                "description": "The number of records to receive per data delivery.",
+                                                "minimum": 50,
+                                                "maximum": 500
                                               }
                                             }
                                           }
@@ -13255,6 +13375,26 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "delivery": {
+                                          "type": "object",
+                                          "properties": {
+                                            "mode": {
+                                              "type": "string",
+                                              "default": "auto",
+                                              "enum": [
+                                                "onRequest",
+                                                "auto"
+                                              ],
+                                              "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                            },
+                                            "pageSize": {
+                                              "type": "integer",
+                                              "description": "The number of records to receive per data delivery.",
+                                              "minimum": 50,
+                                              "maximum": 500
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -13700,6 +13840,26 @@
                                                     }
                                                   }
                                                 }
+                                              }
+                                            }
+                                          },
+                                          "delivery": {
+                                            "type": "object",
+                                            "properties": {
+                                              "mode": {
+                                                "type": "string",
+                                                "default": "auto",
+                                                "enum": [
+                                                  "onRequest",
+                                                  "auto"
+                                                ],
+                                                "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                              },
+                                              "pageSize": {
+                                                "type": "integer",
+                                                "description": "The number of records to receive per data delivery.",
+                                                "minimum": 50,
+                                                "maximum": 500
                                               }
                                             }
                                           }
@@ -14635,6 +14795,26 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "delivery": {
+                                            "type": "object",
+                                            "properties": {
+                                              "mode": {
+                                                "type": "string",
+                                                "default": "auto",
+                                                "enum": [
+                                                  "onRequest",
+                                                  "auto"
+                                                ],
+                                                "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                              },
+                                              "pageSize": {
+                                                "type": "integer",
+                                                "description": "The number of records to receive per data delivery.",
+                                                "minimum": 50,
+                                                "maximum": 500
+                                              }
+                                            }
                                           }
                                         }
                                       }
@@ -15475,6 +15655,26 @@
                                                   }
                                                 }
                                               }
+                                            },
+                                            "delivery": {
+                                              "type": "object",
+                                              "properties": {
+                                                "mode": {
+                                                  "type": "string",
+                                                  "default": "auto",
+                                                  "enum": [
+                                                    "onRequest",
+                                                    "auto"
+                                                  ],
+                                                  "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                                },
+                                                "pageSize": {
+                                                  "type": "integer",
+                                                  "description": "The number of records to receive per data delivery.",
+                                                  "minimum": 50,
+                                                  "maximum": 500
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -15909,6 +16109,26 @@
                                                     }
                                                   }
                                                 }
+                                              }
+                                            }
+                                          },
+                                          "delivery": {
+                                            "type": "object",
+                                            "properties": {
+                                              "mode": {
+                                                "type": "string",
+                                                "default": "auto",
+                                                "enum": [
+                                                  "onRequest",
+                                                  "auto"
+                                                ],
+                                                "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                              },
+                                              "pageSize": {
+                                                "type": "integer",
+                                                "description": "The number of records to receive per data delivery.",
+                                                "minimum": 50,
+                                                "maximum": 500
                                               }
                                             }
                                           }
@@ -37141,6 +37361,26 @@
                                   }
                                 }
                               }
+                            },
+                            "delivery": {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "type": "string",
+                                  "default": "auto",
+                                  "enum": [
+                                    "onRequest",
+                                    "auto"
+                                  ],
+                                  "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                },
+                                "pageSize": {
+                                  "type": "integer",
+                                  "description": "The number of records to receive per data delivery.",
+                                  "minimum": 50,
+                                  "maximum": 500
+                                }
+                              }
                             }
                           }
                         }
@@ -37351,6 +37591,26 @@
                                   }
                                 }
                               }
+                            }
+                          }
+                        },
+                        "delivery": {
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "default": "auto",
+                              "enum": [
+                                "onRequest",
+                                "auto"
+                              ],
+                              "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                            },
+                            "pageSize": {
+                              "type": "integer",
+                              "description": "The number of records to receive per data delivery.",
+                              "minimum": 50,
+                              "maximum": 500
                             }
                           }
                         }
@@ -37616,6 +37876,26 @@
                                   }
                                 }
                               }
+                            }
+                          }
+                        },
+                        "delivery": {
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "default": "auto",
+                              "enum": [
+                                "onRequest",
+                                "auto"
+                              ],
+                              "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                            },
+                            "pageSize": {
+                              "type": "integer",
+                              "description": "The number of records to receive per data delivery.",
+                              "minimum": 50,
+                              "maximum": 500
                             }
                           }
                         }
@@ -38038,6 +38318,26 @@
                                       }
                                     }
                                   }
+                                },
+                                "delivery": {
+                                  "type": "object",
+                                  "properties": {
+                                    "mode": {
+                                      "type": "string",
+                                      "default": "auto",
+                                      "enum": [
+                                        "onRequest",
+                                        "auto"
+                                      ],
+                                      "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                    },
+                                    "pageSize": {
+                                      "type": "integer",
+                                      "description": "The number of records to receive per data delivery.",
+                                      "minimum": 50,
+                                      "maximum": 500
+                                    }
+                                  }
                                 }
                               }
                             }
@@ -38206,6 +38506,26 @@
                                       }
                                     }
                                   }
+                                }
+                              }
+                            },
+                            "delivery": {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "type": "string",
+                                  "default": "auto",
+                                  "enum": [
+                                    "onRequest",
+                                    "auto"
+                                  ],
+                                  "description": "The data delivery mode for this object. If not specified, defaults to automatic."
+                                },
+                                "pageSize": {
+                                  "type": "integer",
+                                  "description": "The number of records to receive per data delivery.",
+                                  "minimum": 50,
+                                  "maximum": 500
                                 }
                               }
                             }
