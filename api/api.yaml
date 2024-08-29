@@ -553,7 +553,7 @@ paths:
                         A YAML string that defines the integration.
                   description:
                     If included, creating this integration will also create
-                    a new revision of the integration. For LatestRevision, one of souceZipUrl or
+                    a new revision of the integration. For LatestRevision, one of sourceZipUrl or
                     sourceYaml is required.
         required: true
       responses:
