@@ -2939,6 +2939,14 @@ components:
         path:
           type: string
           description: The path (will match the path part of the url).
+    ApiKeyScopes:
+      type: array
+      description: The scopes for the API key.
+      items:
+        type: string
+        example:
+          - full
+          - frontend
     ApiKeyRequest:
       type: object
       required:
@@ -2948,12 +2956,15 @@ components:
           type: string
           description: A short name for the API key.
           example: MailMonkey API Key
+        scopes:
+          $ref: "#/components/schemas/ApiKeyScopes"
     ApiKey:
       type: object
       required:
         - key
         - projectId
         - label
+        - scopes
       properties:
         key:
           type: string
@@ -2963,6 +2974,8 @@ components:
           type: string
           description: A short name for the API key.
           example: MailMonkey API Key
+        scopes:
+          $ref: "#/components/schemas/ApiKeyScopes"
         projectId:
           type: string
           description: The project ID.
@@ -2982,6 +2995,7 @@ components:
           example:
             - label
             - active
+            - scopes
           items:
             type: string
             description: fields to update.
@@ -2997,6 +3011,8 @@ components:
               type: boolean
               description: Whether the API key is active.
               example: true
+            scopes:
+              $ref: "#/components/schemas/ApiKeyScopes"
     WebhookHeaders:
       type: object
       nullable: true
