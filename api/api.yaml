@@ -531,6 +531,7 @@ paths:
               required:
                 - name
                 - provider
+                - latestRevision
               type: object
               properties:
                 name:
@@ -541,20 +542,16 @@ paths:
                   description: The provider name (e.g. "salesforce", "hubspot")
                 latestRevision:
                   type: object
+                  required:
+                    - content
+                    - specVersion
                   properties:
-                    sourceZipUrl:
+                    specVersion:
                       type: string
-                      description:
-                        URL of where a zip of the source files can be downloaded
-                        (e.g. Google Cloud Storage URL).
-                    sourceYaml:
-                      type: string
-                      description:
-                        A YAML string that defines the integration.
-                  description:
-                    If included, creating this integration will also create
-                    a new revision of the integration. For LatestRevision, one of sourceZipUrl or
-                    sourceYaml is required.
+                      description: The spec version string.
+                      example: 1.0.0
+                    content:
+                      $ref: "../manifest/manifest.yaml#/components/schemas/Integration"
         required: true
       responses:
         201:
@@ -2545,8 +2542,8 @@ components:
           example: revision-id-1
         specVersion:
           type: string
-          description: The spec version string (e.g. "0.1.0").
-          example: 0.1.0
+          description: The spec version string.
+          example: 1.0.0
         createTime:
           type: string
           description: The time the revision was created.
@@ -2567,8 +2564,8 @@ components:
           example: revision-id-1
         specVersion:
           type: string
-          description: The spec version string (e.g. "0.1.0").
-          example: 0.1.0
+          description: The spec version string.
+          example: 1.0.0
         createTime:
           type: string
           description: The time the revision was created.
