@@ -94,8 +94,6 @@ components:
             $ref: '#/components/schemas/IntegrationField'
         optionalFieldsAuto:
           $ref: '#/components/schemas/OptionalFieldsAutoOption'
-        selectedFieldsAuto:
-          $ref: '#/components/schemas/SelectedFieldsAutoOption'
         backfill:
           $ref: '#/components/schemas/Backfill'
         delivery:
@@ -205,10 +203,6 @@ components:
           type: string
 
     OptionalFieldsAutoOption:
-      type: string
-      enum: [all]
-
-    SelectedFieldsAutoOption:
       type: string
       enum: [all]
 
