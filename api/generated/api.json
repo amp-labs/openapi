@@ -5888,6 +5888,12 @@
                                             "all"
                                           ]
                                         },
+                                        "selectedFieldsAuto": {
+                                          "type": "string",
+                                          "enum": [
+                                            "all"
+                                          ]
+                                        },
                                         "backfill": {
                                           "type": "object",
                                           "required": [
@@ -6595,6 +6601,12 @@
                                       }
                                     },
                                     "optionalFieldsAuto": {
+                                      "type": "string",
+                                      "enum": [
+                                        "all"
+                                      ]
+                                    },
+                                    "selectedFieldsAuto": {
                                       "type": "string",
                                       "enum": [
                                         "all"
@@ -8495,6 +8507,12 @@
                                           }
                                         },
                                         "optionalFieldsAuto": {
+                                          "type": "string",
+                                          "enum": [
+                                            "all"
+                                          ]
+                                        },
+                                        "selectedFieldsAuto": {
                                           "type": "string",
                                           "enum": [
                                             "all"
@@ -34851,6 +34869,12 @@
                                 "all"
                               ]
                             },
+                            "selectedFieldsAuto": {
+                              "type": "string",
+                              "enum": [
+                                "all"
+                              ]
+                            },
                             "backfill": {
                               "type": "object",
                               "required": [
@@ -35078,6 +35102,12 @@
                           }
                         },
                         "optionalFieldsAuto": {
+                          "type": "string",
+                          "enum": [
+                            "all"
+                          ]
+                        },
+                        "selectedFieldsAuto": {
                           "type": "string",
                           "enum": [
                             "all"
