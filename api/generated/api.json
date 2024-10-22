@@ -11371,6 +11371,9 @@
                                               "type": "string",
                                               "enum": [
                                                 "all"
+                                              ],
+                                              "x-enum-varnames": [
+                                                "SelectedFieldsAll"
                                               ]
                                             },
                                             "backfill": {
@@ -12031,6 +12034,9 @@
                                           "type": "string",
                                           "enum": [
                                             "all"
+                                          ],
+                                          "x-enum-varnames": [
+                                            "SelectedFieldsAll"
                                           ]
                                         },
                                         "backfill": {
@@ -12484,6 +12490,9 @@
                                             "type": "string",
                                             "enum": [
                                               "all"
+                                            ],
+                                            "x-enum-varnames": [
+                                              "SelectedFieldsAll"
                                             ]
                                           },
                                           "backfill": {
@@ -13511,6 +13520,9 @@
                                           "type": "string",
                                           "enum": [
                                             "all"
+                                          ],
+                                          "x-enum-varnames": [
+                                            "SelectedFieldsAll"
                                           ]
                                         },
                                         "backfill": {
@@ -13964,6 +13976,9 @@
                                             "type": "string",
                                             "enum": [
                                               "all"
+                                            ],
+                                            "x-enum-varnames": [
+                                              "SelectedFieldsAll"
                                             ]
                                           },
                                           "backfill": {
@@ -14903,6 +14918,9 @@
                                             "type": "string",
                                             "enum": [
                                               "all"
+                                            ],
+                                            "x-enum-varnames": [
+                                              "SelectedFieldsAll"
                                             ]
                                           },
                                           "backfill": {
@@ -15749,6 +15767,9 @@
                                               "type": "string",
                                               "enum": [
                                                 "all"
+                                              ],
+                                              "x-enum-varnames": [
+                                                "SelectedFieldsAll"
                                               ]
                                             },
                                             "backfill": {
@@ -16191,6 +16212,9 @@
                                             "type": "string",
                                             "enum": [
                                               "all"
+                                            ],
+                                            "x-enum-varnames": [
+                                              "SelectedFieldsAll"
                                             ]
                                           },
                                           "backfill": {
@@ -35870,6 +35894,9 @@
                                   "type": "string",
                                   "enum": [
                                     "all"
+                                  ],
+                                  "x-enum-varnames": [
+                                    "SelectedFieldsAll"
                                   ]
                                 },
                                 "backfill": {
@@ -36046,6 +36073,9 @@
                               "type": "string",
                               "enum": [
                                 "all"
+                              ],
+                              "x-enum-varnames": [
+                                "SelectedFieldsAll"
                               ]
                             },
                             "backfill": {

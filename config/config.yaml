@@ -158,6 +158,8 @@ components:
     SelectedFieldsAutoConfig:
       type: string
       enum: [ all ]
+      x-enum-varnames:
+        - SelectedFieldsAll
 
     BackfillConfig:
       type: object
