@@ -70,6 +70,8 @@ components:
           example: '{ phoneNumber: phone, faxNumber: fax }'
           additionalProperties:
             type: string
+        selectedFieldsAuto:
+          $ref: '#/components/schemas/SelectedFieldsAutoConfig'
         backfill: 
           $ref: '#/components/schemas/BackfillConfig'
     BaseWriteConfig:
@@ -152,6 +154,10 @@ components:
     UpdateInstallationReadConfigObject:
       allOf:
         - $ref: '#/components/schemas/BaseReadConfigObject'
+
+    SelectedFieldsAutoConfig:
+      type: string
+      enum: [ all ]
 
     BackfillConfig:
       type: object
