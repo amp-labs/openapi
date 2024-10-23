@@ -109,6 +109,10 @@ components:
       properties:
         objectName:
           type: string
+        inheritMappingFromRead:
+          type: boolean
+          description: If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.
+          example: true
 
     HydratedIntegration:
       type: object
@@ -217,6 +221,8 @@ components:
         - fieldName
       properties:
         fieldName:
+          type: string
+        mapToField:
           type: string
 
     IntegrationFieldMapping:
