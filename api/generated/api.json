@@ -5820,7 +5820,9 @@
                                                     "type": "string"
                                                   },
                                                   "mapToField": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The field name to map to in the destination.",
+                                                    "example": "account_id"
                                                   }
                                                 }
                                               },
@@ -5861,7 +5863,9 @@
                                                     "type": "string"
                                                   },
                                                   "mapToField": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The field name to map to in the destination.",
+                                                    "example": "account_id"
                                                   }
                                                 }
                                               },
@@ -6543,7 +6547,9 @@
                                                 "type": "string"
                                               },
                                               "mapToField": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "description": "The field name to map to in the destination.",
+                                                "example": "account_id"
                                               }
                                             }
                                           },
@@ -6584,7 +6590,9 @@
                                                 "type": "string"
                                               },
                                               "mapToField": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "description": "The field name to map to in the destination.",
+                                                "example": "account_id"
                                               }
                                             }
                                           },
@@ -8454,7 +8462,9 @@
                                                     "type": "string"
                                                   },
                                                   "mapToField": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The field name to map to in the destination.",
+                                                    "example": "account_id"
                                                   }
                                                 }
                                               },
@@ -8495,7 +8505,9 @@
                                                     "type": "string"
                                                   },
                                                   "mapToField": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The field name to map to in the destination.",
+                                                    "example": "account_id"
                                                   }
                                                 }
                                               },
@@ -34888,7 +34900,9 @@
                                         "type": "string"
                                       },
                                       "mapToField": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "description": "The field name to map to in the destination.",
+                                        "example": "account_id"
                                       }
                                     }
                                   },
@@ -34929,7 +34943,9 @@
                                         "type": "string"
                                       },
                                       "mapToField": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "description": "The field name to map to in the destination.",
+                                        "example": "account_id"
                                       }
                                     }
                                   },
@@ -35131,7 +35147,9 @@
                                     "type": "string"
                                   },
                                   "mapToField": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "The field name to map to in the destination.",
+                                    "example": "account_id"
                                   }
                                 }
                               },
@@ -35172,7 +35190,9 @@
                                     "type": "string"
                                   },
                                   "mapToField": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "The field name to map to in the destination.",
+                                    "example": "account_id"
                                   }
                                 }
                               },
