@@ -60,7 +60,9 @@ components:
           type: string
         selectedFields:
           type: object
-          description: This is a map of field names to booleans indicating whether they should be read.
+          description:
+            This is a map of field names to booleans indicating whether they should be read.
+            If a field is already included in `selectedFieldMappings`, it does not need to be included here.
           example: '{ phone: true, fax: true }'
           additionalProperties:
             type: boolean
@@ -156,6 +158,7 @@ components:
         - $ref: '#/components/schemas/BaseReadConfigObject'
 
     SelectedFieldsAutoConfig:
+      description: If selectedFieldsAuto is set to all, all fields will be read.
       type: string
       enum: [ all ]
       x-enum-varnames:
