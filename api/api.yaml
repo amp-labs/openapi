@@ -2910,9 +2910,9 @@ components:
               type: string
               description: The use-readable message.
               example: "This is a log message"
-            operation_event_id:
+            error:
               type: string
-              description: The operation event ID.
+              description: The error message, if there has been an error.
             operation_id:
               type: string
               description: The operation ID.
