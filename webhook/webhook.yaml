@@ -1,0 +1,78 @@
+# This file defines the schema of the messages that Ampersand sends to webhook destinations.
+openapi: 3.0.1
+info:
+  title: Webhook message schema
+  version: 1.0.0
+  license:
+    name: MIT License
+    url: https://opensource.org/license/mit
+servers: []
+paths: {}
+
+components:
+  schemas:
+    WebhookMessage:
+      type: object
+      required:
+        - projectId
+        - provider
+        - groupRef
+        - groupName
+        - installationId
+        - objectName
+        - result
+      properties:
+        projectId:
+          description: The Ampersand Project ID.
+          type: string
+        provider:
+          description: The SaaS API that we are integrating with.
+          type: string
+        workspace:
+          description: When available, the workspace ID of the SaaS provider.
+          type: string
+        groupRef:
+          description: The ID that your app uses to identify the group of users.
+          type: string
+        groupName:
+          description: The display name of the group of users.
+          type: string
+        installationId:
+          description: The ID of the Ampersand installation.
+          type: string
+        objectName:
+          description: The name of the object, this is the name used by the SaaS provider API.
+          type: string
+        mappedObjectName:
+          description: If there is a mapping for this object, the mapped name of the object.
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultEntry'
+            
+    ResultEntry:
+      type: object
+      description: Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
+      properties:
+        fields:
+          description: A key-value map of field names to values.
+            If you have mapped fields, this will contain the original (pre-mapped) field names and their values,
+            in addition to the unmapped fields and their values.
+          $ref: '#/components/schemas/FieldsMap'
+        mappedFields:
+          description: A key-value map of mapped field names to values.
+          $ref: '#/components/schemas/FieldsMap'
+        raw:
+          description: The raw data of the record, exactly as it is returned by the SaaS API.
+          $ref: '#/components/schemas/RawData'
+          
+    FieldsMap:
+      type: object
+      description: Map of field names to values.
+      additionalProperties:
+        type: string
+
+    RawData:
+      type: object
+      additionalProperties: true
