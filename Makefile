@@ -10,7 +10,8 @@ lint:
 	cd config && rdme openapi:validate config.yaml && cd ..
 	cd catalog && rdme openapi:validate catalog.yaml && cd ..
 	cd manifest && rdme openapi:validate manifest.yaml && cd ..
-	cd problem && rdme openapi:validate problem.yaml
+	cd problem && rdme openapi:validate problem.yaml && cd ..
+	cd webhook && rdme openapi:validate webhook.yaml
 
 .PHONY: gen
 gen:
