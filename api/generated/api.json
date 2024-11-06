@@ -35116,9 +35116,9 @@
         }
       }
     },
-    "/billingAccounts/{billingAccountId}/session": {
+    "/billingAccounts/{billingAccountId}/portalSession": {
       "post": {
-        "summary": "Create a session for a billing account",
+        "summary": "Create a portal session for a billing account",
         "operationId": "createBillingAccountSession",
         "tags": [
           "Billing Account"
@@ -35144,12 +35144,12 @@
                 "properties": {
                   "redirectUrl": {
                     "type": "string",
-                    "description": "The URL to redirect to once a session is exited.",
+                    "description": "The URL to redirect to once a portal session is exited.",
                     "example": "https://dashboard.withampersand.com/the-current-page"
                   },
                   "timeout": {
                     "type": "integer",
-                    "description": "The number of seconds before the session expires.",
+                    "description": "The number of seconds before the portal session expires.",
                     "example": 3600
                   }
                 }
@@ -35161,10 +35161,19 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string",
-                  "example": "https://billing.portal.com/customer/session"
+                  "type": "object",
+                  "required": [
+                    "url"
+                  ],
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The URL to redirect to in order to start the portal session.",
+                      "example": "https://billing.portal.com/customer/session"
+                    }
+                  }
                 }
               }
             }
