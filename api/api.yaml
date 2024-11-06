@@ -1203,7 +1203,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"  
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/operations/{operationId}/logs:
     get:
       summary: List logs for an operation
@@ -2347,6 +2347,84 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /orgs/{orgId}/billingAccount:
+    get:
+      summary: Get the billing account for an organization
+      operationId: getOrgBillingAccount
+      tags: [ "Billing Account" ]
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Billing account
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BillingAccount"
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /billingAccounts/{billingAccountId}/portalSession:
+    post:
+      summary: Create a portal session for a billing account
+      operationId: createBillingAccountSession
+      tags: [ "Billing Account" ]
+      parameters:
+        - name: billingAccountId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - redirectUrl
+              properties:
+                redirectUrl:
+                  type: string
+                  description: The URL to redirect to once a portal session is exited.
+                  example: https://dashboard.withampersand.com/the-current-page
+                timeout:
+                  type: integer
+                  description: The number of seconds before the portal session expires.
+                  example: 3600
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    type: string
+                    description: The URL to redirect to in order to start the portal session.
+                    example: https://billing.portal.com/customer/session
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+
 ## Schema Components ##
 components:
   schemas:
@@ -3085,6 +3163,38 @@ components:
           type: string
         primaryEmail:
           type: string
+    BillingAccount:
+      type: object
+      required:
+        - id
+        - displayName
+        - billingProvider
+        - billingProviderRef
+      properties:
+        id:
+          type: string
+          description: The billing account ID.
+          example: billing-account-123
+        displayName:
+          type: string
+          description: The display name of the billing account.
+          example: Acme Inc
+        billingProvider:
+          type: string
+          description: The billing provider that this account is associated with.
+          example: stripe
+        billingProviderRef:
+          type: string
+          description: The ID used by the billing provider to identify the account.
+          example: acct_1J2k3l4m5n6o7p8q9r0s
+        createTime:
+          type: string
+          description: The time the billing account was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the billing account was last updated.
+          format: date-time
     BuilderInfo:
       type: object
       required:
