@@ -20,6 +20,7 @@ components:
         - groupName
         - installationId
         - objectName
+        - resultInfo
         - result
       properties:
         projectId:
@@ -46,11 +47,13 @@ components:
         mappedObjectName:
           description: If there is a mapping for this object, the mapped name of the object.
           type: string
+        resultInfo:
+          $ref: '#/components/schemas/ResultInfo'
         result:
           type: array
           items:
             $ref: '#/components/schemas/ResultEntry'
-            
+
     ResultEntry:
       type: object
       description: Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
@@ -66,7 +69,7 @@ components:
         raw:
           description: The raw data of the record, exactly as it is returned by the SaaS API.
           $ref: '#/components/schemas/RawData'
-          
+
     FieldsMap:
       type: object
       description: Map of field names to values.
@@ -76,3 +79,23 @@ components:
     RawData:
       type: object
       additionalProperties: true
+
+    ResultInfo:
+      type: object
+      description: Information about the result contained in the webhook message.
+      required:
+        - type
+        - numRecords
+      properties:
+        type:
+          description: "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be 
+          present, which contains a URL to download the result. Else, the result is contained in the message itself in 
+          the 'result' field."
+          type: string
+          enum: [url, inline]
+        downloadUrl:
+          description: The URL to download the result. Only present if type is url.
+          type: string
+        numRecords:
+          description: The number of records in the result. Present in all cases.
+          type: integer
