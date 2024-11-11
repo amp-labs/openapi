@@ -84,6 +84,14 @@ components:
           type: string
         schedule:
           type: string
+        mapToName:
+          type: string
+          description: An object name to map to in the destination.
+          example: people
+        mapToDisplayName:
+          type: string
+          description: A display name to map to in the destination.
+          example: People
         requiredFields:
           type: array
           items:
