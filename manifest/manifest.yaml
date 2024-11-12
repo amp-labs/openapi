@@ -180,6 +180,16 @@ components:
           type: string
         displayName:
           type: string
+        mapToName:
+          type: string
+          description: An object name to map to in the destination.
+          example: people
+          x-go-type-skip-optional-pointer: true
+        mapToDisplayName:
+          type: string
+          description: A display name to map to in the destination.
+          example: People
+          x-go-type-skip-optional-pointer: true
         destination:
           type: string
         schedule:
@@ -264,6 +274,11 @@ components:
       properties:
         fieldName:
           type: string
+        mapToName:
+          type: string
+          description: The field name to map to in the destination.
+          example: account_id
+          x-go-type-skip-optional-pointer: true
         displayName:
           type: string
 
