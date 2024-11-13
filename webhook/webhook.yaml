@@ -68,35 +68,20 @@ components:
                       in addition to the unmapped fields and their values.
           x-go-type-skip-optional-pointer: true
         mappedFields:
-          $ref: '#/components/schemas/MappedFieldsMap'
+          type: object
+          description: A key-value map of mapped field names to values.
           x-go-type-skip-optional-pointer: true
         raw:
-          $ref: '#/components/schemas/RawData'
+          type: object
+          description: The raw data of the record, exactly as it is returned by the SaaS API.
+          additionalProperties: true
           x-go-type-skip-optional-pointer: true
         rawEvent:
-          $ref: '#/components/schemas/RawEvent'
+          type: object
+          description:  The raw event data from the SaaS provider. For providers that support webhooks,
+            this is the raw webhook payload
+          additionalProperties: true
           x-go-type-skip-optional-pointer: true
-
-    FieldsMap:
-      type: object
-      description: A key-value map of field names to values.
-                  If you have mapped fields, this will contain the original (pre-mapped) field names and their values,
-                  in addition to the unmapped fields and their values.
-
-    MappedFieldsMap:
-      type: object
-      description: A key-value map of mapped field names to values.
-
-    RawData:
-      type: object
-      description: The raw data of the record, exactly as it is returned by the SaaS API.
-      additionalProperties: true
-    
-    RawEvent:
-      type: object
-      description:  The raw event data from the SaaS provider. For providers that support webhooks,
-        this is the raw webhook payload
-      additionalProperties: true
 
     ResultInfo:
       type: object
