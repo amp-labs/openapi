@@ -62,7 +62,10 @@ components:
       description: Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
       properties:
         fields:
-          $ref: '#/components/schemas/FieldsMap'
+          type: object
+          description: A key-value map of field names to values.
+                      If you have mapped fields, this will contain the original (pre-mapped) field names and their values,
+                      in addition to the unmapped fields and their values.
           x-go-type-skip-optional-pointer: true
         mappedFields:
           $ref: '#/components/schemas/MappedFieldsMap'
