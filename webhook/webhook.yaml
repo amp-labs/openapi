@@ -63,10 +63,16 @@ components:
       properties:
         fields:
           $ref: '#/components/schemas/FieldsMap'
+          x-go-type-skip-optional-pointer: true
         mappedFields:
           $ref: '#/components/schemas/MappedFieldsMap'
+          x-go-type-skip-optional-pointer: true
         raw:
           $ref: '#/components/schemas/RawData'
+          x-go-type-skip-optional-pointer: true
+        rawEvent:
+          $ref: '#/components/schemas/RawEvent'
+          x-go-type-skip-optional-pointer: true
 
     FieldsMap:
       type: object
@@ -81,6 +87,11 @@ components:
     RawData:
       type: object
       description: The raw data of the record, exactly as it is returned by the SaaS API.
+      additionalProperties: true
+    
+    RawEvent:
+      type: object
+      description: The raw event data from the SaaS provider.
       additionalProperties: true
 
     ResultInfo:
