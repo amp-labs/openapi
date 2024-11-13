@@ -91,7 +91,8 @@ components:
     
     RawEvent:
       type: object
-      description: The raw event data from the SaaS provider.
+      description:  The raw event data from the SaaS provider. For providers that support webhooks,
+        this is the raw webhook payload
       additionalProperties: true
 
     ResultInfo:
