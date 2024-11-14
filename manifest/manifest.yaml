@@ -285,6 +285,11 @@ components:
           description: The field name to map to in the destination.
           example: account_id
           x-go-type-skip-optional-pointer: true
+        mapToDisplayName:
+          type: string
+          description: The display name to map to in the destination.
+          example: Account ID
+          x-go-type-skip-optional-pointer: true
         displayName:
           type: string
 
