@@ -51,7 +51,7 @@ paths:
                   type: string
                   description: The provider that this app connects to.
                   example: salesforce
-                enableCsrf:
+                enableCSRFProtection:
                   type: boolean
                   description:
                   example: 

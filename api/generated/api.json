@@ -65,7 +65,7 @@
                     "description": "The provider that this app connects to.",
                     "example": "salesforce"
                   },
-                  "enableCsrf": {
+                  "enableCSRFProtection": {
                     "type": "boolean",
                     "description": null,
                     "example": null
