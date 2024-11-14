@@ -53,8 +53,6 @@ paths:
                   example: salesforce
                 enableCSRFProtection:
                   type: boolean
-                  description:
-                  example: 
         required: true
       responses:
         200:

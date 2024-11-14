@@ -66,9 +66,7 @@
                     "example": "salesforce"
                   },
                   "enableCSRFProtection": {
-                    "type": "boolean",
-                    "description": null,
-                    "example": null
+                    "type": "boolean"
                   }
                 }
               }
