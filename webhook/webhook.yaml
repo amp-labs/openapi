@@ -57,11 +57,11 @@ components:
           items:
             $ref: '#/components/schemas/ResultEntry'
         subscribeEventType:
-          description: The type of event that triggered the webhook.
+          description: The type of event that triggered the message.
           type: string
-          enum: [create, update, delete, passsThrough]
+          enum: [create, update, delete, other]
         providerEventType:
-          description: The type of event that triggered the webhook, as defined by the SaaS provider.
+          description: The type of event that triggered the message, as defined by the SaaS provider.
           type: string
 
     ResultEntry:
