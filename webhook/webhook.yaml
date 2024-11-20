@@ -42,10 +42,12 @@ components:
           description: The ID of the Ampersand installation.
           type: string
         objectName:
-          description: The name of the object, this is the name used by the SaaS provider API.
+          description:
+            The name of the object. If there is a mapping for this object, this is the mapped name.
+            Otherwise, it is the name used by the SaaS provider API.
           type: string
-        mappedObjectName:
-          description: If there is a mapping for this object, the mapped name of the object.
+        rawObjectName:
+          description: If there is a mapping for this object, this is the name used by the SaaS provider API.
           type: string
         action:
           description: The Ampersand action that triggered the webhook.
