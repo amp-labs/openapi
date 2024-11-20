@@ -73,9 +73,7 @@ components:
       properties:
         fields:
           type: object
-          description: A key-value map of field names to values.
-                      If you have mapped fields, this will contain the original (pre-mapped) field names and their values,
-                      in addition to the unmapped fields and their values.
+          description: A key-value map of field names to values. This will only contain unmapped fields.
           x-go-type-skip-optional-pointer: true
         mappedFields:
           type: object
