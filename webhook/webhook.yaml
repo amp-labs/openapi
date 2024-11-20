@@ -49,6 +49,7 @@ components:
         rawObjectName:
           description: If there is a mapping for this object, this is the name used by the SaaS provider API.
           type: string
+          x-go-type-skip-optional-pointer: true
         action:
           description: The Ampersand action that triggered the webhook.
           type: string
