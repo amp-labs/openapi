@@ -59,14 +59,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResultEntry'
-        subscribeEventType:
-          description: The type of event that triggered the message.
-          type: string
-          enum: [create, update, delete, other]
-        providerEventType:
-          description: The type of event that triggered the message, as defined by the SaaS provider.
-          type: string
-
     ResultEntry:
       type: object
       description: Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
@@ -90,6 +82,13 @@ components:
             this is the raw webhook payload
           additionalProperties: true
           x-go-type-skip-optional-pointer: true
+        subscribeEventType:
+          description: The type of event that triggered the message.
+          type: string
+          enum: [create, update, delete, other]
+        providerEventType:
+          description: The type of event that triggered the message, as defined by the SaaS provider.
+          type: string
 
     ResultInfo:
       type: object
