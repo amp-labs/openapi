@@ -58,6 +58,54 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
+    post:
+      summary: Deliver results on request
+      operationId: deliverResultsOnRequest
+      tags: ["Read"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ResultDeliveryRequestBody
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResultDeliveryRequestBody"
+      responses:
+        204:
+          description: The success response
+        400:
+          description: The failure response for bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 components:
   schemas:
     ReadRequest:
@@ -89,6 +137,21 @@ components:
           type: string
           description: The operation ID
           example: 60deaf48-3856-4a2b-bfd4-3de85125eca8
+    ResultDeliveryRequestBody:
+      required:
+        - groupRef
+        - pages
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description:
+            The ID of the user group whose SaaS instance you'd like to receive results from. This is the ID that was provided
+            during installation creation.
+        pages:
+          type: integer
+          description: The number of pages you are ready to receive from the group's SaaS instance.
+          minimum: 0
   securitySchemes:
     APIKeyHeader:
       type: apiKey
