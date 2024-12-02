@@ -61,7 +61,7 @@ paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
     post:
       summary: Deliver results on request
-      operationId: deliverResultsOnRequest
+      operationId: deliverResults
       tags: ["Read"]
       parameters:
         - name: projectIdOrName
