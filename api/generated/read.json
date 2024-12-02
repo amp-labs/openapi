@@ -549,7 +549,7 @@
                   },
                   "pages": {
                     "type": "integer",
-                    "description": "The number of pages you are ready to receive from the group's SaaS instance.",
+                    "description": "The number of pages you are ready to receive in your destination, this corresponds to the number of webhook messages",
                     "minimum": 0
                   }
                 }
