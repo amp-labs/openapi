@@ -5,62 +5,64 @@ info:
 servers:
   - url: https://read.withampersand.com/v1
 paths:
-  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
-    post:
-      summary: Read records
-      operationId: readRecords
-      tags: ["Read"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: integrationId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: objectName
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: Read Request
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ReadRequest"
-      responses:
-        201:
-          description: The success response
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ReadResultAsync"
-        400:
-          description: The failure response for bad request.
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        500:
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  # /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
+  #   post:
+  #     summary: Read records
+  #     operationId: readRecords
+  #     tags: ["Read"]
+  #     parameters:
+  #       - name: projectIdOrName
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - name: integrationId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - name: objectName
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #     requestBody:
+  #       description: Read Request
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: "#/components/schemas/ReadRequest"
+  #     responses:
+  #       201:
+  #         description: The success response
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: "#/components/schemas/ReadResultAsync"
+  #       400:
+  #         description: The failure response for bad request.
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  #       500:
+  #         description: Internal server error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  #       default:
+  #         description: Error
+  #         content:
+  #           application/problem+json:
+  #             schema:
+  #               $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
     post:
-      summary: Deliver results on request
+      summary: Deliver results
+      description:
+        If a read action has delivery mode to onRequest, then use this endpoint to request for more results.
       operationId: deliverResults
       tags: ["Read"]
       parameters:
