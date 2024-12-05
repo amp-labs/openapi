@@ -20,7 +20,7 @@ components:
     AuthType:
       description: The type of authentication required by the provider.
       type: string
-      enum: [oauth2, apiKey, basic, jwt, none]
+      enum: [oauth2, apiKey, basic, none]
       x-oapi-codegen-extra-tags:
         validate: required
 
