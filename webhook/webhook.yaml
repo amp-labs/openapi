@@ -20,7 +20,7 @@ components:
         - groupRef
         - groupName
         - installationId
-        - installationLastUpdated
+        - installationUpdateTime
         - objectName
         - resultInfo
       properties:
@@ -42,7 +42,7 @@ components:
         installationId:
           description: The ID of the Ampersand installation.
           type: string
-        installationLastUpdated:
+        installationUpdateTime:
           description: The timestamp of the last update to the installation.
           type: string
           format: date-time
