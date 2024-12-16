@@ -11523,6 +11523,130 @@
                                                 "type": "string"
                                               }
                                             },
+                                            "selectedValueMappings": {
+                                              "type": "object",
+                                              "description": "A container for read and write value mappings.",
+                                              "properties": {
+                                                "read": {
+                                                  "type": "object",
+                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "additionalProperties": {
+                                                    "description": "A collection of value mappings.",
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                      "discriminator": {
+                                                        "propertyName": "type",
+                                                        "mapping": {
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        }
+                                                      },
+                                                      "oneOf": [
+                                                        {
+                                                          "type": "object",
+                                                          "example": {
+                                                            "type": "stringReplacement",
+                                                            "caseSensitive": false,
+                                                            "fromValue": "old",
+                                                            "toValue": "new"
+                                                          },
+                                                          "required": [
+                                                            "fromValue",
+                                                            "toValue",
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringReplacement"
+                                                              ],
+                                                              "example": "stringReplacement"
+                                                            },
+                                                            "caseSensitive": {
+                                                              "type": "boolean",
+                                                              "nullable": true,
+                                                              "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                            },
+                                                            "fromValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The starting value (may be null, which will match null values)."
+                                                            },
+                                                            "toValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The ending value (may be null, which will substitute a literal null)."
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                "write": {
+                                                  "type": "object",
+                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "additionalProperties": {
+                                                    "description": "A collection of value mappings.",
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                      "discriminator": {
+                                                        "propertyName": "type",
+                                                        "mapping": {
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        }
+                                                      },
+                                                      "oneOf": [
+                                                        {
+                                                          "type": "object",
+                                                          "example": {
+                                                            "type": "stringReplacement",
+                                                            "caseSensitive": false,
+                                                            "fromValue": "old",
+                                                            "toValue": "new"
+                                                          },
+                                                          "required": [
+                                                            "fromValue",
+                                                            "toValue",
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringReplacement"
+                                                              ],
+                                                              "example": "stringReplacement"
+                                                            },
+                                                            "caseSensitive": {
+                                                              "type": "boolean",
+                                                              "nullable": true,
+                                                              "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                            },
+                                                            "fromValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The starting value (may be null, which will match null values)."
+                                                            },
+                                                            "toValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The ending value (may be null, which will substitute a literal null)."
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
                                             "selectedFieldsAuto": {
                                               "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                                               "type": "string",
@@ -12187,6 +12311,130 @@
                                             "type": "string"
                                           }
                                         },
+                                        "selectedValueMappings": {
+                                          "type": "object",
+                                          "description": "A container for read and write value mappings.",
+                                          "properties": {
+                                            "read": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to their value mappings.",
+                                              "additionalProperties": {
+                                                "description": "A collection of value mappings.",
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                  "discriminator": {
+                                                    "propertyName": "type",
+                                                    "mapping": {
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                    }
+                                                  },
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "object",
+                                                      "example": {
+                                                        "type": "stringReplacement",
+                                                        "caseSensitive": false,
+                                                        "fromValue": "old",
+                                                        "toValue": "new"
+                                                      },
+                                                      "required": [
+                                                        "fromValue",
+                                                        "toValue",
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringReplacement"
+                                                          ],
+                                                          "example": "stringReplacement"
+                                                        },
+                                                        "caseSensitive": {
+                                                          "type": "boolean",
+                                                          "nullable": true,
+                                                          "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                        },
+                                                        "fromValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The starting value (may be null, which will match null values)."
+                                                        },
+                                                        "toValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The ending value (may be null, which will substitute a literal null)."
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            },
+                                            "write": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to their value mappings.",
+                                              "additionalProperties": {
+                                                "description": "A collection of value mappings.",
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                  "discriminator": {
+                                                    "propertyName": "type",
+                                                    "mapping": {
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                    }
+                                                  },
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "object",
+                                                      "example": {
+                                                        "type": "stringReplacement",
+                                                        "caseSensitive": false,
+                                                        "fromValue": "old",
+                                                        "toValue": "new"
+                                                      },
+                                                      "required": [
+                                                        "fromValue",
+                                                        "toValue",
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringReplacement"
+                                                          ],
+                                                          "example": "stringReplacement"
+                                                        },
+                                                        "caseSensitive": {
+                                                          "type": "boolean",
+                                                          "nullable": true,
+                                                          "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                        },
+                                                        "fromValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The starting value (may be null, which will match null values)."
+                                                        },
+                                                        "toValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The ending value (may be null, which will substitute a literal null)."
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
                                         "selectedFieldsAuto": {
                                           "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                                           "type": "string",
@@ -12642,6 +12890,130 @@
                                             "example": "{ phoneNumber: phone, faxNumber: fax }",
                                             "additionalProperties": {
                                               "type": "string"
+                                            }
+                                          },
+                                          "selectedValueMappings": {
+                                            "type": "object",
+                                            "description": "A container for read and write value mappings.",
+                                            "properties": {
+                                              "read": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              },
+                                              "write": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
                                             }
                                           },
                                           "selectedFieldsAuto": {
@@ -13675,6 +14047,130 @@
                                             "type": "string"
                                           }
                                         },
+                                        "selectedValueMappings": {
+                                          "type": "object",
+                                          "description": "A container for read and write value mappings.",
+                                          "properties": {
+                                            "read": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to their value mappings.",
+                                              "additionalProperties": {
+                                                "description": "A collection of value mappings.",
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                  "discriminator": {
+                                                    "propertyName": "type",
+                                                    "mapping": {
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                    }
+                                                  },
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "object",
+                                                      "example": {
+                                                        "type": "stringReplacement",
+                                                        "caseSensitive": false,
+                                                        "fromValue": "old",
+                                                        "toValue": "new"
+                                                      },
+                                                      "required": [
+                                                        "fromValue",
+                                                        "toValue",
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringReplacement"
+                                                          ],
+                                                          "example": "stringReplacement"
+                                                        },
+                                                        "caseSensitive": {
+                                                          "type": "boolean",
+                                                          "nullable": true,
+                                                          "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                        },
+                                                        "fromValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The starting value (may be null, which will match null values)."
+                                                        },
+                                                        "toValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The ending value (may be null, which will substitute a literal null)."
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            },
+                                            "write": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to their value mappings.",
+                                              "additionalProperties": {
+                                                "description": "A collection of value mappings.",
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                  "discriminator": {
+                                                    "propertyName": "type",
+                                                    "mapping": {
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                    }
+                                                  },
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "object",
+                                                      "example": {
+                                                        "type": "stringReplacement",
+                                                        "caseSensitive": false,
+                                                        "fromValue": "old",
+                                                        "toValue": "new"
+                                                      },
+                                                      "required": [
+                                                        "fromValue",
+                                                        "toValue",
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringReplacement"
+                                                          ],
+                                                          "example": "stringReplacement"
+                                                        },
+                                                        "caseSensitive": {
+                                                          "type": "boolean",
+                                                          "nullable": true,
+                                                          "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                        },
+                                                        "fromValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The starting value (may be null, which will match null values)."
+                                                        },
+                                                        "toValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "The ending value (may be null, which will substitute a literal null)."
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
                                         "selectedFieldsAuto": {
                                           "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                                           "type": "string",
@@ -14130,6 +14626,130 @@
                                             "example": "{ phoneNumber: phone, faxNumber: fax }",
                                             "additionalProperties": {
                                               "type": "string"
+                                            }
+                                          },
+                                          "selectedValueMappings": {
+                                            "type": "object",
+                                            "description": "A container for read and write value mappings.",
+                                            "properties": {
+                                              "read": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              },
+                                              "write": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
                                             }
                                           },
                                           "selectedFieldsAuto": {
@@ -15075,6 +15695,130 @@
                                               "type": "string"
                                             }
                                           },
+                                          "selectedValueMappings": {
+                                            "type": "object",
+                                            "description": "A container for read and write value mappings.",
+                                            "properties": {
+                                              "read": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              },
+                                              "write": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
                                           "selectedFieldsAuto": {
                                             "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                                             "type": "string",
@@ -15925,6 +16669,130 @@
                                                 "type": "string"
                                               }
                                             },
+                                            "selectedValueMappings": {
+                                              "type": "object",
+                                              "description": "A container for read and write value mappings.",
+                                              "properties": {
+                                                "read": {
+                                                  "type": "object",
+                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "additionalProperties": {
+                                                    "description": "A collection of value mappings.",
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                      "discriminator": {
+                                                        "propertyName": "type",
+                                                        "mapping": {
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        }
+                                                      },
+                                                      "oneOf": [
+                                                        {
+                                                          "type": "object",
+                                                          "example": {
+                                                            "type": "stringReplacement",
+                                                            "caseSensitive": false,
+                                                            "fromValue": "old",
+                                                            "toValue": "new"
+                                                          },
+                                                          "required": [
+                                                            "fromValue",
+                                                            "toValue",
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringReplacement"
+                                                              ],
+                                                              "example": "stringReplacement"
+                                                            },
+                                                            "caseSensitive": {
+                                                              "type": "boolean",
+                                                              "nullable": true,
+                                                              "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                            },
+                                                            "fromValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The starting value (may be null, which will match null values)."
+                                                            },
+                                                            "toValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The ending value (may be null, which will substitute a literal null)."
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                "write": {
+                                                  "type": "object",
+                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "additionalProperties": {
+                                                    "description": "A collection of value mappings.",
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                      "discriminator": {
+                                                        "propertyName": "type",
+                                                        "mapping": {
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        }
+                                                      },
+                                                      "oneOf": [
+                                                        {
+                                                          "type": "object",
+                                                          "example": {
+                                                            "type": "stringReplacement",
+                                                            "caseSensitive": false,
+                                                            "fromValue": "old",
+                                                            "toValue": "new"
+                                                          },
+                                                          "required": [
+                                                            "fromValue",
+                                                            "toValue",
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringReplacement"
+                                                              ],
+                                                              "example": "stringReplacement"
+                                                            },
+                                                            "caseSensitive": {
+                                                              "type": "boolean",
+                                                              "nullable": true,
+                                                              "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                            },
+                                                            "fromValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The starting value (may be null, which will match null values)."
+                                                            },
+                                                            "toValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "The ending value (may be null, which will substitute a literal null)."
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
                                             "selectedFieldsAuto": {
                                               "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                                               "type": "string",
@@ -16369,6 +17237,130 @@
                                             "example": "{ phoneNumber: phone, faxNumber: fax }",
                                             "additionalProperties": {
                                               "type": "string"
+                                            }
+                                          },
+                                          "selectedValueMappings": {
+                                            "type": "object",
+                                            "description": "A container for read and write value mappings.",
+                                            "properties": {
+                                              "read": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              },
+                                              "write": {
+                                                "type": "object",
+                                                "description": "This is a map of field names to their value mappings.",
+                                                "additionalProperties": {
+                                                  "description": "A collection of value mappings.",
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                                    "discriminator": {
+                                                      "propertyName": "type",
+                                                      "mapping": {
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      }
+                                                    },
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "example": {
+                                                          "type": "stringReplacement",
+                                                          "caseSensitive": false,
+                                                          "fromValue": "old",
+                                                          "toValue": "new"
+                                                        },
+                                                        "required": [
+                                                          "fromValue",
+                                                          "toValue",
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringReplacement"
+                                                            ],
+                                                            "example": "stringReplacement"
+                                                          },
+                                                          "caseSensitive": {
+                                                            "type": "boolean",
+                                                            "nullable": true,
+                                                            "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                          },
+                                                          "fromValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The starting value (may be null, which will match null values)."
+                                                          },
+                                                          "toValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
                                             }
                                           },
                                           "selectedFieldsAuto": {
@@ -37056,6 +38048,130 @@
                                     "type": "string"
                                   }
                                 },
+                                "selectedValueMappings": {
+                                  "type": "object",
+                                  "description": "A container for read and write value mappings.",
+                                  "properties": {
+                                    "read": {
+                                      "type": "object",
+                                      "description": "This is a map of field names to their value mappings.",
+                                      "additionalProperties": {
+                                        "description": "A collection of value mappings.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                          "discriminator": {
+                                            "propertyName": "type",
+                                            "mapping": {
+                                              "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                            }
+                                          },
+                                          "oneOf": [
+                                            {
+                                              "type": "object",
+                                              "example": {
+                                                "type": "stringReplacement",
+                                                "caseSensitive": false,
+                                                "fromValue": "old",
+                                                "toValue": "new"
+                                              },
+                                              "required": [
+                                                "fromValue",
+                                                "toValue",
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                  "enum": [
+                                                    "stringReplacement"
+                                                  ],
+                                                  "example": "stringReplacement"
+                                                },
+                                                "caseSensitive": {
+                                                  "type": "boolean",
+                                                  "nullable": true,
+                                                  "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                },
+                                                "fromValue": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "description": "The starting value (may be null, which will match null values)."
+                                                },
+                                                "toValue": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "description": "The ending value (may be null, which will substitute a literal null)."
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "write": {
+                                      "type": "object",
+                                      "description": "This is a map of field names to their value mappings.",
+                                      "additionalProperties": {
+                                        "description": "A collection of value mappings.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                          "discriminator": {
+                                            "propertyName": "type",
+                                            "mapping": {
+                                              "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                            }
+                                          },
+                                          "oneOf": [
+                                            {
+                                              "type": "object",
+                                              "example": {
+                                                "type": "stringReplacement",
+                                                "caseSensitive": false,
+                                                "fromValue": "old",
+                                                "toValue": "new"
+                                              },
+                                              "required": [
+                                                "fromValue",
+                                                "toValue",
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                  "enum": [
+                                                    "stringReplacement"
+                                                  ],
+                                                  "example": "stringReplacement"
+                                                },
+                                                "caseSensitive": {
+                                                  "type": "boolean",
+                                                  "nullable": true,
+                                                  "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                                },
+                                                "fromValue": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "description": "The starting value (may be null, which will match null values)."
+                                                },
+                                                "toValue": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "description": "The ending value (may be null, which will substitute a literal null)."
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
                                 "selectedFieldsAuto": {
                                   "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                                   "type": "string",
@@ -37234,6 +38350,130 @@
                               "example": "{ phoneNumber: phone, faxNumber: fax }",
                               "additionalProperties": {
                                 "type": "string"
+                              }
+                            },
+                            "selectedValueMappings": {
+                              "type": "object",
+                              "description": "A container for read and write value mappings.",
+                              "properties": {
+                                "read": {
+                                  "type": "object",
+                                  "description": "This is a map of field names to their value mappings.",
+                                  "additionalProperties": {
+                                    "description": "A collection of value mappings.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                      "discriminator": {
+                                        "propertyName": "type",
+                                        "mapping": {
+                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                        }
+                                      },
+                                      "oneOf": [
+                                        {
+                                          "type": "object",
+                                          "example": {
+                                            "type": "stringReplacement",
+                                            "caseSensitive": false,
+                                            "fromValue": "old",
+                                            "toValue": "new"
+                                          },
+                                          "required": [
+                                            "fromValue",
+                                            "toValue",
+                                            "type"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                              "enum": [
+                                                "stringReplacement"
+                                              ],
+                                              "example": "stringReplacement"
+                                            },
+                                            "caseSensitive": {
+                                              "type": "boolean",
+                                              "nullable": true,
+                                              "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                            },
+                                            "fromValue": {
+                                              "type": "string",
+                                              "nullable": true,
+                                              "description": "The starting value (may be null, which will match null values)."
+                                            },
+                                            "toValue": {
+                                              "type": "string",
+                                              "nullable": true,
+                                              "description": "The ending value (may be null, which will substitute a literal null)."
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "write": {
+                                  "type": "object",
+                                  "description": "This is a map of field names to their value mappings.",
+                                  "additionalProperties": {
+                                    "description": "A collection of value mappings.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "description": "A single value mapping. Eventually, this will be expanded to include more complex mappings.",
+                                      "discriminator": {
+                                        "propertyName": "type",
+                                        "mapping": {
+                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                        }
+                                      },
+                                      "oneOf": [
+                                        {
+                                          "type": "object",
+                                          "example": {
+                                            "type": "stringReplacement",
+                                            "caseSensitive": false,
+                                            "fromValue": "old",
+                                            "toValue": "new"
+                                          },
+                                          "required": [
+                                            "fromValue",
+                                            "toValue",
+                                            "type"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                              "enum": [
+                                                "stringReplacement"
+                                              ],
+                                              "example": "stringReplacement"
+                                            },
+                                            "caseSensitive": {
+                                              "type": "boolean",
+                                              "nullable": true,
+                                              "description": "Whether the 'from' value is matched as case sensitive (default is true)."
+                                            },
+                                            "fromValue": {
+                                              "type": "string",
+                                              "nullable": true,
+                                              "description": "The starting value (may be null, which will match null values)."
+                                            },
+                                            "toValue": {
+                                              "type": "string",
+                                              "nullable": true,
+                                              "description": "The ending value (may be null, which will substitute a literal null)."
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
                               }
                             },
                             "selectedFieldsAuto": {
