@@ -11529,9 +11529,9 @@
                                               "properties": {
                                                 "read": {
                                                   "type": "object",
-                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "description": "This is a map of field names to their value mappings (applied during reads).",
                                                   "additionalProperties": {
-                                                    "description": "A collection of value mappings.",
+                                                    "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                     "type": "array",
                                                     "items": {
                                                       "type": "object",
@@ -11539,18 +11539,15 @@
                                                       "discriminator": {
                                                         "propertyName": "type",
                                                         "mapping": {
-                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                          "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                          "delete": "#/components/schemas/DeleteMapping"
                                                         }
                                                       },
                                                       "oneOf": [
                                                         {
+                                                          "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                           "type": "object",
-                                                          "example": {
-                                                            "type": "stringReplacement",
-                                                            "caseSensitive": false,
-                                                            "fromValue": "old",
-                                                            "toValue": "new"
-                                                          },
                                                           "required": [
                                                             "fromValue",
                                                             "toValue",
@@ -11581,6 +11578,46 @@
                                                               "description": "The ending value (may be null, which will substitute a literal null)."
                                                             }
                                                           }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type",
+                                                            "defaultValue"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringDefault"
+                                                              ],
+                                                              "example": "stringDefault"
+                                                            },
+                                                            "defaultValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "A value to set."
+                                                            }
+                                                          }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "delete"
+                                                              ],
+                                                              "example": "delete"
+                                                            }
+                                                          }
                                                         }
                                                       ]
                                                     }
@@ -11588,9 +11625,9 @@
                                                 },
                                                 "write": {
                                                   "type": "object",
-                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "description": "This is a map of field names to their value mappings (applied during writes).",
                                                   "additionalProperties": {
-                                                    "description": "A collection of value mappings.",
+                                                    "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                     "type": "array",
                                                     "items": {
                                                       "type": "object",
@@ -11598,18 +11635,15 @@
                                                       "discriminator": {
                                                         "propertyName": "type",
                                                         "mapping": {
-                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                          "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                          "delete": "#/components/schemas/DeleteMapping"
                                                         }
                                                       },
                                                       "oneOf": [
                                                         {
+                                                          "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                           "type": "object",
-                                                          "example": {
-                                                            "type": "stringReplacement",
-                                                            "caseSensitive": false,
-                                                            "fromValue": "old",
-                                                            "toValue": "new"
-                                                          },
                                                           "required": [
                                                             "fromValue",
                                                             "toValue",
@@ -11638,6 +11672,46 @@
                                                               "type": "string",
                                                               "nullable": true,
                                                               "description": "The ending value (may be null, which will substitute a literal null)."
+                                                            }
+                                                          }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type",
+                                                            "defaultValue"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringDefault"
+                                                              ],
+                                                              "example": "stringDefault"
+                                                            },
+                                                            "defaultValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "A value to set."
+                                                            }
+                                                          }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "delete"
+                                                              ],
+                                                              "example": "delete"
                                                             }
                                                           }
                                                         }
@@ -12317,9 +12391,9 @@
                                           "properties": {
                                             "read": {
                                               "type": "object",
-                                              "description": "This is a map of field names to their value mappings.",
+                                              "description": "This is a map of field names to their value mappings (applied during reads).",
                                               "additionalProperties": {
-                                                "description": "A collection of value mappings.",
+                                                "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                 "type": "array",
                                                 "items": {
                                                   "type": "object",
@@ -12327,18 +12401,15 @@
                                                   "discriminator": {
                                                     "propertyName": "type",
                                                     "mapping": {
-                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                      "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                      "delete": "#/components/schemas/DeleteMapping"
                                                     }
                                                   },
                                                   "oneOf": [
                                                     {
+                                                      "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                       "type": "object",
-                                                      "example": {
-                                                        "type": "stringReplacement",
-                                                        "caseSensitive": false,
-                                                        "fromValue": "old",
-                                                        "toValue": "new"
-                                                      },
                                                       "required": [
                                                         "fromValue",
                                                         "toValue",
@@ -12369,6 +12440,46 @@
                                                           "description": "The ending value (may be null, which will substitute a literal null)."
                                                         }
                                                       }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type",
+                                                        "defaultValue"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringDefault"
+                                                          ],
+                                                          "example": "stringDefault"
+                                                        },
+                                                        "defaultValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "A value to set."
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "delete"
+                                                          ],
+                                                          "example": "delete"
+                                                        }
+                                                      }
                                                     }
                                                   ]
                                                 }
@@ -12376,9 +12487,9 @@
                                             },
                                             "write": {
                                               "type": "object",
-                                              "description": "This is a map of field names to their value mappings.",
+                                              "description": "This is a map of field names to their value mappings (applied during writes).",
                                               "additionalProperties": {
-                                                "description": "A collection of value mappings.",
+                                                "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                 "type": "array",
                                                 "items": {
                                                   "type": "object",
@@ -12386,18 +12497,15 @@
                                                   "discriminator": {
                                                     "propertyName": "type",
                                                     "mapping": {
-                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                      "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                      "delete": "#/components/schemas/DeleteMapping"
                                                     }
                                                   },
                                                   "oneOf": [
                                                     {
+                                                      "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                       "type": "object",
-                                                      "example": {
-                                                        "type": "stringReplacement",
-                                                        "caseSensitive": false,
-                                                        "fromValue": "old",
-                                                        "toValue": "new"
-                                                      },
                                                       "required": [
                                                         "fromValue",
                                                         "toValue",
@@ -12426,6 +12534,46 @@
                                                           "type": "string",
                                                           "nullable": true,
                                                           "description": "The ending value (may be null, which will substitute a literal null)."
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type",
+                                                        "defaultValue"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringDefault"
+                                                          ],
+                                                          "example": "stringDefault"
+                                                        },
+                                                        "defaultValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "A value to set."
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "delete"
+                                                          ],
+                                                          "example": "delete"
                                                         }
                                                       }
                                                     }
@@ -12898,9 +13046,9 @@
                                             "properties": {
                                               "read": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during reads).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -12908,18 +13056,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -12950,6 +13095,46 @@
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
                                                           }
                                                         }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
+                                                          }
+                                                        }
                                                       }
                                                     ]
                                                   }
@@ -12957,9 +13142,9 @@
                                               },
                                               "write": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during writes).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -12967,18 +13152,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -13007,6 +13189,46 @@
                                                             "type": "string",
                                                             "nullable": true,
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
                                                           }
                                                         }
                                                       }
@@ -14053,9 +14275,9 @@
                                           "properties": {
                                             "read": {
                                               "type": "object",
-                                              "description": "This is a map of field names to their value mappings.",
+                                              "description": "This is a map of field names to their value mappings (applied during reads).",
                                               "additionalProperties": {
-                                                "description": "A collection of value mappings.",
+                                                "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                 "type": "array",
                                                 "items": {
                                                   "type": "object",
@@ -14063,18 +14285,15 @@
                                                   "discriminator": {
                                                     "propertyName": "type",
                                                     "mapping": {
-                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                      "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                      "delete": "#/components/schemas/DeleteMapping"
                                                     }
                                                   },
                                                   "oneOf": [
                                                     {
+                                                      "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                       "type": "object",
-                                                      "example": {
-                                                        "type": "stringReplacement",
-                                                        "caseSensitive": false,
-                                                        "fromValue": "old",
-                                                        "toValue": "new"
-                                                      },
                                                       "required": [
                                                         "fromValue",
                                                         "toValue",
@@ -14105,6 +14324,46 @@
                                                           "description": "The ending value (may be null, which will substitute a literal null)."
                                                         }
                                                       }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type",
+                                                        "defaultValue"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringDefault"
+                                                          ],
+                                                          "example": "stringDefault"
+                                                        },
+                                                        "defaultValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "A value to set."
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "delete"
+                                                          ],
+                                                          "example": "delete"
+                                                        }
+                                                      }
                                                     }
                                                   ]
                                                 }
@@ -14112,9 +14371,9 @@
                                             },
                                             "write": {
                                               "type": "object",
-                                              "description": "This is a map of field names to their value mappings.",
+                                              "description": "This is a map of field names to their value mappings (applied during writes).",
                                               "additionalProperties": {
-                                                "description": "A collection of value mappings.",
+                                                "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                 "type": "array",
                                                 "items": {
                                                   "type": "object",
@@ -14122,18 +14381,15 @@
                                                   "discriminator": {
                                                     "propertyName": "type",
                                                     "mapping": {
-                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                      "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                      "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                      "delete": "#/components/schemas/DeleteMapping"
                                                     }
                                                   },
                                                   "oneOf": [
                                                     {
+                                                      "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                       "type": "object",
-                                                      "example": {
-                                                        "type": "stringReplacement",
-                                                        "caseSensitive": false,
-                                                        "fromValue": "old",
-                                                        "toValue": "new"
-                                                      },
                                                       "required": [
                                                         "fromValue",
                                                         "toValue",
@@ -14162,6 +14418,46 @@
                                                           "type": "string",
                                                           "nullable": true,
                                                           "description": "The ending value (may be null, which will substitute a literal null)."
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type",
+                                                        "defaultValue"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "stringDefault"
+                                                          ],
+                                                          "example": "stringDefault"
+                                                        },
+                                                        "defaultValue": {
+                                                          "type": "string",
+                                                          "nullable": true,
+                                                          "description": "A value to set."
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "type"
+                                                      ],
+                                                      "properties": {
+                                                        "type": {
+                                                          "type": "string",
+                                                          "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                          "enum": [
+                                                            "delete"
+                                                          ],
+                                                          "example": "delete"
                                                         }
                                                       }
                                                     }
@@ -14634,9 +14930,9 @@
                                             "properties": {
                                               "read": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during reads).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -14644,18 +14940,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -14686,6 +14979,46 @@
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
                                                           }
                                                         }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
+                                                          }
+                                                        }
                                                       }
                                                     ]
                                                   }
@@ -14693,9 +15026,9 @@
                                               },
                                               "write": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during writes).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -14703,18 +15036,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -14743,6 +15073,46 @@
                                                             "type": "string",
                                                             "nullable": true,
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
                                                           }
                                                         }
                                                       }
@@ -15701,9 +16071,9 @@
                                             "properties": {
                                               "read": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during reads).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -15711,18 +16081,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -15753,6 +16120,46 @@
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
                                                           }
                                                         }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
+                                                          }
+                                                        }
                                                       }
                                                     ]
                                                   }
@@ -15760,9 +16167,9 @@
                                               },
                                               "write": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during writes).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -15770,18 +16177,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -15810,6 +16214,46 @@
                                                             "type": "string",
                                                             "nullable": true,
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
                                                           }
                                                         }
                                                       }
@@ -16675,9 +17119,9 @@
                                               "properties": {
                                                 "read": {
                                                   "type": "object",
-                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "description": "This is a map of field names to their value mappings (applied during reads).",
                                                   "additionalProperties": {
-                                                    "description": "A collection of value mappings.",
+                                                    "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                     "type": "array",
                                                     "items": {
                                                       "type": "object",
@@ -16685,18 +17129,15 @@
                                                       "discriminator": {
                                                         "propertyName": "type",
                                                         "mapping": {
-                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                          "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                          "delete": "#/components/schemas/DeleteMapping"
                                                         }
                                                       },
                                                       "oneOf": [
                                                         {
+                                                          "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                           "type": "object",
-                                                          "example": {
-                                                            "type": "stringReplacement",
-                                                            "caseSensitive": false,
-                                                            "fromValue": "old",
-                                                            "toValue": "new"
-                                                          },
                                                           "required": [
                                                             "fromValue",
                                                             "toValue",
@@ -16727,6 +17168,46 @@
                                                               "description": "The ending value (may be null, which will substitute a literal null)."
                                                             }
                                                           }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type",
+                                                            "defaultValue"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringDefault"
+                                                              ],
+                                                              "example": "stringDefault"
+                                                            },
+                                                            "defaultValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "A value to set."
+                                                            }
+                                                          }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "delete"
+                                                              ],
+                                                              "example": "delete"
+                                                            }
+                                                          }
                                                         }
                                                       ]
                                                     }
@@ -16734,9 +17215,9 @@
                                                 },
                                                 "write": {
                                                   "type": "object",
-                                                  "description": "This is a map of field names to their value mappings.",
+                                                  "description": "This is a map of field names to their value mappings (applied during writes).",
                                                   "additionalProperties": {
-                                                    "description": "A collection of value mappings.",
+                                                    "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                     "type": "array",
                                                     "items": {
                                                       "type": "object",
@@ -16744,18 +17225,15 @@
                                                       "discriminator": {
                                                         "propertyName": "type",
                                                         "mapping": {
-                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                          "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                          "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                          "delete": "#/components/schemas/DeleteMapping"
                                                         }
                                                       },
                                                       "oneOf": [
                                                         {
+                                                          "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                           "type": "object",
-                                                          "example": {
-                                                            "type": "stringReplacement",
-                                                            "caseSensitive": false,
-                                                            "fromValue": "old",
-                                                            "toValue": "new"
-                                                          },
                                                           "required": [
                                                             "fromValue",
                                                             "toValue",
@@ -16784,6 +17262,46 @@
                                                               "type": "string",
                                                               "nullable": true,
                                                               "description": "The ending value (may be null, which will substitute a literal null)."
+                                                            }
+                                                          }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type",
+                                                            "defaultValue"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "stringDefault"
+                                                              ],
+                                                              "example": "stringDefault"
+                                                            },
+                                                            "defaultValue": {
+                                                              "type": "string",
+                                                              "nullable": true,
+                                                              "description": "A value to set."
+                                                            }
+                                                          }
+                                                        },
+                                                        {
+                                                          "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "type"
+                                                          ],
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                              "enum": [
+                                                                "delete"
+                                                              ],
+                                                              "example": "delete"
                                                             }
                                                           }
                                                         }
@@ -17245,9 +17763,9 @@
                                             "properties": {
                                               "read": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during reads).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -17255,18 +17773,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -17297,6 +17812,46 @@
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
                                                           }
                                                         }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
+                                                          }
+                                                        }
                                                       }
                                                     ]
                                                   }
@@ -17304,9 +17859,9 @@
                                               },
                                               "write": {
                                                 "type": "object",
-                                                "description": "This is a map of field names to their value mappings.",
+                                                "description": "This is a map of field names to their value mappings (applied during writes).",
                                                 "additionalProperties": {
-                                                  "description": "A collection of value mappings.",
+                                                  "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                                   "type": "array",
                                                   "items": {
                                                     "type": "object",
@@ -17314,18 +17869,15 @@
                                                     "discriminator": {
                                                       "propertyName": "type",
                                                       "mapping": {
-                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                                        "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                                        "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                                        "delete": "#/components/schemas/DeleteMapping"
                                                       }
                                                     },
                                                     "oneOf": [
                                                       {
+                                                        "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                                         "type": "object",
-                                                        "example": {
-                                                          "type": "stringReplacement",
-                                                          "caseSensitive": false,
-                                                          "fromValue": "old",
-                                                          "toValue": "new"
-                                                        },
                                                         "required": [
                                                           "fromValue",
                                                           "toValue",
@@ -17354,6 +17906,46 @@
                                                             "type": "string",
                                                             "nullable": true,
                                                             "description": "The ending value (may be null, which will substitute a literal null)."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type",
+                                                          "defaultValue"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "stringDefault"
+                                                            ],
+                                                            "example": "stringDefault"
+                                                          },
+                                                          "defaultValue": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "description": "A value to set."
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "type"
+                                                        ],
+                                                        "properties": {
+                                                          "type": {
+                                                            "type": "string",
+                                                            "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                            "enum": [
+                                                              "delete"
+                                                            ],
+                                                            "example": "delete"
                                                           }
                                                         }
                                                       }
@@ -38054,9 +38646,9 @@
                                   "properties": {
                                     "read": {
                                       "type": "object",
-                                      "description": "This is a map of field names to their value mappings.",
+                                      "description": "This is a map of field names to their value mappings (applied during reads).",
                                       "additionalProperties": {
-                                        "description": "A collection of value mappings.",
+                                        "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                         "type": "array",
                                         "items": {
                                           "type": "object",
@@ -38064,18 +38656,15 @@
                                           "discriminator": {
                                             "propertyName": "type",
                                             "mapping": {
-                                              "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                              "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                              "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                              "delete": "#/components/schemas/DeleteMapping"
                                             }
                                           },
                                           "oneOf": [
                                             {
+                                              "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                               "type": "object",
-                                              "example": {
-                                                "type": "stringReplacement",
-                                                "caseSensitive": false,
-                                                "fromValue": "old",
-                                                "toValue": "new"
-                                              },
                                               "required": [
                                                 "fromValue",
                                                 "toValue",
@@ -38106,6 +38695,46 @@
                                                   "description": "The ending value (may be null, which will substitute a literal null)."
                                                 }
                                               }
+                                            },
+                                            {
+                                              "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                              "type": "object",
+                                              "required": [
+                                                "type",
+                                                "defaultValue"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                  "enum": [
+                                                    "stringDefault"
+                                                  ],
+                                                  "example": "stringDefault"
+                                                },
+                                                "defaultValue": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "description": "A value to set."
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                              "type": "object",
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                  "enum": [
+                                                    "delete"
+                                                  ],
+                                                  "example": "delete"
+                                                }
+                                              }
                                             }
                                           ]
                                         }
@@ -38113,9 +38742,9 @@
                                     },
                                     "write": {
                                       "type": "object",
-                                      "description": "This is a map of field names to their value mappings.",
+                                      "description": "This is a map of field names to their value mappings (applied during writes).",
                                       "additionalProperties": {
-                                        "description": "A collection of value mappings.",
+                                        "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                         "type": "array",
                                         "items": {
                                           "type": "object",
@@ -38123,18 +38752,15 @@
                                           "discriminator": {
                                             "propertyName": "type",
                                             "mapping": {
-                                              "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                              "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                              "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                              "delete": "#/components/schemas/DeleteMapping"
                                             }
                                           },
                                           "oneOf": [
                                             {
+                                              "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                               "type": "object",
-                                              "example": {
-                                                "type": "stringReplacement",
-                                                "caseSensitive": false,
-                                                "fromValue": "old",
-                                                "toValue": "new"
-                                              },
                                               "required": [
                                                 "fromValue",
                                                 "toValue",
@@ -38163,6 +38789,46 @@
                                                   "type": "string",
                                                   "nullable": true,
                                                   "description": "The ending value (may be null, which will substitute a literal null)."
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                              "type": "object",
+                                              "required": [
+                                                "type",
+                                                "defaultValue"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                  "enum": [
+                                                    "stringDefault"
+                                                  ],
+                                                  "example": "stringDefault"
+                                                },
+                                                "defaultValue": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "description": "A value to set."
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                              "type": "object",
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                                  "enum": [
+                                                    "delete"
+                                                  ],
+                                                  "example": "delete"
                                                 }
                                               }
                                             }
@@ -38358,9 +39024,9 @@
                               "properties": {
                                 "read": {
                                   "type": "object",
-                                  "description": "This is a map of field names to their value mappings.",
+                                  "description": "This is a map of field names to their value mappings (applied during reads).",
                                   "additionalProperties": {
-                                    "description": "A collection of value mappings.",
+                                    "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                     "type": "array",
                                     "items": {
                                       "type": "object",
@@ -38368,18 +39034,15 @@
                                       "discriminator": {
                                         "propertyName": "type",
                                         "mapping": {
-                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                          "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                          "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                          "delete": "#/components/schemas/DeleteMapping"
                                         }
                                       },
                                       "oneOf": [
                                         {
+                                          "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                           "type": "object",
-                                          "example": {
-                                            "type": "stringReplacement",
-                                            "caseSensitive": false,
-                                            "fromValue": "old",
-                                            "toValue": "new"
-                                          },
                                           "required": [
                                             "fromValue",
                                             "toValue",
@@ -38410,6 +39073,46 @@
                                               "description": "The ending value (may be null, which will substitute a literal null)."
                                             }
                                           }
+                                        },
+                                        {
+                                          "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                          "type": "object",
+                                          "required": [
+                                            "type",
+                                            "defaultValue"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                              "enum": [
+                                                "stringDefault"
+                                              ],
+                                              "example": "stringDefault"
+                                            },
+                                            "defaultValue": {
+                                              "type": "string",
+                                              "nullable": true,
+                                              "description": "A value to set."
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                          "type": "object",
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                              "enum": [
+                                                "delete"
+                                              ],
+                                              "example": "delete"
+                                            }
+                                          }
                                         }
                                       ]
                                     }
@@ -38417,9 +39120,9 @@
                                 },
                                 "write": {
                                   "type": "object",
-                                  "description": "This is a map of field names to their value mappings.",
+                                  "description": "This is a map of field names to their value mappings (applied during writes).",
                                   "additionalProperties": {
-                                    "description": "A collection of value mappings.",
+                                    "description": "A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.",
                                     "type": "array",
                                     "items": {
                                       "type": "object",
@@ -38427,18 +39130,15 @@
                                       "discriminator": {
                                         "propertyName": "type",
                                         "mapping": {
-                                          "stringReplacement": "#/components/schemas/StringReplacementMapping"
+                                          "stringReplacement": "#/components/schemas/StringReplacementMapping",
+                                          "stringDefault": "#/components/schemas/StringDefaultMapping",
+                                          "delete": "#/components/schemas/DeleteMapping"
                                         }
                                       },
                                       "oneOf": [
                                         {
+                                          "description": "A mapping which looks for a string literal, and replaces it with another string literal.",
                                           "type": "object",
-                                          "example": {
-                                            "type": "stringReplacement",
-                                            "caseSensitive": false,
-                                            "fromValue": "old",
-                                            "toValue": "new"
-                                          },
                                           "required": [
                                             "fromValue",
                                             "toValue",
@@ -38467,6 +39167,46 @@
                                               "type": "string",
                                               "nullable": true,
                                               "description": "The ending value (may be null, which will substitute a literal null)."
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "description": "A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.",
+                                          "type": "object",
+                                          "required": [
+                                            "type",
+                                            "defaultValue"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                              "enum": [
+                                                "stringDefault"
+                                              ],
+                                              "example": "stringDefault"
+                                            },
+                                            "defaultValue": {
+                                              "type": "string",
+                                              "nullable": true,
+                                              "description": "A value to set."
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "description": "A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.",
+                                          "type": "object",
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "description": "The type of mapping. Used by SingleValueMapping to determine which schema to use.",
+                                              "enum": [
+                                                "delete"
+                                              ],
+                                              "example": "delete"
                                             }
                                           }
                                         }

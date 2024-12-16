@@ -78,12 +78,12 @@ components:
           properties:
             read:
               type: object
-              description: This is a map of field names to their value mappings.
+              description: This is a map of field names to their value mappings (applied during reads).
               additionalProperties:
                 $ref: '#/components/schemas/ValueMappings'
             write:
               type: object
-              description: This is a map of field names to their value mappings.
+              description: This is a map of field names to their value mappings (applied during writes).
               additionalProperties:
                 $ref: '#/components/schemas/ValueMappings'
         selectedFieldsAuto:
@@ -204,7 +204,7 @@ components:
             validate: required_without=Days
 
     ValueMappings:
-      description: A collection of value mappings.
+      description: A collection of value mappings. The mappings will be considered in order, and the first one that matches will be used. If the end is reached and none match, the original value will be used as-is.
       type: array
       items:
         $ref: '#/components/schemas/SingleValueMapping'
@@ -216,16 +216,47 @@ components:
         propertyName: type
         mapping:
           stringReplacement: '#/components/schemas/StringReplacementMapping'
+          stringDefault: '#/components/schemas/StringDefaultMapping'
+          delete: '#/components/schemas/DeleteMapping'
       oneOf:
         - $ref: '#/components/schemas/StringReplacementMapping'
+        - $ref: '#/components/schemas/StringDefaultMapping'
+        - $ref: '#/components/schemas/DeleteMapping'
+
+    DeleteMapping:
+      description: A mapping which will delete the field itself. Use this if you want to remove a field from the output rather than just set a null value. Most likely you'll want to specify this last in the list of mappings.
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          description: The type of mapping. Used by SingleValueMapping to determine which schema to use.
+          enum:
+            - 'delete'
+          example: delete
+
+    StringDefaultMapping:
+      description: A mapping which will blindly set a string value. The old value is totally ignored. If you're planning on using this, place it last in the list of mappings.
+      type: object
+      required:
+        - type
+        - defaultValue
+      properties:
+        type:
+          type: string
+          description: The type of mapping. Used by SingleValueMapping to determine which schema to use.
+          enum:
+            - 'stringDefault'
+          example: stringDefault
+        defaultValue:
+          type: string
+          nullable: true
+          description: A value to set.
 
     StringReplacementMapping:
+      description: A mapping which looks for a string literal, and replaces it with another string literal.
       type: object
-      example:
-        type: stringReplacement
-        caseSensitive: false
-        fromValue: 'old'
-        toValue: 'new'
       required:
         - fromValue
         - toValue
