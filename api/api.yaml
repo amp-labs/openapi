@@ -1615,6 +1615,48 @@ paths:
                       items:
                         type: string
                       description: The scopes for the tokens.
+                oauth2AuthorizationCode:
+                  type: object
+                  properties:
+                    accessToken:
+                      type: object
+                      required:
+                        - token
+                      properties:
+                        token:
+                          type: string
+                          description: The access token to use for the connection.
+                        expiresAt:
+                          type: string
+                          format: date-time
+                          description: The expiration date of the access token.
+                        issuedAt:
+                          type: string
+                          format: date-time
+                          description: The date the access token was issued.
+                      description: access token for the connection.
+                    refreshToken:
+                      type: object
+                      required: 
+                        - token
+                      properties:
+                        token:
+                          type: string
+                          description: The refresh token to use for the connection.
+                        issuedAt:
+                          type: string
+                          format: date-time
+                          description: The date the refresh token was issued.
+                        expiresAt:
+                          type: string
+                          format: date-time
+                          description: The expiration date of the refresh token.
+                      description: The refresh token to use for the connection.
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                      description: The scopes for the tokens.
       responses:
         201:
           description: Created
