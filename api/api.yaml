@@ -11,7 +11,7 @@ paths:
       summary: Get URL for OAuth flow
       description: Generate a URL for the browser to render to kick off OAuth flow.
       tags: ["OAuth"]
-      security: []  # This overrides the global security
+      security: [] # This overrides the global security
       requestBody:
         content:
           application/json:
@@ -639,10 +639,8 @@ paths:
                     (e.g. Google Cloud Storage URL).
                 sourceYaml:
                   type: string
-                  description:
-                    A YAML string that defines the integrations.
-              description:
-                The source of the integrations to upsert. One of sourceZipUrl or sourceYaml is required.
+                  description: A YAML string that defines the integrations.
+              description: The source of the integrations to upsert. One of sourceZipUrl or sourceYaml is required.
       responses:
         200:
           description: Upserted integrations.
@@ -693,10 +691,8 @@ paths:
                     (e.g. Google Cloud Storage URL).
                 sourceYaml:
                   type: string
-                  description:
-                    The source YAML file that defines the revision.
-              description:
-                The source of the revision to create. One of sourceZipUrl or sourceYaml is required.
+                  description: The source YAML file that defines the revision.
+              description: The source of the revision to create. One of sourceZipUrl or sourceYaml is required.
       responses:
         201:
           description: Created
@@ -1593,7 +1589,7 @@ paths:
                       type: array
                       items:
                         type: string
-                      description: The scopes to use for the connection (optional).
+                      description: The scopes for the tokens.
                 oauth2Password:
                   type: object
                   required:
@@ -1618,7 +1614,49 @@ paths:
                       type: array
                       items:
                         type: string
-                      description: The scopes to use for the connection (optional).
+                      description: The scopes for the tokens.
+                oauth2AuthorizationCode:
+                  type: object
+                  properties:
+                    accessToken:
+                      type: object
+                      required:
+                        - token
+                      properties:
+                        token:
+                          type: string
+                          description: The access token to use for the connection.
+                        expiresAt:
+                          type: string
+                          format: date-time
+                          description: The expiration date of the access token.
+                        issuedAt:
+                          type: string
+                          format: date-time
+                          description: The date the access token was issued.
+                      description: access token for the connection.
+                    refreshToken:
+                      type: object
+                      required: 
+                        - token
+                      properties:
+                        token:
+                          type: string
+                          description: The refresh token to use for the connection.
+                        issuedAt:
+                          type: string
+                          format: date-time
+                          description: The date the refresh token was issued.
+                        expiresAt:
+                          type: string
+                          format: date-time
+                          description: The expiration date of the refresh token.
+                      description: The refresh token to use for the connection.
+                    scopes:
+                      type: array
+                      items:
+                        type: string
+                      description: The scopes for the tokens.
       responses:
         201:
           description: Created
@@ -2329,7 +2367,7 @@ paths:
       summary: Get information about the current user
       operationId: getMyInfo
       tags: ["User"]
-      security: []  # This overrides the global security
+      security: [] # This overrides the global security
       responses:
         200:
           description: Information about the current user and their organizations and projects
@@ -2348,7 +2386,7 @@ paths:
       summary: Accept an invite
       operationId: acceptInvite
       tags: ["User"]
-      security: []  # This overrides the global security
+      security: [] # This overrides the global security
       requestBody:
         content:
           application/json:
@@ -2378,7 +2416,7 @@ paths:
     get:
       summary: Get the billing account for an organization
       operationId: getOrgBillingAccount
-      tags: [ "Billing Account" ]
+      tags: ["Billing Account"]
       parameters:
         - name: orgId
           in: path
@@ -2408,7 +2446,7 @@ paths:
     post:
       summary: Create a portal session for a billing account
       operationId: createBillingAccountSession
-      tags: [ "Billing Account" ]
+      tags: ["Billing Account"]
       parameters:
         - name: billingAccountId
           in: path
