@@ -1615,48 +1615,6 @@ paths:
                       items:
                         type: string
                       description: The scopes for the tokens.
-                oauth2AuthorizationCode:
-                  type: object
-                  properties:
-                    accessToken:
-                      type: object
-                      required:
-                        - token
-                      properties:
-                        token:
-                          type: string
-                          description: The access token to use for the connection.
-                        expiresAt:
-                          type: string
-                          format: date-time
-                          description: The expiration date of the access token.
-                        issuedAt:
-                          type: string
-                          format: date-time
-                          description: The date the access token was issued.
-                      description: access token for the connection.
-                    refreshToken:
-                      type: object
-                      required: 
-                        - token
-                      properties:
-                        token:
-                          type: string
-                          description: The refresh token to use for the connection.
-                        issuedAt:
-                          type: string
-                          format: date-time
-                          description: The date the refresh token was issued.
-                        expiresAt:
-                          type: string
-                          format: date-time
-                          description: The expiration date of the refresh token.
-                      description: The refresh token to use for the connection.
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                      description: The scopes for the tokens.
       responses:
         201:
           description: Created
@@ -1699,6 +1657,19 @@ paths:
           required: true
           schema:
             type: string
+        - name: includeCreds
+          in: query
+          schema:
+            type: boolean
+        - name: includeRefreshToken
+          in: query
+          schema:
+            type: boolean
+        - name: refresh
+          in: query
+          schema:
+            type: string
+            enum: [force, ifExpired]
       responses:
         200:
           description: Connection
@@ -2835,6 +2806,75 @@ components:
           description: The time the connection was last updated.
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
+        authScheme:
+          type: string
+          description: The authentication scheme used for this connection.
+          example: oauth2
+          enum:
+            [
+              none,
+              apiKey,
+              basic,
+              oauth2/authorizationCode,
+              oauth2/authorizationCodePKCE,
+              oauth2/clientCredentials,
+              oauth2/password,
+              jwt,
+            ]
+        scopes:
+          type: array
+          description: The OAuth scopes for this connection.
+          items:
+            type: string
+        status:
+          type: string
+          description: The status of the connection.
+          example: active
+          enum: [created, working, bad_credentials]
+        oauth2AuthorizationCode:
+          $ref: "#/components/schemas/Oauth2AuthorizationCode"
+    Oauth2AuthorizationCode:
+      type: object
+      properties:
+        accessToken:
+          type: object
+          required:
+            - token
+          properties:
+            token:
+              type: string
+              description: The access token to use for the connection.
+            expiresAt:
+              type: string
+              format: date-time
+              description: The expiration date of the access token.
+            issuedAt:
+              type: string
+              format: date-time
+              description: The date the access token was issued.
+          description: access token for the connection.
+        refreshToken:
+          type: object
+          required:
+            - token
+          properties:
+            token:
+              type: string
+              description: The refresh token to use for the connection.
+            issuedAt:
+              type: string
+              format: date-time
+              description: The date the refresh token was issued.
+            expiresAt:
+              type: string
+              format: date-time
+              description: The expiration date of the refresh token.
+          description: The refresh token to use for the connection.
+        scopes:
+          type: array
+          items:
+            type: string
+          description: The scopes for the tokens.
     ImportConnectionRequest:
       required:
         - groupRef
