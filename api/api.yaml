@@ -716,8 +716,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: revision
-  ? /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate
-  : get:
+  /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate:
+    get:
       summary: Hydrate a revision
       description: Hydrate a revision with information from the consumer's SaaS instance.
       operationId: getHydratedRevision
@@ -953,8 +953,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installation
-  ? /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}
-  : get:
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}: 
+    get:
       summary: Get an installation
       operationId: getInstallation
       tags: ["Installation"]
@@ -1113,8 +1113,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installationUpdate
-  ? /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations
-  : get:
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations:
+    get:
       summary: List operations
       operationId: listOperations
       tags: ["Operation"]
