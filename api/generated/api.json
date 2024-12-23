@@ -24841,7 +24841,7 @@
                         "items": {
                           "type": "string"
                         },
-                        "description": "The scopes to use for the connection (optional)."
+                        "description": "The scopes for the tokens."
                       }
                     }
                   },
@@ -24875,7 +24875,7 @@
                         "items": {
                           "type": "string"
                         },
-                        "description": "The scopes to use for the connection (optional)."
+                        "description": "The scopes for the tokens."
                       }
                     }
                   },
@@ -24884,6 +24884,9 @@
                     "properties": {
                       "accessToken": {
                         "type": "object",
+                        "required": [
+                          "token"
+                        ],
                         "properties": {
                           "token": {
                             "type": "string",
@@ -24904,6 +24907,9 @@
                       },
                       "refreshToken": {
                         "type": "object",
+                        "required": [
+                          "token"
+                        ],
                         "properties": {
                           "token": {
                             "type": "string",
@@ -24927,7 +24933,7 @@
                         "items": {
                           "type": "string"
                         },
-                        "description": "The scopes to use for the connection (optional)."
+                        "description": "The scopes for the tokens."
                       }
                     }
                   }

@@ -953,7 +953,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installation
-  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}: 
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:
     get:
       summary: Get an installation
       operationId: getInstallation
@@ -1589,7 +1589,7 @@ paths:
                       type: array
                       items:
                         type: string
-                      description: The scopes to use for the connection (optional).
+                      description: The scopes for the tokens.
                 oauth2Password:
                   type: object
                   required:
@@ -1614,12 +1614,14 @@ paths:
                       type: array
                       items:
                         type: string
-                      description: The scopes to use for the connection (optional).
+                      description: The scopes for the tokens.
                 oauth2AuthorizationCode:
                   type: object
                   properties:
                     accessToken:
                       type: object
+                      required:
+                        - token
                       properties:
                         token:
                           type: string
@@ -1635,6 +1637,8 @@ paths:
                       description: access token for the connection.
                     refreshToken:
                       type: object
+                      required: 
+                        - token
                       properties:
                         token:
                           type: string
@@ -1652,7 +1656,7 @@ paths:
                       type: array
                       items:
                         type: string
-                      description: The scopes to use for the connection (optional).
+                      description: The scopes for the tokens.
       responses:
         201:
           description: Created
