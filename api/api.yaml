@@ -1616,47 +1616,7 @@ paths:
                         type: string
                       description: The scopes for the tokens.
                 oauth2AuthorizationCode:
-                  type: object
-                  properties:
-                    accessToken:
-                      type: object
-                      required:
-                        - token
-                      properties:
-                        token:
-                          type: string
-                          description: The access token to use for the connection.
-                        expiresAt:
-                          type: string
-                          format: date-time
-                          description: The expiration date of the access token.
-                        issuedAt:
-                          type: string
-                          format: date-time
-                          description: The date the access token was issued.
-                      description: access token for the connection.
-                    refreshToken:
-                      type: object
-                      required: 
-                        - token
-                      properties:
-                        token:
-                          type: string
-                          description: The refresh token to use for the connection.
-                        issuedAt:
-                          type: string
-                          format: date-time
-                          description: The date the refresh token was issued.
-                        expiresAt:
-                          type: string
-                          format: date-time
-                          description: The expiration date of the refresh token.
-                      description: The refresh token to use for the connection.
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                      description: The scopes for the tokens.
+                  $ref: "#/components/schemas/Oauth2AuthorizationCode"
       responses:
         201:
           description: Created
@@ -2855,7 +2815,7 @@ components:
         authScheme:
           type: string
           description: The authentication scheme used for this connection.
-          example: oauth2
+          example: oauth2/authorizationCode
           enum:
             [
               none,
@@ -2865,17 +2825,11 @@ components:
               oauth2/authorizationCodePKCE,
               oauth2/clientCredentials,
               oauth2/password,
-              jwt,
             ]
-        scopes:
-          type: array
-          description: The OAuth scopes for this connection.
-          items:
-            type: string
         status:
           type: string
           description: The status of the connection.
-          example: active
+          example: created
           enum: [created, working, bad_credentials]
         oauth2AuthorizationCode:
           $ref: "#/components/schemas/Oauth2AuthorizationCode"
@@ -2886,36 +2840,20 @@ components:
           type: object
           required:
             - token
+          description: access token for the connection.
           properties:
             token:
               type: string
               description: The access token to use for the connection.
-            expiresAt:
-              type: string
-              format: date-time
-              description: The expiration date of the access token.
-            issuedAt:
-              type: string
-              format: date-time
-              description: The date the access token was issued.
-          description: access token for the connection.
         refreshToken:
           type: object
           required:
             - token
+          description: The refresh token to use for the connection.
           properties:
             token:
               type: string
               description: The refresh token to use for the connection.
-            issuedAt:
-              type: string
-              format: date-time
-              description: The date the refresh token was issued.
-            expiresAt:
-              type: string
-              format: date-time
-              description: The expiration date of the refresh token.
-          description: The refresh token to use for the connection.
         scopes:
           type: array
           items:
