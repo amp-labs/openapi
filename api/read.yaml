@@ -127,7 +127,7 @@ components:
           description: The mode of read operation. Currently only asynchronus operation is supported.
           enum: [async]
           example: async
-        since:
+        sinceTimestamp:
           type: string
           description: The timestamp from which to read data. If omitted, we will read all data.
           example: "2024-07-01T18:22:30.323771761Z"
