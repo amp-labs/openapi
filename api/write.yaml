@@ -7,7 +7,7 @@ servers:
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:
-      summary: Create, update, upsert or delete records
+      summary: Write records
       operationId: writeRecords
       tags: ["Write"]
       parameters:
@@ -38,9 +38,7 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                  - $ref: "#/components/schemas/WriteResponseSingleSuccess"
-                  - $ref: "#/components/schemas/WriteResponseAsync"
+                $ref: "#/components/schemas/WriteResponseSingleSuccess"
         400:
           description: The failure response for bad request.
           content:
@@ -60,51 +58,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /generate-upload-url:
-    get:
-      summary: Generate a signed URL to upload write data to.
-      operationId: generateUploadUrl
-      tags: ["Upload URL"]
-      parameters:
-        - name: fileName
-          in: query
-          required: false
-          schema:
-            type: string
-            description: The name of the file to upload
-            example: records.csv
-        - name: md5
-          in: query
-          required: false
-          schema:
-            type: string
-            description: The base64-encoded MD5 hash of the file to upload (optional). If you attach this, you must also attach the Content-MD5 header to the upload request.
-            example: NBLgJpN1XXun5+BsVUs/AA==
-      responses:
-        200:
-          description: Signed URL
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SignedWriteUrl"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 components:
   schemas:
-    WriteResponseAsync:
-      type: object
-      required:
-        - operationId
-      additionalProperties: false
-      properties:
-        operationId:
-          type: string
-          description: The operation ID
-          example: 1234567890
     WriteRequest:
       required:
         - groupRef
@@ -119,18 +74,17 @@ components:
         type:
           type: string
           description: 
-            The type of write operation. Synchronous mode only supports create and update.
-            Bulk mode only supports upsert and delete.
-          enum: [create, update, upsert, delete]
+            The type of write operation. The only supported types currently are create and update.
+          enum: [create, update]
           example: create
         mode:
           type: string
-          description: The mode of write operation. Default is synchronous.
-          enum: [synchronous, bulk] #          enum: [synchronous, async, bulk]
+          description: The mode of write operation. The only supported mode currently is synchronous.
+          enum: [synchronous] #          enum: [synchronous, async, bulk]
           example: synchronous
         record:
           type: object
-          description: The record to write in case of non-bulk writes.
+          description: The record to write
           example:
             {
               "email": "david@withampersand.com",
@@ -138,30 +92,12 @@ components:
             }
         #        records:
         #          type: array
-        #          description: The records to write in case of non-bulk writes.
+        #          description: The records to write
         #          example:
         #            [{
         #             "email": "david@withampersand.com",
         #             "warmthScore": "ready-for-close",
         #           }]
-        recordsCSV:
-          type: string
-          description:
-            The records to write, in a CSV string. Max size limit of data is 10 MiB.
-            For bulk writes, you must provide either recordsCSV or recordsURL.
-          example: "column1,column2\nvalue1,value2\nvalue3,value4"
-        recordsURL:
-          type: string
-          description:
-            Either a public URL to download the records in CSV format, or a `reference` returned by `/generate-upload-url`.
-            Max size limit of CSV data is 150 MiB.
-            You can provide either recordsCSV or recordsURL.
-            For bulk writes, you must provide either recordsCSV or recordsURL.
-          example: https://example.com/records.csv
-        primaryKey:
-          type: string
-          description: The name of the primary key field for bulk write (required for upsert, update and delete)
-          example: id
     WriteResponseSingleSuccess:
       type: object
       required:
@@ -214,18 +150,6 @@ components:
           type: string
           description: The ID of the object
           example: 003Dp0X#@RG7IAP
-    SignedWriteUrl:
-      type: object
-      required:
-        - url
-        - reference
-      properties:
-        url:
-          type: string
-          description: The signed URL to upload the zip file to.
-        reference:
-          type: string
-          description: The WriteRequest.RecordsURL value to pass back in the write request. It will start with "gs://".
   securitySchemes:
     APIKeyHeader:
       type: apiKey
