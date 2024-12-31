@@ -5,58 +5,60 @@ info:
 servers:
   - url: https://read.withampersand.com/v1
 paths:
-  # /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
-  #   post:
-  #     summary: Read records
-  #     operationId: readRecords
-  #     tags: ["Read"]
-  #     parameters:
-  #       - name: projectIdOrName
-  #         in: path
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - name: integrationId
-  #         in: path
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - name: objectName
-  #         in: path
-  #         required: true
-  #         schema:
-  #           type: string
-  #     requestBody:
-  #       description: Read Request
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: "#/components/schemas/ReadRequest"
-  #     responses:
-  #       201:
-  #         description: The success response
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: "#/components/schemas/ReadResultAsync"
-  #       400:
-  #         description: The failure response for bad request.
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  #       500:
-  #         description: Internal server error
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  #       default:
-  #         description: Error
-  #         content:
-  #           application/problem+json:
-  #             schema:
-  #               $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
+    post:
+      summary: Trigger a read
+      description:
+        Triggers reading data from a SaaS instance. See [Trigger a read](https://docs.withampersand.com/define-integrations/read-actions#trigger-a-read) for details.
+      operationId: triggerRead
+      tags: ["Read"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Read Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReadRequest"
+      responses:
+        201:
+          description: The success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadResultAsync"
+        400:
+          description: The failure response for bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
     post:
@@ -129,7 +131,7 @@ components:
           example: async
         sinceTimestamp:
           type: string
-          description: The timestamp from which to read data. If omitted, we will read all data.
+          description: The UTC timestamp from which to read data. If omitted, we will read all data.
           example: "2024-07-01T18:22:30.323771761Z"
     ReadResultAsync:
       type: object
