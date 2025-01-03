@@ -2703,12 +2703,13 @@ components:
           $ref: "../config/config.yaml#/components/schemas/ConfigContent"
     Connection:
       required:
-        - consumer
+        - id
         - createTime
         - group
-        - id
+        - consumer
         - projectId
-        - providerApp
+        - provider
+        - authScheme
       type: object
       properties:
         id:
@@ -2719,6 +2720,10 @@ components:
           type: string
           description: The Ampersand project ID.
           example: project-456
+        provider:
+          type: string
+          description: The SaaS provider that this Connection is for.
+          example: salesforce
         providerApp:
           $ref: "#/components/schemas/ProviderApp"
         group:
