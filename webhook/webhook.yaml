@@ -90,7 +90,7 @@ components:
         subscribeEventType:
           description: The type of event that triggered the message.
           type: string
-          enum: [create, update, delete, other]
+          enum: [create, update, updateAssociation, delete, other]
         providerEventType:
           description: The type of event that triggered the message, as defined by the SaaS provider.
           type: string
