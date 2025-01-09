@@ -64,6 +64,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResultEntry'
+    Association:
+      type: object
+      properties:
+        objectId:
+          description: The ID of the associated object.
+          type: string
+        associationType:
+          description: The type of the association.
+          type: string
     ResultEntry:
       type: object
       description: Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
@@ -75,6 +84,14 @@ components:
         mappedFields:
           type: object
           description: A key-value map of mapped field names to values.
+          x-go-type-skip-optional-pointer: true
+        associations:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Association'
+          description: A key-value map of association names to lists of associated record IDs.
           x-go-type-skip-optional-pointer: true
         raw:
           type: object
