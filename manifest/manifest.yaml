@@ -133,6 +133,8 @@ components:
       description: Consumers can specify default values for these fields.
       required:
           - fieldName
+      additionalProperties:
+        type: string
 
     HydratedIntegration:
       type: object

@@ -99,6 +99,7 @@ components:
           type: object
           description: This is a map of field names to default values. These values will be used when writing to the object.
           example: '{ phone: "555-555-5555"  }'
+          x-go-type-skip-optional-pointer: true
           additionalProperties:
             type: string
 
