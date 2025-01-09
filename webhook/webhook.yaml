@@ -67,12 +67,8 @@ components:
     Association:
       type: object
       properties:
-        objectId:
-          description: The ID of the associated object.
-          type: string
-          x-go-type-skip-optional-pointer: true
-        associationType:
-          description: The type of the association.
+        id:
+          description: The ID of the associated record.
           type: string
           x-go-type-skip-optional-pointer: true
     ResultEntry:
