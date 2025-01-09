@@ -74,8 +74,9 @@ components:
             type: string
         selectedFieldsAuto:
           $ref: '#/components/schemas/SelectedFieldsAutoConfig'
-        backfill: 
+        backfill:
           $ref: '#/components/schemas/BackfillConfig'
+
     BaseWriteConfig:
       type: object
       properties:
@@ -94,6 +95,12 @@ components:
           type: string
           x-oapi-codegen-extra-tags:
             validate: required
+        selectedValueDefaults:
+          type: object
+          description: This is a map of field names to default values. These values will be used when writing to the object.
+          example: '{ phone: "555-555-5555"  }'
+          additionalProperties:
+            type: string
 
     ConfigContent:
       allOf:

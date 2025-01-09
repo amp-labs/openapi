@@ -6000,6 +6000,16 @@
                                           "type": "boolean",
                                           "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                                           "example": true
+                                        },
+                                        "valueDefaults": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "description": "Consumers can specify default values for these fields.",
+                                            "required": [
+                                              "fieldName"
+                                            ]
+                                          }
                                         }
                                       }
                                     }
@@ -6753,6 +6763,16 @@
                                       "type": "boolean",
                                       "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                                       "example": true
+                                    },
+                                    "valueDefaults": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "description": "Consumers can specify default values for these fields.",
+                                        "required": [
+                                          "fieldName"
+                                        ]
+                                      }
                                     }
                                   }
                                 }
@@ -8694,6 +8714,16 @@
                                           "type": "boolean",
                                           "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                                           "example": true
+                                        },
+                                        "valueDefaults": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "description": "Consumers can specify default values for these fields.",
+                                            "required": [
+                                              "fieldName"
+                                            ]
+                                          }
                                         }
                                       }
                                     }
@@ -10341,6 +10371,16 @@
                                   },
                                   "displayName": {
                                     "type": "string"
+                                  },
+                                  "valueDefaults": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "description": "Consumers can specify default values for these fields.",
+                                      "required": [
+                                        "fieldName"
+                                      ]
+                                    }
                                   }
                                 }
                               }
@@ -11650,6 +11690,14 @@
                                               "x-oapi-codegen-extra-tags": {
                                                 "validate": "required"
                                               }
+                                            },
+                                            "selectedValueDefaults": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                                              "example": "{ phone: \"555-555-5555\"  }",
+                                              "additionalProperties": {
+                                                "type": "string"
+                                              }
                                             }
                                           }
                                         }
@@ -12314,6 +12362,14 @@
                                           "x-oapi-codegen-extra-tags": {
                                             "validate": "required"
                                           }
+                                        },
+                                        "selectedValueDefaults": {
+                                          "type": "object",
+                                          "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                                          "example": "{ phone: \"555-555-5555\"  }",
+                                          "additionalProperties": {
+                                            "type": "string"
+                                          }
                                         }
                                       }
                                     }
@@ -12836,6 +12892,14 @@
                                             "type": "string",
                                             "x-oapi-codegen-extra-tags": {
                                               "validate": "required"
+                                            }
+                                          },
+                                          "selectedValueDefaults": {
+                                            "type": "object",
+                                            "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                                            "example": "{ phone: \"555-555-5555\"  }",
+                                            "additionalProperties": {
+                                              "type": "string"
                                             }
                                           }
                                         }
@@ -14164,6 +14228,14 @@
                                             "x-oapi-codegen-extra-tags": {
                                               "validate": "required"
                                             }
+                                          },
+                                          "selectedValueDefaults": {
+                                            "type": "object",
+                                            "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                                            "example": "{ phone: \"555-555-5555\"  }",
+                                            "additionalProperties": {
+                                              "type": "string"
+                                            }
                                           }
                                         }
                                       }
@@ -15014,6 +15086,14 @@
                                               "x-oapi-codegen-extra-tags": {
                                                 "validate": "required"
                                               }
+                                            },
+                                            "selectedValueDefaults": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                                              "example": "{ phone: \"555-555-5555\"  }",
+                                              "additionalProperties": {
+                                                "type": "string"
+                                              }
                                             }
                                           }
                                         }
@@ -15525,6 +15605,14 @@
                                             "type": "string",
                                             "x-oapi-codegen-extra-tags": {
                                               "validate": "required"
+                                            }
+                                          },
+                                          "selectedValueDefaults": {
+                                            "type": "object",
+                                            "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                                            "example": "{ phone: \"555-555-5555\"  }",
+                                            "additionalProperties": {
+                                              "type": "string"
                                             }
                                           }
                                         }
@@ -35470,6 +35558,16 @@
                               "type": "boolean",
                               "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                               "example": true
+                            },
+                            "valueDefaults": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "description": "Consumers can specify default values for these fields.",
+                                "required": [
+                                  "fieldName"
+                                ]
+                              }
                             }
                           }
                         }
@@ -35743,6 +35841,16 @@
                           "type": "boolean",
                           "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                           "example": true
+                        },
+                        "valueDefaults": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "description": "Consumers can specify default values for these fields.",
+                            "required": [
+                              "fieldName"
+                            ]
+                          }
                         }
                       }
                     }
@@ -36060,6 +36168,16 @@
                         },
                         "displayName": {
                           "type": "string"
+                        },
+                        "valueDefaults": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "description": "Consumers can specify default values for these fields.",
+                            "required": [
+                              "fieldName"
+                            ]
+                          }
                         }
                       }
                     }
@@ -36555,6 +36673,14 @@
                                   "x-oapi-codegen-extra-tags": {
                                     "validate": "required"
                                   }
+                                },
+                                "selectedValueDefaults": {
+                                  "type": "object",
+                                  "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                                  "example": "{ phone: \"555-555-5555\"  }",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
                                 }
                               }
                             }
@@ -36734,6 +36860,14 @@
                               "type": "string",
                               "x-oapi-codegen-extra-tags": {
                                 "validate": "required"
+                              }
+                            },
+                            "selectedValueDefaults": {
+                              "type": "object",
+                              "description": "This is a map of field names to default values. These values will be used when writing to the object.",
+                              "example": "{ phone: \"555-555-5555\"  }",
+                              "additionalProperties": {
+                                "type": "string"
                               }
                             }
                           }
