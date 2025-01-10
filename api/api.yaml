@@ -615,6 +615,50 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /v1/projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
+    get:
+      summary: Get object and field data
+      description: Retrieves metadata about an object in a customer's SaaS instance, including its fields
+      tags: ["Objects & Fields"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: Project identifier
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          description: Integration identifier
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          description: Object name (mapped or unmapped)
+          schema:
+            type: string
+        - name: groupRef
+          in: query
+          required: false
+          description: The groupRef for the installation
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The retrieved object metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectMetadata'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+
   /projects/{projectIdOrName}/integrations:batch:
     put:
       summary: Batch upsert a group of integrations
@@ -3316,6 +3360,25 @@ components:
               example: builder-id-123
             org:
               $ref: "#/components/schemas/Org"
+    ObjectMetadata:
+      type: object
+      required:
+        - objectName
+        - fields
+      properties:
+        objectName:
+          type: string
+          description: Name of the object
+          example: "contact"
+        displayName:
+          type: string
+          description: Human-readable name of the object
+          example: "Contact"
+        fields:
+          type: object
+          description: Map of field metadata keyed by field name
+          additionalProperties:
+            $ref: "#../manifest/manifest.yaml/components/schemas/FieldMetadata"
   securitySchemes:
     APIKeyHeader:
       type: apiKey
