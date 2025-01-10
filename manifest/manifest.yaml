@@ -86,12 +86,12 @@ components:
           type: string
         mapToName:
           type: string
-          description: An object name to map to in the destination.
+          description: An object name to map to.
           example: people
           x-go-type-skip-optional-pointer: true
         mapToDisplayName:
           type: string
-          description: A display name to map to in the destination.
+          description: A display name to map to.
           example: People
           x-go-type-skip-optional-pointer: true
         requiredFields:
@@ -182,12 +182,12 @@ components:
           type: string
         mapToName:
           type: string
-          description: An object name to map to in the destination.
+          description: An object name to map to.
           example: people
           x-go-type-skip-optional-pointer: true
         mapToDisplayName:
           type: string
-          description: A display name to map to in the destination.
+          description: A display name to map to.
           example: People
           x-go-type-skip-optional-pointer: true
         destination:
@@ -244,12 +244,12 @@ components:
           type: string
         mapToName:
           type: string
-          description: The field name to map to in the destination.
+          description: The field name to map to.
           example: account_id
           x-go-type-skip-optional-pointer: true
         mapToDisplayName:
           type: string
-          description: The display name to map to in the destination.
+          description: The display name to map to.
           example: Account ID
           x-go-type-skip-optional-pointer: true
 
@@ -337,12 +337,12 @@ components:
           properties:
             mapToName:
               type: string
-              description: The field name to map to in the destination.
+              description: The field name to map to.
               example: account_id
               x-go-type-skip-optional-pointer: true
             mapToDisplayName:
               type: string
-              description: The display name to map to in the destination.
+              description: The display name to map to.
               example: Account ID
               x-go-type-skip-optional-pointer: true
 

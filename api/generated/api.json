@@ -5811,13 +5811,13 @@
                                         },
                                         "mapToName": {
                                           "type": "string",
-                                          "description": "An object name to map to in the destination.",
+                                          "description": "An object name to map to.",
                                           "example": "people",
                                           "x-go-type-skip-optional-pointer": true
                                         },
                                         "mapToDisplayName": {
                                           "type": "string",
-                                          "description": "A display name to map to in the destination.",
+                                          "description": "A display name to map to.",
                                           "example": "People",
                                           "x-go-type-skip-optional-pointer": true
                                         },
@@ -5836,13 +5836,13 @@
                                                   },
                                                   "mapToName": {
                                                     "type": "string",
-                                                    "description": "The field name to map to in the destination.",
+                                                    "description": "The field name to map to.",
                                                     "example": "account_id",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "mapToDisplayName": {
                                                     "type": "string",
-                                                    "description": "The display name to map to in the destination.",
+                                                    "description": "The display name to map to.",
                                                     "example": "Account ID",
                                                     "x-go-type-skip-optional-pointer": true
                                                   }
@@ -5886,13 +5886,13 @@
                                                   },
                                                   "mapToName": {
                                                     "type": "string",
-                                                    "description": "The field name to map to in the destination.",
+                                                    "description": "The field name to map to.",
                                                     "example": "account_id",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "mapToDisplayName": {
                                                     "type": "string",
-                                                    "description": "The display name to map to in the destination.",
+                                                    "description": "The display name to map to.",
                                                     "example": "Account ID",
                                                     "x-go-type-skip-optional-pointer": true
                                                   }
@@ -6564,13 +6564,13 @@
                                     },
                                     "mapToName": {
                                       "type": "string",
-                                      "description": "An object name to map to in the destination.",
+                                      "description": "An object name to map to.",
                                       "example": "people",
                                       "x-go-type-skip-optional-pointer": true
                                     },
                                     "mapToDisplayName": {
                                       "type": "string",
-                                      "description": "A display name to map to in the destination.",
+                                      "description": "A display name to map to.",
                                       "example": "People",
                                       "x-go-type-skip-optional-pointer": true
                                     },
@@ -6589,13 +6589,13 @@
                                               },
                                               "mapToName": {
                                                 "type": "string",
-                                                "description": "The field name to map to in the destination.",
+                                                "description": "The field name to map to.",
                                                 "example": "account_id",
                                                 "x-go-type-skip-optional-pointer": true
                                               },
                                               "mapToDisplayName": {
                                                 "type": "string",
-                                                "description": "The display name to map to in the destination.",
+                                                "description": "The display name to map to.",
                                                 "example": "Account ID",
                                                 "x-go-type-skip-optional-pointer": true
                                               }
@@ -6639,13 +6639,13 @@
                                               },
                                               "mapToName": {
                                                 "type": "string",
-                                                "description": "The field name to map to in the destination.",
+                                                "description": "The field name to map to.",
                                                 "example": "account_id",
                                                 "x-go-type-skip-optional-pointer": true
                                               },
                                               "mapToDisplayName": {
                                                 "type": "string",
-                                                "description": "The display name to map to in the destination.",
+                                                "description": "The display name to map to.",
                                                 "example": "Account ID",
                                                 "x-go-type-skip-optional-pointer": true
                                               }
@@ -8368,7 +8368,7 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
-            "description": "Project identifier",
+            "description": "Project ID or name",
             "schema": {
               "type": "string"
             }
@@ -8377,7 +8377,7 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "Integration identifier",
+            "description": "Integration ID",
             "schema": {
               "type": "string"
             }
@@ -8409,11 +8409,11 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "objectName",
+                    "name",
                     "fields"
                   ],
                   "properties": {
-                    "objectName": {
+                    "name": {
                       "type": "string",
                       "description": "Name of the object",
                       "example": "contact"
@@ -8720,13 +8720,13 @@
                                         },
                                         "mapToName": {
                                           "type": "string",
-                                          "description": "An object name to map to in the destination.",
+                                          "description": "An object name to map to.",
                                           "example": "people",
                                           "x-go-type-skip-optional-pointer": true
                                         },
                                         "mapToDisplayName": {
                                           "type": "string",
-                                          "description": "A display name to map to in the destination.",
+                                          "description": "A display name to map to.",
                                           "example": "People",
                                           "x-go-type-skip-optional-pointer": true
                                         },
@@ -8745,13 +8745,13 @@
                                                   },
                                                   "mapToName": {
                                                     "type": "string",
-                                                    "description": "The field name to map to in the destination.",
+                                                    "description": "The field name to map to.",
                                                     "example": "account_id",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "mapToDisplayName": {
                                                     "type": "string",
-                                                    "description": "The display name to map to in the destination.",
+                                                    "description": "The display name to map to.",
                                                     "example": "Account ID",
                                                     "x-go-type-skip-optional-pointer": true
                                                   }
@@ -8795,13 +8795,13 @@
                                                   },
                                                   "mapToName": {
                                                     "type": "string",
-                                                    "description": "The field name to map to in the destination.",
+                                                    "description": "The field name to map to.",
                                                     "example": "account_id",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "mapToDisplayName": {
                                                     "type": "string",
-                                                    "description": "The display name to map to in the destination.",
+                                                    "description": "The display name to map to.",
                                                     "example": "Account ID",
                                                     "x-go-type-skip-optional-pointer": true
                                                   }
@@ -10319,13 +10319,13 @@
                                   },
                                   "mapToName": {
                                     "type": "string",
-                                    "description": "An object name to map to in the destination.",
+                                    "description": "An object name to map to.",
                                     "example": "people",
                                     "x-go-type-skip-optional-pointer": true
                                   },
                                   "mapToDisplayName": {
                                     "type": "string",
-                                    "description": "A display name to map to in the destination.",
+                                    "description": "A display name to map to.",
                                     "example": "People",
                                     "x-go-type-skip-optional-pointer": true
                                   },
@@ -10414,13 +10414,13 @@
                                               "properties": {
                                                 "mapToName": {
                                                   "type": "string",
-                                                  "description": "The field name to map to in the destination.",
+                                                  "description": "The field name to map to.",
                                                   "example": "account_id",
                                                   "x-go-type-skip-optional-pointer": true
                                                 },
                                                 "mapToDisplayName": {
                                                   "type": "string",
-                                                  "description": "The display name to map to in the destination.",
+                                                  "description": "The display name to map to.",
                                                   "example": "Account ID",
                                                   "x-go-type-skip-optional-pointer": true
                                                 }
@@ -10530,13 +10530,13 @@
                                               "properties": {
                                                 "mapToName": {
                                                   "type": "string",
-                                                  "description": "The field name to map to in the destination.",
+                                                  "description": "The field name to map to.",
                                                   "example": "account_id",
                                                   "x-go-type-skip-optional-pointer": true
                                                 },
                                                 "mapToDisplayName": {
                                                   "type": "string",
-                                                  "description": "The display name to map to in the destination.",
+                                                  "description": "The display name to map to.",
                                                   "example": "Account ID",
                                                   "x-go-type-skip-optional-pointer": true
                                                 }
@@ -10653,13 +10653,13 @@
                                               "properties": {
                                                 "mapToName": {
                                                   "type": "string",
-                                                  "description": "The field name to map to in the destination.",
+                                                  "description": "The field name to map to.",
                                                   "example": "account_id",
                                                   "x-go-type-skip-optional-pointer": true
                                                 },
                                                 "mapToDisplayName": {
                                                   "type": "string",
-                                                  "description": "The display name to map to in the destination.",
+                                                  "description": "The display name to map to.",
                                                   "example": "Account ID",
                                                   "x-go-type-skip-optional-pointer": true
                                                 }
@@ -35682,13 +35682,13 @@
                             },
                             "mapToName": {
                               "type": "string",
-                              "description": "An object name to map to in the destination.",
+                              "description": "An object name to map to.",
                               "example": "people",
                               "x-go-type-skip-optional-pointer": true
                             },
                             "mapToDisplayName": {
                               "type": "string",
-                              "description": "A display name to map to in the destination.",
+                              "description": "A display name to map to.",
                               "example": "People",
                               "x-go-type-skip-optional-pointer": true
                             },
@@ -35707,13 +35707,13 @@
                                       },
                                       "mapToName": {
                                         "type": "string",
-                                        "description": "The field name to map to in the destination.",
+                                        "description": "The field name to map to.",
                                         "example": "account_id",
                                         "x-go-type-skip-optional-pointer": true
                                       },
                                       "mapToDisplayName": {
                                         "type": "string",
-                                        "description": "The display name to map to in the destination.",
+                                        "description": "The display name to map to.",
                                         "example": "Account ID",
                                         "x-go-type-skip-optional-pointer": true
                                       }
@@ -35757,13 +35757,13 @@
                                       },
                                       "mapToName": {
                                         "type": "string",
-                                        "description": "The field name to map to in the destination.",
+                                        "description": "The field name to map to.",
                                         "example": "account_id",
                                         "x-go-type-skip-optional-pointer": true
                                       },
                                       "mapToDisplayName": {
                                         "type": "string",
-                                        "description": "The display name to map to in the destination.",
+                                        "description": "The display name to map to.",
                                         "example": "Account ID",
                                         "x-go-type-skip-optional-pointer": true
                                       }
@@ -35955,13 +35955,13 @@
                         },
                         "mapToName": {
                           "type": "string",
-                          "description": "An object name to map to in the destination.",
+                          "description": "An object name to map to.",
                           "example": "people",
                           "x-go-type-skip-optional-pointer": true
                         },
                         "mapToDisplayName": {
                           "type": "string",
-                          "description": "A display name to map to in the destination.",
+                          "description": "A display name to map to.",
                           "example": "People",
                           "x-go-type-skip-optional-pointer": true
                         },
@@ -35980,13 +35980,13 @@
                                   },
                                   "mapToName": {
                                     "type": "string",
-                                    "description": "The field name to map to in the destination.",
+                                    "description": "The field name to map to.",
                                     "example": "account_id",
                                     "x-go-type-skip-optional-pointer": true
                                   },
                                   "mapToDisplayName": {
                                     "type": "string",
-                                    "description": "The display name to map to in the destination.",
+                                    "description": "The display name to map to.",
                                     "example": "Account ID",
                                     "x-go-type-skip-optional-pointer": true
                                   }
@@ -36030,13 +36030,13 @@
                                   },
                                   "mapToName": {
                                     "type": "string",
-                                    "description": "The field name to map to in the destination.",
+                                    "description": "The field name to map to.",
                                     "example": "account_id",
                                     "x-go-type-skip-optional-pointer": true
                                   },
                                   "mapToDisplayName": {
                                     "type": "string",
-                                    "description": "The display name to map to in the destination.",
+                                    "description": "The display name to map to.",
                                     "example": "Account ID",
                                     "x-go-type-skip-optional-pointer": true
                                   }
@@ -36224,13 +36224,13 @@
                         },
                         "mapToName": {
                           "type": "string",
-                          "description": "An object name to map to in the destination.",
+                          "description": "An object name to map to.",
                           "example": "people",
                           "x-go-type-skip-optional-pointer": true
                         },
                         "mapToDisplayName": {
                           "type": "string",
-                          "description": "A display name to map to in the destination.",
+                          "description": "A display name to map to.",
                           "example": "People",
                           "x-go-type-skip-optional-pointer": true
                         },
@@ -36319,13 +36319,13 @@
                                     "properties": {
                                       "mapToName": {
                                         "type": "string",
-                                        "description": "The field name to map to in the destination.",
+                                        "description": "The field name to map to.",
                                         "example": "account_id",
                                         "x-go-type-skip-optional-pointer": true
                                       },
                                       "mapToDisplayName": {
                                         "type": "string",
-                                        "description": "The display name to map to in the destination.",
+                                        "description": "The display name to map to.",
                                         "example": "Account ID",
                                         "x-go-type-skip-optional-pointer": true
                                       }
@@ -36435,13 +36435,13 @@
                                     "properties": {
                                       "mapToName": {
                                         "type": "string",
-                                        "description": "The field name to map to in the destination.",
+                                        "description": "The field name to map to.",
                                         "example": "account_id",
                                         "x-go-type-skip-optional-pointer": true
                                       },
                                       "mapToDisplayName": {
                                         "type": "string",
-                                        "description": "The display name to map to in the destination.",
+                                        "description": "The display name to map to.",
                                         "example": "Account ID",
                                         "x-go-type-skip-optional-pointer": true
                                       }
@@ -36558,13 +36558,13 @@
                                     "properties": {
                                       "mapToName": {
                                         "type": "string",
-                                        "description": "The field name to map to in the destination.",
+                                        "description": "The field name to map to.",
                                         "example": "account_id",
                                         "x-go-type-skip-optional-pointer": true
                                       },
                                       "mapToDisplayName": {
                                         "type": "string",
-                                        "description": "The display name to map to in the destination.",
+                                        "description": "The display name to map to.",
                                         "example": "Account ID",
                                         "x-go-type-skip-optional-pointer": true
                                       }
@@ -38459,11 +38459,11 @@
       "ObjectMetadata": {
         "type": "object",
         "required": [
-          "objectName",
+          "name",
           "fields"
         ],
         "properties": {
-          "objectName": {
+          "name": {
             "type": "string",
             "description": "Name of the object",
             "example": "contact"

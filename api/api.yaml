@@ -624,13 +624,13 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: Project identifier
+          description: Project ID or name
           schema:
             type: string
         - name: integrationId
           in: path
           required: true
-          description: Integration identifier
+          description: Integration ID
           schema:
             type: string
         - name: objectName
@@ -3363,10 +3363,10 @@ components:
     ObjectMetadata:
       type: object
       required:
-        - objectName
+        - name
         - fields
       properties:
-        objectName:
+        name:
           type: string
           description: Name of the object
           example: "contact"
