@@ -16531,6 +16531,7 @@
         "tags": [
           "Objects & Fields"
         ],
+        "operationId": "getObjectMetadata",
         "parameters": [
           {
             "name": "projectIdOrName",
