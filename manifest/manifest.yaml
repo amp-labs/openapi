@@ -384,3 +384,24 @@ components:
             description: The number of records to receive per data delivery.
             minimum: 50
             maximum: 500
+
+    # This schema actually isn't used in the manifest but it is used by the GetObjectMetadata endpoint
+    ObjectMetadata:
+      type: object
+      required:
+        - name
+        - fields
+      properties:
+        name:
+          type: string
+          description: Name of the object
+          example: "contact"
+        displayName:
+          type: string
+          description: Human-readable name of the object
+          example: "Contact"
+        fields:
+          type: object
+          description: Map of field metadata keyed by field name
+          additionalProperties:
+            $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
