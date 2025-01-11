@@ -313,10 +313,11 @@ components:
         values:
           type: array
           description: If the valueType is singleSelect or multiSelect, this is a list of possible values
+          x-go-type-skip-optional-pointer: true
           items:
-            $ref: '#/components/schemas/ValueOption'
+            $ref: '#/components/schemas/FieldValue'
 
-    ValueOption:
+    FieldValue:
       type: object
       description: Represents a field value
       properties:

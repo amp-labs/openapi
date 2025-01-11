@@ -10175,6 +10175,7 @@
                                                 "values": {
                                                   "type": "array",
                                                   "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "items": {
                                                     "type": "object",
                                                     "description": "Represents a field value",
@@ -10291,6 +10292,7 @@
                                                 "values": {
                                                   "type": "array",
                                                   "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "items": {
                                                     "type": "object",
                                                     "description": "Represents a field value",
@@ -10414,6 +10416,7 @@
                                                 "values": {
                                                   "type": "array",
                                                   "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "items": {
                                                     "type": "object",
                                                     "description": "Represents a field value",
@@ -36080,6 +36083,7 @@
                                       "values": {
                                         "type": "array",
                                         "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "items": {
                                           "type": "object",
                                           "description": "Represents a field value",
@@ -36196,6 +36200,7 @@
                                       "values": {
                                         "type": "array",
                                         "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "items": {
                                           "type": "object",
                                           "description": "Represents a field value",
@@ -36319,6 +36324,7 @@
                                       "values": {
                                         "type": "array",
                                         "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "items": {
                                           "type": "object",
                                           "description": "Represents a field value",
