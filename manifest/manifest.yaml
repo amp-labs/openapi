@@ -404,4 +404,4 @@ components:
           type: object
           description: Map of field metadata keyed by field name
           additionalProperties:
-            $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
+            $ref: "#/components/schemas/FieldMetadata"
