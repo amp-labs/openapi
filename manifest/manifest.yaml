@@ -313,11 +313,15 @@ components:
         values:
           type: array
           description: If the valueType is singleSelect or multiSelect, this is a list of possible values
+          x-go-type-skip-optional-pointer: true
           items:
-            $ref: '#/components/schemas/ValueOption'
+            $ref: '#/components/schemas/FieldValue'
 
-    ValueOption:
+    FieldValue:
       type: object
+      required:
+        - value
+        - displayValue
       description: Represents a field value
       properties:
         value:
@@ -384,24 +388,3 @@ components:
             description: The number of records to receive per data delivery.
             minimum: 50
             maximum: 500
-
-    # This schema actually isn't used in the manifest but it is used by the GetObjectMetadata endpoint
-    ObjectMetadata:
-      type: object
-      required:
-        - name
-        - fields
-      properties:
-        name:
-          type: string
-          description: Name of the object
-          example: "contact"
-        displayName:
-          type: string
-          description: Human-readable name of the object
-          example: "Contact"
-        fields:
-          type: object
-          description: Map of field metadata keyed by field name
-          additionalProperties:
-            $ref: "#/components/schemas/FieldMetadata"
