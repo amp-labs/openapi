@@ -1084,7 +1084,7 @@ paths:
   #         content:
   #           application/json:
   #             schema:
-  #               $ref: '../manifest/manifest.yaml#/components/schemas/ObjectMetadata'
+  #               $ref: '#/components/schemas/ObjectMetadata'
   #       default:
   #         description: Error
   #         content:
@@ -3360,6 +3360,26 @@ components:
               example: builder-id-123
             org:
               $ref: "#/components/schemas/Org"
+            # This schema actually isn't used in the manifest but it is used by the GetObjectMetadata endpoint
+    ObjectMetadata:
+      type: object
+      required:
+        - name
+        - fields
+      properties:
+        name:
+          type: string
+          description: Name of the object
+          example: "contact"
+        displayName:
+          type: string
+          description: Human-readable name of the object
+          example: "Contact"
+        fields:
+          type: object
+          description: Map of field metadata keyed by field name
+          additionalProperties:
+            $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
   securitySchemes:
     APIKeyHeader:
       type: apiKey
