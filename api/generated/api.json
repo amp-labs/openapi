@@ -10178,6 +10178,10 @@
                                                   "x-go-type-skip-optional-pointer": true,
                                                   "items": {
                                                     "type": "object",
+                                                    "required": [
+                                                      "value",
+                                                      "displayValue"
+                                                    ],
                                                     "description": "Represents a field value",
                                                     "properties": {
                                                       "value": {
@@ -10295,6 +10299,10 @@
                                                   "x-go-type-skip-optional-pointer": true,
                                                   "items": {
                                                     "type": "object",
+                                                    "required": [
+                                                      "value",
+                                                      "displayValue"
+                                                    ],
                                                     "description": "Represents a field value",
                                                     "properties": {
                                                       "value": {
@@ -10419,6 +10427,10 @@
                                                   "x-go-type-skip-optional-pointer": true,
                                                   "items": {
                                                     "type": "object",
+                                                    "required": [
+                                                      "value",
+                                                      "displayValue"
+                                                    ],
                                                     "description": "Represents a field value",
                                                     "properties": {
                                                       "value": {
@@ -36086,6 +36098,10 @@
                                         "x-go-type-skip-optional-pointer": true,
                                         "items": {
                                           "type": "object",
+                                          "required": [
+                                            "value",
+                                            "displayValue"
+                                          ],
                                           "description": "Represents a field value",
                                           "properties": {
                                             "value": {
@@ -36203,6 +36219,10 @@
                                         "x-go-type-skip-optional-pointer": true,
                                         "items": {
                                           "type": "object",
+                                          "required": [
+                                            "value",
+                                            "displayValue"
+                                          ],
                                           "description": "Represents a field value",
                                           "properties": {
                                             "value": {
@@ -36327,6 +36347,10 @@
                                         "x-go-type-skip-optional-pointer": true,
                                         "items": {
                                           "type": "object",
+                                          "required": [
+                                            "value",
+                                            "displayValue"
+                                          ],
                                           "description": "Represents a field value",
                                           "properties": {
                                             "value": {

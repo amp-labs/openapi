@@ -319,6 +319,9 @@ components:
 
     FieldValue:
       type: object
+      required:
+        - value
+        - displayValue
       description: Represents a field value
       properties:
         value:
