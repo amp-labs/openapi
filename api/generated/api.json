@@ -6000,19 +6000,6 @@
                                           "type": "boolean",
                                           "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                                           "example": true
-                                        },
-                                        "valueDefaults": {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "object",
-                                            "description": "Consumers can specify default values for these fields.",
-                                            "required": [
-                                              "fieldName"
-                                            ],
-                                            "additionalProperties": {
-                                              "type": "string"
-                                            }
-                                          }
                                         }
                                       }
                                     }
@@ -6766,19 +6753,6 @@
                                       "type": "boolean",
                                       "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                                       "example": true
-                                    },
-                                    "valueDefaults": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "description": "Consumers can specify default values for these fields.",
-                                        "required": [
-                                          "fieldName"
-                                        ],
-                                        "additionalProperties": {
-                                          "type": "string"
-                                        }
-                                      }
                                     }
                                   }
                                 }
@@ -8720,19 +8694,6 @@
                                           "type": "boolean",
                                           "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                                           "example": true
-                                        },
-                                        "valueDefaults": {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "object",
-                                            "description": "Consumers can specify default values for these fields.",
-                                            "required": [
-                                              "fieldName"
-                                            ],
-                                            "additionalProperties": {
-                                              "type": "string"
-                                            }
-                                          }
                                         }
                                       }
                                     }
@@ -10380,19 +10341,6 @@
                                   },
                                   "displayName": {
                                     "type": "string"
-                                  },
-                                  "valueDefaults": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "description": "Consumers can specify default values for these fields.",
-                                      "required": [
-                                        "fieldName"
-                                      ],
-                                      "additionalProperties": {
-                                        "type": "string"
-                                      }
-                                    }
                                   }
                                 }
                               }
@@ -35576,19 +35524,6 @@
                               "type": "boolean",
                               "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                               "example": true
-                            },
-                            "valueDefaults": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "description": "Consumers can specify default values for these fields.",
-                                "required": [
-                                  "fieldName"
-                                ],
-                                "additionalProperties": {
-                                  "type": "string"
-                                }
-                              }
                             }
                           }
                         }
@@ -35862,19 +35797,6 @@
                           "type": "boolean",
                           "description": "If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.",
                           "example": true
-                        },
-                        "valueDefaults": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "description": "Consumers can specify default values for these fields.",
-                            "required": [
-                              "fieldName"
-                            ],
-                            "additionalProperties": {
-                              "type": "string"
-                            }
-                          }
                         }
                       }
                     }
@@ -36192,19 +36114,6 @@
                         },
                         "displayName": {
                           "type": "string"
-                        },
-                        "valueDefaults": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "description": "Consumers can specify default values for these fields.",
-                            "required": [
-                              "fieldName"
-                            ],
-                            "additionalProperties": {
-                              "type": "string"
-                            }
-                          }
                         }
                       }
                     }

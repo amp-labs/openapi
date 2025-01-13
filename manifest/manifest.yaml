@@ -123,18 +123,6 @@ components:
           type: boolean
           description: If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.
           example: true
-        valueDefaults:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntegrationWriteObjectValueDefault'
-
-    IntegrationWriteObjectValueDefault:
-      type: object
-      description: Consumers can specify default values for these fields.
-      required:
-          - fieldName
-      additionalProperties:
-        type: string
 
     HydratedIntegration:
       type: object
@@ -237,10 +225,6 @@ components:
           type: string
         displayName:
           type: string
-        valueDefaults:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntegrationWriteObjectValueDefault'
 
     OptionalFieldsAutoOption:
       type: string
