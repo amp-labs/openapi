@@ -66,6 +66,17 @@ components:
           example: '{ phone: true, fax: true }'
           additionalProperties:
             type: boolean
+        selectedValueMappings:
+          type: object
+          description: This is a map of field names to their value mappings.
+          example:
+            stage:
+              open: "scheduled"
+              closedWon: "won"
+              closedLost: "lost"
+          x-go-type-skip-optional-pointer: true
+          additionalProperties:
+            $ref: '#/components/schemas/SelectedValueMappings'
         selectedFieldMappings:
           type: object
           description: This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.)
@@ -76,6 +87,17 @@ components:
           $ref: '#/components/schemas/SelectedFieldsAutoConfig'
         backfill:
           $ref: '#/components/schemas/BackfillConfig'
+
+    SelectedValueMappings:
+      type: object
+      description: This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.
+      example:
+        open: "scheduled"
+        closedWon: "won"
+        closedLost: "lost"
+      x-go-type-skip-optional-pointer: true
+      additionalProperties:
+        type: string
 
     BaseWriteConfig:
       type: object
