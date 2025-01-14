@@ -205,10 +205,15 @@ components:
         optionalFieldsAuto:
           $ref: '#/components/schemas/OptionalFieldsAutoOption'
         allFields:
-          description: This is a list of all fields on the object for a particular SaaS instance. This is used to populate the UI during configuration.
+          description: This is a list of all fields on the object for a particular SaaS instance, including their display names.
           type: array
           items:
             $ref: '#/components/schemas/HydratedIntegrationField'
+        allFieldsMetadataMap:
+          description: This is a map of all fields on the object including their metadata (such as display name and type), the keys of the map are the field names.
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FieldMetadata'
         backfill:
           $ref: '#/components/schemas/Backfill'
 
@@ -335,20 +340,24 @@ components:
 
     HydratedIntegrationFieldExistent:
       type: object
-      allOf:
-        - $ref: '#/components/schemas/FieldMetadata'
-        - type: object
-          properties:
-            mapToName:
-              type: string
-              description: The field name to map to.
-              example: account_id
-              x-go-type-skip-optional-pointer: true
-            mapToDisplayName:
-              type: string
-              description: The display name to map to.
-              example: Account ID
-              x-go-type-skip-optional-pointer: true
+      required:
+        - fieldName
+        - displayName
+      properties:
+        fieldName:
+          type: string
+        displayName:
+          type: string
+        mapToName:
+          type: string
+          description: The field name to map to in the destination.
+          example: account_id
+          x-go-type-skip-optional-pointer: true
+        mapToDisplayName:
+          type: string
+          description: The display name to map to in the destination.
+          example: Account ID
+          x-go-type-skip-optional-pointer: true
 
     Backfill:
       type: object
