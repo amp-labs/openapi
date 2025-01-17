@@ -123,6 +123,8 @@ components:
           type: boolean
           description: If true, the write object will inherit the mapping from the read object. If false, the write object will have no mapping.
           example: true
+        valueDefaults:
+          $ref: '#/components/schemas/ValueDefaults'
 
     HydratedIntegration:
       type: object
@@ -230,6 +232,8 @@ components:
           type: string
         displayName:
           type: string
+        valueDefaults:
+          $ref: '#/components/schemas/ValueDefaults'
 
     OptionalFieldsAutoOption:
       type: string
@@ -397,3 +401,12 @@ components:
             description: The number of records to receive per data delivery.
             minimum: 50
             maximum: 500
+
+    ValueDefaults:
+      type: object
+      description: Configuration to set default write values for object fields.
+      properties:
+        allowAnyFields:
+          type: boolean
+          description: If true, users can set default values for any field.
+          example: true
