@@ -1653,7 +1653,7 @@ paths:
             type: string
             enum: [force, ifExpired]
           description:
-            Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration. 
+            Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration.
       responses:
         200:
           description: Connection
@@ -3369,12 +3369,15 @@ components:
       properties:
         name:
           type: string
-          description: Name of the object
+          description: The provider name of the object
           example: "contact"
         displayName:
           type: string
           description: Human-readable name of the object
           example: "Contact"
+        mappedObjectName:
+          type: string
+          example: "people"
         fields:
           type: object
           description: Map of field metadata keyed by field name
