@@ -10450,6 +10450,17 @@
                                   },
                                   "displayName": {
                                     "type": "string"
+                                  },
+                                  "valueDefaults": {
+                                    "type": "object",
+                                    "description": "Configuration to set default write values for object fields.",
+                                    "properties": {
+                                      "allowAnyFields": {
+                                        "type": "boolean",
+                                        "description": "If true, users can set default values for any field.",
+                                        "example": true
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -36756,6 +36767,17 @@
                         },
                         "displayName": {
                           "type": "string"
+                        },
+                        "valueDefaults": {
+                          "type": "object",
+                          "description": "Configuration to set default write values for object fields.",
+                          "properties": {
+                            "allowAnyFields": {
+                              "type": "boolean",
+                              "description": "If true, users can set default values for any field.",
+                              "example": true
+                            }
+                          }
                         }
                       }
                     }

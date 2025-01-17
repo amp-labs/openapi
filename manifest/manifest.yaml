@@ -232,6 +232,8 @@ components:
           type: string
         displayName:
           type: string
+        valueDefaults:
+          $ref: '#/components/schemas/ValueDefaults'
 
     OptionalFieldsAutoOption:
       type: string
