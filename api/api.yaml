@@ -1882,22 +1882,23 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/destinations/{destinationName}:
+  /projects/{projectIdOrName}/destinations/{destination}:
     get:
       summary: Get a destination
       operationId: getDestination
-      tags: ["Destination"]
+      tags: [ "Destination" ]
       parameters:
         - name: projectIdOrName
           in: path
           required: true
           schema:
             type: string
-        - name: destinationName
+        - name: destination
           in: path
           required: true
           schema:
             type: string
+          description: The destination name
       responses:
         404:
           description: Destination not found
@@ -1917,7 +1918,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/destinations/{destinationId}:
     patch:
       summary: Update a destination
       operationId: updateDestination
@@ -1928,11 +1928,12 @@ paths:
           required: true
           schema:
             type: string
-        - name: destinationId
+        - name: destination
           in: path
           required: true
           schema:
             type: string
+          description: The destination Id
       requestBody:
         required: true
         content:
@@ -2010,11 +2011,12 @@ paths:
           required: true
           schema:
             type: string
-        - name: destinationId
+        - name: destination
           in: path
           required: true
           schema:
             type: string
+          description: The destination Id
       responses:
         204:
           description: Deleted
