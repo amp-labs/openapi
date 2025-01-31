@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: Adds global retry logic for the SDK
+  version: 1.0.0
+actions:
+  - target: $
+    update:
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 500 # 500 milliseconds
+          maxInterval: 60000 # 60 seconds
+          maxElapsedTime: 3600000 # 5 minutes
+          exponent: 1.5
+        statusCodes:
+          - 5XX
