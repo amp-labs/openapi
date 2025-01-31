@@ -1933,7 +1933,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The destination Id
+          description: The destination ID
       requestBody:
         required: true
         content:
@@ -2016,7 +2016,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The destination Id
+          description: The destination ID
       responses:
         204:
           description: Deleted
