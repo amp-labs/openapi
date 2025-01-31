@@ -28794,7 +28794,6 @@
       }
     },
     "/projects/{projectIdOrName}/destinations/{destination}": {
-    "/projects/{projectIdOrName}/destinations/{destination}": {
       "get": {
         "summary": "Get a destination",
         "operationId": "getDestination",

@@ -1883,11 +1883,9 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/destinations/{destination}:
-  /projects/{projectIdOrName}/destinations/{destination}:
     get:
       summary: Get a destination
       operationId: getDestination
-      tags: [ "Destination" ]
       tags: [ "Destination" ]
       parameters:
         - name: projectIdOrName
