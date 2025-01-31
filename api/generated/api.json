@@ -29360,7 +29360,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The destination Id"
+            "description": "The destination ID"
           }
         ],
         "requestBody": {
@@ -30601,7 +30601,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The destination Id"
+            "description": "The destination ID"
           }
         ],
         "responses": {
