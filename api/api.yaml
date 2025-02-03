@@ -2868,6 +2868,10 @@ components:
           enum: [created, working, bad_credentials]
         oauth2AuthorizationCode:
           $ref: "#/components/schemas/Oauth2AuthorizationCodeTokensOnly"
+        apiKey:
+          type: string
+          description: The API key used while making the connection.
+          example: api-key-123
     Oauth2AuthorizationCodeTokensOnly:
       type: object
       properties:
