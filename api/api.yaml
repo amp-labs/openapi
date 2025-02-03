@@ -3037,38 +3037,6 @@ components:
           description: The time the consumer was last updated.
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
-    OperationEvent:
-      required:
-        - id
-        - operationId
-        - type
-        - status
-      type: object
-      properties:
-        id:
-          type: string
-          description: The operation event ID.
-          example: operation-event-123
-        operationId:
-          type: string
-          description: The operation ID.
-          example: operation-123
-        type:
-          type: string
-          description: The operation event type.
-          example: ValidateParameters
-        status:
-          type: string
-          description: The status of the operation event.
-          example: in_progress
-        result:
-          type: string
-          description: The result of the operation event.
-          example: "Validated parameters successfully"
-        createTime:
-          type: string
-          description: The time the operation event was created.
-          format: date-time
     Operation:
       required:
         - projectId
@@ -3112,10 +3080,6 @@ components:
           type: string
           description: The result of the operation.
           example: "[object] No changes"
-        latestOperationEventId:
-          type: string
-          description: The latest operation event ID.
-          example: operation-event-123
         metadata:
           type: object
           description: Metadata associated with the operation.
