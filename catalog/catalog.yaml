@@ -46,7 +46,7 @@ components:
           type: boolean
         write:
           type: boolean
-        SubscribeConfig:
+        subscribeConfig:
           $ref: '#/components/schemas/SubscribeConfig'
 
     BulkWriteSupport:

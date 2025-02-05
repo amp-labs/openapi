@@ -20162,7 +20162,7 @@
                           "write": {
                             "type": "boolean"
                           },
-                          "SubscribeConfig": {
+                          "subscribeConfig": {
                             "type": "object",
                             "required": [
                               "subscriptionScope",
@@ -20714,7 +20714,7 @@
                         "write": {
                           "type": "boolean"
                         },
-                        "SubscribeConfig": {
+                        "subscribeConfig": {
                           "type": "object",
                           "required": [
                             "subscriptionScope",
