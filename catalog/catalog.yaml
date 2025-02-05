@@ -352,10 +352,10 @@ components:
       properties:
         subscriptionScope:
           type: string
-          enum: [integragion, installation]
+          enum: [integration, installation]
           description: The scope of the subscription.
         targetURLScope:
-          enum: [integragion, installation]
+          enum: [integration, installation]
           description: The scope of the target URL.
         registrationTiming:
           type: string

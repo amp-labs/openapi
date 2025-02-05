@@ -20173,14 +20173,14 @@
                               "subscriptionScope": {
                                 "type": "string",
                                 "enum": [
-                                  "integragion",
+                                  "integration",
                                   "installation"
                                 ],
                                 "description": "The scope of the subscription."
                               },
                               "targetURLScope": {
                                 "enum": [
-                                  "integragion",
+                                  "integration",
                                   "installation"
                                 ],
                                 "description": "The scope of the target URL."
@@ -20725,14 +20725,14 @@
                             "subscriptionScope": {
                               "type": "string",
                               "enum": [
-                                "integragion",
+                                "integration",
                                 "installation"
                               ],
                               "description": "The scope of the subscription."
                             },
                             "targetURLScope": {
                               "enum": [
-                                "integragion",
+                                "integration",
                                 "installation"
                               ],
                               "description": "The scope of the target URL."
