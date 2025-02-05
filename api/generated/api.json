@@ -20162,37 +20162,20 @@
                           "write": {
                             "type": "boolean"
                           },
-                          "subscribeConfig": {
+                          "subscribeSupport": {
                             "type": "object",
-                            "required": [
-                              "subscriptionScope",
-                              "targetURLScope",
-                              "registrationTiming"
-                            ],
                             "properties": {
-                              "subscriptionScope": {
-                                "type": "string",
-                                "enum": [
-                                  "integration",
-                                  "installation"
-                                ],
-                                "description": "The scope of the subscription."
+                              "create": {
+                                "type": "boolean"
                               },
-                              "targetURLScope": {
-                                "enum": [
-                                  "integration",
-                                  "installation"
-                                ],
-                                "description": "The scope of the target URL."
+                              "update": {
+                                "type": "boolean"
                               },
-                              "registrationTiming": {
-                                "type": "string",
-                                "enum": [
-                                  "providerApp",
-                                  "integration",
-                                  "installation"
-                                ],
-                                "description": "The timing of the registration."
+                              "delete": {
+                                "type": "boolean"
+                              },
+                              "passThrough": {
+                                "type": "boolean"
                               }
                             }
                           }
@@ -20261,6 +20244,40 @@
                         "type": "object",
                         "additionalProperties": {
                           "type": "string"
+                        }
+                      },
+                      "subscribeConfig": {
+                        "type": "object",
+                        "required": [
+                          "subscriptionScope",
+                          "targetURLScope",
+                          "registrationTiming"
+                        ],
+                        "properties": {
+                          "subscriptionScope": {
+                            "type": "string",
+                            "enum": [
+                              "integration",
+                              "installation"
+                            ],
+                            "description": "The scope of the subscription."
+                          },
+                          "targetURLScope": {
+                            "enum": [
+                              "integration",
+                              "installation"
+                            ],
+                            "description": "The scope of the target URL."
+                          },
+                          "registrationTiming": {
+                            "type": "string",
+                            "enum": [
+                              "providerApp",
+                              "integration",
+                              "installation"
+                            ],
+                            "description": "The timing of the registration."
+                          }
                         }
                       }
                     }
@@ -20714,37 +20731,20 @@
                         "write": {
                           "type": "boolean"
                         },
-                        "subscribeConfig": {
+                        "subscribeSupport": {
                           "type": "object",
-                          "required": [
-                            "subscriptionScope",
-                            "targetURLScope",
-                            "registrationTiming"
-                          ],
                           "properties": {
-                            "subscriptionScope": {
-                              "type": "string",
-                              "enum": [
-                                "integration",
-                                "installation"
-                              ],
-                              "description": "The scope of the subscription."
+                            "create": {
+                              "type": "boolean"
                             },
-                            "targetURLScope": {
-                              "enum": [
-                                "integration",
-                                "installation"
-                              ],
-                              "description": "The scope of the target URL."
+                            "update": {
+                              "type": "boolean"
                             },
-                            "registrationTiming": {
-                              "type": "string",
-                              "enum": [
-                                "providerApp",
-                                "integration",
-                                "installation"
-                              ],
-                              "description": "The timing of the registration."
+                            "delete": {
+                              "type": "boolean"
+                            },
+                            "passThrough": {
+                              "type": "boolean"
                             }
                           }
                         }
@@ -20813,6 +20813,40 @@
                       "type": "object",
                       "additionalProperties": {
                         "type": "string"
+                      }
+                    },
+                    "subscribeConfig": {
+                      "type": "object",
+                      "required": [
+                        "subscriptionScope",
+                        "targetURLScope",
+                        "registrationTiming"
+                      ],
+                      "properties": {
+                        "subscriptionScope": {
+                          "type": "string",
+                          "enum": [
+                            "integration",
+                            "installation"
+                          ],
+                          "description": "The scope of the subscription."
+                        },
+                        "targetURLScope": {
+                          "enum": [
+                            "integration",
+                            "installation"
+                          ],
+                          "description": "The scope of the target URL."
+                        },
+                        "registrationTiming": {
+                          "type": "string",
+                          "enum": [
+                            "providerApp",
+                            "integration",
+                            "installation"
+                          ],
+                          "description": "The timing of the registration."
+                        }
                       }
                     }
                   }

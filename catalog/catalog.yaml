@@ -46,8 +46,8 @@ components:
           type: boolean
         write:
           type: boolean
-        subscribeConfig:
-          $ref: '#/components/schemas/SubscribeConfig'
+        subscribeSupport:
+          $ref: '#/components/schemas/SubscribeSupport'
 
     BulkWriteSupport:
       type: object
@@ -322,6 +322,8 @@ components:
           $ref: '#/components/schemas/Media'
         labels:
           $ref: '#/components/schemas/Labels'
+        subscribeConfig:
+          $ref: '#/components/schemas/SubscribeConfig'
           
     CatalogWrapper:
       type: object
