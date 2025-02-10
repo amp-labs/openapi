@@ -18,8 +18,10 @@ pnpm i
 
 ## Making a change
 
-* Create a new pull request, once it is approved, merge it.
-* In order to update the [online references](https://docs.withampersand.com/reference), go to the [docs repo](https://github.com/amp-labs/docs), check out a new branch, run `pnpm run gen` and create a PR with the change.
+* Create a new pull request
+* Run `make lint` to ensure that the linter passes
+* Request review, and merge the PR once it is approved
+* After a few minutes, a Github Action on the [docs repo](https://github.com/amp-labs/docs) will auto-update the [online API reference](https://docs.withampersand.com/reference).
 
 ## Generating OpenAPI json definition
 
