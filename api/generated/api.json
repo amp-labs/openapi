@@ -11804,10 +11804,38 @@
                                             "selectedValueDefaults": {
                                               "type": "object",
                                               "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                                              "example": "{ phone: \"555-555-5555\"  }",
                                               "x-go-type-skip-optional-pointer": true,
                                               "additionalProperties": {
-                                                "type": "string"
+                                                "type": "object",
+                                                "x-go-type": "any",
+                                                "required": [
+                                                  "value"
+                                                ],
+                                                "properties": {
+                                                  "value": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "string"
+                                                      },
+                                                      {
+                                                        "type": "integer"
+                                                      },
+                                                      {
+                                                        "type": "boolean"
+                                                      }
+                                                    ],
+                                                    "x-go-type": "any",
+                                                    "description": "The value to be used as a default."
+                                                  },
+                                                  "applyOnUpdate": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "always",
+                                                      "never"
+                                                    ],
+                                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                                  }
+                                                }
                                               }
                                             }
                                           }
@@ -12502,10 +12530,38 @@
                                         "selectedValueDefaults": {
                                           "type": "object",
                                           "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                                          "example": "{ phone: \"555-555-5555\"  }",
                                           "x-go-type-skip-optional-pointer": true,
                                           "additionalProperties": {
-                                            "type": "string"
+                                            "type": "object",
+                                            "x-go-type": "any",
+                                            "required": [
+                                              "value"
+                                            ],
+                                            "properties": {
+                                              "value": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "type": "integer"
+                                                  },
+                                                  {
+                                                    "type": "boolean"
+                                                  }
+                                                ],
+                                                "x-go-type": "any",
+                                                "description": "The value to be used as a default."
+                                              },
+                                              "applyOnUpdate": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                              }
+                                            }
                                           }
                                         }
                                       }
@@ -13064,10 +13120,38 @@
                                           "selectedValueDefaults": {
                                             "type": "object",
                                             "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                                            "example": "{ phone: \"555-555-5555\"  }",
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
-                                              "type": "string"
+                                              "type": "object",
+                                              "x-go-type": "any",
+                                              "required": [
+                                                "value"
+                                              ],
+                                              "properties": {
+                                                "value": {
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "string"
+                                                    },
+                                                    {
+                                                      "type": "integer"
+                                                    },
+                                                    {
+                                                      "type": "boolean"
+                                                    }
+                                                  ],
+                                                  "x-go-type": "any",
+                                                  "description": "The value to be used as a default."
+                                                },
+                                                "applyOnUpdate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -14430,10 +14514,38 @@
                                           "selectedValueDefaults": {
                                             "type": "object",
                                             "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                                            "example": "{ phone: \"555-555-5555\"  }",
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
-                                              "type": "string"
+                                              "type": "object",
+                                              "x-go-type": "any",
+                                              "required": [
+                                                "value"
+                                              ],
+                                              "properties": {
+                                                "value": {
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "string"
+                                                    },
+                                                    {
+                                                      "type": "integer"
+                                                    },
+                                                    {
+                                                      "type": "boolean"
+                                                    }
+                                                  ],
+                                                  "x-go-type": "any",
+                                                  "description": "The value to be used as a default."
+                                                },
+                                                "applyOnUpdate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -15314,10 +15426,38 @@
                                             "selectedValueDefaults": {
                                               "type": "object",
                                               "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                                              "example": "{ phone: \"555-555-5555\"  }",
                                               "x-go-type-skip-optional-pointer": true,
                                               "additionalProperties": {
-                                                "type": "string"
+                                                "type": "object",
+                                                "x-go-type": "any",
+                                                "required": [
+                                                  "value"
+                                                ],
+                                                "properties": {
+                                                  "value": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "string"
+                                                      },
+                                                      {
+                                                        "type": "integer"
+                                                      },
+                                                      {
+                                                        "type": "boolean"
+                                                      }
+                                                    ],
+                                                    "x-go-type": "any",
+                                                    "description": "The value to be used as a default."
+                                                  },
+                                                  "applyOnUpdate": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "always",
+                                                      "never"
+                                                    ],
+                                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                                  }
+                                                }
                                               }
                                             }
                                           }
@@ -15865,10 +16005,38 @@
                                           "selectedValueDefaults": {
                                             "type": "object",
                                             "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                                            "example": "{ phone: \"555-555-5555\"  }",
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
-                                              "type": "string"
+                                              "type": "object",
+                                              "x-go-type": "any",
+                                              "required": [
+                                                "value"
+                                              ],
+                                              "properties": {
+                                                "value": {
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "string"
+                                                    },
+                                                    {
+                                                      "type": "integer"
+                                                    },
+                                                    {
+                                                      "type": "boolean"
+                                                    }
+                                                  ],
+                                                  "x-go-type": "any",
+                                                  "description": "The value to be used as a default."
+                                                },
+                                                "applyOnUpdate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -37728,10 +37896,38 @@
                                 "selectedValueDefaults": {
                                   "type": "object",
                                   "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                                  "example": "{ phone: \"555-555-5555\"  }",
                                   "x-go-type-skip-optional-pointer": true,
                                   "additionalProperties": {
-                                    "type": "string"
+                                    "type": "object",
+                                    "x-go-type": "any",
+                                    "required": [
+                                      "value"
+                                    ],
+                                    "properties": {
+                                      "value": {
+                                        "oneOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "integer"
+                                          },
+                                          {
+                                            "type": "boolean"
+                                          }
+                                        ],
+                                        "x-go-type": "any",
+                                        "description": "The value to be used as a default."
+                                      },
+                                      "applyOnUpdate": {
+                                        "type": "string",
+                                        "enum": [
+                                          "always",
+                                          "never"
+                                        ],
+                                        "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -37942,10 +38138,38 @@
                             "selectedValueDefaults": {
                               "type": "object",
                               "description": "This is a map of field names to default values. These values will be used when writing to the object.",
-                              "example": "{ phone: \"555-555-5555\"  }",
                               "x-go-type-skip-optional-pointer": true,
                               "additionalProperties": {
-                                "type": "string"
+                                "type": "object",
+                                "x-go-type": "any",
+                                "required": [
+                                  "value"
+                                ],
+                                "properties": {
+                                  "value": {
+                                    "oneOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "integer"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ],
+                                    "x-go-type": "any",
+                                    "description": "The value to be used as a default."
+                                  },
+                                  "applyOnUpdate": {
+                                    "type": "string",
+                                    "enum": [
+                                      "always",
+                                      "never"
+                                    ],
+                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                  }
+                                }
                               }
                             }
                           }
