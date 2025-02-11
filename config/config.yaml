@@ -120,10 +120,9 @@ components:
         selectedValueDefaults:
           type: object
           description: This is a map of field names to default values. These values will be used when writing to the object.
-          example: '{ phone: "555-555-5555"  }'
           x-go-type-skip-optional-pointer: true
           additionalProperties:
-            type: string
+            $ref: '#/components/schemas/ValueDefault'
 
     ConfigContent:
       allOf:
@@ -218,3 +217,26 @@ components:
           example: false
           x-oapi-codegen-extra-tags:
             validate: required_without=Days
+
+    ValueDefault:
+      type: object
+      x-go-type: any # TODO: Remove this when we no longer have to support the legacy string type (See ENG-1922).
+      required:
+        - value
+      properties:
+        value:
+          oneOf:
+            - type: string
+            - type: integer
+            - type: boolean
+          x-go-type: any
+          description: The value to be used as a default.
+        applyOnUpdate:
+          type: string
+          enum: [ always, never ]
+          description: |
+            Whether the default value should be applied when updating a record.
+            If set to `always`, the default value will be applied when updating a record.
+            If set to `never`, the default value will not be applied when updating a record,
+            only when creating a record.
+            If unspecified, then `always` is assumed.
