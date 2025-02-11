@@ -46,6 +46,9 @@ components:
           type: boolean
         write:
           type: boolean
+        subscribeSupport:
+          $ref: '#/components/schemas/SubscribeSupport'
+
     BulkWriteSupport:
       type: object
       x-oapi-codegen-extra-tags:
@@ -319,6 +322,8 @@ components:
           $ref: '#/components/schemas/Media'
         labels:
           $ref: '#/components/schemas/Labels'
+        subscribeOpts:
+          $ref: '#/components/schemas/SubscribeOpts'
           
     CatalogWrapper:
       type: object
@@ -339,3 +344,34 @@ components:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/ProviderInfo'
+
+    SubscribeOpts:
+      type: object
+      required:
+        - subscriptionScope
+        - targetURLScope
+        - registrationTiming
+      properties:
+        subscriptionScope:
+          type: string
+          enum: [integration, installation]
+          description: The scope of the subscription.
+        targetURLScope:
+          enum: [integration, installation]
+          description: The scope of the target URL.
+        registrationTiming:
+          type: string
+          enum: [providerApp, integration, installation]
+          description: The timing of the registration.
+
+    SubscribeSupport:
+      type: object
+      properties:
+        create:
+          type: boolean
+        update:
+          type: boolean
+        delete:
+          type: boolean
+        passThrough:
+          type: boolean
