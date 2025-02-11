@@ -322,8 +322,8 @@ components:
           $ref: '#/components/schemas/Media'
         labels:
           $ref: '#/components/schemas/Labels'
-        subscribeConfig:
-          $ref: '#/components/schemas/SubscribeConfig'
+        subscribeOpts:
+          $ref: '#/components/schemas/SubscribeOpts'
           
     CatalogWrapper:
       type: object
@@ -345,7 +345,7 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/ProviderInfo'
 
-    SubscribeConfig:
+    SubscribeOpts:
       type: object
       required:
         - subscriptionScope

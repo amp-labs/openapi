@@ -20246,7 +20246,7 @@
                           "type": "string"
                         }
                       },
-                      "subscribeConfig": {
+                      "subscribeOpts": {
                         "type": "object",
                         "required": [
                           "subscriptionScope",
@@ -20815,7 +20815,7 @@
                         "type": "string"
                       }
                     },
-                    "subscribeConfig": {
+                    "subscribeOpts": {
                       "type": "object",
                       "required": [
                         "subscriptionScope",
