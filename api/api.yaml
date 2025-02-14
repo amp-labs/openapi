@@ -1162,15 +1162,36 @@ paths:
           required: true
           schema:
             type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 200
+          description: The number of operations to return.
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+          description: A cursor that can be passed to paginate through multiple pages of operations.
       responses:
         200:
           description: List of operations
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Operation"
+                type: object
+                required:
+                  - results
+                  - pagination
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Operation'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationInfo'
         400:
           description: Bad Request
           content:
@@ -3403,6 +3424,19 @@ components:
           description: Map of field metadata keyed by field name
           additionalProperties:
             $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
+    PaginationInfo:
+      type: object
+      required:
+        - done
+      properties:
+        done:
+          type: boolean
+          description: If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.
+          example: false
+        nextPageToken:
+          type: string
+          description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
+          example: Q9JT+2qfys28V4ODN+UayA==
   securitySchemes:
     APIKeyHeader:
       type: apiKey

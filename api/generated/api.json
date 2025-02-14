@@ -17459,6 +17459,25 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 200
+            },
+            "description": "The number of operations to return."
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "A cursor that can be passed to paginate through multiple pages of operations."
           }
         ],
         "responses": {
@@ -17467,69 +17486,96 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "required": [
-                      "projectId",
-                      "integrationId",
-                      "installationId",
-                      "configId",
-                      "actionType",
-                      "status",
-                      "id"
-                    ],
-                    "type": "object",
-                    "properties": {
-                      "projectId": {
-                        "type": "string",
-                        "description": "The Ampersand project ID.",
-                        "example": "project-456"
-                      },
-                      "integrationId": {
-                        "type": "string",
-                        "description": "The integration ID.",
-                        "example": "integration-123"
-                      },
-                      "configId": {
-                        "type": "string",
-                        "description": "The config ID.",
-                        "example": "config-123"
-                      },
-                      "actionType": {
-                        "type": "string",
-                        "description": "The action type to perform for the given object.",
-                        "example": "read"
-                      },
-                      "id": {
-                        "type": "string",
-                        "description": "The operation ID.",
-                        "example": "operation-123"
-                      },
-                      "installationId": {
-                        "type": "string",
-                        "description": "The Ampersand installation ID.",
-                        "example": "installation-123"
-                      },
-                      "status": {
-                        "type": "string",
-                        "description": "The status of the operation.",
-                        "example": "success"
-                      },
-                      "result": {
-                        "type": "string",
-                        "description": "The result of the operation.",
-                        "example": "[object] No changes"
-                      },
-                      "metadata": {
+                  "type": "object",
+                  "required": [
+                    "results",
+                    "pagination"
+                  ],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "projectId",
+                          "integrationId",
+                          "installationId",
+                          "configId",
+                          "actionType",
+                          "status",
+                          "id"
+                        ],
                         "type": "object",
-                        "description": "Metadata associated with the operation.",
-                        "example": {}
-                      },
-                      "createTime": {
-                        "type": "string",
-                        "description": "The time the operation was created.",
-                        "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "properties": {
+                          "projectId": {
+                            "type": "string",
+                            "description": "The Ampersand project ID.",
+                            "example": "project-456"
+                          },
+                          "integrationId": {
+                            "type": "string",
+                            "description": "The integration ID.",
+                            "example": "integration-123"
+                          },
+                          "configId": {
+                            "type": "string",
+                            "description": "The config ID.",
+                            "example": "config-123"
+                          },
+                          "actionType": {
+                            "type": "string",
+                            "description": "The action type to perform for the given object.",
+                            "example": "read"
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "The operation ID.",
+                            "example": "operation-123"
+                          },
+                          "installationId": {
+                            "type": "string",
+                            "description": "The Ampersand installation ID.",
+                            "example": "installation-123"
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The status of the operation.",
+                            "example": "success"
+                          },
+                          "result": {
+                            "type": "string",
+                            "description": "The result of the operation.",
+                            "example": "[object] No changes"
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "description": "Metadata associated with the operation.",
+                            "example": {}
+                          },
+                          "createTime": {
+                            "type": "string",
+                            "description": "The time the operation was created.",
+                            "format": "date-time",
+                            "example": "2023-07-13T21:34:44.816Z"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "required": [
+                        "done"
+                      ],
+                      "properties": {
+                        "done": {
+                          "type": "boolean",
+                          "description": "If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.",
+                          "example": false
+                        },
+                        "nextPageToken": {
+                          "type": "string",
+                          "description": "If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.",
+                          "example": "Q9JT+2qfys28V4ODN+UayA=="
+                        }
                       }
                     }
                   }
@@ -39360,6 +39406,24 @@
                 }
               }
             }
+          }
+        }
+      },
+      "PaginationInfo": {
+        "type": "object",
+        "required": [
+          "done"
+        ],
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "description": "If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.",
+            "example": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "description": "If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.",
+            "example": "Q9JT+2qfys28V4ODN+UayA=="
           }
         }
       }
