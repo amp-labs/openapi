@@ -219,17 +219,18 @@ components:
             validate: required_without=Days
 
     ValueDefault:
+      oneOf:
+        - $ref: '#/components/schemas/ValueDefaultString'
+        - $ref: '#/components/schemas/ValueDefaultInteger'
+        - $ref: '#/components/schemas/ValueDefaultBoolean'
+
+    ValueDefaultString:
       type: object
-      x-go-type: any # TODO: Remove this when we no longer have to support the legacy string type (See ENG-1922).
       required:
         - value
       properties:
         value:
-          oneOf:
-            - $ref: '#/components/schemas/ValueDefaultValueString'
-            - $ref: '#/components/schemas/ValueDefaultValueInteger'
-            - $ref: '#/components/schemas/ValueDefaultValueBoolean'
-          x-go-type: any
+          type: string
           description: The value to be used as a default.
         applyOnUpdate:
           type: string
@@ -241,11 +242,38 @@ components:
             only when creating a record.
             If unspecified, then `always` is assumed.
 
-    ValueDefaultValueString:
-      type: string
+    ValueDefaultInteger:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: integer
+          description: The value to be used as a default.
+        applyOnUpdate:
+          type: string
+          enum: [ always, never ]
+          description: |
+              Whether the default value should be applied when updating a record.
+              If set to `always`, the default value will be applied when updating a record.
+              If set to `never`, the default value will not be applied when updating a record,
+              only when creating a record.
+              If unspecified, then `always` is assumed.
 
-    ValueDefaultValueInteger:
-      type: integer
-
-    ValueDefaultValueBoolean:
-      type: boolean
+    ValueDefaultBoolean:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: boolean
+          description: The value to be used as a default.
+        applyOnUpdate:
+          type: string
+          enum: [ always, never ]
+          description: |
+            Whether the default value should be applied when updating a record.
+            If set to `always`, the default value will be applied when updating a record.
+            If set to `never`, the default value will not be applied when updating a record,
+            only when creating a record.
+            If unspecified, then `always` is assumed.
