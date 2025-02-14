@@ -226,9 +226,9 @@ components:
       properties:
         value:
           oneOf:
-            - type: string
-            - type: integer
-            - type: boolean
+            - $ref: '#/components/schemas/ValueDefaultValueString'
+            - $ref: '#/components/schemas/ValueDefaultValueInteger'
+            - $ref: '#/components/schemas/ValueDefaultValueBoolean'
           x-go-type: any
           description: The value to be used as a default.
         applyOnUpdate:
@@ -240,3 +240,12 @@ components:
             If set to `never`, the default value will not be applied when updating a record,
             only when creating a record.
             If unspecified, then `always` is assumed.
+
+    ValueDefaultValueString:
+      type: string
+
+    ValueDefaultValueInteger:
+      type: integer
+
+    ValueDefaultValueBoolean:
+      type: boolean
