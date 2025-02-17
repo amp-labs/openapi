@@ -1338,6 +1338,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/api-keys:
     get:
+      x-speakeasy-ignore: true
       summary: List API keys
       operationId: listApiKeys
       tags: ["API Key"]
@@ -1374,6 +1375,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     post:
+      x-speakeasy-ignore: true
       summary: Create a new API key
       operationId: createApiKey
       tags: ["API Key"]
@@ -1411,6 +1413,7 @@ paths:
       x-codegen-request-body-name: apiKey
   /projects/{projectIdOrName}/api-keys/{apiKey}:
     get:
+      x-speakeasy-ignore: true
       summary: Get an API key
       operationId: getApiKey
       tags: ["API Key"]
@@ -1445,6 +1448,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
+      x-speakeasy-ignore: true
       summary: Delete an API key
       operationId: deleteApiKey
       tags: ["API Key"]
@@ -1469,6 +1473,7 @@ paths:
         204:
           description: Deleted
     patch:
+      x-speakeasy-ignore: true
       summary: Update an API key
       operationId: updateApiKey
       tags: ["API Key"]
@@ -2122,8 +2127,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs:
-    x-speakeasy-ignore: true
     post:
+      x-speakeasy-ignore: true
       summary: Create a new organization
       operationId: createOrg
       tags: ["Org"]
@@ -2155,8 +2160,8 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: org
   /orgs/{orgId}:
-    x-speakeasy-ignore: true
     get:
+      x-speakeasy-ignore: true
       summary: Get an organization
       operationId: getOrg
       tags: ["Org"]
@@ -2186,6 +2191,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
+      x-speakeasy-ignore: true
       summary: Update an organization
       operationId: updateOrg
       tags: ["Org"]
@@ -2240,8 +2246,8 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         x-codegen-request-body-name: orgUpdate
   /orgs/{orgId}/builders:
-    x-speakeasy-ignore: true
     get:
+      x-speakeasy-ignore: true
       summary: List builders for an organization
       operationId: listOrgBuilders
       tags: ["Org"]
@@ -2267,8 +2273,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/invites:
-    x-speakeasy-ignore: true
     post:
+      x-speakeasy-ignore: true
       summary: Invite a user to an organization
       operationId: createOrgInvite
       tags: ["Org"]
@@ -2311,6 +2317,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         x-codegen-request-body-name: invite
     get:
+      x-speakeasy-ignore: true
       summary: List invites for an organization
       operationId: listOrgInvites
       tags: ["Org"]
@@ -2336,8 +2343,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/invites/{inviteId}:
-    x-speakeasy-ignore: true
     get:
+      x-speakeasy-ignore: true
       summary: Get an invite
       operationId: getOrgInvite
       tags: ["Org"]
@@ -2366,6 +2373,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
+      x-speakeasy-ignore: true
       summary: Revoke an invite
       operationId: deleteOrgInvite
       tags: ["Org"]
@@ -2396,8 +2404,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /my-info:
-    x-speakeasy-ignore: true
     get:
+      x-speakeasy-ignore: true
       summary: Get information about the current user
       operationId: getMyInfo
       tags: ["User"]
@@ -2416,8 +2424,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /invites:accept:
-    x-speakeasy-ignore: true
     post:
+      x-speakeasy-ignore: true
       summary: Accept an invite
       operationId: acceptInvite
       tags: ["User"]
@@ -2448,8 +2456,8 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/billingAccount:
-    x-speakeasy-ignore: true
     get:
+      x-speakeasy-ignore: true
       summary: Get the billing account for an organization
       operationId: getOrgBillingAccount
       tags: ["Billing Account"]
