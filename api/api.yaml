@@ -2122,6 +2122,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs:
+    x-speakeasy-ignore: true
     post:
       summary: Create a new organization
       operationId: createOrg
@@ -2154,6 +2155,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: org
   /orgs/{orgId}:
+    x-speakeasy-ignore: true
     get:
       summary: Get an organization
       operationId: getOrg
@@ -2238,6 +2240,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         x-codegen-request-body-name: orgUpdate
   /orgs/{orgId}/builders:
+    x-speakeasy-ignore: true
     get:
       summary: List builders for an organization
       operationId: listOrgBuilders
@@ -2264,6 +2267,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/invites:
+    x-speakeasy-ignore: true
     post:
       summary: Invite a user to an organization
       operationId: createOrgInvite
@@ -2332,6 +2336,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/invites/{inviteId}:
+    x-speakeasy-ignore: true
     get:
       summary: Get an invite
       operationId: getOrgInvite
@@ -2391,6 +2396,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /my-info:
+    x-speakeasy-ignore: true
     get:
       summary: Get information about the current user
       operationId: getMyInfo
@@ -2410,6 +2416,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /invites:accept:
+    x-speakeasy-ignore: true
     post:
       summary: Accept an invite
       operationId: acceptInvite
@@ -2441,6 +2448,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/billingAccount:
+    x-speakeasy-ignore: true
     get:
       summary: Get the billing account for an organization
       operationId: getOrgBillingAccount
@@ -2472,6 +2480,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /billingAccounts/{billingAccountId}/portalSession:
     post:
+      x-speakeasy-ignore: true
       summary: Create a portal session for a billing account
       operationId: createBillingAccountSession
       tags: ["Billing Account"]

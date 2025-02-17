@@ -32058,6 +32058,7 @@
       }
     },
     "/orgs": {
+      "x-speakeasy-ignore": true,
       "post": {
         "summary": "Create a new organization",
         "operationId": "createOrg",
@@ -32265,6 +32266,7 @@
       }
     },
     "/orgs/{orgId}": {
+      "x-speakeasy-ignore": true,
       "get": {
         "summary": "Get an organization",
         "operationId": "getOrg",
@@ -33328,6 +33330,7 @@
       }
     },
     "/orgs/{orgId}/builders": {
+      "x-speakeasy-ignore": true,
       "get": {
         "summary": "List builders for an organization",
         "operationId": "listOrgBuilders",
@@ -33534,6 +33537,7 @@
       }
     },
     "/orgs/{orgId}/invites": {
+      "x-speakeasy-ignore": true,
       "post": {
         "summary": "Invite a user to an organization",
         "operationId": "createOrgInvite",
@@ -34299,6 +34303,7 @@
       }
     },
     "/orgs/{orgId}/invites/{inviteId}": {
+      "x-speakeasy-ignore": true,
       "get": {
         "summary": "Get an invite",
         "operationId": "getOrgInvite",
@@ -35001,6 +35006,7 @@
       }
     },
     "/my-info": {
+      "x-speakeasy-ignore": true,
       "get": {
         "summary": "Get information about the current user",
         "operationId": "getMyInfo",
@@ -35341,6 +35347,7 @@
       }
     },
     "/invites:accept": {
+      "x-speakeasy-ignore": true,
       "post": {
         "summary": "Accept an invite",
         "operationId": "acceptInvite",
@@ -35700,6 +35707,7 @@
       }
     },
     "/orgs/{orgId}/billingAccount": {
+      "x-speakeasy-ignore": true,
       "get": {
         "summary": "Get the billing account for an organization",
         "operationId": "getOrgBillingAccount",
@@ -36221,6 +36229,7 @@
     },
     "/billingAccounts/{billingAccountId}/portalSession": {
       "post": {
+        "x-speakeasy-ignore": true,
         "summary": "Create a portal session for a billing account",
         "operationId": "createBillingAccountSession",
         "tags": [
