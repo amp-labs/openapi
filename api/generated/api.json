@@ -21398,6 +21398,7 @@
     },
     "/projects/{projectIdOrName}/api-keys": {
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "List API keys",
         "operationId": "listApiKeys",
         "tags": [
@@ -21928,6 +21929,7 @@
         }
       },
       "post": {
+        "x-speakeasy-ignore": true,
         "summary": "Create a new API key",
         "operationId": "createApiKey",
         "tags": [
@@ -22481,6 +22483,7 @@
     },
     "/projects/{projectIdOrName}/api-keys/{apiKey}": {
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "Get an API key",
         "operationId": "getApiKey",
         "tags": [
@@ -23008,6 +23011,7 @@
         }
       },
       "delete": {
+        "x-speakeasy-ignore": true,
         "summary": "Delete an API key",
         "operationId": "deleteApiKey",
         "tags": [
@@ -23356,6 +23360,7 @@
         }
       },
       "patch": {
+        "x-speakeasy-ignore": true,
         "summary": "Update an API key",
         "operationId": "updateApiKey",
         "tags": [
@@ -32059,6 +32064,7 @@
     },
     "/orgs": {
       "post": {
+        "x-speakeasy-ignore": true,
         "summary": "Create a new organization",
         "operationId": "createOrg",
         "tags": [
@@ -32266,6 +32272,7 @@
     },
     "/orgs/{orgId}": {
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "Get an organization",
         "operationId": "getOrg",
         "tags": [
@@ -32778,6 +32785,7 @@
         }
       },
       "patch": {
+        "x-speakeasy-ignore": true,
         "summary": "Update an organization",
         "operationId": "updateOrg",
         "tags": [
@@ -33329,6 +33337,7 @@
     },
     "/orgs/{orgId}/builders": {
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "List builders for an organization",
         "operationId": "listOrgBuilders",
         "tags": [
@@ -33535,6 +33544,7 @@
     },
     "/orgs/{orgId}/invites": {
       "post": {
+        "x-speakeasy-ignore": true,
         "summary": "Invite a user to an organization",
         "operationId": "createOrgInvite",
         "tags": [
@@ -34084,6 +34094,7 @@
         }
       },
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "List invites for an organization",
         "operationId": "listOrgInvites",
         "tags": [
@@ -34300,6 +34311,7 @@
     },
     "/orgs/{orgId}/invites/{inviteId}": {
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "Get an invite",
         "operationId": "getOrgInvite",
         "tags": [
@@ -34519,6 +34531,7 @@
         }
       },
       "delete": {
+        "x-speakeasy-ignore": true,
         "summary": "Revoke an invite",
         "operationId": "deleteOrgInvite",
         "tags": [
@@ -35002,6 +35015,7 @@
     },
     "/my-info": {
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "Get information about the current user",
         "operationId": "getMyInfo",
         "tags": [
@@ -35342,6 +35356,7 @@
     },
     "/invites:accept": {
       "post": {
+        "x-speakeasy-ignore": true,
         "summary": "Accept an invite",
         "operationId": "acceptInvite",
         "tags": [
@@ -35701,6 +35716,7 @@
     },
     "/orgs/{orgId}/billingAccount": {
       "get": {
+        "x-speakeasy-ignore": true,
         "summary": "Get the billing account for an organization",
         "operationId": "getOrgBillingAccount",
         "tags": [
@@ -36221,6 +36237,7 @@
     },
     "/billingAccounts/{billingAccountId}/portalSession": {
       "post": {
+        "x-speakeasy-ignore": true,
         "summary": "Create a portal session for a billing account",
         "operationId": "createBillingAccountSession",
         "tags": [
