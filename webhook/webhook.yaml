@@ -12,6 +12,7 @@ paths: {}
 components:
   schemas:
     WebhookMessage:
+      title: Webhook Message
       type: object
       required:
         - action
@@ -65,6 +66,7 @@ components:
           items:
             $ref: '#/components/schemas/ResultEntry'
     Association:
+      title: Association
       type: object
       properties:
         id:
@@ -72,6 +74,7 @@ components:
           type: string
           x-go-type-skip-optional-pointer: true
     ResultEntry:
+      title: Result Entry
       type: object
       description: Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
       properties:
@@ -122,6 +125,7 @@ components:
           type: string
 
     ResultInfo:
+      title: Result Info
       type: object
       description: Information about the result contained in the webhook message.
       required:
@@ -129,8 +133,8 @@ components:
         - numRecords
       properties:
         type:
-          description: "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be 
-          present, which contains a URL to download the result. Else, the result is contained in the message itself in 
+          description: "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be
+          present, which contains a URL to download the result. Else, the result is contained in the message itself in
           the 'result' field."
           type: string
           enum: [url, inline]

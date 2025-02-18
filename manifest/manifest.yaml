@@ -13,6 +13,7 @@ paths: {}
 components:
   schemas:
     Manifest:
+      title: Integration Manifest
       type: object
       description: This is the schema of the manifest file that is used to define the integrations of the project.
       required:
@@ -28,6 +29,7 @@ components:
             $ref: '#/components/schemas/Integration'
 
     Integration:
+      title: Integration
       type: object
       required:
         - name
@@ -47,12 +49,14 @@ components:
           $ref: '#/components/schemas/IntegrationProxy'
 
     IntegrationProxy:
+      title: Proxy Integration
       type: object
       properties:
         enabled:
           type: boolean
 
     IntegrationRead:
+      title: Read Integration
       type: object
       properties:
         objects:
@@ -61,6 +65,7 @@ components:
             $ref: '#/components/schemas/IntegrationObject'
 
     IntegrationWrite:
+      title: Write Integration
       type: object
       properties:
         objects:
@@ -72,6 +77,7 @@ components:
     # Once we figure out whether to share the same type for both read and write, or use
     # different types, we can rename this to IntegrationReadObject if appropriate.
     IntegrationObject:
+      title: Integration Object
       type: object
       required:
         - objectName
@@ -113,6 +119,7 @@ components:
     # but for now we're introducing a new type to keep them separate, and not renaming the
     # existing IntegrationObject.
     IntegrationWriteObject:
+      title: Integration Write Object
       type: object
       required:
         - objectName
@@ -127,6 +134,7 @@ components:
           $ref: '#/components/schemas/ValueDefaults'
 
     HydratedIntegration:
+      title: Hydrated Integration
       type: object
       required:
         - name
@@ -146,12 +154,14 @@ components:
           $ref: '#/components/schemas/HydratedIntegrationProxy'
 
     HydratedIntegrationProxy:
+      title: Hydrated Proxy Integration
       type: object
       properties:
         enabled:
           type: boolean
 
     HydratedIntegrationRead:
+      title: Hydrated Read Integration
       type: object
       properties:
         objects:
@@ -171,6 +181,7 @@ components:
     # Once we figure out whether to share the same type for both read and write, or use
     # different types, we can rename this to HydratedIntegrationReadObject if appropriate.
     HydratedIntegrationObject:
+      title: Hydrated Integration Object
       type: object
       required:
         - objectName
@@ -236,15 +247,18 @@ components:
           $ref: '#/components/schemas/ValueDefaults'
 
     OptionalFieldsAutoOption:
+      title: Optional Fields Auto Option
       type: string
       enum: [all]
 
     IntegrationField:
+      title: Integration Field
       oneOf:
         - $ref: '#/components/schemas/IntegrationFieldExistent'
         - $ref: '#/components/schemas/IntegrationFieldMapping'
 
     IntegrationFieldExistent:
+      title: Integration Field Existent
       type: object
       required:
         - fieldName
@@ -263,6 +277,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     IntegrationFieldMapping:
+      title: Integration Field Mapping
       type: object
       required:
         - mapToName
@@ -277,11 +292,13 @@ components:
           type: string
 
     HydratedIntegrationField:
+      title: Hydrated Integration Field
       oneOf:
         - $ref: '#/components/schemas/HydratedIntegrationFieldExistent'
         - $ref: '#/components/schemas/IntegrationFieldMapping'
 
     FieldMetadata:
+      title: Field Metadata
       type: object
       required:
         - fieldName
@@ -327,6 +344,7 @@ components:
             $ref: '#/components/schemas/FieldValue'
 
     FieldValue:
+      title: Field Value
       type: object
       required:
         - value
@@ -364,6 +382,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     Backfill:
+      title: Backfill
       type: object
       required:
         - defaultPeriod
@@ -372,6 +391,7 @@ components:
           $ref: '#/components/schemas/DefaultPeriod'
 
     DefaultPeriod:
+      title: Default Period
       type: object
       properties:
         days:
@@ -389,6 +409,7 @@ components:
             validate: required_without=Days
 
     Delivery:
+      title: Delivery
       type: object
       properties:
         mode:
@@ -403,6 +424,7 @@ components:
             maximum: 500
 
     ValueDefaults:
+      title: Value Defaults
       type: object
       description: Configuration to set default write values for object fields.
       properties:

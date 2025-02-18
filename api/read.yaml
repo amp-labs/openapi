@@ -116,6 +116,7 @@ paths:
 components:
   schemas:
     ReadRequest:
+      title: Read Request
       required:
         - groupRef
         - mode
@@ -136,6 +137,7 @@ components:
           description: The UTC timestamp from which to read data. If omitted, we will read all data.
           example: "2024-07-01T18:22:30.323771761Z"
     ReadResultAsync:
+      title: Read Result Async
       type: object
       required:
         - operationId
@@ -145,6 +147,7 @@ components:
           description: The operation ID
           example: 60deaf48-3856-4a2b-bfd4-3de85125eca8
     ResultDeliveryRequestBody:
+      title: Result Delivery Request
       required:
         - groupRef
         - pages

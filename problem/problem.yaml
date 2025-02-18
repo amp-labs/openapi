@@ -23,6 +23,7 @@ components:
       description: A problem caused by invalid input
   schemas:
     Problem:
+      title: Problem
       description: |
         A Problem Details object (RFC 9457).
 
@@ -65,6 +66,7 @@ components:
         detail: Description of specific occurrence of the problem
         instance: urn:uuid:123e4567-e89b-12d3-a456-426614174000
     ApiProblem:
+      title: API Problem
       type: object
       allOf:
         - $ref: "#/components/schemas/Problem"
@@ -129,6 +131,7 @@ components:
           example:
             name: "Rick Sanchez"
     InputValidationProblem:
+      title: Input Validation Problem
       type: object
       allOf:
         - $ref: "#/components/schemas/ApiProblem"
@@ -156,6 +159,7 @@ components:
             name: items[0].examplePropertyWithPattern # location within the body
             value: "a2345678901"
     InputValidationIssue:
+      title: Input Validation Issue
       type: object
       description: |
         An issue detected during input validation.

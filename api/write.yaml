@@ -62,6 +62,7 @@ paths:
 components:
   schemas:
     WriteRequest:
+      title: Write Request
       required:
         - groupRef
         - type
@@ -113,6 +114,7 @@ components:
         #             "warmthScore": "ready-for-close",
         #           }]
     WriteResponseSingleSuccess:
+      title: Sync Write Response Success
       type: object
       required:
         - result
@@ -121,6 +123,7 @@ components:
         result:
           $ref: "#/components/schemas/WriteResult"
     WriteResponseSingleFail:
+      title: Sync Write Response Failure
       type: object
       required:
         - errors
@@ -147,6 +150,7 @@ components:
           description: The operation ID
           example: acb0d75a-1b59-4aad-a191-48c5b75ea9e4
     WriteResult:
+      title: Write Result
       type: object
       required:
         - success

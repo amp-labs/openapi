@@ -2542,6 +2542,7 @@ paths:
 components:
   schemas:
     Org:
+      title: Organisation
       required:
         - id
         - label
@@ -2569,6 +2570,7 @@ components:
           description: The time the organization was updated.
           format: date-time
     Destination:
+      title: Destination
       required:
         - id
         - name
@@ -2606,6 +2608,7 @@ components:
           description: The time the destination was updated.
           format: date-time
     Project:
+      title: Project
       required:
         - appName
         - createTime
@@ -2638,6 +2641,7 @@ components:
           description: The time the project was updated.
           format: date-time
     ProviderApp:
+      title: Provider App
       required:
         - clientId
         - createTime
@@ -2684,6 +2688,7 @@ components:
           description: The time the provider app was updated.
           format: date-time
     Integration:
+      title: Integration
       required:
         - createTime
         - id
@@ -2720,6 +2725,7 @@ components:
         latestRevision:
           $ref: "#/components/schemas/Revision"
     Revision:
+      title: Revision
       required:
         - content
         - createTime
@@ -2742,6 +2748,7 @@ components:
         content:
           $ref: "../manifest/manifest.yaml#/components/schemas/Integration"
     HydratedRevision:
+      title: Hydrated Revision
       required:
         - content
         - createTime
@@ -2764,6 +2771,7 @@ components:
         content:
           $ref: "../manifest/manifest.yaml#/components/schemas/HydratedIntegration"
     Installation:
+      title: Installation
       required:
         - config
         - connection
@@ -2810,6 +2818,7 @@ components:
         config:
           $ref: "#/components/schemas/Config"
     Config:
+      title: Config
       required:
         - content
         - createTime
@@ -2839,6 +2848,7 @@ components:
         content:
           $ref: "../config/config.yaml#/components/schemas/ConfigContent"
     Connection:
+      title: Connection
       required:
         - id
         - createTime
@@ -2914,6 +2924,7 @@ components:
           description: The API key used while making the connection.
           example: api-key-123
     Oauth2AuthorizationCodeTokensOnly:
+      title: OAuth2 AuthorizationCode Token
       type: object
       properties:
         accessToken:
@@ -2938,6 +2949,7 @@ components:
             type: string
           description: The scopes for the tokens.
     Oauth2AuthorizationCode:
+      title: OAuth2 Authorization Code
       type: object
       properties:
         accessToken:
@@ -2974,6 +2986,7 @@ components:
             type: string
           description: The scopes for the tokens.
     ImportConnectionRequest:
+      title: Import Connection Request
       required:
         - groupRef
         - groupName
@@ -3023,6 +3036,7 @@ components:
           items:
             type: string
     Group:
+      title: Group
       required:
         - createTime
         - groupName
@@ -3053,6 +3067,7 @@ components:
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
     Consumer:
+      title: Consumer
       required:
         - consumerName
         - consumerRef
@@ -3083,6 +3098,7 @@ components:
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
     Operation:
+      title: Operation
       required:
         - projectId
         - integrationId
@@ -3135,6 +3151,7 @@ components:
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
     Log:
+      title: Log
       type: object
       required:
         - timestamp
@@ -3166,6 +3183,7 @@ components:
           description: The severity of the log.
           example: DEBUG
     SignedUrl:
+      title: Signed URL
       type: object
       required:
         - url
@@ -3182,6 +3200,7 @@ components:
           type: string
           description: The path (will match the path part of the url).
     ApiKeyScopes:
+      title: API Key Scopes
       type: array
       description: The scopes for the API key.
       items:
@@ -3190,6 +3209,7 @@ components:
           - full
           - frontend
     ApiKeyRequest:
+      title: API Key Request
       type: object
       required:
         - label
@@ -3201,6 +3221,7 @@ components:
         scopes:
           $ref: "#/components/schemas/ApiKeyScopes"
     ApiKey:
+      title: API Key
       type: object
       required:
         - key
@@ -3227,6 +3248,7 @@ components:
           description: Whether the API key is active.
           example: true
     PatchApiKeyRequest:
+      title: Patch API Key Request
       type: object
       required:
         - updateMask
@@ -3256,6 +3278,7 @@ components:
             scopes:
               $ref: "#/components/schemas/ApiKeyScopes"
     WebhookHeaders:
+      title: Webhook Headers
       type: object
       nullable: true
       description: Additional headers to add when Ampersand sends a webhook message
@@ -3265,6 +3288,7 @@ components:
       example:
         Authorization: "Bearer 1234"
     Invite:
+      title: Invite
       type: object
       required:
         - id
@@ -3300,6 +3324,7 @@ components:
           description: The time the invite was updated.
           format: date-time
     Builder:
+      title: Builder
       type: object
       required:
         - id
@@ -3331,6 +3356,7 @@ components:
         primaryEmail:
           type: string
     BillingAccount:
+      title: Billing Account
       type: object
       required:
         - id
@@ -3363,6 +3389,7 @@ components:
           description: The time the billing account was last updated.
           format: date-time
     BuilderInfo:
+      title: Builder Info
       type: object
       required:
         - builder
@@ -3423,6 +3450,7 @@ components:
               $ref: "#/components/schemas/Org"
             # This schema actually isn't used in the manifest but it is used by the GetObjectMetadata endpoint
     ObjectMetadata:
+      title: Object Metadata
       type: object
       required:
         - name
@@ -3445,6 +3473,7 @@ components:
           additionalProperties:
             $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
     PaginationInfo:
+      title: Pagination Information
       type: object
       required:
         - done
