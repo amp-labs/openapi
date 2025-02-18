@@ -553,7 +553,7 @@ paths:
                       description: The spec version string.
                       example: 1.0.0
                     content:
-                      $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/Integration"
+                      $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yaml#/components/schemas/Integration"
         required: true
       responses:
         201:
@@ -860,7 +860,7 @@ paths:
                         of "consumer:{consumer-id}" or "builder:{builder-id}".
                       default: "api:create-installation"
                     content:
-                      $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml.yaml#/components/schemas/ConfigContent"
+                      $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml#/components/schemas/ConfigContent"
                   description: The config of the installation.
         required: true
       responses:
@@ -1016,7 +1016,7 @@ paths:
                             The person who created the config, in the format
                             of "consumer:{consumer-id}" or "builder:{builder-id}".
                         content:
-                          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml.yaml#/components/schemas/UpdateInstallationConfigContent"
+                          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml#/components/schemas/UpdateInstallationConfigContent"
                           description: The content of the config.
                       description: The config of the installation.
                   description:
@@ -2747,7 +2747,7 @@ components:
           description: The time the revision was created.
           format: date-time
         content:
-          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/Integration"
+          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yaml#/components/schemas/Integration"
     HydratedRevision:
       title: Hydrated Revision
       required:
@@ -2770,7 +2770,7 @@ components:
           description: The time the revision was created.
           format: date-time
         content:
-          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/HydratedIntegration"
+          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yaml#/components/schemas/HydratedIntegration"
     Installation:
       title: Installation
       required:
@@ -2847,7 +2847,7 @@ components:
             or "builder:{builder-id}".
           example: builder:builder-123
         content:
-          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml.yaml#/components/schemas/ConfigContent"
+          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml#/components/schemas/ConfigContent"
     Connection:
       title: Connection
       required:
@@ -3472,7 +3472,7 @@ components:
           type: object
           description: Map of field metadata keyed by field name
           additionalProperties:
-            $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/FieldMetadata"
+            $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yaml#/components/schemas/FieldMetadata"
     PaginationInfo:
       title: Pagination Information
       type: object
