@@ -18,6 +18,7 @@ paths: {}
 components:
   schemas:
     AuthType:
+      title: Auth Type
       description: The type of authentication required by the provider.
       type: string
       enum: [oauth2, apiKey, basic, jwt, none]
@@ -25,6 +26,7 @@ components:
         validate: required
 
     Support:
+      title: Support
       type: object
       description: The supported features for the provider.
       x-oapi-codegen-extra-tags:
@@ -50,6 +52,7 @@ components:
           $ref: '#/components/schemas/SubscribeSupport'
 
     BulkWriteSupport:
+      title: Bulk Write Support
       type: object
       x-oapi-codegen-extra-tags:
         validate: required
@@ -68,6 +71,7 @@ components:
         delete:
           type: boolean
     TokenMetadataFields:
+      title: Token Metadata Fields
       type: object
       description: Fields to be used to extract token metadata from the token response.
       properties:
@@ -85,6 +89,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     Media:
+      title: Media
       properties:
         regular:
           $ref: '#/components/schemas/MediaTypeRegular'
@@ -92,6 +97,7 @@ components:
           $ref: '#/components/schemas/MediaTypeDarkMode'
 
     MediaTypeDarkMode:
+      title: Media Type Dark Mode
       type: object
       description: Media to be used in dark mode.
       properties:
@@ -107,6 +113,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     MediaTypeRegular:
+      title: Media Type Regular
       type: object
       description: Media for light/regular mode.
       properties:
@@ -120,13 +127,15 @@ components:
           example: https://example.com/logo.png
           description: URL to the logo for the provider.
           x-go-type-skip-optional-pointer: true
-    
+
     Labels:
+      title: Labels
       type: object
       additionalProperties:
         type: string
 
     Oauth2Opts:
+      title: OAuth2 Options
       type: object
       description: Configuration for OAuth2.0. Must be provided if authType is oauth2.
       required:
@@ -182,6 +191,7 @@ components:
             duration: permanent
 
     ApiKeyOpts:
+      title: API Key Options
       type: object
       description: Configuration for API key. Must be provided if authType is apiKey.
       required:
@@ -204,6 +214,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     ApiKeyOptsQuery:
+      title: API Key Query Options
       type: object
       description: Configuration for API key in query parameter. Must be provided if type is in-query.
       required:
@@ -216,6 +227,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     ApiKeyOptsHeader:
+      title: API Key Header Options
       type: object
       description: Configuration for API key in header. Must be provided if type is in-header.
       required:
@@ -233,6 +245,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     ApiKeyAsBasicOpts:
+      title: API Key as Basic Options
       type: object
       description: when this object is present, it means that this provider uses Basic Auth to actually collect an API key
       properties:
@@ -252,6 +265,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     BasicAuthOpts:
+      title: Basic Auth Options
       type: object
       description: Configuration for Basic Auth. Optional.
       properties:
@@ -269,16 +283,19 @@ components:
           x-go-type-skip-optional-pointer: true
 
     ProviderOpts:
+      title: Provider Options
       description: Additional provider-specific metadata.
       type: object
       additionalProperties:
         type: string
 
     Provider:
+      title: Provider
       type: string
       example: salesforce
 
     ProviderInfo:
+      title: Provider Info
       type: object
       required:
         - name
@@ -324,8 +341,9 @@ components:
           $ref: '#/components/schemas/Labels'
         subscribeOpts:
           $ref: '#/components/schemas/SubscribeOpts'
-          
+
     CatalogWrapper:
+      title: Catalog Wrapper
       type: object
       required:
         - timestamp
@@ -341,11 +359,13 @@ components:
           $ref: '#/components/schemas/CatalogType'
 
     CatalogType:
+      title: Catalog Type
       type: object
       additionalProperties:
         $ref: '#/components/schemas/ProviderInfo'
 
     SubscribeOpts:
+      title: Subscribe Options
       type: object
       required:
         - subscriptionScope
@@ -365,6 +385,7 @@ components:
           description: The timing of the registration.
 
     SubscribeSupport:
+      title: Subscribe Support
       type: object
       properties:
         create:

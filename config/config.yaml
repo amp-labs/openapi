@@ -13,6 +13,7 @@ paths: {}
 components:
   schemas:
     BaseConfigContent:
+      title: Base Config Content
       type: object
       properties:
         provider:
@@ -27,12 +28,14 @@ components:
           $ref: '#/components/schemas/BaseProxyConfig'
 
     BaseProxyConfig:
+      title: Base Proxy Config
       type: object
       properties:
         enabled:
           type: boolean
 
     BaseReadConfig:
+      title: Base Read Config
       type: object
       properties:
         objects:
@@ -42,6 +45,7 @@ components:
             $ref: '#/components/schemas/BaseReadConfigObject'
 
     BaseReadConfigObject:
+      title: Base Read Config Object
       type: object
       properties:
         objectName:
@@ -89,6 +93,7 @@ components:
           $ref: '#/components/schemas/BackfillConfig'
 
     SelectedValueMappings:
+      title: Selected Value Mappings
       type: object
       description: This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.
       example:
@@ -100,6 +105,7 @@ components:
         type: string
 
     BaseWriteConfig:
+      title: Base Write Config
       type: object
       properties:
         objects:
@@ -109,6 +115,7 @@ components:
             $ref: '#/components/schemas/BaseWriteConfigObject'
 
     BaseWriteConfigObject:
+      title: Base Write Config Object
       type: object
       properties:
         objectName:
@@ -125,6 +132,7 @@ components:
             $ref: '#/components/schemas/ValueDefault'
 
     ConfigContent:
+      title: Config Content
       allOf:
         - $ref: '#/components/schemas/BaseConfigContent'
         - type: object
@@ -137,6 +145,7 @@ components:
               x-go-type: WriteConfig
 
     ReadConfig:
+      title: Read Config
       allOf:
         - $ref: '#/components/schemas/BaseReadConfig'
         - type: object
@@ -148,6 +157,7 @@ components:
                 x-go-type: ReadConfigObject
 
     ReadConfigObject:
+      title: Read Config Object
       allOf:
         - $ref: '#/components/schemas/BaseReadConfigObject'
         - type: object
@@ -159,6 +169,7 @@ components:
             - selectedFieldMappings
 
     WriteConfig:
+      title: Write Config
       allOf:
         - $ref: '#/components/schemas/BaseWriteConfig'
         - type: object
@@ -168,6 +179,7 @@ components:
                 x-go-type: WriteConfigObject
 
     WriteConfigObject:
+      title: Write Config Object
       allOf:
         - $ref: '#/components/schemas/BaseWriteConfigObject'
         - type: object
@@ -175,18 +187,22 @@ components:
             - objectName
 
     UpdateInstallationConfigContent:
+      title: Update Installation Config Content
       allOf:
         - $ref: '#/components/schemas/BaseConfigContent'
 
     UpdateInstallationReadConfig:
+      title: Update Installation Read Config
       allOf:
         - $ref: '#/components/schemas/BaseReadConfig'
 
     UpdateInstallationReadConfigObject:
+      title: Update Installation Read Config Object
       allOf:
         - $ref: '#/components/schemas/BaseReadConfigObject'
 
     SelectedFieldsAutoConfig:
+      title: Selected Fields Auto Config
       description: If selectedFieldsAuto is set to all, all fields will be read.
       type: string
       enum: [ all ]
@@ -194,6 +210,7 @@ components:
         - SelectedFieldsAll
 
     BackfillConfig:
+      title: Backfill Config
       type: object
       required:
         - defaultPeriod
@@ -202,6 +219,7 @@ components:
           $ref: '#/components/schemas/DefaultPeriodConfig'
 
     DefaultPeriodConfig:
+      title: Default Period Config
       type: object
       properties:
         days:
@@ -219,12 +237,14 @@ components:
             validate: required_without=Days
 
     ValueDefault:
+      title: Value Default
       oneOf:
         - $ref: '#/components/schemas/ValueDefaultString'
         - $ref: '#/components/schemas/ValueDefaultInteger'
         - $ref: '#/components/schemas/ValueDefaultBoolean'
 
     ValueDefaultString:
+      title: Value Default String
       type: object
       required:
         - value
@@ -243,6 +263,7 @@ components:
             If unspecified, then `always` is assumed.
 
     ValueDefaultInteger:
+      title: Value Default Integer
       type: object
       required:
         - value
@@ -261,6 +282,7 @@ components:
               If unspecified, then `always` is assumed.
 
     ValueDefaultBoolean:
+      title: Value Default Boolean
       type: object
       required:
         - value
