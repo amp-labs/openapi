@@ -627,6 +627,7 @@ paths:
           schema:
             type: string
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -693,6 +694,7 @@ paths:
                   type: string
                   description: The source YAML file that defines the revision.
               description: The source of the revision to create. One of sourceZipUrl or sourceYaml is required.
+        required: true
       responses:
         201:
           description: Created
@@ -2499,6 +2501,7 @@ paths:
           schema:
             type: string
       requestBody:
+        required: true
         content:
           application/json:
             schema:

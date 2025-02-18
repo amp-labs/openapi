@@ -8396,6 +8396,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -9248,7 +9249,8 @@
                 "description": "The source of the revision to create. One of sourceZipUrl or sourceYaml is required."
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -36254,6 +36256,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {

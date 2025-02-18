@@ -46,6 +46,7 @@
         ],
         "requestBody": {
           "description": "Read Request",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -536,6 +537,7 @@
         ],
         "requestBody": {
           "description": "ResultDeliveryRequestBody",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
