@@ -22,6 +22,26 @@ const specs = [
     inputFile: path.join(__dirname, "../api/write.yaml"),
     outputFile: path.join(__dirname, "../api/generated/write.json"),
   },
+  {
+    inputFile: path.join(__dirname, "../problem/problem.yaml"),
+    outputFile: path.join(__dirname, "../problem/generated/problem.json"),
+  },
+  {
+    inputFile: path.join(__dirname, "../manifest/manifest.yaml"),
+    outputFile: path.join(__dirname, "../manifest/generated/manifest.json"),
+  },
+  {
+    inputFile: path.join(__dirname, "../catalog/catalog.yaml"),
+    outputFile: path.join(__dirname, "../catalog/generated/catalog.json"),
+  },
+  {
+    inputFile: path.join(__dirname, "../webhook/webhook.yaml"),
+    outputFile: path.join(__dirname, "../webhook/generated/webhook.json"),
+  },
+  {
+    inputFile: path.join(__dirname, "../config/config.yaml"),
+    outputFile: path.join(__dirname, "../config/generated/config.json"),
+  },
 ];
 
 async function deRefOpenApiSpecs() {

@@ -1,0 +1,1800 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Provider catalog",
+    "version": "1.0.0",
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/license/mit"
+    }
+  },
+  "servers": [],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "AuthType": {
+        "description": "The type of authentication required by the provider.",
+        "type": "string",
+        "enum": [
+          "oauth2",
+          "apiKey",
+          "basic",
+          "jwt",
+          "none"
+        ],
+        "x-oapi-codegen-extra-tags": {
+          "validate": "required"
+        }
+      },
+      "Support": {
+        "type": "object",
+        "description": "The supported features for the provider.",
+        "x-oapi-codegen-extra-tags": {
+          "validate": "required"
+        },
+        "required": [
+          "bulkWrite",
+          "proxy",
+          "read",
+          "subscribe",
+          "write"
+        ],
+        "properties": {
+          "bulkWrite": {
+            "type": "object",
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            },
+            "required": [
+              "insert",
+              "update",
+              "upsert",
+              "delete"
+            ],
+            "properties": {
+              "insert": {
+                "type": "boolean"
+              },
+              "update": {
+                "type": "boolean"
+              },
+              "upsert": {
+                "type": "boolean"
+              },
+              "delete": {
+                "type": "boolean"
+              }
+            }
+          },
+          "proxy": {
+            "type": "boolean"
+          },
+          "read": {
+            "type": "boolean"
+          },
+          "subscribe": {
+            "type": "boolean"
+          },
+          "write": {
+            "type": "boolean"
+          },
+          "subscribeSupport": {
+            "type": "object",
+            "properties": {
+              "create": {
+                "type": "boolean"
+              },
+              "update": {
+                "type": "boolean"
+              },
+              "delete": {
+                "type": "boolean"
+              },
+              "passThrough": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "BulkWriteSupport": {
+        "type": "object",
+        "x-oapi-codegen-extra-tags": {
+          "validate": "required"
+        },
+        "required": [
+          "insert",
+          "update",
+          "upsert",
+          "delete"
+        ],
+        "properties": {
+          "insert": {
+            "type": "boolean"
+          },
+          "update": {
+            "type": "boolean"
+          },
+          "upsert": {
+            "type": "boolean"
+          },
+          "delete": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TokenMetadataFields": {
+        "type": "object",
+        "description": "Fields to be used to extract token metadata from the token response.",
+        "properties": {
+          "workspaceRefField": {
+            "type": "string",
+            "example": "account-id",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "consumerRefField": {
+            "type": "string",
+            "example": "user-id",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "scopesField": {
+            "type": "string",
+            "example": "scopes",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "Media": {
+        "properties": {
+          "regular": {
+            "type": "object",
+            "description": "Media for light/regular mode.",
+            "properties": {
+              "iconURL": {
+                "type": "string",
+                "example": "https://example.com/icon.png",
+                "description": "URL to the icon for the provider.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "logoURL": {
+                "type": "string",
+                "example": "https://example.com/logo.png",
+                "description": "URL to the logo for the provider.",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "darkMode": {
+            "type": "object",
+            "description": "Media to be used in dark mode.",
+            "properties": {
+              "iconURL": {
+                "type": "string",
+                "example": "https://example.com/icon.png",
+                "description": "URL to the icon for the provider that is to be used in dark mode.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "logoURL": {
+                "type": "string",
+                "example": "https://example.com/logo.png",
+                "description": "URL to the logo for the provider that is to be used in dark mode.",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          }
+        }
+      },
+      "MediaTypeDarkMode": {
+        "type": "object",
+        "description": "Media to be used in dark mode.",
+        "properties": {
+          "iconURL": {
+            "type": "string",
+            "example": "https://example.com/icon.png",
+            "description": "URL to the icon for the provider that is to be used in dark mode.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "logoURL": {
+            "type": "string",
+            "example": "https://example.com/logo.png",
+            "description": "URL to the logo for the provider that is to be used in dark mode.",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "MediaTypeRegular": {
+        "type": "object",
+        "description": "Media for light/regular mode.",
+        "properties": {
+          "iconURL": {
+            "type": "string",
+            "example": "https://example.com/icon.png",
+            "description": "URL to the icon for the provider.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "logoURL": {
+            "type": "string",
+            "example": "https://example.com/logo.png",
+            "description": "URL to the logo for the provider.",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "Labels": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "Oauth2Opts": {
+        "type": "object",
+        "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
+        "required": [
+          "grantType",
+          "tokenURL",
+          "explicitScopesRequired",
+          "explicitWorkspaceRequired",
+          "tokenMetadataFields"
+        ],
+        "properties": {
+          "grantType": {
+            "type": "string",
+            "enum": [
+              "authorizationCode",
+              "authorizationCodePKCE",
+              "clientCredentials",
+              "password"
+            ]
+          },
+          "authURL": {
+            "type": "string",
+            "example": "https://login.salesforce.com/services/oauth2/authorize",
+            "description": "The authorization URL.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "tokenURL": {
+            "type": "string",
+            "example": "https://login.salesforce.com/services/oauth2/token",
+            "description": "The token URL.",
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            }
+          },
+          "explicitScopesRequired": {
+            "type": "boolean",
+            "description": "Whether scopes are required to be known ahead of the OAuth flow.",
+            "example": true
+          },
+          "explicitWorkspaceRequired": {
+            "type": "boolean",
+            "description": "Whether the workspace is required to be known ahead of the OAuth flow.",
+            "example": true
+          },
+          "audience": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "https://api.mparticle.com"
+            ],
+            "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "tokenMetadataFields": {
+            "type": "object",
+            "description": "Fields to be used to extract token metadata from the token response.",
+            "properties": {
+              "workspaceRefField": {
+                "type": "string",
+                "example": "account-id",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "consumerRefField": {
+                "type": "string",
+                "example": "user-id",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "scopesField": {
+                "type": "string",
+                "example": "scopes",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "docsURL": {
+            "type": "string",
+            "description": "URL with more information about where to retrieve Client ID and Client Secret, etc.",
+            "example": "https://docs.example.com/client-credentials",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "authURLParams": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "x-go-type-skip-optional-pointer": true,
+            "example": {
+              "access_type": "offline",
+              "duration": "permanent"
+            }
+          }
+        }
+      },
+      "ApiKeyOpts": {
+        "type": "object",
+        "description": "Configuration for API key. Must be provided if authType is apiKey.",
+        "required": [
+          "attachmentType"
+        ],
+        "properties": {
+          "attachmentType": {
+            "type": "string",
+            "description": "How the API key should be attached to requests.",
+            "enum": [
+              "query",
+              "header"
+            ],
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            }
+          },
+          "query": {
+            "type": "object",
+            "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "api_key",
+                "description": "The name of the query parameter to be used for the API key.",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "header": {
+            "type": "object",
+            "description": "Configuration for API key in header. Must be provided if type is in-header.",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "X-Api-Key",
+                "description": "The name of the header to be used for the API key.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "valuePrefix": {
+                "type": "string",
+                "example": "Bearer ",
+                "description": "The prefix to be added to the API key value when it is sent in the header.",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "docsURL": {
+            "type": "string",
+            "description": "URL with more information about how to get or use an API key.",
+            "example": "https://docs.example.com/api-key",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "ApiKeyOptsQuery": {
+        "type": "object",
+        "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "api_key",
+            "description": "The name of the query parameter to be used for the API key.",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "ApiKeyOptsHeader": {
+        "type": "object",
+        "description": "Configuration for API key in header. Must be provided if type is in-header.",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "X-Api-Key",
+            "description": "The name of the header to be used for the API key.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "valuePrefix": {
+            "type": "string",
+            "example": "Bearer ",
+            "description": "The prefix to be added to the API key value when it is sent in the header.",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "ApiKeyAsBasicOpts": {
+        "type": "object",
+        "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
+        "properties": {
+          "fieldUsed": {
+            "type": "string",
+            "enum": [
+              "username",
+              "password"
+            ],
+            "example": "username",
+            "description": "whether the API key should be used as the username or password.",
+            "x-go-type-skip-optional-pointer": true,
+            "x-enum-varnames": [
+              "UsernameField",
+              "PasswordField"
+            ]
+          },
+          "keyFormat": {
+            "type": "string",
+            "example": "api:%s",
+            "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "BasicAuthOpts": {
+        "type": "object",
+        "description": "Configuration for Basic Auth. Optional.",
+        "properties": {
+          "apiKeyAsBasic": {
+            "type": "boolean",
+            "example": true,
+            "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "apiKeyAsBasicOpts": {
+            "type": "object",
+            "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
+            "properties": {
+              "fieldUsed": {
+                "type": "string",
+                "enum": [
+                  "username",
+                  "password"
+                ],
+                "example": "username",
+                "description": "whether the API key should be used as the username or password.",
+                "x-go-type-skip-optional-pointer": true,
+                "x-enum-varnames": [
+                  "UsernameField",
+                  "PasswordField"
+                ]
+              },
+              "keyFormat": {
+                "type": "string",
+                "example": "api:%s",
+                "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "docsURL": {
+            "type": "string",
+            "description": "URL with more information about how to get or use an API key.",
+            "example": "https://docs.example.com/api-key",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "ProviderOpts": {
+        "description": "Additional provider-specific metadata.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "Provider": {
+        "type": "string",
+        "example": "salesforce"
+      },
+      "ProviderInfo": {
+        "type": "object",
+        "required": [
+          "name",
+          "baseURL",
+          "authType",
+          "support",
+          "providerOpts"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "authType": {
+            "description": "The type of authentication required by the provider.",
+            "type": "string",
+            "enum": [
+              "oauth2",
+              "apiKey",
+              "basic",
+              "jwt",
+              "none"
+            ],
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            }
+          },
+          "baseURL": {
+            "description": "The base URL for making API requests.",
+            "type": "string",
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            }
+          },
+          "oauth2Opts": {
+            "type": "object",
+            "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
+            "required": [
+              "grantType",
+              "tokenURL",
+              "explicitScopesRequired",
+              "explicitWorkspaceRequired",
+              "tokenMetadataFields"
+            ],
+            "properties": {
+              "grantType": {
+                "type": "string",
+                "enum": [
+                  "authorizationCode",
+                  "authorizationCodePKCE",
+                  "clientCredentials",
+                  "password"
+                ]
+              },
+              "authURL": {
+                "type": "string",
+                "example": "https://login.salesforce.com/services/oauth2/authorize",
+                "description": "The authorization URL.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "tokenURL": {
+                "type": "string",
+                "example": "https://login.salesforce.com/services/oauth2/token",
+                "description": "The token URL.",
+                "x-oapi-codegen-extra-tags": {
+                  "validate": "required"
+                }
+              },
+              "explicitScopesRequired": {
+                "type": "boolean",
+                "description": "Whether scopes are required to be known ahead of the OAuth flow.",
+                "example": true
+              },
+              "explicitWorkspaceRequired": {
+                "type": "boolean",
+                "description": "Whether the workspace is required to be known ahead of the OAuth flow.",
+                "example": true
+              },
+              "audience": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "https://api.mparticle.com"
+                ],
+                "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "tokenMetadataFields": {
+                "type": "object",
+                "description": "Fields to be used to extract token metadata from the token response.",
+                "properties": {
+                  "workspaceRefField": {
+                    "type": "string",
+                    "example": "account-id",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "consumerRefField": {
+                    "type": "string",
+                    "example": "user-id",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "scopesField": {
+                    "type": "string",
+                    "example": "scopes",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "docsURL": {
+                "type": "string",
+                "description": "URL with more information about where to retrieve Client ID and Client Secret, etc.",
+                "example": "https://docs.example.com/client-credentials",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "authURLParams": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "x-go-type-skip-optional-pointer": true,
+                "example": {
+                  "access_type": "offline",
+                  "duration": "permanent"
+                }
+              }
+            }
+          },
+          "apiKeyOpts": {
+            "type": "object",
+            "description": "Configuration for API key. Must be provided if authType is apiKey.",
+            "required": [
+              "attachmentType"
+            ],
+            "properties": {
+              "attachmentType": {
+                "type": "string",
+                "description": "How the API key should be attached to requests.",
+                "enum": [
+                  "query",
+                  "header"
+                ],
+                "x-oapi-codegen-extra-tags": {
+                  "validate": "required"
+                }
+              },
+              "query": {
+                "type": "object",
+                "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "api_key",
+                    "description": "The name of the query parameter to be used for the API key.",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "header": {
+                "type": "object",
+                "description": "Configuration for API key in header. Must be provided if type is in-header.",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "X-Api-Key",
+                    "description": "The name of the header to be used for the API key.",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "valuePrefix": {
+                    "type": "string",
+                    "example": "Bearer ",
+                    "description": "The prefix to be added to the API key value when it is sent in the header.",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "docsURL": {
+                "type": "string",
+                "description": "URL with more information about how to get or use an API key.",
+                "example": "https://docs.example.com/api-key",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "basicOpts": {
+            "type": "object",
+            "description": "Configuration for Basic Auth. Optional.",
+            "properties": {
+              "apiKeyAsBasic": {
+                "type": "boolean",
+                "example": true,
+                "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "apiKeyAsBasicOpts": {
+                "type": "object",
+                "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
+                "properties": {
+                  "fieldUsed": {
+                    "type": "string",
+                    "enum": [
+                      "username",
+                      "password"
+                    ],
+                    "example": "username",
+                    "description": "whether the API key should be used as the username or password.",
+                    "x-go-type-skip-optional-pointer": true,
+                    "x-enum-varnames": [
+                      "UsernameField",
+                      "PasswordField"
+                    ]
+                  },
+                  "keyFormat": {
+                    "type": "string",
+                    "example": "api:%s",
+                    "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "docsURL": {
+                "type": "string",
+                "description": "URL with more information about how to get or use an API key.",
+                "example": "https://docs.example.com/api-key",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "support": {
+            "type": "object",
+            "description": "The supported features for the provider.",
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            },
+            "required": [
+              "bulkWrite",
+              "proxy",
+              "read",
+              "subscribe",
+              "write"
+            ],
+            "properties": {
+              "bulkWrite": {
+                "type": "object",
+                "x-oapi-codegen-extra-tags": {
+                  "validate": "required"
+                },
+                "required": [
+                  "insert",
+                  "update",
+                  "upsert",
+                  "delete"
+                ],
+                "properties": {
+                  "insert": {
+                    "type": "boolean"
+                  },
+                  "update": {
+                    "type": "boolean"
+                  },
+                  "upsert": {
+                    "type": "boolean"
+                  },
+                  "delete": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "proxy": {
+                "type": "boolean"
+              },
+              "read": {
+                "type": "boolean"
+              },
+              "subscribe": {
+                "type": "boolean"
+              },
+              "write": {
+                "type": "boolean"
+              },
+              "subscribeSupport": {
+                "type": "object",
+                "properties": {
+                  "create": {
+                    "type": "boolean"
+                  },
+                  "update": {
+                    "type": "boolean"
+                  },
+                  "delete": {
+                    "type": "boolean"
+                  },
+                  "passThrough": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "providerOpts": {
+            "description": "Additional provider-specific metadata.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "displayName": {
+            "type": "string",
+            "example": "Zendesk Chat",
+            "description": "The display name of the provider, if omitted, defaults to provider name.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "postAuthInfoNeeded": {
+            "type": "boolean",
+            "example": true,
+            "description": "If true, we require additional information after auth to start making requests.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "media": {
+            "properties": {
+              "regular": {
+                "type": "object",
+                "description": "Media for light/regular mode.",
+                "properties": {
+                  "iconURL": {
+                    "type": "string",
+                    "example": "https://example.com/icon.png",
+                    "description": "URL to the icon for the provider.",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "logoURL": {
+                    "type": "string",
+                    "example": "https://example.com/logo.png",
+                    "description": "URL to the logo for the provider.",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "darkMode": {
+                "type": "object",
+                "description": "Media to be used in dark mode.",
+                "properties": {
+                  "iconURL": {
+                    "type": "string",
+                    "example": "https://example.com/icon.png",
+                    "description": "URL to the icon for the provider that is to be used in dark mode.",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "logoURL": {
+                    "type": "string",
+                    "example": "https://example.com/logo.png",
+                    "description": "URL to the logo for the provider that is to be used in dark mode.",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              }
+            }
+          },
+          "labels": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "subscribeOpts": {
+            "type": "object",
+            "required": [
+              "subscriptionScope",
+              "targetURLScope",
+              "registrationTiming"
+            ],
+            "properties": {
+              "subscriptionScope": {
+                "type": "string",
+                "enum": [
+                  "integration",
+                  "installation"
+                ],
+                "description": "The scope of the subscription."
+              },
+              "targetURLScope": {
+                "enum": [
+                  "integration",
+                  "installation"
+                ],
+                "description": "The scope of the target URL."
+              },
+              "registrationTiming": {
+                "type": "string",
+                "enum": [
+                  "providerApp",
+                  "integration",
+                  "installation"
+                ],
+                "description": "The timing of the registration."
+              }
+            }
+          }
+        }
+      },
+      "CatalogWrapper": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "catalog"
+        ],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "example": "2024-07-30T22:14:51.000Z",
+            "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            }
+          },
+          "catalog": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "name",
+                "baseURL",
+                "authType",
+                "support",
+                "providerOpts"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "authType": {
+                  "description": "The type of authentication required by the provider.",
+                  "type": "string",
+                  "enum": [
+                    "oauth2",
+                    "apiKey",
+                    "basic",
+                    "jwt",
+                    "none"
+                  ],
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  }
+                },
+                "baseURL": {
+                  "description": "The base URL for making API requests.",
+                  "type": "string",
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  }
+                },
+                "oauth2Opts": {
+                  "type": "object",
+                  "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
+                  "required": [
+                    "grantType",
+                    "tokenURL",
+                    "explicitScopesRequired",
+                    "explicitWorkspaceRequired",
+                    "tokenMetadataFields"
+                  ],
+                  "properties": {
+                    "grantType": {
+                      "type": "string",
+                      "enum": [
+                        "authorizationCode",
+                        "authorizationCodePKCE",
+                        "clientCredentials",
+                        "password"
+                      ]
+                    },
+                    "authURL": {
+                      "type": "string",
+                      "example": "https://login.salesforce.com/services/oauth2/authorize",
+                      "description": "The authorization URL.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "tokenURL": {
+                      "type": "string",
+                      "example": "https://login.salesforce.com/services/oauth2/token",
+                      "description": "The token URL.",
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "required"
+                      }
+                    },
+                    "explicitScopesRequired": {
+                      "type": "boolean",
+                      "description": "Whether scopes are required to be known ahead of the OAuth flow.",
+                      "example": true
+                    },
+                    "explicitWorkspaceRequired": {
+                      "type": "boolean",
+                      "description": "Whether the workspace is required to be known ahead of the OAuth flow.",
+                      "example": true
+                    },
+                    "audience": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "https://api.mparticle.com"
+                      ],
+                      "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "tokenMetadataFields": {
+                      "type": "object",
+                      "description": "Fields to be used to extract token metadata from the token response.",
+                      "properties": {
+                        "workspaceRefField": {
+                          "type": "string",
+                          "example": "account-id",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "consumerRefField": {
+                          "type": "string",
+                          "example": "user-id",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "scopesField": {
+                          "type": "string",
+                          "example": "scopes",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "docsURL": {
+                      "type": "string",
+                      "description": "URL with more information about where to retrieve Client ID and Client Secret, etc.",
+                      "example": "https://docs.example.com/client-credentials",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "authURLParams": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "x-go-type-skip-optional-pointer": true,
+                      "example": {
+                        "access_type": "offline",
+                        "duration": "permanent"
+                      }
+                    }
+                  }
+                },
+                "apiKeyOpts": {
+                  "type": "object",
+                  "description": "Configuration for API key. Must be provided if authType is apiKey.",
+                  "required": [
+                    "attachmentType"
+                  ],
+                  "properties": {
+                    "attachmentType": {
+                      "type": "string",
+                      "description": "How the API key should be attached to requests.",
+                      "enum": [
+                        "query",
+                        "header"
+                      ],
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "required"
+                      }
+                    },
+                    "query": {
+                      "type": "object",
+                      "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "api_key",
+                          "description": "The name of the query parameter to be used for the API key.",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "header": {
+                      "type": "object",
+                      "description": "Configuration for API key in header. Must be provided if type is in-header.",
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "X-Api-Key",
+                          "description": "The name of the header to be used for the API key.",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "valuePrefix": {
+                          "type": "string",
+                          "example": "Bearer ",
+                          "description": "The prefix to be added to the API key value when it is sent in the header.",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "docsURL": {
+                      "type": "string",
+                      "description": "URL with more information about how to get or use an API key.",
+                      "example": "https://docs.example.com/api-key",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "basicOpts": {
+                  "type": "object",
+                  "description": "Configuration for Basic Auth. Optional.",
+                  "properties": {
+                    "apiKeyAsBasic": {
+                      "type": "boolean",
+                      "example": true,
+                      "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "apiKeyAsBasicOpts": {
+                      "type": "object",
+                      "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
+                      "properties": {
+                        "fieldUsed": {
+                          "type": "string",
+                          "enum": [
+                            "username",
+                            "password"
+                          ],
+                          "example": "username",
+                          "description": "whether the API key should be used as the username or password.",
+                          "x-go-type-skip-optional-pointer": true,
+                          "x-enum-varnames": [
+                            "UsernameField",
+                            "PasswordField"
+                          ]
+                        },
+                        "keyFormat": {
+                          "type": "string",
+                          "example": "api:%s",
+                          "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "docsURL": {
+                      "type": "string",
+                      "description": "URL with more information about how to get or use an API key.",
+                      "example": "https://docs.example.com/api-key",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "support": {
+                  "type": "object",
+                  "description": "The supported features for the provider.",
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  },
+                  "required": [
+                    "bulkWrite",
+                    "proxy",
+                    "read",
+                    "subscribe",
+                    "write"
+                  ],
+                  "properties": {
+                    "bulkWrite": {
+                      "type": "object",
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "required"
+                      },
+                      "required": [
+                        "insert",
+                        "update",
+                        "upsert",
+                        "delete"
+                      ],
+                      "properties": {
+                        "insert": {
+                          "type": "boolean"
+                        },
+                        "update": {
+                          "type": "boolean"
+                        },
+                        "upsert": {
+                          "type": "boolean"
+                        },
+                        "delete": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "proxy": {
+                      "type": "boolean"
+                    },
+                    "read": {
+                      "type": "boolean"
+                    },
+                    "subscribe": {
+                      "type": "boolean"
+                    },
+                    "write": {
+                      "type": "boolean"
+                    },
+                    "subscribeSupport": {
+                      "type": "object",
+                      "properties": {
+                        "create": {
+                          "type": "boolean"
+                        },
+                        "update": {
+                          "type": "boolean"
+                        },
+                        "delete": {
+                          "type": "boolean"
+                        },
+                        "passThrough": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                },
+                "providerOpts": {
+                  "description": "Additional provider-specific metadata.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "displayName": {
+                  "type": "string",
+                  "example": "Zendesk Chat",
+                  "description": "The display name of the provider, if omitted, defaults to provider name.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "postAuthInfoNeeded": {
+                  "type": "boolean",
+                  "example": true,
+                  "description": "If true, we require additional information after auth to start making requests.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "media": {
+                  "properties": {
+                    "regular": {
+                      "type": "object",
+                      "description": "Media for light/regular mode.",
+                      "properties": {
+                        "iconURL": {
+                          "type": "string",
+                          "example": "https://example.com/icon.png",
+                          "description": "URL to the icon for the provider.",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "logoURL": {
+                          "type": "string",
+                          "example": "https://example.com/logo.png",
+                          "description": "URL to the logo for the provider.",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "darkMode": {
+                      "type": "object",
+                      "description": "Media to be used in dark mode.",
+                      "properties": {
+                        "iconURL": {
+                          "type": "string",
+                          "example": "https://example.com/icon.png",
+                          "description": "URL to the icon for the provider that is to be used in dark mode.",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "logoURL": {
+                          "type": "string",
+                          "example": "https://example.com/logo.png",
+                          "description": "URL to the logo for the provider that is to be used in dark mode.",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    }
+                  }
+                },
+                "labels": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "subscribeOpts": {
+                  "type": "object",
+                  "required": [
+                    "subscriptionScope",
+                    "targetURLScope",
+                    "registrationTiming"
+                  ],
+                  "properties": {
+                    "subscriptionScope": {
+                      "type": "string",
+                      "enum": [
+                        "integration",
+                        "installation"
+                      ],
+                      "description": "The scope of the subscription."
+                    },
+                    "targetURLScope": {
+                      "enum": [
+                        "integration",
+                        "installation"
+                      ],
+                      "description": "The scope of the target URL."
+                    },
+                    "registrationTiming": {
+                      "type": "string",
+                      "enum": [
+                        "providerApp",
+                        "integration",
+                        "installation"
+                      ],
+                      "description": "The timing of the registration."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CatalogType": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "required": [
+            "name",
+            "baseURL",
+            "authType",
+            "support",
+            "providerOpts"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "authType": {
+              "description": "The type of authentication required by the provider.",
+              "type": "string",
+              "enum": [
+                "oauth2",
+                "apiKey",
+                "basic",
+                "jwt",
+                "none"
+              ],
+              "x-oapi-codegen-extra-tags": {
+                "validate": "required"
+              }
+            },
+            "baseURL": {
+              "description": "The base URL for making API requests.",
+              "type": "string",
+              "x-oapi-codegen-extra-tags": {
+                "validate": "required"
+              }
+            },
+            "oauth2Opts": {
+              "type": "object",
+              "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
+              "required": [
+                "grantType",
+                "tokenURL",
+                "explicitScopesRequired",
+                "explicitWorkspaceRequired",
+                "tokenMetadataFields"
+              ],
+              "properties": {
+                "grantType": {
+                  "type": "string",
+                  "enum": [
+                    "authorizationCode",
+                    "authorizationCodePKCE",
+                    "clientCredentials",
+                    "password"
+                  ]
+                },
+                "authURL": {
+                  "type": "string",
+                  "example": "https://login.salesforce.com/services/oauth2/authorize",
+                  "description": "The authorization URL.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "tokenURL": {
+                  "type": "string",
+                  "example": "https://login.salesforce.com/services/oauth2/token",
+                  "description": "The token URL.",
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  }
+                },
+                "explicitScopesRequired": {
+                  "type": "boolean",
+                  "description": "Whether scopes are required to be known ahead of the OAuth flow.",
+                  "example": true
+                },
+                "explicitWorkspaceRequired": {
+                  "type": "boolean",
+                  "description": "Whether the workspace is required to be known ahead of the OAuth flow.",
+                  "example": true
+                },
+                "audience": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "https://api.mparticle.com"
+                  ],
+                  "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "tokenMetadataFields": {
+                  "type": "object",
+                  "description": "Fields to be used to extract token metadata from the token response.",
+                  "properties": {
+                    "workspaceRefField": {
+                      "type": "string",
+                      "example": "account-id",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "consumerRefField": {
+                      "type": "string",
+                      "example": "user-id",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "scopesField": {
+                      "type": "string",
+                      "example": "scopes",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "docsURL": {
+                  "type": "string",
+                  "description": "URL with more information about where to retrieve Client ID and Client Secret, etc.",
+                  "example": "https://docs.example.com/client-credentials",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "authURLParams": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "x-go-type-skip-optional-pointer": true,
+                  "example": {
+                    "access_type": "offline",
+                    "duration": "permanent"
+                  }
+                }
+              }
+            },
+            "apiKeyOpts": {
+              "type": "object",
+              "description": "Configuration for API key. Must be provided if authType is apiKey.",
+              "required": [
+                "attachmentType"
+              ],
+              "properties": {
+                "attachmentType": {
+                  "type": "string",
+                  "description": "How the API key should be attached to requests.",
+                  "enum": [
+                    "query",
+                    "header"
+                  ],
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  }
+                },
+                "query": {
+                  "type": "object",
+                  "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "api_key",
+                      "description": "The name of the query parameter to be used for the API key.",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "header": {
+                  "type": "object",
+                  "description": "Configuration for API key in header. Must be provided if type is in-header.",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "X-Api-Key",
+                      "description": "The name of the header to be used for the API key.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "valuePrefix": {
+                      "type": "string",
+                      "example": "Bearer ",
+                      "description": "The prefix to be added to the API key value when it is sent in the header.",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "docsURL": {
+                  "type": "string",
+                  "description": "URL with more information about how to get or use an API key.",
+                  "example": "https://docs.example.com/api-key",
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
+            },
+            "basicOpts": {
+              "type": "object",
+              "description": "Configuration for Basic Auth. Optional.",
+              "properties": {
+                "apiKeyAsBasic": {
+                  "type": "boolean",
+                  "example": true,
+                  "description": "If true, the provider uses an API key which then gets encoded as a basic auth user:pass string.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "apiKeyAsBasicOpts": {
+                  "type": "object",
+                  "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
+                  "properties": {
+                    "fieldUsed": {
+                      "type": "string",
+                      "enum": [
+                        "username",
+                        "password"
+                      ],
+                      "example": "username",
+                      "description": "whether the API key should be used as the username or password.",
+                      "x-go-type-skip-optional-pointer": true,
+                      "x-enum-varnames": [
+                        "UsernameField",
+                        "PasswordField"
+                      ]
+                    },
+                    "keyFormat": {
+                      "type": "string",
+                      "example": "api:%s",
+                      "description": "How to transform the API key in to a basic auth user:pass string. The %s is replaced with the API key value.",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "docsURL": {
+                  "type": "string",
+                  "description": "URL with more information about how to get or use an API key.",
+                  "example": "https://docs.example.com/api-key",
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
+            },
+            "support": {
+              "type": "object",
+              "description": "The supported features for the provider.",
+              "x-oapi-codegen-extra-tags": {
+                "validate": "required"
+              },
+              "required": [
+                "bulkWrite",
+                "proxy",
+                "read",
+                "subscribe",
+                "write"
+              ],
+              "properties": {
+                "bulkWrite": {
+                  "type": "object",
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  },
+                  "required": [
+                    "insert",
+                    "update",
+                    "upsert",
+                    "delete"
+                  ],
+                  "properties": {
+                    "insert": {
+                      "type": "boolean"
+                    },
+                    "update": {
+                      "type": "boolean"
+                    },
+                    "upsert": {
+                      "type": "boolean"
+                    },
+                    "delete": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "proxy": {
+                  "type": "boolean"
+                },
+                "read": {
+                  "type": "boolean"
+                },
+                "subscribe": {
+                  "type": "boolean"
+                },
+                "write": {
+                  "type": "boolean"
+                },
+                "subscribeSupport": {
+                  "type": "object",
+                  "properties": {
+                    "create": {
+                      "type": "boolean"
+                    },
+                    "update": {
+                      "type": "boolean"
+                    },
+                    "delete": {
+                      "type": "boolean"
+                    },
+                    "passThrough": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            },
+            "providerOpts": {
+              "description": "Additional provider-specific metadata.",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "displayName": {
+              "type": "string",
+              "example": "Zendesk Chat",
+              "description": "The display name of the provider, if omitted, defaults to provider name.",
+              "x-go-type-skip-optional-pointer": true
+            },
+            "postAuthInfoNeeded": {
+              "type": "boolean",
+              "example": true,
+              "description": "If true, we require additional information after auth to start making requests.",
+              "x-go-type-skip-optional-pointer": true
+            },
+            "media": {
+              "properties": {
+                "regular": {
+                  "type": "object",
+                  "description": "Media for light/regular mode.",
+                  "properties": {
+                    "iconURL": {
+                      "type": "string",
+                      "example": "https://example.com/icon.png",
+                      "description": "URL to the icon for the provider.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "logoURL": {
+                      "type": "string",
+                      "example": "https://example.com/logo.png",
+                      "description": "URL to the logo for the provider.",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "darkMode": {
+                  "type": "object",
+                  "description": "Media to be used in dark mode.",
+                  "properties": {
+                    "iconURL": {
+                      "type": "string",
+                      "example": "https://example.com/icon.png",
+                      "description": "URL to the icon for the provider that is to be used in dark mode.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "logoURL": {
+                      "type": "string",
+                      "example": "https://example.com/logo.png",
+                      "description": "URL to the logo for the provider that is to be used in dark mode.",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                }
+              }
+            },
+            "labels": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "subscribeOpts": {
+              "type": "object",
+              "required": [
+                "subscriptionScope",
+                "targetURLScope",
+                "registrationTiming"
+              ],
+              "properties": {
+                "subscriptionScope": {
+                  "type": "string",
+                  "enum": [
+                    "integration",
+                    "installation"
+                  ],
+                  "description": "The scope of the subscription."
+                },
+                "targetURLScope": {
+                  "enum": [
+                    "integration",
+                    "installation"
+                  ],
+                  "description": "The scope of the target URL."
+                },
+                "registrationTiming": {
+                  "type": "string",
+                  "enum": [
+                    "providerApp",
+                    "integration",
+                    "installation"
+                  ],
+                  "description": "The timing of the registration."
+                }
+              }
+            }
+          }
+        }
+      },
+      "SubscribeOpts": {
+        "type": "object",
+        "required": [
+          "subscriptionScope",
+          "targetURLScope",
+          "registrationTiming"
+        ],
+        "properties": {
+          "subscriptionScope": {
+            "type": "string",
+            "enum": [
+              "integration",
+              "installation"
+            ],
+            "description": "The scope of the subscription."
+          },
+          "targetURLScope": {
+            "enum": [
+              "integration",
+              "installation"
+            ],
+            "description": "The scope of the target URL."
+          },
+          "registrationTiming": {
+            "type": "string",
+            "enum": [
+              "providerApp",
+              "integration",
+              "installation"
+            ],
+            "description": "The timing of the registration."
+          }
+        }
+      },
+      "SubscribeSupport": {
+        "type": "object",
+        "properties": {
+          "create": {
+            "type": "boolean"
+          },
+          "update": {
+            "type": "boolean"
+          },
+          "delete": {
+            "type": "boolean"
+          },
+          "passThrough": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

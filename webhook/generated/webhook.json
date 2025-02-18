@@ -1,0 +1,276 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Webhook message schema",
+    "version": "1.0.0",
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/license/mit"
+    }
+  },
+  "servers": [],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "WebhookMessage": {
+        "type": "object",
+        "required": [
+          "action",
+          "projectId",
+          "provider",
+          "groupRef",
+          "groupName",
+          "installationId",
+          "installationUpdateTime",
+          "objectName",
+          "resultInfo"
+        ],
+        "properties": {
+          "projectId": {
+            "description": "The Ampersand Project ID.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "The SaaS API that we are integrating with.",
+            "type": "string"
+          },
+          "workspace": {
+            "description": "When available, the workspace ID of the SaaS provider.",
+            "type": "string"
+          },
+          "groupRef": {
+            "description": "The ID that your app uses to identify the group of users.",
+            "type": "string"
+          },
+          "groupName": {
+            "description": "The display name of the group of users.",
+            "type": "string"
+          },
+          "installationId": {
+            "description": "The ID of the Ampersand installation.",
+            "type": "string"
+          },
+          "installationUpdateTime": {
+            "description": "The timestamp of the last update to the installation.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "objectName": {
+            "description": "The name of the object. If there is a mapping for this object, this is the mapped name. Otherwise, it is the name used by the SaaS provider API.",
+            "type": "string"
+          },
+          "rawObjectName": {
+            "description": "If there is a mapping for this object, this is the name used by the SaaS provider API.",
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "action": {
+            "description": "The Ampersand action that triggered the webhook.",
+            "type": "string"
+          },
+          "resultInfo": {
+            "type": "object",
+            "description": "Information about the result contained in the webhook message.",
+            "required": [
+              "type",
+              "numRecords"
+            ],
+            "properties": {
+              "type": {
+                "description": "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be  present, which contains a URL to download the result. Else, the result is contained in the message itself in  the 'result' field.",
+                "type": "string",
+                "enum": [
+                  "url",
+                  "inline"
+                ]
+              },
+              "downloadUrl": {
+                "description": "The URL to download the result. Only present if type is url.",
+                "type": "string"
+              },
+              "numRecords": {
+                "description": "The number of records in the result. Present in all cases.",
+                "type": "integer"
+              }
+            }
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).",
+              "properties": {
+                "fields": {
+                  "type": "object",
+                  "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "mappedFields": {
+                  "type": "object",
+                  "description": "A key-value map of mapped field names to values.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "associations": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the associated record.",
+                          "type": "string",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    }
+                  },
+                  "description": "A key-value map of association names to lists of associated record IDs.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "raw": {
+                  "type": "object",
+                  "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+                  "additionalProperties": true,
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "rawEvent": {
+                  "type": "object",
+                  "description": "The raw event data from the SaaS provider. For providers that support webhooks, this is the raw webhook payload",
+                  "additionalProperties": true,
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "subscribeEventType": {
+                  "description": "The type of event that triggered the message.",
+                  "type": "string",
+                  "enum": [
+                    "create",
+                    "update",
+                    "updateAssociation",
+                    "delete",
+                    "other"
+                  ],
+                  "x-enumNames": [
+                    "CreateEvent",
+                    "UpdateEvent",
+                    "UpdateAssociationEvent",
+                    "DeleteEvent",
+                    "OtherEvent"
+                  ]
+                },
+                "providerEventType": {
+                  "description": "The type of event that triggered the message, as defined by the SaaS provider.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Association": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the associated record.",
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "ResultEntry": {
+        "type": "object",
+        "description": "Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).",
+        "properties": {
+          "fields": {
+            "type": "object",
+            "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "mappedFields": {
+            "type": "object",
+            "description": "A key-value map of mapped field names to values.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "associations": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "The ID of the associated record.",
+                    "type": "string",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              }
+            },
+            "description": "A key-value map of association names to lists of associated record IDs.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "raw": {
+            "type": "object",
+            "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
+          },
+          "rawEvent": {
+            "type": "object",
+            "description": "The raw event data from the SaaS provider. For providers that support webhooks, this is the raw webhook payload",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
+          },
+          "subscribeEventType": {
+            "description": "The type of event that triggered the message.",
+            "type": "string",
+            "enum": [
+              "create",
+              "update",
+              "updateAssociation",
+              "delete",
+              "other"
+            ],
+            "x-enumNames": [
+              "CreateEvent",
+              "UpdateEvent",
+              "UpdateAssociationEvent",
+              "DeleteEvent",
+              "OtherEvent"
+            ]
+          },
+          "providerEventType": {
+            "description": "The type of event that triggered the message, as defined by the SaaS provider.",
+            "type": "string"
+          }
+        }
+      },
+      "ResultInfo": {
+        "type": "object",
+        "description": "Information about the result contained in the webhook message.",
+        "required": [
+          "type",
+          "numRecords"
+        ],
+        "properties": {
+          "type": {
+            "description": "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be  present, which contains a URL to download the result. Else, the result is contained in the message itself in  the 'result' field.",
+            "type": "string",
+            "enum": [
+              "url",
+              "inline"
+            ]
+          },
+          "downloadUrl": {
+            "description": "The URL to download the result. Only present if type is url.",
+            "type": "string"
+          },
+          "numRecords": {
+            "description": "The number of records in the result. Present in all cases.",
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
