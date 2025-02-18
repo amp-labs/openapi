@@ -47,19 +47,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
         500:
           description: Internal server error
           content:
             application/json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
 
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
     post:
@@ -100,19 +100,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
         500:
           description: Internal server error
           content:
             application/json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
 components:
   schemas:
     ReadRequest:

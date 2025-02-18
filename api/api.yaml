@@ -67,13 +67,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: connectOAuthParams
   /projects:
     get:
@@ -94,7 +94,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     post:
       summary: Create a new project
       operationId: createProject
@@ -134,13 +134,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: project
   /projects/{projectIdOrName}:
     get:
@@ -165,13 +165,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       summary: Delete a project
       operationId: deleteProject
@@ -190,13 +190,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
       summary: Update a project
       operationId: updateProject
@@ -249,19 +249,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: projectUpdate
   /projects/{projectIdOrName}/provider-apps:
     get:
@@ -288,13 +288,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     post:
       summary: Create a new provider app
       operationId: createProviderApp
@@ -352,19 +352,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: providerApp
   /projects/{projectIdOrName}/provider-apps/{providerAppId}:
     delete:
@@ -390,13 +390,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
       summary: Update a provider app
       operationId: updateProviderApp
@@ -476,13 +476,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: providerAppUpdate
   /projects/{projectIdOrName}/integrations:
     get:
@@ -509,13 +509,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     post:
       summary: Create a new integration
       operationId: createIntegration
@@ -553,7 +553,7 @@ paths:
                       description: The spec version string.
                       example: 1.0.0
                     content:
-                      $ref: "../manifest/manifest.yaml#/components/schemas/Integration"
+                      $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/Integration"
         required: true
       responses:
         201:
@@ -564,19 +564,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: integration
   /projects/{projectIdOrName}/integrations/{integrationId}:
     delete:
@@ -602,19 +602,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations:batch:
     put:
       summary: Batch upsert a group of integrations
@@ -656,13 +656,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/revisions:
     post:
       summary: Create a new revision
@@ -704,19 +704,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: revision
   /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate:
     get:
@@ -757,19 +757,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/installations:
     get:
       summary: List installations
@@ -804,13 +804,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     post:
       summary: Create a new installation
       operationId: createInstallation
@@ -860,7 +860,7 @@ paths:
                         of "consumer:{consumer-id}" or "builder:{builder-id}".
                       default: "api:create-installation"
                     content:
-                      $ref: "../config/config.yaml#/components/schemas/ConfigContent"
+                      $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml.yaml#/components/schemas/ConfigContent"
                   description: The config of the installation.
         required: true
       responses:
@@ -875,19 +875,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installation
   /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:
     get:
@@ -922,13 +922,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       summary: Delete an installation
       operationId: deleteInstallation
@@ -957,7 +957,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
       summary: Update an installation
       operationId: updateInstallation
@@ -1016,7 +1016,7 @@ paths:
                             The person who created the config, in the format
                             of "consumer:{consumer-id}" or "builder:{builder-id}".
                         content:
-                          $ref: "../config/config.yaml#/components/schemas/UpdateInstallationConfigContent"
+                          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml.yaml#/components/schemas/UpdateInstallationConfigContent"
                           description: The content of the config.
                       description: The config of the installation.
                   description:
@@ -1035,19 +1035,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installationUpdate
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
     get:
@@ -1095,7 +1095,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata:
     get:
       summary: Get object metadata for connection
@@ -1142,7 +1142,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations:
     get:
       summary: List operations
@@ -1199,19 +1199,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/operations/{operationId}:
     get:
       summary: Get an operation
@@ -1240,19 +1240,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/operations/{operationId}/logs:
     get:
       summary: List logs for an operation
@@ -1283,19 +1283,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /providers:
     get:
       summary: List providers
@@ -1307,13 +1307,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../catalog/catalog.yaml#/components/schemas/CatalogType"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/catalog/catalog.yaml#/components/schemas/CatalogType"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /providers/{provider}:
     get:
       summary: Get provider
@@ -1331,13 +1331,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "../catalog/catalog.yaml#/components/schemas/ProviderInfo"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/catalog/catalog.yaml#/components/schemas/ProviderInfo"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/api-keys:
     get:
       x-speakeasy-ignore: true
@@ -1369,13 +1369,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     post:
       x-speakeasy-ignore: true
       summary: Create a new API key
@@ -1405,13 +1405,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: apiKey
   /projects/{projectIdOrName}/api-keys/{apiKey}:
     get:
@@ -1436,7 +1436,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         200:
           description: API key
           content:
@@ -1448,7 +1448,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       x-speakeasy-ignore: true
       summary: Delete an API key
@@ -1471,7 +1471,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         204:
           description: Deleted
     patch:
@@ -1508,25 +1508,25 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         404:
           description: Not found
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/connections:
     get:
       summary: List connections
@@ -1567,13 +1567,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/connections:generate:
     post:
       summary: Generate a new connection
@@ -1686,19 +1686,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: generateConnectionParams
   /projects/{projectIdOrName}/connections/{connectionId}:
     get:
@@ -1745,13 +1745,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       summary: Delete a connection
       operationId: deleteConnection
@@ -1775,7 +1775,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/groups:
     post:
       summary: Create a new group
@@ -1816,13 +1816,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: group
   /projects/{projectIdOrName}/consumers:
     post:
@@ -1862,13 +1862,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: consumer
   /projects/{projectIdOrName}/destinations:
     post:
@@ -1922,19 +1922,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: destination
     get:
       summary: List destinations
@@ -1960,7 +1960,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/destinations/{destination}:
     get:
       summary: Get a destination
@@ -1984,7 +1984,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         200:
           description: OK
           content:
@@ -1996,7 +1996,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
       summary: Update a destination
       operationId: updateDestination
@@ -2054,19 +2054,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         400:
           description: Bad Request
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         422:
           description: Unprocessable Entity
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         200:
           description: Updated
           content:
@@ -2078,7 +2078,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: destinationUpdate
     delete:
       summary: Delete a destination
@@ -2104,7 +2104,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /generate-upload-url:
     get:
       summary: Generate a signed URL to upload a zip file to.
@@ -2122,13 +2122,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs:
     post:
       x-speakeasy-ignore: true
@@ -2160,7 +2160,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: org
   /orgs/{orgId}:
     get:
@@ -2186,13 +2186,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
       x-speakeasy-ignore: true
       summary: Update an organization
@@ -2240,13 +2240,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
         x-codegen-request-body-name: orgUpdate
   /orgs/{orgId}/builders:
     get:
@@ -2274,7 +2274,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/invites:
     post:
       x-speakeasy-ignore: true
@@ -2311,13 +2311,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
         x-codegen-request-body-name: invite
     get:
       x-speakeasy-ignore: true
@@ -2344,7 +2344,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/invites/{inviteId}:
     get:
       x-speakeasy-ignore: true
@@ -2374,7 +2374,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       x-speakeasy-ignore: true
       summary: Revoke an invite
@@ -2399,13 +2399,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /my-info:
     get:
       x-speakeasy-ignore: true
@@ -2425,7 +2425,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /invites:accept:
     post:
       x-speakeasy-ignore: true
@@ -2457,7 +2457,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /orgs/{orgId}/billingAccount:
     get:
       x-speakeasy-ignore: true
@@ -2482,13 +2482,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
   /billingAccounts/{billingAccountId}/portalSession:
     post:
       x-speakeasy-ignore: true
@@ -2537,7 +2537,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
 
 ## Schema Components ##
 components:
@@ -2747,7 +2747,7 @@ components:
           description: The time the revision was created.
           format: date-time
         content:
-          $ref: "../manifest/manifest.yaml#/components/schemas/Integration"
+          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/Integration"
     HydratedRevision:
       title: Hydrated Revision
       required:
@@ -2770,7 +2770,7 @@ components:
           description: The time the revision was created.
           format: date-time
         content:
-          $ref: "../manifest/manifest.yaml#/components/schemas/HydratedIntegration"
+          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/HydratedIntegration"
     Installation:
       title: Installation
       required:
@@ -2847,7 +2847,7 @@ components:
             or "builder:{builder-id}".
           example: builder:builder-123
         content:
-          $ref: "../config/config.yaml#/components/schemas/ConfigContent"
+          $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/config/config.yaml.yaml#/components/schemas/ConfigContent"
     Connection:
       title: Connection
       required:
@@ -3472,7 +3472,7 @@ components:
           type: object
           description: Map of field metadata keyed by field name
           additionalProperties:
-            $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
+            $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/manifest/manifest.yamlmanifest.yaml#/components/schemas/FieldMetadata"
     PaginationInfo:
       title: Pagination Information
       type: object

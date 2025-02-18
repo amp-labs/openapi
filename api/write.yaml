@@ -58,7 +58,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+                $ref: "https://raw.githubusercontent.com/amp-labs/openapi/refs/heads/main/problem/problem.yaml#/components/schemas/ApiProblem"
 components:
   schemas:
     WriteRequest:
