@@ -535,6 +535,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "description": "ResultDeliveryRequestBody",
           "content": {
             "application/json": {

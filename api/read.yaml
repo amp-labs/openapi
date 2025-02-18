@@ -85,6 +85,7 @@ paths:
           schema:
             type: string
       requestBody:
+        required: true
         description: ResultDeliveryRequestBody
         content:
           application/json:
