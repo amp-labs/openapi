@@ -45,6 +45,7 @@
         ],
         "requestBody": {
           "description": "Write request",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {

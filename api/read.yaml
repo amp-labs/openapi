@@ -30,6 +30,7 @@ paths:
             type: string
       requestBody:
         description: Read Request
+        required: true
         content:
           application/json:
             schema:
@@ -85,8 +86,8 @@ paths:
           schema:
             type: string
       requestBody:
-        required: true
         description: ResultDeliveryRequestBody
+        required: true
         content:
           application/json:
             schema:
