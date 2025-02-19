@@ -1,15 +1,24 @@
 openapi: 3.0.1
 info:
-  title: Ampersand public write API
+  title: Ampersand public read API
   version: 1.0.0
 servers:
+  - url: https://read.withampersand.com/v1
+    description: Read API
   - url: https://write.withampersand.com/v1
+    description: Write API
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:
-      summary: Write records
-      operationId: writeRecords
-      tags: ["Write"]
+      servers:
+        - url: https://read.withampersand.com/v1
+          description: Read API
+        - url: https://write.withampersand.com/v1
+          description: Write API
+#      description:
+#        Triggers reading data from a SaaS instance. See [Trigger a read](https://docs.withampersand.com/define-integrations/read-actions#trigger-a-read) for details.
+#      operationId: triggerReadWrite
+#      tags: ["Read"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -27,12 +36,13 @@ paths:
           schema:
             type: string
       requestBody:
-        description: Write request
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/WriteRequest"
+              oneOf:
+                - $ref: "#/components/schemas/ReadRequest"
+                - $ref: "#/components/schemas/WriteRequest"
       responses:
         200:
           description: The success response
@@ -40,19 +50,85 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/WriteResponseSingleSuccess"
+        201:
+          description: The success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadResultAsync"
         400:
           description: The failure response for bad request.
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-                example: "required field not found"
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         422:
           description: Error encountered while creating records
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/WriteResponseSingleFail"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
+    servers:
+      - url: https://read.withampersand.com/v1
+    post:
+      summary: Deliver results
+      description:
+        If a read action has delivery mode set to onRequest, then use this endpoint to request for more results.
+        Learn more in [Delivery modes](https://docs.withampersand.com/define-integrations/read-actions#delivery-modes).
+      operationId: deliverResults
+      tags: ["Read"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ResultDeliveryRequestBody
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResultDeliveryRequestBody"
+      responses:
+        204:
+          description: The success response
+        400:
+          description: The failure response for bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
@@ -77,12 +153,12 @@ components:
           type: string
           description:
             The type of write operation. The only supported types currently are create and update.
-          enum: [create, update]
+          enum: [ create, update ]
           example: create
         mode:
           type: string
           description: The mode of write operation. The only supported mode currently is synchronous.
-          enum: [synchronous] #          enum: [synchronous, async, bulk]
+          enum: [ synchronous ] #          enum: [synchronous, async, bulk]
           example: synchronous
         record:
           type: object
@@ -99,11 +175,11 @@ components:
           description: "To write associations to the record. Note: currently only HubSpot associations are supported"
           example:
             [
-              { "to": {"id": "18417469260"},
-                "types": [{
-                    "associationCategory": "HUBSPOT_DEFINED",
-                    "associationTypeId": 279
-                }]}
+              { "to": { "id": "18417469260" },
+                "types": [ {
+                  "associationCategory": "HUBSPOT_DEFINED",
+                  "associationTypeId": 279
+                } ] }
             ]
         #        records:
         #          type: array
@@ -168,6 +244,53 @@ components:
           type: string
           description: The ID of the object
           example: 003Dp0X#@RG7IAP
+    ReadRequest:
+      title: Read Request
+      required:
+        - groupRef
+        - mode
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description:
+            The ID of the user group whose SaaS instance you'd like to read data from. This is the ID that was provided
+            during installation creation.
+        mode:
+          type: string
+          description: The mode of read operation. Currently only asynchronus operation is supported.
+          enum: [async]
+          example: async
+        sinceTimestamp:
+          type: string
+          description: The UTC timestamp from which to read data. If omitted, we will read all data.
+          example: "2024-07-01T18:22:30.323771761Z"
+    ReadResultAsync:
+      title: Read Result Async
+      type: object
+      required:
+        - operationId
+      properties:
+        operationId:
+          type: string
+          description: The operation ID
+          example: 60deaf48-3856-4a2b-bfd4-3de85125eca8
+    ResultDeliveryRequestBody:
+      title: Result Delivery Request
+      required:
+        - groupRef
+        - pages
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description:
+            The ID of the user group whose SaaS instance you'd like to receive results from. This is the ID that was provided
+            during installation creation.
+        pages:
+          type: integer
+          description: The number of pages you are ready to receive from the group's SaaS instance.
+          minimum: 0
   securitySchemes:
     APIKeyHeader:
       type: apiKey

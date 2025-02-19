@@ -3810,7 +3810,7 @@
           "required": true
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "The newly created provider app",
             "content": {
               "application/json": {
@@ -17488,7 +17488,7 @@
           {
             "name": "groupRef",
             "in": "query",
-            "required": false,
+            "required": true,
             "description": "The groupRef for the installation",
             "schema": {
               "type": "string"

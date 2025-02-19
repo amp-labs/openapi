@@ -13,6 +13,7 @@
   "components": {
     "schemas": {
       "BaseConfigContent": {
+        "title": "Base Config Content",
         "type": "object",
         "properties": {
           "provider": {
@@ -21,12 +22,14 @@
             "type": "string"
           },
           "read": {
+            "title": "Base Read Config",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "object",
                 "description": "This is a map of object names to their configuration.",
                 "additionalProperties": {
+                  "title": "Base Read Config Object",
                   "type": "object",
                   "properties": {
                     "objectName": {
@@ -67,6 +70,7 @@
                       },
                       "x-go-type-skip-optional-pointer": true,
                       "additionalProperties": {
+                        "title": "Selected Value Mappings",
                         "type": "object",
                         "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                         "example": {
@@ -89,6 +93,7 @@
                       }
                     },
                     "selectedFieldsAuto": {
+                      "title": "Selected Fields Auto Config",
                       "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                       "type": "string",
                       "enum": [
@@ -99,12 +104,14 @@
                       ]
                     },
                     "backfill": {
+                      "title": "Backfill Config",
                       "type": "object",
                       "required": [
                         "defaultPeriod"
                       ],
                       "properties": {
                         "defaultPeriod": {
+                          "title": "Default Period Config",
                           "type": "object",
                           "properties": {
                             "days": {
@@ -134,12 +141,14 @@
             }
           },
           "write": {
+            "title": "Base Write Config",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "object",
                 "description": "This is a map of object names to their configuration.",
                 "additionalProperties": {
+                  "title": "Base Write Config Object",
                   "type": "object",
                   "properties": {
                     "objectName": {
@@ -155,8 +164,10 @@
                       "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                       "x-go-type-skip-optional-pointer": true,
                       "additionalProperties": {
+                        "title": "Value Default",
                         "oneOf": [
                           {
+                            "title": "Value Default String",
                             "type": "object",
                             "required": [
                               "value"
@@ -177,6 +188,7 @@
                             }
                           },
                           {
+                            "title": "Value Default Integer",
                             "type": "object",
                             "required": [
                               "value"
@@ -197,6 +209,7 @@
                             }
                           },
                           {
+                            "title": "Value Default Boolean",
                             "type": "object",
                             "required": [
                               "value"
@@ -225,6 +238,7 @@
             }
           },
           "proxy": {
+            "title": "Base Proxy Config",
             "type": "object",
             "properties": {
               "enabled": {
@@ -235,6 +249,7 @@
         }
       },
       "BaseProxyConfig": {
+        "title": "Base Proxy Config",
         "type": "object",
         "properties": {
           "enabled": {
@@ -243,12 +258,14 @@
         }
       },
       "BaseReadConfig": {
+        "title": "Base Read Config",
         "type": "object",
         "properties": {
           "objects": {
             "type": "object",
             "description": "This is a map of object names to their configuration.",
             "additionalProperties": {
+              "title": "Base Read Config Object",
               "type": "object",
               "properties": {
                 "objectName": {
@@ -289,6 +306,7 @@
                   },
                   "x-go-type-skip-optional-pointer": true,
                   "additionalProperties": {
+                    "title": "Selected Value Mappings",
                     "type": "object",
                     "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                     "example": {
@@ -311,6 +329,7 @@
                   }
                 },
                 "selectedFieldsAuto": {
+                  "title": "Selected Fields Auto Config",
                   "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                   "type": "string",
                   "enum": [
@@ -321,12 +340,14 @@
                   ]
                 },
                 "backfill": {
+                  "title": "Backfill Config",
                   "type": "object",
                   "required": [
                     "defaultPeriod"
                   ],
                   "properties": {
                     "defaultPeriod": {
+                      "title": "Default Period Config",
                       "type": "object",
                       "properties": {
                         "days": {
@@ -356,6 +377,7 @@
         }
       },
       "BaseReadConfigObject": {
+        "title": "Base Read Config Object",
         "type": "object",
         "properties": {
           "objectName": {
@@ -396,6 +418,7 @@
             },
             "x-go-type-skip-optional-pointer": true,
             "additionalProperties": {
+              "title": "Selected Value Mappings",
               "type": "object",
               "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
               "example": {
@@ -418,6 +441,7 @@
             }
           },
           "selectedFieldsAuto": {
+            "title": "Selected Fields Auto Config",
             "description": "If selectedFieldsAuto is set to all, all fields will be read.",
             "type": "string",
             "enum": [
@@ -428,12 +452,14 @@
             ]
           },
           "backfill": {
+            "title": "Backfill Config",
             "type": "object",
             "required": [
               "defaultPeriod"
             ],
             "properties": {
               "defaultPeriod": {
+                "title": "Default Period Config",
                 "type": "object",
                 "properties": {
                   "days": {
@@ -460,6 +486,7 @@
         }
       },
       "SelectedValueMappings": {
+        "title": "Selected Value Mappings",
         "type": "object",
         "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
         "example": {
@@ -473,12 +500,14 @@
         }
       },
       "BaseWriteConfig": {
+        "title": "Base Write Config",
         "type": "object",
         "properties": {
           "objects": {
             "type": "object",
             "description": "This is a map of object names to their configuration.",
             "additionalProperties": {
+              "title": "Base Write Config Object",
               "type": "object",
               "properties": {
                 "objectName": {
@@ -494,8 +523,10 @@
                   "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                   "x-go-type-skip-optional-pointer": true,
                   "additionalProperties": {
+                    "title": "Value Default",
                     "oneOf": [
                       {
+                        "title": "Value Default String",
                         "type": "object",
                         "required": [
                           "value"
@@ -516,6 +547,7 @@
                         }
                       },
                       {
+                        "title": "Value Default Integer",
                         "type": "object",
                         "required": [
                           "value"
@@ -536,6 +568,7 @@
                         }
                       },
                       {
+                        "title": "Value Default Boolean",
                         "type": "object",
                         "required": [
                           "value"
@@ -564,6 +597,7 @@
         }
       },
       "BaseWriteConfigObject": {
+        "title": "Base Write Config Object",
         "type": "object",
         "properties": {
           "objectName": {
@@ -579,8 +613,10 @@
             "description": "This is a map of field names to default values. These values will be used when writing to the object.",
             "x-go-type-skip-optional-pointer": true,
             "additionalProperties": {
+              "title": "Value Default",
               "oneOf": [
                 {
+                  "title": "Value Default String",
                   "type": "object",
                   "required": [
                     "value"
@@ -601,6 +637,7 @@
                   }
                 },
                 {
+                  "title": "Value Default Integer",
                   "type": "object",
                   "required": [
                     "value"
@@ -621,6 +658,7 @@
                   }
                 },
                 {
+                  "title": "Value Default Boolean",
                   "type": "object",
                   "required": [
                     "value"
@@ -646,8 +684,10 @@
         }
       },
       "ConfigContent": {
+        "title": "Config Content",
         "allOf": [
           {
+            "title": "Base Config Content",
             "type": "object",
             "properties": {
               "provider": {
@@ -656,12 +696,14 @@
                 "type": "string"
               },
               "read": {
+                "title": "Base Read Config",
                 "type": "object",
                 "properties": {
                   "objects": {
                     "type": "object",
                     "description": "This is a map of object names to their configuration.",
                     "additionalProperties": {
+                      "title": "Base Read Config Object",
                       "type": "object",
                       "properties": {
                         "objectName": {
@@ -702,6 +744,7 @@
                           },
                           "x-go-type-skip-optional-pointer": true,
                           "additionalProperties": {
+                            "title": "Selected Value Mappings",
                             "type": "object",
                             "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                             "example": {
@@ -724,6 +767,7 @@
                           }
                         },
                         "selectedFieldsAuto": {
+                          "title": "Selected Fields Auto Config",
                           "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                           "type": "string",
                           "enum": [
@@ -734,12 +778,14 @@
                           ]
                         },
                         "backfill": {
+                          "title": "Backfill Config",
                           "type": "object",
                           "required": [
                             "defaultPeriod"
                           ],
                           "properties": {
                             "defaultPeriod": {
+                              "title": "Default Period Config",
                               "type": "object",
                               "properties": {
                                 "days": {
@@ -769,12 +815,14 @@
                 }
               },
               "write": {
+                "title": "Base Write Config",
                 "type": "object",
                 "properties": {
                   "objects": {
                     "type": "object",
                     "description": "This is a map of object names to their configuration.",
                     "additionalProperties": {
+                      "title": "Base Write Config Object",
                       "type": "object",
                       "properties": {
                         "objectName": {
@@ -790,8 +838,10 @@
                           "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                           "x-go-type-skip-optional-pointer": true,
                           "additionalProperties": {
+                            "title": "Value Default",
                             "oneOf": [
                               {
+                                "title": "Value Default String",
                                 "type": "object",
                                 "required": [
                                   "value"
@@ -812,6 +862,7 @@
                                 }
                               },
                               {
+                                "title": "Value Default Integer",
                                 "type": "object",
                                 "required": [
                                   "value"
@@ -832,6 +883,7 @@
                                 }
                               },
                               {
+                                "title": "Value Default Boolean",
                                 "type": "object",
                                 "required": [
                                   "value"
@@ -860,6 +912,7 @@
                 }
               },
               "proxy": {
+                "title": "Base Proxy Config",
                 "type": "object",
                 "properties": {
                   "enabled": {
@@ -886,14 +939,17 @@
         ]
       },
       "ReadConfig": {
+        "title": "Read Config",
         "allOf": [
           {
+            "title": "Base Read Config",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "object",
                 "description": "This is a map of object names to their configuration.",
                 "additionalProperties": {
+                  "title": "Base Read Config Object",
                   "type": "object",
                   "properties": {
                     "objectName": {
@@ -934,6 +990,7 @@
                       },
                       "x-go-type-skip-optional-pointer": true,
                       "additionalProperties": {
+                        "title": "Selected Value Mappings",
                         "type": "object",
                         "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                         "example": {
@@ -956,6 +1013,7 @@
                       }
                     },
                     "selectedFieldsAuto": {
+                      "title": "Selected Fields Auto Config",
                       "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                       "type": "string",
                       "enum": [
@@ -966,12 +1024,14 @@
                       ]
                     },
                     "backfill": {
+                      "title": "Backfill Config",
                       "type": "object",
                       "required": [
                         "defaultPeriod"
                       ],
                       "properties": {
                         "defaultPeriod": {
+                          "title": "Default Period Config",
                           "type": "object",
                           "properties": {
                             "days": {
@@ -1016,8 +1076,10 @@
         ]
       },
       "ReadConfigObject": {
+        "title": "Read Config Object",
         "allOf": [
           {
+            "title": "Base Read Config Object",
             "type": "object",
             "properties": {
               "objectName": {
@@ -1058,6 +1120,7 @@
                 },
                 "x-go-type-skip-optional-pointer": true,
                 "additionalProperties": {
+                  "title": "Selected Value Mappings",
                   "type": "object",
                   "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                   "example": {
@@ -1080,6 +1143,7 @@
                 }
               },
               "selectedFieldsAuto": {
+                "title": "Selected Fields Auto Config",
                 "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                 "type": "string",
                 "enum": [
@@ -1090,12 +1154,14 @@
                 ]
               },
               "backfill": {
+                "title": "Backfill Config",
                 "type": "object",
                 "required": [
                   "defaultPeriod"
                 ],
                 "properties": {
                   "defaultPeriod": {
+                    "title": "Default Period Config",
                     "type": "object",
                     "properties": {
                       "days": {
@@ -1134,14 +1200,17 @@
         ]
       },
       "WriteConfig": {
+        "title": "Write Config",
         "allOf": [
           {
+            "title": "Base Write Config",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "object",
                 "description": "This is a map of object names to their configuration.",
                 "additionalProperties": {
+                  "title": "Base Write Config Object",
                   "type": "object",
                   "properties": {
                     "objectName": {
@@ -1157,8 +1226,10 @@
                       "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                       "x-go-type-skip-optional-pointer": true,
                       "additionalProperties": {
+                        "title": "Value Default",
                         "oneOf": [
                           {
+                            "title": "Value Default String",
                             "type": "object",
                             "required": [
                               "value"
@@ -1179,6 +1250,7 @@
                             }
                           },
                           {
+                            "title": "Value Default Integer",
                             "type": "object",
                             "required": [
                               "value"
@@ -1199,6 +1271,7 @@
                             }
                           },
                           {
+                            "title": "Value Default Boolean",
                             "type": "object",
                             "required": [
                               "value"
@@ -1239,8 +1312,10 @@
         ]
       },
       "WriteConfigObject": {
+        "title": "Write Config Object",
         "allOf": [
           {
+            "title": "Base Write Config Object",
             "type": "object",
             "properties": {
               "objectName": {
@@ -1256,8 +1331,10 @@
                 "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                 "x-go-type-skip-optional-pointer": true,
                 "additionalProperties": {
+                  "title": "Value Default",
                   "oneOf": [
                     {
+                      "title": "Value Default String",
                       "type": "object",
                       "required": [
                         "value"
@@ -1278,6 +1355,7 @@
                       }
                     },
                     {
+                      "title": "Value Default Integer",
                       "type": "object",
                       "required": [
                         "value"
@@ -1298,6 +1376,7 @@
                       }
                     },
                     {
+                      "title": "Value Default Boolean",
                       "type": "object",
                       "required": [
                         "value"
@@ -1331,8 +1410,10 @@
         ]
       },
       "UpdateInstallationConfigContent": {
+        "title": "Update Installation Config Content",
         "allOf": [
           {
+            "title": "Base Config Content",
             "type": "object",
             "properties": {
               "provider": {
@@ -1341,12 +1422,14 @@
                 "type": "string"
               },
               "read": {
+                "title": "Base Read Config",
                 "type": "object",
                 "properties": {
                   "objects": {
                     "type": "object",
                     "description": "This is a map of object names to their configuration.",
                     "additionalProperties": {
+                      "title": "Base Read Config Object",
                       "type": "object",
                       "properties": {
                         "objectName": {
@@ -1387,6 +1470,7 @@
                           },
                           "x-go-type-skip-optional-pointer": true,
                           "additionalProperties": {
+                            "title": "Selected Value Mappings",
                             "type": "object",
                             "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                             "example": {
@@ -1409,6 +1493,7 @@
                           }
                         },
                         "selectedFieldsAuto": {
+                          "title": "Selected Fields Auto Config",
                           "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                           "type": "string",
                           "enum": [
@@ -1419,12 +1504,14 @@
                           ]
                         },
                         "backfill": {
+                          "title": "Backfill Config",
                           "type": "object",
                           "required": [
                             "defaultPeriod"
                           ],
                           "properties": {
                             "defaultPeriod": {
+                              "title": "Default Period Config",
                               "type": "object",
                               "properties": {
                                 "days": {
@@ -1454,12 +1541,14 @@
                 }
               },
               "write": {
+                "title": "Base Write Config",
                 "type": "object",
                 "properties": {
                   "objects": {
                     "type": "object",
                     "description": "This is a map of object names to their configuration.",
                     "additionalProperties": {
+                      "title": "Base Write Config Object",
                       "type": "object",
                       "properties": {
                         "objectName": {
@@ -1475,8 +1564,10 @@
                           "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                           "x-go-type-skip-optional-pointer": true,
                           "additionalProperties": {
+                            "title": "Value Default",
                             "oneOf": [
                               {
+                                "title": "Value Default String",
                                 "type": "object",
                                 "required": [
                                   "value"
@@ -1497,6 +1588,7 @@
                                 }
                               },
                               {
+                                "title": "Value Default Integer",
                                 "type": "object",
                                 "required": [
                                   "value"
@@ -1517,6 +1609,7 @@
                                 }
                               },
                               {
+                                "title": "Value Default Boolean",
                                 "type": "object",
                                 "required": [
                                   "value"
@@ -1545,6 +1638,7 @@
                 }
               },
               "proxy": {
+                "title": "Base Proxy Config",
                 "type": "object",
                 "properties": {
                   "enabled": {
@@ -1557,14 +1651,17 @@
         ]
       },
       "UpdateInstallationReadConfig": {
+        "title": "Update Installation Read Config",
         "allOf": [
           {
+            "title": "Base Read Config",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "object",
                 "description": "This is a map of object names to their configuration.",
                 "additionalProperties": {
+                  "title": "Base Read Config Object",
                   "type": "object",
                   "properties": {
                     "objectName": {
@@ -1605,6 +1702,7 @@
                       },
                       "x-go-type-skip-optional-pointer": true,
                       "additionalProperties": {
+                        "title": "Selected Value Mappings",
                         "type": "object",
                         "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                         "example": {
@@ -1627,6 +1725,7 @@
                       }
                     },
                     "selectedFieldsAuto": {
+                      "title": "Selected Fields Auto Config",
                       "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                       "type": "string",
                       "enum": [
@@ -1637,12 +1736,14 @@
                       ]
                     },
                     "backfill": {
+                      "title": "Backfill Config",
                       "type": "object",
                       "required": [
                         "defaultPeriod"
                       ],
                       "properties": {
                         "defaultPeriod": {
+                          "title": "Default Period Config",
                           "type": "object",
                           "properties": {
                             "days": {
@@ -1674,8 +1775,10 @@
         ]
       },
       "UpdateInstallationReadConfigObject": {
+        "title": "Update Installation Read Config Object",
         "allOf": [
           {
+            "title": "Base Read Config Object",
             "type": "object",
             "properties": {
               "objectName": {
@@ -1716,6 +1819,7 @@
                 },
                 "x-go-type-skip-optional-pointer": true,
                 "additionalProperties": {
+                  "title": "Selected Value Mappings",
                   "type": "object",
                   "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
                   "example": {
@@ -1738,6 +1842,7 @@
                 }
               },
               "selectedFieldsAuto": {
+                "title": "Selected Fields Auto Config",
                 "description": "If selectedFieldsAuto is set to all, all fields will be read.",
                 "type": "string",
                 "enum": [
@@ -1748,12 +1853,14 @@
                 ]
               },
               "backfill": {
+                "title": "Backfill Config",
                 "type": "object",
                 "required": [
                   "defaultPeriod"
                 ],
                 "properties": {
                   "defaultPeriod": {
+                    "title": "Default Period Config",
                     "type": "object",
                     "properties": {
                       "days": {
@@ -1782,6 +1889,7 @@
         ]
       },
       "SelectedFieldsAutoConfig": {
+        "title": "Selected Fields Auto Config",
         "description": "If selectedFieldsAuto is set to all, all fields will be read.",
         "type": "string",
         "enum": [
@@ -1792,12 +1900,14 @@
         ]
       },
       "BackfillConfig": {
+        "title": "Backfill Config",
         "type": "object",
         "required": [
           "defaultPeriod"
         ],
         "properties": {
           "defaultPeriod": {
+            "title": "Default Period Config",
             "type": "object",
             "properties": {
               "days": {
@@ -1822,6 +1932,7 @@
         }
       },
       "DefaultPeriodConfig": {
+        "title": "Default Period Config",
         "type": "object",
         "properties": {
           "days": {
@@ -1844,8 +1955,10 @@
         }
       },
       "ValueDefault": {
+        "title": "Value Default",
         "oneOf": [
           {
+            "title": "Value Default String",
             "type": "object",
             "required": [
               "value"
@@ -1866,6 +1979,7 @@
             }
           },
           {
+            "title": "Value Default Integer",
             "type": "object",
             "required": [
               "value"
@@ -1886,6 +2000,7 @@
             }
           },
           {
+            "title": "Value Default Boolean",
             "type": "object",
             "required": [
               "value"
@@ -1908,6 +2023,7 @@
         ]
       },
       "ValueDefaultString": {
+        "title": "Value Default String",
         "type": "object",
         "required": [
           "value"
@@ -1928,6 +2044,7 @@
         }
       },
       "ValueDefaultInteger": {
+        "title": "Value Default Integer",
         "type": "object",
         "required": [
           "value"
@@ -1948,6 +2065,7 @@
         }
       },
       "ValueDefaultBoolean": {
+        "title": "Value Default Boolean",
         "type": "object",
         "required": [
           "value"
