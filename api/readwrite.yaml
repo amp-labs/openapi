@@ -4,16 +4,21 @@ info:
   version: 1.0.0
 servers:
   - url: https://read.withampersand.com/v1
+    description: Read API
+  - url: https://write.withampersand.com/v1
+    description: Write API
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:
       servers:
         - url: https://read.withampersand.com/v1
-      summary: Trigger a read
-      description:
-        Triggers reading data from a SaaS instance. See [Trigger a read](https://docs.withampersand.com/define-integrations/read-actions#trigger-a-read) for details.
-      operationId: triggerRead
-      tags: ["Read"]
+          description: Read API
+        - url: https://write.withampersand.com/v1
+          description: Write API
+#      description:
+#        Triggers reading data from a SaaS instance. See [Trigger a read](https://docs.withampersand.com/define-integrations/read-actions#trigger-a-read) for details.
+#      operationId: triggerReadWrite
+#      tags: ["Read"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -31,13 +36,20 @@ paths:
           schema:
             type: string
       requestBody:
-        description: Read Request
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ReadRequest"
+              oneOf:
+                - $ref: "#/components/schemas/ReadRequest"
+                - $ref: "#/components/schemas/WriteRequest"
       responses:
+        200:
+          description: The success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WriteResponseSingleSuccess"
         201:
           description: The success response
           content:
@@ -50,6 +62,12 @@ paths:
             application/json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        422:
+          description: Error encountered while creating records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WriteResponseSingleFail"
         500:
           description: Internal server error
           content:
@@ -119,6 +137,113 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 components:
   schemas:
+    WriteRequest:
+      title: Write Request
+      required:
+        - groupRef
+        - type
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description:
+            The ID of the user group whose SaaS instance you'd like to write data to. This is the ID that was provided
+            during installation creation.
+        type:
+          type: string
+          description:
+            The type of write operation. The only supported types currently are create and update.
+          enum: [ create, update ]
+          example: create
+        mode:
+          type: string
+          description: The mode of write operation. The only supported mode currently is synchronous.
+          enum: [ synchronous ] #          enum: [synchronous, async, bulk]
+          example: synchronous
+        record:
+          type: object
+          description: The record to write
+          example:
+            {
+              "email": "david@withampersand.com",
+              "warmthScore": "ready-for-close",
+            }
+        associations:
+          type: array
+          items:
+            type: object
+          description: "To write associations to the record. Note: currently only HubSpot associations are supported"
+          example:
+            [
+              { "to": { "id": "18417469260" },
+                "types": [ {
+                  "associationCategory": "HUBSPOT_DEFINED",
+                  "associationTypeId": 279
+                } ] }
+            ]
+        #        records:
+        #          type: array
+        #          description: The records to write
+        #          example:
+        #            [{
+        #             "email": "david@withampersand.com",
+        #             "warmthScore": "ready-for-close",
+        #           }]
+    WriteResponseSingleSuccess:
+      title: Sync Write Response Success
+      type: object
+      required:
+        - result
+      additionalProperties: false
+      properties:
+        result:
+          $ref: "#/components/schemas/WriteResult"
+    WriteResponseSingleFail:
+      title: Sync Write Response Failure
+      type: object
+      required:
+        - errors
+      additionalProperties: false
+      properties:
+        errors:
+          type: array
+          description: Error messages resulted in failures
+          items:
+            type: string
+            description: errors messages when some unexpected event happened, but write to provider was successful
+            example: "The record with ID 003Dp0X#@RG7IAP was not found"
+        result:
+          $ref: "#/components/schemas/WriteResult"
+        warnings:
+          type: array
+          description: Warnings messages when some unexpected event happened, but not blocking failures
+          items:
+            type: string
+            description: Warning messages for unexpected events
+            example: "Ampersand Operation failed to be updated"
+        operationId:
+          type: string
+          description: The operation ID
+          example: acb0d75a-1b59-4aad-a191-48c5b75ea9e4
+    WriteResult:
+      title: Write Result
+      type: object
+      required:
+        - success
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful
+          example: true
+        data:
+          type: object
+          description: The data returned by the operation
+          example: { "email": "david@ampersand.com" }
+        recordId:
+          type: string
+          description: The ID of the object
+          example: 003Dp0X#@RG7IAP
     ReadRequest:
       title: Read Request
       required:
