@@ -6,6 +6,8 @@ servers:
   - url: https://write.withampersand.com/v1
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
+    servers:
+      - url: https://write.withampersand.com/v1
     post:
       summary: Write records
       operationId: writeRecords

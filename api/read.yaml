@@ -7,6 +7,8 @@ servers:
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:
+      servers:
+        - url: https://read.withampersand.com/v1
       summary: Trigger a read
       description:
         Triggers reading data from a SaaS instance. See [Trigger a read](https://docs.withampersand.com/define-integrations/read-actions#trigger-a-read) for details.
@@ -62,6 +64,8 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
+    servers:
+      - url: https://read.withampersand.com/v1
     post:
       summary: Deliver results
       description:

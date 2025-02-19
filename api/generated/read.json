@@ -12,6 +12,11 @@
   "paths": {
     "/projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}": {
       "post": {
+        "servers": [
+          {
+            "url": "https://read.withampersand.com/v1"
+          }
+        ],
         "summary": "Trigger a read",
         "description": "Triggers reading data from a SaaS instance. See [Trigger a read](https://docs.withampersand.com/define-integrations/read-actions#trigger-a-read) for details.",
         "operationId": "triggerRead",
@@ -510,6 +515,11 @@
       }
     },
     "/projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults": {
+      "servers": [
+        {
+          "url": "https://read.withampersand.com/v1"
+        }
+      ],
       "post": {
         "summary": "Deliver results",
         "description": "If a read action has delivery mode set to onRequest, then use this endpoint to request for more results. Learn more in [Delivery modes](https://docs.withampersand.com/define-integrations/read-actions#delivery-modes).",
