@@ -13,6 +13,7 @@
   "components": {
     "schemas": {
       "Manifest": {
+        "title": "Integration Manifest",
         "type": "object",
         "description": "This is the schema of the manifest file that is used to define the integrations of the project.",
         "required": [
@@ -27,6 +28,7 @@
           "integrations": {
             "type": "array",
             "items": {
+              "title": "Integration",
               "type": "object",
               "required": [
                 "name",
@@ -43,11 +45,13 @@
                   "type": "string"
                 },
                 "read": {
+                  "title": "Read Integration",
                   "type": "object",
                   "properties": {
                     "objects": {
                       "type": "array",
                       "items": {
+                        "title": "Integration Object",
                         "type": "object",
                         "required": [
                           "objectName",
@@ -79,8 +83,10 @@
                           "requiredFields": {
                             "type": "array",
                             "items": {
+                              "title": "Integration Field",
                               "oneOf": [
                                 {
+                                  "title": "Integration Field Existent",
                                   "type": "object",
                                   "required": [
                                     "fieldName"
@@ -104,6 +110,7 @@
                                   }
                                 },
                                 {
+                                  "title": "Integration Field Mapping",
                                   "type": "object",
                                   "required": [
                                     "mapToName"
@@ -129,8 +136,10 @@
                           "optionalFields": {
                             "type": "array",
                             "items": {
+                              "title": "Integration Field",
                               "oneOf": [
                                 {
+                                  "title": "Integration Field Existent",
                                   "type": "object",
                                   "required": [
                                     "fieldName"
@@ -154,6 +163,7 @@
                                   }
                                 },
                                 {
+                                  "title": "Integration Field Mapping",
                                   "type": "object",
                                   "required": [
                                     "mapToName"
@@ -177,18 +187,21 @@
                             }
                           },
                           "optionalFieldsAuto": {
+                            "title": "Optional Fields Auto Option",
                             "type": "string",
                             "enum": [
                               "all"
                             ]
                           },
                           "backfill": {
+                            "title": "Backfill",
                             "type": "object",
                             "required": [
                               "defaultPeriod"
                             ],
                             "properties": {
                               "defaultPeriod": {
+                                "title": "Default Period",
                                 "type": "object",
                                 "properties": {
                                   "days": {
@@ -213,6 +226,7 @@
                             }
                           },
                           "delivery": {
+                            "title": "Delivery",
                             "type": "object",
                             "properties": {
                               "mode": {
@@ -238,11 +252,13 @@
                   }
                 },
                 "write": {
+                  "title": "Write Integration",
                   "type": "object",
                   "properties": {
                     "objects": {
                       "type": "array",
                       "items": {
+                        "title": "Integration Write Object",
                         "type": "object",
                         "required": [
                           "objectName"
@@ -257,6 +273,7 @@
                             "example": true
                           },
                           "valueDefaults": {
+                            "title": "Value Defaults",
                             "type": "object",
                             "description": "Configuration to set default write values for object fields.",
                             "properties": {
@@ -273,6 +290,7 @@
                   }
                 },
                 "proxy": {
+                  "title": "Proxy Integration",
                   "type": "object",
                   "properties": {
                     "enabled": {
@@ -286,6 +304,7 @@
         }
       },
       "Integration": {
+        "title": "Integration",
         "type": "object",
         "required": [
           "name",
@@ -302,11 +321,13 @@
             "type": "string"
           },
           "read": {
+            "title": "Read Integration",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "array",
                 "items": {
+                  "title": "Integration Object",
                   "type": "object",
                   "required": [
                     "objectName",
@@ -338,8 +359,10 @@
                     "requiredFields": {
                       "type": "array",
                       "items": {
+                        "title": "Integration Field",
                         "oneOf": [
                           {
+                            "title": "Integration Field Existent",
                             "type": "object",
                             "required": [
                               "fieldName"
@@ -363,6 +386,7 @@
                             }
                           },
                           {
+                            "title": "Integration Field Mapping",
                             "type": "object",
                             "required": [
                               "mapToName"
@@ -388,8 +412,10 @@
                     "optionalFields": {
                       "type": "array",
                       "items": {
+                        "title": "Integration Field",
                         "oneOf": [
                           {
+                            "title": "Integration Field Existent",
                             "type": "object",
                             "required": [
                               "fieldName"
@@ -413,6 +439,7 @@
                             }
                           },
                           {
+                            "title": "Integration Field Mapping",
                             "type": "object",
                             "required": [
                               "mapToName"
@@ -436,18 +463,21 @@
                       }
                     },
                     "optionalFieldsAuto": {
+                      "title": "Optional Fields Auto Option",
                       "type": "string",
                       "enum": [
                         "all"
                       ]
                     },
                     "backfill": {
+                      "title": "Backfill",
                       "type": "object",
                       "required": [
                         "defaultPeriod"
                       ],
                       "properties": {
                         "defaultPeriod": {
+                          "title": "Default Period",
                           "type": "object",
                           "properties": {
                             "days": {
@@ -472,6 +502,7 @@
                       }
                     },
                     "delivery": {
+                      "title": "Delivery",
                       "type": "object",
                       "properties": {
                         "mode": {
@@ -497,11 +528,13 @@
             }
           },
           "write": {
+            "title": "Write Integration",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "array",
                 "items": {
+                  "title": "Integration Write Object",
                   "type": "object",
                   "required": [
                     "objectName"
@@ -516,6 +549,7 @@
                       "example": true
                     },
                     "valueDefaults": {
+                      "title": "Value Defaults",
                       "type": "object",
                       "description": "Configuration to set default write values for object fields.",
                       "properties": {
@@ -532,6 +566,7 @@
             }
           },
           "proxy": {
+            "title": "Proxy Integration",
             "type": "object",
             "properties": {
               "enabled": {
@@ -542,6 +577,7 @@
         }
       },
       "IntegrationProxy": {
+        "title": "Proxy Integration",
         "type": "object",
         "properties": {
           "enabled": {
@@ -550,11 +586,13 @@
         }
       },
       "IntegrationRead": {
+        "title": "Read Integration",
         "type": "object",
         "properties": {
           "objects": {
             "type": "array",
             "items": {
+              "title": "Integration Object",
               "type": "object",
               "required": [
                 "objectName",
@@ -586,8 +624,10 @@
                 "requiredFields": {
                   "type": "array",
                   "items": {
+                    "title": "Integration Field",
                     "oneOf": [
                       {
+                        "title": "Integration Field Existent",
                         "type": "object",
                         "required": [
                           "fieldName"
@@ -611,6 +651,7 @@
                         }
                       },
                       {
+                        "title": "Integration Field Mapping",
                         "type": "object",
                         "required": [
                           "mapToName"
@@ -636,8 +677,10 @@
                 "optionalFields": {
                   "type": "array",
                   "items": {
+                    "title": "Integration Field",
                     "oneOf": [
                       {
+                        "title": "Integration Field Existent",
                         "type": "object",
                         "required": [
                           "fieldName"
@@ -661,6 +704,7 @@
                         }
                       },
                       {
+                        "title": "Integration Field Mapping",
                         "type": "object",
                         "required": [
                           "mapToName"
@@ -684,18 +728,21 @@
                   }
                 },
                 "optionalFieldsAuto": {
+                  "title": "Optional Fields Auto Option",
                   "type": "string",
                   "enum": [
                     "all"
                   ]
                 },
                 "backfill": {
+                  "title": "Backfill",
                   "type": "object",
                   "required": [
                     "defaultPeriod"
                   ],
                   "properties": {
                     "defaultPeriod": {
+                      "title": "Default Period",
                       "type": "object",
                       "properties": {
                         "days": {
@@ -720,6 +767,7 @@
                   }
                 },
                 "delivery": {
+                  "title": "Delivery",
                   "type": "object",
                   "properties": {
                     "mode": {
@@ -745,11 +793,13 @@
         }
       },
       "IntegrationWrite": {
+        "title": "Write Integration",
         "type": "object",
         "properties": {
           "objects": {
             "type": "array",
             "items": {
+              "title": "Integration Write Object",
               "type": "object",
               "required": [
                 "objectName"
@@ -764,6 +814,7 @@
                   "example": true
                 },
                 "valueDefaults": {
+                  "title": "Value Defaults",
                   "type": "object",
                   "description": "Configuration to set default write values for object fields.",
                   "properties": {
@@ -780,6 +831,7 @@
         }
       },
       "IntegrationObject": {
+        "title": "Integration Object",
         "type": "object",
         "required": [
           "objectName",
@@ -811,8 +863,10 @@
           "requiredFields": {
             "type": "array",
             "items": {
+              "title": "Integration Field",
               "oneOf": [
                 {
+                  "title": "Integration Field Existent",
                   "type": "object",
                   "required": [
                     "fieldName"
@@ -836,6 +890,7 @@
                   }
                 },
                 {
+                  "title": "Integration Field Mapping",
                   "type": "object",
                   "required": [
                     "mapToName"
@@ -861,8 +916,10 @@
           "optionalFields": {
             "type": "array",
             "items": {
+              "title": "Integration Field",
               "oneOf": [
                 {
+                  "title": "Integration Field Existent",
                   "type": "object",
                   "required": [
                     "fieldName"
@@ -886,6 +943,7 @@
                   }
                 },
                 {
+                  "title": "Integration Field Mapping",
                   "type": "object",
                   "required": [
                     "mapToName"
@@ -909,18 +967,21 @@
             }
           },
           "optionalFieldsAuto": {
+            "title": "Optional Fields Auto Option",
             "type": "string",
             "enum": [
               "all"
             ]
           },
           "backfill": {
+            "title": "Backfill",
             "type": "object",
             "required": [
               "defaultPeriod"
             ],
             "properties": {
               "defaultPeriod": {
+                "title": "Default Period",
                 "type": "object",
                 "properties": {
                   "days": {
@@ -945,6 +1006,7 @@
             }
           },
           "delivery": {
+            "title": "Delivery",
             "type": "object",
             "properties": {
               "mode": {
@@ -967,6 +1029,7 @@
         }
       },
       "IntegrationWriteObject": {
+        "title": "Integration Write Object",
         "type": "object",
         "required": [
           "objectName"
@@ -981,6 +1044,7 @@
             "example": true
           },
           "valueDefaults": {
+            "title": "Value Defaults",
             "type": "object",
             "description": "Configuration to set default write values for object fields.",
             "properties": {
@@ -994,6 +1058,7 @@
         }
       },
       "HydratedIntegration": {
+        "title": "Hydrated Integration",
         "type": "object",
         "required": [
           "name",
@@ -1010,11 +1075,13 @@
             "type": "string"
           },
           "read": {
+            "title": "Hydrated Read Integration",
             "type": "object",
             "properties": {
               "objects": {
                 "type": "array",
                 "items": {
+                  "title": "Hydrated Integration Object",
                   "type": "object",
                   "required": [
                     "objectName",
@@ -1050,6 +1117,7 @@
                     "requiredFields": {
                       "type": "array",
                       "items": {
+                        "title": "Hydrated Integration Field",
                         "oneOf": [
                           {
                             "type": "object",
@@ -1079,6 +1147,7 @@
                             }
                           },
                           {
+                            "title": "Integration Field Mapping",
                             "type": "object",
                             "required": [
                               "mapToName"
@@ -1104,6 +1173,7 @@
                     "optionalFields": {
                       "type": "array",
                       "items": {
+                        "title": "Hydrated Integration Field",
                         "oneOf": [
                           {
                             "type": "object",
@@ -1133,6 +1203,7 @@
                             }
                           },
                           {
+                            "title": "Integration Field Mapping",
                             "type": "object",
                             "required": [
                               "mapToName"
@@ -1156,6 +1227,7 @@
                       }
                     },
                     "optionalFieldsAuto": {
+                      "title": "Optional Fields Auto Option",
                       "type": "string",
                       "enum": [
                         "all"
@@ -1165,6 +1237,7 @@
                       "description": "This is a list of all fields on the object for a particular SaaS instance, including their display names.",
                       "type": "array",
                       "items": {
+                        "title": "Hydrated Integration Field",
                         "oneOf": [
                           {
                             "type": "object",
@@ -1194,6 +1267,7 @@
                             }
                           },
                           {
+                            "title": "Integration Field Mapping",
                             "type": "object",
                             "required": [
                               "mapToName"
@@ -1220,6 +1294,7 @@
                       "description": "This is a map of all fields on the object including their metadata (such as display name and type), the keys of the map are the field names.",
                       "type": "object",
                       "additionalProperties": {
+                        "title": "Field Metadata",
                         "type": "object",
                         "required": [
                           "fieldName",
@@ -1269,6 +1344,7 @@
                             "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
                             "x-go-type-skip-optional-pointer": true,
                             "items": {
+                              "title": "Field Value",
                               "type": "object",
                               "required": [
                                 "value",
@@ -1293,12 +1369,14 @@
                       }
                     },
                     "backfill": {
+                      "title": "Backfill",
                       "type": "object",
                       "required": [
                         "defaultPeriod"
                       ],
                       "properties": {
                         "defaultPeriod": {
+                          "title": "Default Period",
                           "type": "object",
                           "properties": {
                             "days": {
@@ -1346,6 +1424,7 @@
                       "type": "string"
                     },
                     "valueDefaults": {
+                      "title": "Value Defaults",
                       "type": "object",
                       "description": "Configuration to set default write values for object fields.",
                       "properties": {
@@ -1362,6 +1441,7 @@
             }
           },
           "proxy": {
+            "title": "Hydrated Proxy Integration",
             "type": "object",
             "properties": {
               "enabled": {
@@ -1372,6 +1452,7 @@
         }
       },
       "HydratedIntegrationProxy": {
+        "title": "Hydrated Proxy Integration",
         "type": "object",
         "properties": {
           "enabled": {
@@ -1380,11 +1461,13 @@
         }
       },
       "HydratedIntegrationRead": {
+        "title": "Hydrated Read Integration",
         "type": "object",
         "properties": {
           "objects": {
             "type": "array",
             "items": {
+              "title": "Hydrated Integration Object",
               "type": "object",
               "required": [
                 "objectName",
@@ -1420,6 +1503,7 @@
                 "requiredFields": {
                   "type": "array",
                   "items": {
+                    "title": "Hydrated Integration Field",
                     "oneOf": [
                       {
                         "type": "object",
@@ -1449,6 +1533,7 @@
                         }
                       },
                       {
+                        "title": "Integration Field Mapping",
                         "type": "object",
                         "required": [
                           "mapToName"
@@ -1474,6 +1559,7 @@
                 "optionalFields": {
                   "type": "array",
                   "items": {
+                    "title": "Hydrated Integration Field",
                     "oneOf": [
                       {
                         "type": "object",
@@ -1503,6 +1589,7 @@
                         }
                       },
                       {
+                        "title": "Integration Field Mapping",
                         "type": "object",
                         "required": [
                           "mapToName"
@@ -1526,6 +1613,7 @@
                   }
                 },
                 "optionalFieldsAuto": {
+                  "title": "Optional Fields Auto Option",
                   "type": "string",
                   "enum": [
                     "all"
@@ -1535,6 +1623,7 @@
                   "description": "This is a list of all fields on the object for a particular SaaS instance, including their display names.",
                   "type": "array",
                   "items": {
+                    "title": "Hydrated Integration Field",
                     "oneOf": [
                       {
                         "type": "object",
@@ -1564,6 +1653,7 @@
                         }
                       },
                       {
+                        "title": "Integration Field Mapping",
                         "type": "object",
                         "required": [
                           "mapToName"
@@ -1590,6 +1680,7 @@
                   "description": "This is a map of all fields on the object including their metadata (such as display name and type), the keys of the map are the field names.",
                   "type": "object",
                   "additionalProperties": {
+                    "title": "Field Metadata",
                     "type": "object",
                     "required": [
                       "fieldName",
@@ -1639,6 +1730,7 @@
                         "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
                         "x-go-type-skip-optional-pointer": true,
                         "items": {
+                          "title": "Field Value",
                           "type": "object",
                           "required": [
                             "value",
@@ -1663,12 +1755,14 @@
                   }
                 },
                 "backfill": {
+                  "title": "Backfill",
                   "type": "object",
                   "required": [
                     "defaultPeriod"
                   ],
                   "properties": {
                     "defaultPeriod": {
+                      "title": "Default Period",
                       "type": "object",
                       "properties": {
                         "days": {
@@ -1716,6 +1810,7 @@
                   "type": "string"
                 },
                 "valueDefaults": {
+                  "title": "Value Defaults",
                   "type": "object",
                   "description": "Configuration to set default write values for object fields.",
                   "properties": {
@@ -1732,6 +1827,7 @@
         }
       },
       "HydratedIntegrationObject": {
+        "title": "Hydrated Integration Object",
         "type": "object",
         "required": [
           "objectName",
@@ -1767,6 +1863,7 @@
           "requiredFields": {
             "type": "array",
             "items": {
+              "title": "Hydrated Integration Field",
               "oneOf": [
                 {
                   "type": "object",
@@ -1796,6 +1893,7 @@
                   }
                 },
                 {
+                  "title": "Integration Field Mapping",
                   "type": "object",
                   "required": [
                     "mapToName"
@@ -1821,6 +1919,7 @@
           "optionalFields": {
             "type": "array",
             "items": {
+              "title": "Hydrated Integration Field",
               "oneOf": [
                 {
                   "type": "object",
@@ -1850,6 +1949,7 @@
                   }
                 },
                 {
+                  "title": "Integration Field Mapping",
                   "type": "object",
                   "required": [
                     "mapToName"
@@ -1873,6 +1973,7 @@
             }
           },
           "optionalFieldsAuto": {
+            "title": "Optional Fields Auto Option",
             "type": "string",
             "enum": [
               "all"
@@ -1882,6 +1983,7 @@
             "description": "This is a list of all fields on the object for a particular SaaS instance, including their display names.",
             "type": "array",
             "items": {
+              "title": "Hydrated Integration Field",
               "oneOf": [
                 {
                   "type": "object",
@@ -1911,6 +2013,7 @@
                   }
                 },
                 {
+                  "title": "Integration Field Mapping",
                   "type": "object",
                   "required": [
                     "mapToName"
@@ -1937,6 +2040,7 @@
             "description": "This is a map of all fields on the object including their metadata (such as display name and type), the keys of the map are the field names.",
             "type": "object",
             "additionalProperties": {
+              "title": "Field Metadata",
               "type": "object",
               "required": [
                 "fieldName",
@@ -1986,6 +2090,7 @@
                   "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
                   "x-go-type-skip-optional-pointer": true,
                   "items": {
+                    "title": "Field Value",
                     "type": "object",
                     "required": [
                       "value",
@@ -2010,12 +2115,14 @@
             }
           },
           "backfill": {
+            "title": "Backfill",
             "type": "object",
             "required": [
               "defaultPeriod"
             ],
             "properties": {
               "defaultPeriod": {
+                "title": "Default Period",
                 "type": "object",
                 "properties": {
                   "days": {
@@ -2055,6 +2162,7 @@
             "type": "string"
           },
           "valueDefaults": {
+            "title": "Value Defaults",
             "type": "object",
             "description": "Configuration to set default write values for object fields.",
             "properties": {
@@ -2068,14 +2176,17 @@
         }
       },
       "OptionalFieldsAutoOption": {
+        "title": "Optional Fields Auto Option",
         "type": "string",
         "enum": [
           "all"
         ]
       },
       "IntegrationField": {
+        "title": "Integration Field",
         "oneOf": [
           {
+            "title": "Integration Field Existent",
             "type": "object",
             "required": [
               "fieldName"
@@ -2099,6 +2210,7 @@
             }
           },
           {
+            "title": "Integration Field Mapping",
             "type": "object",
             "required": [
               "mapToName"
@@ -2121,6 +2233,7 @@
         ]
       },
       "IntegrationFieldExistent": {
+        "title": "Integration Field Existent",
         "type": "object",
         "required": [
           "fieldName"
@@ -2144,6 +2257,7 @@
         }
       },
       "IntegrationFieldMapping": {
+        "title": "Integration Field Mapping",
         "type": "object",
         "required": [
           "mapToName"
@@ -2164,6 +2278,7 @@
         }
       },
       "HydratedIntegrationField": {
+        "title": "Hydrated Integration Field",
         "oneOf": [
           {
             "type": "object",
@@ -2193,6 +2308,7 @@
             }
           },
           {
+            "title": "Integration Field Mapping",
             "type": "object",
             "required": [
               "mapToName"
@@ -2215,6 +2331,7 @@
         ]
       },
       "FieldMetadata": {
+        "title": "Field Metadata",
         "type": "object",
         "required": [
           "fieldName",
@@ -2264,6 +2381,7 @@
             "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
             "x-go-type-skip-optional-pointer": true,
             "items": {
+              "title": "Field Value",
               "type": "object",
               "required": [
                 "value",
@@ -2287,6 +2405,7 @@
         }
       },
       "FieldValue": {
+        "title": "Field Value",
         "type": "object",
         "required": [
           "value",
@@ -2334,12 +2453,14 @@
         }
       },
       "Backfill": {
+        "title": "Backfill",
         "type": "object",
         "required": [
           "defaultPeriod"
         ],
         "properties": {
           "defaultPeriod": {
+            "title": "Default Period",
             "type": "object",
             "properties": {
               "days": {
@@ -2364,6 +2485,7 @@
         }
       },
       "DefaultPeriod": {
+        "title": "Default Period",
         "type": "object",
         "properties": {
           "days": {
@@ -2386,6 +2508,7 @@
         }
       },
       "Delivery": {
+        "title": "Delivery",
         "type": "object",
         "properties": {
           "mode": {
@@ -2406,6 +2529,7 @@
         }
       },
       "ValueDefaults": {
+        "title": "Value Defaults",
         "type": "object",
         "description": "Configuration to set default write values for object fields.",
         "properties": {

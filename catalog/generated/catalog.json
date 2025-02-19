@@ -13,6 +13,7 @@
   "components": {
     "schemas": {
       "AuthType": {
+        "title": "Auth Type",
         "description": "The type of authentication required by the provider.",
         "type": "string",
         "enum": [
@@ -27,6 +28,7 @@
         }
       },
       "Support": {
+        "title": "Support",
         "type": "object",
         "description": "The supported features for the provider.",
         "x-oapi-codegen-extra-tags": {
@@ -41,6 +43,7 @@
         ],
         "properties": {
           "bulkWrite": {
+            "title": "Bulk Write Support",
             "type": "object",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
@@ -79,6 +82,7 @@
             "type": "boolean"
           },
           "subscribeSupport": {
+            "title": "Subscribe Support",
             "type": "object",
             "properties": {
               "create": {
@@ -98,6 +102,7 @@
         }
       },
       "BulkWriteSupport": {
+        "title": "Bulk Write Support",
         "type": "object",
         "x-oapi-codegen-extra-tags": {
           "validate": "required"
@@ -124,6 +129,7 @@
         }
       },
       "TokenMetadataFields": {
+        "title": "Token Metadata Fields",
         "type": "object",
         "description": "Fields to be used to extract token metadata from the token response.",
         "properties": {
@@ -145,8 +151,10 @@
         }
       },
       "Media": {
+        "title": "Media",
         "properties": {
           "regular": {
+            "title": "Media Type Regular",
             "type": "object",
             "description": "Media for light/regular mode.",
             "properties": {
@@ -165,6 +173,7 @@
             }
           },
           "darkMode": {
+            "title": "Media Type Dark Mode",
             "type": "object",
             "description": "Media to be used in dark mode.",
             "properties": {
@@ -185,6 +194,7 @@
         }
       },
       "MediaTypeDarkMode": {
+        "title": "Media Type Dark Mode",
         "type": "object",
         "description": "Media to be used in dark mode.",
         "properties": {
@@ -203,6 +213,7 @@
         }
       },
       "MediaTypeRegular": {
+        "title": "Media Type Regular",
         "type": "object",
         "description": "Media for light/regular mode.",
         "properties": {
@@ -221,12 +232,14 @@
         }
       },
       "Labels": {
+        "title": "Labels",
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
       "Oauth2Opts": {
+        "title": "OAuth2 Options",
         "type": "object",
         "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
         "required": [
@@ -282,6 +295,7 @@
             "x-go-type-skip-optional-pointer": true
           },
           "tokenMetadataFields": {
+            "title": "Token Metadata Fields",
             "type": "object",
             "description": "Fields to be used to extract token metadata from the token response.",
             "properties": {
@@ -322,6 +336,7 @@
         }
       },
       "ApiKeyOpts": {
+        "title": "API Key Options",
         "type": "object",
         "description": "Configuration for API key. Must be provided if authType is apiKey.",
         "required": [
@@ -340,6 +355,7 @@
             }
           },
           "query": {
+            "title": "API Key Query Options",
             "type": "object",
             "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
             "required": [
@@ -355,6 +371,7 @@
             }
           },
           "header": {
+            "title": "API Key Header Options",
             "type": "object",
             "description": "Configuration for API key in header. Must be provided if type is in-header.",
             "required": [
@@ -384,6 +401,7 @@
         }
       },
       "ApiKeyOptsQuery": {
+        "title": "API Key Query Options",
         "type": "object",
         "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
         "required": [
@@ -399,6 +417,7 @@
         }
       },
       "ApiKeyOptsHeader": {
+        "title": "API Key Header Options",
         "type": "object",
         "description": "Configuration for API key in header. Must be provided if type is in-header.",
         "required": [
@@ -420,6 +439,7 @@
         }
       },
       "ApiKeyAsBasicOpts": {
+        "title": "API Key as Basic Options",
         "type": "object",
         "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
         "properties": {
@@ -446,6 +466,7 @@
         }
       },
       "BasicAuthOpts": {
+        "title": "Basic Auth Options",
         "type": "object",
         "description": "Configuration for Basic Auth. Optional.",
         "properties": {
@@ -456,6 +477,7 @@
             "x-go-type-skip-optional-pointer": true
           },
           "apiKeyAsBasicOpts": {
+            "title": "API Key as Basic Options",
             "type": "object",
             "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
             "properties": {
@@ -490,6 +512,7 @@
         }
       },
       "ProviderOpts": {
+        "title": "Provider Options",
         "description": "Additional provider-specific metadata.",
         "type": "object",
         "additionalProperties": {
@@ -497,10 +520,12 @@
         }
       },
       "Provider": {
+        "title": "Provider",
         "type": "string",
         "example": "salesforce"
       },
       "ProviderInfo": {
+        "title": "Provider Info",
         "type": "object",
         "required": [
           "name",
@@ -514,6 +539,7 @@
             "type": "string"
           },
           "authType": {
+            "title": "Auth Type",
             "description": "The type of authentication required by the provider.",
             "type": "string",
             "enum": [
@@ -535,6 +561,7 @@
             }
           },
           "oauth2Opts": {
+            "title": "OAuth2 Options",
             "type": "object",
             "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
             "required": [
@@ -590,6 +617,7 @@
                 "x-go-type-skip-optional-pointer": true
               },
               "tokenMetadataFields": {
+                "title": "Token Metadata Fields",
                 "type": "object",
                 "description": "Fields to be used to extract token metadata from the token response.",
                 "properties": {
@@ -630,6 +658,7 @@
             }
           },
           "apiKeyOpts": {
+            "title": "API Key Options",
             "type": "object",
             "description": "Configuration for API key. Must be provided if authType is apiKey.",
             "required": [
@@ -648,6 +677,7 @@
                 }
               },
               "query": {
+                "title": "API Key Query Options",
                 "type": "object",
                 "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
                 "required": [
@@ -663,6 +693,7 @@
                 }
               },
               "header": {
+                "title": "API Key Header Options",
                 "type": "object",
                 "description": "Configuration for API key in header. Must be provided if type is in-header.",
                 "required": [
@@ -692,6 +723,7 @@
             }
           },
           "basicOpts": {
+            "title": "Basic Auth Options",
             "type": "object",
             "description": "Configuration for Basic Auth. Optional.",
             "properties": {
@@ -702,6 +734,7 @@
                 "x-go-type-skip-optional-pointer": true
               },
               "apiKeyAsBasicOpts": {
+                "title": "API Key as Basic Options",
                 "type": "object",
                 "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
                 "properties": {
@@ -736,6 +769,7 @@
             }
           },
           "support": {
+            "title": "Support",
             "type": "object",
             "description": "The supported features for the provider.",
             "x-oapi-codegen-extra-tags": {
@@ -750,6 +784,7 @@
             ],
             "properties": {
               "bulkWrite": {
+                "title": "Bulk Write Support",
                 "type": "object",
                 "x-oapi-codegen-extra-tags": {
                   "validate": "required"
@@ -788,6 +823,7 @@
                 "type": "boolean"
               },
               "subscribeSupport": {
+                "title": "Subscribe Support",
                 "type": "object",
                 "properties": {
                   "create": {
@@ -807,6 +843,7 @@
             }
           },
           "providerOpts": {
+            "title": "Provider Options",
             "description": "Additional provider-specific metadata.",
             "type": "object",
             "additionalProperties": {
@@ -826,8 +863,10 @@
             "x-go-type-skip-optional-pointer": true
           },
           "media": {
+            "title": "Media",
             "properties": {
               "regular": {
+                "title": "Media Type Regular",
                 "type": "object",
                 "description": "Media for light/regular mode.",
                 "properties": {
@@ -846,6 +885,7 @@
                 }
               },
               "darkMode": {
+                "title": "Media Type Dark Mode",
                 "type": "object",
                 "description": "Media to be used in dark mode.",
                 "properties": {
@@ -866,12 +906,14 @@
             }
           },
           "labels": {
+            "title": "Labels",
             "type": "object",
             "additionalProperties": {
               "type": "string"
             }
           },
           "subscribeOpts": {
+            "title": "Subscribe Options",
             "type": "object",
             "required": [
               "subscriptionScope",
@@ -908,6 +950,7 @@
         }
       },
       "CatalogWrapper": {
+        "title": "Catalog Wrapper",
         "type": "object",
         "required": [
           "timestamp",
@@ -923,8 +966,10 @@
             }
           },
           "catalog": {
+            "title": "Catalog Type",
             "type": "object",
             "additionalProperties": {
+              "title": "Provider Info",
               "type": "object",
               "required": [
                 "name",
@@ -938,6 +983,7 @@
                   "type": "string"
                 },
                 "authType": {
+                  "title": "Auth Type",
                   "description": "The type of authentication required by the provider.",
                   "type": "string",
                   "enum": [
@@ -959,6 +1005,7 @@
                   }
                 },
                 "oauth2Opts": {
+                  "title": "OAuth2 Options",
                   "type": "object",
                   "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
                   "required": [
@@ -1014,6 +1061,7 @@
                       "x-go-type-skip-optional-pointer": true
                     },
                     "tokenMetadataFields": {
+                      "title": "Token Metadata Fields",
                       "type": "object",
                       "description": "Fields to be used to extract token metadata from the token response.",
                       "properties": {
@@ -1054,6 +1102,7 @@
                   }
                 },
                 "apiKeyOpts": {
+                  "title": "API Key Options",
                   "type": "object",
                   "description": "Configuration for API key. Must be provided if authType is apiKey.",
                   "required": [
@@ -1072,6 +1121,7 @@
                       }
                     },
                     "query": {
+                      "title": "API Key Query Options",
                       "type": "object",
                       "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
                       "required": [
@@ -1087,6 +1137,7 @@
                       }
                     },
                     "header": {
+                      "title": "API Key Header Options",
                       "type": "object",
                       "description": "Configuration for API key in header. Must be provided if type is in-header.",
                       "required": [
@@ -1116,6 +1167,7 @@
                   }
                 },
                 "basicOpts": {
+                  "title": "Basic Auth Options",
                   "type": "object",
                   "description": "Configuration for Basic Auth. Optional.",
                   "properties": {
@@ -1126,6 +1178,7 @@
                       "x-go-type-skip-optional-pointer": true
                     },
                     "apiKeyAsBasicOpts": {
+                      "title": "API Key as Basic Options",
                       "type": "object",
                       "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
                       "properties": {
@@ -1160,6 +1213,7 @@
                   }
                 },
                 "support": {
+                  "title": "Support",
                   "type": "object",
                   "description": "The supported features for the provider.",
                   "x-oapi-codegen-extra-tags": {
@@ -1174,6 +1228,7 @@
                   ],
                   "properties": {
                     "bulkWrite": {
+                      "title": "Bulk Write Support",
                       "type": "object",
                       "x-oapi-codegen-extra-tags": {
                         "validate": "required"
@@ -1212,6 +1267,7 @@
                       "type": "boolean"
                     },
                     "subscribeSupport": {
+                      "title": "Subscribe Support",
                       "type": "object",
                       "properties": {
                         "create": {
@@ -1231,6 +1287,7 @@
                   }
                 },
                 "providerOpts": {
+                  "title": "Provider Options",
                   "description": "Additional provider-specific metadata.",
                   "type": "object",
                   "additionalProperties": {
@@ -1250,8 +1307,10 @@
                   "x-go-type-skip-optional-pointer": true
                 },
                 "media": {
+                  "title": "Media",
                   "properties": {
                     "regular": {
+                      "title": "Media Type Regular",
                       "type": "object",
                       "description": "Media for light/regular mode.",
                       "properties": {
@@ -1270,6 +1329,7 @@
                       }
                     },
                     "darkMode": {
+                      "title": "Media Type Dark Mode",
                       "type": "object",
                       "description": "Media to be used in dark mode.",
                       "properties": {
@@ -1290,12 +1350,14 @@
                   }
                 },
                 "labels": {
+                  "title": "Labels",
                   "type": "object",
                   "additionalProperties": {
                     "type": "string"
                   }
                 },
                 "subscribeOpts": {
+                  "title": "Subscribe Options",
                   "type": "object",
                   "required": [
                     "subscriptionScope",
@@ -1335,8 +1397,10 @@
         }
       },
       "CatalogType": {
+        "title": "Catalog Type",
         "type": "object",
         "additionalProperties": {
+          "title": "Provider Info",
           "type": "object",
           "required": [
             "name",
@@ -1350,6 +1414,7 @@
               "type": "string"
             },
             "authType": {
+              "title": "Auth Type",
               "description": "The type of authentication required by the provider.",
               "type": "string",
               "enum": [
@@ -1371,6 +1436,7 @@
               }
             },
             "oauth2Opts": {
+              "title": "OAuth2 Options",
               "type": "object",
               "description": "Configuration for OAuth2.0. Must be provided if authType is oauth2.",
               "required": [
@@ -1426,6 +1492,7 @@
                   "x-go-type-skip-optional-pointer": true
                 },
                 "tokenMetadataFields": {
+                  "title": "Token Metadata Fields",
                   "type": "object",
                   "description": "Fields to be used to extract token metadata from the token response.",
                   "properties": {
@@ -1466,6 +1533,7 @@
               }
             },
             "apiKeyOpts": {
+              "title": "API Key Options",
               "type": "object",
               "description": "Configuration for API key. Must be provided if authType is apiKey.",
               "required": [
@@ -1484,6 +1552,7 @@
                   }
                 },
                 "query": {
+                  "title": "API Key Query Options",
                   "type": "object",
                   "description": "Configuration for API key in query parameter. Must be provided if type is in-query.",
                   "required": [
@@ -1499,6 +1568,7 @@
                   }
                 },
                 "header": {
+                  "title": "API Key Header Options",
                   "type": "object",
                   "description": "Configuration for API key in header. Must be provided if type is in-header.",
                   "required": [
@@ -1528,6 +1598,7 @@
               }
             },
             "basicOpts": {
+              "title": "Basic Auth Options",
               "type": "object",
               "description": "Configuration for Basic Auth. Optional.",
               "properties": {
@@ -1538,6 +1609,7 @@
                   "x-go-type-skip-optional-pointer": true
                 },
                 "apiKeyAsBasicOpts": {
+                  "title": "API Key as Basic Options",
                   "type": "object",
                   "description": "when this object is present, it means that this provider uses Basic Auth to actually collect an API key",
                   "properties": {
@@ -1572,6 +1644,7 @@
               }
             },
             "support": {
+              "title": "Support",
               "type": "object",
               "description": "The supported features for the provider.",
               "x-oapi-codegen-extra-tags": {
@@ -1586,6 +1659,7 @@
               ],
               "properties": {
                 "bulkWrite": {
+                  "title": "Bulk Write Support",
                   "type": "object",
                   "x-oapi-codegen-extra-tags": {
                     "validate": "required"
@@ -1624,6 +1698,7 @@
                   "type": "boolean"
                 },
                 "subscribeSupport": {
+                  "title": "Subscribe Support",
                   "type": "object",
                   "properties": {
                     "create": {
@@ -1643,6 +1718,7 @@
               }
             },
             "providerOpts": {
+              "title": "Provider Options",
               "description": "Additional provider-specific metadata.",
               "type": "object",
               "additionalProperties": {
@@ -1662,8 +1738,10 @@
               "x-go-type-skip-optional-pointer": true
             },
             "media": {
+              "title": "Media",
               "properties": {
                 "regular": {
+                  "title": "Media Type Regular",
                   "type": "object",
                   "description": "Media for light/regular mode.",
                   "properties": {
@@ -1682,6 +1760,7 @@
                   }
                 },
                 "darkMode": {
+                  "title": "Media Type Dark Mode",
                   "type": "object",
                   "description": "Media to be used in dark mode.",
                   "properties": {
@@ -1702,12 +1781,14 @@
               }
             },
             "labels": {
+              "title": "Labels",
               "type": "object",
               "additionalProperties": {
                 "type": "string"
               }
             },
             "subscribeOpts": {
+              "title": "Subscribe Options",
               "type": "object",
               "required": [
                 "subscriptionScope",
@@ -1745,6 +1826,7 @@
         }
       },
       "SubscribeOpts": {
+        "title": "Subscribe Options",
         "type": "object",
         "required": [
           "subscriptionScope",
@@ -1779,6 +1861,7 @@
         }
       },
       "SubscribeSupport": {
+        "title": "Subscribe Support",
         "type": "object",
         "properties": {
           "create": {
