@@ -341,7 +341,7 @@ paths:
                       - write
         required: true
       responses:
-        200:
+        201:
           description: The newly created provider app
           content:
             application/json:
