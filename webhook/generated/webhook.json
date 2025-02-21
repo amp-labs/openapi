@@ -13,6 +13,7 @@
   "components": {
     "schemas": {
       "WebhookMessage": {
+        "title": "Webhook Message",
         "type": "object",
         "required": [
           "action",
@@ -69,6 +70,7 @@
             "type": "string"
           },
           "resultInfo": {
+            "title": "Result Info",
             "type": "object",
             "description": "Information about the result contained in the webhook message.",
             "required": [
@@ -77,7 +79,7 @@
             ],
             "properties": {
               "type": {
-                "description": "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be  present, which contains a URL to download the result. Else, the result is contained in the message itself in  the 'result' field.",
+                "description": "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be present, which contains a URL to download the result. Else, the result is contained in the message itself in the 'result' field.",
                 "type": "string",
                 "enum": [
                   "url",
@@ -97,6 +99,7 @@
           "result": {
             "type": "array",
             "items": {
+              "title": "Result Entry",
               "type": "object",
               "description": "Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).",
               "properties": {
@@ -115,11 +118,40 @@
                   "additionalProperties": {
                     "type": "array",
                     "items": {
+                      "title": "Association",
                       "type": "object",
                       "properties": {
                         "id": {
                           "description": "The ID of the associated record.",
                           "type": "string",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "objectName": {
+                          "description": "The name of the associated object.",
+                          "type": "string",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "rawObjectName": {
+                          "description": "The name of the associated object as it is used by the SaaS provider API.",
+                          "type": "string",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "fields": {
+                          "type": "object",
+                          "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+                          "additionalProperties": true,
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "mappedFields": {
+                          "type": "object",
+                          "description": "A key-value map of mapped field names to values.",
+                          "additionalProperties": true,
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "raw": {
+                          "type": "object",
+                          "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+                          "additionalProperties": true,
                           "x-go-type-skip-optional-pointer": true
                         }
                       }
@@ -139,6 +171,66 @@
                   "description": "The raw event data from the SaaS provider. For providers that support webhooks, this is the raw webhook payload",
                   "additionalProperties": true,
                   "x-go-type-skip-optional-pointer": true
+                },
+                "fromRecord": {
+                  "title": "Associated Object",
+                  "type": "object",
+                  "description": "An associated object that is attached to the association event in the webhook message.",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the associated record.",
+                      "type": "string",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "fields": {
+                      "type": "object",
+                      "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+                      "additionalProperties": true,
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "mappedFields": {
+                      "type": "object",
+                      "description": "A key-value map of mapped field names to values.",
+                      "additionalProperties": true,
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "raw": {
+                      "type": "object",
+                      "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+                      "additionalProperties": true,
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "toRecord": {
+                  "title": "Associated Object",
+                  "type": "object",
+                  "description": "An associated object that is attached to the association event in the webhook message.",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the associated record.",
+                      "type": "string",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "fields": {
+                      "type": "object",
+                      "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+                      "additionalProperties": true,
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "mappedFields": {
+                      "type": "object",
+                      "description": "A key-value map of mapped field names to values.",
+                      "additionalProperties": true,
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "raw": {
+                      "type": "object",
+                      "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+                      "additionalProperties": true,
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
                 },
                 "subscribeEventType": {
                   "description": "The type of event that triggered the message.",
@@ -168,16 +260,46 @@
         }
       },
       "Association": {
+        "title": "Association",
         "type": "object",
         "properties": {
           "id": {
             "description": "The ID of the associated record.",
             "type": "string",
             "x-go-type-skip-optional-pointer": true
+          },
+          "objectName": {
+            "description": "The name of the associated object.",
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "rawObjectName": {
+            "description": "The name of the associated object as it is used by the SaaS provider API.",
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "fields": {
+            "type": "object",
+            "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
+          },
+          "mappedFields": {
+            "type": "object",
+            "description": "A key-value map of mapped field names to values.",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
+          },
+          "raw": {
+            "type": "object",
+            "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
           }
         }
       },
       "ResultEntry": {
+        "title": "Result Entry",
         "type": "object",
         "description": "Each ResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).",
         "properties": {
@@ -196,11 +318,40 @@
             "additionalProperties": {
               "type": "array",
               "items": {
+                "title": "Association",
                 "type": "object",
                 "properties": {
                   "id": {
                     "description": "The ID of the associated record.",
                     "type": "string",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "objectName": {
+                    "description": "The name of the associated object.",
+                    "type": "string",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "rawObjectName": {
+                    "description": "The name of the associated object as it is used by the SaaS provider API.",
+                    "type": "string",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "fields": {
+                    "type": "object",
+                    "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+                    "additionalProperties": true,
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "mappedFields": {
+                    "type": "object",
+                    "description": "A key-value map of mapped field names to values.",
+                    "additionalProperties": true,
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "raw": {
+                    "type": "object",
+                    "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+                    "additionalProperties": true,
                     "x-go-type-skip-optional-pointer": true
                   }
                 }
@@ -220,6 +371,66 @@
             "description": "The raw event data from the SaaS provider. For providers that support webhooks, this is the raw webhook payload",
             "additionalProperties": true,
             "x-go-type-skip-optional-pointer": true
+          },
+          "fromRecord": {
+            "title": "Associated Object",
+            "type": "object",
+            "description": "An associated object that is attached to the association event in the webhook message.",
+            "properties": {
+              "id": {
+                "description": "The ID of the associated record.",
+                "type": "string",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "fields": {
+                "type": "object",
+                "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+                "additionalProperties": true,
+                "x-go-type-skip-optional-pointer": true
+              },
+              "mappedFields": {
+                "type": "object",
+                "description": "A key-value map of mapped field names to values.",
+                "additionalProperties": true,
+                "x-go-type-skip-optional-pointer": true
+              },
+              "raw": {
+                "type": "object",
+                "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+                "additionalProperties": true,
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "toRecord": {
+            "title": "Associated Object",
+            "type": "object",
+            "description": "An associated object that is attached to the association event in the webhook message.",
+            "properties": {
+              "id": {
+                "description": "The ID of the associated record.",
+                "type": "string",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "fields": {
+                "type": "object",
+                "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+                "additionalProperties": true,
+                "x-go-type-skip-optional-pointer": true
+              },
+              "mappedFields": {
+                "type": "object",
+                "description": "A key-value map of mapped field names to values.",
+                "additionalProperties": true,
+                "x-go-type-skip-optional-pointer": true
+              },
+              "raw": {
+                "type": "object",
+                "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+                "additionalProperties": true,
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
           },
           "subscribeEventType": {
             "description": "The type of event that triggered the message.",
@@ -246,6 +457,7 @@
         }
       },
       "ResultInfo": {
+        "title": "Result Info",
         "type": "object",
         "description": "Information about the result contained in the webhook message.",
         "required": [
@@ -254,7 +466,7 @@
         ],
         "properties": {
           "type": {
-            "description": "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be  present, which contains a URL to download the result. Else, the result is contained in the message itself in  the 'result' field.",
+            "description": "The type of the result. Can be 'url' or 'inline'. If url, a downloadUrl field will also be present, which contains a URL to download the result. Else, the result is contained in the message itself in the 'result' field.",
             "type": "string",
             "enum": [
               "url",
@@ -268,6 +480,36 @@
           "numRecords": {
             "description": "The number of records in the result. Present in all cases.",
             "type": "integer"
+          }
+        }
+      },
+      "AssociatedObject": {
+        "title": "Associated Object",
+        "type": "object",
+        "description": "An associated object that is attached to the association event in the webhook message.",
+        "properties": {
+          "id": {
+            "description": "The ID of the associated record.",
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "fields": {
+            "type": "object",
+            "description": "A key-value map of field names to values. This will only contain unmapped fields.",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
+          },
+          "mappedFields": {
+            "type": "object",
+            "description": "A key-value map of mapped field names to values.",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
+          },
+          "raw": {
+            "type": "object",
+            "description": "The raw data of the record, exactly as it is returned by the SaaS API.",
+            "additionalProperties": true,
+            "x-go-type-skip-optional-pointer": true
           }
         }
       }

@@ -16,6 +16,7 @@
         "content": {
           "application/problem+json": {
             "schema": {
+              "title": "Problem",
               "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
               "type": "object",
               "properties": {
@@ -71,12 +72,15 @@
         "content": {
           "application/problem+json": {
             "schema": {
+              "title": "Input Validation Problem",
               "type": "object",
               "allOf": [
                 {
+                  "title": "API Problem",
                   "type": "object",
                   "allOf": [
                     {
+                      "title": "Problem",
                       "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
                       "type": "object",
                       "properties": {
@@ -204,13 +208,16 @@
                 "issues": {
                   "type": "array",
                   "items": {
+                    "title": "Input Validation Issue",
                     "type": "object",
                     "description": "An issue detected during input validation.\n",
                     "allOf": [
                       {
+                        "title": "API Problem",
                         "type": "object",
                         "allOf": [
                           {
+                            "title": "Problem",
                             "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
                             "type": "object",
                             "properties": {
@@ -388,6 +395,7 @@
     },
     "schemas": {
       "Problem": {
+        "title": "Problem",
         "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
         "type": "object",
         "properties": {
@@ -436,9 +444,11 @@
         }
       },
       "ApiProblem": {
+        "title": "API Problem",
         "type": "object",
         "allOf": [
           {
+            "title": "Problem",
             "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
             "type": "object",
             "properties": {
@@ -562,12 +572,15 @@
         }
       },
       "InputValidationProblem": {
+        "title": "Input Validation Problem",
         "type": "object",
         "allOf": [
           {
+            "title": "API Problem",
             "type": "object",
             "allOf": [
               {
+                "title": "Problem",
                 "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
                 "type": "object",
                 "properties": {
@@ -695,13 +708,16 @@
           "issues": {
             "type": "array",
             "items": {
+              "title": "Input Validation Issue",
               "type": "object",
               "description": "An issue detected during input validation.\n",
               "allOf": [
                 {
+                  "title": "API Problem",
                   "type": "object",
                   "allOf": [
                     {
+                      "title": "Problem",
                       "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
                       "type": "object",
                       "properties": {
@@ -873,13 +889,16 @@
         }
       },
       "InputValidationIssue": {
+        "title": "Input Validation Issue",
         "type": "object",
         "description": "An issue detected during input validation.\n",
         "allOf": [
           {
+            "title": "API Problem",
             "type": "object",
             "allOf": [
               {
+                "title": "Problem",
                 "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
                 "type": "object",
                 "properties": {
