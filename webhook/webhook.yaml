@@ -73,6 +73,29 @@ components:
           description: The ID of the associated record.
           type: string
           x-go-type-skip-optional-pointer: true
+        objectName:
+          description: The name of the associated object.
+          type: string
+          x-go-type-skip-optional-pointer: true
+        rawObjectName:
+          description: The name of the associated object as it is used by the SaaS provider API.
+          type: string
+          x-go-type-skip-optional-pointer: true
+        fields:
+          type: object
+          description: A key-value map of field names to values. This will only contain unmapped fields.
+          additionalProperties: true
+          x-go-type-skip-optional-pointer: true
+        mappedFields:
+          type: object
+          description: A key-value map of mapped field names to values.
+          additionalProperties: true
+          x-go-type-skip-optional-pointer: true
+        raw:
+          type: object
+          description: The raw data of the record, exactly as it is returned by the SaaS API.
+          additionalProperties: true
+          x-go-type-skip-optional-pointer: true
     ResultEntry:
       title: Result Entry
       type: object
@@ -105,6 +128,10 @@ components:
             this is the raw webhook payload
           additionalProperties: true
           x-go-type-skip-optional-pointer: true
+        fromRecord:
+          $ref: '#/components/schemas/AssociatedObject'
+        toRecord:
+          $ref: '#/components/schemas/AssociatedObject'
         subscribeEventType:
           description: The type of event that triggered the message.
           type: string
@@ -144,3 +171,28 @@ components:
         numRecords:
           description: The number of records in the result. Present in all cases.
           type: integer
+
+    AssociatedObject:
+      title: Associated Object
+      type: object
+      description: An associated object that is attached to the association event in the webhook message.
+      properties:
+        id:
+          description: The ID of the associated record.
+          type: string
+          x-go-type-skip-optional-pointer: true
+        fields:
+          type: object
+          description: A key-value map of field names to values. This will only contain unmapped fields.
+          additionalProperties: true
+          x-go-type-skip-optional-pointer: true
+        mappedFields:
+          type: object
+          description: A key-value map of mapped field names to values.
+          additionalProperties: true
+          x-go-type-skip-optional-pointer: true
+        raw:
+          type: object
+          description: The raw data of the record, exactly as it is returned by the SaaS API.
+          additionalProperties: true
+          x-go-type-skip-optional-pointer: true
