@@ -15,13 +15,13 @@ const specs = [
     outputFile: path.join(__dirname, "../api/generated/api.json"),
   },
   {
-    inputFile: path.join(__dirname, "../api/read.yaml"),
-    outputFile: path.join(__dirname, "../api/generated/read.json"),
+    inputFile: path.join(__dirname, "../api/readwrite.yaml"),
+    outputFile: path.join(__dirname, "../api/generated/readwrite.json"),
   },
-  {
-    inputFile: path.join(__dirname, "../api/write.yaml"),
-    outputFile: path.join(__dirname, "../api/generated/write.json"),
-  },
+  // {
+  //   inputFile: path.join(__dirname, "../api/write.yaml"),
+  //   outputFile: path.join(__dirname, "../api/generated/write.json"),
+  // },
   {
     inputFile: path.join(__dirname, "../problem/problem.yaml"),
     outputFile: path.join(__dirname, "../problem/generated/problem.json"),
