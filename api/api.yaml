@@ -25,28 +25,34 @@ paths:
               properties:
                 providerWorkspaceRef:
                   type: string
-                  description: The identifier for the provider workspace
+                  description: The identifier for the provider workspace.
                   example: salesforce-instance-domain
                 projectId:
                   type: string
                   description: The Ampersand project ID.
+                  example: 453eac80-3482-47c5-b4d6-f040959499e3
                 groupRef:
                   type: string
                   description: The ID that your app uses to identify the group of users for this Connection, this can be an Org ID, workspace ID, etc.
+                  example: group-123
                 groupName:
                   type: string
                   description: The display name for the group. Defaults to groupRef if not provided.
+                  example: Organization Name
                 consumerRef:
                   type: string
                   description: The ID that your app uses to identify the user whose SaaS credential will be used for this OAuth flow.
+                  example: user_123456
                 consumerName:
                   type: string
                   description: The display name for the consumer. Defaults to consumerRef if not provided.
+                  example: John Doe
                 providerAppId:
                   type: string
                   description:
                     ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call.
                     If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
+                  example: ajVG9GCMQoQ6rpzQvXN4DwZT5NdFpOOSR2DMCrjKzC8F_XKh9tg8dLgv_xBenv4D5or2hMzUS2Z_b4VyTTnk
                 provider:
                   type: string
                   description: The provider that this app connects to.
@@ -77,7 +83,7 @@ paths:
       x-codegen-request-body-name: connectOAuthParams
   /projects:
     get:
-      summary: List all projects that the API key or user credential has access to
+      summary: List all projects that the API key or user credential has access to.
       operationId: listProjects
       tags: ["Project"]
       responses:
@@ -121,6 +127,7 @@ paths:
                 orgId:
                   type: string
                   description: The organization ID.
+                  example: 4389590
         required: true
       responses:
         201:
@@ -151,8 +158,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       responses:
         200:
           description: Project
@@ -180,8 +189,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       responses:
         204:
           description: Deleted
@@ -205,8 +216,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         content:
           application/json:
@@ -222,7 +235,7 @@ paths:
                     - appName
                   items:
                     type: string
-                    description: fields to update.
+                    description: Fields to update.
                 project:
                   type: object
                   properties:
@@ -239,7 +252,7 @@ paths:
         required: true
       responses:
         200:
-          description: The updated project
+          description: The updated project,
           content:
             application/json:
               schema:
@@ -272,8 +285,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       responses:
         200:
           description: List of provider apps
@@ -303,8 +318,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         content:
           application/json:
@@ -368,20 +385,24 @@ paths:
       x-codegen-request-body-name: providerApp
   /projects/{projectIdOrName}/provider-apps/{providerAppId}:
     delete:
-      summary: Delete a provider app
+      summary: Delete a provider app.
       operationId: deleteProviderApp
       tags: ["Provider App"]
       parameters:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: providerAppId
           in: path
           required: true
+          description: ID of the provider app (e.g. Salesforce connected app), returned by the CreateProviderApp call.
           schema:
             type: string
+          example: 3MVG9kBt168mda__AsLfwj2vUtrPMp39Nvj9amL1F7wMQhoDK7FgznCLTvYMIYLcDidAVGom5YCeiVbbFkE3X
       responses:
         204:
           description: Deleted
@@ -405,13 +426,17 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: providerAppId
           in: path
           required: true
+          description: ID of the provider app (e.g. Salesforce connected app), returned by the CreateProviderApp call.
           schema:
             type: string
+          example: 3MVG9kBt168mda__AsLfwj2vUtrPMp39Nvj9amL1F7wMQhoDK7FgznCLTvYMIYLcDidAVGom5YCeiVbbFkE3X
       requestBody:
         content:
           application/json:
@@ -430,7 +455,7 @@ paths:
                     - clientSecret
                   items:
                     type: string
-                    description: fields to update.
+                    description: Fields to update.
                 providerApp:
                   type: object
                   properties:
@@ -493,8 +518,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       responses:
         200:
           description: List of integrations
@@ -517,15 +544,17 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     post:
-      summary: Create a new integration
+      summary: Create a new integration.
       operationId: createIntegration
       tags: ["Integration"]
       parameters:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         content:
           application/json:
@@ -539,6 +568,7 @@ paths:
                 name:
                   type: string
                   description: The integration name.
+                  example: Integration_A
                 provider:
                   type: string
                   description: The provider name (e.g. "salesforce", "hubspot")
@@ -587,13 +617,17 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
       responses:
         204:
           description: Deleted
@@ -624,8 +658,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         required: true
         content:
@@ -638,9 +674,30 @@ paths:
                   description:
                     URL of where a zip of the source files can be downloaded
                     (e.g. Google Cloud Storage URL).
+                  example: https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip
                 sourceYaml:
                   type: string
                   description: A YAML string that defines the integrations.
+                  example: |
+                    specVersion: 1.0.0
+                    version: '1.0'
+                    integrations:
+                      - name: readSalesforceAccounts
+                        provider: salesforce
+                        read:
+                          endpoint: "/services/data/v58.0/query"
+                          method: "GET"
+                          params:
+                            q: "SELECT Id, Name, Industry, Type FROM Account"
+                          auth: "OAuth2"
+                        write:
+                          endpoint: "/services/data/v58.0/sobjects/Account"
+                          method: "POST"
+                          body:
+                            Name: "{{accountName}}"
+                            Industry: "{{industry}}"
+                            Type: "{{type}}"
+                          auth: "OAuth2"
               description: The source of the integrations to upsert. One of sourceZipUrl or sourceYaml is required.
       responses:
         200:
@@ -665,20 +722,24 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/revisions:
     post:
-      summary: Create a new revision
+      summary: Create a new revision.
       operationId: createRevision
       tags: ["Revision"]
       parameters:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
       requestBody:
         content:
           application/json:
@@ -690,9 +751,30 @@ paths:
                   description:
                     URL of where a zip of the source files can be downloaded
                     (e.g. Google Cloud Storage URL).
+                  example: https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip
                 sourceYaml:
                   type: string
                   description: The source YAML file that defines the revision.
+                  example: |
+                    specVersion: 1.0.0
+                    version: '1.0'
+                    integrations:
+                      - name: readSalesforceAccounts
+                        provider: salesforce
+                        read:
+                          endpoint: "/services/data/v58.0/query"
+                          method: "GET"
+                          params:
+                            q: "SELECT Id, Name, Industry, Type FROM Account"
+                          auth: "OAuth2"
+                        write:
+                          endpoint: "/services/data/v58.0/sobjects/Account"
+                          method: "POST"
+                          body:
+                            Name: "{{accountName}}"
+                            Industry: "{{industry}}"
+                            Type: "{{type}}"
+                          auth: "OAuth2"
               description: The source of the revision to create. One of sourceZipUrl or sourceYaml is required.
         required: true
       responses:
@@ -728,23 +810,29 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
         - name: revisionId
           in: path
           required: true
           schema:
             type: string
+            example: revision_123
         - name: connectionId
           in: query
           required: true
           schema:
             type: string
+            example: 
       responses:
         200:
           description: Hydrated revision
@@ -779,8 +867,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
@@ -788,6 +878,8 @@ paths:
             type: string
         - name: groupRef
           in: query
+          description: The ID of the user group that has access to this installation.
+          example: group-123
           schema:
             type: string
       responses:
@@ -819,13 +911,17 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
       requestBody:
         content:
           application/json:
@@ -838,6 +934,7 @@ paths:
                 groupRef:
                   type: string
                   description: The ID of the user group that has access to this installation.
+                  example: group-123
                 connectionId:
                   type: string
                   description:
@@ -898,18 +995,24 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
         - name: installationId
           in: path
           required: true
+          description: The Ampersand installation ID.
           schema:
             type: string
+          example: installation-123
       responses:
         200:
           description: The installation
@@ -937,18 +1040,24 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
         - name: installationId
           in: path
           required: true
           schema:
             type: string
+          description: The Ampersand installation ID.
+          example: installation-123
       responses:
         204:
           description: Deleted
@@ -966,16 +1075,22 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
         - name: installationId
           in: path
           required: true
+          description: The Ampersand installation ID.
+          example: installation-123
           schema:
             type: string
       requestBody:
@@ -1062,15 +1177,17 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: Project ID or name
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
-          description: Integration ID
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
         - name: objectName
           in: path
           required: true
@@ -1081,6 +1198,7 @@ paths:
           in: query
           required: false
           description: The groupRef for the installation
+          example: group-123
           schema:
             type: string
       responses:
@@ -1109,9 +1227,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: Project ID or name
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: provider
           in: path
           required: true
@@ -1127,7 +1246,8 @@ paths:
         - name: groupRef
           in: query
           required: false
-          description: The groupRef for the connection
+          description: The groupRef for the connection.
+          example: group-123
           schema:
             type: string
       responses:
@@ -1152,16 +1272,22 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier of the integration.
           schema:
             type: string
+          example: integration-123
         - name: installationId
           in: path
           required: true
+          description: The Ampersand installation ID.
+          example: installation-123
           schema:
             type: string
         - name: pageSize
@@ -1221,13 +1347,17 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: operationId
           in: path
           required: true
+          description: Operation ID.
           schema:
             type: string
+          example: operation-123
       responses:
         200:
           description: Operation
@@ -1262,13 +1392,17 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: operationId
           in: path
           required: true
+          description: Operation ID.
           schema:
             type: string
+          example: operation-123
       responses:
         200:
           description: List of logs
@@ -1323,6 +1457,8 @@ paths:
         - name: provider
           in: path
           required: true
+          description: The unique identifier of the provider.
+          example: salesforce
           schema:
             type: string
       responses:
@@ -1348,8 +1484,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: active
           in: query
           description: Whether to include only active API keys. If false, all API keys are included.
@@ -1385,8 +1523,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         content:
           application/json:
@@ -1423,11 +1563,15 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: apiKey
           in: path
           required: true
+          description: The unique API key that identifies and authenticates your application. 
+          example: ak_5f9d3e8c7b2a1
           schema:
             type: string
       responses:
@@ -1458,11 +1602,15 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: apiKey
           in: path
           required: true
+          description: The unique API key that identifies and authenticates your application. 
+          example: ak_5f9d3e8c7b2a1
           schema:
             type: string
       responses:
@@ -1483,11 +1631,15 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: apiKey
           in: path
           required: true
+          description: The unique API key that identifies and authenticates your application. 
+          example: ak_5f9d3e8c7b2a1
           schema:
             type: string
       requestBody:
@@ -1536,8 +1688,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: provider
           in: query
           description: The provider name (e.g. "salesforce", "hubspot")
@@ -1546,6 +1700,7 @@ paths:
         - name: groupRef
           in: query
           description: The ID of the user group that has access to this installation.
+          example: group-123
           schema:
             type: string
         - name: consumerRef
@@ -1584,10 +1739,11 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
-        required: true
         content:
           application/json:
             schema:
@@ -1606,6 +1762,7 @@ paths:
                 groupRef:
                   type: string
                   description: The ID of the user group that has access to this installation.
+                  example: group-123
                 consumerName:
                   type: string
                   description: The name of the consumer that has access to this installation.
@@ -1709,8 +1866,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: connectionId
           in: path
           required: true
@@ -1760,8 +1919,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: connectionId
           in: path
           required: true
@@ -1785,8 +1946,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         content:
           application/json:
@@ -1833,8 +1996,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         content:
           application/json:
@@ -1879,8 +2044,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       requestBody:
         required: true
         content:
@@ -1944,8 +2111,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
       responses:
         200:
           description: List of destinations
@@ -1970,14 +2139,17 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: destination
           in: path
           required: true
           schema:
             type: string
-          description: The destination name
+          description: The destination name.
+          example: leadConvertedWebhook
       responses:
         404:
           description: Destination not found
@@ -2005,14 +2177,16 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: destination
           in: path
           required: true
           schema:
             type: string
-          description: The destination ID
+          description: The destination ID.
       requestBody:
         required: true
         content:
@@ -2088,8 +2262,10 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          description: The unique identifier or name of the project. 
           schema:
             type: string
+          example: project-id-123
         - name: destination
           in: path
           required: true
@@ -2172,8 +2348,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
       responses:
         200:
           description: Organization
@@ -2202,8 +2380,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
       requestBody:
         required: true
         content:
@@ -2258,8 +2438,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
       responses:
         200:
           description: List of builders that are a part of the org
@@ -2285,8 +2467,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
       requestBody:
         content:
           application/json:
@@ -2328,8 +2512,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
       responses:
         200:
           description: List of invites
@@ -2355,8 +2541,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
         - name: inviteId
           in: path
           required: true
@@ -2384,8 +2572,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
         - name: inviteId
           in: path
           required: true
@@ -2468,8 +2658,10 @@ paths:
         - name: orgId
           in: path
           required: true
+          description: ID of the organization.
           schema:
             type: string
+          example: 4389590
       responses:
         200:
           description: Billing account
@@ -2543,7 +2735,6 @@ paths:
 components:
   schemas:
     Org:
-      title: Organisation
       required:
         - id
         - label
@@ -2571,7 +2762,6 @@ components:
           description: The time the organization was updated.
           format: date-time
     Destination:
-      title: Destination
       required:
         - id
         - name
@@ -2609,7 +2799,6 @@ components:
           description: The time the destination was updated.
           format: date-time
     Project:
-      title: Project
       required:
         - appName
         - createTime
@@ -2633,6 +2822,7 @@ components:
         orgId:
           type: string
           description: The organization ID that this project belongs to.
+          example: 4389590
         createTime:
           type: string
           description: The time the project was created.
@@ -2642,7 +2832,6 @@ components:
           description: The time the project was updated.
           format: date-time
     ProviderApp:
-      title: Provider App
       required:
         - clientId
         - createTime
@@ -2689,7 +2878,6 @@ components:
           description: The time the provider app was updated.
           format: date-time
     Integration:
-      title: Integration
       required:
         - createTime
         - id
@@ -2726,7 +2914,6 @@ components:
         latestRevision:
           $ref: "#/components/schemas/Revision"
     Revision:
-      title: Revision
       required:
         - content
         - createTime
@@ -2749,7 +2936,6 @@ components:
         content:
           $ref: "../manifest/manifest.yaml#/components/schemas/Integration"
     HydratedRevision:
-      title: Hydrated Revision
       required:
         - content
         - createTime
@@ -2772,7 +2958,6 @@ components:
         content:
           $ref: "../manifest/manifest.yaml#/components/schemas/HydratedIntegration"
     Installation:
-      title: Installation
       required:
         - config
         - connection
@@ -2819,7 +3004,6 @@ components:
         config:
           $ref: "#/components/schemas/Config"
     Config:
-      title: Config
       required:
         - content
         - createTime
@@ -2849,7 +3033,6 @@ components:
         content:
           $ref: "../config/config.yaml#/components/schemas/ConfigContent"
     Connection:
-      title: Connection
       required:
         - id
         - createTime
@@ -2925,7 +3108,6 @@ components:
           description: The API key used while making the connection.
           example: api-key-123
     Oauth2AuthorizationCodeTokensOnly:
-      title: OAuth2 AuthorizationCode Token
       type: object
       properties:
         accessToken:
@@ -2950,7 +3132,6 @@ components:
             type: string
           description: The scopes for the tokens.
     Oauth2AuthorizationCode:
-      title: OAuth2 Authorization Code
       type: object
       properties:
         accessToken:
@@ -2987,7 +3168,6 @@ components:
             type: string
           description: The scopes for the tokens.
     ImportConnectionRequest:
-      title: Import Connection Request
       required:
         - groupRef
         - groupName
@@ -3002,11 +3182,13 @@ components:
             ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call.
             If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
           type: string
+          example: 3MVG9kBt168mda__AsLfwj2vUtrPMp39Nvj9amL1F7wMQhoDK7FgznCLTvYMIYLcDidAVGom5YCeiVbbFkE3X
         groupRef:
           description:
             The ID of the user group that has access to this installation. This is any ID that your app uses
             to identify a group of users - such as an org, team, or workspace.
           type: string
+          example: group-123
         groupName:
           description: The display name of the user group that has access to this installation.
           type: string
@@ -3037,7 +3219,6 @@ components:
           items:
             type: string
     Group:
-      title: Group
       required:
         - createTime
         - groupName
@@ -3068,7 +3249,6 @@ components:
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
     Consumer:
-      title: Consumer
       required:
         - consumerName
         - consumerRef
@@ -3099,7 +3279,6 @@ components:
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
     Operation:
-      title: Operation
       required:
         - projectId
         - integrationId
@@ -3152,7 +3331,6 @@ components:
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
     Log:
-      title: Log
       type: object
       required:
         - timestamp
@@ -3184,7 +3362,6 @@ components:
           description: The severity of the log.
           example: DEBUG
     SignedUrl:
-      title: Signed URL
       type: object
       required:
         - url
@@ -3201,7 +3378,6 @@ components:
           type: string
           description: The path (will match the path part of the url).
     ApiKeyScopes:
-      title: API Key Scopes
       type: array
       description: The scopes for the API key.
       items:
@@ -3210,7 +3386,6 @@ components:
           - full
           - frontend
     ApiKeyRequest:
-      title: API Key Request
       type: object
       required:
         - label
@@ -3222,7 +3397,6 @@ components:
         scopes:
           $ref: "#/components/schemas/ApiKeyScopes"
     ApiKey:
-      title: API Key
       type: object
       required:
         - key
@@ -3249,7 +3423,6 @@ components:
           description: Whether the API key is active.
           example: true
     PatchApiKeyRequest:
-      title: Patch API Key Request
       type: object
       required:
         - updateMask
@@ -3279,7 +3452,6 @@ components:
             scopes:
               $ref: "#/components/schemas/ApiKeyScopes"
     WebhookHeaders:
-      title: Webhook Headers
       type: object
       nullable: true
       description: Additional headers to add when Ampersand sends a webhook message
@@ -3289,7 +3461,6 @@ components:
       example:
         Authorization: "Bearer 1234"
     Invite:
-      title: Invite
       type: object
       required:
         - id
@@ -3325,7 +3496,6 @@ components:
           description: The time the invite was updated.
           format: date-time
     Builder:
-      title: Builder
       type: object
       required:
         - id
@@ -3357,7 +3527,6 @@ components:
         primaryEmail:
           type: string
     BillingAccount:
-      title: Billing Account
       type: object
       required:
         - id
@@ -3390,7 +3559,6 @@ components:
           description: The time the billing account was last updated.
           format: date-time
     BuilderInfo:
-      title: Builder Info
       type: object
       required:
         - builder
@@ -3451,7 +3619,6 @@ components:
               $ref: "#/components/schemas/Org"
             # This schema actually isn't used in the manifest but it is used by the GetObjectMetadata endpoint
     ObjectMetadata:
-      title: Object Metadata
       type: object
       required:
         - name
@@ -3474,7 +3641,6 @@ components:
           additionalProperties:
             $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
     PaginationInfo:
-      title: Pagination Information
       type: object
       required:
         - done
