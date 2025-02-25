@@ -6136,6 +6136,95 @@
                                     "type": "boolean"
                                   }
                                 }
+                              },
+                              "subscribe": {
+                                "title": "Subscribe Integration",
+                                "type": "object",
+                                "properties": {
+                                  "objects": {
+                                    "type": "array",
+                                    "items": {
+                                      "title": "Integration Subscribe Object",
+                                      "type": "object",
+                                      "required": [
+                                        "objectName",
+                                        "destination"
+                                      ],
+                                      "properties": {
+                                        "objectName": {
+                                          "type": "string"
+                                        },
+                                        "destination": {
+                                          "type": "string"
+                                        },
+                                        "inheritFields": {
+                                          "type": "boolean",
+                                          "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                                        },
+                                        "CreateEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": null,
+                                            "type": "boolean",
+                                            "description": "If true, the integration will subscribe to create events."
+                                          }
+                                        },
+                                        "UpdateEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to update events."
+                                            },
+                                            "requiredWatchFields": null,
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "description": "The fields that are required to be watched for updates.",
+                                              "example": [
+                                                "name",
+                                                "domain"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "DeleteEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to delete events."
+                                            }
+                                          }
+                                        },
+                                        "AssociationChangeEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to association change events."
+                                            },
+                                            "includeFullRecords": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will include full records in the event payload."
+                                            }
+                                          }
+                                        },
+                                        "OtherEvents": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "description": "The other events that the integration will subscribe to.",
+                                            "example": [
+                                              "object.merged",
+                                              "object.restored"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -6923,6 +7012,95 @@
                             "properties": {
                               "enabled": {
                                 "type": "boolean"
+                              }
+                            }
+                          },
+                          "subscribe": {
+                            "title": "Subscribe Integration",
+                            "type": "object",
+                            "properties": {
+                              "objects": {
+                                "type": "array",
+                                "items": {
+                                  "title": "Integration Subscribe Object",
+                                  "type": "object",
+                                  "required": [
+                                    "objectName",
+                                    "destination"
+                                  ],
+                                  "properties": {
+                                    "objectName": {
+                                      "type": "string"
+                                    },
+                                    "destination": {
+                                      "type": "string"
+                                    },
+                                    "inheritFields": {
+                                      "type": "boolean",
+                                      "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                                    },
+                                    "CreateEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": null,
+                                        "type": "boolean",
+                                        "description": "If true, the integration will subscribe to create events."
+                                      }
+                                    },
+                                    "UpdateEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "boolean",
+                                          "description": "If true, the integration will subscribe to update events."
+                                        },
+                                        "requiredWatchFields": null,
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "description": "The fields that are required to be watched for updates.",
+                                          "example": [
+                                            "name",
+                                            "domain"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "DeleteEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "boolean",
+                                          "description": "If true, the integration will subscribe to delete events."
+                                        }
+                                      }
+                                    },
+                                    "AssociationChangeEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "boolean",
+                                          "description": "If true, the integration will subscribe to association change events."
+                                        },
+                                        "includeFullRecords": {
+                                          "type": "boolean",
+                                          "description": "If true, the integration will include full records in the event payload."
+                                        }
+                                      }
+                                    },
+                                    "OtherEvents": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "description": "The other events that the integration will subscribe to.",
+                                        "example": [
+                                          "object.merged",
+                                          "object.restored"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -8923,6 +9101,95 @@
                                 "properties": {
                                   "enabled": {
                                     "type": "boolean"
+                                  }
+                                }
+                              },
+                              "subscribe": {
+                                "title": "Subscribe Integration",
+                                "type": "object",
+                                "properties": {
+                                  "objects": {
+                                    "type": "array",
+                                    "items": {
+                                      "title": "Integration Subscribe Object",
+                                      "type": "object",
+                                      "required": [
+                                        "objectName",
+                                        "destination"
+                                      ],
+                                      "properties": {
+                                        "objectName": {
+                                          "type": "string"
+                                        },
+                                        "destination": {
+                                          "type": "string"
+                                        },
+                                        "inheritFields": {
+                                          "type": "boolean",
+                                          "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                                        },
+                                        "CreateEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": null,
+                                            "type": "boolean",
+                                            "description": "If true, the integration will subscribe to create events."
+                                          }
+                                        },
+                                        "UpdateEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to update events."
+                                            },
+                                            "requiredWatchFields": null,
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "description": "The fields that are required to be watched for updates.",
+                                              "example": [
+                                                "name",
+                                                "domain"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "DeleteEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to delete events."
+                                            }
+                                          }
+                                        },
+                                        "AssociationChangeEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to association change events."
+                                            },
+                                            "includeFullRecords": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will include full records in the event payload."
+                                            }
+                                          }
+                                        },
+                                        "OtherEvents": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "description": "The other events that the integration will subscribe to.",
+                                            "example": [
+                                              "object.merged",
+                                              "object.restored"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -12064,6 +12331,7 @@
                                               "x-go-type-skip-optional-pointer": true,
                                               "additionalProperties": {
                                                 "title": "Value Default",
+                                                "x-go-type": "any",
                                                 "oneOf": [
                                                   {
                                                     "title": "Value Default String",
@@ -12845,6 +13113,7 @@
                                           "x-go-type-skip-optional-pointer": true,
                                           "additionalProperties": {
                                             "title": "Value Default",
+                                            "x-go-type": "any",
                                             "oneOf": [
                                               {
                                                 "title": "Value Default String",
@@ -13490,6 +13759,7 @@
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
                                               "title": "Value Default",
+                                              "x-go-type": "any",
                                               "oneOf": [
                                                 {
                                                   "title": "Value Default String",
@@ -14953,6 +15223,7 @@
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
                                               "title": "Value Default",
+                                              "x-go-type": "any",
                                               "oneOf": [
                                                 {
                                                   "title": "Value Default String",
@@ -15922,6 +16193,7 @@
                                               "x-go-type-skip-optional-pointer": true,
                                               "additionalProperties": {
                                                 "title": "Value Default",
+                                                "x-go-type": "any",
                                                 "oneOf": [
                                                   {
                                                     "title": "Value Default String",
@@ -16556,6 +16828,7 @@
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
                                               "title": "Value Default",
+                                              "x-go-type": "any",
                                               "oneOf": [
                                                 {
                                                   "title": "Value Default String",
@@ -37738,6 +38011,95 @@
                         "type": "boolean"
                       }
                     }
+                  },
+                  "subscribe": {
+                    "title": "Subscribe Integration",
+                    "type": "object",
+                    "properties": {
+                      "objects": {
+                        "type": "array",
+                        "items": {
+                          "title": "Integration Subscribe Object",
+                          "type": "object",
+                          "required": [
+                            "objectName",
+                            "destination"
+                          ],
+                          "properties": {
+                            "objectName": {
+                              "type": "string"
+                            },
+                            "destination": {
+                              "type": "string"
+                            },
+                            "inheritFields": {
+                              "type": "boolean",
+                              "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                            },
+                            "CreateEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": null,
+                                "type": "boolean",
+                                "description": "If true, the integration will subscribe to create events."
+                              }
+                            },
+                            "UpdateEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "description": "If true, the integration will subscribe to update events."
+                                },
+                                "requiredWatchFields": null,
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "description": "The fields that are required to be watched for updates.",
+                                  "example": [
+                                    "name",
+                                    "domain"
+                                  ]
+                                }
+                              }
+                            },
+                            "DeleteEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "description": "If true, the integration will subscribe to delete events."
+                                }
+                              }
+                            },
+                            "AssociationChangeEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "description": "If true, the integration will subscribe to association change events."
+                                },
+                                "includeFullRecords": {
+                                  "type": "boolean",
+                                  "description": "If true, the integration will include full records in the event payload."
+                                }
+                              }
+                            },
+                            "OtherEvents": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "description": "The other events that the integration will subscribe to.",
+                                "example": [
+                                  "object.merged",
+                                  "object.restored"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -38038,6 +38400,95 @@
                 "properties": {
                   "enabled": {
                     "type": "boolean"
+                  }
+                }
+              },
+              "subscribe": {
+                "title": "Subscribe Integration",
+                "type": "object",
+                "properties": {
+                  "objects": {
+                    "type": "array",
+                    "items": {
+                      "title": "Integration Subscribe Object",
+                      "type": "object",
+                      "required": [
+                        "objectName",
+                        "destination"
+                      ],
+                      "properties": {
+                        "objectName": {
+                          "type": "string"
+                        },
+                        "destination": {
+                          "type": "string"
+                        },
+                        "inheritFields": {
+                          "type": "boolean",
+                          "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                        },
+                        "CreateEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": null,
+                            "type": "boolean",
+                            "description": "If true, the integration will subscribe to create events."
+                          }
+                        },
+                        "UpdateEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "If true, the integration will subscribe to update events."
+                            },
+                            "requiredWatchFields": null,
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "description": "The fields that are required to be watched for updates.",
+                              "example": [
+                                "name",
+                                "domain"
+                              ]
+                            }
+                          }
+                        },
+                        "DeleteEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "If true, the integration will subscribe to delete events."
+                            }
+                          }
+                        },
+                        "AssociationChangeEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "If true, the integration will subscribe to association change events."
+                            },
+                            "includeFullRecords": {
+                              "type": "boolean",
+                              "description": "If true, the integration will include full records in the event payload."
+                            }
+                          }
+                        },
+                        "OtherEvents": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "The other events that the integration will subscribe to.",
+                            "example": [
+                              "object.merged",
+                              "object.restored"
+                            ]
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -38998,6 +39449,7 @@
                                   "x-go-type-skip-optional-pointer": true,
                                   "additionalProperties": {
                                     "title": "Value Default",
+                                    "x-go-type": "any",
                                     "oneOf": [
                                       {
                                         "title": "Value Default String",
@@ -39288,6 +39740,7 @@
                               "x-go-type-skip-optional-pointer": true,
                               "additionalProperties": {
                                 "title": "Value Default",
+                                "x-go-type": "any",
                                 "oneOf": [
                                   {
                                     "title": "Value Default String",
