@@ -30,3 +30,12 @@ The json spec is auto generated on a commit (setup as a pre-commit hook) but if 
 ```shell
 pnpm run gen:json
 ```
+
+# Best practices
+
+- **Naming:** Use descriptive operation and type names, as generated SDKs & docs may reuse these names.
+- **Request Parameters:** Ensure you mark parameters (query or path) and request bodies as `required: true` when needed.
+- **Avoid Duplicates:** Do not create duplicate paths or types across specs unless absolutely necessary. Duplicate definitions (based on URL and method) can cause issues when generating unified docs or SDKs.
+- **Using oneOf:** Apply `oneOf` only to entire schemas, not individual properties. While the linter might not flag it, using it on properties can lead to errors in SDK or docs generation.
+- **Documentation:** Provide clear descriptions and examples for each operation, as these details may be reused in docs / SDK generators.
+- **Error Handling:** Include distinct responses only when the response types differ. Otherwise, use a `default` response to group similar responses. For instance, if an operation returns the same schema structure for both 404 and 502 (with different messages) but a completely different structure for 200, define two response schemas: one for 200 and one default.
