@@ -183,13 +183,13 @@ components:
           type: boolean
           description: If true, the integration will subscribe to update events.
         requiredWatchFields:
-        type: array
-        items:
-          type: string
-          description: The fields that are required to be watched for updates. 
-          example: 
-            - name
-            - domain
+          type: array
+          items:
+            type: string
+            description: The fields that are required to be watched for updates. 
+            example: 
+              - name
+              - domain
     
     DeleteEvent:
       type: object
