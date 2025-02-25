@@ -6159,7 +6159,7 @@
                                         },
                                         "inheritFields": {
                                           "type": "boolean",
-                                          "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                                          "description": "If true, the subscribe object will inherit the fields from the read object."
                                         },
                                         "CreateEvent": {
                                           "type": "object",
@@ -7037,7 +7037,7 @@
                                     },
                                     "inheritFields": {
                                       "type": "boolean",
-                                      "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                                      "description": "If true, the subscribe object will inherit the fields from the read object."
                                     },
                                     "CreateEvent": {
                                       "type": "object",
@@ -9126,7 +9126,7 @@
                                         },
                                         "inheritFields": {
                                           "type": "boolean",
-                                          "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                                          "description": "If true, the subscribe object will inherit the fields from the read object."
                                         },
                                         "CreateEvent": {
                                           "type": "object",
@@ -38034,7 +38034,7 @@
                             },
                             "inheritFields": {
                               "type": "boolean",
-                              "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                              "description": "If true, the subscribe object will inherit the fields from the read object."
                             },
                             "CreateEvent": {
                               "type": "object",
@@ -38425,7 +38425,7 @@
                         },
                         "inheritFields": {
                           "type": "boolean",
-                          "description": "If true, the subscribe object will inherit the fields from the read object. If false, the subscribe object will have no fields."
+                          "description": "If true, the subscribe object will inherit the fields from the read object."
                         },
                         "CreateEvent": {
                           "type": "object",
