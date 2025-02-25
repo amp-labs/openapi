@@ -338,15 +338,16 @@
                                 "type": "boolean",
                                 "description": "If true, the integration will subscribe to update events."
                               },
-                              "requiredWatchFields": null,
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "description": "The fields that are required to be watched for updates.",
-                                "example": [
-                                  "name",
-                                  "domain"
-                                ]
+                              "requiredWatchFields": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "description": "The fields that are required to be watched for updates.",
+                                  "example": [
+                                    "name",
+                                    "domain"
+                                  ]
+                                }
                               }
                             }
                           },
@@ -704,15 +705,16 @@
                           "type": "boolean",
                           "description": "If true, the integration will subscribe to update events."
                         },
-                        "requiredWatchFields": null,
-                        "type": "array",
-                        "items": {
-                          "type": "string",
-                          "description": "The fields that are required to be watched for updates.",
-                          "example": [
-                            "name",
-                            "domain"
-                          ]
+                        "requiredWatchFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "The fields that are required to be watched for updates.",
+                            "example": [
+                              "name",
+                              "domain"
+                            ]
+                          }
                         }
                       }
                     },
@@ -1050,15 +1052,16 @@
                       "type": "boolean",
                       "description": "If true, the integration will subscribe to update events."
                     },
-                    "requiredWatchFields": null,
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "description": "The fields that are required to be watched for updates.",
-                      "example": [
-                        "name",
-                        "domain"
-                      ]
+                    "requiredWatchFields": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "description": "The fields that are required to be watched for updates.",
+                        "example": [
+                          "name",
+                          "domain"
+                        ]
+                      }
                     }
                   }
                 },
@@ -1361,15 +1364,16 @@
                 "type": "boolean",
                 "description": "If true, the integration will subscribe to update events."
               },
-              "requiredWatchFields": null,
-              "type": "array",
-              "items": {
-                "type": "string",
-                "description": "The fields that are required to be watched for updates.",
-                "example": [
-                  "name",
-                  "domain"
-                ]
+              "requiredWatchFields": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "The fields that are required to be watched for updates.",
+                  "example": [
+                    "name",
+                    "domain"
+                  ]
+                }
               }
             }
           },
@@ -1424,15 +1428,16 @@
             "type": "boolean",
             "description": "If true, the integration will subscribe to update events."
           },
-          "requiredWatchFields": null,
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "The fields that are required to be watched for updates.",
-            "example": [
-              "name",
-              "domain"
-            ]
+          "requiredWatchFields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The fields that are required to be watched for updates.",
+              "example": [
+                "name",
+                "domain"
+              ]
+            }
           }
         }
       },

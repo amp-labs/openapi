@@ -142,11 +142,11 @@ components:
             - delete
             - other
           x-enumNames:
-            - CreateEvent
-            - UpdateEvent
-            - UpdateAssociationEvent
-            - DeleteEvent
-            - OtherEvent
+            - CreateEventType
+            - UpdateEventType
+            - UpdateAssociationEventType
+            - DeleteEventType
+            - OtherEventType
         providerEventType:
           description: The type of event that triggered the message, as defined by the SaaS provider.
           type: string

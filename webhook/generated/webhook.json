@@ -243,11 +243,11 @@
                     "other"
                   ],
                   "x-enumNames": [
-                    "CreateEvent",
-                    "UpdateEvent",
-                    "UpdateAssociationEvent",
-                    "DeleteEvent",
-                    "OtherEvent"
+                    "CreateEventType",
+                    "UpdateEventType",
+                    "UpdateAssociationEventType",
+                    "DeleteEventType",
+                    "OtherEventType"
                   ]
                 },
                 "providerEventType": {
@@ -443,11 +443,11 @@
               "other"
             ],
             "x-enumNames": [
-              "CreateEvent",
-              "UpdateEvent",
-              "UpdateAssociationEvent",
-              "DeleteEvent",
-              "OtherEvent"
+              "CreateEventType",
+              "UpdateEventType",
+              "UpdateAssociationEventType",
+              "DeleteEventType",
+              "OtherEventType"
             ]
           },
           "providerEventType": {
