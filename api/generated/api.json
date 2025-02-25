@@ -6164,9 +6164,10 @@
                                         "CreateEvent": {
                                           "type": "object",
                                           "properties": {
-                                            "enabled": null,
-                                            "type": "boolean",
-                                            "description": "If true, the integration will subscribe to create events."
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to create events."
+                                            }
                                           }
                                         },
                                         "UpdateEvent": {
@@ -7042,9 +7043,10 @@
                                     "CreateEvent": {
                                       "type": "object",
                                       "properties": {
-                                        "enabled": null,
-                                        "type": "boolean",
-                                        "description": "If true, the integration will subscribe to create events."
+                                        "enabled": {
+                                          "type": "boolean",
+                                          "description": "If true, the integration will subscribe to create events."
+                                        }
                                       }
                                     },
                                     "UpdateEvent": {
@@ -9131,9 +9133,10 @@
                                         "CreateEvent": {
                                           "type": "object",
                                           "properties": {
-                                            "enabled": null,
-                                            "type": "boolean",
-                                            "description": "If true, the integration will subscribe to create events."
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will subscribe to create events."
+                                            }
                                           }
                                         },
                                         "UpdateEvent": {
@@ -38039,9 +38042,10 @@
                             "CreateEvent": {
                               "type": "object",
                               "properties": {
-                                "enabled": null,
-                                "type": "boolean",
-                                "description": "If true, the integration will subscribe to create events."
+                                "enabled": {
+                                  "type": "boolean",
+                                  "description": "If true, the integration will subscribe to create events."
+                                }
                               }
                             },
                             "UpdateEvent": {
@@ -38430,9 +38434,10 @@
                         "CreateEvent": {
                           "type": "object",
                           "properties": {
-                            "enabled": null,
-                            "type": "boolean",
-                            "description": "If true, the integration will subscribe to create events."
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "If true, the integration will subscribe to create events."
+                            }
                           }
                         },
                         "UpdateEvent": {
