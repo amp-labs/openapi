@@ -6214,7 +6214,7 @@
                                           "type": "array",
                                           "items": {
                                             "type": "string",
-                                            "description": "The other events that the integration will subscribe to.",
+                                            "description": "Non-standard events that the integration will subscribe to.",
                                             "example": [
                                               "object.merged",
                                               "object.restored"
@@ -7092,7 +7092,7 @@
                                       "type": "array",
                                       "items": {
                                         "type": "string",
-                                        "description": "The other events that the integration will subscribe to.",
+                                        "description": "Non-standard events that the integration will subscribe to.",
                                         "example": [
                                           "object.merged",
                                           "object.restored"
@@ -9181,7 +9181,7 @@
                                           "type": "array",
                                           "items": {
                                             "type": "string",
-                                            "description": "The other events that the integration will subscribe to.",
+                                            "description": "Non-standard events that the integration will subscribe to.",
                                             "example": [
                                               "object.merged",
                                               "object.restored"
@@ -38089,7 +38089,7 @@
                               "type": "array",
                               "items": {
                                 "type": "string",
-                                "description": "The other events that the integration will subscribe to.",
+                                "description": "Non-standard events that the integration will subscribe to.",
                                 "example": [
                                   "object.merged",
                                   "object.restored"
@@ -38480,7 +38480,7 @@
                           "type": "array",
                           "items": {
                             "type": "string",
-                            "description": "The other events that the integration will subscribe to.",
+                            "description": "Non-standard events that the integration will subscribe to.",
                             "example": [
                               "object.merged",
                               "object.restored"
