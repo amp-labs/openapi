@@ -233,12 +233,12 @@
                   }
                 },
                 "subscribeEventType": {
-                  "description": "The type of event that triggered the message.",
+                  "description": "The type of event that triggered the message, this is normalized across all providers.",
                   "type": "string",
                   "enum": [
                     "create",
                     "update",
-                    "updateAssociation",
+                    "associationUpdate",
                     "delete",
                     "other"
                   ],
@@ -433,12 +433,12 @@
             }
           },
           "subscribeEventType": {
-            "description": "The type of event that triggered the message.",
+            "description": "The type of event that triggered the message, this is normalized across all providers.",
             "type": "string",
             "enum": [
               "create",
               "update",
-              "updateAssociation",
+              "associationUpdate",
               "delete",
               "other"
             ],
