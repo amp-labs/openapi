@@ -918,7 +918,8 @@
             "required": [
               "subscriptionScope",
               "targetURLScope",
-              "registrationTiming"
+              "registrationTiming",
+              "requirePostSubscriptionProcessing"
             ],
             "properties": {
               "subscriptionScope": {
@@ -1368,7 +1369,8 @@
                   "required": [
                     "subscriptionScope",
                     "targetURLScope",
-                    "registrationTiming"
+                    "registrationTiming",
+                    "requirePostSubscriptionProcessing"
                   ],
                   "properties": {
                     "subscriptionScope": {
@@ -1805,7 +1807,8 @@
               "required": [
                 "subscriptionScope",
                 "targetURLScope",
-                "registrationTiming"
+                "registrationTiming",
+                "requirePostSubscriptionProcessing"
               ],
               "properties": {
                 "subscriptionScope": {
@@ -1849,7 +1852,8 @@
         "required": [
           "subscriptionScope",
           "targetURLScope",
-          "registrationTiming"
+          "registrationTiming",
+          "requirePostSubscriptionProcessing"
         ],
         "properties": {
           "subscriptionScope": {
