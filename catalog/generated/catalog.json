@@ -944,6 +944,12 @@
                   "installation"
                 ],
                 "description": "The timing of the registration."
+              },
+              "requirePostSubscriptionProcessing": {
+                "type": "boolean",
+                "description": "Whether the provider requires post-processing after subscription",
+                "example": true,
+                "x-go-type-skip-optional-pointer": true
               }
             }
           }
@@ -1388,6 +1394,12 @@
                         "installation"
                       ],
                       "description": "The timing of the registration."
+                    },
+                    "requirePostSubscriptionProcessing": {
+                      "type": "boolean",
+                      "description": "Whether the provider requires post-processing after subscription",
+                      "example": true,
+                      "x-go-type-skip-optional-pointer": true
                     }
                   }
                 }
@@ -1819,6 +1831,12 @@
                     "installation"
                   ],
                   "description": "The timing of the registration."
+                },
+                "requirePostSubscriptionProcessing": {
+                  "type": "boolean",
+                  "description": "Whether the provider requires post-processing after subscription",
+                  "example": true,
+                  "x-go-type-skip-optional-pointer": true
                 }
               }
             }
@@ -1857,6 +1875,12 @@
               "installation"
             ],
             "description": "The timing of the registration."
+          },
+          "requirePostSubscriptionProcessing": {
+            "type": "boolean",
+            "description": "Whether the provider requires post-processing after subscription",
+            "example": true,
+            "x-go-type-skip-optional-pointer": true
           }
         }
       },
