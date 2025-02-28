@@ -371,6 +371,7 @@ components:
         - subscriptionScope
         - targetURLScope
         - registrationTiming
+        - requirePostSubscriptionProcessing
       properties:
         subscriptionScope:
           type: string
@@ -383,6 +384,11 @@ components:
           type: string
           enum: [providerApp, integration, installation]
           description: The timing of the registration.
+        requirePostSubscriptionProcessing:
+          type: boolean
+          description: Whether the provider requires post-processing after subscription
+          example: true
+          x-go-type-skip-optional-pointer: true
 
     SubscribeSupport:
       title: Subscribe Support
