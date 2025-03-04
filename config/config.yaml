@@ -263,14 +263,17 @@ components:
           properties:
             value:
               type: string
+              x-go-type-skip-optional-pointer: true
               description: The default string value to apply to a field
         writeOnCreate:
           type: string
           enum: [ always, never ]
+          default: always
           description: Whether the default value should be applied when creating a record.
         writeOnUpdate:
           type: string
           enum: [ always, never ]
+          default: always
           description: Whether the default value should be applied when updating a record.
 
 
@@ -287,14 +290,17 @@ components:
           properties:
             value:
               type: integer
+              x-go-type-skip-optional-pointer: true
               description: The default integer value to apply to a field
         writeOnCreate:
           type: string
           enum: [ always, never ]
+          default: always
           description: Whether the default value should be applied when creating a record.
         writeOnUpdate:
           type: string
           enum: [ always, never ]
+          default: always
           description: Whether the default value should be applied when updating a record.
 
     FieldSettingDefaultBoolean:
@@ -310,14 +316,17 @@ components:
           properties:
             value:
               type: boolean
+              x-go-type-skip-optional-pointer: true
               description: The default boolean value to apply to a field
         writeOnCreate:
           type: string
           enum: [ always, never ]
+          default: always
           description: Whether the default value should be applied when creating a record.
         writeOnUpdate:
           type: string
           enum: [ always, never ]
+          default: always
           description: Whether the default value should be applied when updating a record.
 
     ValueDefault:
