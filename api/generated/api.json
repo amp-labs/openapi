@@ -12427,7 +12427,7 @@
                                                         "properties": {
                                                           "value": {
                                                             "type": "string",
-                                                            "x-go-type-skip-optional-pointer": true,
+                                                            "x-go-type-skip-optional-pointer": false,
                                                             "description": "The default string value to apply to a field"
                                                           }
                                                         }
@@ -12466,7 +12466,7 @@
                                                         "properties": {
                                                           "value": {
                                                             "type": "integer",
-                                                            "x-go-type-skip-optional-pointer": true,
+                                                            "x-go-type-skip-optional-pointer": false,
                                                             "description": "The default integer value to apply to a field"
                                                           }
                                                         }
@@ -12505,7 +12505,7 @@
                                                         "properties": {
                                                           "value": {
                                                             "type": "boolean",
-                                                            "x-go-type-skip-optional-pointer": true,
+                                                            "x-go-type-skip-optional-pointer": false,
                                                             "description": "The default boolean value to apply to a field"
                                                           }
                                                         }
@@ -13337,7 +13337,7 @@
                                                     "properties": {
                                                       "value": {
                                                         "type": "string",
-                                                        "x-go-type-skip-optional-pointer": true,
+                                                        "x-go-type-skip-optional-pointer": false,
                                                         "description": "The default string value to apply to a field"
                                                       }
                                                     }
@@ -13376,7 +13376,7 @@
                                                     "properties": {
                                                       "value": {
                                                         "type": "integer",
-                                                        "x-go-type-skip-optional-pointer": true,
+                                                        "x-go-type-skip-optional-pointer": false,
                                                         "description": "The default integer value to apply to a field"
                                                       }
                                                     }
@@ -13415,7 +13415,7 @@
                                                     "properties": {
                                                       "value": {
                                                         "type": "boolean",
-                                                        "x-go-type-skip-optional-pointer": true,
+                                                        "x-go-type-skip-optional-pointer": false,
                                                         "description": "The default boolean value to apply to a field"
                                                       }
                                                     }
@@ -14111,7 +14111,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "string",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default string value to apply to a field"
                                                         }
                                                       }
@@ -14150,7 +14150,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "integer",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default integer value to apply to a field"
                                                         }
                                                       }
@@ -14189,7 +14189,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "boolean",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default boolean value to apply to a field"
                                                         }
                                                       }
@@ -15703,7 +15703,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "string",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default string value to apply to a field"
                                                         }
                                                       }
@@ -15742,7 +15742,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "integer",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default integer value to apply to a field"
                                                         }
                                                       }
@@ -15781,7 +15781,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "boolean",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default boolean value to apply to a field"
                                                         }
                                                       }
@@ -16801,7 +16801,7 @@
                                                         "properties": {
                                                           "value": {
                                                             "type": "string",
-                                                            "x-go-type-skip-optional-pointer": true,
+                                                            "x-go-type-skip-optional-pointer": false,
                                                             "description": "The default string value to apply to a field"
                                                           }
                                                         }
@@ -16840,7 +16840,7 @@
                                                         "properties": {
                                                           "value": {
                                                             "type": "integer",
-                                                            "x-go-type-skip-optional-pointer": true,
+                                                            "x-go-type-skip-optional-pointer": false,
                                                             "description": "The default integer value to apply to a field"
                                                           }
                                                         }
@@ -16879,7 +16879,7 @@
                                                         "properties": {
                                                           "value": {
                                                             "type": "boolean",
-                                                            "x-go-type-skip-optional-pointer": true,
+                                                            "x-go-type-skip-optional-pointer": false,
                                                             "description": "The default boolean value to apply to a field"
                                                           }
                                                         }
@@ -17564,7 +17564,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "string",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default string value to apply to a field"
                                                         }
                                                       }
@@ -17603,7 +17603,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "integer",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default integer value to apply to a field"
                                                         }
                                                       }
@@ -17642,7 +17642,7 @@
                                                       "properties": {
                                                         "value": {
                                                           "type": "boolean",
-                                                          "x-go-type-skip-optional-pointer": true,
+                                                          "x-go-type-skip-optional-pointer": false,
                                                           "description": "The default boolean value to apply to a field"
                                                         }
                                                       }
@@ -40317,7 +40317,7 @@
                                             "properties": {
                                               "value": {
                                                 "type": "string",
-                                                "x-go-type-skip-optional-pointer": true,
+                                                "x-go-type-skip-optional-pointer": false,
                                                 "description": "The default string value to apply to a field"
                                               }
                                             }
@@ -40356,7 +40356,7 @@
                                             "properties": {
                                               "value": {
                                                 "type": "integer",
-                                                "x-go-type-skip-optional-pointer": true,
+                                                "x-go-type-skip-optional-pointer": false,
                                                 "description": "The default integer value to apply to a field"
                                               }
                                             }
@@ -40395,7 +40395,7 @@
                                             "properties": {
                                               "value": {
                                                 "type": "boolean",
-                                                "x-go-type-skip-optional-pointer": true,
+                                                "x-go-type-skip-optional-pointer": false,
                                                 "description": "The default boolean value to apply to a field"
                                               }
                                             }
@@ -40736,7 +40736,7 @@
                                         "properties": {
                                           "value": {
                                             "type": "string",
-                                            "x-go-type-skip-optional-pointer": true,
+                                            "x-go-type-skip-optional-pointer": false,
                                             "description": "The default string value to apply to a field"
                                           }
                                         }
@@ -40775,7 +40775,7 @@
                                         "properties": {
                                           "value": {
                                             "type": "integer",
-                                            "x-go-type-skip-optional-pointer": true,
+                                            "x-go-type-skip-optional-pointer": false,
                                             "description": "The default integer value to apply to a field"
                                           }
                                         }
@@ -40814,7 +40814,7 @@
                                         "properties": {
                                           "value": {
                                             "type": "boolean",
-                                            "x-go-type-skip-optional-pointer": true,
+                                            "x-go-type-skip-optional-pointer": false,
                                             "description": "The default boolean value to apply to a field"
                                           }
                                         }

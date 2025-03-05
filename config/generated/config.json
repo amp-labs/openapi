@@ -255,6 +255,7 @@
                                 "properties": {
                                   "value": {
                                     "type": "string",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default string value to apply to a field"
                                   }
                                 }
@@ -265,6 +266,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when creating a record."
                               },
                               "writeOnUpdate": {
@@ -273,6 +275,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when updating a record."
                               }
                             }
@@ -291,6 +294,7 @@
                                 "properties": {
                                   "value": {
                                     "type": "integer",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default integer value to apply to a field"
                                   }
                                 }
@@ -301,6 +305,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when creating a record."
                               },
                               "writeOnUpdate": {
@@ -309,6 +314,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when updating a record."
                               }
                             }
@@ -327,6 +333,7 @@
                                 "properties": {
                                   "value": {
                                     "type": "boolean",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default boolean value to apply to a field"
                                   }
                                 }
@@ -337,6 +344,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when creating a record."
                               },
                               "writeOnUpdate": {
@@ -345,6 +353,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when updating a record."
                               }
                             }
@@ -734,6 +743,7 @@
                             "properties": {
                               "value": {
                                 "type": "string",
+                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default string value to apply to a field"
                               }
                             }
@@ -744,6 +754,7 @@
                               "always",
                               "never"
                             ],
+                            "default": "always",
                             "description": "Whether the default value should be applied when creating a record."
                           },
                           "writeOnUpdate": {
@@ -752,6 +763,7 @@
                               "always",
                               "never"
                             ],
+                            "default": "always",
                             "description": "Whether the default value should be applied when updating a record."
                           }
                         }
@@ -770,6 +782,7 @@
                             "properties": {
                               "value": {
                                 "type": "integer",
+                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default integer value to apply to a field"
                               }
                             }
@@ -780,6 +793,7 @@
                               "always",
                               "never"
                             ],
+                            "default": "always",
                             "description": "Whether the default value should be applied when creating a record."
                           },
                           "writeOnUpdate": {
@@ -788,6 +802,7 @@
                               "always",
                               "never"
                             ],
+                            "default": "always",
                             "description": "Whether the default value should be applied when updating a record."
                           }
                         }
@@ -806,6 +821,7 @@
                             "properties": {
                               "value": {
                                 "type": "boolean",
+                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default boolean value to apply to a field"
                               }
                             }
@@ -816,6 +832,7 @@
                               "always",
                               "never"
                             ],
+                            "default": "always",
                             "description": "Whether the default value should be applied when creating a record."
                           },
                           "writeOnUpdate": {
@@ -824,6 +841,7 @@
                               "always",
                               "never"
                             ],
+                            "default": "always",
                             "description": "Whether the default value should be applied when updating a record."
                           }
                         }
@@ -944,6 +962,7 @@
                       "properties": {
                         "value": {
                           "type": "string",
+                          "x-go-type-skip-optional-pointer": true,
                           "description": "The default string value to apply to a field"
                         }
                       }
@@ -954,6 +973,7 @@
                         "always",
                         "never"
                       ],
+                      "default": "always",
                       "description": "Whether the default value should be applied when creating a record."
                     },
                     "writeOnUpdate": {
@@ -962,6 +982,7 @@
                         "always",
                         "never"
                       ],
+                      "default": "always",
                       "description": "Whether the default value should be applied when updating a record."
                     }
                   }
@@ -980,6 +1001,7 @@
                       "properties": {
                         "value": {
                           "type": "integer",
+                          "x-go-type-skip-optional-pointer": true,
                           "description": "The default integer value to apply to a field"
                         }
                       }
@@ -990,6 +1012,7 @@
                         "always",
                         "never"
                       ],
+                      "default": "always",
                       "description": "Whether the default value should be applied when creating a record."
                     },
                     "writeOnUpdate": {
@@ -998,6 +1021,7 @@
                         "always",
                         "never"
                       ],
+                      "default": "always",
                       "description": "Whether the default value should be applied when updating a record."
                     }
                   }
@@ -1016,6 +1040,7 @@
                       "properties": {
                         "value": {
                           "type": "boolean",
+                          "x-go-type-skip-optional-pointer": true,
                           "description": "The default boolean value to apply to a field"
                         }
                       }
@@ -1026,6 +1051,7 @@
                         "always",
                         "never"
                       ],
+                      "default": "always",
                       "description": "Whether the default value should be applied when creating a record."
                     },
                     "writeOnUpdate": {
@@ -1034,6 +1060,7 @@
                         "always",
                         "never"
                       ],
+                      "default": "always",
                       "description": "Whether the default value should be applied when updating a record."
                     }
                   }
@@ -1289,6 +1316,7 @@
                                     "properties": {
                                       "value": {
                                         "type": "string",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "The default string value to apply to a field"
                                       }
                                     }
@@ -1299,6 +1327,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when creating a record."
                                   },
                                   "writeOnUpdate": {
@@ -1307,6 +1336,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
@@ -1325,6 +1355,7 @@
                                     "properties": {
                                       "value": {
                                         "type": "integer",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "The default integer value to apply to a field"
                                       }
                                     }
@@ -1335,6 +1366,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when creating a record."
                                   },
                                   "writeOnUpdate": {
@@ -1343,6 +1375,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
@@ -1361,6 +1394,7 @@
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "The default boolean value to apply to a field"
                                       }
                                     }
@@ -1371,6 +1405,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when creating a record."
                                   },
                                   "writeOnUpdate": {
@@ -1379,6 +1414,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
@@ -1797,6 +1833,7 @@
                                 "properties": {
                                   "value": {
                                     "type": "string",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default string value to apply to a field"
                                   }
                                 }
@@ -1807,6 +1844,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when creating a record."
                               },
                               "writeOnUpdate": {
@@ -1815,6 +1853,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when updating a record."
                               }
                             }
@@ -1833,6 +1872,7 @@
                                 "properties": {
                                   "value": {
                                     "type": "integer",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default integer value to apply to a field"
                                   }
                                 }
@@ -1843,6 +1883,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when creating a record."
                               },
                               "writeOnUpdate": {
@@ -1851,6 +1892,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when updating a record."
                               }
                             }
@@ -1869,6 +1911,7 @@
                                 "properties": {
                                   "value": {
                                     "type": "boolean",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default boolean value to apply to a field"
                                   }
                                 }
@@ -1879,6 +1922,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when creating a record."
                               },
                               "writeOnUpdate": {
@@ -1887,6 +1931,7 @@
                                   "always",
                                   "never"
                                 ],
+                                "default": "always",
                                 "description": "Whether the default value should be applied when updating a record."
                               }
                             }
@@ -2022,6 +2067,7 @@
                           "properties": {
                             "value": {
                               "type": "string",
+                              "x-go-type-skip-optional-pointer": true,
                               "description": "The default string value to apply to a field"
                             }
                           }
@@ -2032,6 +2078,7 @@
                             "always",
                             "never"
                           ],
+                          "default": "always",
                           "description": "Whether the default value should be applied when creating a record."
                         },
                         "writeOnUpdate": {
@@ -2040,6 +2087,7 @@
                             "always",
                             "never"
                           ],
+                          "default": "always",
                           "description": "Whether the default value should be applied when updating a record."
                         }
                       }
@@ -2058,6 +2106,7 @@
                           "properties": {
                             "value": {
                               "type": "integer",
+                              "x-go-type-skip-optional-pointer": true,
                               "description": "The default integer value to apply to a field"
                             }
                           }
@@ -2068,6 +2117,7 @@
                             "always",
                             "never"
                           ],
+                          "default": "always",
                           "description": "Whether the default value should be applied when creating a record."
                         },
                         "writeOnUpdate": {
@@ -2076,6 +2126,7 @@
                             "always",
                             "never"
                           ],
+                          "default": "always",
                           "description": "Whether the default value should be applied when updating a record."
                         }
                       }
@@ -2094,6 +2145,7 @@
                           "properties": {
                             "value": {
                               "type": "boolean",
+                              "x-go-type-skip-optional-pointer": true,
                               "description": "The default boolean value to apply to a field"
                             }
                           }
@@ -2104,6 +2156,7 @@
                             "always",
                             "never"
                           ],
+                          "default": "always",
                           "description": "Whether the default value should be applied when creating a record."
                         },
                         "writeOnUpdate": {
@@ -2112,6 +2165,7 @@
                             "always",
                             "never"
                           ],
+                          "default": "always",
                           "description": "Whether the default value should be applied when updating a record."
                         }
                       }
@@ -2375,6 +2429,7 @@
                                     "properties": {
                                       "value": {
                                         "type": "string",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "The default string value to apply to a field"
                                       }
                                     }
@@ -2385,6 +2440,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when creating a record."
                                   },
                                   "writeOnUpdate": {
@@ -2393,6 +2449,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
@@ -2411,6 +2468,7 @@
                                     "properties": {
                                       "value": {
                                         "type": "integer",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "The default integer value to apply to a field"
                                       }
                                     }
@@ -2421,6 +2479,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when creating a record."
                                   },
                                   "writeOnUpdate": {
@@ -2429,6 +2488,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
@@ -2447,6 +2507,7 @@
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "The default boolean value to apply to a field"
                                       }
                                     }
@@ -2457,6 +2518,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when creating a record."
                                   },
                                   "writeOnUpdate": {
@@ -2465,6 +2527,7 @@
                                       "always",
                                       "never"
                                     ],
+                                    "default": "always",
                                     "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
@@ -2811,6 +2874,7 @@
                 "properties": {
                   "value": {
                     "type": "string",
+                    "x-go-type-skip-optional-pointer": true,
                     "description": "The default string value to apply to a field"
                   }
                 }
@@ -2821,6 +2885,7 @@
                   "always",
                   "never"
                 ],
+                "default": "always",
                 "description": "Whether the default value should be applied when creating a record."
               },
               "writeOnUpdate": {
@@ -2829,6 +2894,7 @@
                   "always",
                   "never"
                 ],
+                "default": "always",
                 "description": "Whether the default value should be applied when updating a record."
               }
             }
@@ -2847,6 +2913,7 @@
                 "properties": {
                   "value": {
                     "type": "integer",
+                    "x-go-type-skip-optional-pointer": true,
                     "description": "The default integer value to apply to a field"
                   }
                 }
@@ -2857,6 +2924,7 @@
                   "always",
                   "never"
                 ],
+                "default": "always",
                 "description": "Whether the default value should be applied when creating a record."
               },
               "writeOnUpdate": {
@@ -2865,6 +2933,7 @@
                   "always",
                   "never"
                 ],
+                "default": "always",
                 "description": "Whether the default value should be applied when updating a record."
               }
             }
@@ -2883,6 +2952,7 @@
                 "properties": {
                   "value": {
                     "type": "boolean",
+                    "x-go-type-skip-optional-pointer": true,
                     "description": "The default boolean value to apply to a field"
                   }
                 }
@@ -2893,6 +2963,7 @@
                   "always",
                   "never"
                 ],
+                "default": "always",
                 "description": "Whether the default value should be applied when creating a record."
               },
               "writeOnUpdate": {
@@ -2901,6 +2972,7 @@
                   "always",
                   "never"
                 ],
+                "default": "always",
                 "description": "Whether the default value should be applied when updating a record."
               }
             }
@@ -2921,6 +2993,7 @@
             "properties": {
               "value": {
                 "type": "string",
+                "x-go-type-skip-optional-pointer": true,
                 "description": "The default string value to apply to a field"
               }
             }
@@ -2931,6 +3004,7 @@
               "always",
               "never"
             ],
+            "default": "always",
             "description": "Whether the default value should be applied when creating a record."
           },
           "writeOnUpdate": {
@@ -2939,6 +3013,7 @@
               "always",
               "never"
             ],
+            "default": "always",
             "description": "Whether the default value should be applied when updating a record."
           }
         }
@@ -2957,6 +3032,7 @@
             "properties": {
               "value": {
                 "type": "integer",
+                "x-go-type-skip-optional-pointer": true,
                 "description": "The default integer value to apply to a field"
               }
             }
@@ -2967,6 +3043,7 @@
               "always",
               "never"
             ],
+            "default": "always",
             "description": "Whether the default value should be applied when creating a record."
           },
           "writeOnUpdate": {
@@ -2975,6 +3052,7 @@
               "always",
               "never"
             ],
+            "default": "always",
             "description": "Whether the default value should be applied when updating a record."
           }
         }
@@ -2993,6 +3071,7 @@
             "properties": {
               "value": {
                 "type": "boolean",
+                "x-go-type-skip-optional-pointer": true,
                 "description": "The default boolean value to apply to a field"
               }
             }
@@ -3003,6 +3082,7 @@
               "always",
               "never"
             ],
+            "default": "always",
             "description": "Whether the default value should be applied when creating a record."
           },
           "writeOnUpdate": {
@@ -3011,6 +3091,7 @@
               "always",
               "never"
             ],
+            "default": "always",
             "description": "Whether the default value should be applied when updating a record."
           }
         }
