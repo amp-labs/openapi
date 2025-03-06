@@ -126,10 +126,17 @@ components:
             validate: required
         selectedValueDefaults:
           type: object
+          deprecated: true
           description: This is a map of field names to default values. These values will be used when writing to the object.
           x-go-type-skip-optional-pointer: true
           additionalProperties:
             $ref: '#/components/schemas/ValueDefault'
+        selectedFieldSettings:
+          type: object
+          description: This is a map of field names to their settings.
+          x-go-type-skip-optional-pointer: true
+          additionalProperties:
+            $ref: '#/components/schemas/FieldSetting'
 
     ConfigContent:
       title: Config Content
@@ -235,6 +242,92 @@ components:
           example: false
           x-oapi-codegen-extra-tags:
             validate: required_without=Days
+
+    FieldSetting:
+      title: Field setting
+      oneOf:
+        - $ref: '#/components/schemas/FieldSettingDefaultString'
+        - $ref: '#/components/schemas/FieldSettingDefaultInteger'
+        - $ref: '#/components/schemas/FieldSettingDefaultBoolean'
+
+    FieldSettingDefaultString:
+      title: Default value of type string for a field
+      type: object
+      required:
+        - default
+        - writeOnCreate
+        - writeOnUpdate
+      properties:
+        default:
+          type: object
+          properties:
+            value:
+              type: string
+              x-go-type-skip-optional-pointer: false # Good to understand if a default value is a zero value or missing.
+              description: The default string value to apply to a field
+        writeOnCreate:
+          type: string
+          enum: [ always, never ]
+          default: always
+          description: Whether the default value should be applied when creating a record.
+        writeOnUpdate:
+          type: string
+          enum: [ always, never ]
+          default: always
+          description: Whether the default value should be applied when updating a record.
+
+
+    FieldSettingDefaultInteger:
+      title: Default value of type integer for a field
+      type: object
+      required:
+        - default
+        - writeOnCreate
+        - writeOnUpdate
+      properties:
+        default:
+          type: object
+          properties:
+            value:
+              type: integer
+              x-go-type-skip-optional-pointer: false # Good to understand if a default value is a zero value or missing.
+              description: The default integer value to apply to a field
+        writeOnCreate:
+          type: string
+          enum: [ always, never ]
+          default: always
+          description: Whether the default value should be applied when creating a record.
+        writeOnUpdate:
+          type: string
+          enum: [ always, never ]
+          default: always
+          description: Whether the default value should be applied when updating a record.
+
+    FieldSettingDefaultBoolean:
+      title: Default value of type boolean for a field
+      type: object
+      required:
+        - default
+        - writeOnCreate
+        - writeOnUpdate
+      properties:
+        default:
+          type: object
+          properties:
+            value:
+              type: boolean
+              x-go-type-skip-optional-pointer: false # Good to understand if a default value is a zero value or missing.
+              description: The default boolean value to apply to a field
+        writeOnCreate:
+          type: string
+          enum: [ always, never ]
+          default: always
+          description: Whether the default value should be applied when creating a record.
+        writeOnUpdate:
+          type: string
+          enum: [ always, never ]
+          default: always
+          description: Whether the default value should be applied when updating a record.
 
     ValueDefault:
       title: Value Default
