@@ -150,6 +150,9 @@ components:
         providerEventType:
           description: The type of event that triggered the message, as defined by the SaaS provider.
           type: string
+        id:
+          description: The ID of the record. this field will be populated in case of delete event.
+          type: string
 
     ResultInfo:
       title: Result Info
