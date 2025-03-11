@@ -2936,6 +2936,14 @@ components:
           properties:
             token:
               type: string
+            issuedAt:
+              type: string
+              format: date-time
+              example: "2024-04-22T18:55:28.456076Z"
+            expiresAt:
+              type: string
+              format: date-time
+              example: "2024-10-22T18:55:28.456076Z"
         refreshToken:
           type: object
           required:
@@ -2944,6 +2952,14 @@ components:
           properties:
             token:
               type: string
+            issuedAt:
+              type: string
+              format: date-time
+              example: "2024-04-22T18:55:28.456076Z"
+            expiresAt:
+              type: string
+              format: date-time
+              example: "2024-10-22T18:55:28.456076Z"
         scopes:
           type: array
           items:
