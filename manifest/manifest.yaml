@@ -155,15 +155,15 @@ components:
           type: string
         destination:
           type: string
-        CreateEvent:
+        createEvent:
           $ref: '#/components/schemas/CreateEvent'
-        UpdateEvent:
+        updateEvent:
           $ref: '#/components/schemas/UpdateEvent'
-        DeleteEvent:
+        deleteEvent:
           $ref: '#/components/schemas/DeleteEvent'
-        AssociationChangeEvent:
+        associationChangeEvent:
           $ref: '#/components/schemas/AssociationChangeEvent'
-        OtherEvents:
+        otherEvents:
           $ref: '#/components/schemas/OtherEvents'
 
     CreateEvent: 
