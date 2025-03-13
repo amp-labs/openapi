@@ -2648,10 +2648,12 @@ components:
           properties:
             brandingRemoval:
               type: object
+              x-go-type-skip-optional-pointer: true
               description: Whether branding has been removed from the project.
               properties:
                 value:
                   type: boolean
+                  x-go-type-skip-optional-pointer: true
                   description: Whether branding has been removed from the project.
     ProviderApp:
       title: Provider App
