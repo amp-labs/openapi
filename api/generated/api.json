@@ -12422,11 +12422,6 @@
                                               "additionalProperties": {
                                                 "title": "Field setting",
                                                 "type": "object",
-                                                "required": [
-                                                  "default",
-                                                  "writeOnCreate",
-                                                  "writeOnUpdate"
-                                                ],
                                                 "properties": {
                                                   "default": {
                                                     "title": "Default value for a field",
@@ -12454,6 +12449,7 @@
                                                       "never"
                                                     ],
                                                     "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
                                                     "description": "Whether the default value should be applied when creating a record."
                                                   },
                                                   "writeOnUpdate": {
@@ -12463,6 +12459,7 @@
                                                       "never"
                                                     ],
                                                     "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
                                                     "description": "Whether the default value should be applied when updating a record."
                                                   }
                                                 }
@@ -13259,11 +13256,6 @@
                                           "additionalProperties": {
                                             "title": "Field setting",
                                             "type": "object",
-                                            "required": [
-                                              "default",
-                                              "writeOnCreate",
-                                              "writeOnUpdate"
-                                            ],
                                             "properties": {
                                               "default": {
                                                 "title": "Default value for a field",
@@ -13291,6 +13283,7 @@
                                                   "never"
                                                 ],
                                                 "default": "always",
+                                                "x-go-type-skip-optional-pointer": true,
                                                 "description": "Whether the default value should be applied when creating a record."
                                               },
                                               "writeOnUpdate": {
@@ -13300,6 +13293,7 @@
                                                   "never"
                                                 ],
                                                 "default": "always",
+                                                "x-go-type-skip-optional-pointer": true,
                                                 "description": "Whether the default value should be applied when updating a record."
                                               }
                                             }
@@ -13980,11 +13974,6 @@
                                             "additionalProperties": {
                                               "title": "Field setting",
                                               "type": "object",
-                                              "required": [
-                                                "default",
-                                                "writeOnCreate",
-                                                "writeOnUpdate"
-                                              ],
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
@@ -14012,6 +14001,7 @@
                                                     "never"
                                                   ],
                                                   "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "description": "Whether the default value should be applied when creating a record."
                                                 },
                                                 "writeOnUpdate": {
@@ -14021,6 +14011,7 @@
                                                     "never"
                                                   ],
                                                   "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "description": "Whether the default value should be applied when updating a record."
                                                 }
                                               }
@@ -15519,11 +15510,6 @@
                                             "additionalProperties": {
                                               "title": "Field setting",
                                               "type": "object",
-                                              "required": [
-                                                "default",
-                                                "writeOnCreate",
-                                                "writeOnUpdate"
-                                              ],
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
@@ -15551,6 +15537,7 @@
                                                     "never"
                                                   ],
                                                   "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "description": "Whether the default value should be applied when creating a record."
                                                 },
                                                 "writeOnUpdate": {
@@ -15560,6 +15547,7 @@
                                                     "never"
                                                   ],
                                                   "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "description": "Whether the default value should be applied when updating a record."
                                                 }
                                               }
@@ -16544,11 +16532,6 @@
                                               "additionalProperties": {
                                                 "title": "Field setting",
                                                 "type": "object",
-                                                "required": [
-                                                  "default",
-                                                  "writeOnCreate",
-                                                  "writeOnUpdate"
-                                                ],
                                                 "properties": {
                                                   "default": {
                                                     "title": "Default value for a field",
@@ -16576,6 +16559,7 @@
                                                       "never"
                                                     ],
                                                     "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
                                                     "description": "Whether the default value should be applied when creating a record."
                                                   },
                                                   "writeOnUpdate": {
@@ -16585,6 +16569,7 @@
                                                       "never"
                                                     ],
                                                     "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
                                                     "description": "Whether the default value should be applied when updating a record."
                                                   }
                                                 }
@@ -17254,11 +17239,6 @@
                                             "additionalProperties": {
                                               "title": "Field setting",
                                               "type": "object",
-                                              "required": [
-                                                "default",
-                                                "writeOnCreate",
-                                                "writeOnUpdate"
-                                              ],
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
@@ -17286,6 +17266,7 @@
                                                     "never"
                                                   ],
                                                   "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "description": "Whether the default value should be applied when creating a record."
                                                 },
                                                 "writeOnUpdate": {
@@ -17295,6 +17276,7 @@
                                                     "never"
                                                   ],
                                                   "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
                                                   "description": "Whether the default value should be applied when updating a record."
                                                 }
                                               }
@@ -40006,11 +39988,6 @@
                                   "additionalProperties": {
                                     "title": "Field setting",
                                     "type": "object",
-                                    "required": [
-                                      "default",
-                                      "writeOnCreate",
-                                      "writeOnUpdate"
-                                    ],
                                     "properties": {
                                       "default": {
                                         "title": "Default value for a field",
@@ -40038,6 +40015,7 @@
                                           "never"
                                         ],
                                         "default": "always",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "Whether the default value should be applied when creating a record."
                                       },
                                       "writeOnUpdate": {
@@ -40047,6 +40025,7 @@
                                           "never"
                                         ],
                                         "default": "always",
+                                        "x-go-type-skip-optional-pointer": true,
                                         "description": "Whether the default value should be applied when updating a record."
                                       }
                                     }
@@ -40352,11 +40331,6 @@
                               "additionalProperties": {
                                 "title": "Field setting",
                                 "type": "object",
-                                "required": [
-                                  "default",
-                                  "writeOnCreate",
-                                  "writeOnUpdate"
-                                ],
                                 "properties": {
                                   "default": {
                                     "title": "Default value for a field",
@@ -40384,6 +40358,7 @@
                                       "never"
                                     ],
                                     "default": "always",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "Whether the default value should be applied when creating a record."
                                   },
                                   "writeOnUpdate": {
@@ -40393,6 +40368,7 @@
                                       "never"
                                     ],
                                     "default": "always",
+                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }

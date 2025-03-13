@@ -255,17 +255,14 @@
                             "properties": {
                               "stringValue": {
                                 "type": "string",
-                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default string value to apply to a field"
                               },
                               "intValue": {
                                 "type": "integer",
-                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default integer value to apply to a field"
                               },
                               "booleanValue": {
                                 "type": "boolean",
-                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default boolean value to apply to a field"
                               }
                             }
@@ -673,17 +670,14 @@
                         "properties": {
                           "stringValue": {
                             "type": "string",
-                            "x-go-type-skip-optional-pointer": true,
                             "description": "The default string value to apply to a field"
                           },
                           "intValue": {
                             "type": "integer",
-                            "x-go-type-skip-optional-pointer": true,
                             "description": "The default integer value to apply to a field"
                           },
                           "booleanValue": {
                             "type": "boolean",
-                            "x-go-type-skip-optional-pointer": true,
                             "description": "The default boolean value to apply to a field"
                           }
                         }
@@ -822,17 +816,14 @@
                   "properties": {
                     "stringValue": {
                       "type": "string",
-                      "x-go-type-skip-optional-pointer": true,
                       "description": "The default string value to apply to a field"
                     },
                     "intValue": {
                       "type": "integer",
-                      "x-go-type-skip-optional-pointer": true,
                       "description": "The default integer value to apply to a field"
                     },
                     "booleanValue": {
                       "type": "boolean",
-                      "x-go-type-skip-optional-pointer": true,
                       "description": "The default boolean value to apply to a field"
                     }
                   }
@@ -1106,17 +1097,14 @@
                                 "properties": {
                                   "stringValue": {
                                     "type": "string",
-                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default string value to apply to a field"
                                   },
                                   "intValue": {
                                     "type": "integer",
-                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default integer value to apply to a field"
                                   },
                                   "booleanValue": {
                                     "type": "boolean",
-                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default boolean value to apply to a field"
                                   }
                                 }
@@ -1553,17 +1541,14 @@
                             "properties": {
                               "stringValue": {
                                 "type": "string",
-                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default string value to apply to a field"
                               },
                               "intValue": {
                                 "type": "integer",
-                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default integer value to apply to a field"
                               },
                               "booleanValue": {
                                 "type": "boolean",
-                                "x-go-type-skip-optional-pointer": true,
                                 "description": "The default boolean value to apply to a field"
                               }
                             }
@@ -1717,17 +1702,14 @@
                       "properties": {
                         "stringValue": {
                           "type": "string",
-                          "x-go-type-skip-optional-pointer": true,
                           "description": "The default string value to apply to a field"
                         },
                         "intValue": {
                           "type": "integer",
-                          "x-go-type-skip-optional-pointer": true,
                           "description": "The default integer value to apply to a field"
                         },
                         "booleanValue": {
                           "type": "boolean",
-                          "x-go-type-skip-optional-pointer": true,
                           "description": "The default boolean value to apply to a field"
                         }
                       }
@@ -2009,17 +1991,14 @@
                                 "properties": {
                                   "stringValue": {
                                     "type": "string",
-                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default string value to apply to a field"
                                   },
                                   "intValue": {
                                     "type": "integer",
-                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default integer value to apply to a field"
                                   },
                                   "booleanValue": {
                                     "type": "boolean",
-                                    "x-go-type-skip-optional-pointer": true,
                                     "description": "The default boolean value to apply to a field"
                                   }
                                 }
@@ -2383,17 +2362,14 @@
             "properties": {
               "stringValue": {
                 "type": "string",
-                "x-go-type-skip-optional-pointer": true,
                 "description": "The default string value to apply to a field"
               },
               "intValue": {
                 "type": "integer",
-                "x-go-type-skip-optional-pointer": true,
                 "description": "The default integer value to apply to a field"
               },
               "booleanValue": {
                 "type": "boolean",
-                "x-go-type-skip-optional-pointer": true,
                 "description": "The default boolean value to apply to a field"
               }
             }
@@ -2425,17 +2401,14 @@
         "properties": {
           "stringValue": {
             "type": "string",
-            "x-go-type-skip-optional-pointer": true,
             "description": "The default string value to apply to a field"
           },
           "intValue": {
             "type": "integer",
-            "x-go-type-skip-optional-pointer": true,
             "description": "The default integer value to apply to a field"
           },
           "booleanValue": {
             "type": "boolean",
-            "x-go-type-skip-optional-pointer": true,
             "description": "The default boolean value to apply to a field"
           }
         }

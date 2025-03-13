@@ -246,10 +246,6 @@ components:
     FieldSetting:
       title: Field setting
       type: object
-      required:
-        - default
-        - writeOnCreate
-        - writeOnUpdate
       properties:
         default:
           $ref: '#/components/schemas/FieldSettingDefault'
@@ -257,11 +253,13 @@ components:
           type: string
           enum: [ always, never ]
           default: always
+          x-go-type-skip-optional-pointer: true
           description: Whether the default value should be applied when creating a record.
         writeOnUpdate:
           type: string
           enum: [ always, never ]
           default: always
+          x-go-type-skip-optional-pointer: true
           description: Whether the default value should be applied when updating a record.
 
     FieldSettingDefault:
