@@ -569,7 +569,8 @@
                       "appName",
                       "createTime",
                       "id",
-                      "name"
+                      "name",
+                      "entitlements"
                     ],
                     "type": "object",
                     "properties": {
@@ -601,6 +602,22 @@
                         "type": "string",
                         "description": "The time the project was updated.",
                         "format": "date-time"
+                      },
+                      "entitlements": {
+                        "type": "object",
+                        "description": "The entitlements for the project.",
+                        "properties": {
+                          "brandingRemoval": {
+                            "type": "object",
+                            "description": "Whether branding has been removed from the project.",
+                            "properties": {
+                              "value": {
+                                "type": "boolean",
+                                "description": "Whether branding has been removed from the project."
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -793,7 +810,8 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name"
+                    "name",
+                    "entitlements"
                   ],
                   "type": "object",
                   "properties": {
@@ -825,6 +843,22 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "description": "Whether branding has been removed from the project.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -1322,7 +1356,8 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name"
+                    "name",
+                    "entitlements"
                   ],
                   "type": "object",
                   "properties": {
@@ -1354,6 +1389,22 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "description": "Whether branding has been removed from the project.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -2371,7 +2422,8 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name"
+                    "name",
+                    "entitlements"
                   ],
                   "type": "object",
                   "properties": {
@@ -2403,6 +2455,22 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "description": "Whether branding has been removed from the project.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -36136,7 +36204,8 @@
                               "appName",
                               "createTime",
                               "id",
-                              "name"
+                              "name",
+                              "entitlements"
                             ],
                             "type": "object",
                             "properties": {
@@ -36168,6 +36237,22 @@
                                 "type": "string",
                                 "description": "The time the project was updated.",
                                 "format": "date-time"
+                              },
+                              "entitlements": {
+                                "type": "object",
+                                "description": "The entitlements for the project.",
+                                "properties": {
+                                  "brandingRemoval": {
+                                    "type": "object",
+                                    "description": "Whether branding has been removed from the project.",
+                                    "properties": {
+                                      "value": {
+                                        "type": "boolean",
+                                        "description": "Whether branding has been removed from the project."
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -36502,7 +36587,8 @@
                               "appName",
                               "createTime",
                               "id",
-                              "name"
+                              "name",
+                              "entitlements"
                             ],
                             "type": "object",
                             "properties": {
@@ -36534,6 +36620,22 @@
                                 "type": "string",
                                 "description": "The time the project was updated.",
                                 "format": "date-time"
+                              },
+                              "entitlements": {
+                                "type": "object",
+                                "description": "The entitlements for the project.",
+                                "properties": {
+                                  "brandingRemoval": {
+                                    "type": "object",
+                                    "description": "Whether branding has been removed from the project.",
+                                    "properties": {
+                                      "value": {
+                                        "type": "boolean",
+                                        "description": "Whether branding has been removed from the project."
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -37585,7 +37687,8 @@
           "appName",
           "createTime",
           "id",
-          "name"
+          "name",
+          "entitlements"
         ],
         "type": "object",
         "properties": {
@@ -37617,6 +37720,22 @@
             "type": "string",
             "description": "The time the project was updated.",
             "format": "date-time"
+          },
+          "entitlements": {
+            "type": "object",
+            "description": "The entitlements for the project.",
+            "properties": {
+              "brandingRemoval": {
+                "type": "object",
+                "description": "Whether branding has been removed from the project.",
+                "properties": {
+                  "value": {
+                    "type": "boolean",
+                    "description": "Whether branding has been removed from the project."
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -40834,7 +40953,8 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name"
+                    "name",
+                    "entitlements"
                   ],
                   "type": "object",
                   "properties": {
@@ -40866,6 +40986,22 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "description": "Whether branding has been removed from the project.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }

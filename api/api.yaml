@@ -2615,6 +2615,7 @@ components:
         - createTime
         - id
         - name
+        - entitlements
       # TODO(ENG-1029): once all projects have been backfilled with org ID, add orgId to required list
       type: object
       properties:
@@ -2641,6 +2642,17 @@ components:
           type: string
           description: The time the project was updated.
           format: date-time
+        entitlements:
+          type: object
+          description: The entitlements for the project.
+          properties:
+            brandingRemoval:
+              type: object
+              description: Whether branding has been removed from the project.
+              properties:
+                value:
+                  type: boolean
+                  description: Whether branding has been removed from the project.
     ProviderApp:
       title: Provider App
       required:
