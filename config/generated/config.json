@@ -167,71 +167,37 @@
                       "additionalProperties": {
                         "title": "Value Default",
                         "x-go-type": "any",
-                        "oneOf": [
-                          {
-                            "title": "Value Default String",
+                        "type": "object",
+                        "required": [
+                          "value"
+                        ],
+                        "properties": {
+                          "value": {
                             "type": "object",
-                            "required": [
-                              "value"
-                            ],
                             "properties": {
-                              "value": {
+                              "stringValue": {
                                 "type": "string",
-                                "description": "The value to be used as a default."
+                                "description": "The string value to be used as a default."
                               },
-                              "applyOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                              }
-                            }
-                          },
-                          {
-                            "title": "Value Default Integer",
-                            "type": "object",
-                            "required": [
-                              "value"
-                            ],
-                            "properties": {
-                              "value": {
+                              "intValue": {
                                 "type": "integer",
-                                "description": "The value to be used as a default."
+                                "description": "The integer value to be used as a default."
                               },
-                              "applyOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                              "booleanValue": {
+                                "type": "boolean",
+                                "description": "The boolean value to be used as a default."
                               }
                             }
                           },
-                          {
-                            "title": "Value Default Boolean",
-                            "type": "object",
-                            "required": [
-                              "value"
+                          "applyOnUpdate": {
+                            "type": "string",
+                            "enum": [
+                              "always",
+                              "never"
                             ],
-                            "properties": {
-                              "value": {
-                                "type": "boolean",
-                                "description": "The value to be used as a default."
-                              },
-                              "applyOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                              }
-                            }
+                            "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
                           }
-                        ]
+                        }
                       }
                     },
                     "selectedFieldSettings": {
@@ -240,125 +206,54 @@
                       "x-go-type-skip-optional-pointer": true,
                       "additionalProperties": {
                         "title": "Field setting",
-                        "oneOf": [
-                          {
-                            "title": "Default value of type string for a field",
+                        "type": "object",
+                        "required": [
+                          "default",
+                          "writeOnCreate",
+                          "writeOnUpdate"
+                        ],
+                        "properties": {
+                          "default": {
+                            "title": "Default value for a field",
+                            "description": "Only use one of stringValue, intValue, booleanValue.",
                             "type": "object",
-                            "required": [
-                              "default",
-                              "writeOnCreate",
-                              "writeOnUpdate"
-                            ],
                             "properties": {
-                              "default": {
-                                "type": "object",
-                                "properties": {
-                                  "value": {
-                                    "type": "string",
-                                    "x-go-type-skip-optional-pointer": false,
-                                    "description": "The default string value to apply to a field"
-                                  }
-                                }
-                              },
-                              "writeOnCreate": {
+                              "stringValue": {
                                 "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when creating a record."
+                                "x-go-type-skip-optional-pointer": false,
+                                "description": "The default string value to apply to a field"
                               },
-                              "writeOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when updating a record."
+                              "intValue": {
+                                "type": "integer",
+                                "x-go-type-skip-optional-pointer": false,
+                                "description": "The default integer value to apply to a field"
+                              },
+                              "booleanValue": {
+                                "type": "boolean",
+                                "x-go-type-skip-optional-pointer": false,
+                                "description": "The default boolean value to apply to a field"
                               }
                             }
                           },
-                          {
-                            "title": "Default value of type integer for a field",
-                            "type": "object",
-                            "required": [
-                              "default",
-                              "writeOnCreate",
-                              "writeOnUpdate"
+                          "writeOnCreate": {
+                            "type": "string",
+                            "enum": [
+                              "always",
+                              "never"
                             ],
-                            "properties": {
-                              "default": {
-                                "type": "object",
-                                "properties": {
-                                  "value": {
-                                    "type": "integer",
-                                    "x-go-type-skip-optional-pointer": false,
-                                    "description": "The default integer value to apply to a field"
-                                  }
-                                }
-                              },
-                              "writeOnCreate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when creating a record."
-                              },
-                              "writeOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when updating a record."
-                              }
-                            }
+                            "default": "always",
+                            "description": "Whether the default value should be applied when creating a record."
                           },
-                          {
-                            "title": "Default value of type boolean for a field",
-                            "type": "object",
-                            "required": [
-                              "default",
-                              "writeOnCreate",
-                              "writeOnUpdate"
+                          "writeOnUpdate": {
+                            "type": "string",
+                            "enum": [
+                              "always",
+                              "never"
                             ],
-                            "properties": {
-                              "default": {
-                                "type": "object",
-                                "properties": {
-                                  "value": {
-                                    "type": "boolean",
-                                    "x-go-type-skip-optional-pointer": false,
-                                    "description": "The default boolean value to apply to a field"
-                                  }
-                                }
-                              },
-                              "writeOnCreate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when creating a record."
-                              },
-                              "writeOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when updating a record."
-                              }
-                            }
+                            "default": "always",
+                            "description": "Whether the default value should be applied when updating a record."
                           }
-                        ]
+                        }
                       }
                     }
                   }
@@ -655,71 +550,37 @@
                   "additionalProperties": {
                     "title": "Value Default",
                     "x-go-type": "any",
-                    "oneOf": [
-                      {
-                        "title": "Value Default String",
+                    "type": "object",
+                    "required": [
+                      "value"
+                    ],
+                    "properties": {
+                      "value": {
                         "type": "object",
-                        "required": [
-                          "value"
-                        ],
                         "properties": {
-                          "value": {
+                          "stringValue": {
                             "type": "string",
-                            "description": "The value to be used as a default."
+                            "description": "The string value to be used as a default."
                           },
-                          "applyOnUpdate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                          }
-                        }
-                      },
-                      {
-                        "title": "Value Default Integer",
-                        "type": "object",
-                        "required": [
-                          "value"
-                        ],
-                        "properties": {
-                          "value": {
+                          "intValue": {
                             "type": "integer",
-                            "description": "The value to be used as a default."
+                            "description": "The integer value to be used as a default."
                           },
-                          "applyOnUpdate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                          "booleanValue": {
+                            "type": "boolean",
+                            "description": "The boolean value to be used as a default."
                           }
                         }
                       },
-                      {
-                        "title": "Value Default Boolean",
-                        "type": "object",
-                        "required": [
-                          "value"
+                      "applyOnUpdate": {
+                        "type": "string",
+                        "enum": [
+                          "always",
+                          "never"
                         ],
-                        "properties": {
-                          "value": {
-                            "type": "boolean",
-                            "description": "The value to be used as a default."
-                          },
-                          "applyOnUpdate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                          }
-                        }
+                        "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
                       }
-                    ]
+                    }
                   }
                 },
                 "selectedFieldSettings": {
@@ -728,125 +589,54 @@
                   "x-go-type-skip-optional-pointer": true,
                   "additionalProperties": {
                     "title": "Field setting",
-                    "oneOf": [
-                      {
-                        "title": "Default value of type string for a field",
+                    "type": "object",
+                    "required": [
+                      "default",
+                      "writeOnCreate",
+                      "writeOnUpdate"
+                    ],
+                    "properties": {
+                      "default": {
+                        "title": "Default value for a field",
+                        "description": "Only use one of stringValue, intValue, booleanValue.",
                         "type": "object",
-                        "required": [
-                          "default",
-                          "writeOnCreate",
-                          "writeOnUpdate"
-                        ],
                         "properties": {
-                          "default": {
-                            "type": "object",
-                            "properties": {
-                              "value": {
-                                "type": "string",
-                                "x-go-type-skip-optional-pointer": false,
-                                "description": "The default string value to apply to a field"
-                              }
-                            }
-                          },
-                          "writeOnCreate": {
+                          "stringValue": {
                             "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "default": "always",
-                            "description": "Whether the default value should be applied when creating a record."
+                            "x-go-type-skip-optional-pointer": false,
+                            "description": "The default string value to apply to a field"
                           },
-                          "writeOnUpdate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "default": "always",
-                            "description": "Whether the default value should be applied when updating a record."
+                          "intValue": {
+                            "type": "integer",
+                            "x-go-type-skip-optional-pointer": false,
+                            "description": "The default integer value to apply to a field"
+                          },
+                          "booleanValue": {
+                            "type": "boolean",
+                            "x-go-type-skip-optional-pointer": false,
+                            "description": "The default boolean value to apply to a field"
                           }
                         }
                       },
-                      {
-                        "title": "Default value of type integer for a field",
-                        "type": "object",
-                        "required": [
-                          "default",
-                          "writeOnCreate",
-                          "writeOnUpdate"
+                      "writeOnCreate": {
+                        "type": "string",
+                        "enum": [
+                          "always",
+                          "never"
                         ],
-                        "properties": {
-                          "default": {
-                            "type": "object",
-                            "properties": {
-                              "value": {
-                                "type": "integer",
-                                "x-go-type-skip-optional-pointer": false,
-                                "description": "The default integer value to apply to a field"
-                              }
-                            }
-                          },
-                          "writeOnCreate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "default": "always",
-                            "description": "Whether the default value should be applied when creating a record."
-                          },
-                          "writeOnUpdate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "default": "always",
-                            "description": "Whether the default value should be applied when updating a record."
-                          }
-                        }
+                        "default": "always",
+                        "description": "Whether the default value should be applied when creating a record."
                       },
-                      {
-                        "title": "Default value of type boolean for a field",
-                        "type": "object",
-                        "required": [
-                          "default",
-                          "writeOnCreate",
-                          "writeOnUpdate"
+                      "writeOnUpdate": {
+                        "type": "string",
+                        "enum": [
+                          "always",
+                          "never"
                         ],
-                        "properties": {
-                          "default": {
-                            "type": "object",
-                            "properties": {
-                              "value": {
-                                "type": "boolean",
-                                "x-go-type-skip-optional-pointer": false,
-                                "description": "The default boolean value to apply to a field"
-                              }
-                            }
-                          },
-                          "writeOnCreate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "default": "always",
-                            "description": "Whether the default value should be applied when creating a record."
-                          },
-                          "writeOnUpdate": {
-                            "type": "string",
-                            "enum": [
-                              "always",
-                              "never"
-                            ],
-                            "default": "always",
-                            "description": "Whether the default value should be applied when updating a record."
-                          }
-                        }
+                        "default": "always",
+                        "description": "Whether the default value should be applied when updating a record."
                       }
-                    ]
+                    }
                   }
                 }
               }
@@ -874,71 +664,37 @@
             "additionalProperties": {
               "title": "Value Default",
               "x-go-type": "any",
-              "oneOf": [
-                {
-                  "title": "Value Default String",
+              "type": "object",
+              "required": [
+                "value"
+              ],
+              "properties": {
+                "value": {
                   "type": "object",
-                  "required": [
-                    "value"
-                  ],
                   "properties": {
-                    "value": {
+                    "stringValue": {
                       "type": "string",
-                      "description": "The value to be used as a default."
+                      "description": "The string value to be used as a default."
                     },
-                    "applyOnUpdate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                    }
-                  }
-                },
-                {
-                  "title": "Value Default Integer",
-                  "type": "object",
-                  "required": [
-                    "value"
-                  ],
-                  "properties": {
-                    "value": {
+                    "intValue": {
                       "type": "integer",
-                      "description": "The value to be used as a default."
+                      "description": "The integer value to be used as a default."
                     },
-                    "applyOnUpdate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                    "booleanValue": {
+                      "type": "boolean",
+                      "description": "The boolean value to be used as a default."
                     }
                   }
                 },
-                {
-                  "title": "Value Default Boolean",
-                  "type": "object",
-                  "required": [
-                    "value"
+                "applyOnUpdate": {
+                  "type": "string",
+                  "enum": [
+                    "always",
+                    "never"
                   ],
-                  "properties": {
-                    "value": {
-                      "type": "boolean",
-                      "description": "The value to be used as a default."
-                    },
-                    "applyOnUpdate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                    }
-                  }
+                  "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
                 }
-              ]
+              }
             }
           },
           "selectedFieldSettings": {
@@ -947,125 +703,54 @@
             "x-go-type-skip-optional-pointer": true,
             "additionalProperties": {
               "title": "Field setting",
-              "oneOf": [
-                {
-                  "title": "Default value of type string for a field",
+              "type": "object",
+              "required": [
+                "default",
+                "writeOnCreate",
+                "writeOnUpdate"
+              ],
+              "properties": {
+                "default": {
+                  "title": "Default value for a field",
+                  "description": "Only use one of stringValue, intValue, booleanValue.",
                   "type": "object",
-                  "required": [
-                    "default",
-                    "writeOnCreate",
-                    "writeOnUpdate"
-                  ],
                   "properties": {
-                    "default": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "string",
-                          "x-go-type-skip-optional-pointer": false,
-                          "description": "The default string value to apply to a field"
-                        }
-                      }
-                    },
-                    "writeOnCreate": {
+                    "stringValue": {
                       "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "default": "always",
-                      "description": "Whether the default value should be applied when creating a record."
+                      "x-go-type-skip-optional-pointer": false,
+                      "description": "The default string value to apply to a field"
                     },
-                    "writeOnUpdate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "default": "always",
-                      "description": "Whether the default value should be applied when updating a record."
+                    "intValue": {
+                      "type": "integer",
+                      "x-go-type-skip-optional-pointer": false,
+                      "description": "The default integer value to apply to a field"
+                    },
+                    "booleanValue": {
+                      "type": "boolean",
+                      "x-go-type-skip-optional-pointer": false,
+                      "description": "The default boolean value to apply to a field"
                     }
                   }
                 },
-                {
-                  "title": "Default value of type integer for a field",
-                  "type": "object",
-                  "required": [
-                    "default",
-                    "writeOnCreate",
-                    "writeOnUpdate"
+                "writeOnCreate": {
+                  "type": "string",
+                  "enum": [
+                    "always",
+                    "never"
                   ],
-                  "properties": {
-                    "default": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "x-go-type-skip-optional-pointer": false,
-                          "description": "The default integer value to apply to a field"
-                        }
-                      }
-                    },
-                    "writeOnCreate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "default": "always",
-                      "description": "Whether the default value should be applied when creating a record."
-                    },
-                    "writeOnUpdate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "default": "always",
-                      "description": "Whether the default value should be applied when updating a record."
-                    }
-                  }
+                  "default": "always",
+                  "description": "Whether the default value should be applied when creating a record."
                 },
-                {
-                  "title": "Default value of type boolean for a field",
-                  "type": "object",
-                  "required": [
-                    "default",
-                    "writeOnCreate",
-                    "writeOnUpdate"
+                "writeOnUpdate": {
+                  "type": "string",
+                  "enum": [
+                    "always",
+                    "never"
                   ],
-                  "properties": {
-                    "default": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "boolean",
-                          "x-go-type-skip-optional-pointer": false,
-                          "description": "The default boolean value to apply to a field"
-                        }
-                      }
-                    },
-                    "writeOnCreate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "default": "always",
-                      "description": "Whether the default value should be applied when creating a record."
-                    },
-                    "writeOnUpdate": {
-                      "type": "string",
-                      "enum": [
-                        "always",
-                        "never"
-                      ],
-                      "default": "always",
-                      "description": "Whether the default value should be applied when updating a record."
-                    }
-                  }
+                  "default": "always",
+                  "description": "Whether the default value should be applied when updating a record."
                 }
-              ]
+              }
             }
           }
         }
@@ -1228,71 +913,37 @@
                           "additionalProperties": {
                             "title": "Value Default",
                             "x-go-type": "any",
-                            "oneOf": [
-                              {
-                                "title": "Value Default String",
+                            "type": "object",
+                            "required": [
+                              "value"
+                            ],
+                            "properties": {
+                              "value": {
                                 "type": "object",
-                                "required": [
-                                  "value"
-                                ],
                                 "properties": {
-                                  "value": {
+                                  "stringValue": {
                                     "type": "string",
-                                    "description": "The value to be used as a default."
+                                    "description": "The string value to be used as a default."
                                   },
-                                  "applyOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                                  }
-                                }
-                              },
-                              {
-                                "title": "Value Default Integer",
-                                "type": "object",
-                                "required": [
-                                  "value"
-                                ],
-                                "properties": {
-                                  "value": {
+                                  "intValue": {
                                     "type": "integer",
-                                    "description": "The value to be used as a default."
+                                    "description": "The integer value to be used as a default."
                                   },
-                                  "applyOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                  "booleanValue": {
+                                    "type": "boolean",
+                                    "description": "The boolean value to be used as a default."
                                   }
                                 }
                               },
-                              {
-                                "title": "Value Default Boolean",
-                                "type": "object",
-                                "required": [
-                                  "value"
+                              "applyOnUpdate": {
+                                "type": "string",
+                                "enum": [
+                                  "always",
+                                  "never"
                                 ],
-                                "properties": {
-                                  "value": {
-                                    "type": "boolean",
-                                    "description": "The value to be used as a default."
-                                  },
-                                  "applyOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                                  }
-                                }
+                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
                               }
-                            ]
+                            }
                           }
                         },
                         "selectedFieldSettings": {
@@ -1301,125 +952,54 @@
                           "x-go-type-skip-optional-pointer": true,
                           "additionalProperties": {
                             "title": "Field setting",
-                            "oneOf": [
-                              {
-                                "title": "Default value of type string for a field",
+                            "type": "object",
+                            "required": [
+                              "default",
+                              "writeOnCreate",
+                              "writeOnUpdate"
+                            ],
+                            "properties": {
+                              "default": {
+                                "title": "Default value for a field",
+                                "description": "Only use one of stringValue, intValue, booleanValue.",
                                 "type": "object",
-                                "required": [
-                                  "default",
-                                  "writeOnCreate",
-                                  "writeOnUpdate"
-                                ],
                                 "properties": {
-                                  "default": {
-                                    "type": "object",
-                                    "properties": {
-                                      "value": {
-                                        "type": "string",
-                                        "x-go-type-skip-optional-pointer": false,
-                                        "description": "The default string value to apply to a field"
-                                      }
-                                    }
-                                  },
-                                  "writeOnCreate": {
+                                  "stringValue": {
                                     "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when creating a record."
+                                    "x-go-type-skip-optional-pointer": false,
+                                    "description": "The default string value to apply to a field"
                                   },
-                                  "writeOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when updating a record."
+                                  "intValue": {
+                                    "type": "integer",
+                                    "x-go-type-skip-optional-pointer": false,
+                                    "description": "The default integer value to apply to a field"
+                                  },
+                                  "booleanValue": {
+                                    "type": "boolean",
+                                    "x-go-type-skip-optional-pointer": false,
+                                    "description": "The default boolean value to apply to a field"
                                   }
                                 }
                               },
-                              {
-                                "title": "Default value of type integer for a field",
-                                "type": "object",
-                                "required": [
-                                  "default",
-                                  "writeOnCreate",
-                                  "writeOnUpdate"
+                              "writeOnCreate": {
+                                "type": "string",
+                                "enum": [
+                                  "always",
+                                  "never"
                                 ],
-                                "properties": {
-                                  "default": {
-                                    "type": "object",
-                                    "properties": {
-                                      "value": {
-                                        "type": "integer",
-                                        "x-go-type-skip-optional-pointer": false,
-                                        "description": "The default integer value to apply to a field"
-                                      }
-                                    }
-                                  },
-                                  "writeOnCreate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when creating a record."
-                                  },
-                                  "writeOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when updating a record."
-                                  }
-                                }
+                                "default": "always",
+                                "description": "Whether the default value should be applied when creating a record."
                               },
-                              {
-                                "title": "Default value of type boolean for a field",
-                                "type": "object",
-                                "required": [
-                                  "default",
-                                  "writeOnCreate",
-                                  "writeOnUpdate"
+                              "writeOnUpdate": {
+                                "type": "string",
+                                "enum": [
+                                  "always",
+                                  "never"
                                 ],
-                                "properties": {
-                                  "default": {
-                                    "type": "object",
-                                    "properties": {
-                                      "value": {
-                                        "type": "boolean",
-                                        "x-go-type-skip-optional-pointer": false,
-                                        "description": "The default boolean value to apply to a field"
-                                      }
-                                    }
-                                  },
-                                  "writeOnCreate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when creating a record."
-                                  },
-                                  "writeOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when updating a record."
-                                  }
-                                }
+                                "default": "always",
+                                "description": "Whether the default value should be applied when updating a record."
                               }
-                            ]
+                            }
                           }
                         }
                       }
@@ -1745,71 +1325,37 @@
                       "additionalProperties": {
                         "title": "Value Default",
                         "x-go-type": "any",
-                        "oneOf": [
-                          {
-                            "title": "Value Default String",
+                        "type": "object",
+                        "required": [
+                          "value"
+                        ],
+                        "properties": {
+                          "value": {
                             "type": "object",
-                            "required": [
-                              "value"
-                            ],
                             "properties": {
-                              "value": {
+                              "stringValue": {
                                 "type": "string",
-                                "description": "The value to be used as a default."
+                                "description": "The string value to be used as a default."
                               },
-                              "applyOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                              }
-                            }
-                          },
-                          {
-                            "title": "Value Default Integer",
-                            "type": "object",
-                            "required": [
-                              "value"
-                            ],
-                            "properties": {
-                              "value": {
+                              "intValue": {
                                 "type": "integer",
-                                "description": "The value to be used as a default."
+                                "description": "The integer value to be used as a default."
                               },
-                              "applyOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                              "booleanValue": {
+                                "type": "boolean",
+                                "description": "The boolean value to be used as a default."
                               }
                             }
                           },
-                          {
-                            "title": "Value Default Boolean",
-                            "type": "object",
-                            "required": [
-                              "value"
+                          "applyOnUpdate": {
+                            "type": "string",
+                            "enum": [
+                              "always",
+                              "never"
                             ],
-                            "properties": {
-                              "value": {
-                                "type": "boolean",
-                                "description": "The value to be used as a default."
-                              },
-                              "applyOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                              }
-                            }
+                            "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
                           }
-                        ]
+                        }
                       }
                     },
                     "selectedFieldSettings": {
@@ -1818,125 +1364,54 @@
                       "x-go-type-skip-optional-pointer": true,
                       "additionalProperties": {
                         "title": "Field setting",
-                        "oneOf": [
-                          {
-                            "title": "Default value of type string for a field",
+                        "type": "object",
+                        "required": [
+                          "default",
+                          "writeOnCreate",
+                          "writeOnUpdate"
+                        ],
+                        "properties": {
+                          "default": {
+                            "title": "Default value for a field",
+                            "description": "Only use one of stringValue, intValue, booleanValue.",
                             "type": "object",
-                            "required": [
-                              "default",
-                              "writeOnCreate",
-                              "writeOnUpdate"
-                            ],
                             "properties": {
-                              "default": {
-                                "type": "object",
-                                "properties": {
-                                  "value": {
-                                    "type": "string",
-                                    "x-go-type-skip-optional-pointer": false,
-                                    "description": "The default string value to apply to a field"
-                                  }
-                                }
-                              },
-                              "writeOnCreate": {
+                              "stringValue": {
                                 "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when creating a record."
+                                "x-go-type-skip-optional-pointer": false,
+                                "description": "The default string value to apply to a field"
                               },
-                              "writeOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when updating a record."
+                              "intValue": {
+                                "type": "integer",
+                                "x-go-type-skip-optional-pointer": false,
+                                "description": "The default integer value to apply to a field"
+                              },
+                              "booleanValue": {
+                                "type": "boolean",
+                                "x-go-type-skip-optional-pointer": false,
+                                "description": "The default boolean value to apply to a field"
                               }
                             }
                           },
-                          {
-                            "title": "Default value of type integer for a field",
-                            "type": "object",
-                            "required": [
-                              "default",
-                              "writeOnCreate",
-                              "writeOnUpdate"
+                          "writeOnCreate": {
+                            "type": "string",
+                            "enum": [
+                              "always",
+                              "never"
                             ],
-                            "properties": {
-                              "default": {
-                                "type": "object",
-                                "properties": {
-                                  "value": {
-                                    "type": "integer",
-                                    "x-go-type-skip-optional-pointer": false,
-                                    "description": "The default integer value to apply to a field"
-                                  }
-                                }
-                              },
-                              "writeOnCreate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when creating a record."
-                              },
-                              "writeOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when updating a record."
-                              }
-                            }
+                            "default": "always",
+                            "description": "Whether the default value should be applied when creating a record."
                           },
-                          {
-                            "title": "Default value of type boolean for a field",
-                            "type": "object",
-                            "required": [
-                              "default",
-                              "writeOnCreate",
-                              "writeOnUpdate"
+                          "writeOnUpdate": {
+                            "type": "string",
+                            "enum": [
+                              "always",
+                              "never"
                             ],
-                            "properties": {
-                              "default": {
-                                "type": "object",
-                                "properties": {
-                                  "value": {
-                                    "type": "boolean",
-                                    "x-go-type-skip-optional-pointer": false,
-                                    "description": "The default boolean value to apply to a field"
-                                  }
-                                }
-                              },
-                              "writeOnCreate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when creating a record."
-                              },
-                              "writeOnUpdate": {
-                                "type": "string",
-                                "enum": [
-                                  "always",
-                                  "never"
-                                ],
-                                "default": "always",
-                                "description": "Whether the default value should be applied when updating a record."
-                              }
-                            }
+                            "default": "always",
+                            "description": "Whether the default value should be applied when updating a record."
                           }
-                        ]
+                        }
                       }
                     }
                   }
@@ -1979,71 +1454,37 @@
                 "additionalProperties": {
                   "title": "Value Default",
                   "x-go-type": "any",
-                  "oneOf": [
-                    {
-                      "title": "Value Default String",
+                  "type": "object",
+                  "required": [
+                    "value"
+                  ],
+                  "properties": {
+                    "value": {
                       "type": "object",
-                      "required": [
-                        "value"
-                      ],
                       "properties": {
-                        "value": {
+                        "stringValue": {
                           "type": "string",
-                          "description": "The value to be used as a default."
+                          "description": "The string value to be used as a default."
                         },
-                        "applyOnUpdate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                        }
-                      }
-                    },
-                    {
-                      "title": "Value Default Integer",
-                      "type": "object",
-                      "required": [
-                        "value"
-                      ],
-                      "properties": {
-                        "value": {
+                        "intValue": {
                           "type": "integer",
-                          "description": "The value to be used as a default."
+                          "description": "The integer value to be used as a default."
                         },
-                        "applyOnUpdate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                        "booleanValue": {
+                          "type": "boolean",
+                          "description": "The boolean value to be used as a default."
                         }
                       }
                     },
-                    {
-                      "title": "Value Default Boolean",
-                      "type": "object",
-                      "required": [
-                        "value"
+                    "applyOnUpdate": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "never"
                       ],
-                      "properties": {
-                        "value": {
-                          "type": "boolean",
-                          "description": "The value to be used as a default."
-                        },
-                        "applyOnUpdate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                        }
-                      }
+                      "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
                     }
-                  ]
+                  }
                 }
               },
               "selectedFieldSettings": {
@@ -2052,125 +1493,54 @@
                 "x-go-type-skip-optional-pointer": true,
                 "additionalProperties": {
                   "title": "Field setting",
-                  "oneOf": [
-                    {
-                      "title": "Default value of type string for a field",
+                  "type": "object",
+                  "required": [
+                    "default",
+                    "writeOnCreate",
+                    "writeOnUpdate"
+                  ],
+                  "properties": {
+                    "default": {
+                      "title": "Default value for a field",
+                      "description": "Only use one of stringValue, intValue, booleanValue.",
                       "type": "object",
-                      "required": [
-                        "default",
-                        "writeOnCreate",
-                        "writeOnUpdate"
-                      ],
                       "properties": {
-                        "default": {
-                          "type": "object",
-                          "properties": {
-                            "value": {
-                              "type": "string",
-                              "x-go-type-skip-optional-pointer": false,
-                              "description": "The default string value to apply to a field"
-                            }
-                          }
-                        },
-                        "writeOnCreate": {
+                        "stringValue": {
                           "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "default": "always",
-                          "description": "Whether the default value should be applied when creating a record."
+                          "x-go-type-skip-optional-pointer": false,
+                          "description": "The default string value to apply to a field"
                         },
-                        "writeOnUpdate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "default": "always",
-                          "description": "Whether the default value should be applied when updating a record."
+                        "intValue": {
+                          "type": "integer",
+                          "x-go-type-skip-optional-pointer": false,
+                          "description": "The default integer value to apply to a field"
+                        },
+                        "booleanValue": {
+                          "type": "boolean",
+                          "x-go-type-skip-optional-pointer": false,
+                          "description": "The default boolean value to apply to a field"
                         }
                       }
                     },
-                    {
-                      "title": "Default value of type integer for a field",
-                      "type": "object",
-                      "required": [
-                        "default",
-                        "writeOnCreate",
-                        "writeOnUpdate"
+                    "writeOnCreate": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "never"
                       ],
-                      "properties": {
-                        "default": {
-                          "type": "object",
-                          "properties": {
-                            "value": {
-                              "type": "integer",
-                              "x-go-type-skip-optional-pointer": false,
-                              "description": "The default integer value to apply to a field"
-                            }
-                          }
-                        },
-                        "writeOnCreate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "default": "always",
-                          "description": "Whether the default value should be applied when creating a record."
-                        },
-                        "writeOnUpdate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "default": "always",
-                          "description": "Whether the default value should be applied when updating a record."
-                        }
-                      }
+                      "default": "always",
+                      "description": "Whether the default value should be applied when creating a record."
                     },
-                    {
-                      "title": "Default value of type boolean for a field",
-                      "type": "object",
-                      "required": [
-                        "default",
-                        "writeOnCreate",
-                        "writeOnUpdate"
+                    "writeOnUpdate": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "never"
                       ],
-                      "properties": {
-                        "default": {
-                          "type": "object",
-                          "properties": {
-                            "value": {
-                              "type": "boolean",
-                              "x-go-type-skip-optional-pointer": false,
-                              "description": "The default boolean value to apply to a field"
-                            }
-                          }
-                        },
-                        "writeOnCreate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "default": "always",
-                          "description": "Whether the default value should be applied when creating a record."
-                        },
-                        "writeOnUpdate": {
-                          "type": "string",
-                          "enum": [
-                            "always",
-                            "never"
-                          ],
-                          "default": "always",
-                          "description": "Whether the default value should be applied when updating a record."
-                        }
-                      }
+                      "default": "always",
+                      "description": "Whether the default value should be applied when updating a record."
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -2341,71 +1711,37 @@
                           "additionalProperties": {
                             "title": "Value Default",
                             "x-go-type": "any",
-                            "oneOf": [
-                              {
-                                "title": "Value Default String",
+                            "type": "object",
+                            "required": [
+                              "value"
+                            ],
+                            "properties": {
+                              "value": {
                                 "type": "object",
-                                "required": [
-                                  "value"
-                                ],
                                 "properties": {
-                                  "value": {
+                                  "stringValue": {
                                     "type": "string",
-                                    "description": "The value to be used as a default."
+                                    "description": "The string value to be used as a default."
                                   },
-                                  "applyOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                                  }
-                                }
-                              },
-                              {
-                                "title": "Value Default Integer",
-                                "type": "object",
-                                "required": [
-                                  "value"
-                                ],
-                                "properties": {
-                                  "value": {
+                                  "intValue": {
                                     "type": "integer",
-                                    "description": "The value to be used as a default."
+                                    "description": "The integer value to be used as a default."
                                   },
-                                  "applyOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                                  "booleanValue": {
+                                    "type": "boolean",
+                                    "description": "The boolean value to be used as a default."
                                   }
                                 }
                               },
-                              {
-                                "title": "Value Default Boolean",
-                                "type": "object",
-                                "required": [
-                                  "value"
+                              "applyOnUpdate": {
+                                "type": "string",
+                                "enum": [
+                                  "always",
+                                  "never"
                                 ],
-                                "properties": {
-                                  "value": {
-                                    "type": "boolean",
-                                    "description": "The value to be used as a default."
-                                  },
-                                  "applyOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-                                  }
-                                }
+                                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
                               }
-                            ]
+                            }
                           }
                         },
                         "selectedFieldSettings": {
@@ -2414,125 +1750,54 @@
                           "x-go-type-skip-optional-pointer": true,
                           "additionalProperties": {
                             "title": "Field setting",
-                            "oneOf": [
-                              {
-                                "title": "Default value of type string for a field",
+                            "type": "object",
+                            "required": [
+                              "default",
+                              "writeOnCreate",
+                              "writeOnUpdate"
+                            ],
+                            "properties": {
+                              "default": {
+                                "title": "Default value for a field",
+                                "description": "Only use one of stringValue, intValue, booleanValue.",
                                 "type": "object",
-                                "required": [
-                                  "default",
-                                  "writeOnCreate",
-                                  "writeOnUpdate"
-                                ],
                                 "properties": {
-                                  "default": {
-                                    "type": "object",
-                                    "properties": {
-                                      "value": {
-                                        "type": "string",
-                                        "x-go-type-skip-optional-pointer": false,
-                                        "description": "The default string value to apply to a field"
-                                      }
-                                    }
-                                  },
-                                  "writeOnCreate": {
+                                  "stringValue": {
                                     "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when creating a record."
+                                    "x-go-type-skip-optional-pointer": false,
+                                    "description": "The default string value to apply to a field"
                                   },
-                                  "writeOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when updating a record."
+                                  "intValue": {
+                                    "type": "integer",
+                                    "x-go-type-skip-optional-pointer": false,
+                                    "description": "The default integer value to apply to a field"
+                                  },
+                                  "booleanValue": {
+                                    "type": "boolean",
+                                    "x-go-type-skip-optional-pointer": false,
+                                    "description": "The default boolean value to apply to a field"
                                   }
                                 }
                               },
-                              {
-                                "title": "Default value of type integer for a field",
-                                "type": "object",
-                                "required": [
-                                  "default",
-                                  "writeOnCreate",
-                                  "writeOnUpdate"
+                              "writeOnCreate": {
+                                "type": "string",
+                                "enum": [
+                                  "always",
+                                  "never"
                                 ],
-                                "properties": {
-                                  "default": {
-                                    "type": "object",
-                                    "properties": {
-                                      "value": {
-                                        "type": "integer",
-                                        "x-go-type-skip-optional-pointer": false,
-                                        "description": "The default integer value to apply to a field"
-                                      }
-                                    }
-                                  },
-                                  "writeOnCreate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when creating a record."
-                                  },
-                                  "writeOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when updating a record."
-                                  }
-                                }
+                                "default": "always",
+                                "description": "Whether the default value should be applied when creating a record."
                               },
-                              {
-                                "title": "Default value of type boolean for a field",
-                                "type": "object",
-                                "required": [
-                                  "default",
-                                  "writeOnCreate",
-                                  "writeOnUpdate"
+                              "writeOnUpdate": {
+                                "type": "string",
+                                "enum": [
+                                  "always",
+                                  "never"
                                 ],
-                                "properties": {
-                                  "default": {
-                                    "type": "object",
-                                    "properties": {
-                                      "value": {
-                                        "type": "boolean",
-                                        "x-go-type-skip-optional-pointer": false,
-                                        "description": "The default boolean value to apply to a field"
-                                      }
-                                    }
-                                  },
-                                  "writeOnCreate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when creating a record."
-                                  },
-                                  "writeOnUpdate": {
-                                    "type": "string",
-                                    "enum": [
-                                      "always",
-                                      "never"
-                                    ],
-                                    "default": "always",
-                                    "description": "Whether the default value should be applied when updating a record."
-                                  }
-                                }
+                                "default": "always",
+                                "description": "Whether the default value should be applied when updating a record."
                               }
-                            ]
+                            }
                           }
                         }
                       }
@@ -2859,128 +2124,6 @@
       },
       "FieldSetting": {
         "title": "Field setting",
-        "oneOf": [
-          {
-            "title": "Default value of type string for a field",
-            "type": "object",
-            "required": [
-              "default",
-              "writeOnCreate",
-              "writeOnUpdate"
-            ],
-            "properties": {
-              "default": {
-                "type": "object",
-                "properties": {
-                  "value": {
-                    "type": "string",
-                    "x-go-type-skip-optional-pointer": false,
-                    "description": "The default string value to apply to a field"
-                  }
-                }
-              },
-              "writeOnCreate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "default": "always",
-                "description": "Whether the default value should be applied when creating a record."
-              },
-              "writeOnUpdate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "default": "always",
-                "description": "Whether the default value should be applied when updating a record."
-              }
-            }
-          },
-          {
-            "title": "Default value of type integer for a field",
-            "type": "object",
-            "required": [
-              "default",
-              "writeOnCreate",
-              "writeOnUpdate"
-            ],
-            "properties": {
-              "default": {
-                "type": "object",
-                "properties": {
-                  "value": {
-                    "type": "integer",
-                    "x-go-type-skip-optional-pointer": false,
-                    "description": "The default integer value to apply to a field"
-                  }
-                }
-              },
-              "writeOnCreate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "default": "always",
-                "description": "Whether the default value should be applied when creating a record."
-              },
-              "writeOnUpdate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "default": "always",
-                "description": "Whether the default value should be applied when updating a record."
-              }
-            }
-          },
-          {
-            "title": "Default value of type boolean for a field",
-            "type": "object",
-            "required": [
-              "default",
-              "writeOnCreate",
-              "writeOnUpdate"
-            ],
-            "properties": {
-              "default": {
-                "type": "object",
-                "properties": {
-                  "value": {
-                    "type": "boolean",
-                    "x-go-type-skip-optional-pointer": false,
-                    "description": "The default boolean value to apply to a field"
-                  }
-                }
-              },
-              "writeOnCreate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "default": "always",
-                "description": "Whether the default value should be applied when creating a record."
-              },
-              "writeOnUpdate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "default": "always",
-                "description": "Whether the default value should be applied when updating a record."
-              }
-            }
-          }
-        ]
-      },
-      "FieldSettingDefaultString": {
-        "title": "Default value of type string for a field",
         "type": "object",
         "required": [
           "default",
@@ -2989,87 +2132,21 @@
         ],
         "properties": {
           "default": {
+            "title": "Default value for a field",
+            "description": "Only use one of stringValue, intValue, booleanValue.",
             "type": "object",
             "properties": {
-              "value": {
+              "stringValue": {
                 "type": "string",
                 "x-go-type-skip-optional-pointer": false,
                 "description": "The default string value to apply to a field"
-              }
-            }
-          },
-          "writeOnCreate": {
-            "type": "string",
-            "enum": [
-              "always",
-              "never"
-            ],
-            "default": "always",
-            "description": "Whether the default value should be applied when creating a record."
-          },
-          "writeOnUpdate": {
-            "type": "string",
-            "enum": [
-              "always",
-              "never"
-            ],
-            "default": "always",
-            "description": "Whether the default value should be applied when updating a record."
-          }
-        }
-      },
-      "FieldSettingDefaultInteger": {
-        "title": "Default value of type integer for a field",
-        "type": "object",
-        "required": [
-          "default",
-          "writeOnCreate",
-          "writeOnUpdate"
-        ],
-        "properties": {
-          "default": {
-            "type": "object",
-            "properties": {
-              "value": {
+              },
+              "intValue": {
                 "type": "integer",
                 "x-go-type-skip-optional-pointer": false,
                 "description": "The default integer value to apply to a field"
-              }
-            }
-          },
-          "writeOnCreate": {
-            "type": "string",
-            "enum": [
-              "always",
-              "never"
-            ],
-            "default": "always",
-            "description": "Whether the default value should be applied when creating a record."
-          },
-          "writeOnUpdate": {
-            "type": "string",
-            "enum": [
-              "always",
-              "never"
-            ],
-            "default": "always",
-            "description": "Whether the default value should be applied when updating a record."
-          }
-        }
-      },
-      "FieldSettingDefaultBoolean": {
-        "title": "Default value of type boolean for a field",
-        "type": "object",
-        "required": [
-          "default",
-          "writeOnCreate",
-          "writeOnUpdate"
-        ],
-        "properties": {
-          "default": {
-            "type": "object",
-            "properties": {
-              "value": {
+              },
+              "booleanValue": {
                 "type": "boolean",
                 "x-go-type-skip-optional-pointer": false,
                 "description": "The default boolean value to apply to a field"
@@ -3096,127 +2173,52 @@
           }
         }
       },
+      "FieldSettingDefault": {
+        "title": "Default value for a field",
+        "description": "Only use one of stringValue, intValue, booleanValue.",
+        "type": "object",
+        "properties": {
+          "stringValue": {
+            "type": "string",
+            "x-go-type-skip-optional-pointer": false,
+            "description": "The default string value to apply to a field"
+          },
+          "intValue": {
+            "type": "integer",
+            "x-go-type-skip-optional-pointer": false,
+            "description": "The default integer value to apply to a field"
+          },
+          "booleanValue": {
+            "type": "boolean",
+            "x-go-type-skip-optional-pointer": false,
+            "description": "The default boolean value to apply to a field"
+          }
+        }
+      },
       "ValueDefault": {
         "title": "Value Default",
         "x-go-type": "any",
-        "oneOf": [
-          {
-            "title": "Value Default String",
+        "type": "object",
+        "required": [
+          "value"
+        ],
+        "properties": {
+          "value": {
             "type": "object",
-            "required": [
-              "value"
-            ],
             "properties": {
-              "value": {
+              "stringValue": {
                 "type": "string",
-                "description": "The value to be used as a default."
+                "description": "The string value to be used as a default."
               },
-              "applyOnUpdate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-              }
-            }
-          },
-          {
-            "title": "Value Default Integer",
-            "type": "object",
-            "required": [
-              "value"
-            ],
-            "properties": {
-              "value": {
+              "intValue": {
                 "type": "integer",
-                "description": "The value to be used as a default."
+                "description": "The integer value to be used as a default."
               },
-              "applyOnUpdate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-              }
-            }
-          },
-          {
-            "title": "Value Default Boolean",
-            "type": "object",
-            "required": [
-              "value"
-            ],
-            "properties": {
-              "value": {
+              "booleanValue": {
                 "type": "boolean",
-                "description": "The value to be used as a default."
-              },
-              "applyOnUpdate": {
-                "type": "string",
-                "enum": [
-                  "always",
-                  "never"
-                ],
-                "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
+                "description": "The boolean value to be used as a default."
               }
             }
-          }
-        ]
-      },
-      "ValueDefaultString": {
-        "title": "Value Default String",
-        "type": "object",
-        "required": [
-          "value"
-        ],
-        "properties": {
-          "value": {
-            "type": "string",
-            "description": "The value to be used as a default."
-          },
-          "applyOnUpdate": {
-            "type": "string",
-            "enum": [
-              "always",
-              "never"
-            ],
-            "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-          }
-        }
-      },
-      "ValueDefaultInteger": {
-        "title": "Value Default Integer",
-        "type": "object",
-        "required": [
-          "value"
-        ],
-        "properties": {
-          "value": {
-            "type": "integer",
-            "description": "The value to be used as a default."
-          },
-          "applyOnUpdate": {
-            "type": "string",
-            "enum": [
-              "always",
-              "never"
-            ],
-            "description": "Whether the default value should be applied when updating a record.\nIf set to `always`, the default value will be applied when updating a record.\nIf set to `never`, the default value will not be applied when updating a record,\nonly when creating a record.\nIf unspecified, then `always` is assumed.\n"
-          }
-        }
-      },
-      "ValueDefaultBoolean": {
-        "title": "Value Default Boolean",
-        "type": "object",
-        "required": [
-          "value"
-        ],
-        "properties": {
-          "value": {
-            "type": "boolean",
-            "description": "The value to be used as a default."
           },
           "applyOnUpdate": {
             "type": "string",
