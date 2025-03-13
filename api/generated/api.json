@@ -12330,6 +12330,9 @@
                                         "additionalProperties": {
                                           "title": "Base Write Config Object",
                                           "type": "object",
+                                          "required": [
+                                            "objectName"
+                                          ],
                                           "properties": {
                                             "objectName": {
                                               "description": "The name of the object to write to.",
@@ -13164,6 +13167,9 @@
                                     "additionalProperties": {
                                       "title": "Base Write Config Object",
                                       "type": "object",
+                                      "required": [
+                                        "objectName"
+                                      ],
                                       "properties": {
                                         "objectName": {
                                           "description": "The name of the object to write to.",
@@ -13882,6 +13888,9 @@
                                       "additionalProperties": {
                                         "title": "Base Write Config Object",
                                         "type": "object",
+                                        "required": [
+                                          "objectName"
+                                        ],
                                         "properties": {
                                           "objectName": {
                                             "description": "The name of the object to write to.",
@@ -15418,6 +15427,9 @@
                                       "additionalProperties": {
                                         "title": "Base Write Config Object",
                                         "type": "object",
+                                        "required": [
+                                          "objectName"
+                                        ],
                                         "properties": {
                                           "objectName": {
                                             "description": "The name of the object to write to.",
@@ -16440,6 +16452,9 @@
                                         "additionalProperties": {
                                           "title": "Base Write Config Object",
                                           "type": "object",
+                                          "required": [
+                                            "objectName"
+                                          ],
                                           "properties": {
                                             "objectName": {
                                               "description": "The name of the object to write to.",
@@ -17147,6 +17162,9 @@
                                       "additionalProperties": {
                                         "title": "Base Write Config Object",
                                         "type": "object",
+                                        "required": [
+                                          "objectName"
+                                        ],
                                         "properties": {
                                           "objectName": {
                                             "description": "The name of the object to write to.",
@@ -39896,6 +39914,9 @@
                             "additionalProperties": {
                               "title": "Base Write Config Object",
                               "type": "object",
+                              "required": [
+                                "objectName"
+                              ],
                               "properties": {
                                 "objectName": {
                                   "description": "The name of the object to write to.",
@@ -40239,6 +40260,9 @@
                         "additionalProperties": {
                           "title": "Base Write Config Object",
                           "type": "object",
+                          "required": [
+                            "objectName"
+                          ],
                           "properties": {
                             "objectName": {
                               "description": "The name of the object to write to.",
