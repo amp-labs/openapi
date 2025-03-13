@@ -245,13 +245,6 @@ components:
 
     FieldSetting:
       title: Field setting
-      oneOf:
-        - $ref: '#/components/schemas/FieldSettingDefaultString'
-        - $ref: '#/components/schemas/FieldSettingDefaultInteger'
-        - $ref: '#/components/schemas/FieldSettingDefaultBoolean'
-
-    FieldSettingDefaultString:
-      title: Default value of type string for a field
       type: object
       required:
         - default
@@ -259,12 +252,7 @@ components:
         - writeOnUpdate
       properties:
         default:
-          type: object
-          properties:
-            value:
-              type: string
-              x-go-type-skip-optional-pointer: false # Good to understand if a default value is a zero value or missing.
-              description: The default string value to apply to a field
+          $ref: '#/components/schemas/FieldSettingDefault'
         writeOnCreate:
           type: string
           enum: [ always, never ]
@@ -276,114 +264,42 @@ components:
           default: always
           description: Whether the default value should be applied when updating a record.
 
-
-    FieldSettingDefaultInteger:
-      title: Default value of type integer for a field
+    FieldSettingDefault:
+      title: Default value for a field
       type: object
-      required:
-        - default
-        - writeOnCreate
-        - writeOnUpdate
       properties:
-        default:
-          type: object
-          properties:
-            value:
-              type: integer
-              x-go-type-skip-optional-pointer: false # Good to understand if a default value is a zero value or missing.
-              description: The default integer value to apply to a field
-        writeOnCreate:
+        stringValue:
           type: string
-          enum: [ always, never ]
-          default: always
-          description: Whether the default value should be applied when creating a record.
-        writeOnUpdate:
-          type: string
-          enum: [ always, never ]
-          default: always
-          description: Whether the default value should be applied when updating a record.
-
-    FieldSettingDefaultBoolean:
-      title: Default value of type boolean for a field
-      type: object
-      required:
-        - default
-        - writeOnCreate
-        - writeOnUpdate
-      properties:
-        default:
-          type: object
-          properties:
-            value:
-              type: boolean
-              x-go-type-skip-optional-pointer: false # Good to understand if a default value is a zero value or missing.
-              description: The default boolean value to apply to a field
-        writeOnCreate:
-          type: string
-          enum: [ always, never ]
-          default: always
-          description: Whether the default value should be applied when creating a record.
-        writeOnUpdate:
-          type: string
-          enum: [ always, never ]
-          default: always
-          description: Whether the default value should be applied when updating a record.
+          x-go-type-skip-optional-pointer: false
+          description: The default string value to apply to a field
+        intValue:
+          type: integer
+          x-go-type-skip-optional-pointer: false
+          description: The default integer value to apply to a field
+        booleanValue:
+          type: boolean
+          x-go-type-skip-optional-pointer: false
+          description: The default boolean value to apply to a field
 
     ValueDefault:
       title: Value Default
       x-go-type: any # TODO: Remove this when we no longer have to support the legacy string type (See ENG-1922).
-      oneOf:
-        - $ref: '#/components/schemas/ValueDefaultString'
-        - $ref: '#/components/schemas/ValueDefaultInteger'
-        - $ref: '#/components/schemas/ValueDefaultBoolean'
-
-    ValueDefaultString:
-      title: Value Default String
       type: object
       required:
         - value
       properties:
         value:
-          type: string
-          description: The value to be used as a default.
-        applyOnUpdate:
-          type: string
-          enum: [ always, never ]
-          description: |
-            Whether the default value should be applied when updating a record.
-            If set to `always`, the default value will be applied when updating a record.
-            If set to `never`, the default value will not be applied when updating a record,
-            only when creating a record.
-            If unspecified, then `always` is assumed.
-
-    ValueDefaultInteger:
-      title: Value Default Integer
-      type: object
-      required:
-        - value
-      properties:
-        value:
-          type: integer
-          description: The value to be used as a default.
-        applyOnUpdate:
-          type: string
-          enum: [ always, never ]
-          description: |
-              Whether the default value should be applied when updating a record.
-              If set to `always`, the default value will be applied when updating a record.
-              If set to `never`, the default value will not be applied when updating a record,
-              only when creating a record.
-              If unspecified, then `always` is assumed.
-
-    ValueDefaultBoolean:
-      title: Value Default Boolean
-      type: object
-      required:
-        - value
-      properties:
-        value:
-          type: boolean
-          description: The value to be used as a default.
+          type: object
+          properties:
+            stringValue:
+              type: string
+              description: The string value to be used as a default.
+            intValue:
+              type: integer
+              description: The integer value to be used as a default.
+            booleanValue:
+              type: boolean
+              description: The boolean value to be used as a default.
         applyOnUpdate:
           type: string
           enum: [ always, never ]
