@@ -12428,14 +12428,14 @@
                                                 "properties": {
                                                   "default": {
                                                     "title": "Default value for a field",
-                                                    "description": "Only use one of stringValue, intValue, booleanValue.",
+                                                    "description": "Only use one of stringValue, integerValue, booleanValue.",
                                                     "type": "object",
                                                     "properties": {
                                                       "stringValue": {
                                                         "type": "string",
                                                         "description": "The default string value to apply to a field"
                                                       },
-                                                      "intValue": {
+                                                      "integerValue": {
                                                         "type": "integer",
                                                         "description": "The default integer value to apply to a field"
                                                       },
@@ -13265,14 +13265,14 @@
                                             "properties": {
                                               "default": {
                                                 "title": "Default value for a field",
-                                                "description": "Only use one of stringValue, intValue, booleanValue.",
+                                                "description": "Only use one of stringValue, integerValue, booleanValue.",
                                                 "type": "object",
                                                 "properties": {
                                                   "stringValue": {
                                                     "type": "string",
                                                     "description": "The default string value to apply to a field"
                                                   },
-                                                  "intValue": {
+                                                  "integerValue": {
                                                     "type": "integer",
                                                     "description": "The default integer value to apply to a field"
                                                   },
@@ -13986,14 +13986,14 @@
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
-                                                  "description": "Only use one of stringValue, intValue, booleanValue.",
+                                                  "description": "Only use one of stringValue, integerValue, booleanValue.",
                                                   "type": "object",
                                                   "properties": {
                                                     "stringValue": {
                                                       "type": "string",
                                                       "description": "The default string value to apply to a field"
                                                     },
-                                                    "intValue": {
+                                                    "integerValue": {
                                                       "type": "integer",
                                                       "description": "The default integer value to apply to a field"
                                                     },
@@ -15525,14 +15525,14 @@
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
-                                                  "description": "Only use one of stringValue, intValue, booleanValue.",
+                                                  "description": "Only use one of stringValue, integerValue, booleanValue.",
                                                   "type": "object",
                                                   "properties": {
                                                     "stringValue": {
                                                       "type": "string",
                                                       "description": "The default string value to apply to a field"
                                                     },
-                                                    "intValue": {
+                                                    "integerValue": {
                                                       "type": "integer",
                                                       "description": "The default integer value to apply to a field"
                                                     },
@@ -16550,14 +16550,14 @@
                                                 "properties": {
                                                   "default": {
                                                     "title": "Default value for a field",
-                                                    "description": "Only use one of stringValue, intValue, booleanValue.",
+                                                    "description": "Only use one of stringValue, integerValue, booleanValue.",
                                                     "type": "object",
                                                     "properties": {
                                                       "stringValue": {
                                                         "type": "string",
                                                         "description": "The default string value to apply to a field"
                                                       },
-                                                      "intValue": {
+                                                      "integerValue": {
                                                         "type": "integer",
                                                         "description": "The default integer value to apply to a field"
                                                       },
@@ -17260,14 +17260,14 @@
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
-                                                  "description": "Only use one of stringValue, intValue, booleanValue.",
+                                                  "description": "Only use one of stringValue, integerValue, booleanValue.",
                                                   "type": "object",
                                                   "properties": {
                                                     "stringValue": {
                                                       "type": "string",
                                                       "description": "The default string value to apply to a field"
                                                     },
-                                                    "intValue": {
+                                                    "integerValue": {
                                                       "type": "integer",
                                                       "description": "The default integer value to apply to a field"
                                                     },
@@ -40012,14 +40012,14 @@
                                     "properties": {
                                       "default": {
                                         "title": "Default value for a field",
-                                        "description": "Only use one of stringValue, intValue, booleanValue.",
+                                        "description": "Only use one of stringValue, integerValue, booleanValue.",
                                         "type": "object",
                                         "properties": {
                                           "stringValue": {
                                             "type": "string",
                                             "description": "The default string value to apply to a field"
                                           },
-                                          "intValue": {
+                                          "integerValue": {
                                             "type": "integer",
                                             "description": "The default integer value to apply to a field"
                                           },
@@ -40358,14 +40358,14 @@
                                 "properties": {
                                   "default": {
                                     "title": "Default value for a field",
-                                    "description": "Only use one of stringValue, intValue, booleanValue.",
+                                    "description": "Only use one of stringValue, integerValue, booleanValue.",
                                     "type": "object",
                                     "properties": {
                                       "stringValue": {
                                         "type": "string",
                                         "description": "The default string value to apply to a field"
                                       },
-                                      "intValue": {
+                                      "integerValue": {
                                         "type": "integer",
                                         "description": "The default integer value to apply to a field"
                                       },
