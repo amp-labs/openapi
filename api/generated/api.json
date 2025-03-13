@@ -12395,6 +12395,7 @@
                                                 "properties": {
                                                   "default": {
                                                     "title": "Default value for a field",
+                                                    "description": "Only use one of stringValue, intValue, booleanValue.",
                                                     "type": "object",
                                                     "properties": {
                                                       "stringValue": {
@@ -13199,6 +13200,7 @@
                                             "properties": {
                                               "default": {
                                                 "title": "Default value for a field",
+                                                "description": "Only use one of stringValue, intValue, booleanValue.",
                                                 "type": "object",
                                                 "properties": {
                                                   "stringValue": {
@@ -13887,6 +13889,7 @@
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
+                                                  "description": "Only use one of stringValue, intValue, booleanValue.",
                                                   "type": "object",
                                                   "properties": {
                                                     "stringValue": {
@@ -15393,6 +15396,7 @@
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
+                                                  "description": "Only use one of stringValue, intValue, booleanValue.",
                                                   "type": "object",
                                                   "properties": {
                                                     "stringValue": {
@@ -16385,6 +16389,7 @@
                                                 "properties": {
                                                   "default": {
                                                     "title": "Default value for a field",
+                                                    "description": "Only use one of stringValue, intValue, booleanValue.",
                                                     "type": "object",
                                                     "properties": {
                                                       "stringValue": {
@@ -17062,6 +17067,7 @@
                                               "properties": {
                                                 "default": {
                                                   "title": "Default value for a field",
+                                                  "description": "Only use one of stringValue, intValue, booleanValue.",
                                                   "type": "object",
                                                   "properties": {
                                                     "stringValue": {
@@ -39781,6 +39787,7 @@
                                     "properties": {
                                       "default": {
                                         "title": "Default value for a field",
+                                        "description": "Only use one of stringValue, intValue, booleanValue.",
                                         "type": "object",
                                         "properties": {
                                           "stringValue": {
@@ -40094,6 +40101,7 @@
                                 "properties": {
                                   "default": {
                                     "title": "Default value for a field",
+                                    "description": "Only use one of stringValue, intValue, booleanValue.",
                                     "type": "object",
                                     "properties": {
                                       "stringValue": {

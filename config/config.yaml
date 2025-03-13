@@ -266,6 +266,7 @@ components:
 
     FieldSettingDefault:
       title: Default value for a field
+      description: Only use one of stringValue, intValue, booleanValue.
       type: object
       properties:
         stringValue:
