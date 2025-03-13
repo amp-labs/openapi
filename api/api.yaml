@@ -2842,7 +2842,7 @@ components:
           description: The time the provider app was updated.
           format: date-time
     Integration:
-    title: Integration
+      title: Integration
       required:
         - createTime
         - id
