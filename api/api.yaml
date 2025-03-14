@@ -2649,7 +2649,7 @@ components:
             brandingRemoval:
               type: object
               x-go-type-skip-optional-pointer: true
-              description: Whether branding has been removed from the project.
+              description: Whether branding can be removed from the UI library.
               properties:
                 value:
                   type: boolean
