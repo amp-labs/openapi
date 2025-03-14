@@ -608,12 +608,14 @@
                         "properties": {
                           "brandingRemoval": {
                             "type": "object",
+                            "required": [
+                              "value"
+                            ],
                             "x-go-type-skip-optional-pointer": true,
                             "description": "Whether branding can be removed from the UI library.",
                             "properties": {
                               "value": {
                                 "type": "boolean",
-                                "required": true,
                                 "description": "Whether branding has been removed from the project."
                               }
                             }
@@ -850,12 +852,14 @@
                       "properties": {
                         "brandingRemoval": {
                           "type": "object",
+                          "required": [
+                            "value"
+                          ],
                           "x-go-type-skip-optional-pointer": true,
                           "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
@@ -1397,12 +1401,14 @@
                       "properties": {
                         "brandingRemoval": {
                           "type": "object",
+                          "required": [
+                            "value"
+                          ],
                           "x-go-type-skip-optional-pointer": true,
                           "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
@@ -2464,12 +2470,14 @@
                       "properties": {
                         "brandingRemoval": {
                           "type": "object",
+                          "required": [
+                            "value"
+                          ],
                           "x-go-type-skip-optional-pointer": true,
                           "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
@@ -36247,12 +36255,14 @@
                                 "properties": {
                                   "brandingRemoval": {
                                     "type": "object",
+                                    "required": [
+                                      "value"
+                                    ],
                                     "x-go-type-skip-optional-pointer": true,
                                     "description": "Whether branding can be removed from the UI library.",
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
-                                        "required": true,
                                         "description": "Whether branding has been removed from the project."
                                       }
                                     }
@@ -36631,12 +36641,14 @@
                                 "properties": {
                                   "brandingRemoval": {
                                     "type": "object",
+                                    "required": [
+                                      "value"
+                                    ],
                                     "x-go-type-skip-optional-pointer": true,
                                     "description": "Whether branding can be removed from the UI library.",
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
-                                        "required": true,
                                         "description": "Whether branding has been removed from the project."
                                       }
                                     }
@@ -37732,12 +37744,14 @@
             "properties": {
               "brandingRemoval": {
                 "type": "object",
+                "required": [
+                  "value"
+                ],
                 "x-go-type-skip-optional-pointer": true,
                 "description": "Whether branding can be removed from the UI library.",
                 "properties": {
                   "value": {
                     "type": "boolean",
-                    "required": true,
                     "description": "Whether branding has been removed from the project."
                   }
                 }
@@ -40999,12 +41013,14 @@
                       "properties": {
                         "brandingRemoval": {
                           "type": "object",
+                          "required": [
+                            "value"
+                          ],
                           "x-go-type-skip-optional-pointer": true,
                           "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
