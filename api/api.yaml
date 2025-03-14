@@ -2615,7 +2615,6 @@ components:
         - createTime
         - id
         - name
-        - entitlements
       # TODO(ENG-1029): once all projects have been backfilled with org ID, add orgId to required list
       type: object
       properties:
@@ -2653,7 +2652,7 @@ components:
               properties:
                 value:
                   type: boolean
-                  x-go-type-skip-optional-pointer: true
+                  required: true
                   description: Whether branding has been removed from the project.
     ProviderApp:
       title: Provider App

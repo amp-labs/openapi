@@ -569,8 +569,7 @@
                       "appName",
                       "createTime",
                       "id",
-                      "name",
-                      "entitlements"
+                      "name"
                     ],
                     "type": "object",
                     "properties": {
@@ -610,11 +609,11 @@
                           "brandingRemoval": {
                             "type": "object",
                             "x-go-type-skip-optional-pointer": true,
-                            "description": "Whether branding has been removed from the project.",
+                            "description": "Whether branding can be removed from the UI library.",
                             "properties": {
                               "value": {
                                 "type": "boolean",
-                                "x-go-type-skip-optional-pointer": true,
+                                "required": true,
                                 "description": "Whether branding has been removed from the project."
                               }
                             }
@@ -812,8 +811,7 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name",
-                    "entitlements"
+                    "name"
                   ],
                   "type": "object",
                   "properties": {
@@ -853,11 +851,11 @@
                         "brandingRemoval": {
                           "type": "object",
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Whether branding has been removed from the project.",
+                          "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "x-go-type-skip-optional-pointer": true,
+                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
@@ -1360,8 +1358,7 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name",
-                    "entitlements"
+                    "name"
                   ],
                   "type": "object",
                   "properties": {
@@ -1401,11 +1398,11 @@
                         "brandingRemoval": {
                           "type": "object",
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Whether branding has been removed from the project.",
+                          "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "x-go-type-skip-optional-pointer": true,
+                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
@@ -2428,8 +2425,7 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name",
-                    "entitlements"
+                    "name"
                   ],
                   "type": "object",
                   "properties": {
@@ -2469,11 +2465,11 @@
                         "brandingRemoval": {
                           "type": "object",
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Whether branding has been removed from the project.",
+                          "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "x-go-type-skip-optional-pointer": true,
+                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
@@ -36212,8 +36208,7 @@
                               "appName",
                               "createTime",
                               "id",
-                              "name",
-                              "entitlements"
+                              "name"
                             ],
                             "type": "object",
                             "properties": {
@@ -36253,11 +36248,11 @@
                                   "brandingRemoval": {
                                     "type": "object",
                                     "x-go-type-skip-optional-pointer": true,
-                                    "description": "Whether branding has been removed from the project.",
+                                    "description": "Whether branding can be removed from the UI library.",
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
-                                        "x-go-type-skip-optional-pointer": true,
+                                        "required": true,
                                         "description": "Whether branding has been removed from the project."
                                       }
                                     }
@@ -36597,8 +36592,7 @@
                               "appName",
                               "createTime",
                               "id",
-                              "name",
-                              "entitlements"
+                              "name"
                             ],
                             "type": "object",
                             "properties": {
@@ -36638,11 +36632,11 @@
                                   "brandingRemoval": {
                                     "type": "object",
                                     "x-go-type-skip-optional-pointer": true,
-                                    "description": "Whether branding has been removed from the project.",
+                                    "description": "Whether branding can be removed from the UI library.",
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
-                                        "x-go-type-skip-optional-pointer": true,
+                                        "required": true,
                                         "description": "Whether branding has been removed from the project."
                                       }
                                     }
@@ -37699,8 +37693,7 @@
           "appName",
           "createTime",
           "id",
-          "name",
-          "entitlements"
+          "name"
         ],
         "type": "object",
         "properties": {
@@ -37740,11 +37733,11 @@
               "brandingRemoval": {
                 "type": "object",
                 "x-go-type-skip-optional-pointer": true,
-                "description": "Whether branding has been removed from the project.",
+                "description": "Whether branding can be removed from the UI library.",
                 "properties": {
                   "value": {
                     "type": "boolean",
-                    "x-go-type-skip-optional-pointer": true,
+                    "required": true,
                     "description": "Whether branding has been removed from the project."
                   }
                 }
@@ -40967,8 +40960,7 @@
                     "appName",
                     "createTime",
                     "id",
-                    "name",
-                    "entitlements"
+                    "name"
                   ],
                   "type": "object",
                   "properties": {
@@ -41008,11 +41000,11 @@
                         "brandingRemoval": {
                           "type": "object",
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Whether branding has been removed from the project.",
+                          "description": "Whether branding can be removed from the UI library.",
                           "properties": {
                             "value": {
                               "type": "boolean",
-                              "x-go-type-skip-optional-pointer": true,
+                              "required": true,
                               "description": "Whether branding has been removed from the project."
                             }
                           }
