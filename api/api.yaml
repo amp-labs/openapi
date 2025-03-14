@@ -2641,6 +2641,20 @@ components:
           type: string
           description: The time the project was updated.
           format: date-time
+        entitlements:
+          type: object
+          description: The entitlements for the project.
+          properties:
+            brandingRemoval:
+              type: object
+              required:
+                - value
+              x-go-type-skip-optional-pointer: true
+              description: Whether branding can be removed from the UI library.
+              properties:
+                value:
+                  type: boolean
+                  description: Whether branding has been removed from the project.
     ProviderApp:
       title: Provider App
       required:
