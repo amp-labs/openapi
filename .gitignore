@@ -167,3 +167,6 @@ tags
 #node modules
 node_modules
 
+#DS Store
+.DS_Store
+
