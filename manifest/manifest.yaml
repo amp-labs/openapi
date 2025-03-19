@@ -74,7 +74,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IntegrationWriteObject'
-    
+
     IntegrationSubscribe:
       title: Subscribe Integration
       type: object
@@ -143,14 +143,14 @@ components:
           example: true
         valueDefaults:
           $ref: '#/components/schemas/ValueDefaults'
-    
+
     IntegrationSubscribeObject:
       title: Integration Subscribe Object
       type: object
       required:
         - objectName
         - destination
-      properties: 
+      properties:
         objectName:
           type: string
         destination:
@@ -166,52 +166,56 @@ components:
         otherEvents:
           $ref: '#/components/schemas/OtherEvents'
 
-    CreateEvent: 
+    CreateEvent:
       type : object
-      properties: 
+      properties:
         enabled:
-          type: boolean
+          type: enum
           description: If true, the integration will subscribe to create events.
-      
+          enum: [always]
+
     UpdateEvent:
       type: object
       properties:
         enabled:
-          type: boolean
+          type: enum
           description: If true, the integration will subscribe to update events.
+          enum: [always]
         requiredWatchFields:
           type: array
           items:
             type: string
-            description: The fields that are required to be watched for updates. 
-            example: 
+            description: The fields that are required to be watched for updates.
+            example:
               - name
               - domain
-    
+
     DeleteEvent:
       type: object
       properties:
         enabled:
-          type: boolean
+          type: enum
           description: If true, the integration will subscribe to delete events.
+          enum: [always]
 
     AssociationChangeEvent:
       type: object
       properties:
         enabled:
-          type: boolean
+          type: enum
           description: If true, the integration will subscribe to association change events.
+          enum: [always]
         includeFullRecords:
           type: boolean
           description: If true, the integration will include full records in the event payload.
-    
+
     OtherEvents:
       type: array
       items:
         type: string
         description: Non-standard events that the integration will subscribe to.
-        example: 
-          - object.merged 
+        example:
+          - object.merged
           - object.restored
 
     HydratedIntegration:
