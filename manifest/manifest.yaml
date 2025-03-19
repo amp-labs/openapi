@@ -170,7 +170,7 @@ components:
       type : object
       properties:
         enabled:
-          type: enum
+          type: string
           description: If always, the integration will subscribe to create events.
           enum: [always]
 
@@ -178,7 +178,7 @@ components:
       type: object
       properties:
         enabled:
-          type: enum
+          type: string
           description: If always, the integration will subscribe to update events.
           enum: [always]
         requiredWatchFields:
@@ -194,7 +194,7 @@ components:
       type: object
       properties:
         enabled:
-          type: enum
+          type: string
           description: If always, the integration will subscribe to delete events.
           enum: [always]
 
@@ -202,7 +202,7 @@ components:
       type: object
       properties:
         enabled:
-          type: enum
+          type: string
           description: If always, the integration will subscribe to association change events.
           enum: [always]
         includeFullRecords:
