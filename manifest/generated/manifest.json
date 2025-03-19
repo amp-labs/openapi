@@ -323,7 +323,7 @@
                             "properties": {
                               "enabled": {
                                 "type": "enum",
-                                "description": "If true, the integration will subscribe to create events.",
+                                "description": "If always, the integration will subscribe to create events.",
                                 "enum": [
                                   "always"
                                 ]
@@ -335,7 +335,7 @@
                             "properties": {
                               "enabled": {
                                 "type": "enum",
-                                "description": "If true, the integration will subscribe to update events.",
+                                "description": "If always, the integration will subscribe to update events.",
                                 "enum": [
                                   "always"
                                 ]
@@ -358,7 +358,7 @@
                             "properties": {
                               "enabled": {
                                 "type": "enum",
-                                "description": "If true, the integration will subscribe to delete events.",
+                                "description": "If always, the integration will subscribe to delete events.",
                                 "enum": [
                                   "always"
                                 ]
@@ -370,7 +370,7 @@
                             "properties": {
                               "enabled": {
                                 "type": "enum",
-                                "description": "If true, the integration will subscribe to association change events.",
+                                "description": "If always, the integration will subscribe to association change events.",
                                 "enum": [
                                   "always"
                                 ]
@@ -698,7 +698,7 @@
                       "properties": {
                         "enabled": {
                           "type": "enum",
-                          "description": "If true, the integration will subscribe to create events.",
+                          "description": "If always, the integration will subscribe to create events.",
                           "enum": [
                             "always"
                           ]
@@ -710,7 +710,7 @@
                       "properties": {
                         "enabled": {
                           "type": "enum",
-                          "description": "If true, the integration will subscribe to update events.",
+                          "description": "If always, the integration will subscribe to update events.",
                           "enum": [
                             "always"
                           ]
@@ -733,7 +733,7 @@
                       "properties": {
                         "enabled": {
                           "type": "enum",
-                          "description": "If true, the integration will subscribe to delete events.",
+                          "description": "If always, the integration will subscribe to delete events.",
                           "enum": [
                             "always"
                           ]
@@ -745,7 +745,7 @@
                       "properties": {
                         "enabled": {
                           "type": "enum",
-                          "description": "If true, the integration will subscribe to association change events.",
+                          "description": "If always, the integration will subscribe to association change events.",
                           "enum": [
                             "always"
                           ]
@@ -1053,7 +1053,7 @@
                   "properties": {
                     "enabled": {
                       "type": "enum",
-                      "description": "If true, the integration will subscribe to create events.",
+                      "description": "If always, the integration will subscribe to create events.",
                       "enum": [
                         "always"
                       ]
@@ -1065,7 +1065,7 @@
                   "properties": {
                     "enabled": {
                       "type": "enum",
-                      "description": "If true, the integration will subscribe to update events.",
+                      "description": "If always, the integration will subscribe to update events.",
                       "enum": [
                         "always"
                       ]
@@ -1088,7 +1088,7 @@
                   "properties": {
                     "enabled": {
                       "type": "enum",
-                      "description": "If true, the integration will subscribe to delete events.",
+                      "description": "If always, the integration will subscribe to delete events.",
                       "enum": [
                         "always"
                       ]
@@ -1100,7 +1100,7 @@
                   "properties": {
                     "enabled": {
                       "type": "enum",
-                      "description": "If true, the integration will subscribe to association change events.",
+                      "description": "If always, the integration will subscribe to association change events.",
                       "enum": [
                         "always"
                       ]
@@ -1373,7 +1373,7 @@
             "properties": {
               "enabled": {
                 "type": "enum",
-                "description": "If true, the integration will subscribe to create events.",
+                "description": "If always, the integration will subscribe to create events.",
                 "enum": [
                   "always"
                 ]
@@ -1385,7 +1385,7 @@
             "properties": {
               "enabled": {
                 "type": "enum",
-                "description": "If true, the integration will subscribe to update events.",
+                "description": "If always, the integration will subscribe to update events.",
                 "enum": [
                   "always"
                 ]
@@ -1408,7 +1408,7 @@
             "properties": {
               "enabled": {
                 "type": "enum",
-                "description": "If true, the integration will subscribe to delete events.",
+                "description": "If always, the integration will subscribe to delete events.",
                 "enum": [
                   "always"
                 ]
@@ -1420,7 +1420,7 @@
             "properties": {
               "enabled": {
                 "type": "enum",
-                "description": "If true, the integration will subscribe to association change events.",
+                "description": "If always, the integration will subscribe to association change events.",
                 "enum": [
                   "always"
                 ]
@@ -1449,7 +1449,7 @@
         "properties": {
           "enabled": {
             "type": "enum",
-            "description": "If true, the integration will subscribe to create events.",
+            "description": "If always, the integration will subscribe to create events.",
             "enum": [
               "always"
             ]
@@ -1461,7 +1461,7 @@
         "properties": {
           "enabled": {
             "type": "enum",
-            "description": "If true, the integration will subscribe to update events.",
+            "description": "If always, the integration will subscribe to update events.",
             "enum": [
               "always"
             ]
@@ -1484,7 +1484,7 @@
         "properties": {
           "enabled": {
             "type": "enum",
-            "description": "If true, the integration will subscribe to delete events.",
+            "description": "If always, the integration will subscribe to delete events.",
             "enum": [
               "always"
             ]
@@ -1496,7 +1496,7 @@
         "properties": {
           "enabled": {
             "type": "enum",
-            "description": "If true, the integration will subscribe to association change events.",
+            "description": "If always, the integration will subscribe to association change events.",
             "enum": [
               "always"
             ]
