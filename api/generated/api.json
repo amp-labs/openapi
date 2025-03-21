@@ -6237,8 +6237,7 @@
                                       "type": "object",
                                       "required": [
                                         "objectName",
-                                        "destination",
-                                        "inheritFieldsAndMapping"
+                                        "destination"
                                       ],
                                       "properties": {
                                         "objectName": {
@@ -7131,8 +7130,7 @@
                                   "type": "object",
                                   "required": [
                                     "objectName",
-                                    "destination",
-                                    "inheritFieldsAndMapping"
+                                    "destination"
                                   ],
                                   "properties": {
                                     "objectName": {
@@ -9236,8 +9234,7 @@
                                       "type": "object",
                                       "required": [
                                         "objectName",
-                                        "destination",
-                                        "inheritFieldsAndMapping"
+                                        "destination"
                                       ],
                                       "properties": {
                                         "objectName": {
@@ -38690,8 +38687,7 @@
                           "type": "object",
                           "required": [
                             "objectName",
-                            "destination",
-                            "inheritFieldsAndMapping"
+                            "destination"
                           ],
                           "properties": {
                             "objectName": {
@@ -39097,8 +39093,7 @@
                       "type": "object",
                       "required": [
                         "objectName",
-                        "destination",
-                        "inheritFieldsAndMapping"
+                        "destination"
                       ],
                       "properties": {
                         "objectName": {

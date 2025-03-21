@@ -150,7 +150,6 @@ components:
       required:
         - objectName
         - destination
-        - inheritFieldsAndMapping
       properties:
         objectName:
           type: string

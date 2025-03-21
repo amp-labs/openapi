@@ -309,7 +309,8 @@
                         "type": "object",
                         "required": [
                           "objectName",
-                          "destination"
+                          "destination",
+                          "inheritFieldsAndMapping"
                         ],
                         "properties": {
                           "objectName": {
@@ -317,6 +318,11 @@
                           },
                           "destination": {
                             "type": "string"
+                          },
+                          "inheritFieldsAndMapping": {
+                            "type": "boolean",
+                            "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                            "example": true
                           },
                           "createEvent": {
                             "type": "object",
@@ -684,7 +690,8 @@
                   "type": "object",
                   "required": [
                     "objectName",
-                    "destination"
+                    "destination",
+                    "inheritFieldsAndMapping"
                   ],
                   "properties": {
                     "objectName": {
@@ -692,6 +699,11 @@
                     },
                     "destination": {
                       "type": "string"
+                    },
+                    "inheritFieldsAndMapping": {
+                      "type": "boolean",
+                      "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                      "example": true
                     },
                     "createEvent": {
                       "type": "object",
@@ -1039,7 +1051,8 @@
               "type": "object",
               "required": [
                 "objectName",
-                "destination"
+                "destination",
+                "inheritFieldsAndMapping"
               ],
               "properties": {
                 "objectName": {
@@ -1047,6 +1060,11 @@
                 },
                 "destination": {
                   "type": "string"
+                },
+                "inheritFieldsAndMapping": {
+                  "type": "boolean",
+                  "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                  "example": true
                 },
                 "createEvent": {
                   "type": "object",
@@ -1359,7 +1377,8 @@
         "type": "object",
         "required": [
           "objectName",
-          "destination"
+          "destination",
+          "inheritFieldsAndMapping"
         ],
         "properties": {
           "objectName": {
@@ -1367,6 +1386,11 @@
           },
           "destination": {
             "type": "string"
+          },
+          "inheritFieldsAndMapping": {
+            "type": "boolean",
+            "description": "If true, the integration will inherit the fields and mapping from the read object.",
+            "example": true
           },
           "createEvent": {
             "type": "object",
