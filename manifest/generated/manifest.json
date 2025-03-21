@@ -309,8 +309,7 @@
                         "type": "object",
                         "required": [
                           "objectName",
-                          "destination",
-                          "inheritFieldsAndMapping"
+                          "destination"
                         ],
                         "properties": {
                           "objectName": {
@@ -321,6 +320,7 @@
                           },
                           "inheritFieldsAndMapping": {
                             "type": "boolean",
+                            "x-go-type-skip-optional-pointer": true,
                             "description": "If true, the integration will inherit the fields and mapping from the read object.",
                             "example": true
                           },
@@ -690,8 +690,7 @@
                   "type": "object",
                   "required": [
                     "objectName",
-                    "destination",
-                    "inheritFieldsAndMapping"
+                    "destination"
                   ],
                   "properties": {
                     "objectName": {
@@ -702,6 +701,7 @@
                     },
                     "inheritFieldsAndMapping": {
                       "type": "boolean",
+                      "x-go-type-skip-optional-pointer": true,
                       "description": "If true, the integration will inherit the fields and mapping from the read object.",
                       "example": true
                     },
@@ -1051,8 +1051,7 @@
               "type": "object",
               "required": [
                 "objectName",
-                "destination",
-                "inheritFieldsAndMapping"
+                "destination"
               ],
               "properties": {
                 "objectName": {
@@ -1063,6 +1062,7 @@
                 },
                 "inheritFieldsAndMapping": {
                   "type": "boolean",
+                  "x-go-type-skip-optional-pointer": true,
                   "description": "If true, the integration will inherit the fields and mapping from the read object.",
                   "example": true
                 },
@@ -1377,8 +1377,7 @@
         "type": "object",
         "required": [
           "objectName",
-          "destination",
-          "inheritFieldsAndMapping"
+          "destination"
         ],
         "properties": {
           "objectName": {
@@ -1389,6 +1388,7 @@
           },
           "inheritFieldsAndMapping": {
             "type": "boolean",
+            "x-go-type-skip-optional-pointer": true,
             "description": "If true, the integration will inherit the fields and mapping from the read object.",
             "example": true
           },
