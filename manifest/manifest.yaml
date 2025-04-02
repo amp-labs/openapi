@@ -186,6 +186,11 @@ components:
           type: string
           description: If always, the integration will subscribe to update events.
           enum: [always]
+        watchFieldsAuto:
+          type: string
+          description: If all, the integration will watch all fields for updates.
+          enum: [all]
+          example: all
         requiredWatchFields:
           type: array
           items:
