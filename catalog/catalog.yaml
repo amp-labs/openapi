@@ -282,6 +282,49 @@ components:
           example: https://docs.example.com/api-key
           x-go-type-skip-optional-pointer: true
 
+    Modules:
+      title: Information about modules
+      type: object
+      description: The registry of provider modules.
+      additionalProperties:
+        $ref: "#/components/schemas/ModuleInfo"
+      x-go-type: map[common.ModuleID]ModuleInfo
+      x-go-type-import:
+        path: "github.com/amp-labs/connectors/common"
+
+    ModuleInfo:
+      title: Module Info
+      type: object
+      required:
+        - displayName
+        - baseURL
+        - support
+      properties:
+        displayName:
+          type: string
+        baseURL:
+          type: string
+        support:
+          $ref: '#/components/schemas/ModuleSupport'
+
+    ModuleSupport:
+      title: Module Support
+      type: object
+      description: The supported features for the module.
+      x-oapi-codegen-extra-tags:
+        validate: required
+      required:
+        - read
+        - subscribe
+        - write
+      properties:
+        read:
+          type: boolean
+        subscribe:
+          type: boolean
+        write:
+          type: boolean
+
     ProviderOpts:
       title: Provider Options
       description: Additional provider-specific metadata.
@@ -341,6 +384,8 @@ components:
           $ref: '#/components/schemas/Labels'
         subscribeOpts:
           $ref: '#/components/schemas/SubscribeOpts'
+        modules:
+          $ref: '#/components/schemas/Modules'
 
     CatalogWrapper:
       title: Catalog Wrapper
