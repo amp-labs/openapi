@@ -995,14 +995,13 @@ paths:
               properties:
                 updateMask:
                   type: array
-                  description: "Note: In case the mask is being used to update an object and the object's name contains special characters like a period, a forward slash or a colon, you must escape them using a backslash."
                   example:
                     - connectionId
                     - config.content.write.objects.account
                     - config.content.write.objects.interview\.leads
                   items:
                     type: string
-                    description: fields to update.
+                    description: Fields to update. In case the mask is being used to update an object and the object's name contains special characters like a period, a forward slash or a colon, you must escape them using a backslash.
                 installation:
                   type: object
                   properties:
