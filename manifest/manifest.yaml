@@ -47,6 +47,8 @@ components:
           $ref: '#/components/schemas/IntegrationWrite'
         proxy:
           $ref: '#/components/schemas/IntegrationProxy'
+        subscribe:
+          $ref: '#/components/schemas/IntegrationSubscribe'
 
     IntegrationProxy:
       title: Proxy Integration
@@ -72,6 +74,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IntegrationWriteObject'
+
+    IntegrationSubscribe:
+      title: Subscribe Integration
+      type: object
+      properties:
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationSubscribeObject'
 
     # This is currently only used for read actions.
     # Once we figure out whether to share the same type for both read and write, or use
@@ -133,6 +144,90 @@ components:
         valueDefaults:
           $ref: '#/components/schemas/ValueDefaults'
 
+    IntegrationSubscribeObject:
+      title: Integration Subscribe Object
+      type: object
+      required:
+        - objectName
+        - destination
+      properties:
+        objectName:
+          type: string
+        destination:
+          type: string
+        inheritFieldsAndMapping:
+          type: boolean
+          x-go-type-skip-optional-pointer: true
+          description: If true, the integration will inherit the fields and mapping from the read object.
+          example: true
+        createEvent:
+          $ref: '#/components/schemas/CreateEvent'
+        updateEvent:
+          $ref: '#/components/schemas/UpdateEvent'
+        deleteEvent:
+          $ref: '#/components/schemas/DeleteEvent'
+        associationChangeEvent:
+          $ref: '#/components/schemas/AssociationChangeEvent'
+        otherEvents:
+          $ref: '#/components/schemas/OtherEvents'
+
+    CreateEvent:
+      type : object
+      properties:
+        enabled:
+          type: string
+          description: If always, the integration will subscribe to create events.
+          enum: [always]
+
+    UpdateEvent:
+      type: object
+      properties:
+        enabled:
+          type: string
+          description: If always, the integration will subscribe to update events.
+          enum: [always]
+        watchFieldsAuto:
+          type: string
+          description: If all, the integration will watch all fields for updates.
+          enum: [all]
+          example: all
+        requiredWatchFields:
+          type: array
+          items:
+            type: string
+            description: The fields that are required to be watched for updates.
+            example:
+              - name
+              - domain
+
+    DeleteEvent:
+      type: object
+      properties:
+        enabled:
+          type: string
+          description: If always, the integration will subscribe to delete events.
+          enum: [always]
+
+    AssociationChangeEvent:
+      type: object
+      properties:
+        enabled:
+          type: string
+          description: If always, the integration will subscribe to association change events.
+          enum: [always]
+        includeFullRecords:
+          type: boolean
+          description: If true, the integration will include full records in the event payload.
+
+    OtherEvents:
+      type: array
+      items:
+        type: string
+        description: Non-standard events that the integration will subscribe to.
+        example:
+          - object.merged
+          - object.restored
+
     HydratedIntegration:
       title: Hydrated Integration
       type: object
@@ -189,6 +284,11 @@ components:
         - destination
         - schedule
       properties:
+        error:
+          type: string
+          description: Error message if there was an issue hydrating this object.
+          example: "Failed to fetch fields from provider"
+          x-go-type-skip-optional-pointer: true
         objectName:
           type: string
         displayName:

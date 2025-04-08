@@ -33,32 +33,38 @@
                 "properties": {
                   "providerWorkspaceRef": {
                     "type": "string",
-                    "description": "The identifier for the provider workspace",
+                    "description": "The identifier for the provider workspace.",
                     "example": "salesforce-instance-domain"
                   },
                   "projectId": {
                     "type": "string",
-                    "description": "The Ampersand project ID."
+                    "description": "The Ampersand project ID.",
+                    "example": "453eac80-3482-47c5-b4d6-f040959499e3"
                   },
                   "groupRef": {
                     "type": "string",
-                    "description": "The ID that your app uses to identify the group of users for this Connection, this can be an Org ID, workspace ID, etc."
+                    "description": "The ID that your app uses to identify the group of users for this Connection, this can be an Org ID, workspace ID, etc.",
+                    "example": "group-123"
                   },
                   "groupName": {
                     "type": "string",
-                    "description": "The display name for the group. Defaults to groupRef if not provided."
+                    "description": "The display name for the group. Defaults to groupRef if not provided.",
+                    "example": "Organization Name"
                   },
                   "consumerRef": {
                     "type": "string",
-                    "description": "The ID that your app uses to identify the user whose SaaS credential will be used for this OAuth flow."
+                    "description": "The ID that your app uses to identify the user whose SaaS credential will be used for this OAuth flow.",
+                    "example": "user_123456"
                   },
                   "consumerName": {
                     "type": "string",
-                    "description": "The display name for the consumer. Defaults to consumerRef if not provided."
+                    "description": "The display name for the consumer. Defaults to consumerRef if not provided.",
+                    "example": "John Doe"
                   },
                   "providerAppId": {
                     "type": "string",
-                    "description": "ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed."
+                    "description": "ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
+                    "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
                   },
                   "provider": {
                     "type": "string",
@@ -551,7 +557,7 @@
     },
     "/projects": {
       "get": {
-        "summary": "List all projects that the API key or user credential has access to",
+        "summary": "List all projects that the API key or user credential has access to.",
         "operationId": "listProjects",
         "tags": [
           "Project"
@@ -576,7 +582,7 @@
                       "id": {
                         "type": "string",
                         "description": "The project ID.",
-                        "example": "project-id-123"
+                        "example": "my-project"
                       },
                       "name": {
                         "type": "string",
@@ -590,7 +596,8 @@
                       },
                       "orgId": {
                         "type": "string",
-                        "description": "The organization ID that this project belongs to."
+                        "description": "The organization ID that this project belongs to.",
+                        "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                       },
                       "createTime": {
                         "type": "string",
@@ -601,6 +608,26 @@
                         "type": "string",
                         "description": "The time the project was updated.",
                         "format": "date-time"
+                      },
+                      "entitlements": {
+                        "type": "object",
+                        "description": "The entitlements for the project.",
+                        "properties": {
+                          "brandingRemoval": {
+                            "type": "object",
+                            "required": [
+                              "value"
+                            ],
+                            "x-go-type-skip-optional-pointer": true,
+                            "description": "Whether branding can be removed from the UI library.",
+                            "properties": {
+                              "value": {
+                                "type": "boolean",
+                                "description": "Whether branding has been removed from the project."
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -774,7 +801,8 @@
                   },
                   "orgId": {
                     "type": "string",
-                    "description": "The organization ID."
+                    "description": "The organization ID.",
+                    "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                   }
                 }
               }
@@ -800,7 +828,7 @@
                     "id": {
                       "type": "string",
                       "description": "The project ID.",
-                      "example": "project-id-123"
+                      "example": "my-project"
                     },
                     "name": {
                       "type": "string",
@@ -814,7 +842,8 @@
                     },
                     "orgId": {
                       "type": "string",
-                      "description": "The organization ID that this project belongs to."
+                      "description": "The organization ID that this project belongs to.",
+                      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                     },
                     "createTime": {
                       "type": "string",
@@ -825,6 +854,26 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "required": [
+                            "value"
+                          ],
+                          "x-go-type-skip-optional-pointer": true,
+                          "description": "Whether branding can be removed from the UI library.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -1306,8 +1355,19 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
+            },
+            "example": "my-project"
+          },
+          {
+            "name": "includeEntitlements",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
             }
           }
         ],
@@ -1329,7 +1389,7 @@
                     "id": {
                       "type": "string",
                       "description": "The project ID.",
-                      "example": "project-id-123"
+                      "example": "my-project"
                     },
                     "name": {
                       "type": "string",
@@ -1343,7 +1403,8 @@
                     },
                     "orgId": {
                       "type": "string",
-                      "description": "The organization ID that this project belongs to."
+                      "description": "The organization ID that this project belongs to.",
+                      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                     },
                     "createTime": {
                       "type": "string",
@@ -1354,6 +1415,26 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "required": [
+                            "value"
+                          ],
+                          "x-go-type-skip-optional-pointer": true,
+                          "description": "Whether branding can be removed from the UI library.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -1832,9 +1913,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "responses": {
@@ -2313,9 +2396,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -2335,7 +2420,7 @@
                     ],
                     "items": {
                       "type": "string",
-                      "description": "fields to update."
+                      "description": "Fields to update."
                     }
                   },
                   "project": {
@@ -2362,7 +2447,7 @@
         },
         "responses": {
           "200": {
-            "description": "The updated project",
+            "description": "The updated project.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2378,7 +2463,7 @@
                     "id": {
                       "type": "string",
                       "description": "The project ID.",
-                      "example": "project-id-123"
+                      "example": "my-project"
                     },
                     "name": {
                       "type": "string",
@@ -2392,7 +2477,8 @@
                     },
                     "orgId": {
                       "type": "string",
-                      "description": "The organization ID that this project belongs to."
+                      "description": "The organization ID that this project belongs to.",
+                      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                     },
                     "createTime": {
                       "type": "string",
@@ -2403,6 +2489,26 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "required": [
+                            "value"
+                          ],
+                          "x-go-type-skip-optional-pointer": true,
+                          "description": "Whether branding can be removed from the UI library.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -3208,9 +3314,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "TThe Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "responses": {
@@ -3756,9 +3864,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -4666,7 +4776,7 @@
     },
     "/projects/{projectIdOrName}/provider-apps/{providerAppId}": {
       "delete": {
-        "summary": "Delete a provider app",
+        "summary": "Delete a provider app.",
         "operationId": "deleteProviderApp",
         "tags": [
           "Provider App"
@@ -4676,17 +4786,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "providerAppId",
             "in": "path",
             "required": true,
+            "description": "ID of the provider app (e.g. Salesforce connected app), returned by the CreateProviderApp call.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
           }
         ],
         "responses": {
@@ -5165,17 +5279,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "providerAppId",
             "in": "path",
             "required": true,
+            "description": "ID of the provider app (e.g. Salesforce connected app), returned by the CreateProviderApp call.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
           }
         ],
         "requestBody": {
@@ -5198,7 +5316,7 @@
                     ],
                     "items": {
                       "type": "string",
-                      "description": "fields to update."
+                      "description": "Fields to update."
                     }
                   },
                   "providerApp": {
@@ -5787,9 +5905,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "responses": {
@@ -6134,6 +6254,119 @@
                                 "properties": {
                                   "enabled": {
                                     "type": "boolean"
+                                  }
+                                }
+                              },
+                              "subscribe": {
+                                "title": "Subscribe Integration",
+                                "type": "object",
+                                "properties": {
+                                  "objects": {
+                                    "type": "array",
+                                    "items": {
+                                      "title": "Integration Subscribe Object",
+                                      "type": "object",
+                                      "required": [
+                                        "objectName",
+                                        "destination"
+                                      ],
+                                      "properties": {
+                                        "objectName": {
+                                          "type": "string"
+                                        },
+                                        "destination": {
+                                          "type": "string"
+                                        },
+                                        "inheritFieldsAndMapping": {
+                                          "type": "boolean",
+                                          "x-go-type-skip-optional-pointer": true,
+                                          "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                                          "example": true
+                                        },
+                                        "createEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to create events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "updateEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to update events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            },
+                                            "watchFieldsAuto": {
+                                              "type": "string",
+                                              "description": "If all, the integration will watch all fields for updates.",
+                                              "enum": [
+                                                "all"
+                                              ],
+                                              "example": "all"
+                                            },
+                                            "requiredWatchFields": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "description": "The fields that are required to be watched for updates.",
+                                                "example": [
+                                                  "name",
+                                                  "domain"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "deleteEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to delete events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "associationChangeEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to association change events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            },
+                                            "includeFullRecords": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will include full records in the event payload."
+                                            }
+                                          }
+                                        },
+                                        "otherEvents": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "description": "Non-standard events that the integration will subscribe to.",
+                                            "example": [
+                                              "object.merged",
+                                              "object.restored"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -6609,7 +6842,7 @@
         }
       },
       "post": {
-        "summary": "Create a new integration",
+        "summary": "Create a new integration.",
         "operationId": "createIntegration",
         "tags": [
           "Integration"
@@ -6619,9 +6852,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -6637,7 +6872,8 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "description": "The integration name."
+                    "description": "The integration name.",
+                    "example": "Integration_A"
                   },
                   "provider": {
                     "type": "string",
@@ -6923,6 +7159,119 @@
                             "properties": {
                               "enabled": {
                                 "type": "boolean"
+                              }
+                            }
+                          },
+                          "subscribe": {
+                            "title": "Subscribe Integration",
+                            "type": "object",
+                            "properties": {
+                              "objects": {
+                                "type": "array",
+                                "items": {
+                                  "title": "Integration Subscribe Object",
+                                  "type": "object",
+                                  "required": [
+                                    "objectName",
+                                    "destination"
+                                  ],
+                                  "properties": {
+                                    "objectName": {
+                                      "type": "string"
+                                    },
+                                    "destination": {
+                                      "type": "string"
+                                    },
+                                    "inheritFieldsAndMapping": {
+                                      "type": "boolean",
+                                      "x-go-type-skip-optional-pointer": true,
+                                      "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                                      "example": true
+                                    },
+                                    "createEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "string",
+                                          "description": "If always, the integration will subscribe to create events.",
+                                          "enum": [
+                                            "always"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "updateEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "string",
+                                          "description": "If always, the integration will subscribe to update events.",
+                                          "enum": [
+                                            "always"
+                                          ]
+                                        },
+                                        "watchFieldsAuto": {
+                                          "type": "string",
+                                          "description": "If all, the integration will watch all fields for updates.",
+                                          "enum": [
+                                            "all"
+                                          ],
+                                          "example": "all"
+                                        },
+                                        "requiredWatchFields": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "description": "The fields that are required to be watched for updates.",
+                                            "example": [
+                                              "name",
+                                              "domain"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "deleteEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "string",
+                                          "description": "If always, the integration will subscribe to delete events.",
+                                          "enum": [
+                                            "always"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "associationChangeEvent": {
+                                      "type": "object",
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "string",
+                                          "description": "If always, the integration will subscribe to association change events.",
+                                          "enum": [
+                                            "always"
+                                          ]
+                                        },
+                                        "includeFullRecords": {
+                                          "type": "boolean",
+                                          "description": "If true, the integration will include full records in the event payload."
+                                        }
+                                      }
+                                    },
+                                    "otherEvents": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "description": "Non-standard events that the integration will subscribe to.",
+                                        "example": [
+                                          "object.merged",
+                                          "object.restored"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -7740,17 +8089,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           }
         ],
         "responses": {
@@ -8555,9 +8908,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -8569,7 +8924,8 @@
                 "properties": {
                   "sourceZipUrl": {
                     "type": "string",
-                    "description": "URL of where a zip of the source files can be downloaded (e.g. Google Cloud Storage URL)."
+                    "description": "URL of where a zip of the source files can be downloaded (e.g. Google Cloud Storage URL).",
+                    "example": "https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip"
                   },
                   "sourceYaml": {
                     "type": "string",
@@ -8923,6 +9279,119 @@
                                 "properties": {
                                   "enabled": {
                                     "type": "boolean"
+                                  }
+                                }
+                              },
+                              "subscribe": {
+                                "title": "Subscribe Integration",
+                                "type": "object",
+                                "properties": {
+                                  "objects": {
+                                    "type": "array",
+                                    "items": {
+                                      "title": "Integration Subscribe Object",
+                                      "type": "object",
+                                      "required": [
+                                        "objectName",
+                                        "destination"
+                                      ],
+                                      "properties": {
+                                        "objectName": {
+                                          "type": "string"
+                                        },
+                                        "destination": {
+                                          "type": "string"
+                                        },
+                                        "inheritFieldsAndMapping": {
+                                          "type": "boolean",
+                                          "x-go-type-skip-optional-pointer": true,
+                                          "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                                          "example": true
+                                        },
+                                        "createEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to create events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "updateEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to update events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            },
+                                            "watchFieldsAuto": {
+                                              "type": "string",
+                                              "description": "If all, the integration will watch all fields for updates.",
+                                              "enum": [
+                                                "all"
+                                              ],
+                                              "example": "all"
+                                            },
+                                            "requiredWatchFields": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "description": "The fields that are required to be watched for updates.",
+                                                "example": [
+                                                  "name",
+                                                  "domain"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "deleteEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to delete events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "associationChangeEvent": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "If always, the integration will subscribe to association change events.",
+                                              "enum": [
+                                                "always"
+                                              ]
+                                            },
+                                            "includeFullRecords": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will include full records in the event payload."
+                                            }
+                                          }
+                                        },
+                                        "otherEvents": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "description": "Non-standard events that the integration will subscribe to.",
+                                            "example": [
+                                              "object.merged",
+                                              "object.restored"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -9400,7 +9869,7 @@
     },
     "/projects/{projectIdOrName}/integrations/{integrationId}/revisions": {
       "post": {
-        "summary": "Create a new revision",
+        "summary": "Create a new revision.",
         "operationId": "createRevision",
         "tags": [
           "Revision"
@@ -9410,17 +9879,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           }
         ],
         "requestBody": {
@@ -9431,7 +9904,8 @@
                 "properties": {
                   "sourceZipUrl": {
                     "type": "string",
-                    "description": "URL of where a zip of the source files can be downloaded (e.g. Google Cloud Storage URL)."
+                    "description": "URL of where a zip of the source files can be downloaded (e.g. Google Cloud Storage URL).",
+                    "example": "https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip"
                   },
                   "sourceYaml": {
                     "type": "string",
@@ -10249,24 +10723,29 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           },
           {
             "name": "revisionId",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "revision_123"
             }
           },
           {
@@ -10274,7 +10753,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": null
             }
           }
         ],
@@ -10341,6 +10821,12 @@
                                   "schedule"
                                 ],
                                 "properties": {
+                                  "error": {
+                                    "type": "string",
+                                    "description": "Error message if there was an issue hydrating this object.",
+                                    "example": "Failed to fetch fields from provider",
+                                    "x-go-type-skip-optional-pointer": true
+                                  },
                                   "objectName": {
                                     "type": "string"
                                   },
@@ -11505,9 +11991,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
@@ -11520,6 +12008,8 @@
           {
             "name": "groupRef",
             "in": "query",
+            "description": "The ID of the user group that has access to this installation.",
+            "example": "group-123",
             "schema": {
               "type": "string"
             }
@@ -11831,6 +12321,16 @@
                                 "properties": {
                                   "token": {
                                     "type": "string"
+                                  },
+                                  "issuedAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2024-04-22T18:55:28.456076Z"
+                                  },
+                                  "expiresAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2024-10-22T18:55:28.456076Z"
                                   }
                                 }
                               },
@@ -11843,6 +12343,16 @@
                                 "properties": {
                                   "token": {
                                     "type": "string"
+                                  },
+                                  "issuedAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2024-04-22T18:55:28.456076Z"
+                                  },
+                                  "expiresAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2024-10-22T18:55:28.456076Z"
                                   }
                                 }
                               },
@@ -12049,6 +12559,9 @@
                                         "additionalProperties": {
                                           "title": "Base Write Config Object",
                                           "type": "object",
+                                          "required": [
+                                            "objectName"
+                                          ],
                                           "properties": {
                                             "objectName": {
                                               "description": "The name of the object to write to.",
@@ -12060,10 +12573,13 @@
                                             },
                                             "selectedValueDefaults": {
                                               "type": "object",
+                                              "deprecated": true,
                                               "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                                               "x-go-type-skip-optional-pointer": true,
                                               "additionalProperties": {
-                                                "title": "Value Default",
+                                                "title": "Value Default (Legacy)",
+                                                "deprecated": true,
+                                                "x-go-type": "any",
                                                 "oneOf": [
                                                   {
                                                     "title": "Value Default String",
@@ -12129,6 +12645,56 @@
                                                     }
                                                   }
                                                 ]
+                                              }
+                                            },
+                                            "selectedFieldSettings": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to their settings.",
+                                              "x-go-type-skip-optional-pointer": true,
+                                              "additionalProperties": {
+                                                "title": "Field setting",
+                                                "type": "object",
+                                                "properties": {
+                                                  "default": {
+                                                    "title": "Default value for a field",
+                                                    "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "stringValue": {
+                                                        "type": "string",
+                                                        "description": "The default string value to apply to a field"
+                                                      },
+                                                      "integerValue": {
+                                                        "type": "integer",
+                                                        "description": "The default integer value to apply to a field"
+                                                      },
+                                                      "booleanValue": {
+                                                        "type": "boolean",
+                                                        "description": "The default boolean value to apply to a field"
+                                                      }
+                                                    }
+                                                  },
+                                                  "writeOnCreate": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "always",
+                                                      "never"
+                                                    ],
+                                                    "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
+                                                    "description": "Whether the default value should be applied when creating a record."
+                                                  },
+                                                  "writeOnUpdate": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "always",
+                                                      "never"
+                                                    ],
+                                                    "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
+                                                    "description": "Whether the default value should be applied when updating a record."
+                                                  }
+                                                }
                                               }
                                             }
                                           }
@@ -12643,17 +13209,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           }
         ],
         "requestBody": {
@@ -12668,7 +13238,8 @@
                 "properties": {
                   "groupRef": {
                     "type": "string",
-                    "description": "The ID of the user group that has access to this installation."
+                    "description": "The ID of the user group that has access to this installation.",
+                    "example": "group-123"
                   },
                   "connectionId": {
                     "type": "string",
@@ -12830,6 +13401,9 @@
                                     "additionalProperties": {
                                       "title": "Base Write Config Object",
                                       "type": "object",
+                                      "required": [
+                                        "objectName"
+                                      ],
                                       "properties": {
                                         "objectName": {
                                           "description": "The name of the object to write to.",
@@ -12841,10 +13415,13 @@
                                         },
                                         "selectedValueDefaults": {
                                           "type": "object",
+                                          "deprecated": true,
                                           "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                                           "x-go-type-skip-optional-pointer": true,
                                           "additionalProperties": {
-                                            "title": "Value Default",
+                                            "title": "Value Default (Legacy)",
+                                            "deprecated": true,
+                                            "x-go-type": "any",
                                             "oneOf": [
                                               {
                                                 "title": "Value Default String",
@@ -12910,6 +13487,56 @@
                                                 }
                                               }
                                             ]
+                                          }
+                                        },
+                                        "selectedFieldSettings": {
+                                          "type": "object",
+                                          "description": "This is a map of field names to their settings.",
+                                          "x-go-type-skip-optional-pointer": true,
+                                          "additionalProperties": {
+                                            "title": "Field setting",
+                                            "type": "object",
+                                            "properties": {
+                                              "default": {
+                                                "title": "Default value for a field",
+                                                "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                                "type": "object",
+                                                "properties": {
+                                                  "stringValue": {
+                                                    "type": "string",
+                                                    "description": "The default string value to apply to a field"
+                                                  },
+                                                  "integerValue": {
+                                                    "type": "integer",
+                                                    "description": "The default integer value to apply to a field"
+                                                  },
+                                                  "booleanValue": {
+                                                    "type": "boolean",
+                                                    "description": "The default boolean value to apply to a field"
+                                                  }
+                                                }
+                                              },
+                                              "writeOnCreate": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "default": "always",
+                                                "x-go-type-skip-optional-pointer": true,
+                                                "description": "Whether the default value should be applied when creating a record."
+                                              },
+                                              "writeOnUpdate": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "default": "always",
+                                                "x-go-type-skip-optional-pointer": true,
+                                                "description": "Whether the default value should be applied when updating a record."
+                                              }
+                                            }
                                           }
                                         }
                                       }
@@ -13257,6 +13884,16 @@
                               "properties": {
                                 "token": {
                                   "type": "string"
+                                },
+                                "issuedAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-04-22T18:55:28.456076Z"
+                                },
+                                "expiresAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-10-22T18:55:28.456076Z"
                                 }
                               }
                             },
@@ -13269,6 +13906,16 @@
                               "properties": {
                                 "token": {
                                   "type": "string"
+                                },
+                                "issuedAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-04-22T18:55:28.456076Z"
+                                },
+                                "expiresAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-10-22T18:55:28.456076Z"
                                 }
                               }
                             },
@@ -13475,6 +14122,9 @@
                                       "additionalProperties": {
                                         "title": "Base Write Config Object",
                                         "type": "object",
+                                        "required": [
+                                          "objectName"
+                                        ],
                                         "properties": {
                                           "objectName": {
                                             "description": "The name of the object to write to.",
@@ -13486,10 +14136,13 @@
                                           },
                                           "selectedValueDefaults": {
                                             "type": "object",
+                                            "deprecated": true,
                                             "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
-                                              "title": "Value Default",
+                                              "title": "Value Default (Legacy)",
+                                              "deprecated": true,
+                                              "x-go-type": "any",
                                               "oneOf": [
                                                 {
                                                   "title": "Value Default String",
@@ -13555,6 +14208,56 @@
                                                   }
                                                 }
                                               ]
+                                            }
+                                          },
+                                          "selectedFieldSettings": {
+                                            "type": "object",
+                                            "description": "This is a map of field names to their settings.",
+                                            "x-go-type-skip-optional-pointer": true,
+                                            "additionalProperties": {
+                                              "title": "Field setting",
+                                              "type": "object",
+                                              "properties": {
+                                                "default": {
+                                                  "title": "Default value for a field",
+                                                  "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "stringValue": {
+                                                      "type": "string",
+                                                      "description": "The default string value to apply to a field"
+                                                    },
+                                                    "integerValue": {
+                                                      "type": "integer",
+                                                      "description": "The default integer value to apply to a field"
+                                                    },
+                                                    "booleanValue": {
+                                                      "type": "boolean",
+                                                      "description": "The default boolean value to apply to a field"
+                                                    }
+                                                  }
+                                                },
+                                                "writeOnCreate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
+                                                  "description": "Whether the default value should be applied when creating a record."
+                                                },
+                                                "writeOnUpdate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
+                                                  "description": "Whether the default value should be applied when updating a record."
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -14395,25 +15098,31 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           },
           {
             "name": "installationId",
             "in": "path",
             "required": true,
+            "description": "The Ampersand installation ID.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "installation-123"
           }
         ],
         "responses": {
@@ -14720,6 +15429,16 @@
                               "properties": {
                                 "token": {
                                   "type": "string"
+                                },
+                                "issuedAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-04-22T18:55:28.456076Z"
+                                },
+                                "expiresAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-10-22T18:55:28.456076Z"
                                 }
                               }
                             },
@@ -14732,6 +15451,16 @@
                               "properties": {
                                 "token": {
                                   "type": "string"
+                                },
+                                "issuedAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-04-22T18:55:28.456076Z"
+                                },
+                                "expiresAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-10-22T18:55:28.456076Z"
                                 }
                               }
                             },
@@ -14938,6 +15667,9 @@
                                       "additionalProperties": {
                                         "title": "Base Write Config Object",
                                         "type": "object",
+                                        "required": [
+                                          "objectName"
+                                        ],
                                         "properties": {
                                           "objectName": {
                                             "description": "The name of the object to write to.",
@@ -14949,10 +15681,13 @@
                                           },
                                           "selectedValueDefaults": {
                                             "type": "object",
+                                            "deprecated": true,
                                             "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
-                                              "title": "Value Default",
+                                              "title": "Value Default (Legacy)",
+                                              "deprecated": true,
+                                              "x-go-type": "any",
                                               "oneOf": [
                                                 {
                                                   "title": "Value Default String",
@@ -15018,6 +15753,56 @@
                                                   }
                                                 }
                                               ]
+                                            }
+                                          },
+                                          "selectedFieldSettings": {
+                                            "type": "object",
+                                            "description": "This is a map of field names to their settings.",
+                                            "x-go-type-skip-optional-pointer": true,
+                                            "additionalProperties": {
+                                              "title": "Field setting",
+                                              "type": "object",
+                                              "properties": {
+                                                "default": {
+                                                  "title": "Default value for a field",
+                                                  "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "stringValue": {
+                                                      "type": "string",
+                                                      "description": "The default string value to apply to a field"
+                                                    },
+                                                    "integerValue": {
+                                                      "type": "integer",
+                                                      "description": "The default integer value to apply to a field"
+                                                    },
+                                                    "booleanValue": {
+                                                      "type": "boolean",
+                                                      "description": "The default boolean value to apply to a field"
+                                                    }
+                                                  }
+                                                },
+                                                "writeOnCreate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
+                                                  "description": "Whether the default value should be applied when creating a record."
+                                                },
+                                                "writeOnUpdate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
+                                                  "description": "Whether the default value should be applied when updating a record."
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -15531,17 +16316,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           },
           {
             "name": "installationId",
@@ -15549,7 +16338,9 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "The Ampersand installation ID.",
+            "example": "installation-123"
           }
         ],
         "responses": {
@@ -15704,22 +16495,28 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           },
           {
             "name": "installationId",
             "in": "path",
             "required": true,
+            "description": "The Ampersand installation ID.",
+            "example": "installation-123",
             "schema": {
               "type": "string"
             }
@@ -15739,11 +16536,12 @@
                     "type": "array",
                     "example": [
                       "connectionId",
-                      "config.content.write.objects.account"
+                      "config.content.write.objects.account",
+                      "config.content.write.objects.interview\\.leads"
                     ],
                     "items": {
                       "type": "string",
-                      "description": "fields to update."
+                      "description": "Fields to update. In case the mask is being used to update an object and the object's name contains special characters like a period, a forward slash or a colon, you must escape them using a backslash."
                     }
                   },
                   "installation": {
@@ -15907,6 +16705,9 @@
                                         "additionalProperties": {
                                           "title": "Base Write Config Object",
                                           "type": "object",
+                                          "required": [
+                                            "objectName"
+                                          ],
                                           "properties": {
                                             "objectName": {
                                               "description": "The name of the object to write to.",
@@ -15918,10 +16719,13 @@
                                             },
                                             "selectedValueDefaults": {
                                               "type": "object",
+                                              "deprecated": true,
                                               "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                                               "x-go-type-skip-optional-pointer": true,
                                               "additionalProperties": {
-                                                "title": "Value Default",
+                                                "title": "Value Default (Legacy)",
+                                                "deprecated": true,
+                                                "x-go-type": "any",
                                                 "oneOf": [
                                                   {
                                                     "title": "Value Default String",
@@ -15987,6 +16791,56 @@
                                                     }
                                                   }
                                                 ]
+                                              }
+                                            },
+                                            "selectedFieldSettings": {
+                                              "type": "object",
+                                              "description": "This is a map of field names to their settings.",
+                                              "x-go-type-skip-optional-pointer": true,
+                                              "additionalProperties": {
+                                                "title": "Field setting",
+                                                "type": "object",
+                                                "properties": {
+                                                  "default": {
+                                                    "title": "Default value for a field",
+                                                    "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "stringValue": {
+                                                        "type": "string",
+                                                        "description": "The default string value to apply to a field"
+                                                      },
+                                                      "integerValue": {
+                                                        "type": "integer",
+                                                        "description": "The default integer value to apply to a field"
+                                                      },
+                                                      "booleanValue": {
+                                                        "type": "boolean",
+                                                        "description": "The default boolean value to apply to a field"
+                                                      }
+                                                    }
+                                                  },
+                                                  "writeOnCreate": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "always",
+                                                      "never"
+                                                    ],
+                                                    "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
+                                                    "description": "Whether the default value should be applied when creating a record."
+                                                  },
+                                                  "writeOnUpdate": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "always",
+                                                      "never"
+                                                    ],
+                                                    "default": "always",
+                                                    "x-go-type-skip-optional-pointer": true,
+                                                    "description": "Whether the default value should be applied when updating a record."
+                                                  }
+                                                }
                                               }
                                             }
                                           }
@@ -16323,6 +17177,16 @@
                               "properties": {
                                 "token": {
                                   "type": "string"
+                                },
+                                "issuedAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-04-22T18:55:28.456076Z"
+                                },
+                                "expiresAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-10-22T18:55:28.456076Z"
                                 }
                               }
                             },
@@ -16335,6 +17199,16 @@
                               "properties": {
                                 "token": {
                                   "type": "string"
+                                },
+                                "issuedAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-04-22T18:55:28.456076Z"
+                                },
+                                "expiresAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2024-10-22T18:55:28.456076Z"
                                 }
                               }
                             },
@@ -16541,6 +17415,9 @@
                                       "additionalProperties": {
                                         "title": "Base Write Config Object",
                                         "type": "object",
+                                        "required": [
+                                          "objectName"
+                                        ],
                                         "properties": {
                                           "objectName": {
                                             "description": "The name of the object to write to.",
@@ -16552,10 +17429,13 @@
                                           },
                                           "selectedValueDefaults": {
                                             "type": "object",
+                                            "deprecated": true,
                                             "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                                             "x-go-type-skip-optional-pointer": true,
                                             "additionalProperties": {
-                                              "title": "Value Default",
+                                              "title": "Value Default (Legacy)",
+                                              "deprecated": true,
+                                              "x-go-type": "any",
                                               "oneOf": [
                                                 {
                                                   "title": "Value Default String",
@@ -16621,6 +17501,56 @@
                                                   }
                                                 }
                                               ]
+                                            }
+                                          },
+                                          "selectedFieldSettings": {
+                                            "type": "object",
+                                            "description": "This is a map of field names to their settings.",
+                                            "x-go-type-skip-optional-pointer": true,
+                                            "additionalProperties": {
+                                              "title": "Field setting",
+                                              "type": "object",
+                                              "properties": {
+                                                "default": {
+                                                  "title": "Default value for a field",
+                                                  "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "stringValue": {
+                                                      "type": "string",
+                                                      "description": "The default string value to apply to a field"
+                                                    },
+                                                    "integerValue": {
+                                                      "type": "integer",
+                                                      "description": "The default integer value to apply to a field"
+                                                    },
+                                                    "booleanValue": {
+                                                      "type": "boolean",
+                                                      "description": "The default boolean value to apply to a field"
+                                                    }
+                                                  }
+                                                },
+                                                "writeOnCreate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
+                                                  "description": "Whether the default value should be applied when creating a record."
+                                                },
+                                                "writeOnUpdate": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "default": "always",
+                                                  "x-go-type-skip-optional-pointer": true,
+                                                  "description": "Whether the default value should be applied when updating a record."
+                                                }
+                                              }
                                             }
                                           }
                                         }
@@ -17462,19 +18392,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
-            "description": "Project ID or name",
+            "description": "The unique identifier or name of the project.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "Integration ID",
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           },
           {
             "name": "objectName",
@@ -17490,6 +18422,7 @@
             "in": "query",
             "required": false,
             "description": "The groupRef for the installation",
+            "example": "group-123",
             "schema": {
               "type": "string"
             }
@@ -17756,10 +18689,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
-            "description": "Project ID or name",
+            "description": "The unique identifier or name of the project.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "provider",
@@ -17783,7 +18717,8 @@
             "name": "groupRef",
             "in": "query",
             "required": false,
-            "description": "The groupRef for the connection",
+            "description": "The groupRef for the connection.",
+            "example": "group-123",
             "schema": {
               "type": "string"
             }
@@ -18049,22 +18984,28 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "integration-123"
           },
           {
             "name": "installationId",
             "in": "path",
             "required": true,
+            "description": "The Ampersand installation ID.",
+            "example": "installation-123",
             "schema": {
               "type": "string"
             }
@@ -18992,17 +19933,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "operationId",
             "in": "path",
             "required": true,
+            "description": "Operation ID.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "operation-123"
           }
         ],
         "responses": {
@@ -19877,17 +20822,21 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "operationId",
             "in": "path",
             "required": true,
+            "description": "Operation ID.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "operation-123"
           }
         ],
         "responses": {
@@ -21324,6 +22273,8 @@
             "name": "provider",
             "in": "path",
             "required": true,
+            "description": "The unique identifier of the provider.",
+            "example": "salesforce",
             "schema": {
               "type": "string"
             }
@@ -21913,9 +22864,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "active",
@@ -21968,7 +22921,7 @@
                       "projectId": {
                         "type": "string",
                         "description": "The project ID.",
-                        "example": "project-id-123"
+                        "example": "my-project"
                       },
                       "active": {
                         "type": "boolean",
@@ -22454,9 +23407,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -22532,7 +23487,7 @@
                     "projectId": {
                       "type": "string",
                       "description": "The project ID.",
-                      "example": "project-id-123"
+                      "example": "my-project"
                     },
                     "active": {
                       "type": "boolean",
@@ -23020,14 +23975,18 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "apiKey",
             "in": "path",
             "required": true,
+            "description": "API key to access Ampersand APIs.",
+            "example": "ak_5f9d3e8c7b2a1",
             "schema": {
               "type": "string"
             }
@@ -23073,7 +24032,7 @@
                     "projectId": {
                       "type": "string",
                       "description": "The project ID.",
-                      "example": "project-id-123"
+                      "example": "my-project"
                     },
                     "active": {
                       "type": "boolean",
@@ -23558,14 +24517,18 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "apiKey",
             "in": "path",
             "required": true,
+            "description": "API key to access Ampersand APIs.",
+            "example": "ak_5f9d3e8c7b2a1",
             "schema": {
               "type": "string"
             }
@@ -23913,14 +24876,18 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "apiKey",
             "in": "path",
             "required": true,
+            "description": "API key to access Ampersand APIs.",
+            "example": "ak_5f9d3e8c7b2a1",
             "schema": {
               "type": "string"
             }
@@ -24023,7 +24990,7 @@
                     "projectId": {
                       "type": "string",
                       "description": "The project ID.",
-                      "example": "project-id-123"
+                      "example": "my-project"
                     },
                     "active": {
                       "type": "boolean",
@@ -25157,9 +26124,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "provider",
@@ -25173,6 +26142,7 @@
             "name": "groupRef",
             "in": "query",
             "description": "The ID of the user group that has access to this installation.",
+            "example": "group-123",
             "schema": {
               "type": "string"
             }
@@ -25419,6 +26389,16 @@
                             "properties": {
                               "token": {
                                 "type": "string"
+                              },
+                              "issuedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "expiresAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2024-10-22T18:55:28.456076Z"
                               }
                             }
                           },
@@ -25431,6 +26411,16 @@
                             "properties": {
                               "token": {
                                 "type": "string"
+                              },
+                              "issuedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "expiresAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2024-10-22T18:55:28.456076Z"
                               }
                             }
                           },
@@ -25929,13 +26919,14 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -25956,7 +26947,8 @@
                   },
                   "groupRef": {
                     "type": "string",
-                    "description": "The ID of the user group that has access to this installation."
+                    "description": "The ID of the user group that has access to this installation.",
+                    "example": "group-123"
                   },
                   "consumerName": {
                     "type": "string",
@@ -26338,6 +27330,16 @@
                           "properties": {
                             "token": {
                               "type": "string"
+                            },
+                            "issuedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-04-22T18:55:28.456076Z"
+                            },
+                            "expiresAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-10-22T18:55:28.456076Z"
                             }
                           }
                         },
@@ -26350,6 +27352,16 @@
                           "properties": {
                             "token": {
                               "type": "string"
+                            },
+                            "issuedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-04-22T18:55:28.456076Z"
+                            },
+                            "expiresAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-10-22T18:55:28.456076Z"
                             }
                           }
                         },
@@ -27171,9 +28183,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "connectionId",
@@ -27443,6 +28457,16 @@
                           "properties": {
                             "token": {
                               "type": "string"
+                            },
+                            "issuedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-04-22T18:55:28.456076Z"
+                            },
+                            "expiresAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-10-22T18:55:28.456076Z"
                             }
                           }
                         },
@@ -27455,6 +28479,16 @@
                           "properties": {
                             "token": {
                               "type": "string"
+                            },
+                            "issuedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-04-22T18:55:28.456076Z"
+                            },
+                            "expiresAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-10-22T18:55:28.456076Z"
                             }
                           }
                         },
@@ -27949,9 +28983,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "connectionId",
@@ -28116,9 +29152,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -28627,9 +29665,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -29138,9 +30178,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "requestBody": {
@@ -30058,9 +31100,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           }
         ],
         "responses": {
@@ -30284,9 +31328,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "destination",
@@ -30295,7 +31341,8 @@
             "schema": {
               "type": "string"
             },
-            "description": "The destination name"
+            "description": "The destination name.",
+            "example": "leadConvertedWebhook"
           }
         ],
         "responses": {
@@ -30838,9 +31885,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "destination",
@@ -30849,7 +31898,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The destination ID"
+            "description": "The destination ID."
           }
         ],
         "requestBody": {
@@ -32102,9 +33151,11 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "my-project"
           },
           {
             "name": "destination",
@@ -32792,7 +33843,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Organisation",
+                  "title": "Organization",
                   "required": [
                     "id",
                     "label",
@@ -32804,7 +33855,7 @@
                     "id": {
                       "type": "string",
                       "description": "The organization ID.",
-                      "example": "org-123"
+                      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                     },
                     "label": {
                       "type": "string",
@@ -32982,9 +34033,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           }
         ],
         "responses": {
@@ -32993,7 +34046,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Organisation",
+                  "title": "Organization",
                   "required": [
                     "id",
                     "label",
@@ -33005,7 +34058,7 @@
                     "id": {
                       "type": "string",
                       "description": "The organization ID.",
-                      "example": "org-123"
+                      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                     },
                     "label": {
                       "type": "string",
@@ -33504,9 +34557,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           }
         ],
         "requestBody": {
@@ -33551,7 +34606,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Organisation",
+                  "title": "Organization",
                   "required": [
                     "id",
                     "label",
@@ -33563,7 +34618,7 @@
                     "id": {
                       "type": "string",
                       "description": "The organization ID.",
-                      "example": "org-123"
+                      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                     },
                     "label": {
                       "type": "string",
@@ -34065,9 +35120,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           }
         ],
         "responses": {
@@ -34275,9 +35332,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           }
         ],
         "requestBody": {
@@ -34834,9 +35893,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           }
         ],
         "responses": {
@@ -35054,9 +36115,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           },
           {
             "name": "inviteId",
@@ -35277,9 +36340,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           },
           {
             "name": "inviteId",
@@ -35864,7 +36929,7 @@
                               "id": {
                                 "type": "string",
                                 "description": "The project ID.",
-                                "example": "project-id-123"
+                                "example": "my-project"
                               },
                               "name": {
                                 "type": "string",
@@ -35878,7 +36943,8 @@
                               },
                               "orgId": {
                                 "type": "string",
-                                "description": "The organization ID that this project belongs to."
+                                "description": "The organization ID that this project belongs to.",
+                                "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                               },
                               "createTime": {
                                 "type": "string",
@@ -35889,6 +36955,26 @@
                                 "type": "string",
                                 "description": "The time the project was updated.",
                                 "format": "date-time"
+                              },
+                              "entitlements": {
+                                "type": "object",
+                                "description": "The entitlements for the project.",
+                                "properties": {
+                                  "brandingRemoval": {
+                                    "type": "object",
+                                    "required": [
+                                      "value"
+                                    ],
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "description": "Whether branding can be removed from the UI library.",
+                                    "properties": {
+                                      "value": {
+                                        "type": "boolean",
+                                        "description": "Whether branding has been removed from the project."
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -35923,7 +37009,7 @@
                           "example": "builder-id-123"
                         },
                         "org": {
-                          "title": "Organisation",
+                          "title": "Organization",
                           "required": [
                             "id",
                             "label",
@@ -35935,7 +37021,7 @@
                             "id": {
                               "type": "string",
                               "description": "The organization ID.",
-                              "example": "org-123"
+                              "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                             },
                             "label": {
                               "type": "string",
@@ -36230,7 +37316,7 @@
                               "id": {
                                 "type": "string",
                                 "description": "The project ID.",
-                                "example": "project-id-123"
+                                "example": "my-project"
                               },
                               "name": {
                                 "type": "string",
@@ -36244,7 +37330,8 @@
                               },
                               "orgId": {
                                 "type": "string",
-                                "description": "The organization ID that this project belongs to."
+                                "description": "The organization ID that this project belongs to.",
+                                "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                               },
                               "createTime": {
                                 "type": "string",
@@ -36255,6 +37342,26 @@
                                 "type": "string",
                                 "description": "The time the project was updated.",
                                 "format": "date-time"
+                              },
+                              "entitlements": {
+                                "type": "object",
+                                "description": "The entitlements for the project.",
+                                "properties": {
+                                  "brandingRemoval": {
+                                    "type": "object",
+                                    "required": [
+                                      "value"
+                                    ],
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "description": "Whether branding can be removed from the UI library.",
+                                    "properties": {
+                                      "value": {
+                                        "type": "boolean",
+                                        "description": "Whether branding has been removed from the project."
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -36289,7 +37396,7 @@
                           "example": "builder-id-123"
                         },
                         "org": {
-                          "title": "Organisation",
+                          "title": "Organization",
                           "required": [
                             "id",
                             "label",
@@ -36301,7 +37408,7 @@
                             "id": {
                               "type": "string",
                               "description": "The organization ID.",
-                              "example": "org-123"
+                              "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                             },
                             "label": {
                               "type": "string",
@@ -36482,9 +37589,11 @@
             "name": "orgId",
             "in": "path",
             "required": true,
+            "description": "ID of the organization.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           }
         ],
         "responses": {
@@ -37205,7 +38314,7 @@
   "components": {
     "schemas": {
       "Org": {
-        "title": "Organisation",
+        "title": "Organization",
         "required": [
           "id",
           "label",
@@ -37217,7 +38326,7 @@
           "id": {
             "type": "string",
             "description": "The organization ID.",
-            "example": "org-123"
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           },
           "label": {
             "type": "string",
@@ -37313,7 +38422,7 @@
           "id": {
             "type": "string",
             "description": "The project ID.",
-            "example": "project-id-123"
+            "example": "my-project"
           },
           "name": {
             "type": "string",
@@ -37327,7 +38436,8 @@
           },
           "orgId": {
             "type": "string",
-            "description": "The organization ID that this project belongs to."
+            "description": "The organization ID that this project belongs to.",
+            "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
           },
           "createTime": {
             "type": "string",
@@ -37338,6 +38448,26 @@
             "type": "string",
             "description": "The time the project was updated.",
             "format": "date-time"
+          },
+          "entitlements": {
+            "type": "object",
+            "description": "The entitlements for the project.",
+            "properties": {
+              "brandingRemoval": {
+                "type": "object",
+                "required": [
+                  "value"
+                ],
+                "x-go-type-skip-optional-pointer": true,
+                "description": "Whether branding can be removed from the UI library.",
+                "properties": {
+                  "value": {
+                    "type": "boolean",
+                    "description": "Whether branding has been removed from the project."
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -37738,6 +38868,119 @@
                         "type": "boolean"
                       }
                     }
+                  },
+                  "subscribe": {
+                    "title": "Subscribe Integration",
+                    "type": "object",
+                    "properties": {
+                      "objects": {
+                        "type": "array",
+                        "items": {
+                          "title": "Integration Subscribe Object",
+                          "type": "object",
+                          "required": [
+                            "objectName",
+                            "destination"
+                          ],
+                          "properties": {
+                            "objectName": {
+                              "type": "string"
+                            },
+                            "destination": {
+                              "type": "string"
+                            },
+                            "inheritFieldsAndMapping": {
+                              "type": "boolean",
+                              "x-go-type-skip-optional-pointer": true,
+                              "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                              "example": true
+                            },
+                            "createEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "If always, the integration will subscribe to create events.",
+                                  "enum": [
+                                    "always"
+                                  ]
+                                }
+                              }
+                            },
+                            "updateEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "If always, the integration will subscribe to update events.",
+                                  "enum": [
+                                    "always"
+                                  ]
+                                },
+                                "watchFieldsAuto": {
+                                  "type": "string",
+                                  "description": "If all, the integration will watch all fields for updates.",
+                                  "enum": [
+                                    "all"
+                                  ],
+                                  "example": "all"
+                                },
+                                "requiredWatchFields": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "description": "The fields that are required to be watched for updates.",
+                                    "example": [
+                                      "name",
+                                      "domain"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "deleteEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "If always, the integration will subscribe to delete events.",
+                                  "enum": [
+                                    "always"
+                                  ]
+                                }
+                              }
+                            },
+                            "associationChangeEvent": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "If always, the integration will subscribe to association change events.",
+                                  "enum": [
+                                    "always"
+                                  ]
+                                },
+                                "includeFullRecords": {
+                                  "type": "boolean",
+                                  "description": "If true, the integration will include full records in the event payload."
+                                }
+                              }
+                            },
+                            "otherEvents": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "description": "Non-standard events that the integration will subscribe to.",
+                                "example": [
+                                  "object.merged",
+                                  "object.restored"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -38040,6 +39283,119 @@
                     "type": "boolean"
                   }
                 }
+              },
+              "subscribe": {
+                "title": "Subscribe Integration",
+                "type": "object",
+                "properties": {
+                  "objects": {
+                    "type": "array",
+                    "items": {
+                      "title": "Integration Subscribe Object",
+                      "type": "object",
+                      "required": [
+                        "objectName",
+                        "destination"
+                      ],
+                      "properties": {
+                        "objectName": {
+                          "type": "string"
+                        },
+                        "destination": {
+                          "type": "string"
+                        },
+                        "inheritFieldsAndMapping": {
+                          "type": "boolean",
+                          "x-go-type-skip-optional-pointer": true,
+                          "description": "If true, the integration will inherit the fields and mapping from the read object.",
+                          "example": true
+                        },
+                        "createEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "If always, the integration will subscribe to create events.",
+                              "enum": [
+                                "always"
+                              ]
+                            }
+                          }
+                        },
+                        "updateEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "If always, the integration will subscribe to update events.",
+                              "enum": [
+                                "always"
+                              ]
+                            },
+                            "watchFieldsAuto": {
+                              "type": "string",
+                              "description": "If all, the integration will watch all fields for updates.",
+                              "enum": [
+                                "all"
+                              ],
+                              "example": "all"
+                            },
+                            "requiredWatchFields": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "description": "The fields that are required to be watched for updates.",
+                                "example": [
+                                  "name",
+                                  "domain"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "deleteEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "If always, the integration will subscribe to delete events.",
+                              "enum": [
+                                "always"
+                              ]
+                            }
+                          }
+                        },
+                        "associationChangeEvent": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "If always, the integration will subscribe to association change events.",
+                              "enum": [
+                                "always"
+                              ]
+                            },
+                            "includeFullRecords": {
+                              "type": "boolean",
+                              "description": "If true, the integration will include full records in the event payload."
+                            }
+                          }
+                        },
+                        "otherEvents": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "Non-standard events that the integration will subscribe to.",
+                            "example": [
+                              "object.merged",
+                              "object.restored"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -38103,6 +39459,12 @@
                         "schedule"
                       ],
                       "properties": {
+                        "error": {
+                          "type": "string",
+                          "description": "Error message if there was an issue hydrating this object.",
+                          "example": "Failed to fetch fields from provider",
+                          "x-go-type-skip-optional-pointer": true
+                        },
                         "objectName": {
                           "type": "string"
                         },
@@ -38765,6 +40127,16 @@
                     "properties": {
                       "token": {
                         "type": "string"
+                      },
+                      "issuedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-04-22T18:55:28.456076Z"
+                      },
+                      "expiresAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-10-22T18:55:28.456076Z"
                       }
                     }
                   },
@@ -38777,6 +40149,16 @@
                     "properties": {
                       "token": {
                         "type": "string"
+                      },
+                      "issuedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-04-22T18:55:28.456076Z"
+                      },
+                      "expiresAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-10-22T18:55:28.456076Z"
                       }
                     }
                   },
@@ -38983,6 +40365,9 @@
                             "additionalProperties": {
                               "title": "Base Write Config Object",
                               "type": "object",
+                              "required": [
+                                "objectName"
+                              ],
                               "properties": {
                                 "objectName": {
                                   "description": "The name of the object to write to.",
@@ -38994,10 +40379,13 @@
                                 },
                                 "selectedValueDefaults": {
                                   "type": "object",
+                                  "deprecated": true,
                                   "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                                   "x-go-type-skip-optional-pointer": true,
                                   "additionalProperties": {
-                                    "title": "Value Default",
+                                    "title": "Value Default (Legacy)",
+                                    "deprecated": true,
+                                    "x-go-type": "any",
                                     "oneOf": [
                                       {
                                         "title": "Value Default String",
@@ -39063,6 +40451,56 @@
                                         }
                                       }
                                     ]
+                                  }
+                                },
+                                "selectedFieldSettings": {
+                                  "type": "object",
+                                  "description": "This is a map of field names to their settings.",
+                                  "x-go-type-skip-optional-pointer": true,
+                                  "additionalProperties": {
+                                    "title": "Field setting",
+                                    "type": "object",
+                                    "properties": {
+                                      "default": {
+                                        "title": "Default value for a field",
+                                        "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                        "type": "object",
+                                        "properties": {
+                                          "stringValue": {
+                                            "type": "string",
+                                            "description": "The default string value to apply to a field"
+                                          },
+                                          "integerValue": {
+                                            "type": "integer",
+                                            "description": "The default integer value to apply to a field"
+                                          },
+                                          "booleanValue": {
+                                            "type": "boolean",
+                                            "description": "The default boolean value to apply to a field"
+                                          }
+                                        }
+                                      },
+                                      "writeOnCreate": {
+                                        "type": "string",
+                                        "enum": [
+                                          "always",
+                                          "never"
+                                        ],
+                                        "default": "always",
+                                        "x-go-type-skip-optional-pointer": true,
+                                        "description": "Whether the default value should be applied when creating a record."
+                                      },
+                                      "writeOnUpdate": {
+                                        "type": "string",
+                                        "enum": [
+                                          "always",
+                                          "never"
+                                        ],
+                                        "default": "always",
+                                        "x-go-type-skip-optional-pointer": true,
+                                        "description": "Whether the default value should be applied when updating a record."
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -39273,6 +40711,9 @@
                         "additionalProperties": {
                           "title": "Base Write Config Object",
                           "type": "object",
+                          "required": [
+                            "objectName"
+                          ],
                           "properties": {
                             "objectName": {
                               "description": "The name of the object to write to.",
@@ -39284,10 +40725,13 @@
                             },
                             "selectedValueDefaults": {
                               "type": "object",
+                              "deprecated": true,
                               "description": "This is a map of field names to default values. These values will be used when writing to the object.",
                               "x-go-type-skip-optional-pointer": true,
                               "additionalProperties": {
-                                "title": "Value Default",
+                                "title": "Value Default (Legacy)",
+                                "deprecated": true,
+                                "x-go-type": "any",
                                 "oneOf": [
                                   {
                                     "title": "Value Default String",
@@ -39353,6 +40797,56 @@
                                     }
                                   }
                                 ]
+                              }
+                            },
+                            "selectedFieldSettings": {
+                              "type": "object",
+                              "description": "This is a map of field names to their settings.",
+                              "x-go-type-skip-optional-pointer": true,
+                              "additionalProperties": {
+                                "title": "Field setting",
+                                "type": "object",
+                                "properties": {
+                                  "default": {
+                                    "title": "Default value for a field",
+                                    "description": "Only use one of stringValue, integerValue, booleanValue.",
+                                    "type": "object",
+                                    "properties": {
+                                      "stringValue": {
+                                        "type": "string",
+                                        "description": "The default string value to apply to a field"
+                                      },
+                                      "integerValue": {
+                                        "type": "integer",
+                                        "description": "The default integer value to apply to a field"
+                                      },
+                                      "booleanValue": {
+                                        "type": "boolean",
+                                        "description": "The default boolean value to apply to a field"
+                                      }
+                                    }
+                                  },
+                                  "writeOnCreate": {
+                                    "type": "string",
+                                    "enum": [
+                                      "always",
+                                      "never"
+                                    ],
+                                    "default": "always",
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "description": "Whether the default value should be applied when creating a record."
+                                  },
+                                  "writeOnUpdate": {
+                                    "type": "string",
+                                    "enum": [
+                                      "always",
+                                      "never"
+                                    ],
+                                    "default": "always",
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "description": "Whether the default value should be applied when updating a record."
+                                  }
+                                }
                               }
                             }
                           }
@@ -39615,6 +41109,16 @@
                 "properties": {
                   "token": {
                     "type": "string"
+                  },
+                  "issuedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-04-22T18:55:28.456076Z"
+                  },
+                  "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-10-22T18:55:28.456076Z"
                   }
                 }
               },
@@ -39627,6 +41131,16 @@
                 "properties": {
                   "token": {
                     "type": "string"
+                  },
+                  "issuedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-04-22T18:55:28.456076Z"
+                  },
+                  "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-10-22T18:55:28.456076Z"
                   }
                 }
               },
@@ -39659,6 +41173,16 @@
             "properties": {
               "token": {
                 "type": "string"
+              },
+              "issuedAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2024-04-22T18:55:28.456076Z"
+              },
+              "expiresAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2024-10-22T18:55:28.456076Z"
               }
             }
           },
@@ -39671,6 +41195,16 @@
             "properties": {
               "token": {
                 "type": "string"
+              },
+              "issuedAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2024-04-22T18:55:28.456076Z"
+              },
+              "expiresAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2024-10-22T18:55:28.456076Z"
               }
             }
           },
@@ -39750,11 +41284,13 @@
         "properties": {
           "providerAppId": {
             "description": "ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
-            "type": "string"
+            "type": "string",
+            "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
           },
           "groupRef": {
             "description": "The ID of the user group that has access to this installation. This is any ID that your app uses to identify a group of users - such as an org, team, or workspace.",
-            "type": "string"
+            "type": "string",
+            "example": "group-123"
           },
           "groupName": {
             "description": "The display name of the user group that has access to this installation.",
@@ -40074,7 +41610,7 @@
           "projectId": {
             "type": "string",
             "description": "The project ID.",
-            "example": "project-id-123"
+            "example": "my-project"
           },
           "active": {
             "type": "boolean",
@@ -40378,7 +41914,7 @@
                     "id": {
                       "type": "string",
                       "description": "The project ID.",
-                      "example": "project-id-123"
+                      "example": "my-project"
                     },
                     "name": {
                       "type": "string",
@@ -40392,7 +41928,8 @@
                     },
                     "orgId": {
                       "type": "string",
-                      "description": "The organization ID that this project belongs to."
+                      "description": "The organization ID that this project belongs to.",
+                      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                     },
                     "createTime": {
                       "type": "string",
@@ -40403,6 +41940,26 @@
                       "type": "string",
                       "description": "The time the project was updated.",
                       "format": "date-time"
+                    },
+                    "entitlements": {
+                      "type": "object",
+                      "description": "The entitlements for the project.",
+                      "properties": {
+                        "brandingRemoval": {
+                          "type": "object",
+                          "required": [
+                            "value"
+                          ],
+                          "x-go-type-skip-optional-pointer": true,
+                          "description": "Whether branding can be removed from the UI library.",
+                          "properties": {
+                            "value": {
+                              "type": "boolean",
+                              "description": "Whether branding has been removed from the project."
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -40437,7 +41994,7 @@
                 "example": "builder-id-123"
               },
               "org": {
-                "title": "Organisation",
+                "title": "Organization",
                 "required": [
                   "id",
                   "label",
@@ -40449,7 +42006,7 @@
                   "id": {
                     "type": "string",
                     "description": "The organization ID.",
-                    "example": "org-123"
+                    "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
                   },
                   "label": {
                     "type": "string",

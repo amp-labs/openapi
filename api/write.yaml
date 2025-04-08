@@ -118,33 +118,45 @@ components:
       type: object
       required:
         - result
+        - operationId
       additionalProperties: false
       properties:
         result:
           $ref: "#/components/schemas/WriteResult"
+        operationId:
+          type: string
+          description: The operation ID
+          example: acb0d75a-1b59-4aad-a191-48c5b75ea9e4
     WriteResponseSingleFail:
       title: Sync Write Response Failure
       type: object
       required:
         - errors
+        - operationId
       additionalProperties: false
       properties:
         errors:
           type: array
           description: Error messages resulted in failures
           items:
-            type: string
-            description: errors messages when some unexpected event happened, but write to provider was successful
-            example: "The record with ID 003Dp0X#@RG7IAP was not found"
+            type: object
+            properties:
+              message:
+                type: string
+                description: errors messages when some unexpected event happened, but write to provider was successful
+                example: "The record with ID 003Dp0X#@RG7IAP was not found"
         result:
           $ref: "#/components/schemas/WriteResult"
         warnings:
           type: array
           description: Warnings messages when some unexpected event happened, but not blocking failures
           items:
-            type: string
-            description: Warning messages for unexpected events
-            example: "Ampersand Operation failed to be updated"
+            type: object
+            properties:
+              message:
+                type: string
+                description: errors messages when some unexpected event happened, but write to provider was successful
+                example: "The record with ID 003Dp0X#@RG7IAP was not found"
         operationId:
           type: string
           description: The operation ID
