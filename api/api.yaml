@@ -11,7 +11,6 @@ paths:
       summary: Get URL for OAuth flow
       description: Generate a URL for the browser to render to kick off OAuth flow.
       tags: ["OAuth"]
-      security: [] # This overrides the global security
       requestBody:
         content:
           application/json:
@@ -81,6 +80,45 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: connectOAuthParams
+  /projects/{projectIdOrName}/connections/{connectionId}/oauth-update:
+    post:
+      operationId: oauthUpdate
+      summary: Get URL for updating existing OAuth connection
+      description: Generate a URL for the browser to render to kick off OAuth flow that updates an existing connection.
+      tags: ["OAuth"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Ampersand Project ID or name.
+        - name: connectionId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of connection to update.
+      responses:
+        200:
+          description: OAuth update initiated successfully
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: URL to initiate OAuth flow
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects:
     get:
       summary: List all projects that the API key or user credential has access to.
