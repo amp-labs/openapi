@@ -3154,58 +3154,6 @@ components:
           items:
             type: string
           description: The scopes for the tokens.
-    ImportConnectionRequest:
-      title: Import Connection Request
-      required:
-        - groupRef
-        - groupName
-        - consumerRef
-        - consumerName
-        - providerWorkspaceRef
-        - refreshToken
-      type: object
-      properties:
-        providerAppId:
-          description:
-            ID of the provider app, returned from a CreateProviderApp call.
-            If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
-          type: string
-          example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
-        groupRef:
-          description:
-            The ID of the user group that has access to this installation. This is any ID that your app uses
-            to identify a group of users - such as an org, team, or workspace.
-          type: string
-          example: group-123
-        groupName:
-          description: The display name of the user group that has access to this installation.
-          type: string
-        consumerRef:
-          description:
-            The ID of the user whose credential was used for this connection. This is the ID that your app
-            uses to identify a user - such as a user ID or username.
-          type: string
-        consumerName:
-          description: The display name of the user whose credential was used for this connection.
-          type: string
-        providerWorkspaceRef:
-          type: string
-          description: The identifier for the provider workspace (e.g. the Salesforce subdomain)
-          example: provider-workspace-123
-        providerConsumerRef:
-          type: string
-          description:
-            The ID that Salesforce/Hubspot uses to identify this user (e.g.
-            Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)
-          example: provider-consumer-123
-        refreshToken:
-          type: string
-          description: The refresh token.
-        scopes:
-          type: array
-          description: The OAuth scopes for this token. If omitted, will default to the scopes of the Provider App.
-          items:
-            type: string
     UpdateConnectionRequest:
       title: Update Connection Request
       type: object
