@@ -83,7 +83,7 @@ paths:
   /projects/{projectIdOrName}/connections/{connectionId}/oauth-update:
     post:
       operationId: oauthUpdate
-      summary: Get URL for updating existing OAuth connection
+      summary: Get URL for updating OAuth connection
       description: Generate a URL for the browser to render to kick off OAuth flow that updates an existing connection.
       tags: ["OAuth"]
       parameters:
@@ -1735,90 +1735,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - groupRef
-                - consumerRef
-                - provider
-              properties:
-                providerWorkspaceRef:
-                  type: string
-                  description: The ID of the provider workspace that this connection belongs to.
-                groupName:
-                  type: string
-                  description: The name of the user group that has access to this installation.
-                groupRef:
-                  type: string
-                  description: The ID of the user group that has access to this installation.
-                  example: group-123
-                consumerName:
-                  type: string
-                  description: The name of the consumer that has access to this installation.
-                consumerRef:
-                  type: string
-                  description: The consumer reference.
-                provider:
-                  type: string
-                  description: The provider name (e.g. "salesforce", "hubspot")
-                apiKey:
-                  type: string
-                  description: The API key to use for the connection.
-                basicAuth:
-                  type: object
-                  required:
-                    - username
-                    - password
-                  properties:
-                    username:
-                      type: string
-                      description: The username to use for the connection.
-                    password:
-                      type: string
-                      description: The password to use for the connection.
-                oauth2ClientCredentials:
-                  type: object
-                  required:
-                    - clientId
-                    - clientSecret
-                  properties:
-                    clientId:
-                      type: string
-                      description: The client ID to use for the connection.
-                    clientSecret:
-                      type: string
-                      description: The client secret to use for the connection.
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                      description: The scopes for the tokens.
-                oauth2Password:
-                  type: object
-                  required:
-                    - username
-                    - password
-                    - clientId
-                    - clientSecret
-                  properties:
-                    username:
-                      type: string
-                      description: The username to use for the connection.
-                    password:
-                      type: string
-                      description: The password to use for the connection.
-                    clientId:
-                      type: string
-                      description: The client ID to use for the connection.
-                    clientSecret:
-                      type: string
-                      description: The client secret to use for the connection.
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                      description: The scopes for the tokens.
-                oauth2AuthorizationCode:
-                  $ref: "#/components/schemas/Oauth2AuthorizationCode"
+              $ref: "#/components/schemas/GenerateConnectionRequest"
       responses:
         201:
           description: Created
@@ -1889,6 +1806,49 @@ paths:
                 $ref: "#/components/schemas/Connection"
         404:
           description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+    patch:
+      summary: Update a connection.
+      description: Update an existing connection.
+      operationId: updateConnection
+      tags: ["Connection"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Project ID or Name.
+        - name: connectionId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Connection ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConnectionRequest'
+      responses:
+        '200':
+          description: Connection updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        400:
+          description: Bad request.
           content:
             application/problem+json:
               schema:
@@ -3246,6 +3206,98 @@ components:
           description: The OAuth scopes for this token. If omitted, will default to the scopes of the Provider App.
           items:
             type: string
+    UpdateConnectionRequest:
+      title: Update Connection Request
+      type: object
+      properties:
+        providerWorkspaceRef:
+          type: string
+          description: The ID of the provider workspace that this connection belongs to.
+        groupName:
+          type: string
+          description: The name of the user group that has access to this installation.
+        groupRef:
+          type: string
+          description: The ID of the user group that has access to this installation.
+          example: group-123
+        consumerName:
+          type: string
+          description: The name of the consumer that has access to this installation.
+        consumerRef:
+          type: string
+          description: The consumer reference.
+        provider:
+          type: string
+          description: The provider name (e.g. "salesforce", "hubspot")
+        apiKey:
+          type: string
+          description: The API key to use for the connection.
+        basicAuth:
+          type: object
+          required:
+            - username
+            - password
+          properties:
+            username:
+              type: string
+              description: The username to use for the connection.
+            password:
+              type: string
+              description: The password to use for the connection.
+        oauth2ClientCredentials:
+          type: object
+          required:
+            - clientId
+            - clientSecret
+          properties:
+            clientId:
+              type: string
+              description: The client ID to use for the connection.
+            clientSecret:
+              type: string
+              description: The client secret to use for the connection.
+            scopes:
+              type: array
+              items:
+                type: string
+              description: The scopes for the tokens.
+        oauth2Password:
+          type: object
+          required:
+            - username
+            - password
+            - clientId
+            - clientSecret
+          properties:
+            username:
+              type: string
+              description: The username to use for the connection.
+            password:
+              type: string
+              description: The password to use for the connection.
+            clientId:
+              type: string
+              description: The client ID to use for the connection.
+            clientSecret:
+              type: string
+              description: The client secret to use for the connection.
+            scopes:
+              type: array
+              items:
+                type: string
+              description: The scopes for the tokens.
+        oauth2AuthorizationCode:
+          $ref: "#/components/schemas/Oauth2AuthorizationCode"
+    GenerateConnectionRequest:
+      title: Generate Connection Request
+      allOf:
+        - $ref: '#/components/schemas/UpdateConnectionRequest'
+        - type: object
+          required:
+            - groupRef
+            - consumerRef
+            - provider
+    
     Group:
       title: Group
       required:
