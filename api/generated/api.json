@@ -33,7 +33,7 @@
                 "properties": {
                   "providerWorkspaceRef": {
                     "type": "string",
-                    "description": "The identifier for the provider workspace.",
+                    "description": "The identifier for the provider workspace (e.g. the Salesforce subdomain).",
                     "example": "salesforce-instance-domain"
                   },
                   "projectId": {
@@ -12258,7 +12258,7 @@
                           },
                           "providerWorkspaceRef": {
                             "type": "string",
-                            "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                            "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                             "example": "provider-workspace-123"
                           },
                           "providerConsumerRef": {
@@ -13818,7 +13818,7 @@
                         },
                         "providerWorkspaceRef": {
                           "type": "string",
-                          "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                          "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                           "example": "provider-workspace-123"
                         },
                         "providerConsumerRef": {
@@ -15359,7 +15359,7 @@
                         },
                         "providerWorkspaceRef": {
                           "type": "string",
-                          "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                          "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                           "example": "provider-workspace-123"
                         },
                         "providerConsumerRef": {
@@ -17101,7 +17101,7 @@
                         },
                         "providerWorkspaceRef": {
                           "type": "string",
-                          "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                          "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                           "example": "provider-workspace-123"
                         },
                         "providerConsumerRef": {
@@ -19056,8 +19056,7 @@
                           },
                           "id": {
                             "type": "string",
-                            "description": "The operation ID.",
-                            "example": "operation-123"
+                            "description": "The operation ID."
                           },
                           "installationId": {
                             "type": "string",
@@ -19922,8 +19921,7 @@
             "description": "Operation ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "operation-123"
+            }
           }
         ],
         "responses": {
@@ -19965,8 +19963,7 @@
                     },
                     "id": {
                       "type": "string",
-                      "description": "The operation ID.",
-                      "example": "operation-123"
+                      "description": "The operation ID."
                     },
                     "installationId": {
                       "type": "string",
@@ -20809,8 +20806,7 @@
             "description": "Operation ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "operation-123"
+            }
           }
         ],
         "responses": {
@@ -22247,8 +22243,8 @@
             "name": "provider",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the provider.",
-            "example": "salesforce",
+            "description": "The API provider.",
+            "example": "hubspot",
             "schema": {
               "type": "string"
             }
@@ -23960,7 +23956,6 @@
             "in": "path",
             "required": true,
             "description": "API key to access Ampersand APIs.",
-            "example": "ak_5f9d3e8c7b2a1",
             "schema": {
               "type": "string"
             }
@@ -24502,7 +24497,6 @@
             "in": "path",
             "required": true,
             "description": "API key to access Ampersand APIs.",
-            "example": "ak_5f9d3e8c7b2a1",
             "schema": {
               "type": "string"
             }
@@ -24861,7 +24855,6 @@
             "in": "path",
             "required": true,
             "description": "API key to access Ampersand APIs.",
-            "example": "ak_5f9d3e8c7b2a1",
             "schema": {
               "type": "string"
             }
@@ -26306,7 +26299,7 @@
                       },
                       "providerWorkspaceRef": {
                         "type": "string",
-                        "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                        "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                         "example": "provider-workspace-123"
                       },
                       "providerConsumerRef": {
@@ -27247,7 +27240,7 @@
                     },
                     "providerWorkspaceRef": {
                       "type": "string",
-                      "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                      "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                       "example": "provider-workspace-123"
                     },
                     "providerConsumerRef": {
@@ -28374,7 +28367,7 @@
                     },
                     "providerWorkspaceRef": {
                       "type": "string",
-                      "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                      "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                       "example": "provider-workspace-123"
                     },
                     "providerConsumerRef": {
@@ -40041,7 +40034,7 @@
               },
               "providerWorkspaceRef": {
                 "type": "string",
-                "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+                "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
                 "example": "provider-workspace-123"
               },
               "providerConsumerRef": {
@@ -41023,7 +41016,7 @@
           },
           "providerWorkspaceRef": {
             "type": "string",
-            "description": "If available, the identifier for the provider workspace (e.g. \"salesforce-instance-domain\")",
+            "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
             "example": "provider-workspace-123"
           },
           "providerConsumerRef": {
@@ -41410,8 +41403,7 @@
           },
           "id": {
             "type": "string",
-            "description": "The operation ID.",
-            "example": "operation-123"
+            "description": "The operation ID."
           },
           "installationId": {
             "type": "string",
