@@ -39,7 +39,7 @@
                   "projectId": {
                     "type": "string",
                     "description": "The Ampersand project ID.",
-                    "example": "453eac80-3482-47c5-b4d6-f040959499e3"
+                    "example": "my-project"
                   },
                   "groupRef": {
                     "type": "string",
@@ -63,7 +63,7 @@
                   },
                   "providerAppId": {
                     "type": "string",
-                    "description": "ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
+                    "description": "ID of the provider app, returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
                     "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
                   },
                   "provider": {
@@ -4796,7 +4796,7 @@
             "name": "providerAppId",
             "in": "path",
             "required": true,
-            "description": "ID of the provider app (e.g. Salesforce connected app), returned by the CreateProviderApp call.",
+            "description": "ID of the provider app, returned by the CreateProviderApp call.",
             "schema": {
               "type": "string"
             },
@@ -5289,7 +5289,7 @@
             "name": "providerAppId",
             "in": "path",
             "required": true,
-            "description": "ID of the provider app (e.g. Salesforce connected app), returned by the CreateProviderApp call.",
+            "description": "ID of the provider app, returned by the CreateProviderApp call.",
             "schema": {
               "type": "string"
             },
@@ -6873,7 +6873,7 @@
                   "name": {
                     "type": "string",
                     "description": "The integration name.",
-                    "example": "Integration_A"
+                    "example": "my-integration"
                   },
                   "provider": {
                     "type": "string",
@@ -8099,11 +8099,11 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
             },
-            "example": "integration-123"
+            "example": "123e4567-e89b-12d3-a456-426614174000"
           }
         ],
         "responses": {
@@ -9889,7 +9889,7 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
             },
@@ -10733,28 +10733,27 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           },
           {
             "name": "revisionId",
             "in": "path",
             "required": true,
+            "description": "The revision ID.",
             "schema": {
-              "type": "string",
-              "example": "revision_123"
+              "type": "string"
             }
           },
           {
             "name": "connectionId",
             "in": "query",
             "required": true,
+            "description": "The connection ID.",
             "schema": {
-              "type": "string",
-              "example": null
+              "type": "string"
             }
           }
         ],
@@ -13219,11 +13218,10 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           }
         ],
         "requestBody": {
@@ -15108,7 +15106,7 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
             },
@@ -15118,11 +15116,10 @@
             "name": "installationId",
             "in": "path",
             "required": true,
-            "description": "The Ampersand installation ID.",
+            "description": "The installation ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "installation-123"
+            }
           }
         ],
         "responses": {
@@ -16326,7 +16323,7 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
             },
@@ -16505,7 +16502,7 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
             },
@@ -18402,7 +18399,7 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
             },
@@ -18994,7 +18991,7 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
             },
@@ -41283,7 +41280,7 @@
         "type": "object",
         "properties": {
           "providerAppId": {
-            "description": "ID of the provider app (e.g. Salesforce connected app), returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
+            "description": "ID of the provider app, returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
             "type": "string",
             "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
           },
