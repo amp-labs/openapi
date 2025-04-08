@@ -5933,8 +5933,7 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The integration ID.",
-                        "example": "integration-123"
+                        "description": "The integration ID."
                       },
                       "projectId": {
                         "type": "string",
@@ -8958,8 +8957,7 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The integration ID.",
-                        "example": "integration-123"
+                        "description": "The integration ID."
                       },
                       "projectId": {
                         "type": "string",
@@ -9892,8 +9890,7 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           }
         ],
         "requestBody": {
@@ -12037,8 +12034,7 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The installation ID.",
-                        "example": "installation-123"
+                        "description": "The installation ID."
                       },
                       "projectId": {
                         "type": "string",
@@ -12047,8 +12043,7 @@
                       },
                       "integrationId": {
                         "type": "string",
-                        "description": "The integration ID.",
-                        "example": "integration-123"
+                        "description": "The integration ID."
                       },
                       "group": {
                         "title": "Group",
@@ -13599,8 +13594,7 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "description": "The installation ID.",
-                      "example": "installation-123"
+                      "description": "The installation ID."
                     },
                     "projectId": {
                       "type": "string",
@@ -13609,8 +13603,7 @@
                     },
                     "integrationId": {
                       "type": "string",
-                      "description": "The integration ID.",
-                      "example": "integration-123"
+                      "description": "The integration ID."
                     },
                     "group": {
                       "title": "Group",
@@ -15109,8 +15102,7 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           },
           {
             "name": "installationId",
@@ -15143,8 +15135,7 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "description": "The installation ID.",
-                      "example": "installation-123"
+                      "description": "The installation ID."
                     },
                     "projectId": {
                       "type": "string",
@@ -15153,8 +15144,7 @@
                     },
                     "integrationId": {
                       "type": "string",
-                      "description": "The integration ID.",
-                      "example": "integration-123"
+                      "description": "The integration ID."
                     },
                     "group": {
                       "title": "Group",
@@ -16326,8 +16316,7 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           },
           {
             "name": "installationId",
@@ -16336,8 +16325,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The Ampersand installation ID.",
-            "example": "installation-123"
+            "description": "The Ampersand installation ID."
           }
         ],
         "responses": {
@@ -16505,15 +16493,13 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           },
           {
             "name": "installationId",
             "in": "path",
             "required": true,
             "description": "The Ampersand installation ID.",
-            "example": "installation-123",
             "schema": {
               "type": "string"
             }
@@ -16891,8 +16877,7 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "description": "The installation ID.",
-                      "example": "installation-123"
+                      "description": "The installation ID."
                     },
                     "projectId": {
                       "type": "string",
@@ -16901,8 +16886,7 @@
                     },
                     "integrationId": {
                       "type": "string",
-                      "description": "The integration ID.",
-                      "example": "integration-123"
+                      "description": "The integration ID."
                     },
                     "group": {
                       "title": "Group",
@@ -18402,8 +18386,7 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           },
           {
             "name": "objectName",
@@ -18994,15 +18977,13 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "integration-123"
+            }
           },
           {
             "name": "installationId",
             "in": "path",
             "required": true,
             "description": "The Ampersand installation ID.",
-            "example": "installation-123",
             "schema": {
               "type": "string"
             }
@@ -19061,8 +19042,7 @@
                           },
                           "integrationId": {
                             "type": "string",
-                            "description": "The integration ID.",
-                            "example": "integration-123"
+                            "description": "The integration ID."
                           },
                           "configId": {
                             "type": "string",
@@ -19081,8 +19061,7 @@
                           },
                           "installationId": {
                             "type": "string",
-                            "description": "The Ampersand installation ID.",
-                            "example": "installation-123"
+                            "description": "The Ampersand installation ID."
                           },
                           "status": {
                             "type": "string",
@@ -19972,8 +19951,7 @@
                     },
                     "integrationId": {
                       "type": "string",
-                      "description": "The integration ID.",
-                      "example": "integration-123"
+                      "description": "The integration ID."
                     },
                     "configId": {
                       "type": "string",
@@ -19992,8 +19970,7 @@
                     },
                     "installationId": {
                       "type": "string",
-                      "description": "The Ampersand installation ID.",
-                      "example": "installation-123"
+                      "description": "The Ampersand installation ID."
                     },
                     "status": {
                       "type": "string",
@@ -38542,8 +38519,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The integration ID.",
-            "example": "integration-123"
+            "description": "The integration ID."
           },
           "projectId": {
             "type": "string",
@@ -39841,8 +39817,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The installation ID.",
-            "example": "installation-123"
+            "description": "The installation ID."
           },
           "projectId": {
             "type": "string",
@@ -39851,8 +39826,7 @@
           },
           "integrationId": {
             "type": "string",
-            "description": "The integration ID.",
-            "example": "integration-123"
+            "description": "The integration ID."
           },
           "group": {
             "title": "Group",
@@ -41422,8 +41396,7 @@
           },
           "integrationId": {
             "type": "string",
-            "description": "The integration ID.",
-            "example": "integration-123"
+            "description": "The integration ID."
           },
           "configId": {
             "type": "string",
@@ -41442,8 +41415,7 @@
           },
           "installationId": {
             "type": "string",
-            "description": "The Ampersand installation ID.",
-            "example": "installation-123"
+            "description": "The Ampersand installation ID."
           },
           "status": {
             "type": "string",

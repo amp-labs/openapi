@@ -725,7 +725,6 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: integration-123
       requestBody:
         content:
           application/json:
@@ -969,7 +968,6 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: integration-123
         - name: installationId
           in: path
           required: true
@@ -1013,14 +1011,12 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: integration-123
         - name: installationId
           in: path
           required: true
           schema:
             type: string
           description: The Ampersand installation ID.
-          example: installation-123
       responses:
         204:
           description: Deleted
@@ -1048,12 +1044,10 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: integration-123
         - name: installationId
           in: path
           required: true
           description: The Ampersand installation ID.
-          example: installation-123
           schema:
             type: string
       requestBody:
@@ -1151,7 +1145,6 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: integration-123
         - name: objectName
           in: path
           required: true
@@ -1246,12 +1239,10 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: integration-123
         - name: installationId
           in: path
           required: true
           description: The Ampersand installation ID.
-          example: installation-123
           schema:
             type: string
         - name: pageSize
@@ -2873,7 +2864,6 @@ components:
         id:
           type: string
           description: The integration ID.
-          example: integration-123
         projectId:
           type: string
           description: The Ampersand project ID.
@@ -2958,7 +2948,6 @@ components:
         id:
           type: string
           description: The installation ID.
-          example: installation-123
         projectId:
           type: string
           description: The Ampersand project ID.
@@ -2966,7 +2955,6 @@ components:
         integrationId:
           type: string
           description: The integration ID.
-          example: integration-123
         group:
           $ref: "#/components/schemas/Group"
         healthStatus:
@@ -3306,7 +3294,6 @@ components:
         integrationId:
           type: string
           description: The integration ID.
-          example: integration-123
         configId:
           type: string
           description: The config ID.
@@ -3322,7 +3309,6 @@ components:
         installationId:
           type: string
           description: The Ampersand installation ID.
-          example: installation-123
         status:
           type: string
           description: The status of the operation.
