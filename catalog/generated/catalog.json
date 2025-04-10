@@ -511,6 +511,197 @@
           }
         }
       },
+      "Modules": {
+        "title": "Modules that this provider supports",
+        "type": "object",
+        "description": "The registry of provider modules.",
+        "additionalProperties": {
+          "title": "Module Info",
+          "type": "object",
+          "required": [
+            "displayName",
+            "baseURL",
+            "support"
+          ],
+          "properties": {
+            "displayName": {
+              "type": "string"
+            },
+            "baseURL": {
+              "type": "string"
+            },
+            "support": {
+              "title": "Support",
+              "type": "object",
+              "description": "The supported features for the provider.",
+              "x-oapi-codegen-extra-tags": {
+                "validate": "required"
+              },
+              "required": [
+                "bulkWrite",
+                "proxy",
+                "read",
+                "subscribe",
+                "write"
+              ],
+              "properties": {
+                "bulkWrite": {
+                  "title": "Bulk Write Support",
+                  "type": "object",
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  },
+                  "required": [
+                    "insert",
+                    "update",
+                    "upsert",
+                    "delete"
+                  ],
+                  "properties": {
+                    "insert": {
+                      "type": "boolean"
+                    },
+                    "update": {
+                      "type": "boolean"
+                    },
+                    "upsert": {
+                      "type": "boolean"
+                    },
+                    "delete": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "proxy": {
+                  "type": "boolean"
+                },
+                "read": {
+                  "type": "boolean"
+                },
+                "subscribe": {
+                  "type": "boolean"
+                },
+                "write": {
+                  "type": "boolean"
+                },
+                "subscribeSupport": {
+                  "title": "Subscribe Support",
+                  "type": "object",
+                  "properties": {
+                    "create": {
+                      "type": "boolean"
+                    },
+                    "update": {
+                      "type": "boolean"
+                    },
+                    "delete": {
+                      "type": "boolean"
+                    },
+                    "passThrough": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-go-type": "map[common.ModuleID]ModuleInfo",
+        "x-go-type-import": {
+          "path": "github.com/amp-labs/connectors/common"
+        }
+      },
+      "ModuleInfo": {
+        "title": "Module Info",
+        "type": "object",
+        "required": [
+          "displayName",
+          "baseURL",
+          "support"
+        ],
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "baseURL": {
+            "type": "string"
+          },
+          "support": {
+            "title": "Support",
+            "type": "object",
+            "description": "The supported features for the provider.",
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            },
+            "required": [
+              "bulkWrite",
+              "proxy",
+              "read",
+              "subscribe",
+              "write"
+            ],
+            "properties": {
+              "bulkWrite": {
+                "title": "Bulk Write Support",
+                "type": "object",
+                "x-oapi-codegen-extra-tags": {
+                  "validate": "required"
+                },
+                "required": [
+                  "insert",
+                  "update",
+                  "upsert",
+                  "delete"
+                ],
+                "properties": {
+                  "insert": {
+                    "type": "boolean"
+                  },
+                  "update": {
+                    "type": "boolean"
+                  },
+                  "upsert": {
+                    "type": "boolean"
+                  },
+                  "delete": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "proxy": {
+                "type": "boolean"
+              },
+              "read": {
+                "type": "boolean"
+              },
+              "subscribe": {
+                "type": "boolean"
+              },
+              "write": {
+                "type": "boolean"
+              },
+              "subscribeSupport": {
+                "title": "Subscribe Support",
+                "type": "object",
+                "properties": {
+                  "create": {
+                    "type": "boolean"
+                  },
+                  "update": {
+                    "type": "boolean"
+                  },
+                  "delete": {
+                    "type": "boolean"
+                  },
+                  "passThrough": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "ProviderOpts": {
         "title": "Provider Options",
         "description": "Additional provider-specific metadata.",
@@ -946,6 +1137,106 @@
                 "description": "The timing of the registration."
               }
             }
+          },
+          "modules": {
+            "title": "Modules that this provider supports",
+            "type": "object",
+            "description": "The registry of provider modules.",
+            "additionalProperties": {
+              "title": "Module Info",
+              "type": "object",
+              "required": [
+                "displayName",
+                "baseURL",
+                "support"
+              ],
+              "properties": {
+                "displayName": {
+                  "type": "string"
+                },
+                "baseURL": {
+                  "type": "string"
+                },
+                "support": {
+                  "title": "Support",
+                  "type": "object",
+                  "description": "The supported features for the provider.",
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "required"
+                  },
+                  "required": [
+                    "bulkWrite",
+                    "proxy",
+                    "read",
+                    "subscribe",
+                    "write"
+                  ],
+                  "properties": {
+                    "bulkWrite": {
+                      "title": "Bulk Write Support",
+                      "type": "object",
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "required"
+                      },
+                      "required": [
+                        "insert",
+                        "update",
+                        "upsert",
+                        "delete"
+                      ],
+                      "properties": {
+                        "insert": {
+                          "type": "boolean"
+                        },
+                        "update": {
+                          "type": "boolean"
+                        },
+                        "upsert": {
+                          "type": "boolean"
+                        },
+                        "delete": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "proxy": {
+                      "type": "boolean"
+                    },
+                    "read": {
+                      "type": "boolean"
+                    },
+                    "subscribe": {
+                      "type": "boolean"
+                    },
+                    "write": {
+                      "type": "boolean"
+                    },
+                    "subscribeSupport": {
+                      "title": "Subscribe Support",
+                      "type": "object",
+                      "properties": {
+                        "create": {
+                          "type": "boolean"
+                        },
+                        "update": {
+                          "type": "boolean"
+                        },
+                        "delete": {
+                          "type": "boolean"
+                        },
+                        "passThrough": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "x-go-type": "map[common.ModuleID]ModuleInfo",
+            "x-go-type-import": {
+              "path": "github.com/amp-labs/connectors/common"
+            }
           }
         }
       },
@@ -959,7 +1250,7 @@
         "properties": {
           "timestamp": {
             "type": "string",
-            "example": "2024-07-30T22:14:51.000Z",
+            "example": "2024-07-30T15:14:51-07:00",
             "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
@@ -1389,6 +1680,106 @@
                       ],
                       "description": "The timing of the registration."
                     }
+                  }
+                },
+                "modules": {
+                  "title": "Modules that this provider supports",
+                  "type": "object",
+                  "description": "The registry of provider modules.",
+                  "additionalProperties": {
+                    "title": "Module Info",
+                    "type": "object",
+                    "required": [
+                      "displayName",
+                      "baseURL",
+                      "support"
+                    ],
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "baseURL": {
+                        "type": "string"
+                      },
+                      "support": {
+                        "title": "Support",
+                        "type": "object",
+                        "description": "The supported features for the provider.",
+                        "x-oapi-codegen-extra-tags": {
+                          "validate": "required"
+                        },
+                        "required": [
+                          "bulkWrite",
+                          "proxy",
+                          "read",
+                          "subscribe",
+                          "write"
+                        ],
+                        "properties": {
+                          "bulkWrite": {
+                            "title": "Bulk Write Support",
+                            "type": "object",
+                            "x-oapi-codegen-extra-tags": {
+                              "validate": "required"
+                            },
+                            "required": [
+                              "insert",
+                              "update",
+                              "upsert",
+                              "delete"
+                            ],
+                            "properties": {
+                              "insert": {
+                                "type": "boolean"
+                              },
+                              "update": {
+                                "type": "boolean"
+                              },
+                              "upsert": {
+                                "type": "boolean"
+                              },
+                              "delete": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "proxy": {
+                            "type": "boolean"
+                          },
+                          "read": {
+                            "type": "boolean"
+                          },
+                          "subscribe": {
+                            "type": "boolean"
+                          },
+                          "write": {
+                            "type": "boolean"
+                          },
+                          "subscribeSupport": {
+                            "title": "Subscribe Support",
+                            "type": "object",
+                            "properties": {
+                              "create": {
+                                "type": "boolean"
+                              },
+                              "update": {
+                                "type": "boolean"
+                              },
+                              "delete": {
+                                "type": "boolean"
+                              },
+                              "passThrough": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-go-type": "map[common.ModuleID]ModuleInfo",
+                  "x-go-type-import": {
+                    "path": "github.com/amp-labs/connectors/common"
                   }
                 }
               }
@@ -1820,6 +2211,106 @@
                   ],
                   "description": "The timing of the registration."
                 }
+              }
+            },
+            "modules": {
+              "title": "Modules that this provider supports",
+              "type": "object",
+              "description": "The registry of provider modules.",
+              "additionalProperties": {
+                "title": "Module Info",
+                "type": "object",
+                "required": [
+                  "displayName",
+                  "baseURL",
+                  "support"
+                ],
+                "properties": {
+                  "displayName": {
+                    "type": "string"
+                  },
+                  "baseURL": {
+                    "type": "string"
+                  },
+                  "support": {
+                    "title": "Support",
+                    "type": "object",
+                    "description": "The supported features for the provider.",
+                    "x-oapi-codegen-extra-tags": {
+                      "validate": "required"
+                    },
+                    "required": [
+                      "bulkWrite",
+                      "proxy",
+                      "read",
+                      "subscribe",
+                      "write"
+                    ],
+                    "properties": {
+                      "bulkWrite": {
+                        "title": "Bulk Write Support",
+                        "type": "object",
+                        "x-oapi-codegen-extra-tags": {
+                          "validate": "required"
+                        },
+                        "required": [
+                          "insert",
+                          "update",
+                          "upsert",
+                          "delete"
+                        ],
+                        "properties": {
+                          "insert": {
+                            "type": "boolean"
+                          },
+                          "update": {
+                            "type": "boolean"
+                          },
+                          "upsert": {
+                            "type": "boolean"
+                          },
+                          "delete": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "proxy": {
+                        "type": "boolean"
+                      },
+                      "read": {
+                        "type": "boolean"
+                      },
+                      "subscribe": {
+                        "type": "boolean"
+                      },
+                      "write": {
+                        "type": "boolean"
+                      },
+                      "subscribeSupport": {
+                        "title": "Subscribe Support",
+                        "type": "object",
+                        "properties": {
+                          "create": {
+                            "type": "boolean"
+                          },
+                          "update": {
+                            "type": "boolean"
+                          },
+                          "delete": {
+                            "type": "boolean"
+                          },
+                          "passThrough": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "x-go-type": "map[common.ModuleID]ModuleInfo",
+              "x-go-type-import": {
+                "path": "github.com/amp-labs/connectors/common"
               }
             }
           }

@@ -282,6 +282,31 @@ components:
           example: https://docs.example.com/api-key
           x-go-type-skip-optional-pointer: true
 
+    Modules:
+      title: Modules that this provider supports
+      type: object
+      description: The registry of provider modules.
+      additionalProperties:
+        $ref: "#/components/schemas/ModuleInfo"
+      x-go-type: map[common.ModuleID]ModuleInfo
+      x-go-type-import:
+        path: "github.com/amp-labs/connectors/common"
+
+    ModuleInfo:
+      title: Module Info
+      type: object
+      required:
+        - displayName
+        - baseURL
+        - support
+      properties:
+        displayName:
+          type: string
+        baseURL:
+          type: string
+        support:
+          $ref: '#/components/schemas/Support'
+
     ProviderOpts:
       title: Provider Options
       description: Additional provider-specific metadata.
@@ -341,6 +366,8 @@ components:
           $ref: '#/components/schemas/Labels'
         subscribeOpts:
           $ref: '#/components/schemas/SubscribeOpts'
+        modules:
+          $ref: '#/components/schemas/Modules'
 
     CatalogWrapper:
       title: Catalog Wrapper
