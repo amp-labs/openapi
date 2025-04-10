@@ -283,7 +283,7 @@ components:
           x-go-type-skip-optional-pointer: true
 
     Modules:
-      title: Information about modules
+      title: Modules that this provider supports
       type: object
       description: The registry of provider modules.
       additionalProperties:
@@ -305,25 +305,7 @@ components:
         baseURL:
           type: string
         support:
-          $ref: '#/components/schemas/ModuleSupport'
-
-    ModuleSupport:
-      title: Module Support
-      type: object
-      description: The supported features for the module.
-      x-oapi-codegen-extra-tags:
-        validate: required
-      required:
-        - read
-        - subscribe
-        - write
-      properties:
-        read:
-          type: boolean
-        subscribe:
-          type: boolean
-        write:
-          type: boolean
+          $ref: '#/components/schemas/Support'
 
     ProviderOpts:
       title: Provider Options

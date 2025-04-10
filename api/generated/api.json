@@ -21989,7 +21989,7 @@
                         }
                       },
                       "modules": {
-                        "title": "Information about modules",
+                        "title": "Modules that this provider supports",
                         "type": "object",
                         "description": "The registry of provider modules.",
                         "additionalProperties": {
@@ -22008,18 +22008,50 @@
                               "type": "string"
                             },
                             "support": {
-                              "title": "Module Support",
+                              "title": "Support",
                               "type": "object",
-                              "description": "The supported features for the module.",
+                              "description": "The supported features for the provider.",
                               "x-oapi-codegen-extra-tags": {
                                 "validate": "required"
                               },
                               "required": [
+                                "bulkWrite",
+                                "proxy",
                                 "read",
                                 "subscribe",
                                 "write"
                               ],
                               "properties": {
+                                "bulkWrite": {
+                                  "title": "Bulk Write Support",
+                                  "type": "object",
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "required"
+                                  },
+                                  "required": [
+                                    "insert",
+                                    "update",
+                                    "upsert",
+                                    "delete"
+                                  ],
+                                  "properties": {
+                                    "insert": {
+                                      "type": "boolean"
+                                    },
+                                    "update": {
+                                      "type": "boolean"
+                                    },
+                                    "upsert": {
+                                      "type": "boolean"
+                                    },
+                                    "delete": {
+                                      "type": "boolean"
+                                    }
+                                  }
+                                },
+                                "proxy": {
+                                  "type": "boolean"
+                                },
                                 "read": {
                                   "type": "boolean"
                                 },
@@ -22028,6 +22060,24 @@
                                 },
                                 "write": {
                                   "type": "boolean"
+                                },
+                                "subscribeSupport": {
+                                  "title": "Subscribe Support",
+                                  "type": "object",
+                                  "properties": {
+                                    "create": {
+                                      "type": "boolean"
+                                    },
+                                    "update": {
+                                      "type": "boolean"
+                                    },
+                                    "delete": {
+                                      "type": "boolean"
+                                    },
+                                    "passThrough": {
+                                      "type": "boolean"
+                                    }
+                                  }
                                 }
                               }
                             }
@@ -22628,7 +22678,7 @@
                       }
                     },
                     "modules": {
-                      "title": "Information about modules",
+                      "title": "Modules that this provider supports",
                       "type": "object",
                       "description": "The registry of provider modules.",
                       "additionalProperties": {
@@ -22647,18 +22697,50 @@
                             "type": "string"
                           },
                           "support": {
-                            "title": "Module Support",
+                            "title": "Support",
                             "type": "object",
-                            "description": "The supported features for the module.",
+                            "description": "The supported features for the provider.",
                             "x-oapi-codegen-extra-tags": {
                               "validate": "required"
                             },
                             "required": [
+                              "bulkWrite",
+                              "proxy",
                               "read",
                               "subscribe",
                               "write"
                             ],
                             "properties": {
+                              "bulkWrite": {
+                                "title": "Bulk Write Support",
+                                "type": "object",
+                                "x-oapi-codegen-extra-tags": {
+                                  "validate": "required"
+                                },
+                                "required": [
+                                  "insert",
+                                  "update",
+                                  "upsert",
+                                  "delete"
+                                ],
+                                "properties": {
+                                  "insert": {
+                                    "type": "boolean"
+                                  },
+                                  "update": {
+                                    "type": "boolean"
+                                  },
+                                  "upsert": {
+                                    "type": "boolean"
+                                  },
+                                  "delete": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "proxy": {
+                                "type": "boolean"
+                              },
                               "read": {
                                 "type": "boolean"
                               },
@@ -22667,6 +22749,24 @@
                               },
                               "write": {
                                 "type": "boolean"
+                              },
+                              "subscribeSupport": {
+                                "title": "Subscribe Support",
+                                "type": "object",
+                                "properties": {
+                                  "create": {
+                                    "type": "boolean"
+                                  },
+                                  "update": {
+                                    "type": "boolean"
+                                  },
+                                  "delete": {
+                                    "type": "boolean"
+                                  },
+                                  "passThrough": {
+                                    "type": "boolean"
+                                  }
+                                }
                               }
                             }
                           }
