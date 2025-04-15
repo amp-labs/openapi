@@ -3223,7 +3223,7 @@ components:
               items:
                 type: string
               description: The scopes for the tokens.
-        oauth2Password:
+        oauth2PasswordCredentials:
           type: object
           required:
             - username

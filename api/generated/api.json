@@ -27689,7 +27689,7 @@
                               }
                             }
                           },
-                          "oauth2Password": {
+                          "oauth2PasswordCredentials": {
                             "type": "object",
                             "required": [
                               "username",
@@ -29786,7 +29786,7 @@
                           }
                         }
                       },
-                      "oauth2Password": {
+                      "oauth2PasswordCredentials": {
                         "type": "object",
                         "required": [
                           "username",
@@ -43010,7 +43010,7 @@
                   }
                 }
               },
-              "oauth2Password": {
+              "oauth2PasswordCredentials": {
                 "type": "object",
                 "required": [
                   "username",
@@ -43175,7 +43175,7 @@
               }
             }
           },
-          "oauth2Password": {
+          "oauth2PasswordCredentials": {
             "type": "object",
             "required": [
               "username",
@@ -43356,7 +43356,7 @@
                       }
                     }
                   },
-                  "oauth2Password": {
+                  "oauth2PasswordCredentials": {
                     "type": "object",
                     "required": [
                       "username",
