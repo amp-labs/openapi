@@ -2378,7 +2378,6 @@ paths:
         x-codegen-request-body-name: orgUpdate
   /orgs/{orgId}/builders:
     get:
-      x-speakeasy-ignore: true
       summary: List builders for an organization
       operationId: listOrgBuilders
       tags: ["Org"]
