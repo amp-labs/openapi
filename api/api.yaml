@@ -3157,6 +3157,20 @@ components:
     UpdateConnectionRequest:
       title: Update Connection Request
       type: object
+      required:
+        - updateMask
+        - connection
+      properties:
+        updateMask:
+          type: array
+          items:
+            type: string
+          description: The fields to update.
+        connection:
+          $ref: "#/components/schemas/ConnectionRequest"
+    ConnectionRequest:
+      title: Connection Request Body
+      type: object
       properties:
         providerWorkspaceRef:
           type: string
