@@ -3253,7 +3253,7 @@ components:
     GenerateConnectionRequest:
       title: Generate Connection Request
       allOf:
-        - $ref: '#/components/schemas/UpdateConnectionRequest'
+        - $ref: '#/components/schemas/ConnectionRequest'
         - type: object
           required:
             - groupRef
