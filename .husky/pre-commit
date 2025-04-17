@@ -1,2 +1,7 @@
 pnpm run gen:json
 git add api/generated
+git add catalog/generated
+git add problem/generated
+git add config/generated
+git add manifest/generated
+git add webhook/generated
