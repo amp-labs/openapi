@@ -147,6 +147,36 @@
             "type": "string",
             "example": "scopes",
             "x-go-type-skip-optional-pointer": true
+          },
+          "otherFields": {
+            "type": "array",
+            "description": "Additional fields to extract and transform from the token response",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "displayName",
+                "jqValueSelector"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The internal name of the field",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "The human-readable name of the field",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "jqValueSelector": {
+                  "type": "string",
+                  "description": "jq expression that extracts and transforms the value from the token response",
+                  "example": ".instance_url | capture(\"https://([^.]+)\\.docusign\\.net\") | .[0]",
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
+            }
           }
         }
       },
@@ -313,6 +343,36 @@
                 "type": "string",
                 "example": "scopes",
                 "x-go-type-skip-optional-pointer": true
+              },
+              "otherFields": {
+                "type": "array",
+                "description": "Additional fields to extract and transform from the token response",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "displayName",
+                    "jqValueSelector"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The internal name of the field",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "description": "The human-readable name of the field",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "jqValueSelector": {
+                      "type": "string",
+                      "description": "jq expression that extracts and transforms the value from the token response",
+                      "example": ".instance_url | capture(\"https://([^.]+)\\.docusign\\.net\") | .[0]",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                }
               }
             }
           },
@@ -826,6 +886,36 @@
                     "type": "string",
                     "example": "scopes",
                     "x-go-type-skip-optional-pointer": true
+                  },
+                  "otherFields": {
+                    "type": "array",
+                    "description": "Additional fields to extract and transform from the token response",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "displayName",
+                        "jqValueSelector"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "The internal name of the field",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "displayName": {
+                          "type": "string",
+                          "description": "The human-readable name of the field",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "jqValueSelector": {
+                          "type": "string",
+                          "description": "jq expression that extracts and transforms the value from the token response",
+                          "example": ".instance_url | capture(\"https://([^.]+)\\.docusign\\.net\") | .[0]",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    }
                   }
                 }
               },
@@ -1237,6 +1327,73 @@
             "x-go-type-import": {
               "path": "github.com/amp-labs/connectors/common"
             }
+          },
+          "metadata": {
+            "title": "Provider Metadata",
+            "type": "object",
+            "description": "Provider metadata that needs to be given by the user or fetched by the connector post authentication for the connector to work.",
+            "properties": {
+              "input": {
+                "type": "array",
+                "description": "Metadata provided as manual input",
+                "items": {
+                  "title": "Metadata Item",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The internal identifier for the metadata field",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "description": "The human-readable name for the field",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "docsURL": {
+                      "type": "string",
+                      "description": "URL with more information about how to locate this value",
+                      "example": "https://example.com/how-to-find-subdomain",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "x-go-type-skip-optional-pointer": true
+              },
+              "postAuthentication": {
+                "type": "array",
+                "description": "Metadata fetched by the connector post authentication",
+                "items": {
+                  "title": "Metadata Item",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The internal identifier for the metadata field",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "description": "The human-readable name for the field",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "docsURL": {
+                      "type": "string",
+                      "description": "URL with more information about how to locate this value",
+                      "example": "https://example.com/how-to-find-subdomain",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
           }
         }
       },
@@ -1370,6 +1527,36 @@
                           "type": "string",
                           "example": "scopes",
                           "x-go-type-skip-optional-pointer": true
+                        },
+                        "otherFields": {
+                          "type": "array",
+                          "description": "Additional fields to extract and transform from the token response",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "name",
+                              "displayName",
+                              "jqValueSelector"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "The internal name of the field",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "displayName": {
+                                "type": "string",
+                                "description": "The human-readable name of the field",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "jqValueSelector": {
+                                "type": "string",
+                                "description": "jq expression that extracts and transforms the value from the token response",
+                                "example": ".instance_url | capture(\"https://([^.]+)\\.docusign\\.net\") | .[0]",
+                                "x-go-type-skip-optional-pointer": true
+                              }
+                            }
+                          }
                         }
                       }
                     },
@@ -1781,6 +1968,73 @@
                   "x-go-type-import": {
                     "path": "github.com/amp-labs/connectors/common"
                   }
+                },
+                "metadata": {
+                  "title": "Provider Metadata",
+                  "type": "object",
+                  "description": "Provider metadata that needs to be given by the user or fetched by the connector post authentication for the connector to work.",
+                  "properties": {
+                    "input": {
+                      "type": "array",
+                      "description": "Metadata provided as manual input",
+                      "items": {
+                        "title": "Metadata Item",
+                        "type": "object",
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "The internal identifier for the metadata field",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "displayName": {
+                            "type": "string",
+                            "description": "The human-readable name for the field",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "docsURL": {
+                            "type": "string",
+                            "description": "URL with more information about how to locate this value",
+                            "example": "https://example.com/how-to-find-subdomain",
+                            "x-go-type-skip-optional-pointer": true
+                          }
+                        }
+                      },
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "postAuthentication": {
+                      "type": "array",
+                      "description": "Metadata fetched by the connector post authentication",
+                      "items": {
+                        "title": "Metadata Item",
+                        "type": "object",
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "The internal identifier for the metadata field",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "displayName": {
+                            "type": "string",
+                            "description": "The human-readable name for the field",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "docsURL": {
+                            "type": "string",
+                            "description": "URL with more information about how to locate this value",
+                            "example": "https://example.com/how-to-find-subdomain",
+                            "x-go-type-skip-optional-pointer": true
+                          }
+                        }
+                      },
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
                 }
               }
             }
@@ -1901,6 +2155,36 @@
                       "type": "string",
                       "example": "scopes",
                       "x-go-type-skip-optional-pointer": true
+                    },
+                    "otherFields": {
+                      "type": "array",
+                      "description": "Additional fields to extract and transform from the token response",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "name",
+                          "displayName",
+                          "jqValueSelector"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "The internal name of the field",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "displayName": {
+                            "type": "string",
+                            "description": "The human-readable name of the field",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "jqValueSelector": {
+                            "type": "string",
+                            "description": "jq expression that extracts and transforms the value from the token response",
+                            "example": ".instance_url | capture(\"https://([^.]+)\\.docusign\\.net\") | .[0]",
+                            "x-go-type-skip-optional-pointer": true
+                          }
+                        }
+                      }
                     }
                   }
                 },
@@ -2312,6 +2596,73 @@
               "x-go-type-import": {
                 "path": "github.com/amp-labs/connectors/common"
               }
+            },
+            "metadata": {
+              "title": "Provider Metadata",
+              "type": "object",
+              "description": "Provider metadata that needs to be given by the user or fetched by the connector post authentication for the connector to work.",
+              "properties": {
+                "input": {
+                  "type": "array",
+                  "description": "Metadata provided as manual input",
+                  "items": {
+                    "title": "Metadata Item",
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The internal identifier for the metadata field",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "The human-readable name for the field",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "docsURL": {
+                        "type": "string",
+                        "description": "URL with more information about how to locate this value",
+                        "example": "https://example.com/how-to-find-subdomain",
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "postAuthentication": {
+                  "type": "array",
+                  "description": "Metadata fetched by the connector post authentication",
+                  "items": {
+                    "title": "Metadata Item",
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The internal identifier for the metadata field",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "The human-readable name for the field",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "docsURL": {
+                        "type": "string",
+                        "description": "URL with more information about how to locate this value",
+                        "example": "https://example.com/how-to-find-subdomain",
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
             }
           }
         }
@@ -2366,6 +2717,98 @@
           },
           "passThrough": {
             "type": "boolean"
+          }
+        }
+      },
+      "ProviderMetadata": {
+        "title": "Provider Metadata",
+        "type": "object",
+        "description": "Provider metadata that needs to be given by the user or fetched by the connector post authentication for the connector to work.",
+        "properties": {
+          "input": {
+            "type": "array",
+            "description": "Metadata provided as manual input",
+            "items": {
+              "title": "Metadata Item",
+              "type": "object",
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The internal identifier for the metadata field",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "The human-readable name for the field",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "docsURL": {
+                  "type": "string",
+                  "description": "URL with more information about how to locate this value",
+                  "example": "https://example.com/how-to-find-subdomain",
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
+            },
+            "x-go-type-skip-optional-pointer": true
+          },
+          "postAuthentication": {
+            "type": "array",
+            "description": "Metadata fetched by the connector post authentication",
+            "items": {
+              "title": "Metadata Item",
+              "type": "object",
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The internal identifier for the metadata field",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "The human-readable name for the field",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "docsURL": {
+                  "type": "string",
+                  "description": "URL with more information about how to locate this value",
+                  "example": "https://example.com/how-to-find-subdomain",
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
+            },
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "MetadataItem": {
+        "title": "Metadata Item",
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The internal identifier for the metadata field",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The human-readable name for the field",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "docsURL": {
+            "type": "string",
+            "description": "URL with more information about how to locate this value",
+            "example": "https://example.com/how-to-find-subdomain",
+            "x-go-type-skip-optional-pointer": true
           }
         }
       }
