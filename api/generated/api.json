@@ -22279,6 +22279,7 @@
                               },
                               "otherFields": {
                                 "type": "array",
+                                "title": "Token Metadata Fields - Other fields",
                                 "description": "Additional fields to extract and transform from the token response",
                                 "items": {
                                   "type": "object",
@@ -23067,6 +23068,7 @@
                             },
                             "otherFields": {
                               "type": "array",
+                              "title": "Token Metadata Fields - Other fields",
                               "description": "Additional fields to extract and transform from the token response",
                               "items": {
                                 "type": "object",

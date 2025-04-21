@@ -150,6 +150,7 @@
           },
           "otherFields": {
             "type": "array",
+            "title": "Token Metadata Fields - Other fields",
             "description": "Additional fields to extract and transform from the token response",
             "items": {
               "type": "object",
@@ -219,6 +220,37 @@
                 "description": "URL to the logo for the provider that is to be used in dark mode.",
                 "x-go-type-skip-optional-pointer": true
               }
+            }
+          }
+        }
+      },
+      "TokenMetadataFieldsOtherFields": {
+        "type": "array",
+        "title": "Token Metadata Fields - Other fields",
+        "description": "Additional fields to extract and transform from the token response",
+        "items": {
+          "type": "object",
+          "required": [
+            "name",
+            "displayName",
+            "jqValueSelector"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The internal name of the field",
+              "x-go-type-skip-optional-pointer": true
+            },
+            "displayName": {
+              "type": "string",
+              "description": "The human-readable name of the field",
+              "x-go-type-skip-optional-pointer": true
+            },
+            "jqValueSelector": {
+              "type": "string",
+              "description": "jq expression that extracts and transforms the value from the token response",
+              "example": ".instance_url | capture(\"https://([^.]+)\\.docusign\\.net\") | .[0]",
+              "x-go-type-skip-optional-pointer": true
             }
           }
         }
@@ -346,6 +378,7 @@
               },
               "otherFields": {
                 "type": "array",
+                "title": "Token Metadata Fields - Other fields",
                 "description": "Additional fields to extract and transform from the token response",
                 "items": {
                   "type": "object",
@@ -889,6 +922,7 @@
                   },
                   "otherFields": {
                     "type": "array",
+                    "title": "Token Metadata Fields - Other fields",
                     "description": "Additional fields to extract and transform from the token response",
                     "items": {
                       "type": "object",
@@ -1530,6 +1564,7 @@
                         },
                         "otherFields": {
                           "type": "array",
+                          "title": "Token Metadata Fields - Other fields",
                           "description": "Additional fields to extract and transform from the token response",
                           "items": {
                             "type": "object",
@@ -2158,6 +2193,7 @@
                     },
                     "otherFields": {
                       "type": "array",
+                      "title": "Token Metadata Fields - Other fields",
                       "description": "Additional fields to extract and transform from the token response",
                       "items": {
                         "type": "object",
