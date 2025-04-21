@@ -462,17 +462,17 @@ components:
           type: array
           description: Metadata provided as manual input
           items:
-            $ref: '#/components/schemas/MetadataItem'
+            $ref: '#/components/schemas/MetadataItemInput'
           x-go-type-skip-optional-pointer: true
         postAuthentication:
           type: array
           description: Metadata fetched by the connector post authentication
           items:
-            $ref: '#/components/schemas/MetadataItem'
+            $ref: '#/components/schemas/MetadataItemPostAuthentication'
           x-go-type-skip-optional-pointer: true
 
-    MetadataItem:
-      title: Metadata Item
+    MetadataItemInput:
+      title: Metadata Item (as input)
       type: object
       required:
         - name
@@ -489,4 +489,15 @@ components:
           type: string
           description: URL with more information about how to locate this value
           example: https://example.com/how-to-find-subdomain
+          x-go-type-skip-optional-pointer: true
+
+    MetadataItemPostAuthentication:
+      title: Metadata Item (fetched post authentication)
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The internal identifier for the metadata field
           x-go-type-skip-optional-pointer: true

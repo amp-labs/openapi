@@ -22728,7 +22728,7 @@
                             "type": "array",
                             "description": "Metadata provided as manual input",
                             "items": {
-                              "title": "Metadata Item",
+                              "title": "Metadata Item (as input)",
                               "type": "object",
                               "required": [
                                 "name"
@@ -22758,7 +22758,7 @@
                             "type": "array",
                             "description": "Metadata fetched by the connector post authentication",
                             "items": {
-                              "title": "Metadata Item",
+                              "title": "Metadata Item (fetched post authentication)",
                               "type": "object",
                               "required": [
                                 "name"
@@ -22767,17 +22767,6 @@
                                 "name": {
                                   "type": "string",
                                   "description": "The internal identifier for the metadata field",
-                                  "x-go-type-skip-optional-pointer": true
-                                },
-                                "displayName": {
-                                  "type": "string",
-                                  "description": "The human-readable name for the field",
-                                  "x-go-type-skip-optional-pointer": true
-                                },
-                                "docsURL": {
-                                  "type": "string",
-                                  "description": "URL with more information about how to locate this value",
-                                  "example": "https://example.com/how-to-find-subdomain",
                                   "x-go-type-skip-optional-pointer": true
                                 }
                               }
@@ -23517,7 +23506,7 @@
                           "type": "array",
                           "description": "Metadata provided as manual input",
                           "items": {
-                            "title": "Metadata Item",
+                            "title": "Metadata Item (as input)",
                             "type": "object",
                             "required": [
                               "name"
@@ -23547,7 +23536,7 @@
                           "type": "array",
                           "description": "Metadata fetched by the connector post authentication",
                           "items": {
-                            "title": "Metadata Item",
+                            "title": "Metadata Item (fetched post authentication)",
                             "type": "object",
                             "required": [
                               "name"
@@ -23556,17 +23545,6 @@
                               "name": {
                                 "type": "string",
                                 "description": "The internal identifier for the metadata field",
-                                "x-go-type-skip-optional-pointer": true
-                              },
-                              "displayName": {
-                                "type": "string",
-                                "description": "The human-readable name for the field",
-                                "x-go-type-skip-optional-pointer": true
-                              },
-                              "docsURL": {
-                                "type": "string",
-                                "description": "URL with more information about how to locate this value",
-                                "example": "https://example.com/how-to-find-subdomain",
                                 "x-go-type-skip-optional-pointer": true
                               }
                             }
