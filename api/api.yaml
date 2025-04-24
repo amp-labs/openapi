@@ -26,6 +26,8 @@ paths:
                   type: string
                   description: The identifier for the provider workspace (e.g. the Salesforce subdomain).
                   example: salesforce-instance-domain
+                providerMetadata:
+                  $ref: "#/components/schemas/ProviderMetadata"
                 projectId:
                   type: string
                   description: The Ampersand project ID.
@@ -260,7 +262,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name. 
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -362,7 +364,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name. 
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -913,7 +915,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name. 
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -1173,7 +1175,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The unique identifier or name of the project. 
+          description: The unique identifier or name of the project.
           schema:
             type: string
           example: my-project
@@ -1222,7 +1224,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The unique identifier or name of the project. 
+          description: The unique identifier or name of the project.
           schema:
             type: string
           example: my-project
@@ -1514,7 +1516,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name. 
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -1561,7 +1563,7 @@ paths:
         - name: apiKey
           in: path
           required: true
-          description: API key to access Ampersand APIs. 
+          description: API key to access Ampersand APIs.
           schema:
             type: string
       responses:
@@ -1599,7 +1601,7 @@ paths:
         - name: apiKey
           in: path
           required: true
-          description: API key to access Ampersand APIs. 
+          description: API key to access Ampersand APIs.
           schema:
             type: string
       responses:
@@ -1627,7 +1629,7 @@ paths:
         - name: apiKey
           in: path
           required: true
-          description: API key to access Ampersand APIs. 
+          description: API key to access Ampersand APIs.
           schema:
             type: string
       requestBody:
@@ -1676,7 +1678,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name. 
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -1771,7 +1773,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name. 
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -1992,7 +1994,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name. 
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -3075,6 +3077,8 @@ components:
           type: string
           description: The API key used while making the connection.
           example: api-key-123
+        providerMetadata:
+          $ref: "#/components/schemas/ProviderMetadata"
     Oauth2AuthorizationCodeTokensOnly:
       title: OAuth2 AuthorizationCode Token
       type: object
@@ -3174,6 +3178,8 @@ components:
         providerWorkspaceRef:
           type: string
           description: The ID of the provider workspace that this connection belongs to.
+        providerMetadata:
+          $ref: "#/components/schemas/ProviderMetadata"
         groupName:
           type: string
           description: The name of the user group that has access to this installation.
@@ -3258,7 +3264,7 @@ components:
             - groupRef
             - consumerRef
             - provider
-    
+
     Group:
       title: Group
       required:
@@ -3693,6 +3699,28 @@ components:
           description: Map of field metadata keyed by field name
           additionalProperties:
             $ref: "../manifest/manifest.yaml#/components/schemas/FieldMetadata"
+    ProviderMetadata:
+      title: Provider Metadata
+      type: object
+      additionalProperties:
+        $ref: "#/components/schemas/ProviderMetadataInfo"
+    ProviderMetadataInfo:
+      title: Provider Metadata Info
+      type: object
+      required:
+        - value
+        - source
+      properties:
+        value:
+          type: string
+          description: The value of the metadata field
+        source:
+          type: string
+          description: The source of the metadata field
+          enum: [input, token, provider]
+        displayName:
+          type: string
+          description: The human-readable name for the field
     PaginationInfo:
       title: Pagination Information
       type: object
