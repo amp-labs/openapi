@@ -3714,13 +3714,16 @@ components:
         value:
           type: string
           description: The value of the metadata field
+          example: "1234567890"
         source:
           type: string
           description: The source of the metadata field
           enum: [input, token, provider]
+          example: "input"
         displayName:
           type: string
           description: The human-readable name for the field
+          example: "Account ID"
     PaginationInfo:
       title: Pagination Information
       type: object
