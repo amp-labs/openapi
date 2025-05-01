@@ -21,7 +21,7 @@ components:
       title: Auth Type
       description: The type of authentication required by the provider.
       type: string
-      enum: [oauth2, apiKey, basic, jwt, none]
+      enum: [oauth2, apiKey, basic, jwt, awsAccessKey, none]
       x-oapi-codegen-extra-tags:
         validate: required
 
@@ -309,6 +309,17 @@ components:
           example: https://docs.example.com/api-key
           x-go-type-skip-optional-pointer: true
 
+    AwsAccessKeyOpts:
+      title: AWS Access Key Options
+      type: object
+      description: Configuration for AWS Access Key. Must be provided if authType is awsAccessKey.
+      properties:
+        docsURL:
+          type: string
+          description: URL with more information about how to get AWS Access Key.
+          example: https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/getting-started.html#get-your-aws-access-keys
+          x-go-type-skip-optional-pointer: true
+
     Modules:
       title: Modules that this provider supports
       type: object
@@ -373,6 +384,8 @@ components:
           $ref: '#/components/schemas/ApiKeyOpts'
         basicOpts:
           $ref: '#/components/schemas/BasicAuthOpts'
+        awsAccessKeyOpts:
+          $ref: '#/components/schemas/AwsAccessKeyOpts'
         support:
           $ref: '#/components/schemas/Support'
         providerOpts:
