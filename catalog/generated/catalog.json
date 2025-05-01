@@ -21,6 +21,7 @@
           "apiKey",
           "basic",
           "jwt",
+          "awsAccessKey",
           "none"
         ],
         "x-oapi-codegen-extra-tags": {
@@ -604,6 +605,19 @@
           }
         }
       },
+      "AwsAccessKeyOpts": {
+        "title": "AWS Access Key Options",
+        "type": "object",
+        "description": "Configuration for AWS Access Key. Must be provided if authType is awsAccessKey.",
+        "properties": {
+          "docsURL": {
+            "type": "string",
+            "description": "URL with more information about how to get AWS Access Key.",
+            "example": "https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/getting-started.html#get-your-aws-access-keys",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
       "Modules": {
         "title": "Modules that this provider supports",
         "type": "object",
@@ -831,6 +845,7 @@
               "apiKey",
               "basic",
               "jwt",
+              "awsAccessKey",
               "none"
             ],
             "x-oapi-codegen-extra-tags": {
@@ -1079,6 +1094,19 @@
                 "type": "string",
                 "description": "URL with more information about how to get or use an API key.",
                 "example": "https://docs.example.com/api-key",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "awsAccessKeyOpts": {
+            "title": "AWS Access Key Options",
+            "type": "object",
+            "description": "Configuration for AWS Access Key. Must be provided if authType is awsAccessKey.",
+            "properties": {
+              "docsURL": {
+                "type": "string",
+                "description": "URL with more information about how to get AWS Access Key.",
+                "example": "https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/getting-started.html#get-your-aws-access-keys",
                 "x-go-type-skip-optional-pointer": true
               }
             }
@@ -1430,7 +1458,7 @@
         "properties": {
           "timestamp": {
             "type": "string",
-            "example": "2024-07-30T22:14:51.000Z",
+            "example": "2024-07-30T15:14:51-07:00",
             "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
@@ -1462,6 +1490,7 @@
                     "apiKey",
                     "basic",
                     "jwt",
+                    "awsAccessKey",
                     "none"
                   ],
                   "x-oapi-codegen-extra-tags": {
@@ -1710,6 +1739,19 @@
                       "type": "string",
                       "description": "URL with more information about how to get or use an API key.",
                       "example": "https://docs.example.com/api-key",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "awsAccessKeyOpts": {
+                  "title": "AWS Access Key Options",
+                  "type": "object",
+                  "description": "Configuration for AWS Access Key. Must be provided if authType is awsAccessKey.",
+                  "properties": {
+                    "docsURL": {
+                      "type": "string",
+                      "description": "URL with more information about how to get AWS Access Key.",
+                      "example": "https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/getting-started.html#get-your-aws-access-keys",
                       "x-go-type-skip-optional-pointer": true
                     }
                   }
@@ -2080,6 +2122,7 @@
                 "apiKey",
                 "basic",
                 "jwt",
+                "awsAccessKey",
                 "none"
               ],
               "x-oapi-codegen-extra-tags": {
@@ -2328,6 +2371,19 @@
                   "type": "string",
                   "description": "URL with more information about how to get or use an API key.",
                   "example": "https://docs.example.com/api-key",
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
+            },
+            "awsAccessKeyOpts": {
+              "title": "AWS Access Key Options",
+              "type": "object",
+              "description": "Configuration for AWS Access Key. Must be provided if authType is awsAccessKey.",
+              "properties": {
+                "docsURL": {
+                  "type": "string",
+                  "description": "URL with more information about how to get AWS Access Key.",
+                  "example": "https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/getting-started.html#get-your-aws-access-keys",
                   "x-go-type-skip-optional-pointer": true
                 }
               }
