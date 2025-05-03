@@ -124,8 +124,8 @@ components:
             x-go-type-skip-optional-pointer: true
           capture:
             type: string
-            description: A regex expression to capture the value that we need from the path
-            example: https:\/\/([^.]+)\.docusign\.net
+            description: A regex expression to capture the value that we need from the path. There must be only one capture group named 'result' in the expression. If not provided, will cause an error.
+            example: https:\/\/(?<result>[^.]+)\.docusign\.net
             x-go-type-skip-optional-pointer: true
 
     MediaTypeDarkMode:
