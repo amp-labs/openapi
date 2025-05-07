@@ -149,9 +149,9 @@ components:
             - provider
           properties:
             read:
-              $ref: '#/components/schemas/ReadConfig'
+              x-go-type: ReadConfig
             write:
-              $ref: '#/components/schemas/WriteConfig'
+              x-go-type: WriteConfig
 
     ReadConfig:
       title: Read Config
@@ -163,7 +163,8 @@ components:
           properties:
             objects:
               additionalProperties:
-                $ref: '#/components/schemas/ReadConfigObject'
+                x-go-type: ReadConfigObject
+
     ReadConfigObject:
       title: Read Config Object
       allOf:
@@ -184,7 +185,7 @@ components:
           properties:
             objects:
               additionalProperties:
-                $ref: '#/components/schemas/WriteConfigObject'
+                x-go-type: WriteConfigObject
 
     WriteConfigObject:
       title: Write Config Object
