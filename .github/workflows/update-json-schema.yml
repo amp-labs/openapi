@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "manifest/manifest.json"
+      - "manifest/generated/manifest.json"
   workflow_dispatch:
 
 jobs:
