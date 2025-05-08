@@ -1,57 +1,29 @@
-# This workflow updates the JSON Schema for the VS Code extension
-# It is triggered by changes to the manifest.yaml file in the OpenAPI repository
-# or by manual dispatch
-name: Update VS Code Extension Schema
+name: Trigger VS Code Schema Update
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'manifest/manifest.yaml'
+      - "manifest/manifest.json"
   workflow_dispatch:
 
 jobs:
-  update-schema:
+  trigger-schema-update:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out source repo
-        uses: actions/checkout@v4
-        with:
-          path: source-repo
-
-      - name: Check out VS Code extension repo
-        uses: actions/checkout@v4
-        with:
-          repository: amp-labs/vs-code-extension
-          token: ${{ secrets.CROSS_REPO_PAT }}   # PAT with access to both repos
-          path: vscode-repo
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install -g openapi-to-json-schema
-
-      - name: Convert OpenAPI to JSON Schema
+      - name: Trigger schema update in VS Code extension repo
         run: |
-          # Convert the OpenAPI manifest.yaml to JSON Schema
-          openapi-to-json-schema source-repo/manifest/manifest.yaml --schema-id "http://json-schema.org/draft-07/schema#" > vscode-repo/schemas/manifest-schema.json
+          # Set the required variables
+          repo_owner="amp-labs" 
+          repo_name="vs-code-extension"  
+          event_type="update-json-schema" 
 
-      - name: Create Pull Request in VS Code extension repo
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.CROSS_REPO_PAT }}
-          path: vscode-repo
-          commit-message: 'Update JSON Schema from manifest.yaml'
-          title: 'Update JSON Schema from manifest.yaml'
-          body: |
-            This PR updates the JSON Schema based on changes to manifest.yaml in the OpenAPI repository.
-            
-            Please review the changes to ensure compatibility with the VS Code extension.
-            
-            Source commit: ${{ github.sha }}
-          branch: update-json-schema
-          base: main
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.AMPERSAND_OPS_PAT }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/$repo_owner/$repo_name/dispatches \
+            -d "{\"event_type\": \"$event_type\"}"
