@@ -331,7 +331,7 @@ components:
             validate: required_without=FullHistory,omitempty,min=0
         fullHistory:
           type: boolean
-          Description: If true, backfill all history. Required if days is not set.
+          description: If true, backfill all history. Required if days is not set.
           example: false
           x-oapi-codegen-extra-tags:
             validate: required_without=Days
@@ -353,7 +353,7 @@ components:
           enum: [ always, never ]
           default: always
           x-go-type-skip-optional-pointer: true
-          Description: Whether the default value should be applied when updating a record.
+          description: Whether the default value should be applied when updating a record.
 
     FieldSettingDefault:
       title: Default value for a field
@@ -362,7 +362,7 @@ components:
       properties:
         stringValue:
           type: string
-          Description: The default string value to apply to a field
+          description: The default string value to apply to a field
         integerValue:
           type: integer
           description: The default integer value to apply to a field

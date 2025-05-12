@@ -13097,7 +13097,7 @@
                                                     },
                                                     "fullHistory": {
                                                       "type": "boolean",
-                                                      "Description": "If true, backfill all history. Required if days is not set.",
+                                                      "description": "If true, backfill all history. Required if days is not set.",
                                                       "example": false,
                                                       "x-oapi-codegen-extra-tags": {
                                                         "validate": "required_without=Days"
@@ -13225,7 +13225,7 @@
                                                     "properties": {
                                                       "stringValue": {
                                                         "type": "string",
-                                                        "Description": "The default string value to apply to a field"
+                                                        "description": "The default string value to apply to a field"
                                                       },
                                                       "integerValue": {
                                                         "type": "integer",
@@ -13255,7 +13255,7 @@
                                                     ],
                                                     "default": "always",
                                                     "x-go-type-skip-optional-pointer": true,
-                                                    "Description": "Whether the default value should be applied when updating a record."
+                                                    "description": "Whether the default value should be applied when updating a record."
                                                   }
                                                 }
                                               }
@@ -13389,7 +13389,7 @@
                                                         },
                                                         "fullHistory": {
                                                           "type": "boolean",
-                                                          "Description": "If true, backfill all history. Required if days is not set.",
+                                                          "description": "If true, backfill all history. Required if days is not set.",
                                                           "example": false,
                                                           "x-oapi-codegen-extra-tags": {
                                                             "validate": "required_without=Days"
@@ -13511,7 +13511,7 @@
                                                             },
                                                             "fullHistory": {
                                                               "type": "boolean",
-                                                              "Description": "If true, backfill all history. Required if days is not set.",
+                                                              "description": "If true, backfill all history. Required if days is not set.",
                                                               "example": false,
                                                               "x-oapi-codegen-extra-tags": {
                                                                 "validate": "required_without=Days"
@@ -13656,7 +13656,7 @@
                                                         "properties": {
                                                           "stringValue": {
                                                             "type": "string",
-                                                            "Description": "The default string value to apply to a field"
+                                                            "description": "The default string value to apply to a field"
                                                           },
                                                           "integerValue": {
                                                             "type": "integer",
@@ -13686,7 +13686,7 @@
                                                         ],
                                                         "default": "always",
                                                         "x-go-type-skip-optional-pointer": true,
-                                                        "Description": "Whether the default value should be applied when updating a record."
+                                                        "description": "Whether the default value should be applied when updating a record."
                                                       }
                                                     }
                                                   }
@@ -13809,7 +13809,7 @@
                                                             "properties": {
                                                               "stringValue": {
                                                                 "type": "string",
-                                                                "Description": "The default string value to apply to a field"
+                                                                "description": "The default string value to apply to a field"
                                                               },
                                                               "integerValue": {
                                                                 "type": "integer",
@@ -13839,7 +13839,7 @@
                                                             ],
                                                             "default": "always",
                                                             "x-go-type-skip-optional-pointer": true,
-                                                            "Description": "Whether the default value should be applied when updating a record."
+                                                            "description": "Whether the default value should be applied when updating a record."
                                                           }
                                                         }
                                                       }
@@ -14727,7 +14727,7 @@
                                                 },
                                                 "fullHistory": {
                                                   "type": "boolean",
-                                                  "Description": "If true, backfill all history. Required if days is not set.",
+                                                  "description": "If true, backfill all history. Required if days is not set.",
                                                   "example": false,
                                                   "x-oapi-codegen-extra-tags": {
                                                     "validate": "required_without=Days"
@@ -14855,7 +14855,7 @@
                                                 "properties": {
                                                   "stringValue": {
                                                     "type": "string",
-                                                    "Description": "The default string value to apply to a field"
+                                                    "description": "The default string value to apply to a field"
                                                   },
                                                   "integerValue": {
                                                     "type": "integer",
@@ -14885,7 +14885,7 @@
                                                 ],
                                                 "default": "always",
                                                 "x-go-type-skip-optional-pointer": true,
-                                                "Description": "Whether the default value should be applied when updating a record."
+                                                "description": "Whether the default value should be applied when updating a record."
                                               }
                                             }
                                           }
@@ -15019,7 +15019,7 @@
                                                     },
                                                     "fullHistory": {
                                                       "type": "boolean",
-                                                      "Description": "If true, backfill all history. Required if days is not set.",
+                                                      "description": "If true, backfill all history. Required if days is not set.",
                                                       "example": false,
                                                       "x-oapi-codegen-extra-tags": {
                                                         "validate": "required_without=Days"
@@ -15141,7 +15141,7 @@
                                                         },
                                                         "fullHistory": {
                                                           "type": "boolean",
-                                                          "Description": "If true, backfill all history. Required if days is not set.",
+                                                          "description": "If true, backfill all history. Required if days is not set.",
                                                           "example": false,
                                                           "x-oapi-codegen-extra-tags": {
                                                             "validate": "required_without=Days"
@@ -15286,7 +15286,7 @@
                                                     "properties": {
                                                       "stringValue": {
                                                         "type": "string",
-                                                        "Description": "The default string value to apply to a field"
+                                                        "description": "The default string value to apply to a field"
                                                       },
                                                       "integerValue": {
                                                         "type": "integer",
@@ -15316,7 +15316,7 @@
                                                     ],
                                                     "default": "always",
                                                     "x-go-type-skip-optional-pointer": true,
-                                                    "Description": "Whether the default value should be applied when updating a record."
+                                                    "description": "Whether the default value should be applied when updating a record."
                                                   }
                                                 }
                                               }
@@ -15439,7 +15439,7 @@
                                                         "properties": {
                                                           "stringValue": {
                                                             "type": "string",
-                                                            "Description": "The default string value to apply to a field"
+                                                            "description": "The default string value to apply to a field"
                                                           },
                                                           "integerValue": {
                                                             "type": "integer",
@@ -15469,7 +15469,7 @@
                                                         ],
                                                         "default": "always",
                                                         "x-go-type-skip-optional-pointer": true,
-                                                        "Description": "Whether the default value should be applied when updating a record."
+                                                        "description": "Whether the default value should be applied when updating a record."
                                                       }
                                                     }
                                                   }
@@ -16269,7 +16269,7 @@
                                                   },
                                                   "fullHistory": {
                                                     "type": "boolean",
-                                                    "Description": "If true, backfill all history. Required if days is not set.",
+                                                    "description": "If true, backfill all history. Required if days is not set.",
                                                     "example": false,
                                                     "x-oapi-codegen-extra-tags": {
                                                       "validate": "required_without=Days"
@@ -16397,7 +16397,7 @@
                                                   "properties": {
                                                     "stringValue": {
                                                       "type": "string",
-                                                      "Description": "The default string value to apply to a field"
+                                                      "description": "The default string value to apply to a field"
                                                     },
                                                     "integerValue": {
                                                       "type": "integer",
@@ -16427,7 +16427,7 @@
                                                   ],
                                                   "default": "always",
                                                   "x-go-type-skip-optional-pointer": true,
-                                                  "Description": "Whether the default value should be applied when updating a record."
+                                                  "description": "Whether the default value should be applied when updating a record."
                                                 }
                                               }
                                             }
@@ -16561,7 +16561,7 @@
                                                       },
                                                       "fullHistory": {
                                                         "type": "boolean",
-                                                        "Description": "If true, backfill all history. Required if days is not set.",
+                                                        "description": "If true, backfill all history. Required if days is not set.",
                                                         "example": false,
                                                         "x-oapi-codegen-extra-tags": {
                                                           "validate": "required_without=Days"
@@ -16683,7 +16683,7 @@
                                                           },
                                                           "fullHistory": {
                                                             "type": "boolean",
-                                                            "Description": "If true, backfill all history. Required if days is not set.",
+                                                            "description": "If true, backfill all history. Required if days is not set.",
                                                             "example": false,
                                                             "x-oapi-codegen-extra-tags": {
                                                               "validate": "required_without=Days"
@@ -16828,7 +16828,7 @@
                                                       "properties": {
                                                         "stringValue": {
                                                           "type": "string",
-                                                          "Description": "The default string value to apply to a field"
+                                                          "description": "The default string value to apply to a field"
                                                         },
                                                         "integerValue": {
                                                           "type": "integer",
@@ -16858,7 +16858,7 @@
                                                       ],
                                                       "default": "always",
                                                       "x-go-type-skip-optional-pointer": true,
-                                                      "Description": "Whether the default value should be applied when updating a record."
+                                                      "description": "Whether the default value should be applied when updating a record."
                                                     }
                                                   }
                                                 }
@@ -16981,7 +16981,7 @@
                                                           "properties": {
                                                             "stringValue": {
                                                               "type": "string",
-                                                              "Description": "The default string value to apply to a field"
+                                                              "description": "The default string value to apply to a field"
                                                             },
                                                             "integerValue": {
                                                               "type": "integer",
@@ -17011,7 +17011,7 @@
                                                           ],
                                                           "default": "always",
                                                           "x-go-type-skip-optional-pointer": true,
-                                                          "Description": "Whether the default value should be applied when updating a record."
+                                                          "description": "Whether the default value should be applied when updating a record."
                                                         }
                                                       }
                                                     }
@@ -18633,7 +18633,7 @@
                                                   },
                                                   "fullHistory": {
                                                     "type": "boolean",
-                                                    "Description": "If true, backfill all history. Required if days is not set.",
+                                                    "description": "If true, backfill all history. Required if days is not set.",
                                                     "example": false,
                                                     "x-oapi-codegen-extra-tags": {
                                                       "validate": "required_without=Days"
@@ -18761,7 +18761,7 @@
                                                   "properties": {
                                                     "stringValue": {
                                                       "type": "string",
-                                                      "Description": "The default string value to apply to a field"
+                                                      "description": "The default string value to apply to a field"
                                                     },
                                                     "integerValue": {
                                                       "type": "integer",
@@ -18791,7 +18791,7 @@
                                                   ],
                                                   "default": "always",
                                                   "x-go-type-skip-optional-pointer": true,
-                                                  "Description": "Whether the default value should be applied when updating a record."
+                                                  "description": "Whether the default value should be applied when updating a record."
                                                 }
                                               }
                                             }
@@ -18925,7 +18925,7 @@
                                                       },
                                                       "fullHistory": {
                                                         "type": "boolean",
-                                                        "Description": "If true, backfill all history. Required if days is not set.",
+                                                        "description": "If true, backfill all history. Required if days is not set.",
                                                         "example": false,
                                                         "x-oapi-codegen-extra-tags": {
                                                           "validate": "required_without=Days"
@@ -19047,7 +19047,7 @@
                                                           },
                                                           "fullHistory": {
                                                             "type": "boolean",
-                                                            "Description": "If true, backfill all history. Required if days is not set.",
+                                                            "description": "If true, backfill all history. Required if days is not set.",
                                                             "example": false,
                                                             "x-oapi-codegen-extra-tags": {
                                                               "validate": "required_without=Days"
@@ -19192,7 +19192,7 @@
                                                       "properties": {
                                                         "stringValue": {
                                                           "type": "string",
-                                                          "Description": "The default string value to apply to a field"
+                                                          "description": "The default string value to apply to a field"
                                                         },
                                                         "integerValue": {
                                                           "type": "integer",
@@ -19222,7 +19222,7 @@
                                                       ],
                                                       "default": "always",
                                                       "x-go-type-skip-optional-pointer": true,
-                                                      "Description": "Whether the default value should be applied when updating a record."
+                                                      "description": "Whether the default value should be applied when updating a record."
                                                     }
                                                   }
                                                 }
@@ -19345,7 +19345,7 @@
                                                           "properties": {
                                                             "stringValue": {
                                                               "type": "string",
-                                                              "Description": "The default string value to apply to a field"
+                                                              "description": "The default string value to apply to a field"
                                                             },
                                                             "integerValue": {
                                                               "type": "integer",
@@ -19375,7 +19375,7 @@
                                                           ],
                                                           "default": "always",
                                                           "x-go-type-skip-optional-pointer": true,
-                                                          "Description": "Whether the default value should be applied when updating a record."
+                                                          "description": "Whether the default value should be applied when updating a record."
                                                         }
                                                       }
                                                     }
@@ -20456,7 +20456,7 @@
                                                     },
                                                     "fullHistory": {
                                                       "type": "boolean",
-                                                      "Description": "If true, backfill all history. Required if days is not set.",
+                                                      "description": "If true, backfill all history. Required if days is not set.",
                                                       "example": false,
                                                       "x-oapi-codegen-extra-tags": {
                                                         "validate": "required_without=Days"
@@ -20584,7 +20584,7 @@
                                                     "properties": {
                                                       "stringValue": {
                                                         "type": "string",
-                                                        "Description": "The default string value to apply to a field"
+                                                        "description": "The default string value to apply to a field"
                                                       },
                                                       "integerValue": {
                                                         "type": "integer",
@@ -20614,7 +20614,7 @@
                                                     ],
                                                     "default": "always",
                                                     "x-go-type-skip-optional-pointer": true,
-                                                    "Description": "Whether the default value should be applied when updating a record."
+                                                    "description": "Whether the default value should be applied when updating a record."
                                                   }
                                                 }
                                               }
@@ -21198,7 +21198,7 @@
                                                   },
                                                   "fullHistory": {
                                                     "type": "boolean",
-                                                    "Description": "If true, backfill all history. Required if days is not set.",
+                                                    "description": "If true, backfill all history. Required if days is not set.",
                                                     "example": false,
                                                     "x-oapi-codegen-extra-tags": {
                                                       "validate": "required_without=Days"
@@ -21326,7 +21326,7 @@
                                                   "properties": {
                                                     "stringValue": {
                                                       "type": "string",
-                                                      "Description": "The default string value to apply to a field"
+                                                      "description": "The default string value to apply to a field"
                                                     },
                                                     "integerValue": {
                                                       "type": "integer",
@@ -21356,7 +21356,7 @@
                                                   ],
                                                   "default": "always",
                                                   "x-go-type-skip-optional-pointer": true,
-                                                  "Description": "Whether the default value should be applied when updating a record."
+                                                  "description": "Whether the default value should be applied when updating a record."
                                                 }
                                               }
                                             }
@@ -21490,7 +21490,7 @@
                                                       },
                                                       "fullHistory": {
                                                         "type": "boolean",
-                                                        "Description": "If true, backfill all history. Required if days is not set.",
+                                                        "description": "If true, backfill all history. Required if days is not set.",
                                                         "example": false,
                                                         "x-oapi-codegen-extra-tags": {
                                                           "validate": "required_without=Days"
@@ -21612,7 +21612,7 @@
                                                           },
                                                           "fullHistory": {
                                                             "type": "boolean",
-                                                            "Description": "If true, backfill all history. Required if days is not set.",
+                                                            "description": "If true, backfill all history. Required if days is not set.",
                                                             "example": false,
                                                             "x-oapi-codegen-extra-tags": {
                                                               "validate": "required_without=Days"
@@ -21757,7 +21757,7 @@
                                                       "properties": {
                                                         "stringValue": {
                                                           "type": "string",
-                                                          "Description": "The default string value to apply to a field"
+                                                          "description": "The default string value to apply to a field"
                                                         },
                                                         "integerValue": {
                                                           "type": "integer",
@@ -21787,7 +21787,7 @@
                                                       ],
                                                       "default": "always",
                                                       "x-go-type-skip-optional-pointer": true,
-                                                      "Description": "Whether the default value should be applied when updating a record."
+                                                      "description": "Whether the default value should be applied when updating a record."
                                                     }
                                                   }
                                                 }
@@ -21910,7 +21910,7 @@
                                                           "properties": {
                                                             "stringValue": {
                                                               "type": "string",
-                                                              "Description": "The default string value to apply to a field"
+                                                              "description": "The default string value to apply to a field"
                                                             },
                                                             "integerValue": {
                                                               "type": "integer",
@@ -21940,7 +21940,7 @@
                                                           ],
                                                           "default": "always",
                                                           "x-go-type-skip-optional-pointer": true,
-                                                          "Description": "Whether the default value should be applied when updating a record."
+                                                          "description": "Whether the default value should be applied when updating a record."
                                                         }
                                                       }
                                                     }
@@ -46578,7 +46578,7 @@
                                         },
                                         "fullHistory": {
                                           "type": "boolean",
-                                          "Description": "If true, backfill all history. Required if days is not set.",
+                                          "description": "If true, backfill all history. Required if days is not set.",
                                           "example": false,
                                           "x-oapi-codegen-extra-tags": {
                                             "validate": "required_without=Days"
@@ -46706,7 +46706,7 @@
                                         "properties": {
                                           "stringValue": {
                                             "type": "string",
-                                            "Description": "The default string value to apply to a field"
+                                            "description": "The default string value to apply to a field"
                                           },
                                           "integerValue": {
                                             "type": "integer",
@@ -46736,7 +46736,7 @@
                                         ],
                                         "default": "always",
                                         "x-go-type-skip-optional-pointer": true,
-                                        "Description": "Whether the default value should be applied when updating a record."
+                                        "description": "Whether the default value should be applied when updating a record."
                                       }
                                     }
                                   }
@@ -46870,7 +46870,7 @@
                                             },
                                             "fullHistory": {
                                               "type": "boolean",
-                                              "Description": "If true, backfill all history. Required if days is not set.",
+                                              "description": "If true, backfill all history. Required if days is not set.",
                                               "example": false,
                                               "x-oapi-codegen-extra-tags": {
                                                 "validate": "required_without=Days"
@@ -46992,7 +46992,7 @@
                                                 },
                                                 "fullHistory": {
                                                   "type": "boolean",
-                                                  "Description": "If true, backfill all history. Required if days is not set.",
+                                                  "description": "If true, backfill all history. Required if days is not set.",
                                                   "example": false,
                                                   "x-oapi-codegen-extra-tags": {
                                                     "validate": "required_without=Days"
@@ -47137,7 +47137,7 @@
                                             "properties": {
                                               "stringValue": {
                                                 "type": "string",
-                                                "Description": "The default string value to apply to a field"
+                                                "description": "The default string value to apply to a field"
                                               },
                                               "integerValue": {
                                                 "type": "integer",
@@ -47167,7 +47167,7 @@
                                             ],
                                             "default": "always",
                                             "x-go-type-skip-optional-pointer": true,
-                                            "Description": "Whether the default value should be applied when updating a record."
+                                            "description": "Whether the default value should be applied when updating a record."
                                           }
                                         }
                                       }
@@ -47290,7 +47290,7 @@
                                                 "properties": {
                                                   "stringValue": {
                                                     "type": "string",
-                                                    "Description": "The default string value to apply to a field"
+                                                    "description": "The default string value to apply to a field"
                                                   },
                                                   "integerValue": {
                                                     "type": "integer",
@@ -47320,7 +47320,7 @@
                                                 ],
                                                 "default": "always",
                                                 "x-go-type-skip-optional-pointer": true,
-                                                "Description": "Whether the default value should be applied when updating a record."
+                                                "description": "Whether the default value should be applied when updating a record."
                                               }
                                             }
                                           }
@@ -47713,7 +47713,7 @@
                                     },
                                     "fullHistory": {
                                       "type": "boolean",
-                                      "Description": "If true, backfill all history. Required if days is not set.",
+                                      "description": "If true, backfill all history. Required if days is not set.",
                                       "example": false,
                                       "x-oapi-codegen-extra-tags": {
                                         "validate": "required_without=Days"
@@ -47841,7 +47841,7 @@
                                     "properties": {
                                       "stringValue": {
                                         "type": "string",
-                                        "Description": "The default string value to apply to a field"
+                                        "description": "The default string value to apply to a field"
                                       },
                                       "integerValue": {
                                         "type": "integer",
@@ -47871,7 +47871,7 @@
                                     ],
                                     "default": "always",
                                     "x-go-type-skip-optional-pointer": true,
-                                    "Description": "Whether the default value should be applied when updating a record."
+                                    "description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
                               }
@@ -48005,7 +48005,7 @@
                                         },
                                         "fullHistory": {
                                           "type": "boolean",
-                                          "Description": "If true, backfill all history. Required if days is not set.",
+                                          "description": "If true, backfill all history. Required if days is not set.",
                                           "example": false,
                                           "x-oapi-codegen-extra-tags": {
                                             "validate": "required_without=Days"
@@ -48127,7 +48127,7 @@
                                             },
                                             "fullHistory": {
                                               "type": "boolean",
-                                              "Description": "If true, backfill all history. Required if days is not set.",
+                                              "description": "If true, backfill all history. Required if days is not set.",
                                               "example": false,
                                               "x-oapi-codegen-extra-tags": {
                                                 "validate": "required_without=Days"
@@ -48272,7 +48272,7 @@
                                         "properties": {
                                           "stringValue": {
                                             "type": "string",
-                                            "Description": "The default string value to apply to a field"
+                                            "description": "The default string value to apply to a field"
                                           },
                                           "integerValue": {
                                             "type": "integer",
@@ -48302,7 +48302,7 @@
                                         ],
                                         "default": "always",
                                         "x-go-type-skip-optional-pointer": true,
-                                        "Description": "Whether the default value should be applied when updating a record."
+                                        "description": "Whether the default value should be applied when updating a record."
                                       }
                                     }
                                   }
@@ -48425,7 +48425,7 @@
                                             "properties": {
                                               "stringValue": {
                                                 "type": "string",
-                                                "Description": "The default string value to apply to a field"
+                                                "description": "The default string value to apply to a field"
                                               },
                                               "integerValue": {
                                                 "type": "integer",
@@ -48455,7 +48455,7 @@
                                             ],
                                             "default": "always",
                                             "x-go-type-skip-optional-pointer": true,
-                                            "Description": "Whether the default value should be applied when updating a record."
+                                            "description": "Whether the default value should be applied when updating a record."
                                           }
                                         }
                                       }
