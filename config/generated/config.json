@@ -889,8 +889,7 @@
                   "properties": {
                     "enabled": {
                       "type": "string",
-                      "description": "Whether to create a create event.",
-                      "example": "always",
+                      "description": "Conditions to enable create events.",
                       "enum": [
                         "always"
                       ]
@@ -905,7 +904,7 @@
                   "properties": {
                     "enabled": {
                       "type": "string",
-                      "description": "Whether to create an update event.",
+                      "description": "Conditions to enable update events.",
                       "example": "always",
                       "enum": [
                         "always"
@@ -940,7 +939,7 @@
                   "properties": {
                     "enabled": {
                       "type": "string",
-                      "description": "Whether to create a delete event.",
+                      "description": "Conditions to enable delete events.",
                       "example": "always",
                       "enum": [
                         "always"
@@ -985,8 +984,7 @@
             "properties": {
               "enabled": {
                 "type": "string",
-                "description": "Whether to create a create event.",
-                "example": "always",
+                "description": "Conditions to enable create events.",
                 "enum": [
                   "always"
                 ]
@@ -1001,7 +999,7 @@
             "properties": {
               "enabled": {
                 "type": "string",
-                "description": "Whether to create an update event.",
+                "description": "Conditions to enable update events.",
                 "example": "always",
                 "enum": [
                   "always"
@@ -1036,7 +1034,7 @@
             "properties": {
               "enabled": {
                 "type": "string",
-                "description": "Whether to create a delete event.",
+                "description": "Conditions to enable delete events.",
                 "example": "always",
                 "enum": [
                   "always"
@@ -1965,8 +1963,7 @@
                               "properties": {
                                 "enabled": {
                                   "type": "string",
-                                  "description": "Whether to create a create event.",
-                                  "example": "always",
+                                  "description": "Conditions to enable create events.",
                                   "enum": [
                                     "always"
                                   ]
@@ -1981,7 +1978,7 @@
                               "properties": {
                                 "enabled": {
                                   "type": "string",
-                                  "description": "Whether to create an update event.",
+                                  "description": "Conditions to enable update events.",
                                   "example": "always",
                                   "enum": [
                                     "always"
@@ -2016,7 +2013,7 @@
                               "properties": {
                                 "enabled": {
                                   "type": "string",
-                                  "description": "Whether to create a delete event.",
+                                  "description": "Conditions to enable delete events.",
                                   "example": "always",
                                   "enum": [
                                     "always"
@@ -2068,8 +2065,7 @@
                                   "properties": {
                                     "enabled": {
                                       "type": "string",
-                                      "description": "Whether to create a create event.",
-                                      "example": "always",
+                                      "description": "Conditions to enable create events.",
                                       "enum": [
                                         "always"
                                       ]
@@ -2084,7 +2080,7 @@
                                   "properties": {
                                     "enabled": {
                                       "type": "string",
-                                      "description": "Whether to create an update event.",
+                                      "description": "Conditions to enable update events.",
                                       "example": "always",
                                       "enum": [
                                         "always"
@@ -2119,7 +2115,7 @@
                                   "properties": {
                                     "enabled": {
                                       "type": "string",
-                                      "description": "Whether to create a delete event.",
+                                      "description": "Conditions to enable delete events.",
                                       "example": "always",
                                       "enum": [
                                         "always"
@@ -3044,8 +3040,7 @@
                       "properties": {
                         "enabled": {
                           "type": "string",
-                          "description": "Whether to create a create event.",
-                          "example": "always",
+                          "description": "Conditions to enable create events.",
                           "enum": [
                             "always"
                           ]
@@ -3060,7 +3055,7 @@
                       "properties": {
                         "enabled": {
                           "type": "string",
-                          "description": "Whether to create an update event.",
+                          "description": "Conditions to enable update events.",
                           "example": "always",
                           "enum": [
                             "always"
@@ -3095,7 +3090,7 @@
                       "properties": {
                         "enabled": {
                           "type": "string",
-                          "description": "Whether to create a delete event.",
+                          "description": "Conditions to enable delete events.",
                           "example": "always",
                           "enum": [
                             "always"
@@ -3147,8 +3142,7 @@
                           "properties": {
                             "enabled": {
                               "type": "string",
-                              "description": "Whether to create a create event.",
-                              "example": "always",
+                              "description": "Conditions to enable create events.",
                               "enum": [
                                 "always"
                               ]
@@ -3163,7 +3157,7 @@
                           "properties": {
                             "enabled": {
                               "type": "string",
-                              "description": "Whether to create an update event.",
+                              "description": "Conditions to enable update events.",
                               "example": "always",
                               "enum": [
                                 "always"
@@ -3198,7 +3192,7 @@
                           "properties": {
                             "enabled": {
                               "type": "string",
-                              "description": "Whether to create a delete event.",
+                              "description": "Conditions to enable delete events.",
                               "example": "always",
                               "enum": [
                                 "always"
@@ -3258,8 +3252,7 @@
                 "properties": {
                   "enabled": {
                     "type": "string",
-                    "description": "Whether to create a create event.",
-                    "example": "always",
+                    "description": "Conditions to enable create events.",
                     "enum": [
                       "always"
                     ]
@@ -3274,7 +3267,7 @@
                 "properties": {
                   "enabled": {
                     "type": "string",
-                    "description": "Whether to create an update event.",
+                    "description": "Conditions to enable update events.",
                     "example": "always",
                     "enum": [
                       "always"
@@ -3309,7 +3302,7 @@
                 "properties": {
                   "enabled": {
                     "type": "string",
-                    "description": "Whether to create a delete event.",
+                    "description": "Conditions to enable delete events.",
                     "example": "always",
                     "enum": [
                       "always"
