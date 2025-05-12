@@ -125,7 +125,7 @@
                             },
                             "fullHistory": {
                               "type": "boolean",
-                              "description": "If true, backfill all history. Required if days is not set.",
+                              "Description": "If true, backfill all history. Required if days is not set.",
                               "example": false,
                               "x-oapi-codegen-extra-tags": {
                                 "validate": "required_without=Days"
@@ -253,7 +253,7 @@
                             "properties": {
                               "stringValue": {
                                 "type": "string",
-                                "description": "The default string value to apply to a field"
+                                "Description": "The default string value to apply to a field"
                               },
                               "integerValue": {
                                 "type": "integer",
@@ -283,7 +283,7 @@
                             ],
                             "default": "always",
                             "x-go-type-skip-optional-pointer": true,
-                            "description": "Whether the default value should be applied when updating a record."
+                            "Description": "Whether the default value should be applied when updating a record."
                           }
                         }
                       }
@@ -417,7 +417,7 @@
                         },
                         "fullHistory": {
                           "type": "boolean",
-                          "description": "If true, backfill all history. Required if days is not set.",
+                          "Description": "If true, backfill all history. Required if days is not set.",
                           "example": false,
                           "x-oapi-codegen-extra-tags": {
                             "validate": "required_without=Days"
@@ -529,7 +529,7 @@
                   },
                   "fullHistory": {
                     "type": "boolean",
-                    "description": "If true, backfill all history. Required if days is not set.",
+                    "Description": "If true, backfill all history. Required if days is not set.",
                     "example": false,
                     "x-oapi-codegen-extra-tags": {
                       "validate": "required_without=Days"
@@ -668,7 +668,7 @@
                         "properties": {
                           "stringValue": {
                             "type": "string",
-                            "description": "The default string value to apply to a field"
+                            "Description": "The default string value to apply to a field"
                           },
                           "integerValue": {
                             "type": "integer",
@@ -698,7 +698,7 @@
                         ],
                         "default": "always",
                         "x-go-type-skip-optional-pointer": true,
-                        "description": "Whether the default value should be applied when updating a record."
+                        "Description": "Whether the default value should be applied when updating a record."
                       }
                     }
                   }
@@ -814,7 +814,7 @@
                   "properties": {
                     "stringValue": {
                       "type": "string",
-                      "description": "The default string value to apply to a field"
+                      "Description": "The default string value to apply to a field"
                     },
                     "integerValue": {
                       "type": "integer",
@@ -844,8 +844,203 @@
                   ],
                   "default": "always",
                   "x-go-type-skip-optional-pointer": true,
-                  "description": "Whether the default value should be applied when updating a record."
+                  "Description": "Whether the default value should be applied when updating a record."
                 }
+              }
+            }
+          }
+        }
+      },
+      "BaseSubscribeConfig": {
+        "title": "Base Subscribe Config",
+        "type": "object",
+        "properties": {
+          "objects": {
+            "type": "object",
+            "additionalProperties": {
+              "title": "Base Subscribe Config Object",
+              "type": "object",
+              "required": [
+                "objectName",
+                "destination",
+                "inheritFieldsAndMappings"
+              ],
+              "properties": {
+                "inheritFieldsAndMappings": {
+                  "type": "boolean",
+                  "description": "Whether to inherit fields and mappings from the read config.",
+                  "example": true
+                },
+                "objectName": {
+                  "description": "The name of the object to subscribe to.",
+                  "example": "account",
+                  "type": "string"
+                },
+                "destination": {
+                  "description": "The name of the destination that the result should be sent to.",
+                  "example": "accountWebhook",
+                  "type": "string"
+                },
+                "createEvent": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "string",
+                      "description": "Whether to create a create event.",
+                      "example": "always",
+                      "enum": [
+                        "always"
+                      ]
+                    }
+                  }
+                },
+                "updateEvent": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "string",
+                      "description": "Whether to create an update event.",
+                      "example": "always",
+                      "enum": [
+                        "always"
+                      ]
+                    },
+                    "watchFieldsAuto": {
+                      "type": "string",
+                      "description": "Whether to watch fields all fields automatically.",
+                      "example": "all",
+                      "enum": [
+                        "all"
+                      ]
+                    },
+                    "requiredWatchFields": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The fields that should be watched.",
+                      "example": [
+                        "name",
+                        "description"
+                      ]
+                    }
+                  }
+                },
+                "deleteEvent": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "string",
+                      "description": "Whether to create a delete event.",
+                      "example": "always",
+                      "enum": [
+                        "always"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "BaseSubscribeConfigObject": {
+        "title": "Base Subscribe Config Object",
+        "type": "object",
+        "required": [
+          "objectName",
+          "destination",
+          "inheritFieldsAndMappings"
+        ],
+        "properties": {
+          "inheritFieldsAndMappings": {
+            "type": "boolean",
+            "description": "Whether to inherit fields and mappings from the read config.",
+            "example": true
+          },
+          "objectName": {
+            "description": "The name of the object to subscribe to.",
+            "example": "account",
+            "type": "string"
+          },
+          "destination": {
+            "description": "The name of the destination that the result should be sent to.",
+            "example": "accountWebhook",
+            "type": "string"
+          },
+          "createEvent": {
+            "type": "object",
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "string",
+                "description": "Whether to create a create event.",
+                "example": "always",
+                "enum": [
+                  "always"
+                ]
+              }
+            }
+          },
+          "updateEvent": {
+            "type": "object",
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "string",
+                "description": "Whether to create an update event.",
+                "example": "always",
+                "enum": [
+                  "always"
+                ]
+              },
+              "watchFieldsAuto": {
+                "type": "string",
+                "description": "Whether to watch fields all fields automatically.",
+                "example": "all",
+                "enum": [
+                  "all"
+                ]
+              },
+              "requiredWatchFields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The fields that should be watched.",
+                "example": [
+                  "name",
+                  "description"
+                ]
+              }
+            }
+          },
+          "deleteEvent": {
+            "type": "object",
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "string",
+                "description": "Whether to create a delete event.",
+                "example": "always",
+                "enum": [
+                  "always"
+                ]
               }
             }
           }
@@ -967,7 +1162,7 @@
                                 },
                                 "fullHistory": {
                                   "type": "boolean",
-                                  "description": "If true, backfill all history. Required if days is not set.",
+                                  "Description": "If true, backfill all history. Required if days is not set.",
                                   "example": false,
                                   "x-oapi-codegen-extra-tags": {
                                     "validate": "required_without=Days"
@@ -1095,7 +1290,7 @@
                                 "properties": {
                                   "stringValue": {
                                     "type": "string",
-                                    "description": "The default string value to apply to a field"
+                                    "Description": "The default string value to apply to a field"
                                   },
                                   "integerValue": {
                                     "type": "integer",
@@ -1125,7 +1320,7 @@
                                 ],
                                 "default": "always",
                                 "x-go-type-skip-optional-pointer": true,
-                                "description": "Whether the default value should be applied when updating a record."
+                                "Description": "Whether the default value should be applied when updating a record."
                               }
                             }
                           }
@@ -1259,7 +1454,7 @@
                                     },
                                     "fullHistory": {
                                       "type": "boolean",
-                                      "description": "If true, backfill all history. Required if days is not set.",
+                                      "Description": "If true, backfill all history. Required if days is not set.",
                                       "example": false,
                                       "x-oapi-codegen-extra-tags": {
                                         "validate": "required_without=Days"
@@ -1381,7 +1576,7 @@
                                         },
                                         "fullHistory": {
                                           "type": "boolean",
-                                          "description": "If true, backfill all history. Required if days is not set.",
+                                          "Description": "If true, backfill all history. Required if days is not set.",
                                           "example": false,
                                           "x-oapi-codegen-extra-tags": {
                                             "validate": "required_without=Days"
@@ -1526,7 +1721,7 @@
                                     "properties": {
                                       "stringValue": {
                                         "type": "string",
-                                        "description": "The default string value to apply to a field"
+                                        "Description": "The default string value to apply to a field"
                                       },
                                       "integerValue": {
                                         "type": "integer",
@@ -1556,7 +1751,7 @@
                                     ],
                                     "default": "always",
                                     "x-go-type-skip-optional-pointer": true,
-                                    "description": "Whether the default value should be applied when updating a record."
+                                    "Description": "Whether the default value should be applied when updating a record."
                                   }
                                 }
                               }
@@ -1679,7 +1874,7 @@
                                         "properties": {
                                           "stringValue": {
                                             "type": "string",
-                                            "description": "The default string value to apply to a field"
+                                            "Description": "The default string value to apply to a field"
                                           },
                                           "integerValue": {
                                             "type": "integer",
@@ -1709,7 +1904,7 @@
                                         ],
                                         "default": "always",
                                         "x-go-type-skip-optional-pointer": true,
-                                        "description": "Whether the default value should be applied when updating a record."
+                                        "Description": "Whether the default value should be applied when updating a record."
                                       }
                                     }
                                   }
@@ -1720,6 +1915,226 @@
                               "type": "object",
                               "required": [
                                 "objectName"
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "subscribe": {
+                "title": "Subscribe Config",
+                "allOf": [
+                  {
+                    "title": "Base Subscribe Config",
+                    "type": "object",
+                    "properties": {
+                      "objects": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "title": "Base Subscribe Config Object",
+                          "type": "object",
+                          "required": [
+                            "objectName",
+                            "destination",
+                            "inheritFieldsAndMappings"
+                          ],
+                          "properties": {
+                            "inheritFieldsAndMappings": {
+                              "type": "boolean",
+                              "description": "Whether to inherit fields and mappings from the read config.",
+                              "example": true
+                            },
+                            "objectName": {
+                              "description": "The name of the object to subscribe to.",
+                              "example": "account",
+                              "type": "string"
+                            },
+                            "destination": {
+                              "description": "The name of the destination that the result should be sent to.",
+                              "example": "accountWebhook",
+                              "type": "string"
+                            },
+                            "createEvent": {
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "Whether to create a create event.",
+                                  "example": "always",
+                                  "enum": [
+                                    "always"
+                                  ]
+                                }
+                              }
+                            },
+                            "updateEvent": {
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "Whether to create an update event.",
+                                  "example": "always",
+                                  "enum": [
+                                    "always"
+                                  ]
+                                },
+                                "watchFieldsAuto": {
+                                  "type": "string",
+                                  "description": "Whether to watch fields all fields automatically.",
+                                  "example": "all",
+                                  "enum": [
+                                    "all"
+                                  ]
+                                },
+                                "requiredWatchFields": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "description": "The fields that should be watched.",
+                                  "example": [
+                                    "name",
+                                    "description"
+                                  ]
+                                }
+                              }
+                            },
+                            "deleteEvent": {
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "Whether to create a delete event.",
+                                  "example": "always",
+                                  "enum": [
+                                    "always"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "objects": {
+                        "additionalProperties": {
+                          "title": "Subscribe Config Object",
+                          "allOf": [
+                            {
+                              "title": "Base Subscribe Config Object",
+                              "type": "object",
+                              "required": [
+                                "objectName",
+                                "destination",
+                                "inheritFieldsAndMappings"
+                              ],
+                              "properties": {
+                                "inheritFieldsAndMappings": {
+                                  "type": "boolean",
+                                  "description": "Whether to inherit fields and mappings from the read config.",
+                                  "example": true
+                                },
+                                "objectName": {
+                                  "description": "The name of the object to subscribe to.",
+                                  "example": "account",
+                                  "type": "string"
+                                },
+                                "destination": {
+                                  "description": "The name of the destination that the result should be sent to.",
+                                  "example": "accountWebhook",
+                                  "type": "string"
+                                },
+                                "createEvent": {
+                                  "type": "object",
+                                  "required": [
+                                    "enabled"
+                                  ],
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "string",
+                                      "description": "Whether to create a create event.",
+                                      "example": "always",
+                                      "enum": [
+                                        "always"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "updateEvent": {
+                                  "type": "object",
+                                  "required": [
+                                    "enabled"
+                                  ],
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "string",
+                                      "description": "Whether to create an update event.",
+                                      "example": "always",
+                                      "enum": [
+                                        "always"
+                                      ]
+                                    },
+                                    "watchFieldsAuto": {
+                                      "type": "string",
+                                      "description": "Whether to watch fields all fields automatically.",
+                                      "example": "all",
+                                      "enum": [
+                                        "all"
+                                      ]
+                                    },
+                                    "requiredWatchFields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "description": "The fields that should be watched.",
+                                      "example": [
+                                        "name",
+                                        "description"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "deleteEvent": {
+                                  "type": "object",
+                                  "required": [
+                                    "enabled"
+                                  ],
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "string",
+                                      "description": "Whether to create a delete event.",
+                                      "example": "always",
+                                      "enum": [
+                                        "always"
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "required": [
+                                "objectName",
+                                "destination",
+                                "inheritFieldsAndMappings"
                               ]
                             }
                           ]
@@ -1840,7 +2255,7 @@
                             },
                             "fullHistory": {
                               "type": "boolean",
-                              "description": "If true, backfill all history. Required if days is not set.",
+                              "Description": "If true, backfill all history. Required if days is not set.",
                               "example": false,
                               "x-oapi-codegen-extra-tags": {
                                 "validate": "required_without=Days"
@@ -1962,7 +2377,7 @@
                                 },
                                 "fullHistory": {
                                   "type": "boolean",
-                                  "description": "If true, backfill all history. Required if days is not set.",
+                                  "Description": "If true, backfill all history. Required if days is not set.",
                                   "example": false,
                                   "x-oapi-codegen-extra-tags": {
                                     "validate": "required_without=Days"
@@ -2091,7 +2506,7 @@
                       },
                       "fullHistory": {
                         "type": "boolean",
-                        "description": "If true, backfill all history. Required if days is not set.",
+                        "Description": "If true, backfill all history. Required if days is not set.",
                         "example": false,
                         "x-oapi-codegen-extra-tags": {
                           "validate": "required_without=Days"
@@ -2231,7 +2646,7 @@
                             "properties": {
                               "stringValue": {
                                 "type": "string",
-                                "description": "The default string value to apply to a field"
+                                "Description": "The default string value to apply to a field"
                               },
                               "integerValue": {
                                 "type": "integer",
@@ -2261,7 +2676,7 @@
                             ],
                             "default": "always",
                             "x-go-type-skip-optional-pointer": true,
-                            "description": "Whether the default value should be applied when updating a record."
+                            "Description": "Whether the default value should be applied when updating a record."
                           }
                         }
                       }
@@ -2384,7 +2799,7 @@
                                 "properties": {
                                   "stringValue": {
                                     "type": "string",
-                                    "description": "The default string value to apply to a field"
+                                    "Description": "The default string value to apply to a field"
                                   },
                                   "integerValue": {
                                     "type": "integer",
@@ -2414,7 +2829,7 @@
                                 ],
                                 "default": "always",
                                 "x-go-type-skip-optional-pointer": true,
-                                "description": "Whether the default value should be applied when updating a record."
+                                "Description": "Whether the default value should be applied when updating a record."
                               }
                             }
                           }
@@ -2543,7 +2958,7 @@
                       "properties": {
                         "stringValue": {
                           "type": "string",
-                          "description": "The default string value to apply to a field"
+                          "Description": "The default string value to apply to a field"
                         },
                         "integerValue": {
                           "type": "integer",
@@ -2573,7 +2988,7 @@
                       ],
                       "default": "always",
                       "x-go-type-skip-optional-pointer": true,
-                      "description": "Whether the default value should be applied when updating a record."
+                      "Description": "Whether the default value should be applied when updating a record."
                     }
                   }
                 }
@@ -2584,6 +2999,332 @@
             "type": "object",
             "required": [
               "objectName"
+            ]
+          }
+        ]
+      },
+      "SubscribeConfig": {
+        "title": "Subscribe Config",
+        "allOf": [
+          {
+            "title": "Base Subscribe Config",
+            "type": "object",
+            "properties": {
+              "objects": {
+                "type": "object",
+                "additionalProperties": {
+                  "title": "Base Subscribe Config Object",
+                  "type": "object",
+                  "required": [
+                    "objectName",
+                    "destination",
+                    "inheritFieldsAndMappings"
+                  ],
+                  "properties": {
+                    "inheritFieldsAndMappings": {
+                      "type": "boolean",
+                      "description": "Whether to inherit fields and mappings from the read config.",
+                      "example": true
+                    },
+                    "objectName": {
+                      "description": "The name of the object to subscribe to.",
+                      "example": "account",
+                      "type": "string"
+                    },
+                    "destination": {
+                      "description": "The name of the destination that the result should be sent to.",
+                      "example": "accountWebhook",
+                      "type": "string"
+                    },
+                    "createEvent": {
+                      "type": "object",
+                      "required": [
+                        "enabled"
+                      ],
+                      "properties": {
+                        "enabled": {
+                          "type": "string",
+                          "description": "Whether to create a create event.",
+                          "example": "always",
+                          "enum": [
+                            "always"
+                          ]
+                        }
+                      }
+                    },
+                    "updateEvent": {
+                      "type": "object",
+                      "required": [
+                        "enabled"
+                      ],
+                      "properties": {
+                        "enabled": {
+                          "type": "string",
+                          "description": "Whether to create an update event.",
+                          "example": "always",
+                          "enum": [
+                            "always"
+                          ]
+                        },
+                        "watchFieldsAuto": {
+                          "type": "string",
+                          "description": "Whether to watch fields all fields automatically.",
+                          "example": "all",
+                          "enum": [
+                            "all"
+                          ]
+                        },
+                        "requiredWatchFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "The fields that should be watched.",
+                          "example": [
+                            "name",
+                            "description"
+                          ]
+                        }
+                      }
+                    },
+                    "deleteEvent": {
+                      "type": "object",
+                      "required": [
+                        "enabled"
+                      ],
+                      "properties": {
+                        "enabled": {
+                          "type": "string",
+                          "description": "Whether to create a delete event.",
+                          "example": "always",
+                          "enum": [
+                            "always"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "objects": {
+                "additionalProperties": {
+                  "title": "Subscribe Config Object",
+                  "allOf": [
+                    {
+                      "title": "Base Subscribe Config Object",
+                      "type": "object",
+                      "required": [
+                        "objectName",
+                        "destination",
+                        "inheritFieldsAndMappings"
+                      ],
+                      "properties": {
+                        "inheritFieldsAndMappings": {
+                          "type": "boolean",
+                          "description": "Whether to inherit fields and mappings from the read config.",
+                          "example": true
+                        },
+                        "objectName": {
+                          "description": "The name of the object to subscribe to.",
+                          "example": "account",
+                          "type": "string"
+                        },
+                        "destination": {
+                          "description": "The name of the destination that the result should be sent to.",
+                          "example": "accountWebhook",
+                          "type": "string"
+                        },
+                        "createEvent": {
+                          "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "Whether to create a create event.",
+                              "example": "always",
+                              "enum": [
+                                "always"
+                              ]
+                            }
+                          }
+                        },
+                        "updateEvent": {
+                          "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "Whether to create an update event.",
+                              "example": "always",
+                              "enum": [
+                                "always"
+                              ]
+                            },
+                            "watchFieldsAuto": {
+                              "type": "string",
+                              "description": "Whether to watch fields all fields automatically.",
+                              "example": "all",
+                              "enum": [
+                                "all"
+                              ]
+                            },
+                            "requiredWatchFields": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "description": "The fields that should be watched.",
+                              "example": [
+                                "name",
+                                "description"
+                              ]
+                            }
+                          }
+                        },
+                        "deleteEvent": {
+                          "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "Whether to create a delete event.",
+                              "example": "always",
+                              "enum": [
+                                "always"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "objectName",
+                        "destination",
+                        "inheritFieldsAndMappings"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "SubscribeConfigObject": {
+        "title": "Subscribe Config Object",
+        "allOf": [
+          {
+            "title": "Base Subscribe Config Object",
+            "type": "object",
+            "required": [
+              "objectName",
+              "destination",
+              "inheritFieldsAndMappings"
+            ],
+            "properties": {
+              "inheritFieldsAndMappings": {
+                "type": "boolean",
+                "description": "Whether to inherit fields and mappings from the read config.",
+                "example": true
+              },
+              "objectName": {
+                "description": "The name of the object to subscribe to.",
+                "example": "account",
+                "type": "string"
+              },
+              "destination": {
+                "description": "The name of the destination that the result should be sent to.",
+                "example": "accountWebhook",
+                "type": "string"
+              },
+              "createEvent": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "string",
+                    "description": "Whether to create a create event.",
+                    "example": "always",
+                    "enum": [
+                      "always"
+                    ]
+                  }
+                }
+              },
+              "updateEvent": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "string",
+                    "description": "Whether to create an update event.",
+                    "example": "always",
+                    "enum": [
+                      "always"
+                    ]
+                  },
+                  "watchFieldsAuto": {
+                    "type": "string",
+                    "description": "Whether to watch fields all fields automatically.",
+                    "example": "all",
+                    "enum": [
+                      "all"
+                    ]
+                  },
+                  "requiredWatchFields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The fields that should be watched.",
+                    "example": [
+                      "name",
+                      "description"
+                    ]
+                  }
+                }
+              },
+              "deleteEvent": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "string",
+                    "description": "Whether to create a delete event.",
+                    "example": "always",
+                    "enum": [
+                      "always"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "objectName",
+              "destination",
+              "inheritFieldsAndMappings"
             ]
           }
         ]
@@ -2704,7 +3445,7 @@
                                 },
                                 "fullHistory": {
                                   "type": "boolean",
-                                  "description": "If true, backfill all history. Required if days is not set.",
+                                  "Description": "If true, backfill all history. Required if days is not set.",
                                   "example": false,
                                   "x-oapi-codegen-extra-tags": {
                                     "validate": "required_without=Days"
@@ -2832,7 +3573,7 @@
                                 "properties": {
                                   "stringValue": {
                                     "type": "string",
-                                    "description": "The default string value to apply to a field"
+                                    "Description": "The default string value to apply to a field"
                                   },
                                   "integerValue": {
                                     "type": "integer",
@@ -2862,7 +3603,7 @@
                                 ],
                                 "default": "always",
                                 "x-go-type-skip-optional-pointer": true,
-                                "description": "Whether the default value should be applied when updating a record."
+                                "Description": "Whether the default value should be applied when updating a record."
                               }
                             }
                           }
@@ -2992,7 +3733,7 @@
                             },
                             "fullHistory": {
                               "type": "boolean",
-                              "description": "If true, backfill all history. Required if days is not set.",
+                              "Description": "If true, backfill all history. Required if days is not set.",
                               "example": false,
                               "x-oapi-codegen-extra-tags": {
                                 "validate": "required_without=Days"
@@ -3109,7 +3850,7 @@
                       },
                       "fullHistory": {
                         "type": "boolean",
-                        "description": "If true, backfill all history. Required if days is not set.",
+                        "Description": "If true, backfill all history. Required if days is not set.",
                         "example": false,
                         "x-oapi-codegen-extra-tags": {
                           "validate": "required_without=Days"
@@ -3156,7 +3897,7 @@
               },
               "fullHistory": {
                 "type": "boolean",
-                "description": "If true, backfill all history. Required if days is not set.",
+                "Description": "If true, backfill all history. Required if days is not set.",
                 "example": false,
                 "x-oapi-codegen-extra-tags": {
                   "validate": "required_without=Days"
@@ -3181,7 +3922,7 @@
           },
           "fullHistory": {
             "type": "boolean",
-            "description": "If true, backfill all history. Required if days is not set.",
+            "Description": "If true, backfill all history. Required if days is not set.",
             "example": false,
             "x-oapi-codegen-extra-tags": {
               "validate": "required_without=Days"
@@ -3200,7 +3941,7 @@
             "properties": {
               "stringValue": {
                 "type": "string",
-                "description": "The default string value to apply to a field"
+                "Description": "The default string value to apply to a field"
               },
               "integerValue": {
                 "type": "integer",
@@ -3230,7 +3971,7 @@
             ],
             "default": "always",
             "x-go-type-skip-optional-pointer": true,
-            "description": "Whether the default value should be applied when updating a record."
+            "Description": "Whether the default value should be applied when updating a record."
           }
         }
       },
@@ -3241,7 +3982,7 @@
         "properties": {
           "stringValue": {
             "type": "string",
-            "description": "The default string value to apply to a field"
+            "Description": "The default string value to apply to a field"
           },
           "integerValue": {
             "type": "integer",
