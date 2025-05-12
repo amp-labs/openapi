@@ -13885,14 +13885,24 @@
                                                 "objectName": {
                                                   "description": "The name of the object to subscribe to.",
                                                   "example": "account",
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required"
+                                                  }
                                                 },
                                                 "destination": {
                                                   "description": "The name of the destination that the result should be sent to.",
                                                   "example": "accountWebhook",
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required"
+                                                  }
                                                 },
                                                 "createEvent": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                  },
+                                                  "title": "Create Event",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -13903,11 +13913,18 @@
                                                       "description": "Conditions to enable create events.",
                                                       "enum": [
                                                         "always"
-                                                      ]
+                                                      ],
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "oneof=always"
+                                                      }
                                                     }
                                                   }
                                                 },
                                                 "updateEvent": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                  },
+                                                  "title": "Update Event",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -13919,9 +13936,15 @@
                                                       "example": "always",
                                                       "enum": [
                                                         "always"
-                                                      ]
+                                                      ],
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "oneof=always"
+                                                      }
                                                     },
                                                     "watchFieldsAuto": {
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required_without=RequiredWatchFields"
+                                                      },
                                                       "type": "string",
                                                       "description": "Whether to watch fields all fields automatically.",
                                                       "example": "all",
@@ -13930,6 +13953,9 @@
                                                       ]
                                                     },
                                                     "requiredWatchFields": {
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required_without=WatchFieldsAuto"
+                                                      },
                                                       "type": "array",
                                                       "items": {
                                                         "type": "string"
@@ -13943,6 +13969,10 @@
                                                   }
                                                 },
                                                 "deleteEvent": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                  },
+                                                  "title": "Delete Event",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -13952,6 +13982,9 @@
                                                       "type": "string",
                                                       "description": "Conditions to enable delete events.",
                                                       "example": "always",
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "oneof=always"
+                                                      },
                                                       "enum": [
                                                         "always"
                                                       ]
@@ -13987,14 +14020,24 @@
                                                     "objectName": {
                                                       "description": "The name of the object to subscribe to.",
                                                       "example": "account",
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required"
+                                                      }
                                                     },
                                                     "destination": {
                                                       "description": "The name of the destination that the result should be sent to.",
                                                       "example": "accountWebhook",
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required"
+                                                      }
                                                     },
                                                     "createEvent": {
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                      },
+                                                      "title": "Create Event",
                                                       "type": "object",
                                                       "required": [
                                                         "enabled"
@@ -14005,11 +14048,18 @@
                                                           "description": "Conditions to enable create events.",
                                                           "enum": [
                                                             "always"
-                                                          ]
+                                                          ],
+                                                          "x-oapi-codegen-extra-tags": {
+                                                            "validate": "oneof=always"
+                                                          }
                                                         }
                                                       }
                                                     },
                                                     "updateEvent": {
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                      },
+                                                      "title": "Update Event",
                                                       "type": "object",
                                                       "required": [
                                                         "enabled"
@@ -14021,9 +14071,15 @@
                                                           "example": "always",
                                                           "enum": [
                                                             "always"
-                                                          ]
+                                                          ],
+                                                          "x-oapi-codegen-extra-tags": {
+                                                            "validate": "oneof=always"
+                                                          }
                                                         },
                                                         "watchFieldsAuto": {
+                                                          "x-oapi-codegen-extra-tags": {
+                                                            "validate": "required_without=RequiredWatchFields"
+                                                          },
                                                           "type": "string",
                                                           "description": "Whether to watch fields all fields automatically.",
                                                           "example": "all",
@@ -14032,6 +14088,9 @@
                                                           ]
                                                         },
                                                         "requiredWatchFields": {
+                                                          "x-oapi-codegen-extra-tags": {
+                                                            "validate": "required_without=WatchFieldsAuto"
+                                                          },
                                                           "type": "array",
                                                           "items": {
                                                             "type": "string"
@@ -14045,6 +14104,10 @@
                                                       }
                                                     },
                                                     "deleteEvent": {
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                      },
+                                                      "title": "Delete Event",
                                                       "type": "object",
                                                       "required": [
                                                         "enabled"
@@ -14054,6 +14117,9 @@
                                                           "type": "string",
                                                           "description": "Conditions to enable delete events.",
                                                           "example": "always",
+                                                          "x-oapi-codegen-extra-tags": {
+                                                            "validate": "oneof=always"
+                                                          },
                                                           "enum": [
                                                             "always"
                                                           ]
@@ -15515,14 +15581,24 @@
                                             "objectName": {
                                               "description": "The name of the object to subscribe to.",
                                               "example": "account",
-                                              "type": "string"
+                                              "type": "string",
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required"
+                                              }
                                             },
                                             "destination": {
                                               "description": "The name of the destination that the result should be sent to.",
                                               "example": "accountWebhook",
-                                              "type": "string"
+                                              "type": "string",
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required"
+                                              }
                                             },
                                             "createEvent": {
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                              },
+                                              "title": "Create Event",
                                               "type": "object",
                                               "required": [
                                                 "enabled"
@@ -15533,11 +15609,18 @@
                                                   "description": "Conditions to enable create events.",
                                                   "enum": [
                                                     "always"
-                                                  ]
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always"
+                                                  }
                                                 }
                                               }
                                             },
                                             "updateEvent": {
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required_without_all=CreateEvent DeleteEvent"
+                                              },
+                                              "title": "Update Event",
                                               "type": "object",
                                               "required": [
                                                 "enabled"
@@ -15549,9 +15632,15 @@
                                                   "example": "always",
                                                   "enum": [
                                                     "always"
-                                                  ]
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always"
+                                                  }
                                                 },
                                                 "watchFieldsAuto": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without=RequiredWatchFields"
+                                                  },
                                                   "type": "string",
                                                   "description": "Whether to watch fields all fields automatically.",
                                                   "example": "all",
@@ -15560,6 +15649,9 @@
                                                   ]
                                                 },
                                                 "requiredWatchFields": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without=WatchFieldsAuto"
+                                                  },
                                                   "type": "array",
                                                   "items": {
                                                     "type": "string"
@@ -15573,6 +15665,10 @@
                                               }
                                             },
                                             "deleteEvent": {
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required_without_all=CreateEvent UpdateEvent"
+                                              },
+                                              "title": "Delete Event",
                                               "type": "object",
                                               "required": [
                                                 "enabled"
@@ -15582,6 +15678,9 @@
                                                   "type": "string",
                                                   "description": "Conditions to enable delete events.",
                                                   "example": "always",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always"
+                                                  },
                                                   "enum": [
                                                     "always"
                                                   ]
@@ -15617,14 +15716,24 @@
                                                 "objectName": {
                                                   "description": "The name of the object to subscribe to.",
                                                   "example": "account",
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required"
+                                                  }
                                                 },
                                                 "destination": {
                                                   "description": "The name of the destination that the result should be sent to.",
                                                   "example": "accountWebhook",
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required"
+                                                  }
                                                 },
                                                 "createEvent": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                  },
+                                                  "title": "Create Event",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -15635,11 +15744,18 @@
                                                       "description": "Conditions to enable create events.",
                                                       "enum": [
                                                         "always"
-                                                      ]
+                                                      ],
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "oneof=always"
+                                                      }
                                                     }
                                                   }
                                                 },
                                                 "updateEvent": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                  },
+                                                  "title": "Update Event",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -15651,9 +15767,15 @@
                                                       "example": "always",
                                                       "enum": [
                                                         "always"
-                                                      ]
+                                                      ],
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "oneof=always"
+                                                      }
                                                     },
                                                     "watchFieldsAuto": {
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required_without=RequiredWatchFields"
+                                                      },
                                                       "type": "string",
                                                       "description": "Whether to watch fields all fields automatically.",
                                                       "example": "all",
@@ -15662,6 +15784,9 @@
                                                       ]
                                                     },
                                                     "requiredWatchFields": {
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "required_without=WatchFieldsAuto"
+                                                      },
                                                       "type": "array",
                                                       "items": {
                                                         "type": "string"
@@ -15675,6 +15800,10 @@
                                                   }
                                                 },
                                                 "deleteEvent": {
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                  },
+                                                  "title": "Delete Event",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -15684,6 +15813,9 @@
                                                       "type": "string",
                                                       "description": "Conditions to enable delete events.",
                                                       "example": "always",
+                                                      "x-oapi-codegen-extra-tags": {
+                                                        "validate": "oneof=always"
+                                                      },
                                                       "enum": [
                                                         "always"
                                                       ]
@@ -17057,14 +17189,24 @@
                                               "objectName": {
                                                 "description": "The name of the object to subscribe to.",
                                                 "example": "account",
-                                                "type": "string"
+                                                "type": "string",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required"
+                                                }
                                               },
                                               "destination": {
                                                 "description": "The name of the destination that the result should be sent to.",
                                                 "example": "accountWebhook",
-                                                "type": "string"
+                                                "type": "string",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required"
+                                                }
                                               },
                                               "createEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                },
+                                                "title": "Create Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -17075,11 +17217,18 @@
                                                     "description": "Conditions to enable create events.",
                                                     "enum": [
                                                       "always"
-                                                    ]
+                                                    ],
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    }
                                                   }
                                                 }
                                               },
                                               "updateEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                },
+                                                "title": "Update Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -17091,9 +17240,15 @@
                                                     "example": "always",
                                                     "enum": [
                                                       "always"
-                                                    ]
+                                                    ],
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    }
                                                   },
                                                   "watchFieldsAuto": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without=RequiredWatchFields"
+                                                    },
                                                     "type": "string",
                                                     "description": "Whether to watch fields all fields automatically.",
                                                     "example": "all",
@@ -17102,6 +17257,9 @@
                                                     ]
                                                   },
                                                   "requiredWatchFields": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without=WatchFieldsAuto"
+                                                    },
                                                     "type": "array",
                                                     "items": {
                                                       "type": "string"
@@ -17115,6 +17273,10 @@
                                                 }
                                               },
                                               "deleteEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                },
+                                                "title": "Delete Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -17124,6 +17286,9 @@
                                                     "type": "string",
                                                     "description": "Conditions to enable delete events.",
                                                     "example": "always",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    },
                                                     "enum": [
                                                       "always"
                                                     ]
@@ -17159,14 +17324,24 @@
                                                   "objectName": {
                                                     "description": "The name of the object to subscribe to.",
                                                     "example": "account",
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required"
+                                                    }
                                                   },
                                                   "destination": {
                                                     "description": "The name of the destination that the result should be sent to.",
                                                     "example": "accountWebhook",
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required"
+                                                    }
                                                   },
                                                   "createEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                    },
+                                                    "title": "Create Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -17177,11 +17352,18 @@
                                                         "description": "Conditions to enable create events.",
                                                         "enum": [
                                                           "always"
-                                                        ]
+                                                        ],
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        }
                                                       }
                                                     }
                                                   },
                                                   "updateEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                    },
+                                                    "title": "Update Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -17193,9 +17375,15 @@
                                                         "example": "always",
                                                         "enum": [
                                                           "always"
-                                                        ]
+                                                        ],
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        }
                                                       },
                                                       "watchFieldsAuto": {
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "required_without=RequiredWatchFields"
+                                                        },
                                                         "type": "string",
                                                         "description": "Whether to watch fields all fields automatically.",
                                                         "example": "all",
@@ -17204,6 +17392,9 @@
                                                         ]
                                                       },
                                                       "requiredWatchFields": {
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "required_without=WatchFieldsAuto"
+                                                        },
                                                         "type": "array",
                                                         "items": {
                                                           "type": "string"
@@ -17217,6 +17408,10 @@
                                                     }
                                                   },
                                                   "deleteEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                    },
+                                                    "title": "Delete Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -17226,6 +17421,9 @@
                                                         "type": "string",
                                                         "description": "Conditions to enable delete events.",
                                                         "example": "always",
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        },
                                                         "enum": [
                                                           "always"
                                                         ]
@@ -19421,14 +19619,24 @@
                                               "objectName": {
                                                 "description": "The name of the object to subscribe to.",
                                                 "example": "account",
-                                                "type": "string"
+                                                "type": "string",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required"
+                                                }
                                               },
                                               "destination": {
                                                 "description": "The name of the destination that the result should be sent to.",
                                                 "example": "accountWebhook",
-                                                "type": "string"
+                                                "type": "string",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required"
+                                                }
                                               },
                                               "createEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                },
+                                                "title": "Create Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -19439,11 +19647,18 @@
                                                     "description": "Conditions to enable create events.",
                                                     "enum": [
                                                       "always"
-                                                    ]
+                                                    ],
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    }
                                                   }
                                                 }
                                               },
                                               "updateEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                },
+                                                "title": "Update Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -19455,9 +19670,15 @@
                                                     "example": "always",
                                                     "enum": [
                                                       "always"
-                                                    ]
+                                                    ],
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    }
                                                   },
                                                   "watchFieldsAuto": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without=RequiredWatchFields"
+                                                    },
                                                     "type": "string",
                                                     "description": "Whether to watch fields all fields automatically.",
                                                     "example": "all",
@@ -19466,6 +19687,9 @@
                                                     ]
                                                   },
                                                   "requiredWatchFields": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without=WatchFieldsAuto"
+                                                    },
                                                     "type": "array",
                                                     "items": {
                                                       "type": "string"
@@ -19479,6 +19703,10 @@
                                                 }
                                               },
                                               "deleteEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                },
+                                                "title": "Delete Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -19488,6 +19716,9 @@
                                                     "type": "string",
                                                     "description": "Conditions to enable delete events.",
                                                     "example": "always",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    },
                                                     "enum": [
                                                       "always"
                                                     ]
@@ -19523,14 +19754,24 @@
                                                   "objectName": {
                                                     "description": "The name of the object to subscribe to.",
                                                     "example": "account",
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required"
+                                                    }
                                                   },
                                                   "destination": {
                                                     "description": "The name of the destination that the result should be sent to.",
                                                     "example": "accountWebhook",
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required"
+                                                    }
                                                   },
                                                   "createEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                    },
+                                                    "title": "Create Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -19541,11 +19782,18 @@
                                                         "description": "Conditions to enable create events.",
                                                         "enum": [
                                                           "always"
-                                                        ]
+                                                        ],
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        }
                                                       }
                                                     }
                                                   },
                                                   "updateEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                    },
+                                                    "title": "Update Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -19557,9 +19805,15 @@
                                                         "example": "always",
                                                         "enum": [
                                                           "always"
-                                                        ]
+                                                        ],
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        }
                                                       },
                                                       "watchFieldsAuto": {
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "required_without=RequiredWatchFields"
+                                                        },
                                                         "type": "string",
                                                         "description": "Whether to watch fields all fields automatically.",
                                                         "example": "all",
@@ -19568,6 +19822,9 @@
                                                         ]
                                                       },
                                                       "requiredWatchFields": {
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "required_without=WatchFieldsAuto"
+                                                        },
                                                         "type": "array",
                                                         "items": {
                                                           "type": "string"
@@ -19581,6 +19838,10 @@
                                                     }
                                                   },
                                                   "deleteEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                    },
+                                                    "title": "Delete Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -19590,6 +19851,9 @@
                                                         "type": "string",
                                                         "description": "Conditions to enable delete events.",
                                                         "example": "always",
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        },
                                                         "enum": [
                                                           "always"
                                                         ]
@@ -21986,14 +22250,24 @@
                                               "objectName": {
                                                 "description": "The name of the object to subscribe to.",
                                                 "example": "account",
-                                                "type": "string"
+                                                "type": "string",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required"
+                                                }
                                               },
                                               "destination": {
                                                 "description": "The name of the destination that the result should be sent to.",
                                                 "example": "accountWebhook",
-                                                "type": "string"
+                                                "type": "string",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required"
+                                                }
                                               },
                                               "createEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                },
+                                                "title": "Create Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -22004,11 +22278,18 @@
                                                     "description": "Conditions to enable create events.",
                                                     "enum": [
                                                       "always"
-                                                    ]
+                                                    ],
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    }
                                                   }
                                                 }
                                               },
                                               "updateEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                },
+                                                "title": "Update Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -22020,9 +22301,15 @@
                                                     "example": "always",
                                                     "enum": [
                                                       "always"
-                                                    ]
+                                                    ],
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    }
                                                   },
                                                   "watchFieldsAuto": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without=RequiredWatchFields"
+                                                    },
                                                     "type": "string",
                                                     "description": "Whether to watch fields all fields automatically.",
                                                     "example": "all",
@@ -22031,6 +22318,9 @@
                                                     ]
                                                   },
                                                   "requiredWatchFields": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without=WatchFieldsAuto"
+                                                    },
                                                     "type": "array",
                                                     "items": {
                                                       "type": "string"
@@ -22044,6 +22334,10 @@
                                                 }
                                               },
                                               "deleteEvent": {
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                },
+                                                "title": "Delete Event",
                                                 "type": "object",
                                                 "required": [
                                                   "enabled"
@@ -22053,6 +22347,9 @@
                                                     "type": "string",
                                                     "description": "Conditions to enable delete events.",
                                                     "example": "always",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "oneof=always"
+                                                    },
                                                     "enum": [
                                                       "always"
                                                     ]
@@ -22088,14 +22385,24 @@
                                                   "objectName": {
                                                     "description": "The name of the object to subscribe to.",
                                                     "example": "account",
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required"
+                                                    }
                                                   },
                                                   "destination": {
                                                     "description": "The name of the destination that the result should be sent to.",
                                                     "example": "accountWebhook",
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required"
+                                                    }
                                                   },
                                                   "createEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                                    },
+                                                    "title": "Create Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -22106,11 +22413,18 @@
                                                         "description": "Conditions to enable create events.",
                                                         "enum": [
                                                           "always"
-                                                        ]
+                                                        ],
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        }
                                                       }
                                                     }
                                                   },
                                                   "updateEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=CreateEvent DeleteEvent"
+                                                    },
+                                                    "title": "Update Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -22122,9 +22436,15 @@
                                                         "example": "always",
                                                         "enum": [
                                                           "always"
-                                                        ]
+                                                        ],
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        }
                                                       },
                                                       "watchFieldsAuto": {
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "required_without=RequiredWatchFields"
+                                                        },
                                                         "type": "string",
                                                         "description": "Whether to watch fields all fields automatically.",
                                                         "example": "all",
@@ -22133,6 +22453,9 @@
                                                         ]
                                                       },
                                                       "requiredWatchFields": {
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "required_without=WatchFieldsAuto"
+                                                        },
                                                         "type": "array",
                                                         "items": {
                                                           "type": "string"
@@ -22146,6 +22469,10 @@
                                                     }
                                                   },
                                                   "deleteEvent": {
+                                                    "x-oapi-codegen-extra-tags": {
+                                                      "validate": "required_without_all=CreateEvent UpdateEvent"
+                                                    },
+                                                    "title": "Delete Event",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -22155,6 +22482,9 @@
                                                         "type": "string",
                                                         "description": "Conditions to enable delete events.",
                                                         "example": "always",
+                                                        "x-oapi-codegen-extra-tags": {
+                                                          "validate": "oneof=always"
+                                                        },
                                                         "enum": [
                                                           "always"
                                                         ]
@@ -47366,14 +47696,24 @@
                                     "objectName": {
                                       "description": "The name of the object to subscribe to.",
                                       "example": "account",
-                                      "type": "string"
+                                      "type": "string",
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required"
+                                      }
                                     },
                                     "destination": {
                                       "description": "The name of the destination that the result should be sent to.",
                                       "example": "accountWebhook",
-                                      "type": "string"
+                                      "type": "string",
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required"
+                                      }
                                     },
                                     "createEvent": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                      },
+                                      "title": "Create Event",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -47384,11 +47724,18 @@
                                           "description": "Conditions to enable create events.",
                                           "enum": [
                                             "always"
-                                          ]
+                                          ],
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "oneof=always"
+                                          }
                                         }
                                       }
                                     },
                                     "updateEvent": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without_all=CreateEvent DeleteEvent"
+                                      },
+                                      "title": "Update Event",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -47400,9 +47747,15 @@
                                           "example": "always",
                                           "enum": [
                                             "always"
-                                          ]
+                                          ],
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "oneof=always"
+                                          }
                                         },
                                         "watchFieldsAuto": {
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required_without=RequiredWatchFields"
+                                          },
                                           "type": "string",
                                           "description": "Whether to watch fields all fields automatically.",
                                           "example": "all",
@@ -47411,6 +47764,9 @@
                                           ]
                                         },
                                         "requiredWatchFields": {
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required_without=WatchFieldsAuto"
+                                          },
                                           "type": "array",
                                           "items": {
                                             "type": "string"
@@ -47424,6 +47780,10 @@
                                       }
                                     },
                                     "deleteEvent": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without_all=CreateEvent UpdateEvent"
+                                      },
+                                      "title": "Delete Event",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -47433,6 +47793,9 @@
                                           "type": "string",
                                           "description": "Conditions to enable delete events.",
                                           "example": "always",
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "oneof=always"
+                                          },
                                           "enum": [
                                             "always"
                                           ]
@@ -47468,14 +47831,24 @@
                                         "objectName": {
                                           "description": "The name of the object to subscribe to.",
                                           "example": "account",
-                                          "type": "string"
+                                          "type": "string",
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required"
+                                          }
                                         },
                                         "destination": {
                                           "description": "The name of the destination that the result should be sent to.",
                                           "example": "accountWebhook",
-                                          "type": "string"
+                                          "type": "string",
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required"
+                                          }
                                         },
                                         "createEvent": {
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                          },
+                                          "title": "Create Event",
                                           "type": "object",
                                           "required": [
                                             "enabled"
@@ -47486,11 +47859,18 @@
                                               "description": "Conditions to enable create events.",
                                               "enum": [
                                                 "always"
-                                              ]
+                                              ],
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "oneof=always"
+                                              }
                                             }
                                           }
                                         },
                                         "updateEvent": {
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required_without_all=CreateEvent DeleteEvent"
+                                          },
+                                          "title": "Update Event",
                                           "type": "object",
                                           "required": [
                                             "enabled"
@@ -47502,9 +47882,15 @@
                                               "example": "always",
                                               "enum": [
                                                 "always"
-                                              ]
+                                              ],
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "oneof=always"
+                                              }
                                             },
                                             "watchFieldsAuto": {
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required_without=RequiredWatchFields"
+                                              },
                                               "type": "string",
                                               "description": "Whether to watch fields all fields automatically.",
                                               "example": "all",
@@ -47513,6 +47899,9 @@
                                               ]
                                             },
                                             "requiredWatchFields": {
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required_without=WatchFieldsAuto"
+                                              },
                                               "type": "array",
                                               "items": {
                                                 "type": "string"
@@ -47526,6 +47915,10 @@
                                           }
                                         },
                                         "deleteEvent": {
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required_without_all=CreateEvent UpdateEvent"
+                                          },
+                                          "title": "Delete Event",
                                           "type": "object",
                                           "required": [
                                             "enabled"
@@ -47535,6 +47928,9 @@
                                               "type": "string",
                                               "description": "Conditions to enable delete events.",
                                               "example": "always",
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "oneof=always"
+                                              },
                                               "enum": [
                                                 "always"
                                               ]
@@ -48501,14 +48897,24 @@
                                 "objectName": {
                                   "description": "The name of the object to subscribe to.",
                                   "example": "account",
-                                  "type": "string"
+                                  "type": "string",
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "required"
+                                  }
                                 },
                                 "destination": {
                                   "description": "The name of the destination that the result should be sent to.",
                                   "example": "accountWebhook",
-                                  "type": "string"
+                                  "type": "string",
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "required"
+                                  }
                                 },
                                 "createEvent": {
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                  },
+                                  "title": "Create Event",
                                   "type": "object",
                                   "required": [
                                     "enabled"
@@ -48519,11 +48925,18 @@
                                       "description": "Conditions to enable create events.",
                                       "enum": [
                                         "always"
-                                      ]
+                                      ],
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "oneof=always"
+                                      }
                                     }
                                   }
                                 },
                                 "updateEvent": {
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "required_without_all=CreateEvent DeleteEvent"
+                                  },
+                                  "title": "Update Event",
                                   "type": "object",
                                   "required": [
                                     "enabled"
@@ -48535,9 +48948,15 @@
                                       "example": "always",
                                       "enum": [
                                         "always"
-                                      ]
+                                      ],
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "oneof=always"
+                                      }
                                     },
                                     "watchFieldsAuto": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without=RequiredWatchFields"
+                                      },
                                       "type": "string",
                                       "description": "Whether to watch fields all fields automatically.",
                                       "example": "all",
@@ -48546,6 +48965,9 @@
                                       ]
                                     },
                                     "requiredWatchFields": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without=WatchFieldsAuto"
+                                      },
                                       "type": "array",
                                       "items": {
                                         "type": "string"
@@ -48559,6 +48981,10 @@
                                   }
                                 },
                                 "deleteEvent": {
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "required_without_all=CreateEvent UpdateEvent"
+                                  },
+                                  "title": "Delete Event",
                                   "type": "object",
                                   "required": [
                                     "enabled"
@@ -48568,6 +48994,9 @@
                                       "type": "string",
                                       "description": "Conditions to enable delete events.",
                                       "example": "always",
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "oneof=always"
+                                      },
                                       "enum": [
                                         "always"
                                       ]
@@ -48603,14 +49032,24 @@
                                     "objectName": {
                                       "description": "The name of the object to subscribe to.",
                                       "example": "account",
-                                      "type": "string"
+                                      "type": "string",
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required"
+                                      }
                                     },
                                     "destination": {
                                       "description": "The name of the destination that the result should be sent to.",
                                       "example": "accountWebhook",
-                                      "type": "string"
+                                      "type": "string",
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required"
+                                      }
                                     },
                                     "createEvent": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without_all=UpdateEvent DeleteEvent"
+                                      },
+                                      "title": "Create Event",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -48621,11 +49060,18 @@
                                           "description": "Conditions to enable create events.",
                                           "enum": [
                                             "always"
-                                          ]
+                                          ],
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "oneof=always"
+                                          }
                                         }
                                       }
                                     },
                                     "updateEvent": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without_all=CreateEvent DeleteEvent"
+                                      },
+                                      "title": "Update Event",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -48637,9 +49083,15 @@
                                           "example": "always",
                                           "enum": [
                                             "always"
-                                          ]
+                                          ],
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "oneof=always"
+                                          }
                                         },
                                         "watchFieldsAuto": {
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required_without=RequiredWatchFields"
+                                          },
                                           "type": "string",
                                           "description": "Whether to watch fields all fields automatically.",
                                           "example": "all",
@@ -48648,6 +49100,9 @@
                                           ]
                                         },
                                         "requiredWatchFields": {
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required_without=WatchFieldsAuto"
+                                          },
                                           "type": "array",
                                           "items": {
                                             "type": "string"
@@ -48661,6 +49116,10 @@
                                       }
                                     },
                                     "deleteEvent": {
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "required_without_all=CreateEvent UpdateEvent"
+                                      },
+                                      "title": "Delete Event",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -48670,6 +49129,9 @@
                                           "type": "string",
                                           "description": "Conditions to enable delete events.",
                                           "example": "always",
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "oneof=always"
+                                          },
                                           "enum": [
                                             "always"
                                           ]

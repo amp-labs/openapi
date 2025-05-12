@@ -165,50 +165,84 @@ components:
           description: The name of the object to subscribe to.
           example: account
           type: string
+          x-oapi-codegen-extra-tags:
+            validate: required
         destination:
           description: The name of the destination that the result should be sent to.
           example: accountWebhook
           type: string
+          x-oapi-codegen-extra-tags:
+            validate: required
         createEvent:
-          type: object
-          required:
-            - enabled
-          properties:
-            enabled:
-              type: string
-              description: Conditions to enable create events.
-              enum: [ always ]
+          $ref: '#/components/schemas/ConfigCreateEvent'
+          x-oapi-codegen-extra-tags:
+            validate: required_without_all=UpdateEvent DeleteEvent
         updateEvent:
-          type: object
-          required:
-            - enabled
-          properties:
-            enabled:
-              type: string
-              description: Conditions to enable update events.
-              example: always
-              enum: [ always ]
-            watchFieldsAuto:
-              type: string
-              description: Whether to watch fields all fields automatically.
-              example: all
-              enum: [ all ]
-            requiredWatchFields:
-              type: array
-              items:
-                type: string
-              description: The fields that should be watched.
-              example: [ name, description ]
+          $ref: '#/components/schemas/ConfigUpdateEvent'
+          x-oapi-codegen-extra-tags:
+            validate: required_without_all=CreateEvent DeleteEvent
         deleteEvent:
-          type: object
-          required:
-            - enabled
-          properties:
-            enabled:
-              type: string
-              description: Conditions to enable delete events.
-              example: always
-              enum: [ always ]
+          $ref: '#/components/schemas/ConfigDeleteEvent'
+          x-oapi-codegen-extra-tags:
+            validate: required_without_all=CreateEvent UpdateEvent
+
+    ConfigCreateEvent:
+      title: Create Event
+      type: object
+      required:
+        - enabled
+      properties:
+        enabled:
+          type: string
+          description: Conditions to enable create events.
+          enum: [ always ]
+          x-oapi-codegen-extra-tags:
+            validate: oneof=always
+
+    ConfigUpdateEvent:
+      title: Update Event
+      type: object
+      required:
+        - enabled
+      x-oapi-codegen-extra-tags:
+        validate: required_without_all=CreateEvent DeleteEvent
+      properties:
+        enabled:
+          type: string
+          description: Conditions to enable update events.
+          example: always
+          enum: [ always ]
+          x-oapi-codegen-extra-tags:
+            validate: oneof=always
+        watchFieldsAuto:
+          x-oapi-codegen-extra-tags:
+            validate: required_without=RequiredWatchFields
+          type: string
+          description: Whether to watch fields all fields automatically.
+          example: all
+          enum: [ all ]
+        requiredWatchFields:
+          x-oapi-codegen-extra-tags:
+            validate: required_without=WatchFieldsAuto
+          type: array
+          items:
+            type: string
+          description: The fields that should be watched.
+          example: [ name, description ]
+
+    ConfigDeleteEvent:
+      title: Delete Event
+      type: object
+      required:
+        - enabled
+      properties:
+        enabled:
+          type: string
+          description: Conditions to enable delete events.
+          example: always
+          x-oapi-codegen-extra-tags:
+            validate: oneof=always
+          enum: [ always ]
 
     ConfigContent:
       title: Config Content
