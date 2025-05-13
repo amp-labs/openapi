@@ -175,16 +175,10 @@ components:
             validate: required
         createEvent:
           $ref: '#/components/schemas/ConfigCreateEvent'
-          x-oapi-codegen-extra-tags:
-            validate: required_without_all=UpdateEvent DeleteEvent
         updateEvent:
           $ref: '#/components/schemas/ConfigUpdateEvent'
-          x-oapi-codegen-extra-tags:
-            validate: required_without_all=CreateEvent DeleteEvent
         deleteEvent:
           $ref: '#/components/schemas/ConfigDeleteEvent'
-          x-oapi-codegen-extra-tags:
-            validate: required_without_all=CreateEvent UpdateEvent
 
     ConfigCreateEvent:
       title: Create Event
@@ -204,8 +198,6 @@ components:
       type: object
       required:
         - enabled
-      x-oapi-codegen-extra-tags:
-        validate: required_without_all=CreateEvent DeleteEvent
       properties:
         enabled:
           type: string
@@ -223,7 +215,7 @@ components:
           enum: [ all ]
         requiredWatchFields:
           x-oapi-codegen-extra-tags:
-            validate: required_without=WatchFieldsAuto
+            validate: required_without=WatchFieldsAuto,min=1
           type: array
           items:
             type: string

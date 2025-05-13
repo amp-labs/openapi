@@ -888,9 +888,6 @@
                   }
                 },
                 "createEvent": {
-                  "x-oapi-codegen-extra-tags": {
-                    "validate": "required_without_all=UpdateEvent DeleteEvent"
-                  },
                   "title": "Create Event",
                   "type": "object",
                   "required": [
@@ -910,9 +907,6 @@
                   }
                 },
                 "updateEvent": {
-                  "x-oapi-codegen-extra-tags": {
-                    "validate": "required_without_all=CreateEvent DeleteEvent"
-                  },
                   "title": "Update Event",
                   "type": "object",
                   "required": [
@@ -943,7 +937,7 @@
                     },
                     "requiredWatchFields": {
                       "x-oapi-codegen-extra-tags": {
-                        "validate": "required_without=WatchFieldsAuto"
+                        "validate": "required_without=WatchFieldsAuto,min=1"
                       },
                       "type": "array",
                       "items": {
@@ -958,9 +952,6 @@
                   }
                 },
                 "deleteEvent": {
-                  "x-oapi-codegen-extra-tags": {
-                    "validate": "required_without_all=CreateEvent UpdateEvent"
-                  },
                   "title": "Delete Event",
                   "type": "object",
                   "required": [
@@ -1016,9 +1007,6 @@
             }
           },
           "createEvent": {
-            "x-oapi-codegen-extra-tags": {
-              "validate": "required_without_all=UpdateEvent DeleteEvent"
-            },
             "title": "Create Event",
             "type": "object",
             "required": [
@@ -1038,9 +1026,6 @@
             }
           },
           "updateEvent": {
-            "x-oapi-codegen-extra-tags": {
-              "validate": "required_without_all=CreateEvent DeleteEvent"
-            },
             "title": "Update Event",
             "type": "object",
             "required": [
@@ -1071,7 +1056,7 @@
               },
               "requiredWatchFields": {
                 "x-oapi-codegen-extra-tags": {
-                  "validate": "required_without=WatchFieldsAuto"
+                  "validate": "required_without=WatchFieldsAuto,min=1"
                 },
                 "type": "array",
                 "items": {
@@ -1086,9 +1071,6 @@
             }
           },
           "deleteEvent": {
-            "x-oapi-codegen-extra-tags": {
-              "validate": "required_without_all=CreateEvent UpdateEvent"
-            },
             "title": "Delete Event",
             "type": "object",
             "required": [
@@ -1135,9 +1117,6 @@
         "required": [
           "enabled"
         ],
-        "x-oapi-codegen-extra-tags": {
-          "validate": "required_without_all=CreateEvent DeleteEvent"
-        },
         "properties": {
           "enabled": {
             "type": "string",
@@ -1163,7 +1142,7 @@
           },
           "requiredWatchFields": {
             "x-oapi-codegen-extra-tags": {
-              "validate": "required_without=WatchFieldsAuto"
+              "validate": "required_without=WatchFieldsAuto,min=1"
             },
             "type": "array",
             "items": {
@@ -2115,9 +2094,6 @@
                               }
                             },
                             "createEvent": {
-                              "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without_all=UpdateEvent DeleteEvent"
-                              },
                               "title": "Create Event",
                               "type": "object",
                               "required": [
@@ -2137,9 +2113,6 @@
                               }
                             },
                             "updateEvent": {
-                              "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without_all=CreateEvent DeleteEvent"
-                              },
                               "title": "Update Event",
                               "type": "object",
                               "required": [
@@ -2170,7 +2143,7 @@
                                 },
                                 "requiredWatchFields": {
                                   "x-oapi-codegen-extra-tags": {
-                                    "validate": "required_without=WatchFieldsAuto"
+                                    "validate": "required_without=WatchFieldsAuto,min=1"
                                   },
                                   "type": "array",
                                   "items": {
@@ -2185,9 +2158,6 @@
                               }
                             },
                             "deleteEvent": {
-                              "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without_all=CreateEvent UpdateEvent"
-                              },
                               "title": "Delete Event",
                               "type": "object",
                               "required": [
@@ -2250,9 +2220,6 @@
                                   }
                                 },
                                 "createEvent": {
-                                  "x-oapi-codegen-extra-tags": {
-                                    "validate": "required_without_all=UpdateEvent DeleteEvent"
-                                  },
                                   "title": "Create Event",
                                   "type": "object",
                                   "required": [
@@ -2272,9 +2239,6 @@
                                   }
                                 },
                                 "updateEvent": {
-                                  "x-oapi-codegen-extra-tags": {
-                                    "validate": "required_without_all=CreateEvent DeleteEvent"
-                                  },
                                   "title": "Update Event",
                                   "type": "object",
                                   "required": [
@@ -2305,7 +2269,7 @@
                                     },
                                     "requiredWatchFields": {
                                       "x-oapi-codegen-extra-tags": {
-                                        "validate": "required_without=WatchFieldsAuto"
+                                        "validate": "required_without=WatchFieldsAuto,min=1"
                                       },
                                       "type": "array",
                                       "items": {
@@ -2320,9 +2284,6 @@
                                   }
                                 },
                                 "deleteEvent": {
-                                  "x-oapi-codegen-extra-tags": {
-                                    "validate": "required_without_all=CreateEvent UpdateEvent"
-                                  },
                                   "title": "Delete Event",
                                   "type": "object",
                                   "required": [
@@ -3258,9 +3219,6 @@
                       }
                     },
                     "createEvent": {
-                      "x-oapi-codegen-extra-tags": {
-                        "validate": "required_without_all=UpdateEvent DeleteEvent"
-                      },
                       "title": "Create Event",
                       "type": "object",
                       "required": [
@@ -3280,9 +3238,6 @@
                       }
                     },
                     "updateEvent": {
-                      "x-oapi-codegen-extra-tags": {
-                        "validate": "required_without_all=CreateEvent DeleteEvent"
-                      },
                       "title": "Update Event",
                       "type": "object",
                       "required": [
@@ -3313,7 +3268,7 @@
                         },
                         "requiredWatchFields": {
                           "x-oapi-codegen-extra-tags": {
-                            "validate": "required_without=WatchFieldsAuto"
+                            "validate": "required_without=WatchFieldsAuto,min=1"
                           },
                           "type": "array",
                           "items": {
@@ -3328,9 +3283,6 @@
                       }
                     },
                     "deleteEvent": {
-                      "x-oapi-codegen-extra-tags": {
-                        "validate": "required_without_all=CreateEvent UpdateEvent"
-                      },
                       "title": "Delete Event",
                       "type": "object",
                       "required": [
@@ -3393,9 +3345,6 @@
                           }
                         },
                         "createEvent": {
-                          "x-oapi-codegen-extra-tags": {
-                            "validate": "required_without_all=UpdateEvent DeleteEvent"
-                          },
                           "title": "Create Event",
                           "type": "object",
                           "required": [
@@ -3415,9 +3364,6 @@
                           }
                         },
                         "updateEvent": {
-                          "x-oapi-codegen-extra-tags": {
-                            "validate": "required_without_all=CreateEvent DeleteEvent"
-                          },
                           "title": "Update Event",
                           "type": "object",
                           "required": [
@@ -3448,7 +3394,7 @@
                             },
                             "requiredWatchFields": {
                               "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without=WatchFieldsAuto"
+                                "validate": "required_without=WatchFieldsAuto,min=1"
                               },
                               "type": "array",
                               "items": {
@@ -3463,9 +3409,6 @@
                           }
                         },
                         "deleteEvent": {
-                          "x-oapi-codegen-extra-tags": {
-                            "validate": "required_without_all=CreateEvent UpdateEvent"
-                          },
                           "title": "Delete Event",
                           "type": "object",
                           "required": [
@@ -3536,9 +3479,6 @@
                 }
               },
               "createEvent": {
-                "x-oapi-codegen-extra-tags": {
-                  "validate": "required_without_all=UpdateEvent DeleteEvent"
-                },
                 "title": "Create Event",
                 "type": "object",
                 "required": [
@@ -3558,9 +3498,6 @@
                 }
               },
               "updateEvent": {
-                "x-oapi-codegen-extra-tags": {
-                  "validate": "required_without_all=CreateEvent DeleteEvent"
-                },
                 "title": "Update Event",
                 "type": "object",
                 "required": [
@@ -3591,7 +3528,7 @@
                   },
                   "requiredWatchFields": {
                     "x-oapi-codegen-extra-tags": {
-                      "validate": "required_without=WatchFieldsAuto"
+                      "validate": "required_without=WatchFieldsAuto,min=1"
                     },
                     "type": "array",
                     "items": {
@@ -3606,9 +3543,6 @@
                 }
               },
               "deleteEvent": {
-                "x-oapi-codegen-extra-tags": {
-                  "validate": "required_without_all=CreateEvent UpdateEvent"
-                },
                 "title": "Delete Event",
                 "type": "object",
                 "required": [
