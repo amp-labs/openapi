@@ -384,6 +384,7 @@ components:
         - authType
         - support
         - providerOpts
+        - defaultModule
       properties:
         name:
           # If you're maintaining catalog.go, the name field will be auto-set for you,
@@ -396,6 +397,10 @@ components:
           type: string
           x-oapi-codegen-extra-tags:
             validate: required
+        defaultModule:
+          x-go-type: common.ModuleID
+          x-go-type-import:
+            path: "github.com/amp-labs/connectors/common"
         oauth2Opts:
           $ref: '#/components/schemas/Oauth2Opts'
         apiKeyOpts:
