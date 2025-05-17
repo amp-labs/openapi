@@ -297,6 +297,8 @@ components:
       allOf:
         - $ref: '#/components/schemas/BaseSubscribeConfig'
         - type: object
+          required:
+            - objects
           properties:
             objects:
               additionalProperties:
