@@ -1162,6 +1162,118 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installationUpdate
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:pause:
+    post:
+      summary: Pause reads for an installation. If reads are already paused, this will be a no-op.
+      operationId: pauseReads
+      tags: ["Installation"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: integrationId
+          in: path
+          required: true
+          description: The integration ID.
+          schema:
+            type: string
+        - name: installationId
+          in: path
+          required: true
+          description: The Ampersand installation ID.
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                objects:
+                  type: array
+                  items:
+                    type: string
+                    description: The names of the objects to pause reads for.
+                    example: ["account", "contact"]
+                note:
+                  type: string
+                  description: A note to accompany the pause.
+      responses:
+        '204':
+          description: Reads paused successfully
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:unpause:
+    post:
+      summary: Unpause reads for an installation. If no reads were paused, this will be a no-op.
+      operationId: unpauseReads
+      tags: ["Installation"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: integrationId
+          in: path
+          required: true
+          description: The integration ID.
+          schema:
+            type: string
+        - name: installationId
+          in: path
+          required: true
+          description: The Ampersand installation ID.
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                objects:
+                  type: array
+                  items:
+                    type: string
+                    description: The names of the objects to unpause reads for.
+                    example: ["account", "contact"]
+                note:
+                  type: string
+                  description: A note to accompany the unpause.
+      responses:
+        '204':
+          description: Reads unpaused successfully
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
     get:
       summary: Get object metadata for installation
