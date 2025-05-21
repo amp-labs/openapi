@@ -1489,6 +1489,21 @@
                       "description": "URL with more information about how to locate this value",
                       "example": "https://example.com/how-to-find-subdomain",
                       "x-go-type-skip-optional-pointer": true
+                    },
+                    "moduleDependencies": {
+                      "description": "Module-specific dependencies for this metadata item.",
+                      "title": "Module Dependencies",
+                      "type": "object",
+                      "additionalProperties": {
+                        "title": "Module Dependency",
+                        "type": "object",
+                        "description": "Dependency for a single module.",
+                        "properties": {}
+                      },
+                      "x-go-type": "map[common.ModuleID]ModuleDependency",
+                      "x-go-type-import": {
+                        "path": "github.com/amp-labs/connectors/common"
+                      }
                     }
                   }
                 },
@@ -1508,6 +1523,21 @@
                       "type": "string",
                       "description": "The internal identifier for the metadata field",
                       "x-go-type-skip-optional-pointer": true
+                    },
+                    "moduleDependencies": {
+                      "description": "Module-specific dependencies for this metadata item.",
+                      "title": "Module Dependencies",
+                      "type": "object",
+                      "additionalProperties": {
+                        "title": "Module Dependency",
+                        "type": "object",
+                        "description": "Dependency for a single module.",
+                        "properties": {}
+                      },
+                      "x-go-type": "map[common.ModuleID]ModuleDependency",
+                      "x-go-type-import": {
+                        "path": "github.com/amp-labs/connectors/common"
+                      }
                     }
                   }
                 },
@@ -2166,6 +2196,21 @@
                             "description": "URL with more information about how to locate this value",
                             "example": "https://example.com/how-to-find-subdomain",
                             "x-go-type-skip-optional-pointer": true
+                          },
+                          "moduleDependencies": {
+                            "description": "Module-specific dependencies for this metadata item.",
+                            "title": "Module Dependencies",
+                            "type": "object",
+                            "additionalProperties": {
+                              "title": "Module Dependency",
+                              "type": "object",
+                              "description": "Dependency for a single module.",
+                              "properties": {}
+                            },
+                            "x-go-type": "map[common.ModuleID]ModuleDependency",
+                            "x-go-type-import": {
+                              "path": "github.com/amp-labs/connectors/common"
+                            }
                           }
                         }
                       },
@@ -2185,6 +2230,21 @@
                             "type": "string",
                             "description": "The internal identifier for the metadata field",
                             "x-go-type-skip-optional-pointer": true
+                          },
+                          "moduleDependencies": {
+                            "description": "Module-specific dependencies for this metadata item.",
+                            "title": "Module Dependencies",
+                            "type": "object",
+                            "additionalProperties": {
+                              "title": "Module Dependency",
+                              "type": "object",
+                              "description": "Dependency for a single module.",
+                              "properties": {}
+                            },
+                            "x-go-type": "map[common.ModuleID]ModuleDependency",
+                            "x-go-type-import": {
+                              "path": "github.com/amp-labs/connectors/common"
+                            }
                           }
                         }
                       },
@@ -2830,6 +2890,21 @@
                         "description": "URL with more information about how to locate this value",
                         "example": "https://example.com/how-to-find-subdomain",
                         "x-go-type-skip-optional-pointer": true
+                      },
+                      "moduleDependencies": {
+                        "description": "Module-specific dependencies for this metadata item.",
+                        "title": "Module Dependencies",
+                        "type": "object",
+                        "additionalProperties": {
+                          "title": "Module Dependency",
+                          "type": "object",
+                          "description": "Dependency for a single module.",
+                          "properties": {}
+                        },
+                        "x-go-type": "map[common.ModuleID]ModuleDependency",
+                        "x-go-type-import": {
+                          "path": "github.com/amp-labs/connectors/common"
+                        }
                       }
                     }
                   },
@@ -2849,6 +2924,21 @@
                         "type": "string",
                         "description": "The internal identifier for the metadata field",
                         "x-go-type-skip-optional-pointer": true
+                      },
+                      "moduleDependencies": {
+                        "description": "Module-specific dependencies for this metadata item.",
+                        "title": "Module Dependencies",
+                        "type": "object",
+                        "additionalProperties": {
+                          "title": "Module Dependency",
+                          "type": "object",
+                          "description": "Dependency for a single module.",
+                          "properties": {}
+                        },
+                        "x-go-type": "map[common.ModuleID]ModuleDependency",
+                        "x-go-type-import": {
+                          "path": "github.com/amp-labs/connectors/common"
+                        }
                       }
                     }
                   },
@@ -2942,6 +3032,21 @@
                   "description": "URL with more information about how to locate this value",
                   "example": "https://example.com/how-to-find-subdomain",
                   "x-go-type-skip-optional-pointer": true
+                },
+                "moduleDependencies": {
+                  "description": "Module-specific dependencies for this metadata item.",
+                  "title": "Module Dependencies",
+                  "type": "object",
+                  "additionalProperties": {
+                    "title": "Module Dependency",
+                    "type": "object",
+                    "description": "Dependency for a single module.",
+                    "properties": {}
+                  },
+                  "x-go-type": "map[common.ModuleID]ModuleDependency",
+                  "x-go-type-import": {
+                    "path": "github.com/amp-labs/connectors/common"
+                  }
                 }
               }
             },
@@ -2961,6 +3066,21 @@
                   "type": "string",
                   "description": "The internal identifier for the metadata field",
                   "x-go-type-skip-optional-pointer": true
+                },
+                "moduleDependencies": {
+                  "description": "Module-specific dependencies for this metadata item.",
+                  "title": "Module Dependencies",
+                  "type": "object",
+                  "additionalProperties": {
+                    "title": "Module Dependency",
+                    "type": "object",
+                    "description": "Dependency for a single module.",
+                    "properties": {}
+                  },
+                  "x-go-type": "map[common.ModuleID]ModuleDependency",
+                  "x-go-type-import": {
+                    "path": "github.com/amp-labs/connectors/common"
+                  }
                 }
               }
             },
@@ -2990,6 +3110,21 @@
             "description": "URL with more information about how to locate this value",
             "example": "https://example.com/how-to-find-subdomain",
             "x-go-type-skip-optional-pointer": true
+          },
+          "moduleDependencies": {
+            "description": "Module-specific dependencies for this metadata item.",
+            "title": "Module Dependencies",
+            "type": "object",
+            "additionalProperties": {
+              "title": "Module Dependency",
+              "type": "object",
+              "description": "Dependency for a single module.",
+              "properties": {}
+            },
+            "x-go-type": "map[common.ModuleID]ModuleDependency",
+            "x-go-type-import": {
+              "path": "github.com/amp-labs/connectors/common"
+            }
           }
         }
       },
@@ -3004,8 +3139,44 @@
             "type": "string",
             "description": "The internal identifier for the metadata field",
             "x-go-type-skip-optional-pointer": true
+          },
+          "moduleDependencies": {
+            "description": "Module-specific dependencies for this metadata item.",
+            "title": "Module Dependencies",
+            "type": "object",
+            "additionalProperties": {
+              "title": "Module Dependency",
+              "type": "object",
+              "description": "Dependency for a single module.",
+              "properties": {}
+            },
+            "x-go-type": "map[common.ModuleID]ModuleDependency",
+            "x-go-type-import": {
+              "path": "github.com/amp-labs/connectors/common"
+            }
           }
         }
+      },
+      "ModuleDependencies": {
+        "title": "Module Dependencies",
+        "type": "object",
+        "description": "Does this metadata item only apply to a specific module?",
+        "additionalProperties": {
+          "title": "Module Dependency",
+          "type": "object",
+          "description": "Dependency for a single module.",
+          "properties": {}
+        },
+        "x-go-type": "map[common.ModuleID]ModuleDependency",
+        "x-go-type-import": {
+          "path": "github.com/amp-labs/connectors/common"
+        }
+      },
+      "ModuleDependency": {
+        "title": "Module Dependency",
+        "type": "object",
+        "description": "Dependency for a single module.",
+        "properties": {}
       }
     }
   }
