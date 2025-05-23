@@ -1197,7 +1197,6 @@ paths:
               properties:
                 objects:
                   type: array
-                  required: false
                   items:
                     type: string
                     description: The names of the objects (mapped or unmapped) to pause reads for. If omitted, all objects will be paused.
