@@ -227,33 +227,34 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-    delete:
-      summary: Delete a project
-      operationId: deleteProject
-      tags: ["Project"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          description: The Ampersand project ID or project name.
-          schema:
-            type: string
-          example: my-project
-      responses:
-        204:
-          description: Deleted
-        422:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+    # Uncomment when ENG-2300 is fixed            
+    # delete:
+    #   summary: Delete a project
+    #   operationId: deleteProject
+    #   tags: ["Project"]
+    #   parameters:
+    #     - name: projectIdOrName
+    #       in: path
+    #       required: true
+    #       description: The Ampersand project ID or project name.
+    #       schema:
+    #         type: string
+    #       example: my-project
+    #   responses:
+    #     204:
+    #       description: Deleted
+    #     422:
+    #       description: Unprocessable Entity
+    #       content:
+    #         application/problem+json:
+    #           schema:
+    #             $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+    #     default:
+    #       description: Error
+    #       content:
+    #         application/problem+json:
+    #           schema:
+    #             $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
       summary: Update a project
       operationId: updateProject
