@@ -23280,11 +23280,11 @@
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "description": "The names of the objects (mapped or unmapped) to pause reads for. If this is omitted, all objects will be paused.",
                       "example": [
                         "account",
                         "contact"
-                      ]
+                      ],
+                      "description": "The names of the objects (mapped or unmapped) to pause reads for. If not provided, all objects will be paused."
                     }
                   },
                   "note": {
