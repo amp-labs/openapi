@@ -6339,7 +6339,7 @@
                                           "properties": {
                                             "enabled": {
                                               "type": "string",
-                                              "description": "If always, the integration will subscribe to create events.",
+                                              "description": "If always, the integration will subscribe to create events by default.",
                                               "enum": [
                                                 "always",
                                                 "never"
@@ -6352,7 +6352,7 @@
                                           "properties": {
                                             "enabled": {
                                               "type": "string",
-                                              "description": "If always, the integration will subscribe to update events.",
+                                              "description": "If always, the integration will subscribe to update events by default.",
                                               "enum": [
                                                 "always",
                                                 "never"
@@ -6384,7 +6384,7 @@
                                           "properties": {
                                             "enabled": {
                                               "type": "string",
-                                              "description": "If always, the integration will subscribe to delete events.",
+                                              "description": "If always, the integration will subscribe to delete events by default.",
                                               "enum": [
                                                 "always",
                                                 "never"
@@ -7247,7 +7247,7 @@
                                       "properties": {
                                         "enabled": {
                                           "type": "string",
-                                          "description": "If always, the integration will subscribe to create events.",
+                                          "description": "If always, the integration will subscribe to create events by default.",
                                           "enum": [
                                             "always",
                                             "never"
@@ -7260,7 +7260,7 @@
                                       "properties": {
                                         "enabled": {
                                           "type": "string",
-                                          "description": "If always, the integration will subscribe to update events.",
+                                          "description": "If always, the integration will subscribe to update events by default.",
                                           "enum": [
                                             "always",
                                             "never"
@@ -7292,7 +7292,7 @@
                                       "properties": {
                                         "enabled": {
                                           "type": "string",
-                                          "description": "If always, the integration will subscribe to delete events.",
+                                          "description": "If always, the integration will subscribe to delete events by default.",
                                           "enum": [
                                             "always",
                                             "never"
@@ -9369,7 +9369,7 @@
                                           "properties": {
                                             "enabled": {
                                               "type": "string",
-                                              "description": "If always, the integration will subscribe to create events.",
+                                              "description": "If always, the integration will subscribe to create events by default.",
                                               "enum": [
                                                 "always",
                                                 "never"
@@ -9382,7 +9382,7 @@
                                           "properties": {
                                             "enabled": {
                                               "type": "string",
-                                              "description": "If always, the integration will subscribe to update events.",
+                                              "description": "If always, the integration will subscribe to update events by default.",
                                               "enum": [
                                                 "always",
                                                 "never"
@@ -9414,7 +9414,7 @@
                                           "properties": {
                                             "enabled": {
                                               "type": "string",
-                                              "description": "If always, the integration will subscribe to delete events.",
+                                              "description": "If always, the integration will subscribe to delete events by default.",
                                               "enum": [
                                                 "always",
                                                 "never"
@@ -44991,7 +44991,7 @@
                               "properties": {
                                 "enabled": {
                                   "type": "string",
-                                  "description": "If always, the integration will subscribe to create events.",
+                                  "description": "If always, the integration will subscribe to create events by default.",
                                   "enum": [
                                     "always",
                                     "never"
@@ -45004,7 +45004,7 @@
                               "properties": {
                                 "enabled": {
                                   "type": "string",
-                                  "description": "If always, the integration will subscribe to update events.",
+                                  "description": "If always, the integration will subscribe to update events by default.",
                                   "enum": [
                                     "always",
                                     "never"
@@ -45036,7 +45036,7 @@
                               "properties": {
                                 "enabled": {
                                   "type": "string",
-                                  "description": "If always, the integration will subscribe to delete events.",
+                                  "description": "If always, the integration will subscribe to delete events by default.",
                                   "enum": [
                                     "always",
                                     "never"
@@ -45409,7 +45409,7 @@
                           "properties": {
                             "enabled": {
                               "type": "string",
-                              "description": "If always, the integration will subscribe to create events.",
+                              "description": "If always, the integration will subscribe to create events by default.",
                               "enum": [
                                 "always",
                                 "never"
@@ -45422,7 +45422,7 @@
                           "properties": {
                             "enabled": {
                               "type": "string",
-                              "description": "If always, the integration will subscribe to update events.",
+                              "description": "If always, the integration will subscribe to update events by default.",
                               "enum": [
                                 "always",
                                 "never"
@@ -45454,7 +45454,7 @@
                           "properties": {
                             "enabled": {
                               "type": "string",
-                              "description": "If always, the integration will subscribe to delete events.",
+                              "description": "If always, the integration will subscribe to delete events by default.",
                               "enum": [
                                 "always",
                                 "never"
