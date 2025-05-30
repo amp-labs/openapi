@@ -177,7 +177,7 @@ components:
         enabled:
           type: string
           description: If always, the integration will subscribe to create events by default.
-          enum: [always, never]
+          enum: [always]
 
     UpdateEvent:
       type: object
@@ -185,7 +185,7 @@ components:
         enabled:
           type: string
           description: If always, the integration will subscribe to update events by default.
-          enum: [always, never]
+          enum: [always]
         watchFieldsAuto:
           type: string
           description: If all, the integration will watch all fields for updates.
@@ -206,7 +206,7 @@ components:
         enabled:
           type: string
           description: If always, the integration will subscribe to delete events by default.
-          enum: [always, never]
+          enum: [always]
 
     AssociationChangeEvent:
       type: object
