@@ -924,9 +924,6 @@
                       }
                     },
                     "watchFieldsAuto": {
-                      "x-oapi-codegen-extra-tags": {
-                        "validate": "required_without=RequiredWatchFields"
-                      },
                       "type": "string",
                       "description": "Whether to watch fields all fields automatically.",
                       "example": "all",
@@ -935,9 +932,6 @@
                       ]
                     },
                     "requiredWatchFields": {
-                      "x-oapi-codegen-extra-tags": {
-                        "validate": "required_without=WatchFieldsAuto,min=1"
-                      },
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -1043,9 +1037,6 @@
                 }
               },
               "watchFieldsAuto": {
-                "x-oapi-codegen-extra-tags": {
-                  "validate": "required_without=RequiredWatchFields"
-                },
                 "type": "string",
                 "description": "Whether to watch fields all fields automatically.",
                 "example": "all",
@@ -1054,9 +1045,6 @@
                 ]
               },
               "requiredWatchFields": {
-                "x-oapi-codegen-extra-tags": {
-                  "validate": "required_without=WatchFieldsAuto,min=1"
-                },
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -1132,9 +1120,6 @@
             }
           },
           "watchFieldsAuto": {
-            "x-oapi-codegen-extra-tags": {
-              "validate": "required_without=RequiredWatchFields"
-            },
             "type": "string",
             "description": "Whether to watch fields all fields automatically.",
             "example": "all",
@@ -1143,9 +1128,6 @@
             ]
           },
           "requiredWatchFields": {
-            "x-oapi-codegen-extra-tags": {
-              "validate": "required_without=WatchFieldsAuto,min=1"
-            },
             "type": "array",
             "items": {
               "type": "string"
@@ -2133,9 +2115,6 @@
                                   }
                                 },
                                 "watchFieldsAuto": {
-                                  "x-oapi-codegen-extra-tags": {
-                                    "validate": "required_without=RequiredWatchFields"
-                                  },
                                   "type": "string",
                                   "description": "Whether to watch fields all fields automatically.",
                                   "example": "all",
@@ -2144,9 +2123,6 @@
                                   ]
                                 },
                                 "requiredWatchFields": {
-                                  "x-oapi-codegen-extra-tags": {
-                                    "validate": "required_without=WatchFieldsAuto,min=1"
-                                  },
                                   "type": "array",
                                   "items": {
                                     "type": "string"
@@ -2262,9 +2238,6 @@
                                       }
                                     },
                                     "watchFieldsAuto": {
-                                      "x-oapi-codegen-extra-tags": {
-                                        "validate": "required_without=RequiredWatchFields"
-                                      },
                                       "type": "string",
                                       "description": "Whether to watch fields all fields automatically.",
                                       "example": "all",
@@ -2273,9 +2246,6 @@
                                       ]
                                     },
                                     "requiredWatchFields": {
-                                      "x-oapi-codegen-extra-tags": {
-                                        "validate": "required_without=WatchFieldsAuto,min=1"
-                                      },
                                       "type": "array",
                                       "items": {
                                         "type": "string"
@@ -3261,9 +3231,6 @@
                           }
                         },
                         "watchFieldsAuto": {
-                          "x-oapi-codegen-extra-tags": {
-                            "validate": "required_without=RequiredWatchFields"
-                          },
                           "type": "string",
                           "description": "Whether to watch fields all fields automatically.",
                           "example": "all",
@@ -3272,9 +3239,6 @@
                           ]
                         },
                         "requiredWatchFields": {
-                          "x-oapi-codegen-extra-tags": {
-                            "validate": "required_without=WatchFieldsAuto,min=1"
-                          },
                           "type": "array",
                           "items": {
                             "type": "string"
@@ -3390,9 +3354,6 @@
                               }
                             },
                             "watchFieldsAuto": {
-                              "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without=RequiredWatchFields"
-                              },
                               "type": "string",
                               "description": "Whether to watch fields all fields automatically.",
                               "example": "all",
@@ -3401,9 +3362,6 @@
                               ]
                             },
                             "requiredWatchFields": {
-                              "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without=WatchFieldsAuto,min=1"
-                              },
                               "type": "array",
                               "items": {
                                 "type": "string"
@@ -3524,9 +3482,6 @@
                     }
                   },
                   "watchFieldsAuto": {
-                    "x-oapi-codegen-extra-tags": {
-                      "validate": "required_without=RequiredWatchFields"
-                    },
                     "type": "string",
                     "description": "Whether to watch fields all fields automatically.",
                     "example": "all",
@@ -3535,9 +3490,6 @@
                     ]
                   },
                   "requiredWatchFields": {
-                    "x-oapi-codegen-extra-tags": {
-                      "validate": "required_without=WatchFieldsAuto,min=1"
-                    },
                     "type": "array",
                     "items": {
                       "type": "string"

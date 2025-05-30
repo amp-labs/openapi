@@ -205,15 +205,11 @@ components:
           x-oapi-codegen-extra-tags:
             validate: oneof=always never
         watchFieldsAuto:
-          x-oapi-codegen-extra-tags:
-            validate: required_without=RequiredWatchFields
           type: string
           description: Whether to watch fields all fields automatically.
           example: all
           enum: [ all ]
         requiredWatchFields:
-          x-oapi-codegen-extra-tags:
-            validate: required_without=WatchFieldsAuto,min=1
           type: array
           items:
             type: string
