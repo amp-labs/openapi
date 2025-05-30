@@ -6341,7 +6341,8 @@
                                               "type": "string",
                                               "description": "If always, the integration will subscribe to create events.",
                                               "enum": [
-                                                "always"
+                                                "always",
+                                                "never"
                                               ]
                                             }
                                           }
@@ -6353,7 +6354,8 @@
                                               "type": "string",
                                               "description": "If always, the integration will subscribe to update events.",
                                               "enum": [
-                                                "always"
+                                                "always",
+                                                "never"
                                               ]
                                             },
                                             "watchFieldsAuto": {
@@ -6384,7 +6386,8 @@
                                               "type": "string",
                                               "description": "If always, the integration will subscribe to delete events.",
                                               "enum": [
-                                                "always"
+                                                "always",
+                                                "never"
                                               ]
                                             }
                                           }
@@ -7246,7 +7249,8 @@
                                           "type": "string",
                                           "description": "If always, the integration will subscribe to create events.",
                                           "enum": [
-                                            "always"
+                                            "always",
+                                            "never"
                                           ]
                                         }
                                       }
@@ -7258,7 +7262,8 @@
                                           "type": "string",
                                           "description": "If always, the integration will subscribe to update events.",
                                           "enum": [
-                                            "always"
+                                            "always",
+                                            "never"
                                           ]
                                         },
                                         "watchFieldsAuto": {
@@ -7289,7 +7294,8 @@
                                           "type": "string",
                                           "description": "If always, the integration will subscribe to delete events.",
                                           "enum": [
-                                            "always"
+                                            "always",
+                                            "never"
                                           ]
                                         }
                                       }
@@ -9365,7 +9371,8 @@
                                               "type": "string",
                                               "description": "If always, the integration will subscribe to create events.",
                                               "enum": [
-                                                "always"
+                                                "always",
+                                                "never"
                                               ]
                                             }
                                           }
@@ -9377,7 +9384,8 @@
                                               "type": "string",
                                               "description": "If always, the integration will subscribe to update events.",
                                               "enum": [
-                                                "always"
+                                                "always",
+                                                "never"
                                               ]
                                             },
                                             "watchFieldsAuto": {
@@ -9408,7 +9416,8 @@
                                               "type": "string",
                                               "description": "If always, the integration will subscribe to delete events.",
                                               "enum": [
-                                                "always"
+                                                "always",
+                                                "never"
                                               ]
                                             }
                                           }
@@ -44984,7 +44993,8 @@
                                   "type": "string",
                                   "description": "If always, the integration will subscribe to create events.",
                                   "enum": [
-                                    "always"
+                                    "always",
+                                    "never"
                                   ]
                                 }
                               }
@@ -44996,7 +45006,8 @@
                                   "type": "string",
                                   "description": "If always, the integration will subscribe to update events.",
                                   "enum": [
-                                    "always"
+                                    "always",
+                                    "never"
                                   ]
                                 },
                                 "watchFieldsAuto": {
@@ -45027,7 +45038,8 @@
                                   "type": "string",
                                   "description": "If always, the integration will subscribe to delete events.",
                                   "enum": [
-                                    "always"
+                                    "always",
+                                    "never"
                                   ]
                                 }
                               }
@@ -45399,7 +45411,8 @@
                               "type": "string",
                               "description": "If always, the integration will subscribe to create events.",
                               "enum": [
-                                "always"
+                                "always",
+                                "never"
                               ]
                             }
                           }
@@ -45411,7 +45424,8 @@
                               "type": "string",
                               "description": "If always, the integration will subscribe to update events.",
                               "enum": [
-                                "always"
+                                "always",
+                                "never"
                               ]
                             },
                             "watchFieldsAuto": {
@@ -45442,7 +45456,8 @@
                               "type": "string",
                               "description": "If always, the integration will subscribe to delete events.",
                               "enum": [
-                                "always"
+                                "always",
+                                "never"
                               ]
                             }
                           }
