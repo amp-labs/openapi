@@ -176,16 +176,16 @@ components:
       properties:
         enabled:
           type: string
-          description: If always, the integration will subscribe to create events.
-          enum: [always]
+          description: If always, the integration will subscribe to create events by default.
+          enum: [always, never]
 
     UpdateEvent:
       type: object
       properties:
         enabled:
           type: string
-          description: If always, the integration will subscribe to update events.
-          enum: [always]
+          description: If always, the integration will subscribe to update events by default.
+          enum: [always, never]
         watchFieldsAuto:
           type: string
           description: If all, the integration will watch all fields for updates.
@@ -205,8 +205,8 @@ components:
       properties:
         enabled:
           type: string
-          description: If always, the integration will subscribe to delete events.
-          enum: [always]
+          description: If always, the integration will subscribe to delete events by default.
+          enum: [always, never]
 
     AssociationChangeEvent:
       type: object
@@ -331,7 +331,7 @@ components:
           $ref: '#/components/schemas/Backfill'
 
     # We might end up using the same HydratedIntegrationObject type for both read and write,
-    # but for now we're introducing a new type to keep them separate, and not renaming the
+    # But for now, we're introducing a new typee to keep them separate, and not renaming the
     # existing IntegrationObject.
     HydratedIntegrationWriteObject:
       type: object
