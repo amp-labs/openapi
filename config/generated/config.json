@@ -898,10 +898,11 @@
                       "type": "string",
                       "description": "Conditions to enable create events.",
                       "enum": [
-                        "always"
+                        "always",
+                        "never"
                       ],
                       "x-oapi-codegen-extra-tags": {
-                        "validate": "oneof=always"
+                        "validate": "oneof=always never"
                       }
                     }
                   }
@@ -918,10 +919,11 @@
                       "description": "Conditions to enable update events.",
                       "example": "always",
                       "enum": [
-                        "always"
+                        "always",
+                        "never"
                       ],
                       "x-oapi-codegen-extra-tags": {
-                        "validate": "oneof=always"
+                        "validate": "oneof=always never"
                       }
                     },
                     "watchFieldsAuto": {
@@ -963,10 +965,11 @@
                       "description": "Conditions to enable delete events.",
                       "example": "always",
                       "x-oapi-codegen-extra-tags": {
-                        "validate": "oneof=always"
+                        "validate": "oneof=always never"
                       },
                       "enum": [
-                        "always"
+                        "always",
+                        "never"
                       ]
                     }
                   }
@@ -1017,10 +1020,11 @@
                 "type": "string",
                 "description": "Conditions to enable create events.",
                 "enum": [
-                  "always"
+                  "always",
+                  "never"
                 ],
                 "x-oapi-codegen-extra-tags": {
-                  "validate": "oneof=always"
+                  "validate": "oneof=always never"
                 }
               }
             }
@@ -1037,10 +1041,11 @@
                 "description": "Conditions to enable update events.",
                 "example": "always",
                 "enum": [
-                  "always"
+                  "always",
+                  "never"
                 ],
                 "x-oapi-codegen-extra-tags": {
-                  "validate": "oneof=always"
+                  "validate": "oneof=always never"
                 }
               },
               "watchFieldsAuto": {
@@ -1082,10 +1087,11 @@
                 "description": "Conditions to enable delete events.",
                 "example": "always",
                 "x-oapi-codegen-extra-tags": {
-                  "validate": "oneof=always"
+                  "validate": "oneof=always never"
                 },
                 "enum": [
-                  "always"
+                  "always",
+                  "never"
                 ]
               }
             }
@@ -1103,10 +1109,11 @@
             "type": "string",
             "description": "Conditions to enable create events.",
             "enum": [
-              "always"
+              "always",
+              "never"
             ],
             "x-oapi-codegen-extra-tags": {
-              "validate": "oneof=always"
+              "validate": "oneof=always never"
             }
           }
         }
@@ -1123,10 +1130,11 @@
             "description": "Conditions to enable update events.",
             "example": "always",
             "enum": [
-              "always"
+              "always",
+              "never"
             ],
             "x-oapi-codegen-extra-tags": {
-              "validate": "oneof=always"
+              "validate": "oneof=always never"
             }
           },
           "watchFieldsAuto": {
@@ -1168,10 +1176,11 @@
             "description": "Conditions to enable delete events.",
             "example": "always",
             "x-oapi-codegen-extra-tags": {
-              "validate": "oneof=always"
+              "validate": "oneof=always never"
             },
             "enum": [
-              "always"
+              "always",
+              "never"
             ]
           }
         }
@@ -2104,10 +2113,11 @@
                                   "type": "string",
                                   "description": "Conditions to enable create events.",
                                   "enum": [
-                                    "always"
+                                    "always",
+                                    "never"
                                   ],
                                   "x-oapi-codegen-extra-tags": {
-                                    "validate": "oneof=always"
+                                    "validate": "oneof=always never"
                                   }
                                 }
                               }
@@ -2124,10 +2134,11 @@
                                   "description": "Conditions to enable update events.",
                                   "example": "always",
                                   "enum": [
-                                    "always"
+                                    "always",
+                                    "never"
                                   ],
                                   "x-oapi-codegen-extra-tags": {
-                                    "validate": "oneof=always"
+                                    "validate": "oneof=always never"
                                   }
                                 },
                                 "watchFieldsAuto": {
@@ -2169,10 +2180,11 @@
                                   "description": "Conditions to enable delete events.",
                                   "example": "always",
                                   "x-oapi-codegen-extra-tags": {
-                                    "validate": "oneof=always"
+                                    "validate": "oneof=always never"
                                   },
                                   "enum": [
-                                    "always"
+                                    "always",
+                                    "never"
                                   ]
                                 }
                               }
@@ -2233,10 +2245,11 @@
                                       "type": "string",
                                       "description": "Conditions to enable create events.",
                                       "enum": [
-                                        "always"
+                                        "always",
+                                        "never"
                                       ],
                                       "x-oapi-codegen-extra-tags": {
-                                        "validate": "oneof=always"
+                                        "validate": "oneof=always never"
                                       }
                                     }
                                   }
@@ -2253,10 +2266,11 @@
                                       "description": "Conditions to enable update events.",
                                       "example": "always",
                                       "enum": [
-                                        "always"
+                                        "always",
+                                        "never"
                                       ],
                                       "x-oapi-codegen-extra-tags": {
-                                        "validate": "oneof=always"
+                                        "validate": "oneof=always never"
                                       }
                                     },
                                     "watchFieldsAuto": {
@@ -2298,10 +2312,11 @@
                                       "description": "Conditions to enable delete events.",
                                       "example": "always",
                                       "x-oapi-codegen-extra-tags": {
-                                        "validate": "oneof=always"
+                                        "validate": "oneof=always never"
                                       },
                                       "enum": [
-                                        "always"
+                                        "always",
+                                        "never"
                                       ]
                                     }
                                   }
@@ -3232,10 +3247,11 @@
                           "type": "string",
                           "description": "Conditions to enable create events.",
                           "enum": [
-                            "always"
+                            "always",
+                            "never"
                           ],
                           "x-oapi-codegen-extra-tags": {
-                            "validate": "oneof=always"
+                            "validate": "oneof=always never"
                           }
                         }
                       }
@@ -3252,10 +3268,11 @@
                           "description": "Conditions to enable update events.",
                           "example": "always",
                           "enum": [
-                            "always"
+                            "always",
+                            "never"
                           ],
                           "x-oapi-codegen-extra-tags": {
-                            "validate": "oneof=always"
+                            "validate": "oneof=always never"
                           }
                         },
                         "watchFieldsAuto": {
@@ -3297,10 +3314,11 @@
                           "description": "Conditions to enable delete events.",
                           "example": "always",
                           "x-oapi-codegen-extra-tags": {
-                            "validate": "oneof=always"
+                            "validate": "oneof=always never"
                           },
                           "enum": [
-                            "always"
+                            "always",
+                            "never"
                           ]
                         }
                       }
@@ -3361,10 +3379,11 @@
                               "type": "string",
                               "description": "Conditions to enable create events.",
                               "enum": [
-                                "always"
+                                "always",
+                                "never"
                               ],
                               "x-oapi-codegen-extra-tags": {
-                                "validate": "oneof=always"
+                                "validate": "oneof=always never"
                               }
                             }
                           }
@@ -3381,10 +3400,11 @@
                               "description": "Conditions to enable update events.",
                               "example": "always",
                               "enum": [
-                                "always"
+                                "always",
+                                "never"
                               ],
                               "x-oapi-codegen-extra-tags": {
-                                "validate": "oneof=always"
+                                "validate": "oneof=always never"
                               }
                             },
                             "watchFieldsAuto": {
@@ -3426,10 +3446,11 @@
                               "description": "Conditions to enable delete events.",
                               "example": "always",
                               "x-oapi-codegen-extra-tags": {
-                                "validate": "oneof=always"
+                                "validate": "oneof=always never"
                               },
                               "enum": [
-                                "always"
+                                "always",
+                                "never"
                               ]
                             }
                           }
@@ -3495,10 +3516,11 @@
                     "type": "string",
                     "description": "Conditions to enable create events.",
                     "enum": [
-                      "always"
+                      "always",
+                      "never"
                     ],
                     "x-oapi-codegen-extra-tags": {
-                      "validate": "oneof=always"
+                      "validate": "oneof=always never"
                     }
                   }
                 }
@@ -3515,10 +3537,11 @@
                     "description": "Conditions to enable update events.",
                     "example": "always",
                     "enum": [
-                      "always"
+                      "always",
+                      "never"
                     ],
                     "x-oapi-codegen-extra-tags": {
-                      "validate": "oneof=always"
+                      "validate": "oneof=always never"
                     }
                   },
                   "watchFieldsAuto": {
@@ -3560,10 +3583,11 @@
                     "description": "Conditions to enable delete events.",
                     "example": "always",
                     "x-oapi-codegen-extra-tags": {
-                      "validate": "oneof=always"
+                      "validate": "oneof=always never"
                     },
                     "enum": [
-                      "always"
+                      "always",
+                      "never"
                     ]
                   }
                 }

@@ -189,9 +189,9 @@ components:
         enabled:
           type: string
           description: Conditions to enable create events.
-          enum: [ always ]
+          enum: [ always, never ]
           x-oapi-codegen-extra-tags:
-            validate: oneof=always
+            validate: oneof=always never
 
     ConfigUpdateEvent:
       title: Update Event
@@ -203,9 +203,9 @@ components:
           type: string
           description: Conditions to enable update events.
           example: always
-          enum: [ always ]
+          enum: [ always, never ]
           x-oapi-codegen-extra-tags:
-            validate: oneof=always
+            validate: oneof=always never
         watchFieldsAuto:
           x-oapi-codegen-extra-tags:
             validate: required_without=RequiredWatchFields
@@ -233,8 +233,8 @@ components:
           description: Conditions to enable delete events.
           example: always
           x-oapi-codegen-extra-tags:
-            validate: oneof=always
-          enum: [ always ]
+            validate: oneof=always never
+          enum: [ always, never ]
 
     ConfigContent:
       title: Config Content
