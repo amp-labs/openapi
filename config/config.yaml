@@ -171,8 +171,6 @@ components:
           description: The name of the destination that the result should be sent to.
           example: accountWebhook
           type: string
-          x-oapi-codegen-extra-tags:
-            validate: required
         createEvent:
           $ref: '#/components/schemas/ConfigCreateEvent'
         updateEvent:
