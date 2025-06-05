@@ -1,24 +1,26 @@
-name: Trigger VS Code Schema Update
+name: Trigger Postman Collection Generation
 
 on:
   push:
     branches:
       - main
     paths:
-      - "manifest/generated/manifest.json"
+      - "api/api.yaml"
+      - "api/read.yaml"
+      - "api/write.yaml"
   workflow_dispatch:
 
 jobs:
-  trigger-schema-update:
+  trigger-postman-repo-update:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger schema update in VS Code extension repo
+      - name: Trigger Postman collection repo update
         run: |
           # Set the required variables
           repo_owner="amp-labs" 
-          repo_name="vs-code-extension"  
-          event_type="update-json-schema" 
+          repo_name="postman-collection"  
+          event_type="update-postman-collection" 
 
           curl -L \
             -X POST \
