@@ -136,6 +136,11 @@ components:
         - operationId
       additionalProperties: false
       properties:
+        rawResponse:
+          type: string
+          description: The raw response from the provider, if available
+          example: "{\"error\": \"Record not found\"}"
+          x-go-type-skip-optional-pointer: true
         errors:
           type: array
           description: Error messages resulted in failures

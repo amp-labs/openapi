@@ -176,7 +176,7 @@ components:
       properties:
         enabled:
           type: string
-          description: If always, the integration will subscribe to create events.
+          description: If always, the integration will subscribe to create events by default.
           enum: [always]
 
     UpdateEvent:
@@ -184,7 +184,7 @@ components:
       properties:
         enabled:
           type: string
-          description: If always, the integration will subscribe to update events.
+          description: If always, the integration will subscribe to update events by default.
           enum: [always]
         watchFieldsAuto:
           type: string
@@ -205,7 +205,7 @@ components:
       properties:
         enabled:
           type: string
-          description: If always, the integration will subscribe to delete events.
+          description: If always, the integration will subscribe to delete events by default.
           enum: [always]
 
     AssociationChangeEvent:
@@ -317,21 +317,22 @@ components:
             $ref: '#/components/schemas/HydratedIntegrationField'
         optionalFieldsAuto:
           $ref: '#/components/schemas/OptionalFieldsAutoOption'
-        allFields:
-          description: This is a list of all fields on the object for a particular SaaS instance, including their display names.
-          type: array
-          items:
-            $ref: '#/components/schemas/HydratedIntegrationField'
         allFieldsMetadata:
           description: This is a map of all fields on the object including their metadata (such as display name and type), the keys of the map are the field names.
           type: object
           additionalProperties:
             $ref: '#/components/schemas/FieldMetadata'
+        allFields:
+          description: This is a list of all fields on the object for a particular SaaS instance, including their display names. Prefer using allFieldsMetadata instead.
+          type: array
+          deprecated: true
+          items:
+            $ref: '#/components/schemas/HydratedIntegrationField'
         backfill:
           $ref: '#/components/schemas/Backfill'
 
     # We might end up using the same HydratedIntegrationObject type for both read and write,
-    # but for now we're introducing a new type to keep them separate, and not renaming the
+    # But for now, we're introducing a new typee to keep them separate, and not renaming the
     # existing IntegrationObject.
     HydratedIntegrationWriteObject:
       type: object
