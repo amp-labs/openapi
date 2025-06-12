@@ -3200,6 +3200,15 @@ components:
         apiKey:
           type: string
           description: The API key to use for the connection.
+        customAuth:
+          type: object
+          description: Values used for custom auth input variables.
+          additionalProperties:
+            type: string
+            nullable: false
+          example:
+            apiKey: "abcd1234"
+            password: "secret"
         basicAuth:
           type: object
           required:
