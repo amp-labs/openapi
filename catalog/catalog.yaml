@@ -310,7 +310,7 @@ components:
           description: The name of the header.
         valueTemplate:
           type: string
-          example: Bearer {{ .token }}
+          example: "Bearer {{ .token }}"
           description: The value of the header, represented as a Golang text/template expression. Only the backend will interpret this.
 
     CustomAuthQueryParam:
@@ -327,8 +327,8 @@ components:
           description: The name of the query parameter.
         valueTemplate:
           type: string
-          example: {{ .token }}
-          description: The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this.
+          example: "{{ .token }}"
+          description: "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this."
 
     CustomAuthInput:
       title: Custom Auth Input
