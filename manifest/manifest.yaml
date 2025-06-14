@@ -218,6 +218,14 @@ components:
         includeFullRecords:
           type: boolean
           description: If true, the integration will include full records in the event payload.
+        BelongsToObjects:
+          type: array
+          items:
+            type: string
+            description: The objects that the integration belongs to.
+            example:
+              - account
+              - contact
 
     OtherEvents:
       type: array
