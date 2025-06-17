@@ -594,7 +594,10 @@
           "valueTemplate": {
             "type": "string",
             "example": "Bearer {{ .token }}",
-            "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this."
+            "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this.",
+            "x-oapi-codegen-extra-tags": {
+              "skipSubstitutions": "true"
+            }
           }
         }
       },
@@ -615,7 +618,10 @@
           "valueTemplate": {
             "type": "string",
             "example": "{{ .token }}",
-            "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this."
+            "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this.",
+            "x-oapi-codegen-extra-tags": {
+              "skipSubstitutions": "true"
+            }
           }
         }
       },
@@ -676,7 +682,10 @@
                 "valueTemplate": {
                   "type": "string",
                   "example": "Bearer {{ .token }}",
-                  "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this."
+                  "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this.",
+                  "x-oapi-codegen-extra-tags": {
+                    "skipSubstitutions": "true"
+                  }
                 }
               }
             },
@@ -702,7 +711,10 @@
                 "valueTemplate": {
                   "type": "string",
                   "example": "{{ .token }}",
-                  "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this."
+                  "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this.",
+                  "x-oapi-codegen-extra-tags": {
+                    "skipSubstitutions": "true"
+                  }
                 }
               }
             },
@@ -1345,7 +1357,10 @@
                     "valueTemplate": {
                       "type": "string",
                       "example": "Bearer {{ .token }}",
-                      "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this."
+                      "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this.",
+                      "x-oapi-codegen-extra-tags": {
+                        "skipSubstitutions": "true"
+                      }
                     }
                   }
                 },
@@ -1371,7 +1386,10 @@
                     "valueTemplate": {
                       "type": "string",
                       "example": "{{ .token }}",
-                      "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this."
+                      "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this.",
+                      "x-oapi-codegen-extra-tags": {
+                        "skipSubstitutions": "true"
+                      }
                     }
                   }
                 },
@@ -2150,7 +2168,10 @@
                           "valueTemplate": {
                             "type": "string",
                             "example": "Bearer {{ .token }}",
-                            "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this."
+                            "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this.",
+                            "x-oapi-codegen-extra-tags": {
+                              "skipSubstitutions": "true"
+                            }
                           }
                         }
                       },
@@ -2176,7 +2197,10 @@
                           "valueTemplate": {
                             "type": "string",
                             "example": "{{ .token }}",
-                            "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this."
+                            "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this.",
+                            "x-oapi-codegen-extra-tags": {
+                              "skipSubstitutions": "true"
+                            }
                           }
                         }
                       },
@@ -2942,7 +2966,10 @@
                       "valueTemplate": {
                         "type": "string",
                         "example": "Bearer {{ .token }}",
-                        "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this."
+                        "description": "The value of the header, represented as a Golang text/template expression. Only the backend will interpret this.",
+                        "x-oapi-codegen-extra-tags": {
+                          "skipSubstitutions": "true"
+                        }
                       }
                     }
                   },
@@ -2968,7 +2995,10 @@
                       "valueTemplate": {
                         "type": "string",
                         "example": "{{ .token }}",
-                        "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this."
+                        "description": "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this.",
+                        "x-oapi-codegen-extra-tags": {
+                          "skipSubstitutions": "true"
+                        }
                       }
                     }
                   },
