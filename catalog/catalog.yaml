@@ -312,6 +312,8 @@ components:
           type: string
           example: "Bearer {{ .token }}"
           description: The value of the header, represented as a Golang text/template expression. Only the backend will interpret this.
+          x-oapi-codegen-extra-tags:
+            skipSubstitutions: "true"
 
     CustomAuthQueryParam:
       title: Custom Auth Query Parameter
@@ -329,6 +331,8 @@ components:
           type: string
           example: "{{ .token }}"
           description: "The value of the query parameter, represented as a Golang text/template expression. Only the backend will interpret this."
+          x-oapi-codegen-extra-tags:
+            skipSubstitutions: "true"
 
     CustomAuthInput:
       title: Custom Auth Input
