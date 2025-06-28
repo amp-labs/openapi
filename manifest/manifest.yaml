@@ -243,6 +243,10 @@ components:
           type: string
         displayName:
           type: string
+          x-go-type-skip-optional-pointer: true
+        module:
+          type: string
+          x-go-type-skip-optional-pointer: true
         provider:
           type: string
         read:
