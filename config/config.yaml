@@ -24,6 +24,7 @@ components:
           description: The SaaS module that we are integrating with.
           example: crm
           type: string
+          x-go-type-skip-optional-pointer: true
         read:
           $ref: '#/components/schemas/BaseReadConfig'
         write:

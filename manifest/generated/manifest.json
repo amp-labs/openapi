@@ -38,14 +38,16 @@
                 "name": {
                   "type": "string"
                 },
-                "displayName": {
-                  "type": "string"
-                },
                 "provider": {
                   "type": "string"
                 },
+                "displayName": {
+                  "type": "string",
+                  "x-go-type-skip-optional-pointer": true
+                },
                 "module": {
-                  "type": "string"
+                  "type": "string",
+                  "x-go-type-skip-optional-pointer": true
                 },
                 "read": {
                   "title": "Read Integration",
@@ -430,14 +432,16 @@
           "name": {
             "type": "string"
           },
-          "displayName": {
-            "type": "string"
-          },
           "provider": {
             "type": "string"
           },
+          "displayName": {
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
+          },
           "module": {
-            "type": "string"
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
           },
           "read": {
             "title": "Read Integration",

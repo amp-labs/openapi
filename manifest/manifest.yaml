@@ -37,12 +37,14 @@ components:
       properties:
         name:
           type: string
-        displayName:
-          type: string
         provider:
           type: string
+        displayName:
+          type: string
+          x-go-type-skip-optional-pointer: true
         module:
           type: string
+          x-go-type-skip-optional-pointer: true
         read:
           $ref: '#/components/schemas/IntegrationRead'
         write:
