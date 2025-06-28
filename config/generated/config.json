@@ -24,7 +24,8 @@
           "module": {
             "description": "The SaaS module that we are integrating with.",
             "example": "crm",
-            "type": "string"
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
           },
           "read": {
             "title": "Base Read Config",
@@ -1181,7 +1182,8 @@
               "module": {
                 "description": "The SaaS module that we are integrating with.",
                 "example": "crm",
-                "type": "string"
+                "type": "string",
+                "x-go-type-skip-optional-pointer": true
               },
               "read": {
                 "title": "Base Read Config",
@@ -3560,7 +3562,8 @@
               "module": {
                 "description": "The SaaS module that we are integrating with.",
                 "example": "crm",
-                "type": "string"
+                "type": "string",
+                "x-go-type-skip-optional-pointer": true
               },
               "read": {
                 "title": "Base Read Config",
