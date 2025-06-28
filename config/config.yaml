@@ -18,7 +18,11 @@ components:
       properties:
         provider:
           description: The SaaS API that we are integrating with.
-          example: salesforce
+          example: hubspot
+          type: string
+        module:
+          description: The SaaS module that we are integrating with.
+          example: crm
           type: string
         read:
           $ref: '#/components/schemas/BaseReadConfig'

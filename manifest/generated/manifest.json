@@ -44,6 +44,9 @@
                 "provider": {
                   "type": "string"
                 },
+                "module": {
+                  "type": "string"
+                },
                 "read": {
                   "title": "Read Integration",
                   "type": "object",
@@ -431,6 +434,9 @@
             "type": "string"
           },
           "provider": {
+            "type": "string"
+          },
+          "module": {
             "type": "string"
           },
           "read": {
