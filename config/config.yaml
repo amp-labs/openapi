@@ -38,6 +38,9 @@ components:
       properties:
         enabled:
           type: boolean
+        useModule:
+          description: Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.
+          type: boolean
 
     BaseReadConfig:
       title: Base Read Config
@@ -144,7 +147,7 @@ components:
           x-go-type-skip-optional-pointer: true
           additionalProperties:
             $ref: '#/components/schemas/FieldSetting'
-   
+
     BaseSubscribeConfig:
       title: Base Subscribe Config
       type: object
@@ -153,7 +156,7 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/BaseSubscribeConfigObject'
-    
+
     BaseSubscribeConfigObject:
       title: Base Subscribe Config Object
       type: object
@@ -290,7 +293,7 @@ components:
         - type: object
           required:
             - objectName
-    
+
     SubscribeConfig:
       title: Subscribe Config
       allOf:
@@ -302,7 +305,7 @@ components:
             objects:
               additionalProperties:
                 $ref: '#/components/schemas/SubscribeConfigObject'
-    
+
     SubscribeConfigObject:
       title: Subscribe Config Object
       allOf:
