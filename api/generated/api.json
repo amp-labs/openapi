@@ -36537,8 +36537,21 @@
                   },
                   "type": {
                     "type": "string",
-                    "description": "The type of the destination",
-                    "example": "webhook"
+                    "description": "The type of the destination.",
+                    "example": "webhook",
+                    "enum": [
+                      "webhook",
+                      "kinesis"
+                    ]
+                  },
+                  "provider": {
+                    "type": "string",
+                    "description": "The provider of the destination.",
+                    "example": "svix",
+                    "enum": [
+                      "svix",
+                      "outpost"
+                    ]
                   },
                   "secrets": {
                     "type": "object",
@@ -36554,6 +36567,12 @@
                         "type": "string",
                         "description": "The AWS secret access key for the Kinesis destination.",
                         "example": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "awsSessionToken": {
+                        "type": "string",
+                        "description": "The AWS session token for the Kinesis destination.",
+                        "example": "AQoEXAMPLEH4aoAH0gNCAPy...",
                         "x-go-type-skip-optional-pointer": true
                       }
                     }
