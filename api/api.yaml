@@ -2020,14 +2020,9 @@ paths:
                   description: The type of the destination.
                   example: webhook
                   enum: [webhook, kinesis]
-                provider:
-                  type: string
-                  description: The provider of the destination.
-                  example: svix
-                  enum: [svix, outpost]
                 secrets:
                   type: object
-                  description: Secrets for the destination. This is only used for Kinesis destinations.
+                  description: Secrets for the destination.
                   properties:
                     awsKeyId:
                       type: string
