@@ -99,6 +99,13 @@ components:
           $ref: '#/components/schemas/SelectedFieldsAutoConfig'
         backfill:
           $ref: '#/components/schemas/BackfillConfig'
+        enabled:
+          type: string
+          description: Controls whether this read object is enabled.
+          enum: [always, never]
+          default: always
+          x-oapi-codegen-extra-tags:
+            validate: oneof=always never
 
     SelectedValueMappings:
       title: Selected Value Mappings

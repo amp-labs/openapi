@@ -140,6 +140,18 @@
                           }
                         }
                       }
+                    },
+                    "enabled": {
+                      "type": "string",
+                      "description": "Controls whether this read object is enabled.",
+                      "enum": [
+                        "always",
+                        "never"
+                      ],
+                      "default": "always",
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "oneof=always never"
+                      }
                     }
                   }
                 }
@@ -440,6 +452,18 @@
                       }
                     }
                   }
+                },
+                "enabled": {
+                  "type": "string",
+                  "description": "Controls whether this read object is enabled.",
+                  "enum": [
+                    "always",
+                    "never"
+                  ],
+                  "default": "always",
+                  "x-oapi-codegen-extra-tags": {
+                    "validate": "oneof=always never"
+                  }
                 }
               }
             }
@@ -551,6 +575,18 @@
                   }
                 }
               }
+            }
+          },
+          "enabled": {
+            "type": "string",
+            "description": "Controls whether this read object is enabled.",
+            "enum": [
+              "always",
+              "never"
+            ],
+            "default": "always",
+            "x-oapi-codegen-extra-tags": {
+              "validate": "oneof=always never"
             }
           }
         }
@@ -1306,6 +1342,18 @@
                               }
                             }
                           }
+                        },
+                        "enabled": {
+                          "type": "string",
+                          "description": "Controls whether this read object is enabled.",
+                          "enum": [
+                            "always",
+                            "never"
+                          ],
+                          "default": "always",
+                          "x-oapi-codegen-extra-tags": {
+                            "validate": "oneof=always never"
+                          }
                         }
                       }
                     }
@@ -1602,6 +1650,18 @@
                                   }
                                 }
                               }
+                            },
+                            "enabled": {
+                              "type": "string",
+                              "description": "Controls whether this read object is enabled.",
+                              "enum": [
+                                "always",
+                                "never"
+                              ],
+                              "default": "always",
+                              "x-oapi-codegen-extra-tags": {
+                                "validate": "oneof=always never"
+                              }
                             }
                           }
                         }
@@ -1723,6 +1783,18 @@
                                         }
                                       }
                                     }
+                                  }
+                                },
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "Controls whether this read object is enabled.",
+                                  "enum": [
+                                    "always",
+                                    "never"
+                                  ],
+                                  "default": "always",
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "oneof=always never"
                                   }
                                 }
                               }
@@ -2440,6 +2512,18 @@
                           }
                         }
                       }
+                    },
+                    "enabled": {
+                      "type": "string",
+                      "description": "Controls whether this read object is enabled.",
+                      "enum": [
+                        "always",
+                        "never"
+                      ],
+                      "default": "always",
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "oneof=always never"
+                      }
                     }
                   }
                 }
@@ -2561,6 +2645,18 @@
                                 }
                               }
                             }
+                          }
+                        },
+                        "enabled": {
+                          "type": "string",
+                          "description": "Controls whether this read object is enabled.",
+                          "enum": [
+                            "always",
+                            "never"
+                          ],
+                          "default": "always",
+                          "x-oapi-codegen-extra-tags": {
+                            "validate": "oneof=always never"
                           }
                         }
                       }
@@ -2690,6 +2786,18 @@
                       }
                     }
                   }
+                }
+              },
+              "enabled": {
+                "type": "string",
+                "description": "Controls whether this read object is enabled.",
+                "enum": [
+                  "always",
+                  "never"
+                ],
+                "default": "always",
+                "x-oapi-codegen-extra-tags": {
+                  "validate": "oneof=always never"
                 }
               }
             }
@@ -3690,6 +3798,18 @@
                               }
                             }
                           }
+                        },
+                        "enabled": {
+                          "type": "string",
+                          "description": "Controls whether this read object is enabled.",
+                          "enum": [
+                            "always",
+                            "never"
+                          ],
+                          "default": "always",
+                          "x-oapi-codegen-extra-tags": {
+                            "validate": "oneof=always never"
+                          }
                         }
                       }
                     }
@@ -3982,6 +4102,18 @@
                           }
                         }
                       }
+                    },
+                    "enabled": {
+                      "type": "string",
+                      "description": "Controls whether this read object is enabled.",
+                      "enum": [
+                        "always",
+                        "never"
+                      ],
+                      "default": "always",
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "oneof=always never"
+                      }
                     }
                   }
                 }
@@ -4098,6 +4230,18 @@
                       }
                     }
                   }
+                }
+              },
+              "enabled": {
+                "type": "string",
+                "description": "Controls whether this read object is enabled.",
+                "enum": [
+                  "always",
+                  "never"
+                ],
+                "default": "always",
+                "x-oapi-codegen-extra-tags": {
+                  "validate": "oneof=always never"
                 }
               }
             }
