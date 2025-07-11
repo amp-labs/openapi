@@ -1233,8 +1233,6 @@ paths:
           example: groupRef123
           schema:
             type: string
-            enum:
-              - groupRef
       responses:
         200:
           description: List of installations
