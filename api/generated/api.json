@@ -23107,10 +23107,7 @@
             "example": "groupRef123",
             "schema": {
               "type": "string"
-            },
-            "enum": [
-              "groupRef"
-            ]
+            }
           }
         ],
         "responses": {
