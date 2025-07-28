@@ -1214,10 +1214,10 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/installations:
     get:
-      summary: List installations
+      summary: List installations for a project
       description: |
         Lists all installations for a given project and query parameters.
-      operationId: listInstallations
+      operationId: listInstallationsForProject
       tags: ["Installation"]
       parameters:
         - name: projectIdOrName

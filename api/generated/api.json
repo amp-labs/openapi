@@ -23083,9 +23083,9 @@
     },
     "/projects/{projectIdOrName}/installations": {
       "get": {
-        "summary": "List installations",
+        "summary": "List installations for a project",
         "description": "Lists all installations for a given project and query parameters.\n",
-        "operationId": "listInstallations",
+        "operationId": "listInstallationsForProject",
         "tags": [
           "Installation"
         ],
