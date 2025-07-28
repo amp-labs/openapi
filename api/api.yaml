@@ -1212,6 +1212,42 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/installations:
+    get:
+      summary: List installations for a project
+      description: |
+        Lists all installations for a given project and query parameters.
+      operationId: listInstallationsForProject
+      tags: ["Installation"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: groupRef
+          in: query
+          description: The the installation field to filter by.
+          example: groupRef123
+          schema:
+            type: string
+      responses:
+        200:
+          description: List of installations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Installation"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata:
     get:
       summary: Get object metadata for connection
