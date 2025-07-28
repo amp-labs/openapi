@@ -657,7 +657,7 @@ paths:
       x-codegen-request-body-name: integration
   /projects/{projectIdOrName}/integrations/{integrationIdOrName}:
     get:
-      summary: Get an integration
+      summary: Get an integration by ID or name
       operationId: getIntegration
       tags: ["Integration"]
       parameters:
@@ -668,6 +668,25 @@ paths:
           schema:
             type: string
           example: 123e4567-e89b-12d3-a456-426614174000
+      responses:
+        200:
+          description: The integration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Integration"
+        404:
+          description: Integration not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}:
     delete:
       summary: Delete an integration
