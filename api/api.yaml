@@ -655,6 +655,19 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: integration
+  /projects/{projectIdOrName}/integrations/{integrationIdOrName}:
+    get:
+      summary: Get an integration
+      operationId: getIntegration
+      tags: ["Integration"]
+      parameters:
+        - name: integrationIdOrName
+          in: path
+          required: true
+          description: The integration ID or name.
+          schema:
+            type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
   /projects/{projectIdOrName}/integrations/{integrationId}:
     delete:
       summary: Delete an integration
