@@ -8163,6 +8163,16 @@
               "type": "string"
             },
             "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          {
+            "name": "projectIdOrName",
+            "in": "path",
+            "required": true,
+            "description": "The Ampersand project ID or project name.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "my-project"
           }
         ],
         "responses": {
