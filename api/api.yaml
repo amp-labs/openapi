@@ -3839,6 +3839,8 @@ components:
           example: Q9JT+2qfys28V4ODN+UayA==
     UpdateMask:
       type: array
+      items:
+        type: string
       description: |
         Array of field paths specifying which fields to update.
         Uses dot notation for nested fields (e.g., "config.revision", "metadata.tags").
