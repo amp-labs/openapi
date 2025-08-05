@@ -271,8 +271,6 @@ components:
         - type: object
           required:
             - objectName
-            - schedule
-            - destination
             - selectedFields
             - selectedFieldMappings
 
