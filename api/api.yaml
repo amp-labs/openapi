@@ -277,13 +277,7 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - appName
-                          - name
+                  $ref: '#/components/schemas/UpdateMask'
                 project:
                   type: object
                   properties:
@@ -495,16 +489,7 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - externalRef
-                          - clientId
-                          - clientSecret
-                          - provider
-                          - scopes
+                  $ref: '#/components/schemas/UpdateMask'
                 providerApp:
                   type: object
                   properties:
@@ -1142,19 +1127,7 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - connectionId
-                          - config.revisionId
-                          - config.createdBy
-                          - config.content.read.objects.*
-                          - config.content.read.objects
-                          - config.content.write.objects.*
-                          - config.content.write.objects
-                          - config.content.subscribe.objects.*
+                  $ref: '#/components/schemas/UpdateMask'
                 installation:
                   type: object
                   properties:
@@ -2173,14 +2146,7 @@ paths:
                 - destination
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - name
-                          - metadata.url
-                          - metadata.headers
+                  $ref: '#/components/schemas/UpdateMask'
                 destination:
                   type: object
                   properties:
@@ -2370,12 +2336,7 @@ paths:
                 - org
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - label
+                  $ref: '#/components/schemas/UpdateMask'
                 org:
                   type: object
                   properties:
@@ -3779,6 +3740,7 @@ components:
           description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
           example: Q9JT+2qfys28V4ODN+UayA==
     UpdateMask:
+      title: UpdateMask
       type: array
       items:
         type: string
