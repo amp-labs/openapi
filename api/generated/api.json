@@ -2482,13 +2482,15 @@
                         ]
                       },
                       {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "enum": [
                             "appName",
                             "name"
                           ]
-                        }
+                        },
+                        "description": "Restricted to project-specific fields only"
                       }
                     ]
                   },
@@ -5390,6 +5392,7 @@
                         ]
                       },
                       {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "enum": [
@@ -5399,7 +5402,8 @@
                             "provider",
                             "scopes"
                           ]
-                        }
+                        },
+                        "description": "Restricted to provider app-specific fields only"
                       }
                     ]
                   },
@@ -21069,6 +21073,7 @@
                         ]
                       },
                       {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "enum": [
@@ -21081,7 +21086,8 @@
                             "config.content.write.objects",
                             "config.content.subscribe.objects.*"
                           ]
-                        }
+                        },
+                        "description": "Restricted to installation-specific fields only"
                       }
                     ]
                   },
@@ -32829,6 +32835,7 @@
                         ]
                       },
                       {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "enum": [
@@ -32836,7 +32843,8 @@
                             "label",
                             "scopes"
                           ]
-                        }
+                        },
+                        "description": "Restricted to API key-specific fields only"
                       }
                     ]
                   },
@@ -37106,6 +37114,7 @@
                         ]
                       },
                       {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "enum": [
@@ -37116,7 +37125,8 @@
                             "oauth2ClientCredentials",
                             "oauth2PasswordCredentials"
                           ]
-                        }
+                        },
+                        "description": "Restricted to connection-specific fields only"
                       }
                     ]
                   },
@@ -40095,6 +40105,7 @@
                         ]
                       },
                       {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "enum": [
@@ -40102,7 +40113,8 @@
                             "metadata.url",
                             "metadata.headers"
                           ]
-                        }
+                        },
+                        "description": "Restricted to destination-specific fields only"
                       }
                     ]
                   },
@@ -45209,12 +45221,14 @@
                         ]
                       },
                       {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "enum": [
                             "label"
                           ]
-                        }
+                        },
+                        "description": "Restricted to organization-specific fields only"
                       }
                     ]
                   },
@@ -53694,6 +53708,7 @@
                 ]
               },
               {
+                "type": "array",
                 "items": {
                   "type": "string",
                   "enum": [
@@ -53704,7 +53719,8 @@
                     "oauth2ClientCredentials",
                     "oauth2PasswordCredentials"
                   ]
-                }
+                },
+                "description": "Restricted to connection-specific fields only"
               }
             ]
           },
@@ -54662,6 +54678,7 @@
                 ]
               },
               {
+                "type": "array",
                 "items": {
                   "type": "string",
                   "enum": [
@@ -54669,7 +54686,8 @@
                     "label",
                     "scopes"
                   ]
-                }
+                },
+                "description": "Restricted to API key-specific fields only"
               }
             ]
           },

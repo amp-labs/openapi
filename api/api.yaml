@@ -281,11 +281,11 @@ paths:
                 updateMask:
                   allOf:
                     - $ref: '#/components/schemas/UpdateMask'
-                    - items:
+                    - type: array
+                      items:
                         type: string
-                        enum:
-                          - appName
-                          - name
+                        enum: ["appName", "name"]
+                      description: "Restricted to project-specific fields only"
                 project:
                   type: object
                   properties:
@@ -499,14 +499,11 @@ paths:
                 updateMask:
                   allOf:
                     - $ref: '#/components/schemas/UpdateMask'
-                    - items:
+                    - type: array
+                      items:
                         type: string
-                        enum:
-                          - externalRef
-                          - clientId
-                          - clientSecret
-                          - provider
-                          - scopes
+                        enum: ["externalRef", "clientId", "clientSecret", "provider", "scopes"]
+                      description: "Restricted to provider app-specific fields only"
                 providerApp:
                   type: object
                   properties:
@@ -1146,17 +1143,11 @@ paths:
                 updateMask:
                   allOf:
                     - $ref: '#/components/schemas/UpdateMask'
-                    - items:
+                    - type: array
+                      items:
                         type: string
-                        enum:
-                          - connectionId
-                          - config.revisionId
-                          - config.createdBy
-                          - config.content.read.objects.*
-                          - config.content.read.objects
-                          - config.content.write.objects.*
-                          - config.content.write.objects
-                          - config.content.subscribe.objects.*
+                        enum: ["connectionId", "config.revisionId", "config.createdBy", "config.content.read.objects.*", "config.content.read.objects", "config.content.write.objects.*", "config.content.write.objects", "config.content.subscribe.objects.*"]
+                      description: "Restricted to installation-specific fields only"
                 installation:
                   type: object
                   properties:
@@ -2177,12 +2168,11 @@ paths:
                 updateMask:
                   allOf:
                     - $ref: '#/components/schemas/UpdateMask'
-                    - items:
+                    - type: array
+                      items:
                         type: string
-                        enum:
-                          - name
-                          - metadata.url
-                          - metadata.headers
+                        enum: ["name", "metadata.url", "metadata.headers"]
+                      description: "Restricted to destination-specific fields only"
                 destination:
                   type: object
                   properties:
@@ -2750,10 +2740,11 @@ paths:
                 updateMask:
                   allOf:
                     - $ref: '#/components/schemas/UpdateMask'
-                    - items:
+                    - type: array
+                      items:
                         type: string
-                        enum:
-                          - label
+                        enum: ["label"]
+                      description: "Restricted to organization-specific fields only"
                 org:
                   type: object
                   properties:
@@ -3570,15 +3561,11 @@ components:
         updateMask:
           allOf:
             - $ref: '#/components/schemas/UpdateMask'
-            - items:
+            - type: array
+              items:
                 type: string
-                enum:
-                  - providerWorkspaceRef
-                  - providerMetadata
-                  - apiKey
-                  - basicAuth
-                  - oauth2ClientCredentials
-                  - oauth2PasswordCredentials
+                enum: ["providerWorkspaceRef", "providerMetadata", "apiKey", "basicAuth", "oauth2ClientCredentials", "oauth2PasswordCredentials"]
+              description: "Restricted to connection-specific fields only"
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
     ConnectionRequest:
@@ -3903,12 +3890,11 @@ components:
         updateMask:
           allOf:
             - $ref: '#/components/schemas/UpdateMask'
-            - items:
+            - type: array
+              items:
                 type: string
-                enum:
-                  - active
-                  - label
-                  - scopes
+                enum: ["active", "label", "scopes"]
+              description: "Restricted to API key-specific fields only"
         apiKey:
           type: object
           properties:
