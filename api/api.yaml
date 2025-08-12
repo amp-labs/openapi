@@ -22,14 +22,16 @@ paths:
                 - consumerRef
                 - provider
               properties:
+                providerWorkspaceRef:
+                  type: string
+                  description: The identifier for the provider workspace (e.g. the Salesforce subdomain).
+                  example: salesforce-instance-domain
+                providerMetadata:
+                  $ref: "#/components/schemas/ProviderMetadata"
                 projectId:
                   type: string
                   description: The Ampersand project ID.
                   example: my-project
-                provider:
-                  type: string
-                  description: The provider that this app connects to.
-                  example: salesforce
                 groupRef:
                   type: string
                   description: The ID that your app uses to identify the group of users for this Connection, this can be an Org ID, workspace ID, etc.
@@ -46,22 +48,18 @@ paths:
                   type: string
                   description: The display name for the consumer. Defaults to consumerRef if not provided.
                   example: John Doe
-                providerWorkspaceRef:
-                  type: string
-                  description: The identifier for the provider workspace (e.g. the Salesforce subdomain).
-                  example: salesforce-instance-domain
-                providerMetadata:
-                  $ref: "#/components/schemas/ProviderMetadata"
                 providerAppId:
                   type: string
                   description:
                     ID of the provider app, returned from a CreateProviderApp call.
                     If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
                   example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
+                provider:
+                  type: string
+                  description: The provider that this app connects to.
+                  example: salesforce
                 enableCSRFProtection:
                   type: boolean
-                  description: This boolean flag is used by the UI library internally. Set it to false or omit it when manually calling this API.
-                  example: false
         required: true
       responses:
         200:
@@ -279,13 +277,12 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - appName
-                          - name
+                  type: array
+                  example:
+                    - appName
+                  items:
+                    type: string
+                    description: Fields to update.
                 project:
                   type: object
                   properties:
@@ -497,16 +494,15 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - externalRef
-                          - clientId
-                          - clientSecret
-                          - provider
-                          - scopes
+                  type: array
+                  example:
+                    - externalRef
+                    - provider
+                    - clientId
+                    - clientSecret
+                  items:
+                    type: string
+                    description: Fields to update.
                 providerApp:
                   type: object
                   properties:
@@ -659,45 +655,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: integration
-  /projects/{projectIdOrName}/integrations/{integrationIdOrName}:
-    get:
-      summary: Get an integration by ID or name
-      operationId: getIntegration
-      tags: ["Integration"]
-      parameters:
-        - name: integrationIdOrName
-          in: path
-          required: true
-          description: The integration ID or name.
-          schema:
-            type: string
-          example: 123e4567-e89b-12d3-a456-426614174000
-        - name: projectIdOrName
-          in: path
-          required: true
-          description: The Ampersand project ID or project name.
-          schema:
-            type: string
-          example: my-project
-      responses:
-        200:
-          description: The integration
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Integration"
-        404:
-          description: Integration not found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}:
     delete:
       summary: Delete an integration
@@ -1144,19 +1101,14 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - connectionId
-                          - config.revisionId
-                          - config.createdBy
-                          - config.content.read.objects.*
-                          - config.content.read.objects
-                          - config.content.write.objects.*
-                          - config.content.write.objects
-                          - config.content.subscribe.objects.*
+                  type: array
+                  example:
+                    - connectionId
+                    - config.content.write.objects.account
+                    - config.content.write.objects.interview\.leads
+                  items:
+                    type: string
+                    description: Fields to update. In case the mask is being used to update an object and the object's name contains special characters like a period, a forward slash or a colon, you must escape them using a backslash.
                 installation:
                   type: object
                   properties:
@@ -1972,6 +1924,104 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/groups:
+    post:
+      summary: Create a new group
+      operationId: createGroup
+      tags: ["Group"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - groupName
+                - groupRef
+              type: object
+              properties:
+                groupRef:
+                  type: string
+                  description: The ID of the user group that has access to this installation.
+                  example: group-123
+                groupName:
+                  type: string
+                  description:
+                    The name of the user group that has access to this
+                    installation.
+                  example: Super Customers
+        required: true
+      responses:
+        201:
+          description: Created
+          content: {}
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: group
+  /projects/{projectIdOrName}/consumers:
+    post:
+      summary: Create a new consumer
+      operationId: createConsumer
+      tags: ["Consumer"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - consumerName
+                - consumerRef
+              type: object
+              properties:
+                consumerRef:
+                  type: string
+                  description: The consumer reference.
+                  example: consumer-123
+                consumerName:
+                  type: string
+                  description: The name of the consumer that has access to this installation.
+                  example: John doe
+        required: true
+      responses:
+        201:
+          description: Created
+          content: {}
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: consumer
   /projects/{projectIdOrName}/destinations:
     post:
       summary: Create a new destination
@@ -2175,14 +2225,14 @@ paths:
                 - destination
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - name
-                          - metadata.url
-                          - metadata.headers
+                  type: array
+                  example:
+                    - name
+                    - metadata.url
+                    - metadata.headers
+                  items:
+                    type: string
+                    description: fields to update.
                 destination:
                   type: object
                   properties:
@@ -2256,382 +2306,6 @@ paths:
           description: Error
           content:
             application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/jwt-keys:
-    post:
-      summary: Create a new JWT key
-      description: Creates a new JWT key for the specified project with RSA public key for token verification
-      operationId: createJWTKey
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Ampersand Project ID or name.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateJWTKeyRequest'
-            examples:
-              example1:
-                summary: Valid RSA JWT key creation
-                value:
-                  name: "production-key-1"
-                  algorithm: "RSA"
-                  publicKeyPem: |
-                    -----BEGIN PUBLIC KEY-----
-                    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41
-                    fGnJm6gOdrj8ym3rFkEjWT2btf2QisEgQG5WQwTfEUvUNR8JW5FQ0mKJ5I4LhXq6
-                    V5gN6kSKs2cUdD8Ky7Lj7kqn6I3l3r3F2fK9MFjZ8tU5z4z4yHdF6W2C3k5vf3f
-                    -----END PUBLIC KEY-----
-      responses:
-        '201':
-          description: JWT key created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JWTKeyResponse'
-              examples:
-                example1:
-                  summary: Successful key creation
-                  value:
-                    kid: "550e8400-e29b-41d4-a716-446655440000"
-        '400':
-          description: Bad request - validation error
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-              examples:
-                invalidAlgorithm:
-                  summary: Unsupported algorithm
-                  value:
-                    type: "https://httpstatuses.com/400"
-                    title: "Bad Request"
-                    status: 400
-                    detail: "unsupported algorithm"
-                    validationIssues:
-                      - field: "algorithm"
-                        value: "ECDSA"
-                        detail: "only RSA algorithm is supported"
-                        remedy: "use 'RSA' as the algorithm"
-                invalidPublicKey:
-                  summary: Invalid public key format
-                  value:
-                    type: "https://httpstatuses.com/400"
-                    title: "Bad Request"
-                    status: 400
-                    detail: "invalid public key"
-                    validationIssues:
-                      - field: "publicKeyPem"
-                        detail: "invalid RSA public key in PEM format"
-                        remedy: "provide a valid RSA public key in PEM format"
-        '404':
-          description: Project not found
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-              examples:
-                projectNotFound:
-                  summary: Project does not exist
-                  value:
-                    type: "https://httpstatuses.com/404"
-                    title: "Not Found"
-                    status: 404
-                    detail: "project not found"
-                    validationIssues:
-                      - field: "projectId"
-                        detail: "project not found"
-                        remedy: "check the project ID and try again"
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-    get:
-      summary: List JWT keys
-      description: Retrieves all JWT keys for the specified project, with optional filtering for active keys only
-      operationId: listJWTKeys
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Ampersand Project ID or name.
-        - name: active
-          in: query
-          description: Filter to only return active JWT keys
-          required: false
-          schema:
-            type: boolean
-            default: false
-          example: true
-      responses:
-        '200':
-          description: List of JWT keys retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/JWTKey'
-              examples:
-                example1:
-                  summary: Multiple JWT keys
-                  value:
-                    - id: "550e8400-e29b-41d4-a716-446655440000"
-                      projectId: "123e4567-e89b-12d3-a456-426614174000"
-                      label: "production-key-1"
-                      algorithm: "RSA"
-                      publicKeyPem: |
-                        -----BEGIN PUBLIC KEY-----
-                        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41
-                        -----END PUBLIC KEY-----
-                      active: true
-                      createTime: "2024-01-15T10:30:00Z"
-                      updateTime: "2024-01-15T10:30:00Z"
-                    - id: "550e8400-e29b-41d4-a716-446655440001"
-                      projectId: "123e4567-e89b-12d3-a456-426614174000"
-                      label: "development-key-1"
-                      algorithm: "RSA"
-                      publicKeyPem: |
-                        -----BEGIN PUBLIC KEY-----
-                        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5g6xh6m3iLtUfOqn/W52
-                        -----END PUBLIC KEY-----
-                      active: false
-                      createTime: "2024-01-10T08:15:00Z"
-                      updateTime: "2024-01-12T14:20:00Z"
-                emptyList:
-                  summary: No JWT keys found
-                  value: []
-        '400':
-          description: Bad request - invalid project ID
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/jwt-keys/{keyId}:
-    get:
-      summary: Get a specific JWT key
-      description: Retrieves a specific JWT key by its ID within the specified project
-      operationId: getJWTKey
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Ampersand Project ID or name.
-        - name: keyId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: The JWT key ID.
-      responses:
-        '200':
-          description: JWT key retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JWTKey'
-              examples:
-                example1:
-                  summary: Single JWT key details
-                  value:
-                    id: "550e8400-e29b-41d4-a716-446655440000"
-                    projectId: "123e4567-e89b-12d3-a456-426614174000"
-                    label: "production-key-1"
-                    algorithm: "RSA"
-                    publicKeyPem: |
-                      -----BEGIN PUBLIC KEY-----
-                      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41
-                      -----END PUBLIC KEY-----
-                    active: true
-                    createTime: "2024-01-15T10:30:00Z"
-                    updateTime: "2024-01-15T10:30:00Z"
-        '404':
-          description: JWT key not found
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-              examples:
-                keyNotFound:
-                  summary: Key does not exist
-                  value:
-                    type: "https://httpstatuses.com/404"
-                    title: "Not Found"
-                    status: 404
-                    detail: "JWT key not found"
-                    remedy: "check the key ID and project ID are both correct, and try again"
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-    patch:
-      summary: Update a JWT key
-      description: Updates specific fields of a JWT key using field masks. Currently supports updating the 'active' status and 'name' field.
-      operationId: updateJWTKey
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Ampersand Project ID or name.
-        - name: keyId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: The JWT key ID.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchJWTKeyRequest'
-            examples:
-              deactivateKey:
-                summary: Deactivate a JWT key
-                value:
-                  updateMask: ["active"]
-                  jwtKey:
-                    active: false
-              renameKey:
-                summary: Rename a JWT key
-                value:
-                  updateMask: ["name"]
-                  jwtKey:
-                    name: "updated-key-name"
-              updateMultiple:
-                summary: Update both name and active status
-                value:
-                  updateMask: ["active", "name"]
-                  jwtKey:
-                    active: false
-                    name: "deprecated-key"
-      responses:
-        '200':
-          description: JWT key updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JWTKey'
-              examples:
-                example1:
-                  summary: Updated JWT key
-                  value:
-                    id: "550e8400-e29b-41d4-a716-446655440000"
-                    projectId: "123e4567-e89b-12d3-a456-426614174000"
-                    label: "updated-key-name"
-                    algorithm: "RSA"
-                    publicKeyPem: |
-                      -----BEGIN PUBLIC KEY-----
-                      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41
-                      -----END PUBLIC KEY-----
-                    active: false
-                    createTime: "2024-01-15T10:30:00Z"
-                    updateTime: "2024-01-16T15:45:00Z"
-        '400':
-          description: Bad request - invalid update mask or missing project/key ID
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-              examples:
-                invalidMask:
-                  summary: Invalid update mask
-                  value:
-                    type: "https://httpstatuses.com/400"
-                    title: "Bad Request"
-                    status: 400
-                    detail: "Invalid update mask"
-                    remedy: "Allowed masks: 'active' and 'name'"
-        '404':
-          description: JWT key not found
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        '422':
-          description: Unprocessable entity - value not found for mask
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-              examples:
-                missingValue:
-                  summary: Missing value for update mask
-                  value:
-                    type: "https://httpstatuses.com/422"
-                    title: "Unprocessable Entity"
-                    status: 422
-                    detail: "value not found for mask"
-                    validationIssues:
-                      - field: "jwtKey"
-                        detail: "required field missing for specified mask"
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-    delete:
-      summary: Delete a JWT key
-      description: Permanently deletes a JWT key from the specified project
-      operationId: deleteJWTKey
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Ampersand Project ID or name.
-        - name: keyId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: The JWT key ID.
-      responses:
-        '204':
-          description: JWT key deleted successfully (no content)
-        '404':
-          description: JWT key not found
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-              examples:
-                keyNotFound:
-                  summary: Key does not exist
-                  value:
-                    type: "https://httpstatuses.com/404"
-                    title: "Not Found"
-                    status: 404
-                    detail: "JWT key not found"
-                    remedy: "check the key ID and project ID are both correct, and try again"
-        '500':
-          description: Internal server error
-          content:
-            application/json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /generate-upload-url:
@@ -2748,12 +2422,12 @@ paths:
                 - org
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - label
+                  type: array
+                  example:
+                    - label
+                  items:
+                    type: string
+                    description: fields to update.
                 org:
                   type: object
                   properties:
@@ -3568,17 +3242,10 @@ components:
         - connection
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - items:
-                type: string
-                enum:
-                  - providerWorkspaceRef
-                  - providerMetadata
-                  - apiKey
-                  - basicAuth
-                  - oauth2ClientCredentials
-                  - oauth2PasswordCredentials
+          type: array
+          items:
+            type: string
+          description: The fields to update.
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
     ConnectionRequest:
@@ -3901,14 +3568,15 @@ components:
         - apiKey
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - items:
-                type: string
-                enum:
-                  - active
-                  - label
-                  - scopes
+          type: array
+          example:
+            - label
+            - active
+            - scopes
+          items:
+            type: string
+            description: fields to update.
+            example: label
         apiKey:
           type: object
           properties:
@@ -4156,140 +3824,6 @@ components:
           type: string
           description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
           example: Q9JT+2qfys28V4ODN+UayA==
-    UpdateMask:
-      type: array
-      description: |
-        Array of field paths specifying which fields to update.
-        Uses dot notation for nested fields (e.g., "config.revision", "metadata.tags").
-
-        **Field Path Rules:**
-        - Use dot notation for nested objects: `parent.child.field`
-        - Escape special characters: `field\.with\.dots`, `field\:with\:colons`
-        - Array elements not directly addressable
-        - Only explicitly allowed fields can be updated
-
-      example: ["name", "config.revision", "metadata.tags"]
-    CreateJWTKeyRequest:
-      type: object
-      required:
-        - label
-        - algorithm
-        - publicKeyPem
-      properties:
-        label:
-          type: string
-          description: Human-readable label for the JWT key
-          minLength: 1
-          maxLength: 255
-          example: "production-key-1"
-        algorithm:
-          type: string
-          description: The cryptographic JWT signing algorithm (currently only RS256 is supported)
-          enum: ["RS256"]
-          example: "RS256"
-        publicKeyPem:
-          type: string
-          description: RSA public key in PEM format for JWT signature verification
-          format: pem
-          example: |
-            -----BEGIN PUBLIC KEY-----
-            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41
-            fGnJm6gOdrj8ym3rFkEjWT2btf2QisEgQG5WQwTfEUvUNR8JW5FQ0mKJ5I4LhXq6
-            V5gN6kSKs2cUdD8Ky7Lj7kqn6I3l3r3F2fK9MFjZ8tU5z4z4yHdF6W2C3k5vf3f
-            -----END PUBLIC KEY-----
-    JWTKeyResponse:
-      type: object
-      required:
-        - kid
-      properties:
-        kid:
-          type: string
-          format: uuid
-          description: The unique key identifier (key ID) for the created JWT key
-          example: "550e8400-e29b-41d4-a716-446655440000"
-    JWTKey:
-      type: object
-      required:
-        - id
-        - projectId
-        - label
-        - algorithm
-        - publicKeyPem
-        - active
-        - createTime
-        - updateTime
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the JWT key
-          example: "550e8400-e29b-41d4-a716-446655440000"
-        projectId:
-          type: string
-          format: uuid
-          description: The project this JWT key belongs to
-          example: "123e4567-e89b-12d3-a456-426614174000"
-        label:
-          type: string
-          description: Human-readable name for the JWT key
-          example: "production-key-1"
-        algorithm:
-          type: string
-          description: The cryptographic algorithm used
-          enum: ["RSA"]
-          example: "RSA"
-        publicKeyPem:
-          type: string
-          description: RSA public key in PEM format
-          format: pem
-          example: |
-            -----BEGIN PUBLIC KEY-----
-            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41
-            -----END PUBLIC KEY-----
-        active:
-          type: boolean
-          description: Whether the JWT key is currently active and can be used for verification
-          example: true
-        createTime:
-          type: string
-          format: date-time
-          description: Timestamp when the JWT key was created
-          example: "2024-01-15T10:30:00Z"
-        updateTime:
-          type: string
-          format: date-time
-          description: Timestamp when the JWT key was last updated
-          example: "2024-01-15T10:30:00Z"
-    PatchJWTKeyRequest:
-      type: object
-      required:
-        - updateMask
-        - jwtKey
-      properties:
-        updateMask:
-          type: array
-          description: List of field paths to update (currently supports 'active' and 'name')
-          items:
-            type: string
-            enum: ["active", "label"]
-          minItems: 1
-          example: ["active", "label"]
-        jwtKey:
-          type: object
-          description: Object containing the fields to update with their new values
-          additionalProperties: true
-          properties:
-            active:
-              type: boolean
-              description: New active status for the JWT key
-              example: false
-            label:
-              type: string
-              description: New label for the JWT key
-              example: "updated-key-name"
-          example:
-            active: false
-            name: "updated-key-name"
   securitySchemes:
     APIKeyHeader:
       type: apiKey
