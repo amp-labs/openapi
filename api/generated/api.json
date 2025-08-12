@@ -2471,9 +2471,6 @@
                     "allOf": [
                       {
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
                         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                         "example": [
                           "name",
@@ -5379,9 +5376,6 @@
                     "allOf": [
                       {
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
                         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                         "example": [
                           "name",
@@ -21058,9 +21052,6 @@
                     "allOf": [
                       {
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
                         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                         "example": [
                           "name",
@@ -32818,9 +32809,6 @@
                     "allOf": [
                       {
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
                         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                         "example": [
                           "name",
@@ -37095,9 +37083,6 @@
                     "allOf": [
                       {
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
                         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                         "example": [
                           "name",
@@ -40084,9 +40069,6 @@
                     "allOf": [
                       {
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
                         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                         "example": [
                           "name",
@@ -45198,9 +45180,6 @@
                     "allOf": [
                       {
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
                         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                         "example": [
                           "name",
@@ -53683,9 +53662,6 @@
             "allOf": [
               {
                 "type": "array",
-                "items": {
-                  "type": "string"
-                },
                 "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                 "example": [
                   "name",
@@ -54651,9 +54627,6 @@
             "allOf": [
               {
                 "type": "array",
-                "items": {
-                  "type": "string"
-                },
                 "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
                 "example": [
                   "name",
@@ -55253,9 +55226,6 @@
       },
       "UpdateMask": {
         "type": "array",
-        "items": {
-          "type": "string"
-        },
         "description": "Array of field paths specifying which fields to update.\nUses dot notation for nested fields (e.g., \"config.revision\", \"metadata.tags\").\n\n**Field Path Rules:**\n- Use dot notation for nested objects: `parent.child.field`\n- Escape special characters: `field\\.with\\.dots`, `field\\:with\\:colons`\n- Array elements not directly addressable\n- Only explicitly allowed fields can be updated\n",
         "example": [
           "name",
