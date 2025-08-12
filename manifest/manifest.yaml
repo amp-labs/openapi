@@ -206,6 +206,10 @@ components:
             example:
               - name
               - domain
+        watchOptionalFields:
+          type: boolean
+          description: If true, the integration will watch optional fields for updates.
+          example: true
 
     DeleteEvent:
       type: object

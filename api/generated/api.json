@@ -6415,6 +6415,11 @@
                                                   "domain"
                                                 ]
                                               }
+                                            },
+                                            "watchOptionalFields": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will watch optional fields for updates.",
+                                              "example": true
                                             }
                                           }
                                         },
@@ -7329,6 +7334,11 @@
                                               "domain"
                                             ]
                                           }
+                                        },
+                                        "watchOptionalFields": {
+                                          "type": "boolean",
+                                          "description": "If true, the integration will watch optional fields for updates.",
+                                          "example": true
                                         }
                                       }
                                     },
@@ -8624,6 +8634,11 @@
                                                 "domain"
                                               ]
                                             }
+                                          },
+                                          "watchOptionalFields": {
+                                            "type": "boolean",
+                                            "description": "If true, the integration will watch optional fields for updates.",
+                                            "example": true
                                           }
                                         }
                                       },
@@ -10421,6 +10436,11 @@
                                                   "domain"
                                                 ]
                                               }
+                                            },
+                                            "watchOptionalFields": {
+                                              "type": "boolean",
+                                              "description": "If true, the integration will watch optional fields for updates.",
+                                              "example": true
                                             }
                                           }
                                         },
@@ -13159,13 +13179,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -13292,13 +13312,13 @@
                                 "type": "string",
                                 "description": "The time the group was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the group was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -13331,13 +13351,13 @@
                                 "type": "string",
                                 "description": "The time the consumer was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the consumer was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -13355,13 +13375,13 @@
                             "type": "string",
                             "description": "The time the connection was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the connection was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "authScheme": {
                             "type": "string",
@@ -16429,13 +16449,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -16562,13 +16582,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -16601,13 +16621,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -16625,13 +16645,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -18842,13 +18862,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -18975,13 +18995,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -19014,13 +19034,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -19038,13 +19058,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -21485,13 +21505,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -21618,13 +21638,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -21657,13 +21677,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -21681,13 +21701,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -24188,13 +24208,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -24321,13 +24341,13 @@
                                 "type": "string",
                                 "description": "The time the group was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the group was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -24360,13 +24380,13 @@
                                 "type": "string",
                                 "description": "The time the consumer was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the consumer was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -24384,13 +24404,13 @@
                             "type": "string",
                             "description": "The time the connection was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the connection was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "authScheme": {
                             "type": "string",
@@ -26280,7 +26300,7 @@
                             "type": "string",
                             "description": "The time the operation was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       }
@@ -27187,7 +27207,7 @@
                       "type": "string",
                       "description": "The time the operation was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     }
                   }
                 }
@@ -28027,7 +28047,7 @@
                       "timestamp": {
                         "type": "string",
                         "description": "The time the log was created.",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "message": {
                         "type": "object",
@@ -34204,13 +34224,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -34243,13 +34263,13 @@
                             "type": "string",
                             "description": "The time the consumer was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the consumer was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -34267,13 +34287,13 @@
                         "type": "string",
                         "description": "The time the connection was created.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "updateTime": {
                         "type": "string",
                         "description": "The time the connection was last updated.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "authScheme": {
                         "type": "string",
@@ -35234,13 +35254,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -35273,13 +35293,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -35297,13 +35317,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -36395,13 +36415,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -36434,13 +36454,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -36458,13 +36478,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -37457,13 +37477,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -37496,13 +37516,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -37520,13 +37540,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -49575,6 +49595,11 @@
                                       "domain"
                                     ]
                                   }
+                                },
+                                "watchOptionalFields": {
+                                  "type": "boolean",
+                                  "description": "If true, the integration will watch optional fields for updates.",
+                                  "example": true
                                 }
                               }
                             },
@@ -49999,6 +50024,11 @@
                                   "domain"
                                 ]
                               }
+                            },
+                            "watchOptionalFields": {
+                              "type": "boolean",
+                              "description": "If true, the integration will watch optional fields for updates.",
+                              "example": true
                             }
                           }
                         },
@@ -50543,13 +50573,13 @@
                 "type": "string",
                 "description": "The time the group was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the group was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               }
             }
           },
@@ -50676,13 +50706,13 @@
                     "type": "string",
                     "description": "The time the group was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the group was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   }
                 }
               },
@@ -50715,13 +50745,13 @@
                     "type": "string",
                     "description": "The time the consumer was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the consumer was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   }
                 }
               },
@@ -50739,13 +50769,13 @@
                 "type": "string",
                 "description": "The time the connection was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the connection was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "authScheme": {
                 "type": "string",
@@ -53368,13 +53398,13 @@
                 "type": "string",
                 "description": "The time the group was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the group was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               }
             }
           },
@@ -53407,13 +53437,13 @@
                 "type": "string",
                 "description": "The time the consumer was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the consumer was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               }
             }
           },
@@ -53431,13 +53461,13 @@
             "type": "string",
             "description": "The time the connection was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the connection was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "authScheme": {
             "type": "string",
@@ -54379,13 +54409,13 @@
             "type": "string",
             "description": "The time the group was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the group was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           }
         }
       },
@@ -54418,13 +54448,13 @@
             "type": "string",
             "description": "The time the consumer was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the consumer was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           }
         }
       },
@@ -54487,7 +54517,7 @@
             "type": "string",
             "description": "The time the operation was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           }
         }
       },
@@ -54503,7 +54533,7 @@
           "timestamp": {
             "type": "string",
             "description": "The time the log was created.",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "message": {
             "type": "object",
