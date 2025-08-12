@@ -279,13 +279,12 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - appName
-                          - name
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - appName
+                      - name
                 project:
                   type: object
                   properties:
@@ -335,7 +334,7 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
-          description: TThe Ampersand project ID or project name.
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -497,16 +496,15 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - externalRef
-                          - clientId
-                          - clientSecret
-                          - provider
-                          - scopes
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - externalRef
+                      - clientId
+                      - clientSecret
+                      - provider
+                      - scopes
                 providerApp:
                   type: object
                   properties:
@@ -1144,19 +1142,18 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - connectionId
-                          - config.revisionId
-                          - config.createdBy
-                          - config.content.read.objects.*
-                          - config.content.read.objects
-                          - config.content.write.objects.*
-                          - config.content.write.objects
-                          - config.content.subscribe.objects.*
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - connectionId
+                      - config.revisionId
+                      - config.createdBy
+                      - config.content.read.objects.*
+                      - config.content.read.objects
+                      - config.content.write.objects.*
+                      - config.content.write.objects
+                      - config.content.subscribe.objects.*
                 installation:
                   type: object
                   properties:
@@ -2175,14 +2172,13 @@ paths:
                 - destination
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - name
-                          - metadata.url
-                          - metadata.headers
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - name
+                      - metadata.url
+                      - metadata.headers
                 destination:
                   type: object
                   properties:
@@ -2517,16 +2513,16 @@ paths:
               renameKey:
                 summary: Rename a JWT key
                 value:
-                  updateMask: ["name"]
+                  updateMask: ["label"]
                   jwtKey:
-                    name: "updated-key-name"
+                    label: "updated-key-name"
               updateMultiple:
                 summary: Update both name and active status
                 value:
-                  updateMask: ["active", "name"]
+                  updateMask: ["active", "label"]
                   jwtKey:
                     active: false
-                    name: "deprecated-key"
+                    label: "deprecated-key"
       responses:
         '200':
           description: JWT key updated successfully
@@ -2563,7 +2559,7 @@ paths:
                     title: "Bad Request"
                     status: 400
                     detail: "Invalid update mask"
-                    remedy: "Allowed masks: 'active' and 'name'"
+                    remedy: "Allowed masks: 'active' and 'label'"
         '404':
           description: JWT key not found
           content:
@@ -2748,12 +2744,11 @@ paths:
                 - org
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - label
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - label
                 org:
                   type: object
                   properties:
@@ -3568,17 +3563,16 @@ components:
         - connection
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - items:
-                type: string
-                enum:
-                  - providerWorkspaceRef
-                  - providerMetadata
-                  - apiKey
-                  - basicAuth
-                  - oauth2ClientCredentials
-                  - oauth2PasswordCredentials
+          type: array
+          items:
+            type: string
+            enum:
+              - providerWorkspaceRef
+              - providerMetadata
+              - apiKey
+              - basicAuth
+              - oauth2ClientCredentials
+              - oauth2PasswordCredentials
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
     ConnectionRequest:
@@ -3901,14 +3895,13 @@ components:
         - apiKey
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - items:
-                type: string
-                enum:
-                  - active
-                  - label
-                  - scopes
+          type: array
+          items:
+            type: string
+            enum:
+              - active
+              - label
+              - scopes
         apiKey:
           type: object
           properties:
@@ -4156,21 +4149,7 @@ components:
           type: string
           description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
           example: Q9JT+2qfys28V4ODN+UayA==
-    UpdateMask:
-      type: array
-      items:
-        type: string
-      description: |
-        Array of field paths specifying which fields to update.
-        Uses dot notation for nested fields (e.g., "config.revision", "metadata.tags").
 
-        **Field Path Rules:**
-        - Use dot notation for nested objects: `parent.child.field`
-        - Escape special characters: `field\.with\.dots`, `field\:with\:colons`
-        - Array elements not directly addressable
-        - Only explicitly allowed fields can be updated
-
-      example: ["name", "config.revision", "metadata.tags"]
     CreateJWTKeyRequest:
       type: object
       required:
@@ -4270,11 +4249,9 @@ components:
       properties:
         updateMask:
           type: array
-          description: List of field paths to update (currently supports 'active' and 'name')
           items:
             type: string
             enum: ["active", "label"]
-          minItems: 1
           example: ["active", "label"]
         jwtKey:
           type: object
@@ -4291,7 +4268,7 @@ components:
               example: "updated-key-name"
           example:
             active: false
-            name: "updated-key-name"
+            label: "updated-key-name"
   securitySchemes:
     APIKeyHeader:
       type: apiKey
