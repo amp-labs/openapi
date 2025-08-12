@@ -279,13 +279,11 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - type: array
-                      items:
-                        type: string
-                        enum: ["appName", "name"]
-                      description: "Restricted to project-specific fields only"
+                  type: array
+                  items:
+                    type: string
+                    enum: ["appName", "name"]
+                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to project-specific fields only."
                 project:
                   type: object
                   properties:
@@ -497,13 +495,11 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - type: array
-                      items:
-                        type: string
-                        enum: ["externalRef", "clientId", "clientSecret", "provider", "scopes"]
-                      description: "Restricted to provider app-specific fields only"
+                  type: array
+                  items:
+                    type: string
+                    enum: ["externalRef", "clientId", "clientSecret", "provider", "scopes"]
+                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to provider app-specific fields only."
                 providerApp:
                   type: object
                   properties:
@@ -1141,13 +1137,11 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - type: array
-                      items:
-                        type: string
-                        enum: ["connectionId", "config.revisionId", "config.createdBy", "config.content.read.objects.*", "config.content.read.objects", "config.content.write.objects.*", "config.content.write.objects", "config.content.subscribe.objects.*"]
-                      description: "Restricted to installation-specific fields only"
+                  type: array
+                  items:
+                    type: string
+                    enum: ["connectionId", "config.revisionId", "config.createdBy", "config.content.read.objects.*", "config.content.read.objects", "config.content.write.objects.*", "config.content.write.objects", "config.content.subscribe.objects.*"]
+                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to installation-specific fields only."
                 installation:
                   type: object
                   properties:
@@ -2166,13 +2160,11 @@ paths:
                 - destination
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - type: array
-                      items:
-                        type: string
-                        enum: ["name", "metadata.url", "metadata.headers"]
-                      description: "Restricted to destination-specific fields only"
+                  type: array
+                  items:
+                    type: string
+                    enum: ["name", "metadata.url", "metadata.headers"]
+                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to destination-specific fields only."
                 destination:
                   type: object
                   properties:
@@ -2738,13 +2730,11 @@ paths:
                 - org
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - type: array
-                      items:
-                        type: string
-                        enum: ["label"]
-                      description: "Restricted to organization-specific fields only"
+                  type: array
+                  items:
+                    type: string
+                    enum: ["label"]
+                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to organization-specific fields only."
                 org:
                   type: object
                   properties:
@@ -3559,13 +3549,11 @@ components:
         - connection
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - type: array
-              items:
-                type: string
-                enum: ["providerWorkspaceRef", "providerMetadata", "apiKey", "basicAuth", "oauth2ClientCredentials", "oauth2PasswordCredentials"]
-              description: "Restricted to connection-specific fields only"
+          type: array
+          items:
+            type: string
+            enum: ["providerWorkspaceRef", "providerMetadata", "apiKey", "basicAuth", "oauth2ClientCredentials", "oauth2PasswordCredentials"]
+          description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to connection-specific fields only."
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
     ConnectionRequest:
@@ -3888,13 +3876,11 @@ components:
         - apiKey
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - type: array
-              items:
-                type: string
-                enum: ["active", "label", "scopes"]
-              description: "Restricted to API key-specific fields only"
+          type: array
+          items:
+            type: string
+            enum: ["active", "label", "scopes"]
+          description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to API key-specific fields only."
         apiKey:
           type: object
           properties:
