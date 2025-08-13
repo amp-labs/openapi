@@ -3880,7 +3880,7 @@ components:
           items:
             type: string
             enum: ["active", "label", "scopes"]
-          description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to API key-specific fields only."
+          description: "Array of field paths specifying which fields to update."
         apiKey:
           type: object
           properties:
