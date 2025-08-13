@@ -279,13 +279,11 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - appName
-                          - name
+                  type: array
+                  items:
+                    type: string
+                    enum: ["appName", "name"]
+                  description: "Array of field paths specifying which fields to update."
                 project:
                   type: object
                   properties:
@@ -497,16 +495,11 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - externalRef
-                          - clientId
-                          - clientSecret
-                          - provider
-                          - scopes
+                  type: array
+                  items:
+                    type: string
+                    enum: ["externalRef", "clientId", "clientSecret", "provider", "scopes"]
+                  description: "Array of field paths specifying which fields to update."
                 providerApp:
                   type: object
                   properties:
@@ -1144,19 +1137,11 @@ paths:
               type: object
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - connectionId
-                          - config.revisionId
-                          - config.createdBy
-                          - config.content.read.objects.*
-                          - config.content.read.objects
-                          - config.content.write.objects.*
-                          - config.content.write.objects
-                          - config.content.subscribe.objects.*
+                  type: array
+                  items:
+                    type: string
+                    enum: ["config", "connectionId", "config.revisionId", "config.createdBy", "config.content.read.objects.*", "config.content.write.objects.*", "config.content.write.objects", "config.content.subscribe.objects.*"]
+                  description: "Array of field paths specifying which fields to update. `*` indicates an object name, for example `config.content.read.objects.*` means that you can use the update mask `config.content.read.objects.contact`."
                 installation:
                   type: object
                   properties:
@@ -2175,14 +2160,11 @@ paths:
                 - destination
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - name
-                          - metadata.url
-                          - metadata.headers
+                  type: array
+                  items:
+                    type: string
+                    enum: ["name", "metadata.url", "metadata.headers"]
+                  description: "Array of field paths specifying which fields to update."
                 destination:
                   type: object
                   properties:
@@ -2372,12 +2354,11 @@ paths:
                 - org
               properties:
                 updateMask:
-                  allOf:
-                    - $ref: '#/components/schemas/UpdateMask'
-                    - items:
-                        type: string
-                        enum:
-                          - label
+                  type: array
+                  items:
+                    type: string
+                    enum: ["label"]
+                  description: "Array of field paths specifying which fields to update."
                 org:
                   type: object
                   properties:
@@ -3573,17 +3554,11 @@ components:
         - connection
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - items:
-                type: string
-                enum:
-                  - providerWorkspaceRef
-                  - providerMetadata
-                  - apiKey
-                  - basicAuth
-                  - oauth2ClientCredentials
-                  - oauth2PasswordCredentials
+          type: array
+          items:
+            type: string
+            enum: ["providerWorkspaceRef", "providerMetadata", "apiKey", "basicAuth", "oauth2ClientCredentials", "oauth2PasswordCredentials"]
+          description: "Array of field paths specifying which fields to update."
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
     ConnectionRequest:
@@ -3906,14 +3881,11 @@ components:
         - apiKey
       properties:
         updateMask:
-          allOf:
-            - $ref: '#/components/schemas/UpdateMask'
-            - items:
-                type: string
-                enum:
-                  - active
-                  - label
-                  - scopes
+          type: array
+          items:
+            type: string
+            enum: ["active", "label", "scopes"]
+          description: "Array of field paths specifying which fields to update."
         apiKey:
           type: object
           properties:
