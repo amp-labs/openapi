@@ -3553,7 +3553,7 @@ components:
           items:
             type: string
             enum: ["providerWorkspaceRef", "providerMetadata", "apiKey", "basicAuth", "oauth2ClientCredentials", "oauth2PasswordCredentials"]
-          description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to connection-specific fields only."
+          description: "Array of field paths specifying which fields to update."
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
     ConnectionRequest:
