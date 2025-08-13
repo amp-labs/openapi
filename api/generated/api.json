@@ -6416,7 +6416,7 @@
                                                 ]
                                               }
                                             },
-                                            "watchOptionalFields": {
+                                            "watchSelectedOptionalFields": {
                                               "type": "boolean",
                                               "description": "If true, the integration will watch optional fields for updates.",
                                               "example": true
@@ -7335,7 +7335,7 @@
                                             ]
                                           }
                                         },
-                                        "watchOptionalFields": {
+                                        "watchSelectedOptionalFields": {
                                           "type": "boolean",
                                           "description": "If true, the integration will watch optional fields for updates.",
                                           "example": true
@@ -8635,7 +8635,7 @@
                                               ]
                                             }
                                           },
-                                          "watchOptionalFields": {
+                                          "watchSelectedOptionalFields": {
                                             "type": "boolean",
                                             "description": "If true, the integration will watch optional fields for updates.",
                                             "example": true
@@ -10437,7 +10437,7 @@
                                                 ]
                                               }
                                             },
-                                            "watchOptionalFields": {
+                                            "watchSelectedOptionalFields": {
                                               "type": "boolean",
                                               "description": "If true, the integration will watch optional fields for updates.",
                                               "example": true
@@ -49596,7 +49596,7 @@
                                     ]
                                   }
                                 },
-                                "watchOptionalFields": {
+                                "watchSelectedOptionalFields": {
                                   "type": "boolean",
                                   "description": "If true, the integration will watch optional fields for updates.",
                                   "example": true
@@ -50025,7 +50025,7 @@
                                 ]
                               }
                             },
-                            "watchOptionalFields": {
+                            "watchSelectedOptionalFields": {
                               "type": "boolean",
                               "description": "If true, the integration will watch optional fields for updates.",
                               "example": true
