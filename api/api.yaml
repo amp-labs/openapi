@@ -499,7 +499,7 @@ paths:
                   items:
                     type: string
                     enum: ["externalRef", "clientId", "clientSecret", "provider", "scopes"]
-                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to provider app-specific fields only."
+                  description: "Array of field paths specifying which fields to update."
                 providerApp:
                   type: object
                   properties:
