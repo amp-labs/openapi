@@ -283,7 +283,7 @@ paths:
                   items:
                     type: string
                     enum: ["appName", "name"]
-                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to project-specific fields only."
+                  description: "Array of field paths specifying which fields to update."
                 project:
                   type: object
                   properties:
