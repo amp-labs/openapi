@@ -282,7 +282,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Common values: appName, name"
+                  description: "Array of field paths specifying which fields to update. Allowed values: appName, name"
                   example: ["appName", "name"]
                 project:
                   type: object
@@ -498,7 +498,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Common values: externalRef, clientId, clientSecret, provider, scopes"
+                  description: "Array of field paths specifying which fields to update. Allowed values: externalRef, clientId, clientSecret, provider, scopes"
                   example: ["externalRef", "clientId"]
                 providerApp:
                   type: object
@@ -1140,8 +1140,8 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Examples: config, connectionId, config.revisionId, config.content.read.objects.contacts, config.content.write.objects.leads"
-                  example: ["config", "config.content.read.objects.contacts"]
+                  description: "Array of field paths specifying which fields to update. Allowed values: config, connectionId, config.revisionId, config.createdBy, config.content.read.objects.*, config.content.write.objects.*, config.content.subscribe.objects.*. The * operator allows you to specify any object name (e.g., 'config.content.read.objects.contacts' or 'config.content.write.objects.leads')"
+                  example: ["config", "config.content.read.objects.contacts", "config.content.write.objects.leads"]
                 installation:
                   type: object
                   properties:
@@ -2163,7 +2163,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Common values: name, metadata.url, metadata.headers"
+                  description: "Array of field paths specifying which fields to update. Allowed values: name, metadata.url, metadata.headers"
                   example: ["name", "metadata.url"]
                 destination:
                   type: object
@@ -2357,7 +2357,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Common values: label"
+                  description: "Array of field paths specifying which fields to update. Allowed values: label"
                   example: ["label"]
                 org:
                   type: object
@@ -3557,7 +3557,7 @@ components:
           type: array
           items:
             type: string
-          description: "Array of field paths specifying which fields to update. Common values: providerWorkspaceRef, providerMetadata, apiKey, basicAuth, oauth2ClientCredentials, oauth2PasswordCredentials"
+          description: "Array of field paths specifying which fields to update. Allowed values: providerWorkspaceRef, providerMetadata, apiKey, basicAuth, oauth2ClientCredentials, oauth2PasswordCredentials"
           example: ["providerWorkspaceRef", "providerMetadata"]
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
@@ -3884,7 +3884,7 @@ components:
           type: array
           items:
             type: string
-          description: "Array of field paths specifying which fields to update. Common values: active, label, scopes"
+          description: "Array of field paths specifying which fields to update. Allowed values: active, label, scopes"
           example: ["active", "label"]
         apiKey:
           type: object
@@ -4146,8 +4146,10 @@ components:
         - Escape special characters: `field\.with\.dots`, `field\:with\:colons`
         - Array elements not directly addressable
         - Object names can be specified directly (e.g., "config.content.read.objects.contacts")
+        - The * operator in paths like "config.content.read.objects.*" allows you to specify any object name
+          - Example: "config.content.read.objects.*" pattern allows "config.content.read.objects.contacts", "config.content.read.objects.leads", etc.
 
-      example: ["name", "config.content.read.objects.contacts"]
+      example: ["name", "config.content.read.objects.contacts", "config.content.write.objects.leads"]
     CreateJWTKeyRequest:
       type: object
       required:
