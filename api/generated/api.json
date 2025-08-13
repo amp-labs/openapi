@@ -21031,6 +21031,7 @@
                     "items": {
                       "type": "string",
                       "enum": [
+                        "config",
                         "connectionId",
                         "config.revisionId",
                         "config.createdBy",
