@@ -2734,7 +2734,7 @@ paths:
                   items:
                     type: string
                     enum: ["label"]
-                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to organization-specific fields only."
+                  description: "Array of field paths specifying which fields to update."
                 org:
                   type: object
                   properties:
