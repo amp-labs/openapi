@@ -208,7 +208,7 @@ components:
               - domain
         inheritSelectedOptionalFields:
           type: boolean
-          description: If true, the integration will watch optional fields for updates.
+          description: If true, the integration also watch for user selected optional fields from the read object.
           example: true
 
     DeleteEvent:
