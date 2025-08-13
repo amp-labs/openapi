@@ -2164,7 +2164,7 @@ paths:
                   items:
                     type: string
                     enum: ["name", "metadata.url", "metadata.headers"]
-                  description: "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to destination-specific fields only."
+                  description: "Array of field paths specifying which fields to update."
                 destination:
                   type: object
                   properties:
