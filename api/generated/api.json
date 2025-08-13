@@ -2476,7 +2476,7 @@
                         "name"
                       ]
                     },
-                    "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to project-specific fields only."
+                    "description": "Array of field paths specifying which fields to update."
                   },
                   "project": {
                     "type": "object",
@@ -5373,7 +5373,7 @@
                         "scopes"
                       ]
                     },
-                    "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to provider app-specific fields only."
+                    "description": "Array of field paths specifying which fields to update."
                   },
                   "providerApp": {
                     "type": "object",
@@ -21035,13 +21035,12 @@
                         "config.revisionId",
                         "config.createdBy",
                         "config.content.read.objects.*",
-                        "config.content.read.objects",
                         "config.content.write.objects.*",
                         "config.content.write.objects",
                         "config.content.subscribe.objects.*"
                       ]
                     },
-                    "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to installation-specific fields only."
+                    "description": "Array of field paths specifying which fields to update. `*` indicates an object name, for example `config.content.read.objects.*` means that you can use the update mask `config.content.read.objects.contact`."
                   },
                   "installation": {
                     "type": "object",
@@ -32782,7 +32781,7 @@
                         "scopes"
                       ]
                     },
-                    "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to API key-specific fields only."
+                    "description": "Array of field paths specifying which fields to update."
                   },
                   "apiKey": {
                     "type": "object",
@@ -37048,7 +37047,7 @@
                         "oauth2PasswordCredentials"
                       ]
                     },
-                    "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to connection-specific fields only."
+                    "description": "Array of field paths specifying which fields to update."
                   },
                   "connection": {
                     "title": "Connection Request Body",
@@ -40020,7 +40019,7 @@
                         "metadata.headers"
                       ]
                     },
-                    "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to destination-specific fields only."
+                    "description": "Array of field paths specifying which fields to update."
                   },
                   "destination": {
                     "type": "object",
@@ -45118,7 +45117,7 @@
                         "label"
                       ]
                     },
-                    "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to organization-specific fields only."
+                    "description": "Array of field paths specifying which fields to update."
                   },
                   "org": {
                     "type": "object",
@@ -53594,7 +53593,7 @@
                 "oauth2PasswordCredentials"
               ]
             },
-            "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to connection-specific fields only."
+            "description": "Array of field paths specifying which fields to update."
           },
           "connection": {
             "title": "Connection Request Body",
@@ -54545,7 +54544,7 @@
                 "scopes"
               ]
             },
-            "description": "Array of field paths specifying which fields to update. Uses dot notation for nested fields. Restricted to API key-specific fields only."
+            "description": "Array of field paths specifying which fields to update."
           },
           "apiKey": {
             "type": "object",

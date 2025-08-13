@@ -1140,7 +1140,7 @@ paths:
                   type: array
                   items:
                     type: string
-                    enum: ["connectionId", "config.revisionId", "config.createdBy", "config.content.read.objects.*", "config.content.read.objects", "config.content.write.objects.*", "config.content.write.objects", "config.content.subscribe.objects.*"]
+                    enum: ["connectionId", "config.revisionId", "config.createdBy", "config.content.read.objects.*", "config.content.write.objects.*", "config.content.write.objects", "config.content.subscribe.objects.*"]
                   description: "Array of field paths specifying which fields to update. `*` indicates an object name, for example `config.content.read.objects.*` means that you can use the update mask `config.content.read.objects.contact`."
                 installation:
                   type: object
