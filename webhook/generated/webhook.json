@@ -24,7 +24,8 @@
           "installationId",
           "installationUpdateTime",
           "objectName",
-          "resultInfo"
+          "resultInfo",
+          "operationId"
         ],
         "properties": {
           "projectId": {
@@ -58,6 +59,10 @@
           },
           "objectName": {
             "description": "The name of the object. If there is a mapping for this object, this is the mapped name. Otherwise, it is the name used by the SaaS provider API.",
+            "type": "string"
+          },
+          "operationId": {
+            "description": "The ID of the operation that triggered the webhook. This is used to correlate the webhook message with the operation in the Ampersand system.",
             "type": "string"
           },
           "rawObjectName": {
