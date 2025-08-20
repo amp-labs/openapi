@@ -229,7 +229,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-    # Uncomment when ENG-2300 is fixed            
+    # Uncomment when ENG-2300 is fixed
     # delete:
     #   summary: Delete a project
     #   operationId: deleteProject
@@ -3804,6 +3804,13 @@ components:
             operation_id:
               type: string
               description: The operation ID.
+            details:
+              type: object
+              description: The details of the log.
+              additionalProperties:
+                type: string
+              example:
+                "request": "GET /api/v1/users"
         severity:
           type: string
           description: The severity of the log.
