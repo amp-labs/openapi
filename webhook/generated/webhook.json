@@ -24,8 +24,7 @@
           "installationId",
           "installationUpdateTime",
           "objectName",
-          "resultInfo",
-          "operationId"
+          "resultInfo"
         ],
         "properties": {
           "projectId": {
@@ -62,7 +61,7 @@
             "type": "string"
           },
           "operationId": {
-            "description": "The ID of the operation that triggered the webhook. This is used to correlate the webhook message with the operation in the Ampersand system.",
+            "description": "The ID of the operation that triggered the webhook. This is used to correlate the webhook message with the operation in the Ampersand system. This is only populated for Read Actions, not Subscribe Actions.",
             "type": "string"
           },
           "rawObjectName": {
