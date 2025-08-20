@@ -24,7 +24,6 @@ components:
         - installationUpdateTime
         - objectName
         - resultInfo
-        - operationId
       properties:
         projectId:
           description: The Ampersand Project ID.
@@ -56,7 +55,7 @@ components:
         operationId:
           description:
             The ID of the operation that triggered the webhook. This is used to correlate the
-            webhook message with the operation in the Ampersand system.
+            webhook message with the operation in the Ampersand system. This is only populated for Read Actions, not Subscribe Actions.
           type: string
         rawObjectName:
           description: If there is a mapping for this object, this is the name used by the SaaS provider API.
