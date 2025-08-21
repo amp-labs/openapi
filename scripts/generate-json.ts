@@ -46,7 +46,7 @@ const specs = [
 
 async function deRefOpenApiSpecs() {
   try {
-    specs.forEach(async (spec) => {
+    await Promise.all(specs.map(async (spec) => {
       const api = await SwaggerParser.dereference(spec.inputFile, {
         resolve: {
           external: true,
@@ -58,7 +58,7 @@ async function deRefOpenApiSpecs() {
       const deRefSpec = JSON.stringify(api, null, 2);
       fs.writeFileSync(spec.outputFile, deRefSpec);
       console.log(`Deref'd OpenAPI spec saved to ${spec.outputFile}`);
-    });
+    }));
   } catch (error) {
     console.error(`Error dereferencing OpenAPI spec: ${error.message}`);
   }
