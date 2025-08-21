@@ -132,6 +132,11 @@ components:
           $ref: '#/components/schemas/Backfill'
         delivery:
           $ref: '#/components/schemas/Delivery'
+        enabled:
+          type: string
+          description: If set to always, the integration will automatically install upon user connection and skip the user field selection step. 
+          enum: [always]
+          x-go-type-skip-optional-pointer: true
 
     # We might end up using the same IntegrationObject type for both read and write,
     # but for now we're introducing a new type to keep them separate, and not renaming the
