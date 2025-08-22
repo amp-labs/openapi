@@ -1159,7 +1159,7 @@ paths:
                     - config.content.write.objects
                     - config.content.subscribe.objects.<object-name>
                     
-                    The `<object-name>` annotation means you to specify any object name (e.g.'config.content.read.objects.contacts' or 'config.content.write.objects.leads')
+                    `<object-name>` means you can specify any object name.
                   example: ["config.content.read.objects.contacts", "config.content.write.objects.leads"]
                 installation:
                   type: object
