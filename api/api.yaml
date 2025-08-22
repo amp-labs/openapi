@@ -282,7 +282,10 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Allowed values: appName, name"
+                  description: |
+                    Array of field paths specifying which fields to update. Allowed values include:
+                    - appName
+                    - name
                   example: ["appName", "name"]
                 project:
                   type: object
@@ -498,7 +501,13 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Allowed values: externalRef, clientId, clientSecret, provider, scopes"
+                  description: |
+                    Array of field paths specifying which fields to update. Allowed values include:
+                    - externalRef
+                    - clientId
+                    - clientSecret
+                    - provider
+                    - scopes
                   example: ["externalRef", "clientId"]
                 providerApp:
                   type: object
@@ -1140,8 +1149,17 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Allowed values: config, connectionId, config.revisionId, config.createdBy, config.content.read.objects.*, config.content.write.objects.*, config.content.subscribe.objects.*. The * operator allows you to specify any object name (e.g., 'config.content.read.objects.contacts' or 'config.content.write.objects.leads')"
-                  example: ["config", "config.content.read.objects.contacts", "config.content.write.objects.leads"]
+                  description: |
+                    Array of field paths specifying which fields to update. Allowed values include:
+                    - connectionId
+                    - config.revisionId
+                    - config.createdBy
+                    - config.content.read.objects.<object-name>
+                    - config.content.write.objects.<object-name>
+                    - config.content.subscribe.objects.<object-name>
+                    
+                    The `<object-name>` annotation means you to specify any object name (e.g.'config.content.read.objects.contacts' or 'config.content.write.objects.leads')
+                  example: ["config.content.read.objects.contacts", "config.content.write.objects.leads"]
                 installation:
                   type: object
                   properties:
@@ -2163,7 +2181,12 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Allowed values: name, metadata.url, metadata.headers"
+                  description: |
+                    Array of field paths specifying which fields to update. Allowed values include:
+                    - name
+                    - metadata.url
+                    - metadata.headers
+                    
                   example: ["name", "metadata.url"]
                 destination:
                   type: object
@@ -2357,7 +2380,9 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: "Array of field paths specifying which fields to update. Allowed values: label"
+                  description: |
+                    Array of field paths specifying which fields to update. Allowed values include:
+                    - label
                   example: ["label"]
                 org:
                   type: object
@@ -3557,7 +3582,14 @@ components:
           type: array
           items:
             type: string
-          description: "Array of field paths specifying which fields to update. Allowed values: providerWorkspaceRef, providerMetadata, apiKey, basicAuth, oauth2ClientCredentials, oauth2PasswordCredentials"
+          description: |
+            Array of field paths specifying which fields to update. Allowed values include:
+            - providerWorkspaceRef
+            - providerMetadata
+            - apiKey
+            - basicAuth
+            - oauth2ClientCredentials
+            - oauth2PasswordCredentials
           example: ["providerWorkspaceRef", "providerMetadata"]
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
@@ -3891,7 +3923,11 @@ components:
           type: array
           items:
             type: string
-          description: "Array of field paths specifying which fields to update. Allowed values: active, label, scopes"
+          description: |
+            Array of field paths specifying which fields to update. Allowed values include:
+            - active
+            - label
+            - scopes
           example: ["active", "label"]
         apiKey:
           type: object
