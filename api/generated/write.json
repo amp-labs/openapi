@@ -74,9 +74,23 @@
                     "type": "string",
                     "description": "The mode of write operation. The only supported mode currently is synchronous.",
                     "enum": [
-                      "synchronous"
+                      "synchronous",
+                      "asynchronous"
                     ],
                     "example": "synchronous"
+                  },
+                  "retryPolicy": {
+                    "type": "object",
+                    "description": "The retry policy for an asynchronous write operation.",
+                    "properties": {
+                      "deadlineHours": {
+                        "type": "integer",
+                        "description": "The maximum number of hours to wait for the write operation to complete.",
+                        "example": 24,
+                        "minimum": 1,
+                        "maximum": 48
+                      }
+                    }
                   },
                   "record": {
                     "type": "object",
@@ -424,9 +438,23 @@
             "type": "string",
             "description": "The mode of write operation. The only supported mode currently is synchronous.",
             "enum": [
-              "synchronous"
+              "synchronous",
+              "asynchronous"
             ],
             "example": "synchronous"
+          },
+          "retryPolicy": {
+            "type": "object",
+            "description": "The retry policy for an asynchronous write operation.",
+            "properties": {
+              "deadlineHours": {
+                "type": "integer",
+                "description": "The maximum number of hours to wait for the write operation to complete.",
+                "example": 24,
+                "minimum": 1,
+                "maximum": 48
+              }
+            }
           },
           "record": {
             "type": "object",

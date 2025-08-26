@@ -38,6 +38,7 @@ paths:
         200:
           description: The success response
           content:
+
             application/json:
               schema:
                 $ref: "#/components/schemas/WriteResponseSingleSuccess"
@@ -83,8 +84,18 @@ components:
         mode:
           type: string
           description: The mode of write operation. The only supported mode currently is synchronous.
-          enum: [synchronous] #          enum: [synchronous, async, bulk]
+          enum: [synchronous, asynchronous]
           example: synchronous
+        retryPolicy:
+          type: object
+          description: The retry policy for an asynchronous write operation.
+          properties:
+            deadlineHours:
+              type: integer
+              description: The maximum number of hours to wait for the write operation to complete.
+              example: 24
+              minimum: 1
+              maximum: 48
         record:
           type: object
           description: The record to write
