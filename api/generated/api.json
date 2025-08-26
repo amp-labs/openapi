@@ -6264,7 +6264,7 @@
                                         },
                                         "enabled": {
                                           "type": "string",
-                                          "description": "If set to always, the integration will automatically install upon user connection and skip the user field selection step.",
+                                          "description": "If set to `always`, the integration will automatically install upon user connection and skip the user field selection step.",
                                           "enum": [
                                             "always"
                                           ],
@@ -7187,7 +7187,7 @@
                                     },
                                     "enabled": {
                                       "type": "string",
-                                      "description": "If set to always, the integration will automatically install upon user connection and skip the user field selection step.",
+                                      "description": "If set to `always`, the integration will automatically install upon user connection and skip the user field selection step.",
                                       "enum": [
                                         "always"
                                       ],
@@ -8491,7 +8491,7 @@
                                       },
                                       "enabled": {
                                         "type": "string",
-                                        "description": "If set to always, the integration will automatically install upon user connection and skip the user field selection step.",
+                                        "description": "If set to `always`, the integration will automatically install upon user connection and skip the user field selection step.",
                                         "enum": [
                                           "always"
                                         ],
@@ -10297,7 +10297,7 @@
                                         },
                                         "enabled": {
                                           "type": "string",
-                                          "description": "If set to always, the integration will automatically install upon user connection and skip the user field selection step.",
+                                          "description": "If set to `always`, the integration will automatically install upon user connection and skip the user field selection step.",
                                           "enum": [
                                             "always"
                                           ],
@@ -49392,7 +49392,7 @@
                             },
                             "enabled": {
                               "type": "string",
-                              "description": "If set to always, the integration will automatically install upon user connection and skip the user field selection step.",
+                              "description": "If set to `always`, the integration will automatically install upon user connection and skip the user field selection step.",
                               "enum": [
                                 "always"
                               ],
@@ -49825,7 +49825,7 @@
                         },
                         "enabled": {
                           "type": "string",
-                          "description": "If set to always, the integration will automatically install upon user connection and skip the user field selection step.",
+                          "description": "If set to `always`, the integration will automatically install upon user connection and skip the user field selection step.",
                           "enum": [
                             "always"
                           ],
