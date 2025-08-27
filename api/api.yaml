@@ -1159,7 +1159,7 @@ paths:
                     - config.content.write.objects
                     - config.content.subscribe.objects.<object-name>
                     - config.content.proxy.enabled
-                    
+
                     `<object-name>` means you can specify any object name.
                   example: ["config.content.read.objects.contacts", "config.content.write.objects.leads"]
                 installation:
@@ -2132,6 +2132,20 @@ paths:
             type: string
           description: The destination name.
           example: leadConvertedWebhook
+        - name: includeSecrets
+          in: query
+          required: false
+          description: Include secrets in the response
+          schema:
+            type: boolean
+          example: true
+        - name: rotate
+          in: query
+          required: false
+          description: Rotate the destination secrets
+          schema:
+            type: boolean
+          example: true
       responses:
         404:
           description: Destination not found
@@ -2188,7 +2202,7 @@ paths:
                     - name
                     - metadata.url
                     - metadata.headers
-                    
+
                   example: ["name", "metadata.url"]
                 destination:
                   type: object
@@ -3165,6 +3179,13 @@ components:
           type: string
           description: The time the destination was updated.
           format: date-time
+        secrets:
+          type: object
+          description: Destination secrets (only included when includeSecrets is true)
+          properties:
+            webhookSigningKey:
+              type: string
+              description: Webhook signing key for the destination (only included for webhook destinations)
     Project:
       title: Project
       required:
