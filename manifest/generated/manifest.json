@@ -68,10 +68,12 @@
                             "type": "string"
                           },
                           "destination": {
-                            "type": "string"
+                            "type": "string",
+                            "x-go-type-skip-optional-pointer": true
                           },
                           "schedule": {
-                            "type": "string"
+                            "type": "string",
+                            "x-go-type-skip-optional-pointer": true
                           },
                           "mapToName": {
                             "type": "string",
@@ -475,10 +477,12 @@
                       "type": "string"
                     },
                     "destination": {
-                      "type": "string"
+                      "type": "string",
+                      "x-go-type-skip-optional-pointer": true
                     },
                     "schedule": {
-                      "type": "string"
+                      "type": "string",
+                      "x-go-type-skip-optional-pointer": true
                     },
                     "mapToName": {
                       "type": "string",
@@ -870,10 +874,12 @@
                   "type": "string"
                 },
                 "destination": {
-                  "type": "string"
+                  "type": "string",
+                  "x-go-type-skip-optional-pointer": true
                 },
                 "schedule": {
-                  "type": "string"
+                  "type": "string",
+                  "x-go-type-skip-optional-pointer": true
                 },
                 "mapToName": {
                   "type": "string",
@@ -1231,10 +1237,12 @@
             "type": "string"
           },
           "destination": {
-            "type": "string"
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
           },
           "schedule": {
-            "type": "string"
+            "type": "string",
+            "x-go-type-skip-optional-pointer": true
           },
           "mapToName": {
             "type": "string",
