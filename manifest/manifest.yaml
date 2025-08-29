@@ -106,8 +106,10 @@ components:
           type: string
         destination:
           type: string
+          x-go-type-skip-optional-pointer: true
         schedule:
           type: string
+          x-go-type-skip-optional-pointer: true
         mapToName:
           type: string
           description: An object name to map to.
