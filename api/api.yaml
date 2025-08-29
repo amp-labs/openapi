@@ -1352,6 +1352,270 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/metadata:
+    post:
+      summary: Upsert custom fields for installation
+      description: |
+        Create or update custom fields for an integration installation.
+        This endpoint enables programmatic schema evolution without requiring
+        customers to code against raw provider APIs. Note that this endpoint
+        only supports field creation/updates, not object creation.
+      operationId: upsertInstallationMetadata
+      tags:
+        - Metadata
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The unique identifier or name of the project.
+          schema:
+            type: string
+          example: my-project
+        - name: integrationId
+          in: path
+          required: true
+          description: The integration ID.
+          schema:
+            type: string
+        - name: installationId
+          in: path
+          required: true
+          description: The installation ID.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Metadata upsert request containing field definitions to create or update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertMetadataRequest'
+            examples:
+              createTextFields:
+                summary: Create text fields on multiple objects
+                value:
+                  fields:
+                    Account:
+                      - fieldName: "Industry"
+                        displayName: "Industry Sector"
+                        description: "The industry this account operates in"
+                        valueType: "text"
+                        required: false
+                        stringOptions:
+                          length: 255
+                          defaultValue: "Technology"
+                      - fieldName: "Company_Size"
+                        displayName: "Company Size"
+                        valueType: "text"
+                        stringOptions:
+                          values: ["Small", "Medium", "Large", "Enterprise"]
+                          valuesRestricted: true
+                    Contact:
+                      - fieldName: "Seniority_Level"
+                        displayName: "Seniority Level"
+                        valueType: "text"
+                        stringOptions:
+                          values: ["Junior", "Mid", "Senior", "Executive"]
+                          valuesRestricted: true
+              createNumericFields:
+                summary: Create numeric fields with constraints
+                value:
+                  fields:
+                    Opportunity:
+                      - fieldName: "Deal_Score"
+                        displayName: "Deal Score"
+                        description: "Likelihood score from 0-100"
+                        valueType: "number"
+                        required: true
+                        numericOptions:
+                          precision: 5
+                          scale: 2
+                          min: 0
+                          max: 100
+                          defaultValue: 50
+              createAssociationField:
+                summary: Create field with association to another object
+                value:
+                  fields:
+                    Task:
+                      - fieldName: "Related_Contact"
+                        displayName: "Related Contact"
+                        valueType: "reference"
+                        association:
+                          associationType: "lookup"
+                          targetObject: "Contact"
+                          targetField: "Id"
+                          cardinality: "many-to-one"
+                          required: false
+                          labels:
+                            singular: "Contact"
+                            plural: "Contacts"
+      responses:
+        '200':
+          description: Metadata creation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertMetadataResponse'
+        '400':
+          description: Invalid request payload or validation errors
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '401':
+          description: Authentication required
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '403':
+          description: Insufficient permissions for metadata operations
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '404':
+          description: Project, integration, or installation not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/connections/{connectionId}/metadata:
+    post:
+      summary: Upsert custom fields for connection
+      description: |
+        Create or update custom fields for a connection.
+        This endpoint enables programmatic schema evolution without requiring
+        customers to code against raw provider APIs. Note that this endpoint
+        only supports field creation/updates, not object creation.
+      operationId: upsertConnectionMetadata
+      tags:
+        - Metadata
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The unique identifier or name of the project.
+          schema:
+            type: string
+          example: my-project
+        - name: connectionId
+          in: path
+          required: true
+          description: The connection ID.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: Metadata upsert request containing field definitions to create or update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertMetadataRequest'
+            examples:
+              createTextFields:
+                summary: Create text fields on multiple objects
+                value:
+                  fields:
+                    Account:
+                      - fieldName: "Industry"
+                        displayName: "Industry Sector"
+                        description: "The industry this account operates in"
+                        valueType: "text"
+                        required: false
+                        stringOptions:
+                          length: 255
+                          defaultValue: "Technology"
+                      - fieldName: "Company_Size"
+                        displayName: "Company Size"
+                        valueType: "text"
+                        stringOptions:
+                          values: ["Small", "Medium", "Large", "Enterprise"]
+                          valuesRestricted: true
+                    Contact:
+                      - fieldName: "Seniority_Level"
+                        displayName: "Seniority Level"
+                        valueType: "text"
+                        stringOptions:
+                          values: ["Junior", "Mid", "Senior", "Executive"]
+                          valuesRestricted: true
+              createNumericFields:
+                summary: Create numeric fields with constraints
+                value:
+                  fields:
+                    Opportunity:
+                      - fieldName: "Deal_Score"
+                        displayName: "Deal Score"
+                        description: "Likelihood score from 0-100"
+                        valueType: "number"
+                        required: true
+                        numericOptions:
+                          precision: 5
+                          scale: 2
+                          min: 0
+                          max: 100
+                          defaultValue: 50
+              createAssociationField:
+                summary: Create field with association to another object
+                value:
+                  fields:
+                    Task:
+                      - fieldName: "Related_Contact"
+                        displayName: "Related Contact"
+                        valueType: "reference"
+                        association:
+                          associationType: "lookup"
+                          targetObject: "Contact"
+                          targetField: "Id"
+                          cardinality: "many-to-one"
+                          required: false
+                          labels:
+                            singular: "Contact"
+                            plural: "Contacts"
+      responses:
+        '200':
+          description: Metadata creation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertMetadataResponse'
+        '400':
+          description: Invalid request payload or validation errors
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '401':
+          description: Authentication required
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '403':
+          description: Insufficient permissions for metadata operations
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '404':
+          description: Project or connection not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations:
     get:
       summary: List operations
@@ -4339,6 +4603,190 @@ components:
           example:
             active: false
             name: "updated-key-name"
+
+    # Metadata schemas matching Go structs in shared/common/metadata.go
+    UpsertMetadataRequest:
+      type: object
+      description: Request payload for upserting metadata (fields only)
+      properties:
+        fields:
+          type: object
+          description: Maps object names to field definitions
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FieldDefinition'
+      required:
+        - fields
+
+    UpsertMetadataResponse:
+      type: object
+      description: Response containing results for all created/updated fields
+      properties:
+        success:
+          type: boolean
+          description: Indicates if the upsert operation was successful
+        fields:
+          type: object
+          description: Maps object name -> field name -> upsert result
+          additionalProperties:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/FieldUpsertResult'
+      required:
+        - success
+        - fields
+
+    FieldDefinition:
+      type: object
+      description: Field definition for creating or updating custom fields
+      properties:
+        fieldName:
+          type: string
+          description: The identifier of the field
+          example: "My_Custom_Field"
+        displayName:
+          type: string
+          description: The human-readable name of the field
+          example: "My Custom Field"
+        description:
+          type: string
+          description: Optional description of the field
+        valueType:
+          type: string
+          description: The data type of the field
+          example: "text"
+        required:
+          type: boolean
+          description: Indicates if the field is required
+        unique:
+          type: boolean
+          description: Indicates if the field must be unique across all records
+        indexed:
+          type: boolean
+          description: Indicates if the field should be indexed for faster search
+        stringOptions:
+          $ref: '#/components/schemas/StringFieldOptions'
+        numericOptions:
+          $ref: '#/components/schemas/NumericFieldOptions'
+        association:
+          $ref: '#/components/schemas/AssociationDefinition'
+      required:
+        - fieldName
+        - displayName
+        - valueType
+
+    StringFieldOptions:
+      type: object
+      description: Additional options for string fields
+      properties:
+        length:
+          type: integer
+          description: Maximum length of the string field
+        pattern:
+          type: string
+          description: Regex pattern that the string field value must match
+        values:
+          type: array
+          description: List of allowed values for enum fields
+          items:
+            type: string
+        valuesRestricted:
+          type: boolean
+          description: Indicates if the field value must be limited to what's in Values
+        defaultValue:
+          type: string
+          description: Default value for the field
+
+    NumericFieldOptions:
+      type: object
+      description: Additional options for numeric fields
+      properties:
+        precision:
+          type: integer
+          description: Total number of digits (for decimal types)
+        scale:
+          type: integer
+          description: Number of digits to the right of the decimal point (for decimal types)
+        min:
+          type: number
+          description: Minimum value for numeric fields
+        max:
+          type: number
+          description: Maximum value for numeric fields
+        defaultValue:
+          type: number
+          description: Default value for the field
+
+    AssociationDefinition:
+      type: object
+      description: Relationship information for a field to another object
+      properties:
+        associationType:
+          type: string
+          description: High-level association variety (e.g., 'foreignKey', 'lookup', 'ref')
+          example: "foreignKey"
+        targetObject:
+          type: string
+          description: Name of the referenced/parent object
+          example: "Account"
+        targetField:
+          type: string
+          description: Name of the referenced field on the target object
+        cardinality:
+          type: string
+          description: Association cardinality from the referencing field's perspective
+          example: "many-to-one"
+        onDelete:
+          type: string
+          description: Behavior upon foreign object deletion
+          example: "setNull"
+        required:
+          type: boolean
+          description: If true, a referenced record must exist
+        reverseLookupFieldName:
+          type: string
+          description: Optional inverse relationship/property name exposed on the target object
+        labels:
+          $ref: '#/components/schemas/AssociationLabels'
+      required:
+        - associationType
+        - targetObject
+
+    AssociationLabels:
+      type: object
+      description: UI labels for an association
+      properties:
+        singular:
+          type: string
+          description: Singular display label
+        plural:
+          type: string
+          description: Plural display label
+
+    FieldUpsertResult:
+      type: object
+      description: Result of an upsert operation for a single field
+      properties:
+        fieldName:
+          type: string
+          description: Name of the field
+        action:
+          type: string
+          description: Action taken (create, update, none)
+        metadata:
+          type: object
+          description: Provider-specific metadata about the field
+          additionalProperties: true
+        warnings:
+          type: array
+          description: Warnings that occurred during the upsert operation
+          items:
+            type: string
+      required:
+        - fieldName
+        - action
+
   securitySchemes:
     APIKeyHeader:
       type: apiKey
