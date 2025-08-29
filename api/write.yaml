@@ -92,8 +92,9 @@ components:
           properties:
             deadlineHours:
               type: integer
-              description: The maximum number of hours to wait for the write operation to complete.
+              description: The maximum number of hours to wait for the write operation to complete. If not specified, defaults to 1 hour.
               example: 24
+              default: 1
               minimum: 1
               maximum: 48
         record:
@@ -130,12 +131,12 @@ components:
       title: Sync Write Response Success
       type: object
       required:
-        - result
         - operationId
       additionalProperties: false
       properties:
         result:
           $ref: "#/components/schemas/WriteResult"
+          description: The result of the write operation. Only present for synchronous operations.
         operationId:
           type: string
           description: The operation ID

@@ -85,8 +85,9 @@
                     "properties": {
                       "deadlineHours": {
                         "type": "integer",
-                        "description": "The maximum number of hours to wait for the write operation to complete.",
+                        "description": "The maximum number of hours to wait for the write operation to complete. If not specified, defaults to 1 hour.",
                         "example": 24,
+                        "default": 1,
                         "minimum": 1,
                         "maximum": 48
                       }
@@ -135,12 +136,12 @@
                   "title": "Sync Write Response Success",
                   "type": "object",
                   "required": [
-                    "result",
                     "operationId"
                   ],
                   "additionalProperties": false,
                   "properties": {
                     "result": {
+                      "description": "The result of the write operation. Only present for synchronous operations.",
                       "title": "Write Result",
                       "type": "object",
                       "required": [
@@ -449,8 +450,9 @@
             "properties": {
               "deadlineHours": {
                 "type": "integer",
-                "description": "The maximum number of hours to wait for the write operation to complete.",
+                "description": "The maximum number of hours to wait for the write operation to complete. If not specified, defaults to 1 hour.",
                 "example": 24,
+                "default": 1,
                 "minimum": 1,
                 "maximum": 48
               }
@@ -491,12 +493,12 @@
         "title": "Sync Write Response Success",
         "type": "object",
         "required": [
-          "result",
           "operationId"
         ],
         "additionalProperties": false,
         "properties": {
           "result": {
+            "description": "The result of the write operation. Only present for synchronous operations.",
             "title": "Write Result",
             "type": "object",
             "required": [
