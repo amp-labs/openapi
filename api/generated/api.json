@@ -43280,9 +43280,9 @@
                 }
               }
             }
-          },
-          "x-codegen-request-body-name": "orgUpdate"
-        }
+          }
+        },
+        "x-codegen-request-body-name": "orgUpdate"
       }
     },
     "/orgs/{orgId}/builders": {
@@ -44054,9 +44054,9 @@
                 }
               }
             }
-          },
-          "x-codegen-request-body-name": "invite"
-        }
+          }
+        },
+        "x-codegen-request-body-name": "invite"
       },
       "get": {
         "x-speakeasy-ignore": true,
