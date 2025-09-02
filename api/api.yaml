@@ -2428,7 +2428,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        x-codegen-request-body-name: orgUpdate
+      x-codegen-request-body-name: orgUpdate
   /orgs/{orgId}/builders:
     get:
       summary: List builders for an organization
@@ -2502,7 +2502,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        x-codegen-request-body-name: invite
+      x-codegen-request-body-name: invite
     get:
       x-speakeasy-ignore: true
       summary: List invites for an organization
