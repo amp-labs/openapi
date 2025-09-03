@@ -26171,20 +26171,20 @@
         }
       }
     },
-    "/projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/metadata": {
-      "post": {
+    "/projects/{projectIdOrName}/integrations/{integrationId}/objectMetadata": {
+      "put": {
         "summary": "Upsert custom fields for installation",
-        "description": "Create or update custom fields for an integration installation.\nThis endpoint enables programmatic schema evolution without requiring\ncustomers to code against raw provider APIs. Note that this endpoint\nonly supports field creation/updates, not object creation.\n",
-        "operationId": "upsertInstallationMetadata",
+        "operationId": "upsertMetadataForInstallation",
+        "description": "Create or update custom fields for an integration installation.",
         "tags": [
-          "Metadata"
+          "Objects & Fields"
         ],
         "parameters": [
           {
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
-            "description": "The unique identifier or name of the project.",
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
             },
@@ -26197,16 +26197,18 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
           },
           {
-            "name": "installationId",
-            "in": "path",
+            "name": "groupRef",
+            "in": "query",
             "required": true,
-            "description": "The installation ID.",
+            "description": "The groupRef for the installation",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "group-123"
           }
         ],
         "requestBody": {
@@ -27223,33 +27225,44 @@
         }
       }
     },
-    "/projects/{projectIdOrName}/connections/{connectionId}/metadata": {
-      "post": {
+    "/projects/{projectIdOrName}/objectMetadata": {
+      "put": {
         "summary": "Upsert custom fields for connection",
-        "description": "Create or update custom fields for a connection.\nThis endpoint enables programmatic schema evolution without requiring\ncustomers to code against raw provider APIs. Note that this endpoint\nonly supports field creation/updates, not object creation.\n",
-        "operationId": "upsertConnectionMetadata",
+        "operationId": "upsertMetadataForConnection",
+        "description": "Create or update custom fields for a connection.",
         "tags": [
-          "Metadata"
+          "Objects & Fields"
         ],
         "parameters": [
           {
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
-            "description": "The unique identifier or name of the project.",
+            "description": "The Ampersand project ID or project name.",
             "schema": {
               "type": "string"
             },
             "example": "my-project"
           },
           {
-            "name": "connectionId",
-            "in": "path",
+            "name": "groupRef",
+            "in": "query",
             "required": true,
-            "description": "The connection ID.",
+            "description": "The ID that your app uses to identify the group of users for this Connection.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "group-123"
+          },
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "description": "The provider that this connection connects to.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "salesforce"
           }
         ],
         "requestBody": {

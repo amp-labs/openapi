@@ -1352,22 +1352,17 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/metadata:
-    post:
+  /projects/{projectIdOrName}/integrations/{integrationId}/objectMetadata:
+    put:
       summary: Upsert custom fields for installation
-      description: |
-        Create or update fields in the SaaS instance tied to an installation.
-        This endpoint enables programmatic schema evolution without requiring
-        customers to code against raw provider APIs. Note that this endpoint
-        only supports field creation/updates, not object creation.
       operationId: upsertMetadataForInstallation
-      tags:
-        - Metadata
+      description: Create or update custom fields for an integration installation.
+      tags: ["Objects & Fields"]
       parameters:
         - name: projectIdOrName
           in: path
           required: true
-          description: The unique identifier or name of the project.
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
@@ -1377,12 +1372,14 @@ paths:
           description: The integration ID.
           schema:
             type: string
-        - name: installationId
-          in: path
+          example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
+        - name: groupRef
+          in: query
           required: true
-          description: The installation ID.
+          description: The groupRef for the installation
           schema:
             type: string
+          example: group-123
       requestBody:
         required: true
         description: Metadata upsert request containing field definitions to create or update
@@ -1487,31 +1484,34 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/connections/{connectionId}/metadata:
-    post:
+  /projects/{projectIdOrName}/objectMetadata:
+    put:
       summary: Upsert custom fields for connection
-      description: |
-        Create or update custom fields for a connection.
-        This endpoint enables programmatic schema evolution without requiring
-        customers to code against raw provider APIs. Note that this endpoint
-        only supports field creation/updates, not object creation.
       operationId: upsertMetadataForConnection
-      tags:
-        - Metadata
+      description: Create or update custom fields for a connection.
+      tags: ["Objects & Fields"]
       parameters:
         - name: projectIdOrName
           in: path
           required: true
-          description: The unique identifier or name of the project.
+          description: The Ampersand project ID or project name.
           schema:
             type: string
           example: my-project
-        - name: connectionId
-          in: path
+        - name: groupRef
+          in: query
           required: true
-          description: The connection ID.
+          description: The ID that your app uses to identify the group of users for this Connection.
           schema:
             type: string
+          example: group-123
+        - name: provider
+          in: query
+          required: true
+          description: The provider that this connection connects to.
+          schema:
+            type: string
+          example: salesforce
       requestBody:
         required: true
         description: Metadata upsert request containing field definitions to create or update
