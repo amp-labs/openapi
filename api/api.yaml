@@ -1356,7 +1356,7 @@ paths:
     post:
       summary: Upsert custom fields for installation
       description: |
-        Create or update custom fields for an integration installation.
+        Create or update fields in the SaaS instance tied to an installation.
         This endpoint enables programmatic schema evolution without requiring
         customers to code against raw provider APIs. Note that this endpoint
         only supports field creation/updates, not object creation.
