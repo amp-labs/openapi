@@ -1360,7 +1360,7 @@ paths:
         This endpoint enables programmatic schema evolution without requiring
         customers to code against raw provider APIs. Note that this endpoint
         only supports field creation/updates, not object creation.
-      operationId: upsertInstallationMetadata
+      operationId: upsertMetadataForInstallation
       tags:
         - Metadata
       parameters:
