@@ -1352,7 +1352,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/integrations/{integrationId}/objectMetadata:
+  /projects/{projectIdOrName}/integrations/{integrationId}/object-metadata:
     put:
       summary: Upsert custom fields for installation
       operationId: upsertMetadataForInstallation
@@ -1484,11 +1484,11 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/objectMetadata:
+  /projects/{projectIdOrName}/providers/{provider}/object-metadata:
     put:
       summary: Upsert custom fields for connection
       operationId: upsertMetadataForConnection
-      description: Create or update custom fields for a connection.
+      description: Create or update fields in the SaaS instance tied to a connection.
       tags: ["Objects & Fields"]
       parameters:
         - name: projectIdOrName
@@ -1498,6 +1498,13 @@ paths:
           schema:
             type: string
           example: my-project
+        - name: provider
+          in: path
+          required: true
+          description: The provider that this connection connects to.
+          schema:
+            type: string
+          example: salesforce
         - name: groupRef
           in: query
           required: true
@@ -1505,13 +1512,6 @@ paths:
           schema:
             type: string
           example: group-123
-        - name: provider
-          in: query
-          required: true
-          description: The provider that this connection connects to.
-          schema:
-            type: string
-          example: salesforce
       requestBody:
         required: true
         description: Metadata upsert request containing field definitions to create or update

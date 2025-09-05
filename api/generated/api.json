@@ -26171,7 +26171,7 @@
         }
       }
     },
-    "/projects/{projectIdOrName}/integrations/{integrationId}/objectMetadata": {
+    "/projects/{projectIdOrName}/integrations/{integrationId}/object-metadata": {
       "put": {
         "summary": "Upsert custom fields for installation",
         "operationId": "upsertMetadataForInstallation",
@@ -27225,11 +27225,11 @@
         }
       }
     },
-    "/projects/{projectIdOrName}/objectMetadata": {
+    "/projects/{projectIdOrName}/providers/{provider}/object-metadata": {
       "put": {
         "summary": "Upsert custom fields for connection",
         "operationId": "upsertMetadataForConnection",
-        "description": "Create or update custom fields for a connection.",
+        "description": "Create or update fields in the SaaS instance tied to a connection.",
         "tags": [
           "Objects & Fields"
         ],
@@ -27245,6 +27245,16 @@
             "example": "my-project"
           },
           {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "description": "The provider that this connection connects to.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "salesforce"
+          },
+          {
             "name": "groupRef",
             "in": "query",
             "required": true,
@@ -27253,16 +27263,6 @@
               "type": "string"
             },
             "example": "group-123"
-          },
-          {
-            "name": "provider",
-            "in": "query",
-            "required": true,
-            "description": "The provider that this connection connects to.",
-            "schema": {
-              "type": "string"
-            },
-            "example": "salesforce"
           }
         ],
         "requestBody": {
