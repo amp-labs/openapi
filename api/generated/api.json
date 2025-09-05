@@ -26175,7 +26175,7 @@
       "put": {
         "summary": "Upsert custom fields for installation",
         "operationId": "upsertMetadataForInstallation",
-        "description": "Create or update custom fields for an integration installation.",
+        "description": "Create or update fields in the SaaS instance tied to an installation.",
         "tags": [
           "Objects & Fields"
         ],
