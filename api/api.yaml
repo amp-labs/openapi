@@ -1396,21 +1396,21 @@ paths:
                       - fieldName: "Industry"
                         displayName: "Industry Sector"
                         description: "The industry this account operates in"
-                        valueType: "text"
+                        valueType: "string"
                         required: false
                         stringOptions:
                           length: 255
                           defaultValue: "Technology"
                       - fieldName: "Company_Size"
                         displayName: "Company Size"
-                        valueType: "text"
+                        valueType: "string"
                         stringOptions:
                           values: ["Small", "Medium", "Large", "Enterprise"]
                           valuesRestricted: true
                     Contact:
                       - fieldName: "Seniority_Level"
                         displayName: "Seniority Level"
-                        valueType: "text"
+                        valueType: "string"
                         stringOptions:
                           values: ["Junior", "Mid", "Senior", "Executive"]
                           valuesRestricted: true
@@ -1422,7 +1422,7 @@ paths:
                       - fieldName: "Deal_Score"
                         displayName: "Deal Score"
                         description: "Likelihood score from 0-100"
-                        valueType: "number"
+                        valueType: "float"
                         required: true
                         numericOptions:
                           precision: 5
@@ -1437,7 +1437,7 @@ paths:
                     Task:
                       - fieldName: "Related_Contact"
                         displayName: "Related Contact"
-                        valueType: "reference"
+                        valueType: "string"
                         association:
                           associationType: "lookup"
                           targetObject: "Contact"
@@ -1528,21 +1528,21 @@ paths:
                       - fieldName: "Industry"
                         displayName: "Industry Sector"
                         description: "The industry this account operates in"
-                        valueType: "text"
+                        valueType: "string"
                         required: false
                         stringOptions:
                           length: 255
                           defaultValue: "Technology"
                       - fieldName: "Company_Size"
                         displayName: "Company Size"
-                        valueType: "text"
+                        valueType: "string"
                         stringOptions:
                           values: ["Small", "Medium", "Large", "Enterprise"]
                           valuesRestricted: true
                     Contact:
                       - fieldName: "Seniority_Level"
                         displayName: "Seniority Level"
-                        valueType: "text"
+                        valueType: "string"
                         stringOptions:
                           values: ["Junior", "Mid", "Senior", "Executive"]
                           valuesRestricted: true
@@ -1554,7 +1554,7 @@ paths:
                       - fieldName: "Deal_Score"
                         displayName: "Deal Score"
                         description: "Likelihood score from 0-100"
-                        valueType: "number"
+                        valueType: "float"
                         required: true
                         numericOptions:
                           precision: 5
@@ -1569,7 +1569,7 @@ paths:
                     Task:
                       - fieldName: "Related_Contact"
                         displayName: "Related Contact"
-                        valueType: "reference"
+                        valueType: "string"
                         association:
                           associationType: "lookup"
                           targetObject: "Contact"
@@ -4654,8 +4654,8 @@ components:
           description: Optional description of the field
         valueType:
           type: string
-          description: The data type of the field
-          example: "text"
+          description: The data type of the field. Valid values are string, boolean, date, datetime, singleSelect, multiSelect, int, float
+          example: "string"
         required:
           type: boolean
           description: Indicates if the field is required
