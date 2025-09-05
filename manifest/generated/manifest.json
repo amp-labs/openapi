@@ -1842,6 +1842,7 @@
                       "additionalProperties": {
                         "title": "Field Metadata",
                         "type": "object",
+                        "description": "Metadata about a field. Please note that different providers have different levels of support for field metadata. Please reach out to support@withampersand.com if need expanded support for a particular provider.",
                         "required": [
                           "fieldName",
                           "displayName"
@@ -2243,6 +2244,7 @@
                   "additionalProperties": {
                     "title": "Field Metadata",
                     "type": "object",
+                    "description": "Metadata about a field. Please note that different providers have different levels of support for field metadata. Please reach out to support@withampersand.com if need expanded support for a particular provider.",
                     "required": [
                       "fieldName",
                       "displayName"
@@ -2610,6 +2612,7 @@
             "additionalProperties": {
               "title": "Field Metadata",
               "type": "object",
+              "description": "Metadata about a field. Please note that different providers have different levels of support for field metadata. Please reach out to support@withampersand.com if need expanded support for a particular provider.",
               "required": [
                 "fieldName",
                 "displayName"
@@ -2959,6 +2962,7 @@
       "FieldMetadata": {
         "title": "Field Metadata",
         "type": "object",
+        "description": "Metadata about a field. Please note that different providers have different levels of support for field metadata. Please reach out to support@withampersand.com if need expanded support for a particular provider.",
         "required": [
           "fieldName",
           "displayName"

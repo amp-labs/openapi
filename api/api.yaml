@@ -1356,7 +1356,7 @@ paths:
     put:
       summary: Upsert custom fields for installation
       operationId: upsertMetadataForInstallation
-      description: Create or update fields in the SaaS instance tied to an installation.
+      description: Create or update fields in the SaaS instance tied to an installation. Only HubSpot and Salesforce are supported currently.
       tags: ["Objects & Fields"]
       parameters:
         - name: projectIdOrName
@@ -1488,7 +1488,7 @@ paths:
     put:
       summary: Upsert custom fields for connection
       operationId: upsertMetadataForConnection
-      description: Create or update fields in the SaaS instance tied to a connection.
+      description: Create or update fields in the SaaS instance tied to a connection. Only HubSpot and Salesforce are supported currently.
       tags: ["Objects & Fields"]
       parameters:
         - name: projectIdOrName
@@ -2078,7 +2078,7 @@ paths:
   /projects/{projectIdOrName}/connections:generate:
     post:
       summary: Generate a new connection
-      description: For providers which support OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/get-url-for-oauth-flow) instead, unless you already have the refresh token and are importing it into Ampersand.
+      description: All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/get-url-for-oauth-flow) instead, unless you already have the refresh token and are importing it into Ampersand.
       operationId: generateConnection
       tags: ["Connection"]
       parameters:
