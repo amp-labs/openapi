@@ -24,6 +24,8 @@ components:
         - installationUpdateTime
         - objectName
         - resultInfo
+        - consumerRef
+        - consumerName
       properties:
         projectId:
           description: The Ampersand Project ID.
@@ -70,6 +72,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResultEntry'
+        consumerRef:
+          description: The reference ID of the consumer that triggered the webhook.
+          type: string
+        consumerName:
+          description: The name of the consumer that triggered the webhook.
+          type: string
+        operationTime:
+          description: The timestamp when the operation was performed.
+          type: string
+          format: date-time
     Association:
       title: Association
       type: object

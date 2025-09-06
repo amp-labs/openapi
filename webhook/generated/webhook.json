@@ -24,7 +24,9 @@
           "installationId",
           "installationUpdateTime",
           "objectName",
-          "resultInfo"
+          "resultInfo",
+          "consumerRef",
+          "consumerName"
         ],
         "properties": {
           "projectId": {
@@ -290,6 +292,19 @@
                 }
               }
             }
+          },
+          "consumerRef": {
+            "description": "The reference ID of the consumer that triggered the webhook.",
+            "type": "string"
+          },
+          "consumerName": {
+            "description": "The name of the consumer that triggered the webhook.",
+            "type": "string"
+          },
+          "operationTime": {
+            "description": "The timestamp when the operation was performed.",
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
