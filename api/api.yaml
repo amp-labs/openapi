@@ -996,9 +996,9 @@ paths:
                   properties:
                     revisionId:
                       type: string
+                      deprecated: true
                       description:
-                        The ID of the revision that this config is based
-                        on. If omitted, the latest revision is assumed.
+                        "Deprecated: This field will be automatically set to the latest revision."
                     createdBy:
                       type: string
                       description:
@@ -1176,9 +1176,9 @@ paths:
                       properties:
                         revisionId:
                           type: string
+                          deprecated: true
                           description:
-                            The ID of the revision that this config is
-                            based on.
+                            "Deprecated: This field will be automatically set to the latest revision ID."
                         createdBy:
                           type: string
                           description:
