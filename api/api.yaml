@@ -2304,22 +2304,22 @@ paths:
                       example: https://webhooks.mailmonkey.com/salesforce-lead-converted
                     headers:
                       $ref: "#/components/schemas/WebhookHeaders"
-                    kinesisRegion:
+                    region:
                       type: string
                       description: The AWS region where the kinesis destination is hosted.
                       example: us-east-1
                       x-go-type-skip-optional-pointer: true
-                    kinesisStreamName:
+                    streamName:
                       type: string
                       description: The name of the Kinesis stream to send events to.
                       example: my-kinesis-stream
                       x-go-type-skip-optional-pointer: true
-                    kinesisEndpointUrl:
+                    endpointUrl:
                       type: string
                       description: The endpoint URL for the Kinesis stream.
                       example: https://kinesis.us-east-1.amazonaws.com
                       x-go-type-skip-optional-pointer: true
-                    kinesisPartitionKeyTemplate:
+                    partitionKeyTemplate:
                       type: string
                       description: The template for the partition key to use when sending events to Kinesis (a JMESPath template)
                       example: "data.user_id"
@@ -2467,8 +2467,15 @@ paths:
                     - name
                     - metadata.url
                     - metadata.headers
+                    - metadata.region
+                    - metadata.streamName
+                    - metadata.endpointUrl
+                    - metadata.partitionKeyTemplate
+                    - secrets.awsKeyId
+                    - secrets.awsSecretKey
+                    - secrets.awsSessionToken
 
-                  example: ["name", "metadata.url"]
+                  example: ["name", "metadata.url", "metadata.region", "metadata.streamName"]
                 destination:
                   type: object
                   properties:
@@ -2485,6 +2492,38 @@ paths:
                           example: https://webhooks.mailmonkey.com/salesforce-lead-converted
                         headers:
                           $ref: "#/components/schemas/WebhookHeaders"
+                        region:
+                          type: string
+                          description: The AWS region where the kinesis destination is hosted.
+                          example: us-east-1
+                        streamName:
+                          type: string
+                          description: The name of the Kinesis stream to send events to.
+                          example: my-kinesis-stream
+                        endpointUrl:
+                          type: string
+                          description: The endpoint URL for the Kinesis stream.
+                          example: https://kinesis.us-east-1.amazonaws.com
+                        partitionKeyTemplate:
+                          type: string
+                          description: The template for the partition key to use when sending events to Kinesis (a JMESPath template)
+                          example: "data.user_id"
+                    secrets:
+                      type: object
+                      description: Secrets for the destination.
+                      properties:
+                        awsKeyId:
+                          type: string
+                          description: The AWS access key ID for the Kinesis destination.
+                          example: AKIAIOSFODNN7EXAMPLE
+                        awsSecretKey:
+                          type: string
+                          description: The AWS secret access key for the Kinesis destination.
+                          example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+                        awsSessionToken:
+                          type: string
+                          description: The AWS session token for the Kinesis destination.
+                          example: AQoEXAMPLEH4aoAH0gNCAPy...
       responses:
         404:
           description: Destination not found
