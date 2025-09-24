@@ -33,11 +33,9 @@ pnpm run gen:json
 
 # Best practices
 
-# Best practices
-
 - **Naming:** Use descriptive operation and type names, as generated SDKs & docs may reuse these names.
 - **Tags:** The tags determine which section in the reference docs the endpoint will be grouped under, therefore you should always include tags for new endpoints.
-- **Hide In-Development Endpoints:** If an endpoint is still in development, add `"x-excluded": true` to hide it from docs.
+- **Hide In-Development Endpoints:** If an endpoint is still in development, add `x-excluded: true` to hide it from docs.
 - **Required Request Parameters:** Ensure you mark parameters (query or path) and request bodies as `required: true` when needed.
 - **Avoid Duplicates:** Do not create duplicate paths or types across specs unless absolutely necessary. Duplicate definitions (based on URL and method) can cause issues when generating unified docs or SDKs.
 - **Using oneOf:** Apply `oneOf` only to entire schemas, not individual properties. While the linter might not flag it, using it on properties can lead to errors in SDK generation.
