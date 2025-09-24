@@ -3475,6 +3475,18 @@ components:
               example: https://webhooks.mailmonkey.com/salesforce-lead-converted
             headers:
               $ref: "#/components/schemas/WebhookHeaders"
+            streamName:
+              type: string
+              description: The name of the Kinesis stream
+              example: my-data-stream
+            region:
+              type: string
+              description: The AWS region for the destination
+              example: us-east-1
+            partitionKeyTemplate:
+              type: string
+              description: Template for generating partition keys
+              example: "{{.integration_id}}"
         createTime:
           type: string
           description: The time the destination was created.
