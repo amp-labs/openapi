@@ -2898,6 +2898,64 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /orgs/{orgId}/memberships:
+    post:
+      summary: Add user to an organization
+      description: This adds builder to the default team of that org (since orgs themselves don't actually have memberships)
+      operationId: addUserToOrg
+      tags: ["Org"]
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          description: ID of the organization.
+          schema:
+            type: string
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - builderId
+              properties:
+                builderId:
+                  type: string
+                  description: The ID of the builder to add to the organization
+                  example: builder-id-123
+      responses:
+        201:
+          description: The newly created team membership
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamMembership"
+        400:
+          description: Bad Request - Membership already exists or invalid request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        403:
+          description: Forbidden - Requires org:owner permission
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        404:
+          description: Not Found - Organization or builder not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /my-info:
     get:
       x-speakeasy-ignore: true
@@ -3419,7 +3477,7 @@ paths:
     get:
       operationId: checkClaimedDomain
       summary: Check if a domain is claimed
-      description: Check if a domain is claimed by an organization. Accepts email, domain, or URL - will automatically extract and sanitize the domain for comparison.
+      description: Check if a domain is claimed by an organization. Accepts email, domain, or URL.
       tags: ["Domain Claiming"]
       x-excluded: true
       parameters:
@@ -3429,7 +3487,7 @@ paths:
           schema:
             type: string
           description: Email address, domain name, or URL to check. The domain will be extracted and sanitized automatically.
-          example: rajat@withampersand.com
+          example: xyz@withampersand.com
       responses:
         200:
           description: Domain claim status
@@ -3458,7 +3516,7 @@ paths:
     post:
       operationId: claimDomain
       summary: Claim a domain
-      description: Claim a domain for an organization. Accepts email, domain, or URL - will automatically extract and sanitize the domain.
+      description: Claim a domain for an organization. Accepts email, domain, or URL.
       tags: ["Domain Claiming"]
       x-excluded: true
       requestBody:
@@ -3474,7 +3532,7 @@ paths:
                 domain:
                   type: string
                   description: Email address, domain name, or URL to claim. The domain will be extracted and sanitized automatically.
-                  example: joe@apple.com
+                  example: xyz@withampersand.com
                 parentId:
                   type: string
                   description: ID of the parent entity claiming the domain
@@ -4585,6 +4643,40 @@ components:
               example: builder-id-123
             org:
               $ref: "#/components/schemas/Org"
+    TeamMembership:
+      title: Team Membership
+      type: object
+      required:
+        - id
+        - teamId
+        - builderId
+        - role
+        - createTime
+      properties:
+        id:
+          type: string
+          description: The team membership ID
+          example: membership-id-123
+        teamId:
+          type: string
+          description: The ID of the team
+          example: team-id-123
+        builderId:
+          type: string
+          description: The ID of the builder
+          example: builder-id-123
+        role:
+          type: string
+          description: The role of the builder in the team
+          example: member
+        createTime:
+          type: string
+          description: The time the membership was created
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the membership was last updated
+          format: date-time
             # This schema actually isn't used in the manifest but it is used by the GetObjectMetadata endpoint
     ObjectMetadata:
       title: Object Metadata
