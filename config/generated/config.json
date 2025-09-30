@@ -93,55 +93,51 @@
                       }
                     },
                     "dynamicMappingsInput": {
-                      "type": "object",
-                      "description": "Stores information about dynamic field mappings.",
-                      "additionalProperties": {
-                        "title": "Dynamic Field Mappings",
-                        "type": "array",
-                        "description": "An array of field mapping entries for dynamic field mappings.",
-                        "items": {
-                          "title": "Field Mapping Entry",
-                          "type": "object",
-                          "required": [
-                            "mapToName"
-                          ],
-                          "properties": {
-                            "mapToName": {
-                              "type": "string",
-                              "description": "The name of the field in your application."
-                            },
-                            "mapToDisplayName": {
-                              "type": "string",
-                              "description": "Optional display name of the field to show the user in the mapping UI."
-                            },
-                            "prompt": {
-                              "type": "string",
-                              "description": "Optional prompt to show the user in the mapping UI."
-                            },
-                            "mappedValues": {
-                              "type": "array",
-                              "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                              "items": {
-                                "title": "Mapped Value",
-                                "type": "object",
-                                "required": [
-                                  "mappedValue",
-                                  "mappedDisplayValue"
-                                ],
-                                "properties": {
-                                  "mappedValue": {
-                                    "type": "string"
-                                  },
-                                  "mappedDisplayValue": {
-                                    "type": "string"
-                                  }
+                      "title": "Dynamic Mappings Input",
+                      "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                      "type": "array",
+                      "items": {
+                        "title": "Field Mapping Entry",
+                        "type": "object",
+                        "required": [
+                          "mapToName"
+                        ],
+                        "properties": {
+                          "mapToName": {
+                            "type": "string",
+                            "description": "The name of the field in your application."
+                          },
+                          "mapToDisplayName": {
+                            "type": "string",
+                            "description": "Optional display name of the field to show the user in the mapping UI."
+                          },
+                          "prompt": {
+                            "type": "string",
+                            "description": "Optional prompt to show the user in the mapping UI."
+                          },
+                          "mappedValues": {
+                            "type": "array",
+                            "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                            "items": {
+                              "title": "Mapped Value",
+                              "type": "object",
+                              "required": [
+                                "mappedValue",
+                                "mappedDisplayValue"
+                              ],
+                              "properties": {
+                                "mappedValue": {
+                                  "type": "string"
+                                },
+                                "mappedDisplayValue": {
+                                  "type": "string"
                                 }
                               }
-                            },
-                            "fieldName": {
-                              "type": "string",
-                              "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                             }
+                          },
+                          "fieldName": {
+                            "type": "string",
+                            "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                           }
                         }
                       }
@@ -449,55 +445,51 @@
                   }
                 },
                 "dynamicMappingsInput": {
-                  "type": "object",
-                  "description": "Stores information about dynamic field mappings.",
-                  "additionalProperties": {
-                    "title": "Dynamic Field Mappings",
-                    "type": "array",
-                    "description": "An array of field mapping entries for dynamic field mappings.",
-                    "items": {
-                      "title": "Field Mapping Entry",
-                      "type": "object",
-                      "required": [
-                        "mapToName"
-                      ],
-                      "properties": {
-                        "mapToName": {
-                          "type": "string",
-                          "description": "The name of the field in your application."
-                        },
-                        "mapToDisplayName": {
-                          "type": "string",
-                          "description": "Optional display name of the field to show the user in the mapping UI."
-                        },
-                        "prompt": {
-                          "type": "string",
-                          "description": "Optional prompt to show the user in the mapping UI."
-                        },
-                        "mappedValues": {
-                          "type": "array",
-                          "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                          "items": {
-                            "title": "Mapped Value",
-                            "type": "object",
-                            "required": [
-                              "mappedValue",
-                              "mappedDisplayValue"
-                            ],
-                            "properties": {
-                              "mappedValue": {
-                                "type": "string"
-                              },
-                              "mappedDisplayValue": {
-                                "type": "string"
-                              }
+                  "title": "Dynamic Mappings Input",
+                  "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                  "type": "array",
+                  "items": {
+                    "title": "Field Mapping Entry",
+                    "type": "object",
+                    "required": [
+                      "mapToName"
+                    ],
+                    "properties": {
+                      "mapToName": {
+                        "type": "string",
+                        "description": "The name of the field in your application."
+                      },
+                      "mapToDisplayName": {
+                        "type": "string",
+                        "description": "Optional display name of the field to show the user in the mapping UI."
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "description": "Optional prompt to show the user in the mapping UI."
+                      },
+                      "mappedValues": {
+                        "type": "array",
+                        "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                        "items": {
+                          "title": "Mapped Value",
+                          "type": "object",
+                          "required": [
+                            "mappedValue",
+                            "mappedDisplayValue"
+                          ],
+                          "properties": {
+                            "mappedValue": {
+                              "type": "string"
+                            },
+                            "mappedDisplayValue": {
+                              "type": "string"
                             }
                           }
-                        },
-                        "fieldName": {
-                          "type": "string",
-                          "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                         }
+                      },
+                      "fieldName": {
+                        "type": "string",
+                        "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                       }
                     }
                   }
@@ -617,55 +609,51 @@
             }
           },
           "dynamicMappingsInput": {
-            "type": "object",
-            "description": "Stores information about dynamic field mappings.",
-            "additionalProperties": {
-              "title": "Dynamic Field Mappings",
-              "type": "array",
-              "description": "An array of field mapping entries for dynamic field mappings.",
-              "items": {
-                "title": "Field Mapping Entry",
-                "type": "object",
-                "required": [
-                  "mapToName"
-                ],
-                "properties": {
-                  "mapToName": {
-                    "type": "string",
-                    "description": "The name of the field in your application."
-                  },
-                  "mapToDisplayName": {
-                    "type": "string",
-                    "description": "Optional display name of the field to show the user in the mapping UI."
-                  },
-                  "prompt": {
-                    "type": "string",
-                    "description": "Optional prompt to show the user in the mapping UI."
-                  },
-                  "mappedValues": {
-                    "type": "array",
-                    "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                    "items": {
-                      "title": "Mapped Value",
-                      "type": "object",
-                      "required": [
-                        "mappedValue",
-                        "mappedDisplayValue"
-                      ],
-                      "properties": {
-                        "mappedValue": {
-                          "type": "string"
-                        },
-                        "mappedDisplayValue": {
-                          "type": "string"
-                        }
+            "title": "Dynamic Mappings Input",
+            "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+            "type": "array",
+            "items": {
+              "title": "Field Mapping Entry",
+              "type": "object",
+              "required": [
+                "mapToName"
+              ],
+              "properties": {
+                "mapToName": {
+                  "type": "string",
+                  "description": "The name of the field in your application."
+                },
+                "mapToDisplayName": {
+                  "type": "string",
+                  "description": "Optional display name of the field to show the user in the mapping UI."
+                },
+                "prompt": {
+                  "type": "string",
+                  "description": "Optional prompt to show the user in the mapping UI."
+                },
+                "mappedValues": {
+                  "type": "array",
+                  "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                  "items": {
+                    "title": "Mapped Value",
+                    "type": "object",
+                    "required": [
+                      "mappedValue",
+                      "mappedDisplayValue"
+                    ],
+                    "properties": {
+                      "mappedValue": {
+                        "type": "string"
+                      },
+                      "mappedDisplayValue": {
+                        "type": "string"
                       }
                     }
-                  },
-                  "fieldName": {
-                    "type": "string",
-                    "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                   }
+                },
+                "fieldName": {
+                  "type": "string",
+                  "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                 }
               }
             }
@@ -738,9 +726,9 @@
         }
       },
       "DynamicMappingsInput": {
-        "title": "Dynamic Field Mappings",
+        "title": "Dynamic Mappings Input",
+        "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
         "type": "array",
-        "description": "An array of field mapping entries for dynamic field mappings.",
         "items": {
           "title": "Field Mapping Entry",
           "type": "object",
@@ -1477,55 +1465,51 @@
                           }
                         },
                         "dynamicMappingsInput": {
-                          "type": "object",
-                          "description": "Stores information about dynamic field mappings.",
-                          "additionalProperties": {
-                            "title": "Dynamic Field Mappings",
-                            "type": "array",
-                            "description": "An array of field mapping entries for dynamic field mappings.",
-                            "items": {
-                              "title": "Field Mapping Entry",
-                              "type": "object",
-                              "required": [
-                                "mapToName"
-                              ],
-                              "properties": {
-                                "mapToName": {
-                                  "type": "string",
-                                  "description": "The name of the field in your application."
-                                },
-                                "mapToDisplayName": {
-                                  "type": "string",
-                                  "description": "Optional display name of the field to show the user in the mapping UI."
-                                },
-                                "prompt": {
-                                  "type": "string",
-                                  "description": "Optional prompt to show the user in the mapping UI."
-                                },
-                                "mappedValues": {
-                                  "type": "array",
-                                  "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                                  "items": {
-                                    "title": "Mapped Value",
-                                    "type": "object",
-                                    "required": [
-                                      "mappedValue",
-                                      "mappedDisplayValue"
-                                    ],
-                                    "properties": {
-                                      "mappedValue": {
-                                        "type": "string"
-                                      },
-                                      "mappedDisplayValue": {
-                                        "type": "string"
-                                      }
+                          "title": "Dynamic Mappings Input",
+                          "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                          "type": "array",
+                          "items": {
+                            "title": "Field Mapping Entry",
+                            "type": "object",
+                            "required": [
+                              "mapToName"
+                            ],
+                            "properties": {
+                              "mapToName": {
+                                "type": "string",
+                                "description": "The name of the field in your application."
+                              },
+                              "mapToDisplayName": {
+                                "type": "string",
+                                "description": "Optional display name of the field to show the user in the mapping UI."
+                              },
+                              "prompt": {
+                                "type": "string",
+                                "description": "Optional prompt to show the user in the mapping UI."
+                              },
+                              "mappedValues": {
+                                "type": "array",
+                                "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                                "items": {
+                                  "title": "Mapped Value",
+                                  "type": "object",
+                                  "required": [
+                                    "mappedValue",
+                                    "mappedDisplayValue"
+                                  ],
+                                  "properties": {
+                                    "mappedValue": {
+                                      "type": "string"
+                                    },
+                                    "mappedDisplayValue": {
+                                      "type": "string"
                                     }
                                   }
-                                },
-                                "fieldName": {
-                                  "type": "string",
-                                  "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                                 }
+                              },
+                              "fieldName": {
+                                "type": "string",
+                                "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                               }
                             }
                           }
@@ -1829,55 +1813,51 @@
                               }
                             },
                             "dynamicMappingsInput": {
-                              "type": "object",
-                              "description": "Stores information about dynamic field mappings.",
-                              "additionalProperties": {
-                                "title": "Dynamic Field Mappings",
-                                "type": "array",
-                                "description": "An array of field mapping entries for dynamic field mappings.",
-                                "items": {
-                                  "title": "Field Mapping Entry",
-                                  "type": "object",
-                                  "required": [
-                                    "mapToName"
-                                  ],
-                                  "properties": {
-                                    "mapToName": {
-                                      "type": "string",
-                                      "description": "The name of the field in your application."
-                                    },
-                                    "mapToDisplayName": {
-                                      "type": "string",
-                                      "description": "Optional display name of the field to show the user in the mapping UI."
-                                    },
-                                    "prompt": {
-                                      "type": "string",
-                                      "description": "Optional prompt to show the user in the mapping UI."
-                                    },
-                                    "mappedValues": {
-                                      "type": "array",
-                                      "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                                      "items": {
-                                        "title": "Mapped Value",
-                                        "type": "object",
-                                        "required": [
-                                          "mappedValue",
-                                          "mappedDisplayValue"
-                                        ],
-                                        "properties": {
-                                          "mappedValue": {
-                                            "type": "string"
-                                          },
-                                          "mappedDisplayValue": {
-                                            "type": "string"
-                                          }
+                              "title": "Dynamic Mappings Input",
+                              "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                              "type": "array",
+                              "items": {
+                                "title": "Field Mapping Entry",
+                                "type": "object",
+                                "required": [
+                                  "mapToName"
+                                ],
+                                "properties": {
+                                  "mapToName": {
+                                    "type": "string",
+                                    "description": "The name of the field in your application."
+                                  },
+                                  "mapToDisplayName": {
+                                    "type": "string",
+                                    "description": "Optional display name of the field to show the user in the mapping UI."
+                                  },
+                                  "prompt": {
+                                    "type": "string",
+                                    "description": "Optional prompt to show the user in the mapping UI."
+                                  },
+                                  "mappedValues": {
+                                    "type": "array",
+                                    "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                                    "items": {
+                                      "title": "Mapped Value",
+                                      "type": "object",
+                                      "required": [
+                                        "mappedValue",
+                                        "mappedDisplayValue"
+                                      ],
+                                      "properties": {
+                                        "mappedValue": {
+                                          "type": "string"
+                                        },
+                                        "mappedDisplayValue": {
+                                          "type": "string"
                                         }
                                       }
-                                    },
-                                    "fieldName": {
-                                      "type": "string",
-                                      "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                                     }
+                                  },
+                                  "fieldName": {
+                                    "type": "string",
+                                    "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                                   }
                                 }
                               }
@@ -2007,55 +1987,51 @@
                                   }
                                 },
                                 "dynamicMappingsInput": {
-                                  "type": "object",
-                                  "description": "Stores information about dynamic field mappings.",
-                                  "additionalProperties": {
-                                    "title": "Dynamic Field Mappings",
-                                    "type": "array",
-                                    "description": "An array of field mapping entries for dynamic field mappings.",
-                                    "items": {
-                                      "title": "Field Mapping Entry",
-                                      "type": "object",
-                                      "required": [
-                                        "mapToName"
-                                      ],
-                                      "properties": {
-                                        "mapToName": {
-                                          "type": "string",
-                                          "description": "The name of the field in your application."
-                                        },
-                                        "mapToDisplayName": {
-                                          "type": "string",
-                                          "description": "Optional display name of the field to show the user in the mapping UI."
-                                        },
-                                        "prompt": {
-                                          "type": "string",
-                                          "description": "Optional prompt to show the user in the mapping UI."
-                                        },
-                                        "mappedValues": {
-                                          "type": "array",
-                                          "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                                          "items": {
-                                            "title": "Mapped Value",
-                                            "type": "object",
-                                            "required": [
-                                              "mappedValue",
-                                              "mappedDisplayValue"
-                                            ],
-                                            "properties": {
-                                              "mappedValue": {
-                                                "type": "string"
-                                              },
-                                              "mappedDisplayValue": {
-                                                "type": "string"
-                                              }
+                                  "title": "Dynamic Mappings Input",
+                                  "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                                  "type": "array",
+                                  "items": {
+                                    "title": "Field Mapping Entry",
+                                    "type": "object",
+                                    "required": [
+                                      "mapToName"
+                                    ],
+                                    "properties": {
+                                      "mapToName": {
+                                        "type": "string",
+                                        "description": "The name of the field in your application."
+                                      },
+                                      "mapToDisplayName": {
+                                        "type": "string",
+                                        "description": "Optional display name of the field to show the user in the mapping UI."
+                                      },
+                                      "prompt": {
+                                        "type": "string",
+                                        "description": "Optional prompt to show the user in the mapping UI."
+                                      },
+                                      "mappedValues": {
+                                        "type": "array",
+                                        "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                                        "items": {
+                                          "title": "Mapped Value",
+                                          "type": "object",
+                                          "required": [
+                                            "mappedValue",
+                                            "mappedDisplayValue"
+                                          ],
+                                          "properties": {
+                                            "mappedValue": {
+                                              "type": "string"
+                                            },
+                                            "mappedDisplayValue": {
+                                              "type": "string"
                                             }
                                           }
-                                        },
-                                        "fieldName": {
-                                          "type": "string",
-                                          "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                                         }
+                                      },
+                                      "fieldName": {
+                                        "type": "string",
+                                        "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                                       }
                                     }
                                   }
@@ -2777,55 +2753,51 @@
                       }
                     },
                     "dynamicMappingsInput": {
-                      "type": "object",
-                      "description": "Stores information about dynamic field mappings.",
-                      "additionalProperties": {
-                        "title": "Dynamic Field Mappings",
-                        "type": "array",
-                        "description": "An array of field mapping entries for dynamic field mappings.",
-                        "items": {
-                          "title": "Field Mapping Entry",
-                          "type": "object",
-                          "required": [
-                            "mapToName"
-                          ],
-                          "properties": {
-                            "mapToName": {
-                              "type": "string",
-                              "description": "The name of the field in your application."
-                            },
-                            "mapToDisplayName": {
-                              "type": "string",
-                              "description": "Optional display name of the field to show the user in the mapping UI."
-                            },
-                            "prompt": {
-                              "type": "string",
-                              "description": "Optional prompt to show the user in the mapping UI."
-                            },
-                            "mappedValues": {
-                              "type": "array",
-                              "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                              "items": {
-                                "title": "Mapped Value",
-                                "type": "object",
-                                "required": [
-                                  "mappedValue",
-                                  "mappedDisplayValue"
-                                ],
-                                "properties": {
-                                  "mappedValue": {
-                                    "type": "string"
-                                  },
-                                  "mappedDisplayValue": {
-                                    "type": "string"
-                                  }
+                      "title": "Dynamic Mappings Input",
+                      "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                      "type": "array",
+                      "items": {
+                        "title": "Field Mapping Entry",
+                        "type": "object",
+                        "required": [
+                          "mapToName"
+                        ],
+                        "properties": {
+                          "mapToName": {
+                            "type": "string",
+                            "description": "The name of the field in your application."
+                          },
+                          "mapToDisplayName": {
+                            "type": "string",
+                            "description": "Optional display name of the field to show the user in the mapping UI."
+                          },
+                          "prompt": {
+                            "type": "string",
+                            "description": "Optional prompt to show the user in the mapping UI."
+                          },
+                          "mappedValues": {
+                            "type": "array",
+                            "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                            "items": {
+                              "title": "Mapped Value",
+                              "type": "object",
+                              "required": [
+                                "mappedValue",
+                                "mappedDisplayValue"
+                              ],
+                              "properties": {
+                                "mappedValue": {
+                                  "type": "string"
+                                },
+                                "mappedDisplayValue": {
+                                  "type": "string"
                                 }
                               }
-                            },
-                            "fieldName": {
-                              "type": "string",
-                              "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                             }
+                          },
+                          "fieldName": {
+                            "type": "string",
+                            "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                           }
                         }
                       }
@@ -2955,55 +2927,51 @@
                           }
                         },
                         "dynamicMappingsInput": {
-                          "type": "object",
-                          "description": "Stores information about dynamic field mappings.",
-                          "additionalProperties": {
-                            "title": "Dynamic Field Mappings",
-                            "type": "array",
-                            "description": "An array of field mapping entries for dynamic field mappings.",
-                            "items": {
-                              "title": "Field Mapping Entry",
-                              "type": "object",
-                              "required": [
-                                "mapToName"
-                              ],
-                              "properties": {
-                                "mapToName": {
-                                  "type": "string",
-                                  "description": "The name of the field in your application."
-                                },
-                                "mapToDisplayName": {
-                                  "type": "string",
-                                  "description": "Optional display name of the field to show the user in the mapping UI."
-                                },
-                                "prompt": {
-                                  "type": "string",
-                                  "description": "Optional prompt to show the user in the mapping UI."
-                                },
-                                "mappedValues": {
-                                  "type": "array",
-                                  "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                                  "items": {
-                                    "title": "Mapped Value",
-                                    "type": "object",
-                                    "required": [
-                                      "mappedValue",
-                                      "mappedDisplayValue"
-                                    ],
-                                    "properties": {
-                                      "mappedValue": {
-                                        "type": "string"
-                                      },
-                                      "mappedDisplayValue": {
-                                        "type": "string"
-                                      }
+                          "title": "Dynamic Mappings Input",
+                          "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                          "type": "array",
+                          "items": {
+                            "title": "Field Mapping Entry",
+                            "type": "object",
+                            "required": [
+                              "mapToName"
+                            ],
+                            "properties": {
+                              "mapToName": {
+                                "type": "string",
+                                "description": "The name of the field in your application."
+                              },
+                              "mapToDisplayName": {
+                                "type": "string",
+                                "description": "Optional display name of the field to show the user in the mapping UI."
+                              },
+                              "prompt": {
+                                "type": "string",
+                                "description": "Optional prompt to show the user in the mapping UI."
+                              },
+                              "mappedValues": {
+                                "type": "array",
+                                "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                                "items": {
+                                  "title": "Mapped Value",
+                                  "type": "object",
+                                  "required": [
+                                    "mappedValue",
+                                    "mappedDisplayValue"
+                                  ],
+                                  "properties": {
+                                    "mappedValue": {
+                                      "type": "string"
+                                    },
+                                    "mappedDisplayValue": {
+                                      "type": "string"
                                     }
                                   }
-                                },
-                                "fieldName": {
-                                  "type": "string",
-                                  "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                                 }
+                              },
+                              "fieldName": {
+                                "type": "string",
+                                "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                               }
                             }
                           }
@@ -3138,55 +3106,51 @@
                 }
               },
               "dynamicMappingsInput": {
-                "type": "object",
-                "description": "Stores information about dynamic field mappings.",
-                "additionalProperties": {
-                  "title": "Dynamic Field Mappings",
-                  "type": "array",
-                  "description": "An array of field mapping entries for dynamic field mappings.",
-                  "items": {
-                    "title": "Field Mapping Entry",
-                    "type": "object",
-                    "required": [
-                      "mapToName"
-                    ],
-                    "properties": {
-                      "mapToName": {
-                        "type": "string",
-                        "description": "The name of the field in your application."
-                      },
-                      "mapToDisplayName": {
-                        "type": "string",
-                        "description": "Optional display name of the field to show the user in the mapping UI."
-                      },
-                      "prompt": {
-                        "type": "string",
-                        "description": "Optional prompt to show the user in the mapping UI."
-                      },
-                      "mappedValues": {
-                        "type": "array",
-                        "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                        "items": {
-                          "title": "Mapped Value",
-                          "type": "object",
-                          "required": [
-                            "mappedValue",
-                            "mappedDisplayValue"
-                          ],
-                          "properties": {
-                            "mappedValue": {
-                              "type": "string"
-                            },
-                            "mappedDisplayValue": {
-                              "type": "string"
-                            }
+                "title": "Dynamic Mappings Input",
+                "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                "type": "array",
+                "items": {
+                  "title": "Field Mapping Entry",
+                  "type": "object",
+                  "required": [
+                    "mapToName"
+                  ],
+                  "properties": {
+                    "mapToName": {
+                      "type": "string",
+                      "description": "The name of the field in your application."
+                    },
+                    "mapToDisplayName": {
+                      "type": "string",
+                      "description": "Optional display name of the field to show the user in the mapping UI."
+                    },
+                    "prompt": {
+                      "type": "string",
+                      "description": "Optional prompt to show the user in the mapping UI."
+                    },
+                    "mappedValues": {
+                      "type": "array",
+                      "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                      "items": {
+                        "title": "Mapped Value",
+                        "type": "object",
+                        "required": [
+                          "mappedValue",
+                          "mappedDisplayValue"
+                        ],
+                        "properties": {
+                          "mappedValue": {
+                            "type": "string"
+                          },
+                          "mappedDisplayValue": {
+                            "type": "string"
                           }
                         }
-                      },
-                      "fieldName": {
-                        "type": "string",
-                        "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                       }
+                    },
+                    "fieldName": {
+                      "type": "string",
+                      "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                     }
                   }
                 }
@@ -4191,55 +4155,51 @@
                           }
                         },
                         "dynamicMappingsInput": {
-                          "type": "object",
-                          "description": "Stores information about dynamic field mappings.",
-                          "additionalProperties": {
-                            "title": "Dynamic Field Mappings",
-                            "type": "array",
-                            "description": "An array of field mapping entries for dynamic field mappings.",
-                            "items": {
-                              "title": "Field Mapping Entry",
-                              "type": "object",
-                              "required": [
-                                "mapToName"
-                              ],
-                              "properties": {
-                                "mapToName": {
-                                  "type": "string",
-                                  "description": "The name of the field in your application."
-                                },
-                                "mapToDisplayName": {
-                                  "type": "string",
-                                  "description": "Optional display name of the field to show the user in the mapping UI."
-                                },
-                                "prompt": {
-                                  "type": "string",
-                                  "description": "Optional prompt to show the user in the mapping UI."
-                                },
-                                "mappedValues": {
-                                  "type": "array",
-                                  "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                                  "items": {
-                                    "title": "Mapped Value",
-                                    "type": "object",
-                                    "required": [
-                                      "mappedValue",
-                                      "mappedDisplayValue"
-                                    ],
-                                    "properties": {
-                                      "mappedValue": {
-                                        "type": "string"
-                                      },
-                                      "mappedDisplayValue": {
-                                        "type": "string"
-                                      }
+                          "title": "Dynamic Mappings Input",
+                          "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                          "type": "array",
+                          "items": {
+                            "title": "Field Mapping Entry",
+                            "type": "object",
+                            "required": [
+                              "mapToName"
+                            ],
+                            "properties": {
+                              "mapToName": {
+                                "type": "string",
+                                "description": "The name of the field in your application."
+                              },
+                              "mapToDisplayName": {
+                                "type": "string",
+                                "description": "Optional display name of the field to show the user in the mapping UI."
+                              },
+                              "prompt": {
+                                "type": "string",
+                                "description": "Optional prompt to show the user in the mapping UI."
+                              },
+                              "mappedValues": {
+                                "type": "array",
+                                "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                                "items": {
+                                  "title": "Mapped Value",
+                                  "type": "object",
+                                  "required": [
+                                    "mappedValue",
+                                    "mappedDisplayValue"
+                                  ],
+                                  "properties": {
+                                    "mappedValue": {
+                                      "type": "string"
+                                    },
+                                    "mappedDisplayValue": {
+                                      "type": "string"
                                     }
                                   }
-                                },
-                                "fieldName": {
-                                  "type": "string",
-                                  "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                                 }
+                              },
+                              "fieldName": {
+                                "type": "string",
+                                "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                               }
                             }
                           }
@@ -4539,55 +4499,51 @@
                       }
                     },
                     "dynamicMappingsInput": {
-                      "type": "object",
-                      "description": "Stores information about dynamic field mappings.",
-                      "additionalProperties": {
-                        "title": "Dynamic Field Mappings",
-                        "type": "array",
-                        "description": "An array of field mapping entries for dynamic field mappings.",
-                        "items": {
-                          "title": "Field Mapping Entry",
-                          "type": "object",
-                          "required": [
-                            "mapToName"
-                          ],
-                          "properties": {
-                            "mapToName": {
-                              "type": "string",
-                              "description": "The name of the field in your application."
-                            },
-                            "mapToDisplayName": {
-                              "type": "string",
-                              "description": "Optional display name of the field to show the user in the mapping UI."
-                            },
-                            "prompt": {
-                              "type": "string",
-                              "description": "Optional prompt to show the user in the mapping UI."
-                            },
-                            "mappedValues": {
-                              "type": "array",
-                              "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                              "items": {
-                                "title": "Mapped Value",
-                                "type": "object",
-                                "required": [
-                                  "mappedValue",
-                                  "mappedDisplayValue"
-                                ],
-                                "properties": {
-                                  "mappedValue": {
-                                    "type": "string"
-                                  },
-                                  "mappedDisplayValue": {
-                                    "type": "string"
-                                  }
+                      "title": "Dynamic Mappings Input",
+                      "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                      "type": "array",
+                      "items": {
+                        "title": "Field Mapping Entry",
+                        "type": "object",
+                        "required": [
+                          "mapToName"
+                        ],
+                        "properties": {
+                          "mapToName": {
+                            "type": "string",
+                            "description": "The name of the field in your application."
+                          },
+                          "mapToDisplayName": {
+                            "type": "string",
+                            "description": "Optional display name of the field to show the user in the mapping UI."
+                          },
+                          "prompt": {
+                            "type": "string",
+                            "description": "Optional prompt to show the user in the mapping UI."
+                          },
+                          "mappedValues": {
+                            "type": "array",
+                            "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                            "items": {
+                              "title": "Mapped Value",
+                              "type": "object",
+                              "required": [
+                                "mappedValue",
+                                "mappedDisplayValue"
+                              ],
+                              "properties": {
+                                "mappedValue": {
+                                  "type": "string"
+                                },
+                                "mappedDisplayValue": {
+                                  "type": "string"
                                 }
                               }
-                            },
-                            "fieldName": {
-                              "type": "string",
-                              "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                             }
+                          },
+                          "fieldName": {
+                            "type": "string",
+                            "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                           }
                         }
                       }
@@ -4712,55 +4668,51 @@
                 }
               },
               "dynamicMappingsInput": {
-                "type": "object",
-                "description": "Stores information about dynamic field mappings.",
-                "additionalProperties": {
-                  "title": "Dynamic Field Mappings",
-                  "type": "array",
-                  "description": "An array of field mapping entries for dynamic field mappings.",
-                  "items": {
-                    "title": "Field Mapping Entry",
-                    "type": "object",
-                    "required": [
-                      "mapToName"
-                    ],
-                    "properties": {
-                      "mapToName": {
-                        "type": "string",
-                        "description": "The name of the field in your application."
-                      },
-                      "mapToDisplayName": {
-                        "type": "string",
-                        "description": "Optional display name of the field to show the user in the mapping UI."
-                      },
-                      "prompt": {
-                        "type": "string",
-                        "description": "Optional prompt to show the user in the mapping UI."
-                      },
-                      "mappedValues": {
-                        "type": "array",
-                        "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                        "items": {
-                          "title": "Mapped Value",
-                          "type": "object",
-                          "required": [
-                            "mappedValue",
-                            "mappedDisplayValue"
-                          ],
-                          "properties": {
-                            "mappedValue": {
-                              "type": "string"
-                            },
-                            "mappedDisplayValue": {
-                              "type": "string"
-                            }
+                "title": "Dynamic Mappings Input",
+                "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
+                "type": "array",
+                "items": {
+                  "title": "Field Mapping Entry",
+                  "type": "object",
+                  "required": [
+                    "mapToName"
+                  ],
+                  "properties": {
+                    "mapToName": {
+                      "type": "string",
+                      "description": "The name of the field in your application."
+                    },
+                    "mapToDisplayName": {
+                      "type": "string",
+                      "description": "Optional display name of the field to show the user in the mapping UI."
+                    },
+                    "prompt": {
+                      "type": "string",
+                      "description": "Optional prompt to show the user in the mapping UI."
+                    },
+                    "mappedValues": {
+                      "type": "array",
+                      "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
+                      "items": {
+                        "title": "Mapped Value",
+                        "type": "object",
+                        "required": [
+                          "mappedValue",
+                          "mappedDisplayValue"
+                        ],
+                        "properties": {
+                          "mappedValue": {
+                            "type": "string"
+                          },
+                          "mappedDisplayValue": {
+                            "type": "string"
                           }
                         }
-                      },
-                      "fieldName": {
-                        "type": "string",
-                        "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                       }
+                    },
+                    "fieldName": {
+                      "type": "string",
+                      "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
                     }
                   }
                 }

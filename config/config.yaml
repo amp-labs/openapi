@@ -92,10 +92,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/SelectedValueMappings'
         dynamicMappingsInput:
-          type: object
-          description: Stores information about dynamic field mappings.
-          additionalProperties:
-            $ref: '#/components/schemas/DynamicMappingsInput'
+          $ref: '#/components/schemas/DynamicMappingsInput'
         selectedFieldMappings:
           type: object
           description: This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.)
@@ -120,9 +117,9 @@ components:
         type: string
 
     DynamicMappingsInput:
-      title: Dynamic Field Mappings
+      title: Dynamic Mappings Input
+      description: An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.
       type: array
-      description: An array of field mapping entries for dynamic field mappings.
       items:
         $ref: '#/components/schemas/DynamicMappingsInputEntry'
 
