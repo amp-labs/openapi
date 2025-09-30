@@ -124,7 +124,7 @@ components:
       type: array
       description: An array of field mapping entries for dynamic field mappings.
       items:
-        $ref: '#/components/schemas/FieldMappingEntry'
+        $ref: '#/components/schemas/DynamicFieldMappingEntry'
 
     BaseWriteConfig:
       title: Base Write Config
@@ -412,7 +412,7 @@ components:
           type: boolean
           description: The default boolean value to apply to a field
 
-    FieldMappingEntry:
+    DynamicFieldMappingEntry:
       title: Field Mapping Entry
       type: object
       required:
@@ -431,12 +431,12 @@ components:
           type: array
           description: If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.
           items:
-            $ref: '#/components/schemas/MappedValue'
+            $ref: '#/components/schemas/DynamicMappedValue'
         fieldName:
           type: string
           description: The name of the field in SaaS provider, if present, then we will not prompt the user to map the field.
 
-    MappedValue:
+    DynamicMappedValue:
       title: Mapped Value
       type: object
       required:

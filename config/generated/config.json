@@ -4950,7 +4950,7 @@
           }
         }
       },
-      "FieldMappingEntry": {
+      "DynamicFieldMappingEntry": {
         "title": "Field Mapping Entry",
         "type": "object",
         "required": [
@@ -4995,7 +4995,7 @@
           }
         }
       },
-      "MappedValue": {
+      "DynamicMappedValue": {
         "title": "Mapped Value",
         "type": "object",
         "required": [
