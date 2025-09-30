@@ -13628,7 +13628,7 @@
                                                 }
                                               }
                                             },
-                                            "dynamicFieldMappings": {
+                                            "dynamicMappingsInput": {
                                               "type": "object",
                                               "description": "Stores information about dynamic field mappings.",
                                               "additionalProperties": {
@@ -13980,7 +13980,7 @@
                                                     }
                                                   }
                                                 },
-                                                "dynamicFieldMappings": {
+                                                "dynamicMappingsInput": {
                                                   "type": "object",
                                                   "description": "Stores information about dynamic field mappings.",
                                                   "additionalProperties": {
@@ -14158,7 +14158,7 @@
                                                         }
                                                       }
                                                     },
-                                                    "dynamicFieldMappings": {
+                                                    "dynamicMappingsInput": {
                                                       "type": "object",
                                                       "description": "Stores information about dynamic field mappings.",
                                                       "additionalProperties": {
@@ -15474,7 +15474,7 @@
                                             }
                                           }
                                         },
-                                        "dynamicFieldMappings": {
+                                        "dynamicMappingsInput": {
                                           "type": "object",
                                           "description": "Stores information about dynamic field mappings.",
                                           "additionalProperties": {
@@ -15826,7 +15826,7 @@
                                                 }
                                               }
                                             },
-                                            "dynamicFieldMappings": {
+                                            "dynamicMappingsInput": {
                                               "type": "object",
                                               "description": "Stores information about dynamic field mappings.",
                                               "additionalProperties": {
@@ -16004,7 +16004,7 @@
                                                     }
                                                   }
                                                 },
-                                                "dynamicFieldMappings": {
+                                                "dynamicMappingsInput": {
                                                   "type": "object",
                                                   "description": "Stores information about dynamic field mappings.",
                                                   "additionalProperties": {
@@ -17231,7 +17231,7 @@
                                               }
                                             }
                                           },
-                                          "dynamicFieldMappings": {
+                                          "dynamicMappingsInput": {
                                             "type": "object",
                                             "description": "Stores information about dynamic field mappings.",
                                             "additionalProperties": {
@@ -17583,7 +17583,7 @@
                                                   }
                                                 }
                                               },
-                                              "dynamicFieldMappings": {
+                                              "dynamicMappingsInput": {
                                                 "type": "object",
                                                 "description": "Stores information about dynamic field mappings.",
                                                 "additionalProperties": {
@@ -17761,7 +17761,7 @@
                                                       }
                                                     }
                                                   },
-                                                  "dynamicFieldMappings": {
+                                                  "dynamicMappingsInput": {
                                                     "type": "object",
                                                     "description": "Stores information about dynamic field mappings.",
                                                     "additionalProperties": {
@@ -19810,7 +19810,7 @@
                                               }
                                             }
                                           },
-                                          "dynamicFieldMappings": {
+                                          "dynamicMappingsInput": {
                                             "type": "object",
                                             "description": "Stores information about dynamic field mappings.",
                                             "additionalProperties": {
@@ -20162,7 +20162,7 @@
                                                   }
                                                 }
                                               },
-                                              "dynamicFieldMappings": {
+                                              "dynamicMappingsInput": {
                                                 "type": "object",
                                                 "description": "Stores information about dynamic field mappings.",
                                                 "additionalProperties": {
@@ -20340,7 +20340,7 @@
                                                       }
                                                     }
                                                   },
-                                                  "dynamicFieldMappings": {
+                                                  "dynamicMappingsInput": {
                                                     "type": "object",
                                                     "description": "Stores information about dynamic field mappings.",
                                                     "additionalProperties": {
@@ -21849,7 +21849,7 @@
                                                 }
                                               }
                                             },
-                                            "dynamicFieldMappings": {
+                                            "dynamicMappingsInput": {
                                               "type": "object",
                                               "description": "Stores information about dynamic field mappings.",
                                               "additionalProperties": {
@@ -22657,7 +22657,7 @@
                                               }
                                             }
                                           },
-                                          "dynamicFieldMappings": {
+                                          "dynamicMappingsInput": {
                                             "type": "object",
                                             "description": "Stores information about dynamic field mappings.",
                                             "additionalProperties": {
@@ -23009,7 +23009,7 @@
                                                   }
                                                 }
                                               },
-                                              "dynamicFieldMappings": {
+                                              "dynamicMappingsInput": {
                                                 "type": "object",
                                                 "description": "Stores information about dynamic field mappings.",
                                                 "additionalProperties": {
@@ -23187,7 +23187,7 @@
                                                       }
                                                     }
                                                   },
-                                                  "dynamicFieldMappings": {
+                                                  "dynamicMappingsInput": {
                                                     "type": "object",
                                                     "description": "Stores information about dynamic field mappings.",
                                                     "additionalProperties": {
@@ -25527,7 +25527,7 @@
                                                 }
                                               }
                                             },
-                                            "dynamicFieldMappings": {
+                                            "dynamicMappingsInput": {
                                               "type": "object",
                                               "description": "Stores information about dynamic field mappings.",
                                               "additionalProperties": {
@@ -25879,7 +25879,7 @@
                                                     }
                                                   }
                                                 },
-                                                "dynamicFieldMappings": {
+                                                "dynamicMappingsInput": {
                                                   "type": "object",
                                                   "description": "Stores information about dynamic field mappings.",
                                                   "additionalProperties": {
@@ -26057,7 +26057,7 @@
                                                         }
                                                       }
                                                     },
-                                                    "dynamicFieldMappings": {
+                                                    "dynamicMappingsInput": {
                                                       "type": "object",
                                                       "description": "Stores information about dynamic field mappings.",
                                                       "additionalProperties": {
@@ -54331,7 +54331,7 @@
                                     }
                                   }
                                 },
-                                "dynamicFieldMappings": {
+                                "dynamicMappingsInput": {
                                   "type": "object",
                                   "description": "Stores information about dynamic field mappings.",
                                   "additionalProperties": {
@@ -54683,7 +54683,7 @@
                                         }
                                       }
                                     },
-                                    "dynamicFieldMappings": {
+                                    "dynamicMappingsInput": {
                                       "type": "object",
                                       "description": "Stores information about dynamic field mappings.",
                                       "additionalProperties": {
@@ -54861,7 +54861,7 @@
                                             }
                                           }
                                         },
-                                        "dynamicFieldMappings": {
+                                        "dynamicMappingsInput": {
                                           "type": "object",
                                           "description": "Stores information about dynamic field mappings.",
                                           "additionalProperties": {
@@ -55681,7 +55681,7 @@
                                 }
                               }
                             },
-                            "dynamicFieldMappings": {
+                            "dynamicMappingsInput": {
                               "type": "object",
                               "description": "Stores information about dynamic field mappings.",
                               "additionalProperties": {
@@ -56033,7 +56033,7 @@
                                     }
                                   }
                                 },
-                                "dynamicFieldMappings": {
+                                "dynamicMappingsInput": {
                                   "type": "object",
                                   "description": "Stores information about dynamic field mappings.",
                                   "additionalProperties": {
@@ -56211,7 +56211,7 @@
                                         }
                                       }
                                     },
-                                    "dynamicFieldMappings": {
+                                    "dynamicMappingsInput": {
                                       "type": "object",
                                       "description": "Stores information about dynamic field mappings.",
                                       "additionalProperties": {

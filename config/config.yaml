@@ -91,11 +91,11 @@ components:
           x-go-type-skip-optional-pointer: true
           additionalProperties:
             $ref: '#/components/schemas/SelectedValueMappings'
-        dynamicFieldMappings:
+        dynamicMappingsInput:
           type: object
           description: Stores information about dynamic field mappings.
           additionalProperties:
-            $ref: '#/components/schemas/DynamicFieldMappings'
+            $ref: '#/components/schemas/DynamicMappingsInput'
         selectedFieldMappings:
           type: object
           description: This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.)
@@ -119,12 +119,12 @@ components:
       additionalProperties:
         type: string
 
-    DynamicFieldMappings:
+    DynamicMappingsInput:
       title: Dynamic Field Mappings
       type: array
       description: An array of field mapping entries for dynamic field mappings.
       items:
-        $ref: '#/components/schemas/DynamicFieldMappingEntry'
+        $ref: '#/components/schemas/DynamicMappingsInputEntry'
 
     BaseWriteConfig:
       title: Base Write Config
@@ -412,7 +412,7 @@ components:
           type: boolean
           description: The default boolean value to apply to a field
 
-    DynamicFieldMappingEntry:
+    DynamicMappingsInputEntry:
       title: Field Mapping Entry
       type: object
       required:
@@ -431,12 +431,12 @@ components:
           type: array
           description: If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.
           items:
-            $ref: '#/components/schemas/DynamicMappedValue'
+            $ref: '#/components/schemas/DynamicMappingsInputMappedValue'
         fieldName:
           type: string
           description: The name of the field in SaaS provider, if present, then we will not prompt the user to map the field.
 
-    DynamicMappedValue:
+    DynamicMappingsInputMappedValue:
       title: Mapped Value
       type: object
       required:
