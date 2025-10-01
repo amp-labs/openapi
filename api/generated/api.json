@@ -48213,7 +48213,6 @@
     "/orgs/{orgId}/memberships": {
       "post": {
         "summary": "Add user to an organization",
-        "description": "This adds builder to the default team of that org (since orgs themselves don't actually have memberships)",
         "operationId": "addUserToOrg",
         "tags": [
           "Org"
@@ -48252,54 +48251,7 @@
         },
         "responses": {
           "201": {
-            "description": "The newly created team membership",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Team Membership",
-                  "type": "object",
-                  "required": [
-                    "id",
-                    "teamId",
-                    "builderId",
-                    "role",
-                    "createTime"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "description": "The team membership ID",
-                      "example": "membership-id-123"
-                    },
-                    "teamId": {
-                      "type": "string",
-                      "description": "The ID of the team",
-                      "example": "team-id-123"
-                    },
-                    "builderId": {
-                      "type": "string",
-                      "description": "The ID of the builder",
-                      "example": "builder-id-123"
-                    },
-                    "role": {
-                      "type": "string",
-                      "description": "The role of the builder in the team",
-                      "example": "member"
-                    },
-                    "createTime": {
-                      "type": "string",
-                      "description": "The time the membership was created",
-                      "format": "date-time"
-                    },
-                    "updateTime": {
-                      "type": "string",
-                      "description": "The time the membership was last updated",
-                      "format": "date-time"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "User successfully added to organization"
           },
           "400": {
             "description": "Bad Request - Membership already exists or invalid request",
@@ -52980,7 +52932,7 @@
         "summary": "Check if a domain is claimed",
         "description": "Check if a domain is claimed by an organization. Accepts email, domain, or URL.",
         "tags": [
-          "Domain Claiming"
+          "Org"
         ],
         "x-excluded": true,
         "parameters": [
@@ -53012,7 +52964,7 @@
                     "id": {
                       "type": "string",
                       "description": "Unique identifier for the claimed domain",
-                      "example": "xyz"
+                      "example": "00000000-0000-0000-0000-000000000001"
                     },
                     "parentType": {
                       "type": "string",
@@ -53022,12 +52974,12 @@
                     "parentId": {
                       "type": "string",
                       "description": "ID of the parent entity that claimed the domain",
-                      "example": "orgId"
+                      "example": "00000000-0000-0000-0000-000000000001"
                     },
                     "domain": {
                       "type": "string",
                       "description": "The normalized domain name",
-                      "example": "apple.com"
+                      "example": "xyz.com"
                     }
                   }
                 }
@@ -53635,7 +53587,7 @@
         "summary": "Claim a domain",
         "description": "Claim a domain for an organization. Accepts email, domain, or URL.",
         "tags": [
-          "Domain Claiming"
+          "Org"
         ],
         "x-excluded": true,
         "requestBody": {
@@ -53687,7 +53639,7 @@
                     "id": {
                       "type": "string",
                       "description": "Unique identifier for the claimed domain",
-                      "example": "xyz"
+                      "example": "00000000-0000-0000-0000-000000000001"
                     },
                     "parentType": {
                       "type": "string",
@@ -53697,12 +53649,12 @@
                     "parentId": {
                       "type": "string",
                       "description": "ID of the parent entity that claimed the domain",
-                      "example": "orgId"
+                      "example": "00000000-0000-0000-0000-000000000001"
                     },
                     "domain": {
                       "type": "string",
                       "description": "The normalized domain name",
-                      "example": "apple.com"
+                      "example": "xyz.com"
                     }
                   }
                 }
@@ -54034,7 +53986,7 @@
             }
           },
           "409": {
-            "description": "Domain already claimed",
+            "description": "Domain already claimed by another organization",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -54312,7 +54264,7 @@
         "summary": "List organization's claimed domains",
         "description": "Get all domains claimed by a specific organization",
         "tags": [
-          "Domain Claiming"
+          "Org"
         ],
         "x-excluded": true,
         "parameters": [
@@ -54346,7 +54298,7 @@
                       "id": {
                         "type": "string",
                         "description": "Unique identifier for the claimed domain",
-                        "example": "xyz"
+                        "example": "00000000-0000-0000-0000-000000000001"
                       },
                       "parentType": {
                         "type": "string",
@@ -54356,12 +54308,12 @@
                       "parentId": {
                         "type": "string",
                         "description": "ID of the parent entity that claimed the domain",
-                        "example": "orgId"
+                        "example": "00000000-0000-0000-0000-000000000001"
                       },
                       "domain": {
                         "type": "string",
                         "description": "The normalized domain name",
-                        "example": "apple.com"
+                        "example": "xyz.com"
                       }
                     }
                   }
@@ -61099,49 +61051,6 @@
           }
         }
       },
-      "TeamMembership": {
-        "title": "Team Membership",
-        "type": "object",
-        "required": [
-          "id",
-          "teamId",
-          "builderId",
-          "role",
-          "createTime"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The team membership ID",
-            "example": "membership-id-123"
-          },
-          "teamId": {
-            "type": "string",
-            "description": "The ID of the team",
-            "example": "team-id-123"
-          },
-          "builderId": {
-            "type": "string",
-            "description": "The ID of the builder",
-            "example": "builder-id-123"
-          },
-          "role": {
-            "type": "string",
-            "description": "The role of the builder in the team",
-            "example": "member"
-          },
-          "createTime": {
-            "type": "string",
-            "description": "The time the membership was created",
-            "format": "date-time"
-          },
-          "updateTime": {
-            "type": "string",
-            "description": "The time the membership was last updated",
-            "format": "date-time"
-          }
-        }
-      },
       "ObjectMetadata": {
         "title": "Object Metadata",
         "type": "object",
@@ -62034,7 +61943,7 @@
           "id": {
             "type": "string",
             "description": "Unique identifier for the claimed domain",
-            "example": "xyz"
+            "example": "00000000-0000-0000-0000-000000000001"
           },
           "parentType": {
             "type": "string",
@@ -62044,12 +61953,12 @@
           "parentId": {
             "type": "string",
             "description": "ID of the parent entity that claimed the domain",
-            "example": "orgId"
+            "example": "00000000-0000-0000-0000-000000000001"
           },
           "domain": {
             "type": "string",
             "description": "The normalized domain name",
-            "example": "apple.com"
+            "example": "xyz.com"
           }
         }
       }

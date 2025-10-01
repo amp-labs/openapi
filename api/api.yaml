@@ -2901,7 +2901,6 @@ paths:
   /orgs/{orgId}/memberships:
     post:
       summary: Add user to an organization
-      description: This adds builder to the default team of that org (since orgs themselves don't actually have memberships)
       operationId: addUserToOrg
       tags: ["Org"]
       parameters:
@@ -2927,11 +2926,7 @@ paths:
                   example: builder-id-123
       responses:
         201:
-          description: The newly created team membership
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TeamMembership"
+          description: User successfully added to organization
         400:
           description: Bad Request - Membership already exists or invalid request
           content:
@@ -3472,13 +3467,12 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
 
-  # Domain Claiming API - Development endpoint (excluded from docs)
   /claimed-domains:
     get:
       operationId: checkClaimedDomain
       summary: Check if a domain is claimed
       description: Check if a domain is claimed by an organization. Accepts email, domain, or URL.
-      tags: ["Domain Claiming"]
+      tags: ["Org"]
       x-excluded: true
       parameters:
         - name: domain
@@ -3517,7 +3511,7 @@ paths:
       operationId: claimDomain
       summary: Claim a domain
       description: Claim a domain for an organization. Accepts email, domain, or URL.
-      tags: ["Domain Claiming"]
+      tags: ["Org"]
       x-excluded: true
       requestBody:
         content:
@@ -3556,7 +3550,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
         409:
-          description: Domain already claimed
+          description: Domain already claimed by another organization
           content:
             application/problem+json:
               schema:
@@ -3573,7 +3567,7 @@ paths:
       operationId: listOrgClaimedDomains
       summary: List organization's claimed domains
       description: Get all domains claimed by a specific organization
-      tags: ["Domain Claiming"]
+      tags: ["Org"]
       x-excluded: true
       parameters:
         - name: orgId
@@ -4643,40 +4637,6 @@ components:
               example: builder-id-123
             org:
               $ref: "#/components/schemas/Org"
-    TeamMembership:
-      title: Team Membership
-      type: object
-      required:
-        - id
-        - teamId
-        - builderId
-        - role
-        - createTime
-      properties:
-        id:
-          type: string
-          description: The team membership ID
-          example: membership-id-123
-        teamId:
-          type: string
-          description: The ID of the team
-          example: team-id-123
-        builderId:
-          type: string
-          description: The ID of the builder
-          example: builder-id-123
-        role:
-          type: string
-          description: The role of the builder in the team
-          example: member
-        createTime:
-          type: string
-          description: The time the membership was created
-          format: date-time
-        updateTime:
-          type: string
-          description: The time the membership was last updated
-          format: date-time
             # This schema actually isn't used in the manifest but it is used by the GetObjectMetadata endpoint
     ObjectMetadata:
       title: Object Metadata
@@ -5073,7 +5033,7 @@ components:
         id:
           type: string
           description: Unique identifier for the claimed domain
-          example: xyz
+          example: 00000000-0000-0000-0000-000000000001
         parentType:
           type: string
           description: Type of the parent entity that claimed the domain
@@ -5081,11 +5041,11 @@ components:
         parentId:
           type: string
           description: ID of the parent entity that claimed the domain
-          example: orgId
+          example: 00000000-0000-0000-0000-000000000001
         domain:
           type: string
           description: The normalized domain name
-          example: apple.com
+          example: xyz.com
 
   securitySchemes:
     APIKeyHeader:
