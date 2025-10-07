@@ -754,6 +754,13 @@ paths:
           schema:
             type: string
           example: my-project
+        - name: destructive
+          in: query
+          required: false
+          default: false
+          description: Whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.
+          schema:
+            type: string
       requestBody:
         required: true
         content:
