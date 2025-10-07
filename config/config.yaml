@@ -67,6 +67,10 @@ components:
           description: The schedule for reading the object, in cron syntax.
           example: '*/15 * * * *'
           x-go-type-skip-optional-pointer: true
+        disabled:
+          type: boolean
+          description: If this flag is set to true, scheduled reads associated with this object will be paused, and on-demand reads will not be allowed.
+          default: false
         destination:
           description: The name of the destination that the result should be sent to.
           example: accountWebhook
