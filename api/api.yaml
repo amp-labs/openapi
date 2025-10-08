@@ -3551,10 +3551,6 @@ paths:
       responses:
         201:
           description: Domain claimed successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ClaimedDomainResponse"
         400:
           description: Bad Request - Invalid input
           content:

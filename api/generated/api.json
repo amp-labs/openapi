@@ -53737,42 +53737,7 @@
         },
         "responses": {
           "201": {
-            "description": "Domain claimed successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "id",
-                    "parentType",
-                    "parentId",
-                    "domain"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "description": "Unique identifier for the claimed domain",
-                      "example": "00000000-0000-0000-0000-000000000001"
-                    },
-                    "parentType": {
-                      "type": "string",
-                      "description": "Type of the parent entity that claimed the domain",
-                      "example": "org"
-                    },
-                    "parentId": {
-                      "type": "string",
-                      "description": "ID of the parent entity that claimed the domain",
-                      "example": "00000000-0000-0000-0000-000000000001"
-                    },
-                    "domain": {
-                      "type": "string",
-                      "description": "The normalized domain name",
-                      "example": "xyz.com"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Domain claimed successfully"
           },
           "400": {
             "description": "Bad Request - Invalid input",
