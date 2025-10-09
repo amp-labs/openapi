@@ -3168,7 +3168,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: target
-  /projects/{projectIdOrName}/notifications/targets:
     get:
       summary: List notification targets
       operationId: listTargets
@@ -3216,6 +3215,8 @@ paths:
           in: path
           required: true
           description: The notification target ID.
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -3230,7 +3231,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  target: |
+                  description: |
                     Array of field paths specifying which fields to update. Allowed values include:
                     - label
                     - metadata.url
@@ -3292,7 +3293,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: updateTargetRequest
-  /projects/{projectIdOrName}/notifications/targets/{targetId}:
     delete:
       summary: Delete a notification target
       operationId: deleteTarget
@@ -3379,7 +3379,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: topic
-  /projects/{projectIdOrName}/notifications/topics:
     get:
       summary: List notification topics
       operationId: listTopics
@@ -3474,7 +3473,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: updateTopicRequest
-  /projects/{projectIdOrName}/notifications/topics/{topicId}:
     delete:
       summary: Delete a notification topic
       operationId: deleteTopic
@@ -3577,7 +3575,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: eventTopicRoute
-  /projects/{projectIdOrName}/notifications/event-topic-routes:
     get:
       summary: List notification event-topic routes with optional filtering for topic ID and event type.
       operationId: listEventTopicRoutes
@@ -3714,7 +3711,6 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: topicTargetRoute
-  /projects/{projectIdOrName}/notifications/topic-target-routes:
     get:
       summary: List notification topic-target routes
       operationId: listTopicTargetRoutes
