@@ -3492,7 +3492,7 @@ paths:
           required: true
           schema:
             type: string
-          description: Email address, domain name, or URL to check. The domain will be extracted and sanitized automatically.
+          description: Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com"); for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
           example: xyz@withampersand.com
       responses:
         200:
@@ -3537,7 +3537,7 @@ paths:
               properties:
                 domain:
                   type: string
-                  description: Email address, domain name, or URL to claim. The domain will be extracted and sanitized automatically.
+                  description: Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com"); for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
                   example: xyz@withampersand.com
                 parentId:
                   type: string
