@@ -53053,10 +53053,10 @@
             "name": "domain",
             "in": "query",
             "required": true,
+            "description": "Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., \"user@example.com\" becomes \"example.com\"); for URLs, the hostname is extracted (e.g., \"https://www.example.com\" becomes \"example.com\").\n",
             "schema": {
               "type": "string"
             },
-            "description": "Email address, domain name, or URL to check. The domain will be extracted and sanitized automatically.",
             "example": "xyz@withampersand.com"
           }
         ],
@@ -53716,7 +53716,7 @@
                 "properties": {
                   "domain": {
                     "type": "string",
-                    "description": "Email address, domain name, or URL to claim. The domain will be extracted and sanitized automatically.",
+                    "description": "Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., \"user@example.com\" becomes \"example.com\"); for URLs, the hostname is extracted (e.g., \"https://www.example.com\" becomes \"example.com\").\n",
                     "example": "xyz@withampersand.com"
                   },
                   "parentId": {

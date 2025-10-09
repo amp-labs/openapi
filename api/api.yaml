@@ -3490,9 +3490,12 @@ paths:
         - name: domain
           in: query
           required: true
+          description: >
+            Accepts an email address, domain name, or URL. The domain will be automatically extracted:
+            for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com");
+            for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
           schema:
             type: string
-          description: Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com"); for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
           example: xyz@withampersand.com
       responses:
         200:
@@ -3537,7 +3540,10 @@ paths:
               properties:
                 domain:
                   type: string
-                  description: Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com"); for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
+                  description: >
+                    Accepts an email address, domain name, or URL. The domain will be automatically extracted:
+                    for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com");
+                    for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
                   example: xyz@withampersand.com
                 parentId:
                   type: string
