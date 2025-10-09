@@ -3097,6 +3097,76 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/notifications/targets:
+    post:
+      summary: Create a notification target
+      operationId: createTarget
+      tags: ["Notification"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - label
+                - type
+                - metadata
+              properties:
+                label:
+                  type: string
+                  description: A human-readable label for the notification target.
+                  example: "Production Slack Alerts"
+                type:
+                  type: string
+                  description: The type of notification target.
+                  example: webhook
+                metadata:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                      description: Webhook URL, must start with "https://".
+                      example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+                    headers:
+                      $ref: "#/components/schemas/WebhookHeaders"
+                secrets:
+                  type: object
+                  description: Secrets for the target.
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationTarget"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: target
   /projects/{projectIdOrName}/jwt-keys:
     post:
       summary: Create a new JWT key
@@ -5064,6 +5134,49 @@ components:
           type: string
           description: The normalized domain name
           example: xyz.com
+    NotificationTarget:
+      title: Notification Target
+      required:
+        - id
+        - label
+        - type
+        - metadata
+        - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The notification target ID.
+        label:
+          type: string
+          description: A human-readable label for the notification target.
+          example: "Production Slack Alerts"
+          type:
+            type: string
+            description: The type of notification target.
+            example: webhook
+        metadata:
+          type: object
+          required:
+            - url
+          properties:
+            url:
+              type: string
+              description: Webhook URL, must start with "https://".
+              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+            headers:
+              $ref: "#/components/schemas/WebhookHeaders"
+        secrets:
+          type: object
+          description: Secrets for the target.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the notification target was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the notification target was last updated.
 
   securitySchemes:
     APIKeyHeader:
