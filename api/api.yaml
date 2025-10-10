@@ -3186,12 +3186,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  targets:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/NotificationTarget"
+                type: array
+                items:
+                  $ref: "#/components/schemas/NotificationTarget"
         default:
           description: Error
           content:
