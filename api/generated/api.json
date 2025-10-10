@@ -31223,7 +31223,12 @@
                       "timestamp": {
                         "type": "string",
                         "description": "The time the log was created.",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2025-09-12T02:04:16Z"
+                      },
+                      "severity": {
+                        "type": "string",
+                        "description": "The severity of the log.",
+                        "example": "DEBUG"
                       },
                       "message": {
                         "type": "object",
@@ -31232,35 +31237,57 @@
                           "msg"
                         ],
                         "properties": {
+                          "action_type": {
+                            "type": "string",
+                            "description": "The type of action.",
+                            "example": "read"
+                          },
+                          "installation_id": {
+                            "type": "string",
+                            "description": "The installation ID.",
+                            "example": "62ae8ce4-32b5-4c37-8cfd-56d28492cd20"
+                          },
+                          "level": {
+                            "type": "string",
+                            "description": "The log level.",
+                            "example": "DEBUG"
+                          },
+                          "log_project": {
+                            "type": "string",
+                            "description": "The log project ID.",
+                            "example": "8b257c62-6b89-4b9b-9271-6fe3f6b700f1"
+                          },
                           "msg": {
                             "type": "string",
-                            "description": "The use-readable message.",
-                            "example": "This is a log message"
-                          },
-                          "error": {
-                            "type": "string",
-                            "description": "The error message, if there has been an error."
+                            "description": "The user-readable message.",
+                            "example": "Read parameters successfully validated"
                           },
                           "operation_id": {
                             "type": "string",
-                            "description": "The operation ID."
+                            "description": "The operation ID.",
+                            "example": "01993baa-8c96-7c47-94e0-4dcb35c32eb8"
                           },
-                          "details": {
-                            "type": "object",
-                            "description": "The details of the log.",
-                            "additionalProperties": {
-                              "type": "string"
-                            },
-                            "example": {
-                              "request": "GET /api/v1/users"
-                            }
+                          "pod": {
+                            "type": "string",
+                            "description": "The pod identifier.",
+                            "example": "temporal-57b8f898f6-57p4b"
+                          },
+                          "project_id": {
+                            "type": "string",
+                            "description": "The project ID.",
+                            "example": "8b257c62-6b89-4b9b-9271-6fe3f6b700f1"
+                          },
+                          "source": {
+                            "type": "string",
+                            "description": "The source of the log.",
+                            "example": "Ampersand"
+                          },
+                          "error": {
+                            "type": "string",
+                            "description": "The error message, if there has been an error.",
+                            "example": "activity error (type: ProviderReadActivity, scheduledEventID: 7)"
                           }
                         }
-                      },
-                      "severity": {
-                        "type": "string",
-                        "description": "The severity of the log.",
-                        "example": "DEBUG"
                       }
                     }
                   }
@@ -68766,7 +68793,12 @@
           "timestamp": {
             "type": "string",
             "description": "The time the log was created.",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2025-09-12T02:04:16Z"
+          },
+          "severity": {
+            "type": "string",
+            "description": "The severity of the log.",
+            "example": "DEBUG"
           },
           "message": {
             "type": "object",
@@ -68775,35 +68807,57 @@
               "msg"
             ],
             "properties": {
+              "action_type": {
+                "type": "string",
+                "description": "The type of action.",
+                "example": "read"
+              },
+              "installation_id": {
+                "type": "string",
+                "description": "The installation ID.",
+                "example": "62ae8ce4-32b5-4c37-8cfd-56d28492cd20"
+              },
+              "level": {
+                "type": "string",
+                "description": "The log level.",
+                "example": "DEBUG"
+              },
+              "log_project": {
+                "type": "string",
+                "description": "The log project ID.",
+                "example": "8b257c62-6b89-4b9b-9271-6fe3f6b700f1"
+              },
               "msg": {
                 "type": "string",
-                "description": "The use-readable message.",
-                "example": "This is a log message"
-              },
-              "error": {
-                "type": "string",
-                "description": "The error message, if there has been an error."
+                "description": "The user-readable message.",
+                "example": "Read parameters successfully validated"
               },
               "operation_id": {
                 "type": "string",
-                "description": "The operation ID."
+                "description": "The operation ID.",
+                "example": "01993baa-8c96-7c47-94e0-4dcb35c32eb8"
               },
-              "details": {
-                "type": "object",
-                "description": "The details of the log.",
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "example": {
-                  "request": "GET /api/v1/users"
-                }
+              "pod": {
+                "type": "string",
+                "description": "The pod identifier.",
+                "example": "temporal-57b8f898f6-57p4b"
+              },
+              "project_id": {
+                "type": "string",
+                "description": "The project ID.",
+                "example": "8b257c62-6b89-4b9b-9271-6fe3f6b700f1"
+              },
+              "source": {
+                "type": "string",
+                "description": "The source of the log.",
+                "example": "Ampersand"
+              },
+              "error": {
+                "type": "string",
+                "description": "The error message, if there has been an error.",
+                "example": "activity error (type: ProviderReadActivity, scheduledEventID: 7)"
               }
             }
-          },
-          "severity": {
-            "type": "string",
-            "description": "The severity of the log.",
-            "example": "DEBUG"
           }
         }
       },
