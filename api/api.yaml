@@ -3394,12 +3394,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  topics:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/NotificationTopic"
+                type: array
+                items:
+                  $ref: "#/components/schemas/NotificationTopic"
         default:
           description: Error
           content:
@@ -3608,12 +3605,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  eventTopicRoutes:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/NotificationEventTopicRoute"
+                type: array
+                items:
+                  $ref: "#/components/schemas/NotificationEventTopicRoute"
         default:
           description: Error
           content:
@@ -3725,12 +3719,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  topicTargetRoutes:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/NotificationTopicTargetRoute"
+                type: array
+                items:
+                  $ref: "#/components/schemas/NotificationTopicTargetRoute"
         default:
           description: Error
           content:
