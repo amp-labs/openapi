@@ -3290,6 +3290,43 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: updateTargetRequest
+    get:
+      summary: Get a notification target
+      operationId: getTargetById
+      tags: ["Notification"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: targetId
+          in: path
+          required: true
+          description: The notification target ID.
+          schema:
+            type: string
+      responses:
+        200:
+          description: Notification target details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationTarget"
+        404:
+          description: Target not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     delete:
       summary: Delete a notification target
       operationId: deleteTarget
