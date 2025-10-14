@@ -31262,7 +31262,8 @@
                         "description": "The severity of the log.",
                         "example": "DEBUG"
                       }
-                    }
+                    },
+                    "additionalProperties": true
                   }
                 }
               }
@@ -68805,7 +68806,8 @@
             "description": "The severity of the log.",
             "example": "DEBUG"
           }
-        }
+        },
+        "additionalProperties": true
       },
       "SignedUrl": {
         "title": "Signed URL",
