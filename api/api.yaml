@@ -5098,6 +5098,7 @@ components:
                 type: string
               example:
                 "request": "GET /api/v1/users"
+          additionalProperties: true
         severity:
           type: string
           description: The severity of the log.
