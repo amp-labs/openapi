@@ -2969,7 +2969,8 @@ paths:
       summary: Get information about the current user
       operationId: getMyInfo
       tags: ["User"]
-      security: [] # This overrides the global security
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       responses:
         200:
           description: Information about the current user and their organizations and projects
@@ -2989,7 +2990,8 @@ paths:
       summary: Accept an invite
       operationId: acceptInvite
       tags: ["User"]
-      security: [] # This overrides the global security
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       requestBody:
         content:
           application/json:
