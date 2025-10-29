@@ -50,6 +50,8 @@ components:
           type: boolean
         subscribeSupport:
           $ref: '#/components/schemas/SubscribeSupport'
+        batchWrite:
+          $ref: '#/components/schemas/BatchWriteSupport'
 
     BulkWriteSupport:
       title: Bulk Write Support
@@ -579,6 +581,38 @@ components:
           type: boolean
         passThrough:
           type: boolean
+
+    BatchWriteSupport:
+      required:
+        - delete
+        - create
+        - update
+        - upsert
+      properties:
+        delete:
+          $ref: '#/components/schemas/BatchWriteSupportConfig'
+        create:
+          $ref: '#/components/schemas/BatchWriteSupportConfig'
+        update:
+          $ref: '#/components/schemas/BatchWriteSupportConfig'
+        upsert:
+          $ref: '#/components/schemas/BatchWriteSupportConfig'
+
+    BatchWriteSupportConfig:
+      required:
+        - supported
+      properties:
+        supported:
+          description: Whether this type of batch write operation is supported
+          type: boolean
+        defaultRecordLimit:
+          description: The default number of records supported in a batch
+          type: integer
+        objectRecordLimits:
+          description: Defines object-level overrides for batch record limits. Keys represent object names, and values specify the maximum number of records per batch for those objects.
+          type: object
+          additionalProperties:
+            type: integer
 
     ProviderMetadata:
       title: Provider Metadata
