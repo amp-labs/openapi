@@ -99,6 +99,260 @@
                 "type": "boolean"
               }
             }
+          },
+          "batchWrite": {
+            "required": [
+              "delete",
+              "create",
+              "update",
+              "upsert"
+            ],
+            "properties": {
+              "delete": {
+                "required": [
+                  "supported"
+                ],
+                "properties": {
+                  "supported": {
+                    "description": "The default number of records that each type of write supports in a batch",
+                    "type": "boolean"
+                  },
+                  "defaultRecordLimit": {
+                    "description": "Any object-level overrides for number of records supported in a batch",
+                    "x-go-type-skip-optional-pointer": true,
+                    "required": [
+                      "delete",
+                      "create",
+                      "update",
+                      "upsert"
+                    ],
+                    "properties": {
+                      "delete": {
+                        "type": "integer"
+                      },
+                      "create": {
+                        "type": "integer"
+                      },
+                      "update": {
+                        "type": "integer"
+                      },
+                      "upsert": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "recordLimits": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "required": [
+                        "delete",
+                        "create",
+                        "update",
+                        "upsert"
+                      ],
+                      "properties": {
+                        "delete": {
+                          "type": "integer"
+                        },
+                        "create": {
+                          "type": "integer"
+                        },
+                        "update": {
+                          "type": "integer"
+                        },
+                        "upsert": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "create": {
+                "required": [
+                  "supported"
+                ],
+                "properties": {
+                  "supported": {
+                    "description": "The default number of records that each type of write supports in a batch",
+                    "type": "boolean"
+                  },
+                  "defaultRecordLimit": {
+                    "description": "Any object-level overrides for number of records supported in a batch",
+                    "x-go-type-skip-optional-pointer": true,
+                    "required": [
+                      "delete",
+                      "create",
+                      "update",
+                      "upsert"
+                    ],
+                    "properties": {
+                      "delete": {
+                        "type": "integer"
+                      },
+                      "create": {
+                        "type": "integer"
+                      },
+                      "update": {
+                        "type": "integer"
+                      },
+                      "upsert": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "recordLimits": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "required": [
+                        "delete",
+                        "create",
+                        "update",
+                        "upsert"
+                      ],
+                      "properties": {
+                        "delete": {
+                          "type": "integer"
+                        },
+                        "create": {
+                          "type": "integer"
+                        },
+                        "update": {
+                          "type": "integer"
+                        },
+                        "upsert": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "update": {
+                "required": [
+                  "supported"
+                ],
+                "properties": {
+                  "supported": {
+                    "description": "The default number of records that each type of write supports in a batch",
+                    "type": "boolean"
+                  },
+                  "defaultRecordLimit": {
+                    "description": "Any object-level overrides for number of records supported in a batch",
+                    "x-go-type-skip-optional-pointer": true,
+                    "required": [
+                      "delete",
+                      "create",
+                      "update",
+                      "upsert"
+                    ],
+                    "properties": {
+                      "delete": {
+                        "type": "integer"
+                      },
+                      "create": {
+                        "type": "integer"
+                      },
+                      "update": {
+                        "type": "integer"
+                      },
+                      "upsert": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "recordLimits": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "required": [
+                        "delete",
+                        "create",
+                        "update",
+                        "upsert"
+                      ],
+                      "properties": {
+                        "delete": {
+                          "type": "integer"
+                        },
+                        "create": {
+                          "type": "integer"
+                        },
+                        "update": {
+                          "type": "integer"
+                        },
+                        "upsert": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "upsert": {
+                "required": [
+                  "supported"
+                ],
+                "properties": {
+                  "supported": {
+                    "description": "The default number of records that each type of write supports in a batch",
+                    "type": "boolean"
+                  },
+                  "defaultRecordLimit": {
+                    "description": "Any object-level overrides for number of records supported in a batch",
+                    "x-go-type-skip-optional-pointer": true,
+                    "required": [
+                      "delete",
+                      "create",
+                      "update",
+                      "upsert"
+                    ],
+                    "properties": {
+                      "delete": {
+                        "type": "integer"
+                      },
+                      "create": {
+                        "type": "integer"
+                      },
+                      "update": {
+                        "type": "integer"
+                      },
+                      "upsert": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "recordLimits": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "required": [
+                        "delete",
+                        "create",
+                        "update",
+                        "upsert"
+                      ],
+                      "properties": {
+                        "delete": {
+                          "type": "integer"
+                        },
+                        "create": {
+                          "type": "integer"
+                        },
+                        "update": {
+                          "type": "integer"
+                        },
+                        "upsert": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -930,6 +1184,260 @@
                       "type": "boolean"
                     }
                   }
+                },
+                "batchWrite": {
+                  "required": [
+                    "delete",
+                    "create",
+                    "update",
+                    "upsert"
+                  ],
+                  "properties": {
+                    "delete": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "create": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "update": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "upsert": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -1024,6 +1532,260 @@
                   },
                   "passThrough": {
                     "type": "boolean"
+                  }
+                }
+              },
+              "batchWrite": {
+                "required": [
+                  "delete",
+                  "create",
+                  "update",
+                  "upsert"
+                ],
+                "properties": {
+                  "delete": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "create": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "update": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "upsert": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
                   }
                 }
               }
@@ -1507,6 +2269,260 @@
                     "type": "boolean"
                   }
                 }
+              },
+              "batchWrite": {
+                "required": [
+                  "delete",
+                  "create",
+                  "update",
+                  "upsert"
+                ],
+                "properties": {
+                  "delete": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "create": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "update": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "upsert": {
+                    "required": [
+                      "supported"
+                    ],
+                    "properties": {
+                      "supported": {
+                        "description": "The default number of records that each type of write supports in a batch",
+                        "type": "boolean"
+                      },
+                      "defaultRecordLimit": {
+                        "description": "Any object-level overrides for number of records supported in a batch",
+                        "x-go-type-skip-optional-pointer": true,
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "type": "integer"
+                          },
+                          "create": {
+                            "type": "integer"
+                          },
+                          "update": {
+                            "type": "integer"
+                          },
+                          "upsert": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "recordLimits": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  }
+                }
               }
             }
           },
@@ -1736,6 +2752,260 @@
                         },
                         "passThrough": {
                           "type": "boolean"
+                        }
+                      }
+                    },
+                    "batchWrite": {
+                      "required": [
+                        "delete",
+                        "create",
+                        "update",
+                        "upsert"
+                      ],
+                      "properties": {
+                        "delete": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        },
+                        "create": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        },
+                        "update": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        },
+                        "upsert": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
                         }
                       }
                     }
@@ -2323,6 +3593,260 @@
                           "type": "boolean"
                         }
                       }
+                    },
+                    "batchWrite": {
+                      "required": [
+                        "delete",
+                        "create",
+                        "update",
+                        "upsert"
+                      ],
+                      "properties": {
+                        "delete": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        },
+                        "create": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        },
+                        "update": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        },
+                        "upsert": {
+                          "required": [
+                            "supported"
+                          ],
+                          "properties": {
+                            "supported": {
+                              "description": "The default number of records that each type of write supports in a batch",
+                              "type": "boolean"
+                            },
+                            "defaultRecordLimit": {
+                              "description": "Any object-level overrides for number of records supported in a batch",
+                              "x-go-type-skip-optional-pointer": true,
+                              "required": [
+                                "delete",
+                                "create",
+                                "update",
+                                "upsert"
+                              ],
+                              "properties": {
+                                "delete": {
+                                  "type": "integer"
+                                },
+                                "create": {
+                                  "type": "integer"
+                                },
+                                "update": {
+                                  "type": "integer"
+                                },
+                                "upsert": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "recordLimits": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 },
@@ -2552,6 +4076,260 @@
                               },
                               "passThrough": {
                                 "type": "boolean"
+                              }
+                            }
+                          },
+                          "batchWrite": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "required": [
+                                  "supported"
+                                ],
+                                "properties": {
+                                  "supported": {
+                                    "description": "The default number of records that each type of write supports in a batch",
+                                    "type": "boolean"
+                                  },
+                                  "defaultRecordLimit": {
+                                    "description": "Any object-level overrides for number of records supported in a batch",
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "required": [
+                                      "delete",
+                                      "create",
+                                      "update",
+                                      "upsert"
+                                    ],
+                                    "properties": {
+                                      "delete": {
+                                        "type": "integer"
+                                      },
+                                      "create": {
+                                        "type": "integer"
+                                      },
+                                      "update": {
+                                        "type": "integer"
+                                      },
+                                      "upsert": {
+                                        "type": "integer"
+                                      }
+                                    }
+                                  },
+                                  "recordLimits": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "required": [
+                                        "delete",
+                                        "create",
+                                        "update",
+                                        "upsert"
+                                      ],
+                                      "properties": {
+                                        "delete": {
+                                          "type": "integer"
+                                        },
+                                        "create": {
+                                          "type": "integer"
+                                        },
+                                        "update": {
+                                          "type": "integer"
+                                        },
+                                        "upsert": {
+                                          "type": "integer"
+                                        }
+                                      }
+                                    },
+                                    "x-go-type-skip-optional-pointer": true
+                                  }
+                                }
+                              },
+                              "create": {
+                                "required": [
+                                  "supported"
+                                ],
+                                "properties": {
+                                  "supported": {
+                                    "description": "The default number of records that each type of write supports in a batch",
+                                    "type": "boolean"
+                                  },
+                                  "defaultRecordLimit": {
+                                    "description": "Any object-level overrides for number of records supported in a batch",
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "required": [
+                                      "delete",
+                                      "create",
+                                      "update",
+                                      "upsert"
+                                    ],
+                                    "properties": {
+                                      "delete": {
+                                        "type": "integer"
+                                      },
+                                      "create": {
+                                        "type": "integer"
+                                      },
+                                      "update": {
+                                        "type": "integer"
+                                      },
+                                      "upsert": {
+                                        "type": "integer"
+                                      }
+                                    }
+                                  },
+                                  "recordLimits": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "required": [
+                                        "delete",
+                                        "create",
+                                        "update",
+                                        "upsert"
+                                      ],
+                                      "properties": {
+                                        "delete": {
+                                          "type": "integer"
+                                        },
+                                        "create": {
+                                          "type": "integer"
+                                        },
+                                        "update": {
+                                          "type": "integer"
+                                        },
+                                        "upsert": {
+                                          "type": "integer"
+                                        }
+                                      }
+                                    },
+                                    "x-go-type-skip-optional-pointer": true
+                                  }
+                                }
+                              },
+                              "update": {
+                                "required": [
+                                  "supported"
+                                ],
+                                "properties": {
+                                  "supported": {
+                                    "description": "The default number of records that each type of write supports in a batch",
+                                    "type": "boolean"
+                                  },
+                                  "defaultRecordLimit": {
+                                    "description": "Any object-level overrides for number of records supported in a batch",
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "required": [
+                                      "delete",
+                                      "create",
+                                      "update",
+                                      "upsert"
+                                    ],
+                                    "properties": {
+                                      "delete": {
+                                        "type": "integer"
+                                      },
+                                      "create": {
+                                        "type": "integer"
+                                      },
+                                      "update": {
+                                        "type": "integer"
+                                      },
+                                      "upsert": {
+                                        "type": "integer"
+                                      }
+                                    }
+                                  },
+                                  "recordLimits": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "required": [
+                                        "delete",
+                                        "create",
+                                        "update",
+                                        "upsert"
+                                      ],
+                                      "properties": {
+                                        "delete": {
+                                          "type": "integer"
+                                        },
+                                        "create": {
+                                          "type": "integer"
+                                        },
+                                        "update": {
+                                          "type": "integer"
+                                        },
+                                        "upsert": {
+                                          "type": "integer"
+                                        }
+                                      }
+                                    },
+                                    "x-go-type-skip-optional-pointer": true
+                                  }
+                                }
+                              },
+                              "upsert": {
+                                "required": [
+                                  "supported"
+                                ],
+                                "properties": {
+                                  "supported": {
+                                    "description": "The default number of records that each type of write supports in a batch",
+                                    "type": "boolean"
+                                  },
+                                  "defaultRecordLimit": {
+                                    "description": "Any object-level overrides for number of records supported in a batch",
+                                    "x-go-type-skip-optional-pointer": true,
+                                    "required": [
+                                      "delete",
+                                      "create",
+                                      "update",
+                                      "upsert"
+                                    ],
+                                    "properties": {
+                                      "delete": {
+                                        "type": "integer"
+                                      },
+                                      "create": {
+                                        "type": "integer"
+                                      },
+                                      "update": {
+                                        "type": "integer"
+                                      },
+                                      "upsert": {
+                                        "type": "integer"
+                                      }
+                                    }
+                                  },
+                                  "recordLimits": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "required": [
+                                        "delete",
+                                        "create",
+                                        "update",
+                                        "upsert"
+                                      ],
+                                      "properties": {
+                                        "delete": {
+                                          "type": "integer"
+                                        },
+                                        "create": {
+                                          "type": "integer"
+                                        },
+                                        "update": {
+                                          "type": "integer"
+                                        },
+                                        "upsert": {
+                                          "type": "integer"
+                                        }
+                                      }
+                                    },
+                                    "x-go-type-skip-optional-pointer": true
+                                  }
+                                }
                               }
                             }
                           }
@@ -3126,6 +4904,260 @@
                       "type": "boolean"
                     }
                   }
+                },
+                "batchWrite": {
+                  "required": [
+                    "delete",
+                    "create",
+                    "update",
+                    "upsert"
+                  ],
+                  "properties": {
+                    "delete": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "create": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "update": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "upsert": {
+                      "required": [
+                        "supported"
+                      ],
+                      "properties": {
+                        "supported": {
+                          "description": "The default number of records that each type of write supports in a batch",
+                          "type": "boolean"
+                        },
+                        "defaultRecordLimit": {
+                          "description": "Any object-level overrides for number of records supported in a batch",
+                          "x-go-type-skip-optional-pointer": true,
+                          "required": [
+                            "delete",
+                            "create",
+                            "update",
+                            "upsert"
+                          ],
+                          "properties": {
+                            "delete": {
+                              "type": "integer"
+                            },
+                            "create": {
+                              "type": "integer"
+                            },
+                            "update": {
+                              "type": "integer"
+                            },
+                            "upsert": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "recordLimits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "required": [
+                              "delete",
+                              "create",
+                              "update",
+                              "upsert"
+                            ],
+                            "properties": {
+                              "delete": {
+                                "type": "integer"
+                              },
+                              "create": {
+                                "type": "integer"
+                              },
+                              "update": {
+                                "type": "integer"
+                              },
+                              "upsert": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -3357,6 +5389,260 @@
                             "type": "boolean"
                           }
                         }
+                      },
+                      "batchWrite": {
+                        "required": [
+                          "delete",
+                          "create",
+                          "update",
+                          "upsert"
+                        ],
+                        "properties": {
+                          "delete": {
+                            "required": [
+                              "supported"
+                            ],
+                            "properties": {
+                              "supported": {
+                                "description": "The default number of records that each type of write supports in a batch",
+                                "type": "boolean"
+                              },
+                              "defaultRecordLimit": {
+                                "description": "Any object-level overrides for number of records supported in a batch",
+                                "x-go-type-skip-optional-pointer": true,
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "recordLimits": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "required": [
+                                    "delete",
+                                    "create",
+                                    "update",
+                                    "upsert"
+                                  ],
+                                  "properties": {
+                                    "delete": {
+                                      "type": "integer"
+                                    },
+                                    "create": {
+                                      "type": "integer"
+                                    },
+                                    "update": {
+                                      "type": "integer"
+                                    },
+                                    "upsert": {
+                                      "type": "integer"
+                                    }
+                                  }
+                                },
+                                "x-go-type-skip-optional-pointer": true
+                              }
+                            }
+                          },
+                          "create": {
+                            "required": [
+                              "supported"
+                            ],
+                            "properties": {
+                              "supported": {
+                                "description": "The default number of records that each type of write supports in a batch",
+                                "type": "boolean"
+                              },
+                              "defaultRecordLimit": {
+                                "description": "Any object-level overrides for number of records supported in a batch",
+                                "x-go-type-skip-optional-pointer": true,
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "recordLimits": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "required": [
+                                    "delete",
+                                    "create",
+                                    "update",
+                                    "upsert"
+                                  ],
+                                  "properties": {
+                                    "delete": {
+                                      "type": "integer"
+                                    },
+                                    "create": {
+                                      "type": "integer"
+                                    },
+                                    "update": {
+                                      "type": "integer"
+                                    },
+                                    "upsert": {
+                                      "type": "integer"
+                                    }
+                                  }
+                                },
+                                "x-go-type-skip-optional-pointer": true
+                              }
+                            }
+                          },
+                          "update": {
+                            "required": [
+                              "supported"
+                            ],
+                            "properties": {
+                              "supported": {
+                                "description": "The default number of records that each type of write supports in a batch",
+                                "type": "boolean"
+                              },
+                              "defaultRecordLimit": {
+                                "description": "Any object-level overrides for number of records supported in a batch",
+                                "x-go-type-skip-optional-pointer": true,
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "recordLimits": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "required": [
+                                    "delete",
+                                    "create",
+                                    "update",
+                                    "upsert"
+                                  ],
+                                  "properties": {
+                                    "delete": {
+                                      "type": "integer"
+                                    },
+                                    "create": {
+                                      "type": "integer"
+                                    },
+                                    "update": {
+                                      "type": "integer"
+                                    },
+                                    "upsert": {
+                                      "type": "integer"
+                                    }
+                                  }
+                                },
+                                "x-go-type-skip-optional-pointer": true
+                              }
+                            }
+                          },
+                          "upsert": {
+                            "required": [
+                              "supported"
+                            ],
+                            "properties": {
+                              "supported": {
+                                "description": "The default number of records that each type of write supports in a batch",
+                                "type": "boolean"
+                              },
+                              "defaultRecordLimit": {
+                                "description": "Any object-level overrides for number of records supported in a batch",
+                                "x-go-type-skip-optional-pointer": true,
+                                "required": [
+                                  "delete",
+                                  "create",
+                                  "update",
+                                  "upsert"
+                                ],
+                                "properties": {
+                                  "delete": {
+                                    "type": "integer"
+                                  },
+                                  "create": {
+                                    "type": "integer"
+                                  },
+                                  "update": {
+                                    "type": "integer"
+                                  },
+                                  "upsert": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "recordLimits": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "required": [
+                                    "delete",
+                                    "create",
+                                    "update",
+                                    "upsert"
+                                  ],
+                                  "properties": {
+                                    "delete": {
+                                      "type": "integer"
+                                    },
+                                    "create": {
+                                      "type": "integer"
+                                    },
+                                    "update": {
+                                      "type": "integer"
+                                    },
+                                    "upsert": {
+                                      "type": "integer"
+                                    }
+                                  }
+                                },
+                                "x-go-type-skip-optional-pointer": true
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -3511,6 +5797,343 @@
           },
           "passThrough": {
             "type": "boolean"
+          }
+        }
+      },
+      "BatchWriteSupport": {
+        "required": [
+          "delete",
+          "create",
+          "update",
+          "upsert"
+        ],
+        "properties": {
+          "delete": {
+            "required": [
+              "supported"
+            ],
+            "properties": {
+              "supported": {
+                "description": "The default number of records that each type of write supports in a batch",
+                "type": "boolean"
+              },
+              "defaultRecordLimit": {
+                "description": "Any object-level overrides for number of records supported in a batch",
+                "x-go-type-skip-optional-pointer": true,
+                "required": [
+                  "delete",
+                  "create",
+                  "update",
+                  "upsert"
+                ],
+                "properties": {
+                  "delete": {
+                    "type": "integer"
+                  },
+                  "create": {
+                    "type": "integer"
+                  },
+                  "update": {
+                    "type": "integer"
+                  },
+                  "upsert": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "recordLimits": {
+                "type": "object",
+                "additionalProperties": {
+                  "required": [
+                    "delete",
+                    "create",
+                    "update",
+                    "upsert"
+                  ],
+                  "properties": {
+                    "delete": {
+                      "type": "integer"
+                    },
+                    "create": {
+                      "type": "integer"
+                    },
+                    "update": {
+                      "type": "integer"
+                    },
+                    "upsert": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "create": {
+            "required": [
+              "supported"
+            ],
+            "properties": {
+              "supported": {
+                "description": "The default number of records that each type of write supports in a batch",
+                "type": "boolean"
+              },
+              "defaultRecordLimit": {
+                "description": "Any object-level overrides for number of records supported in a batch",
+                "x-go-type-skip-optional-pointer": true,
+                "required": [
+                  "delete",
+                  "create",
+                  "update",
+                  "upsert"
+                ],
+                "properties": {
+                  "delete": {
+                    "type": "integer"
+                  },
+                  "create": {
+                    "type": "integer"
+                  },
+                  "update": {
+                    "type": "integer"
+                  },
+                  "upsert": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "recordLimits": {
+                "type": "object",
+                "additionalProperties": {
+                  "required": [
+                    "delete",
+                    "create",
+                    "update",
+                    "upsert"
+                  ],
+                  "properties": {
+                    "delete": {
+                      "type": "integer"
+                    },
+                    "create": {
+                      "type": "integer"
+                    },
+                    "update": {
+                      "type": "integer"
+                    },
+                    "upsert": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "update": {
+            "required": [
+              "supported"
+            ],
+            "properties": {
+              "supported": {
+                "description": "The default number of records that each type of write supports in a batch",
+                "type": "boolean"
+              },
+              "defaultRecordLimit": {
+                "description": "Any object-level overrides for number of records supported in a batch",
+                "x-go-type-skip-optional-pointer": true,
+                "required": [
+                  "delete",
+                  "create",
+                  "update",
+                  "upsert"
+                ],
+                "properties": {
+                  "delete": {
+                    "type": "integer"
+                  },
+                  "create": {
+                    "type": "integer"
+                  },
+                  "update": {
+                    "type": "integer"
+                  },
+                  "upsert": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "recordLimits": {
+                "type": "object",
+                "additionalProperties": {
+                  "required": [
+                    "delete",
+                    "create",
+                    "update",
+                    "upsert"
+                  ],
+                  "properties": {
+                    "delete": {
+                      "type": "integer"
+                    },
+                    "create": {
+                      "type": "integer"
+                    },
+                    "update": {
+                      "type": "integer"
+                    },
+                    "upsert": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "upsert": {
+            "required": [
+              "supported"
+            ],
+            "properties": {
+              "supported": {
+                "description": "The default number of records that each type of write supports in a batch",
+                "type": "boolean"
+              },
+              "defaultRecordLimit": {
+                "description": "Any object-level overrides for number of records supported in a batch",
+                "x-go-type-skip-optional-pointer": true,
+                "required": [
+                  "delete",
+                  "create",
+                  "update",
+                  "upsert"
+                ],
+                "properties": {
+                  "delete": {
+                    "type": "integer"
+                  },
+                  "create": {
+                    "type": "integer"
+                  },
+                  "update": {
+                    "type": "integer"
+                  },
+                  "upsert": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "recordLimits": {
+                "type": "object",
+                "additionalProperties": {
+                  "required": [
+                    "delete",
+                    "create",
+                    "update",
+                    "upsert"
+                  ],
+                  "properties": {
+                    "delete": {
+                      "type": "integer"
+                    },
+                    "create": {
+                      "type": "integer"
+                    },
+                    "update": {
+                      "type": "integer"
+                    },
+                    "upsert": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          }
+        }
+      },
+      "BatchWriteSupportConfig": {
+        "required": [
+          "supported"
+        ],
+        "properties": {
+          "supported": {
+            "description": "The default number of records that each type of write supports in a batch",
+            "type": "boolean"
+          },
+          "defaultRecordLimit": {
+            "description": "Any object-level overrides for number of records supported in a batch",
+            "x-go-type-skip-optional-pointer": true,
+            "required": [
+              "delete",
+              "create",
+              "update",
+              "upsert"
+            ],
+            "properties": {
+              "delete": {
+                "type": "integer"
+              },
+              "create": {
+                "type": "integer"
+              },
+              "update": {
+                "type": "integer"
+              },
+              "upsert": {
+                "type": "integer"
+              }
+            }
+          },
+          "recordLimits": {
+            "type": "object",
+            "additionalProperties": {
+              "required": [
+                "delete",
+                "create",
+                "update",
+                "upsert"
+              ],
+              "properties": {
+                "delete": {
+                  "type": "integer"
+                },
+                "create": {
+                  "type": "integer"
+                },
+                "update": {
+                  "type": "integer"
+                },
+                "upsert": {
+                  "type": "integer"
+                }
+              }
+            },
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "ObjectRecordLimit": {
+        "required": [
+          "delete",
+          "create",
+          "update",
+          "upsert"
+        ],
+        "properties": {
+          "delete": {
+            "type": "integer"
+          },
+          "create": {
+            "type": "integer"
+          },
+          "update": {
+            "type": "integer"
+          },
+          "upsert": {
+            "type": "integer"
           }
         }
       },
