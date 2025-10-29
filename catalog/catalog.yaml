@@ -612,23 +612,7 @@ components:
           description: Any object-level overrides for number of records supported in a batch
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/ObjectRecordLimit'
-
-    ObjectRecordLimit:
-      required:
-        - delete
-        - create
-        - update
-        - upsert
-      properties:
-        delete:
-          type: integer
-        create:
-          type: integer
-        update:
-          type: integer
-        upsert:
-          type: integer
+            type: integer
 
     ProviderMetadata:
       title: Provider Metadata
