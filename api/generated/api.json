@@ -13566,12 +13566,6 @@
                                     "example": "hubspot",
                                     "type": "string"
                                   },
-                                  "module": {
-                                    "description": "The SaaS module that we are integrating with.",
-                                    "example": "crm",
-                                    "type": "string",
-                                    "x-go-type-skip-optional-pointer": true
-                                  },
                                   "read": {
                                     "title": "Base Read Config",
                                     "type": "object",
@@ -13906,10 +13900,6 @@
                                     "type": "object",
                                     "properties": {
                                       "enabled": {
-                                        "type": "boolean"
-                                      },
-                                      "useModule": {
-                                        "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                                         "type": "boolean"
                                       }
                                     }
@@ -15415,12 +15405,6 @@
                                 "example": "hubspot",
                                 "type": "string"
                               },
-                              "module": {
-                                "description": "The SaaS module that we are integrating with.",
-                                "example": "crm",
-                                "type": "string",
-                                "x-go-type-skip-optional-pointer": true
-                              },
                               "read": {
                                 "title": "Base Read Config",
                                 "type": "object",
@@ -15755,10 +15739,6 @@
                                 "type": "object",
                                 "properties": {
                                   "enabled": {
-                                    "type": "boolean"
-                                  },
-                                  "useModule": {
-                                    "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                                     "type": "boolean"
                                   }
                                 }
@@ -17175,12 +17155,6 @@
                                   "example": "hubspot",
                                   "type": "string"
                                 },
-                                "module": {
-                                  "description": "The SaaS module that we are integrating with.",
-                                  "example": "crm",
-                                  "type": "string",
-                                  "x-go-type-skip-optional-pointer": true
-                                },
                                 "read": {
                                   "title": "Base Read Config",
                                   "type": "object",
@@ -17515,10 +17489,6 @@
                                   "type": "object",
                                   "properties": {
                                     "enabled": {
-                                      "type": "boolean"
-                                    },
-                                    "useModule": {
-                                      "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                                       "type": "boolean"
                                     }
                                   }
@@ -19757,12 +19727,6 @@
                                   "example": "hubspot",
                                   "type": "string"
                                 },
-                                "module": {
-                                  "description": "The SaaS module that we are integrating with.",
-                                  "example": "crm",
-                                  "type": "string",
-                                  "x-go-type-skip-optional-pointer": true
-                                },
                                 "read": {
                                   "title": "Base Read Config",
                                   "type": "object",
@@ -20097,10 +20061,6 @@
                                   "type": "object",
                                   "properties": {
                                     "enabled": {
-                                      "type": "boolean"
-                                    },
-                                    "useModule": {
-                                      "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                                       "type": "boolean"
                                     }
                                   }
@@ -21799,12 +21759,6 @@
                                     "example": "hubspot",
                                     "type": "string"
                                   },
-                                  "module": {
-                                    "description": "The SaaS module that we are integrating with.",
-                                    "example": "crm",
-                                    "type": "string",
-                                    "x-go-type-skip-optional-pointer": true
-                                  },
                                   "read": {
                                     "title": "Base Read Config",
                                     "type": "object",
@@ -22139,10 +22093,6 @@
                                     "type": "object",
                                     "properties": {
                                       "enabled": {
-                                        "type": "boolean"
-                                      },
-                                      "useModule": {
-                                        "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                                         "type": "boolean"
                                       }
                                     }
@@ -22608,12 +22558,6 @@
                                   "example": "hubspot",
                                   "type": "string"
                                 },
-                                "module": {
-                                  "description": "The SaaS module that we are integrating with.",
-                                  "example": "crm",
-                                  "type": "string",
-                                  "x-go-type-skip-optional-pointer": true
-                                },
                                 "read": {
                                   "title": "Base Read Config",
                                   "type": "object",
@@ -22948,10 +22892,6 @@
                                   "type": "object",
                                   "properties": {
                                     "enabled": {
-                                      "type": "boolean"
-                                    },
-                                    "useModule": {
-                                      "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                                       "type": "boolean"
                                     }
                                   }
@@ -25481,12 +25421,6 @@
                                     "example": "hubspot",
                                     "type": "string"
                                   },
-                                  "module": {
-                                    "description": "The SaaS module that we are integrating with.",
-                                    "example": "crm",
-                                    "type": "string",
-                                    "x-go-type-skip-optional-pointer": true
-                                  },
                                   "read": {
                                     "title": "Base Read Config",
                                     "type": "object",
@@ -25821,10 +25755,6 @@
                                     "type": "object",
                                     "properties": {
                                       "enabled": {
-                                        "type": "boolean"
-                                      },
-                                      "useModule": {
-                                        "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                                         "type": "boolean"
                                       }
                                     }
@@ -54288,12 +54218,6 @@
                         "example": "hubspot",
                         "type": "string"
                       },
-                      "module": {
-                        "description": "The SaaS module that we are integrating with.",
-                        "example": "crm",
-                        "type": "string",
-                        "x-go-type-skip-optional-pointer": true
-                      },
                       "read": {
                         "title": "Base Read Config",
                         "type": "object",
@@ -54628,10 +54552,6 @@
                         "type": "object",
                         "properties": {
                           "enabled": {
-                            "type": "boolean"
-                          },
-                          "useModule": {
-                            "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                             "type": "boolean"
                           }
                         }
@@ -55641,12 +55561,6 @@
                     "example": "hubspot",
                     "type": "string"
                   },
-                  "module": {
-                    "description": "The SaaS module that we are integrating with.",
-                    "example": "crm",
-                    "type": "string",
-                    "x-go-type-skip-optional-pointer": true
-                  },
                   "read": {
                     "title": "Base Read Config",
                     "type": "object",
@@ -55981,10 +55895,6 @@
                     "type": "object",
                     "properties": {
                       "enabled": {
-                        "type": "boolean"
-                      },
-                      "useModule": {
-                        "description": "Default is false. If this is set to true, the base URL for the proxy action will be the module's base URL. Otherwise, it is assumed that the base URL is the provider's root base URL.",
                         "type": "boolean"
                       }
                     }
