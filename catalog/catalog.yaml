@@ -603,17 +603,16 @@ components:
         - supported
       properties:
         supported:
-          description: The default number of records that each type of write supports in a batch
+          description: Whether this type of batch write operation is supported
           type: boolean
         defaultRecordLimit:
+          description: The default number of records supported in a batch
+          type: integer
+        objectRecordLimits:
           description: Any object-level overrides for number of records supported in a batch
-          $ref: '#/components/schemas/ObjectRecordLimit'
-          x-go-type-skip-optional-pointer: true
-        recordLimits:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/ObjectRecordLimit'
-          x-go-type-skip-optional-pointer: true
 
     ObjectRecordLimit:
       required:
