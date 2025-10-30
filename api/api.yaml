@@ -1848,11 +1848,6 @@ paths:
           schema:
             type: string
           example: my-project
-        - name: active
-          in: query
-          description: Whether to include only active API keys. If false, all API keys are included.
-          schema:
-            type: boolean
       responses:
         200:
           description: List of API keys
@@ -5190,10 +5185,9 @@ components:
             type: string
           description: |
             Array of field paths specifying which fields to update. Allowed values include:
-            - active
             - label
             - scopes
-          example: ["active", "label"]
+          example: ["label", "scopes"]
         apiKey:
           type: object
           properties:
@@ -5201,10 +5195,6 @@ components:
               type: string
               description: A short name for the API key.
               example: MailMonkey API Key
-            active:
-              type: boolean
-              description: Whether the API key is active.
-              example: true
             scopes:
               $ref: "#/components/schemas/ApiKeyScopes"
     WebhookHeaders:
