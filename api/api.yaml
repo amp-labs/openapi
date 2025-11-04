@@ -3166,6 +3166,12 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A notification target with this label already exists in this project. Please choose a different label
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
@@ -3288,6 +3294,12 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A notification target with this label already exists in this project. Please choose a different label
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
@@ -3411,6 +3423,12 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A notification topic with this label already exists in this project. Please choose a different label
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
@@ -3502,6 +3520,12 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A notification topic with this label already exists in this project. Please choose a different label
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
