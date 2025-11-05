@@ -79,7 +79,7 @@ components:
           type: string
           description:
             The type of write operation. The only supported types currently are create and update.
-          enum: [create, update]
+          enum: [create, update, batchCreate, batchUpdate]
           example: create
         mode:
           type: string
@@ -119,14 +119,16 @@ components:
                     "associationTypeId": 279
                 }]}
             ]
-        #        records:
-        #          type: array
-        #          description: The records to write
-        #          example:
-        #            [{
-        #             "email": "david@withampersand.com",
-        #             "warmthScore": "ready-for-close",
-        #           }]
+        records:
+          type: array
+          description: The records to write
+          example:
+            [
+              {
+                "email": "david@withampersand.com",
+                "warmthScore": "ready-for-close",
+              }
+            ]
     WriteResponseSingleSuccess:
       title: Sync Write Response Success
       type: object
