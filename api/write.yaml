@@ -79,7 +79,7 @@ components:
           type: string
           description:
             The type of write operation. The only supported types currently are create and update.
-          enum: [create, update, batchCreate, batchUpdate]
+          enum: [create, update]
           example: create
         mode:
           type: string
