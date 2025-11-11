@@ -601,6 +601,7 @@ components:
     BatchWriteSupportConfig:
       required:
         - supported
+
       properties:
         supported:
           description: Whether this type of batch write operation is supported
@@ -645,6 +646,10 @@ components:
         displayName:
           type: string
           description: The human-readable name for the field
+          x-go-type-skip-optional-pointer: true
+        displayDescription:
+          type: string
+          description: Human-readable description that can contain instructions on how to collect metadata
           x-go-type-skip-optional-pointer: true
         defaultValue:
           type: string
