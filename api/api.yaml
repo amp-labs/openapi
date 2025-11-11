@@ -3494,7 +3494,7 @@ paths:
               properties:
                 label:
                   type: string
-                  description: A human-readable label for the notification topic.
+                  description: A human-readable label for the topic.
                   example: "Updated System Alerts"
       responses:
         200:
@@ -3549,7 +3549,7 @@ paths:
         - name: topicId
           in: path
           required: true
-          description: The notification topic ID.
+          description: The topic ID.
           schema:
             type: string
       responses:
@@ -3567,10 +3567,10 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/event-topic-routes:
+  /projects/{projectIdOrName}/notification-event-topic-routes:
     post:
       summary: Create an event-topic route
-      description: Create a new event-topic route that maps specific event types to notification topics.
+      description: Create a new event-topic route that maps specific event types to topics.
       operationId: createEventTopicRoute
       tags: ["Notification"]
       parameters:
@@ -3603,7 +3603,7 @@ paths:
                     - "read.schedule.paused"
                 topicId:
                   type: string
-                  description: The ID of the notification topic to route events to.
+                  description: The ID of the topic to route events to.
             examples:
               route_example:
                 summary: Create event-topic route
@@ -3650,7 +3650,7 @@ paths:
         - name: topicId
           in: query
           required: false
-          description: Filter by notification topic ID.
+          description: Filter by topic ID.
           schema:
             type: string
         - name: eventType
@@ -3681,7 +3681,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/event-topic-routes/{routeId}:
+  /projects/{projectIdOrName}/notification-event-topic-routes/{routeId}:
     delete:
       summary: Delete a notification event-topic route
       operationId: deleteEventTopicRoute
@@ -6051,7 +6051,7 @@ components:
           example: "installation.created"
         topicId:
           type: string
-          description: The ID of the notification topic to route events to.
+          description: The ID of the topic to route events to.
         projectId:
           type: string
           description: The Ampersand project ID.
