@@ -3382,7 +3382,7 @@ paths:
       summary: Create a topic
       description: Create a new topic for the project. Topics are used to categorize and organize notifications.
       operationId: createTopic
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3440,7 +3440,7 @@ paths:
     get:
       summary: List topics
       operationId: listTopics
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3468,7 +3468,7 @@ paths:
     patch:
       summary: Update a topic
       operationId: updateTopic
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3537,7 +3537,7 @@ paths:
     delete:
       summary: Delete a topic
       operationId: deleteTopic
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3719,7 +3719,7 @@ paths:
       summary: Create a topic destination route
       description: Create a new route that connects a topic to a destination.
       operationId: createTopicDestinationRoute
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3786,7 +3786,7 @@ paths:
       summary: List topic destination routes
       description: Retrieve all topic-to-destination routes for a project with optional filtering.
       operationId: listTopicDestinationRoutes
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3826,7 +3826,7 @@ paths:
       summary: Delete a topic destination route
       description: Remove the link between a topic and a destination.
       operationId: deleteTopicDestinationRoute
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
