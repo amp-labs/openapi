@@ -3377,10 +3377,10 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/topics:
+  /projects/{projectIdOrName}/topics:
     post:
-      summary: Create a notification topic
-      description: Create a new notification topic for the project. Topics are used to categorize and organize notifications.
+      summary: Create a topic
+      description: Create a new topic for the project. Topics are used to categorize and organize notifications.
       operationId: createTopic
       tags: ["Notification"]
       parameters:
@@ -3398,12 +3398,13 @@ paths:
             schema:
               type: object
               required:
-                - label
+                - name
               properties:
-                label:
+                name:
                   type: string
-                  description: A human-readable label for the notification topic.
-                  example: "System Alerts"
+                  description: The name of the topic. Must contain only letters, numbers, and dashes.
+                  example: "system-alerts"
+                  maxLength: 64
       responses:
         201:
           description: Created
@@ -3424,7 +3425,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
         409:
-          description: Conflict - A notification topic with this label already exists in this project. Please choose a different label
+          description: Conflict - A topic with this name already exists in this project. Please choose a different name
           content:
             application/problem+json:
               schema:
@@ -3437,7 +3438,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: topic
     get:
-      summary: List notification topics
+      summary: List topics
       operationId: listTopics
       tags: ["Notification"]
       parameters:
@@ -3450,7 +3451,7 @@ paths:
           example: my-project
       responses:
         200:
-          description: List of notification topics
+          description: List of topics
           content:
             application/json:
               schema:
@@ -3463,9 +3464,9 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/topics/{topicId}:
+  /projects/{projectIdOrName}/topics/{topicId}:
     patch:
-      summary: Update a notification topic
+      summary: Update a topic
       operationId: updateTopic
       tags: ["Notification"]
       parameters:
@@ -3479,7 +3480,7 @@ paths:
         - name: topicId
           in: path
           required: true
-          description: The notification topic ID.
+          description: The topic ID.
           schema:
             type: string
       requestBody:
@@ -3521,7 +3522,7 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
         409:
-          description: Conflict - A notification topic with this label already exists in this project. Please choose a different label
+          description: Conflict - A topic with this name already exists in this project. Please choose a different name
           content:
             application/problem+json:
               schema:
@@ -3534,7 +3535,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: updateTopicRequest
     delete:
-      summary: Delete a notification topic
+      summary: Delete a topic
       operationId: deleteTopic
       tags: ["Notification"]
       parameters:
@@ -6000,29 +6001,30 @@ components:
       title: Notification Topic
       required:
         - id
-        - label
+        - name
         - projectId
         - createTime
       type: object
       properties:
         id:
           type: string
-          description: The notification topic ID.
-        label:
+          description: The topic ID.
+        name:
           type: string
-          description: A human-readable label for the notification topic.
-          example: "System Alerts"
+          description: The name of the topic. Must contain only letters, numbers, and dashes.
+          example: "system-alerts"
+          maxLength: 64
         projectId:
           type: string
           description: The Ampersand project ID.
         createTime:
           type: string
           format: date-time
-          description: The time when the notification topic was created.
+          description: The time when the topic was created.
         updateTime:
           type: string
           format: date-time
-          description: The time when the notification topic was last updated.
+          description: The time when the topic was last updated.
     NotificationEventTopicRoute:
       title: Notification Event Topic Route
       required:
