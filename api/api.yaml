@@ -3106,6 +3106,7 @@ paths:
     post:
       summary: Create a notification target
       operationId: createTarget
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3182,6 +3183,7 @@ paths:
     get:
       summary: List notification targets
       operationId: listTargets
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3210,6 +3212,7 @@ paths:
     patch:
       summary: Update a notification target
       operationId: updateTarget
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3310,6 +3313,7 @@ paths:
     get:
       summary: Get a notification target
       operationId: getTargetById
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3347,6 +3351,7 @@ paths:
     delete:
       summary: Delete a notification target
       operationId: deleteTarget
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3381,6 +3386,7 @@ paths:
     post:
       summary: Create a topic
       operationId: createTopic
+      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3439,6 +3445,7 @@ paths:
     get:
       summary: List topics
       operationId: listTopics
+      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3467,6 +3474,7 @@ paths:
     patch:
       summary: Update a topic
       operationId: updateTopic
+      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3536,6 +3544,7 @@ paths:
     delete:
       summary: Delete a topic
       operationId: deleteTopic
+      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3570,6 +3579,7 @@ paths:
     post:
       summary: Create a notification event-topic route
       operationId: createEventTopicRoute
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3637,6 +3647,7 @@ paths:
     get:
       summary: List notification event-topic routes
       operationId: listEventTopicRoutes
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3683,6 +3694,7 @@ paths:
     delete:
       summary: Delete a notification event-topic route
       operationId: deleteEventTopicRoute
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3716,6 +3728,7 @@ paths:
     post:
       summary: Create a topic destination route
       operationId: createTopicDestinationRoute
+      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3782,6 +3795,7 @@ paths:
     get:
       summary: List topic destination routes
       operationId: listTopicDestinationRoutes
+      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3821,6 +3835,7 @@ paths:
     delete:
       summary: Delete a topic destination route
       operationId: deleteTopicDestinationRoute
+      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3854,6 +3869,7 @@ paths:
     post:
       summary: Create a notification topic-target route 
       operationId: createTopicTargetRoute
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3908,6 +3924,7 @@ paths:
     get:
       summary: List notification topic-target routes
       operationId: listTopicTargetRoutes
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3947,6 +3964,7 @@ paths:
     delete:
       summary: Delete a notification topic-target route
       operationId: deleteTopicTargetRoute
+      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
