@@ -3575,6 +3575,232 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/notifications/topics:
+    post:
+      summary: Create a notification topic
+      description: Create a new notification topic for the project. Topics are used to categorize and organize notifications.
+      operationId: createNotificationTopic
+      tags: ["Notification"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - label
+              properties:
+                label:
+                  type: string
+                  description: A human-readable label for the notification topic.
+                  example: "System Alerts"
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationTopic"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A notification topic with this label already exists in this project. Please choose a different label
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: topic
+    get:
+      summary: List notification topics
+      operationId: listNotificationTopics
+      tags: ["Notification"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+      responses:
+        200:
+          description: List of notification topics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/NotificationTopic"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/notifications/topics/{topicId}:
+    get:
+      summary: Get a notification topic
+      operationId: getNotificationTopic
+      tags: ["Notification"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: topicId
+          in: path
+          required: true
+          description: The notification topic ID.
+          schema:
+            type: string
+      responses:
+        200:
+          description: Notification topic details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationTopic"
+        404:
+          description: Topic not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+    patch:
+      summary: Update a notification topic
+      operationId: updateNotificationTopic
+      tags: ["Notification"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: topicId
+          in: path
+          required: true
+          description: The notification topic ID.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - label
+              properties:
+                label:
+                  type: string
+                  description: A human-readable label for the notification topic.
+                  example: "Updated System Alerts"
+      responses:
+        200:
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationTopic"
+        404:
+          description: Topic not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A notification topic with this label already exists in this project. Please choose a different label
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: updateTopicRequest
+    delete:
+      summary: Delete a notification topic
+      operationId: deleteNotificationTopic
+      tags: ["Notification"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: topicId
+          in: path
+          required: true
+          description: The notification topic ID.
+          schema:
+            type: string
+      responses:
+        204:
+          description: Deleted
+        404:
+          description: Topic not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/notification-event-topic-routes:
     post:
       summary: Create a notification event-topic route
@@ -6038,6 +6264,33 @@ components:
           type: string
           format: date-time
           description: The time when the topic was last updated.
+    NotificationTopic:
+      title: Notification Topic
+      required:
+        - id
+        - label
+        - projectId
+        - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The notification topic ID.
+        label:
+          type: string
+          description: A human-readable label for the notification topic.
+          example: "System Alerts"
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the notification topic was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the notification topic was last updated.
     NotificationEventTopicRoute:
       title: Notification Event Topic Route
       required:
