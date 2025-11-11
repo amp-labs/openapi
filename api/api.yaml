@@ -3411,7 +3411,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotificationTopic"
+                $ref: "#/components/schemas/Topic"
         400:
           description: Bad Request
           content:
@@ -3457,7 +3457,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/NotificationTopic"
+                  $ref: "#/components/schemas/Topic"
         default:
           description: Error
           content:
@@ -3502,7 +3502,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotificationTopic"
+                $ref: "#/components/schemas/Topic"
         404:
           description: Topic not found
           content:
@@ -5997,8 +5997,8 @@ components:
           type: string
           format: date-time
           description: The time when the notification target was last updated.
-    NotificationTopic:
-      title: Notification Topic
+    Topic:
+      title: Topic
       required:
         - id
         - name
