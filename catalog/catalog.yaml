@@ -647,7 +647,7 @@ components:
           type: string
           description: The human-readable name for the field
           x-go-type-skip-optional-pointer: true
-        displayDescription:
+        prompt:
           type: string
           description: Human-readable description that can contain instructions on how to collect metadata
           x-go-type-skip-optional-pointer: true
