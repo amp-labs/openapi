@@ -467,6 +467,17 @@
             "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
             "x-go-type-skip-optional-pointer": true
           },
+          "scopeMappings": {
+            "type": "object",
+            "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "x-go-type-skip-optional-pointer": true,
+            "example": {
+              "default": "https://{{.workspace}}.api.com/default"
+            }
+          },
           "tokenMetadataFields": {
             "title": "Token Metadata Fields",
             "type": "object",
@@ -1437,6 +1448,17 @@
                 ],
                 "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
                 "x-go-type-skip-optional-pointer": true
+              },
+              "scopeMappings": {
+                "type": "object",
+                "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "x-go-type-skip-optional-pointer": true,
+                "example": {
+                  "default": "https://{{.workspace}}.api.com/default"
+                }
               },
               "tokenMetadataFields": {
                 "title": "Token Metadata Fields",
@@ -2450,6 +2472,17 @@
                       "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
                       "x-go-type-skip-optional-pointer": true
                     },
+                    "scopeMappings": {
+                      "type": "object",
+                      "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "x-go-type-skip-optional-pointer": true,
+                      "example": {
+                        "default": "https://{{.workspace}}.api.com/default"
+                      }
+                    },
                     "tokenMetadataFields": {
                       "title": "Token Metadata Fields",
                       "type": "object",
@@ -3448,6 +3481,17 @@
                   ],
                   "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
                   "x-go-type-skip-optional-pointer": true
+                },
+                "scopeMappings": {
+                  "type": "object",
+                  "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "x-go-type-skip-optional-pointer": true,
+                  "example": {
+                    "default": "https://{{.workspace}}.api.com/default"
+                  }
                 },
                 "tokenMetadataFields": {
                   "title": "Token Metadata Fields",
