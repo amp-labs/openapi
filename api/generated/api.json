@@ -12124,8 +12124,17 @@
                                         "readOnly": {
                                           "type": "boolean",
                                           "description": "Whether the field is read-only.",
-                                          "example": false,
-                                          "x-go-type-skip-optional-pointer": true
+                                          "example": false
+                                        },
+                                        "isCustom": {
+                                          "type": "boolean",
+                                          "description": "Whether the field is custom field.",
+                                          "example": false
+                                        },
+                                        "isRequired": {
+                                          "type": "boolean",
+                                          "description": "Whether the field is required when creating a new record.",
+                                          "example": false
                                         },
                                         "values": {
                                           "type": "array",
@@ -24779,8 +24788,17 @@
                           "readOnly": {
                             "type": "boolean",
                             "description": "Whether the field is read-only.",
-                            "example": false,
-                            "x-go-type-skip-optional-pointer": true
+                            "example": false
+                          },
+                          "isCustom": {
+                            "type": "boolean",
+                            "description": "Whether the field is custom field.",
+                            "example": false
+                          },
+                          "isRequired": {
+                            "type": "boolean",
+                            "description": "Whether the field is required when creating a new record.",
+                            "example": false
                           },
                           "values": {
                             "type": "array",
@@ -26994,8 +27012,17 @@
                           "readOnly": {
                             "type": "boolean",
                             "description": "Whether the field is read-only.",
-                            "example": false,
-                            "x-go-type-skip-optional-pointer": true
+                            "example": false
+                          },
+                          "isCustom": {
+                            "type": "boolean",
+                            "description": "Whether the field is custom field.",
+                            "example": false
+                          },
+                          "isRequired": {
+                            "type": "boolean",
+                            "description": "Whether the field is required when creating a new record.",
+                            "example": false
                           },
                           "values": {
                             "type": "array",
@@ -70499,8 +70526,17 @@
                               "readOnly": {
                                 "type": "boolean",
                                 "description": "Whether the field is read-only.",
-                                "example": false,
-                                "x-go-type-skip-optional-pointer": true
+                                "example": false
+                              },
+                              "isCustom": {
+                                "type": "boolean",
+                                "description": "Whether the field is custom field.",
+                                "example": false
+                              },
+                              "isRequired": {
+                                "type": "boolean",
+                                "description": "Whether the field is required when creating a new record.",
+                                "example": false
                               },
                               "values": {
                                 "type": "array",
@@ -75622,8 +75658,17 @@
                 "readOnly": {
                   "type": "boolean",
                   "description": "Whether the field is read-only.",
-                  "example": false,
-                  "x-go-type-skip-optional-pointer": true
+                  "example": false
+                },
+                "isCustom": {
+                  "type": "boolean",
+                  "description": "Whether the field is custom field.",
+                  "example": false
+                },
+                "isRequired": {
+                  "type": "boolean",
+                  "description": "Whether the field is required when creating a new record.",
+                  "example": false
                 },
                 "values": {
                   "type": "array",
