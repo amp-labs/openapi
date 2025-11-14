@@ -119,12 +119,11 @@ components:
               { "to": {"id": "18417469260"},
                 "types": [{
                     "associationCategory": "HUBSPOT_DEFINED",
-                    "associationTypeId": 279
-                }]}
-            ]
+                      "associationTypeId": 279
+              }]}
+              ]
         batch:
           type: array
-          description: The records to write
           items:
             type: object
             properties:
@@ -132,17 +131,24 @@ components:
                 type: object
                 description: The record to write
                 additionalProperties: true
-              associations:
-                items:
-                  type: array
                 example:
-                  [
-                    { "to": {"id": "18417469260"},
-                      "types": [{
-                          "associationCategory": "HUBSPOT_DEFINED",
-                          "associationTypeId": 279
-                      }]}
-                  ]
+                  {
+                    "email": "david@withampersand.com",
+                    "warmthScore": "ready-for-close",
+                  }
+              associations:
+                type: array
+                items:
+                  type: object
+                description: "To write associations to the record. Note: currently only HubSpot associations are supported"
+                example:
+                    [
+                      { "to": {"id": "18417469260"},
+                        "types": [{
+                            "associationCategory": "HUBSPOT_DEFINED",
+                            "associationTypeId": 279
+                        }]}
+                    ]
     WriteResponseSingleSuccess:
       title: Sync Write Response Success
       type: object
