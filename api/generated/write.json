@@ -132,6 +132,7 @@
                       }
                     }
                   },
+<<<<<<< HEAD
                   {
                     "title": "Batch Mode",
                     "required": [
@@ -179,6 +180,36 @@
                               ]
                             }
                           }
+=======
+                  "batch": {
+                    "type": "array",
+                    "description": "The records to write",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "record": {
+                          "type": "object",
+                          "description": "The record to write",
+                          "additionalProperties": true
+                        },
+                        "associations": {
+                          "items": {
+                            "type": "array"
+                          },
+                          "example": [
+                            {
+                              "to": {
+                                "id": "18417469260"
+                              },
+                              "types": [
+                                {
+                                  "associationCategory": "HUBSPOT_DEFINED",
+                                  "associationTypeId": 279
+                                }
+                              ]
+                            }
+                          ]
+>>>>>>> 104c1cb (feat:updating api spec to support batch field)
                         }
                       }
                     }
@@ -722,6 +753,7 @@
               }
             }
           },
+<<<<<<< HEAD
           {
             "title": "Batch Mode",
             "required": [
@@ -769,6 +801,36 @@
                       ]
                     }
                   }
+=======
+          "batch": {
+            "type": "array",
+            "description": "The records to write",
+            "items": {
+              "type": "object",
+              "properties": {
+                "record": {
+                  "type": "object",
+                  "description": "The record to write",
+                  "additionalProperties": true
+                },
+                "associations": {
+                  "items": {
+                    "type": "array"
+                  },
+                  "example": [
+                    {
+                      "to": {
+                        "id": "18417469260"
+                      },
+                      "types": [
+                        {
+                          "associationCategory": "HUBSPOT_DEFINED",
+                          "associationTypeId": 279
+                        }
+                      ]
+                    }
+                  ]
+>>>>>>> 104c1cb (feat:updating api spec to support batch field)
                 }
               }
             }
