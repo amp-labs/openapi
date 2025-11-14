@@ -124,19 +124,24 @@
                   },
                   "batch": {
                     "type": "array",
-                    "description": "The records to write",
                     "items": {
                       "type": "object",
                       "properties": {
                         "record": {
                           "type": "object",
                           "description": "The record to write",
-                          "additionalProperties": true
+                          "additionalProperties": true,
+                          "example": {
+                            "email": "david@withampersand.com",
+                            "warmthScore": "ready-for-close"
+                          }
                         },
                         "associations": {
+                          "type": "array",
                           "items": {
-                            "type": "array"
+                            "type": "object"
                           },
+                          "description": "To write associations to the record. Note: currently only HubSpot associations are supported",
                           "example": [
                             {
                               "to": {
@@ -685,19 +690,24 @@
           },
           "batch": {
             "type": "array",
-            "description": "The records to write",
             "items": {
               "type": "object",
               "properties": {
                 "record": {
                   "type": "object",
                   "description": "The record to write",
-                  "additionalProperties": true
+                  "additionalProperties": true,
+                  "example": {
+                    "email": "david@withampersand.com",
+                    "warmthScore": "ready-for-close"
+                  }
                 },
                 "associations": {
+                  "type": "array",
                   "items": {
-                    "type": "array"
+                    "type": "object"
                   },
+                  "description": "To write associations to the record. Note: currently only HubSpot associations are supported",
                   "example": [
                     {
                       "to": {
