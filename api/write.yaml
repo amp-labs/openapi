@@ -38,10 +38,11 @@ paths:
         200:
           description: The success response
           content:
-
             application/json:
               schema:
-                $ref: "#/components/schemas/WriteResponseSingleSuccess"
+                oneOf:
+                  - $ref: "#/components/schemas/WriteResponseSingleSuccess"
+                  - $ref: "#/components/schemas/WriteResponseBatch"
         400:
           description: The failure response for bad request.
           content:
@@ -54,7 +55,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/WriteResponseSingleFail"
+                oneOf:
+                  - $ref: "#/components/schemas/WriteResponseSingleFail"
+                  - $ref: "#/components/schemas/WriteResponseBatch"
         default:
           description: Error
           content:
@@ -65,10 +68,10 @@ components:
   schemas:
     WriteRequest:
       title: Write Request
+      type: object
       required:
         - groupRef
         - type
-      type: object
       properties:
         groupRef:
           type: string
@@ -97,38 +100,66 @@ components:
               default: 1
               minimum: 1
               maximum: 48
-        record:
-          type: object
-          description: The record to write
-          additionalProperties: true
-          example:
-            {
-              "email": "david@withampersand.com",
-              "warmthScore": "ready-for-close",
-            }
-        associations:
-          type: array
-          items:
-            type: object
-          description: "To write associations to the record. Note: currently only HubSpot associations are supported"
-          example:
-            [
-              { "to": {"id": "18417469260"},
-                "types": [{
-                    "associationCategory": "HUBSPOT_DEFINED",
-                    "associationTypeId": 279
-                }]}
-            ]
-        records:
-          type: array
-          description: The records to write
-          example:
-            [
-              {
-                "email": "david@withampersand.com",
-                "warmthScore": "ready-for-close",
-              }
-            ]
+      oneOf:
+        - title: Single Record Mode
+          required: [record]
+          properties:
+            record:
+              type: object
+              description: The record to write (single record mode)
+              additionalProperties: true
+              example:
+                {
+                  "email": "david@withampersand.com",
+                  "warmthScore": "ready-for-close",
+                }
+            associations:
+              type: array
+              items:
+                type: object
+              description: "To write associations to the record. Note: currently only HubSpot associations are supported"
+              example:
+                [
+                  { "to": {"id": "18417469260"},
+                    "types": [{
+                        "associationCategory": "HUBSPOT_DEFINED",
+                        "associationTypeId": 279
+                    }]}
+                ]
+        - title: Batch Mode
+          required: [batch]
+          properties:
+            batch:
+              type: array
+              description: "Multiple records to write (batch mode). Supports 1-100 records per batch.Partial writes are not supported. If any record in a batch is invalid, all records in the batch will fail."
+              minItems: 1
+              maxItems: 100
+              items:
+                type: object
+                required: [record]
+                properties:
+                  record:
+                    type: object
+                    description: The record to write
+                    additionalProperties: true
+                    example:
+                      {
+                        "email": "david@withampersand.com",
+                        "warmthScore": "ready-for-close",
+                      }
+                  associations:
+                    type: array
+                    items:
+                      type: object
+                    description: "To write associations to the record. Note: currently only HubSpot associations are supported"
+                    example:
+                        [
+                          { "to": {"id": "18417469260"},
+                            "types": [{
+                                "associationCategory": "HUBSPOT_DEFINED",
+                                "associationTypeId": 279
+                            }]}
+                        ]
     WriteResponseSingleSuccess:
       title: Sync Write Response Success
       type: object
@@ -182,6 +213,47 @@ components:
           type: string
           description: The operation ID
           example: acb0d75a-1b59-4aad-a191-48c5b75ea9e4
+    WriteResponseBatch:
+      title: Batch Write Response
+      type: object
+      required:
+        - operationId
+        - successCount
+        - failureCount
+      additionalProperties: false
+      properties:
+        operationId:
+          type: string
+          description: The operation ID
+          example: acb0d75a-1b59-4aad-a191-48c5b75ea9e4
+        results:
+          type: array
+          description: Per-record results returned by the provider
+          items:
+            $ref: "#/components/schemas/WriteResult"
+        successCount:
+          type: integer
+          description: Number of records that succeeded
+          example: 3
+        failureCount:
+          type: integer
+          description: Number of records that failed
+          example: 1
+        errors:
+          type: array
+          description: Top-level errors returned by the provider, if any
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Error summary message
+                example: "Batch write failed: provider rolled back all records"
+        rawResponse:
+          type: string
+          description: Raw provider response body when available
+          example: "{\"hasErrors\": true}"
+          x-go-type-skip-optional-pointer: true
     WriteResult:
       title: Write Result
       type: object
