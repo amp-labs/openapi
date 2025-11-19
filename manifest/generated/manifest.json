@@ -448,7 +448,7 @@
                     },
                     "schedule": {
                       "type": "string",
-                      "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour.",
+                      "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour. Defaults to once a day.",
                       "default": "0 */24 * * *",
                       "example": "0 */6 * * *",
                       "x-go-type-skip-optional-pointer": true
@@ -939,7 +939,7 @@
               },
               "schedule": {
                 "type": "string",
-                "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour.",
+                "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour. Defaults to once a day.",
                 "default": "0 */24 * * *",
                 "example": "0 */6 * * *",
                 "x-go-type-skip-optional-pointer": true
@@ -3387,7 +3387,7 @@
           },
           "schedule": {
             "type": "string",
-            "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour.",
+            "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour. Defaults to once a day.",
             "default": "0 */24 * * *",
             "example": "0 */6 * * *",
             "x-go-type-skip-optional-pointer": true
