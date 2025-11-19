@@ -3106,7 +3106,6 @@ paths:
     post:
       summary: Create a topic
       operationId: createTopic
-      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3165,7 +3164,6 @@ paths:
     get:
       summary: List topics
       operationId: listTopics
-      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3194,7 +3192,6 @@ paths:
     patch:
       summary: Update a topic
       operationId: updateTopic
-      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3264,7 +3261,6 @@ paths:
     delete:
       summary: Delete a topic
       operationId: deleteTopic
-      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3299,7 +3295,6 @@ paths:
     post:
       summary: Create a notification event-topic route
       operationId: createEventTopicRoute
-      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3367,7 +3362,6 @@ paths:
     get:
       summary: List notification event-topic routes
       operationId: listEventTopicRoutes
-      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3414,7 +3408,6 @@ paths:
     delete:
       summary: Delete a notification event-topic route
       operationId: deleteEventTopicRoute
-      x-excluded: true
       tags: ["Notification"]
       parameters:
         - name: projectIdOrName
@@ -3448,7 +3441,6 @@ paths:
     post:
       summary: Create a topic destination route
       operationId: createTopicDestinationRoute
-      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3515,7 +3507,6 @@ paths:
     get:
       summary: List topic destination routes
       operationId: listTopicDestinationRoutes
-      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3555,7 +3546,6 @@ paths:
     delete:
       summary: Delete a topic destination route
       operationId: deleteTopicDestinationRoute
-      x-excluded: true
       tags: ["Destination"]
       parameters:
         - name: projectIdOrName
@@ -3973,7 +3963,6 @@ paths:
       summary: Check if a domain is claimed
       description: Returns claimed domain information if authenticated user is an owner of the organization that claimed the domain, or if the user's email domain matches the claimed domain.
       tags: ["Org"]
-      x-excluded: true
       security: # Only bearer auth works for this endpoint
         - Bearer: []
       parameters:
@@ -4017,7 +4006,6 @@ paths:
       summary: Claim a domain
       description: Claim a domain for an organization. Accepts email, domain, or URL.
       tags: ["Org"]
-      x-excluded: true
       security: # Only bearer auth works for this endpoint
         - Bearer: []
       requestBody:
@@ -4074,7 +4062,6 @@ paths:
       summary: List organization's claimed domains
       description: Get all domains claimed by a specific organization
       tags: ["Org"]
-      x-excluded: true
       parameters:
         - name: orgId
           in: path
