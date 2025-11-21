@@ -180,7 +180,7 @@
                         }
                       }
                     },
-                    "description": "To write headers to the record. Note: currently only SalesForce headers are supported",
+                    "description": "To write headers to the record. Note: currently only Salesforce headers are supported",
                     "example": [
                       {
                         "key": "custom-header-key1",
@@ -779,7 +779,7 @@
                 }
               }
             },
-            "description": "To write headers to the record. Note: currently only SalesForce headers are supported",
+            "description": "To write headers to the record. Note: currently only Salesforce headers are supported",
             "example": [
               {
                 "key": "custom-header-key1",
