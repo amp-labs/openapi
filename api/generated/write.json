@@ -170,9 +170,9 @@
                     "items": {
                       "type": "object",
                       "properties": {
-                        "name": {
+                        "key": {
                           "type": "string",
-                          "description": "The name of the header"
+                          "description": "The key of the header"
                         },
                         "value": {
                           "type": "string",
@@ -180,7 +180,7 @@
                         }
                       }
                     },
-                    "description": "To write headers to the record. Note: currently only HubSpot headers are supported",
+                    "description": "To write headers to the record. Note: currently only SalesForce headers are supported",
                     "example": [
                       {
                         "key": "custom-header-key1",
@@ -769,9 +769,9 @@
             "items": {
               "type": "object",
               "properties": {
-                "name": {
+                "key": {
                   "type": "string",
-                  "description": "The name of the header"
+                  "description": "The key of the header"
                 },
                 "value": {
                   "type": "string",
@@ -779,7 +779,7 @@
                 }
               }
             },
-            "description": "To write headers to the record. Note: currently only HubSpot headers are supported",
+            "description": "To write headers to the record. Note: currently only SalesForce headers are supported",
             "example": [
               {
                 "key": "custom-header-key1",
