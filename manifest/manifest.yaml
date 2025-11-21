@@ -591,15 +591,15 @@ components:
       type: object
       description: Schema change event configuration for all objects in the integration.
       properties:
-        fieldsCreated:
-          $ref: '#/components/schemas/FieldsCreatedEvent'
+        fieldCreated:
+          $ref: '#/components/schemas/FieldCreatedEvent'
         fieldDeleted:
           $ref: '#/components/schemas/FieldDeletedEvent'
         fieldTypeChanged:
           $ref: '#/components/schemas/FieldTypeChangedEvent'
 
-    FieldsCreatedEvent:
-      title: Fields Created Event
+    FieldCreatedEvent:
+      title: Field Created Event
       type: object
       description: Configuration for detecting when new fields are created.
       required:
