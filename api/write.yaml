@@ -153,6 +153,23 @@ components:
                     "associationTypeId": 279
                 }]}
             ]
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the header
+              value:
+                type: string
+                description: The value of the header
+          description: "To write headers to the record. Note: currently only HubSpot headers are supported"
+          example:
+            [
+              { "key": "custom-header-key1", "value": "custom-header-value1" },
+              { "key": "custom-header-key2", "value": "custom-header-value2" }
+            ]
     WriteResponseSingleSuccess:
       title: Sync Write Response Success
       type: object
