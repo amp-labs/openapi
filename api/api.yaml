@@ -1265,6 +1265,13 @@ paths:
           example: group-123
           schema:
             type: string
+        - name: excludeReadOnly
+          in: query
+          required: false
+          description: Excludes fields where `ReadOnly` is `true` from the response.
+          example: true
+          schema:
+            type: boolean
       responses:
         '200':
           description: The retrieved object metadata
@@ -1350,6 +1357,13 @@ paths:
           example: group-123
           schema:
             type: string
+        - name: excludeReadOnly
+          in: query
+          required: false
+          description: Excludes fields where `ReadOnly` is `true` from the response.
+          example: true
+          schema:
+            type: boolean
       responses:
         '200':
           description: The retrieved object metadata
