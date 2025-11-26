@@ -3339,6 +3339,7 @@ paths:
                     - "installation.updated"
                     - "installation.deleted"
                     - "read.schedule.paused"
+                    - "destination.webhook.disabled"
                 topicId:
                   type: string
                   description: The ID of the topic to route events to.
@@ -3405,6 +3406,7 @@ paths:
               - "installation.updated"
               - "installation.deleted"
               - "read.schedule.paused"
+              - "destination.webhook.disabled"
       responses:
         200:
           description: List of event-topic routes
@@ -5612,6 +5614,7 @@ components:
             - "installation.updated"
             - "installation.deleted"
             - "read.schedule.paused"
+            - "destination.webhook.disabled"
           example: "installation.created"
         topicId:
           type: string
