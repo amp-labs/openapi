@@ -668,8 +668,8 @@ components:
           description: URL with more information about how to locate this value
           example: https://example.com/how-to-find-subdomain
           x-go-type-skip-optional-pointer: true
-        dependentModules:
-          $ref: '#/components/schemas/DependentModules'
+        moduleDependencies:
+          $ref: '#/components/schemas/ModuleDependencies'
           description: Module-specific dependencies for this metadata item.
     MetadataItemPostAuthentication:
       title: Metadata Item (fetched post authentication)
@@ -681,26 +681,22 @@ components:
           type: string
           description: The internal identifier for the metadata field
           x-go-type-skip-optional-pointer: true
-        dependentModules:
-          $ref: '#/components/schemas/DependentModules'
+        moduleDependencies:
+          $ref: '#/components/schemas/ModuleDependencies'
           description: Module-specific dependencies for this metadata item.
 
-    DependentModules:
-      title: Dependent Modules
+    ModuleDependencies:
+      title: Module Dependencies
       type: object
       description: Does this metadata item only apply to a specific module?
       additionalProperties:
-        $ref: '#/components/schemas/DependentModule'
-      x-go-type: map[common.ModuleID]DependentModule
+        $ref: '#/components/schemas/ModuleDependency'
+      x-go-type: map[common.ModuleID]ModuleDependency
       x-go-type-import:
         path: "github.com/amp-labs/connectors/common"
 
-    DependentModule:
-      title: Dependent Module
+    ModuleDependency:
+      title: Module Dependency
       type: object
       description: Dependency for a single module.
-      properties:
-        optional:
-          type: boolean
-          description: Whether this input is optional for the module.
-          x-go-type-skip-optional-pointer: true
+      properties: {}
