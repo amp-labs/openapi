@@ -14249,6 +14249,125 @@
                                         "type": "boolean"
                                       }
                                     }
+                                  },
+                                  "subscribe": {
+                                    "title": "Base Subscribe Config",
+                                    "type": "object",
+                                    "properties": {
+                                      "objects": {
+                                        "type": "object",
+                                        "additionalProperties": {
+                                          "title": "Base Subscribe Config Object",
+                                          "type": "object",
+                                          "required": [
+                                            "objectName",
+                                            "destination",
+                                            "inheritFieldsAndMappings"
+                                          ],
+                                          "properties": {
+                                            "inheritFieldsAndMappings": {
+                                              "type": "boolean",
+                                              "description": "Whether to inherit fields and mappings from the read config.",
+                                              "example": true
+                                            },
+                                            "objectName": {
+                                              "description": "The name of the object to subscribe to.",
+                                              "example": "account",
+                                              "type": "string",
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required"
+                                              }
+                                            },
+                                            "destination": {
+                                              "description": "The name of the destination that the result should be sent to.",
+                                              "example": "accountWebhook",
+                                              "type": "string"
+                                            },
+                                            "createEvent": {
+                                              "title": "Create Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable create events.",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "updateEvent": {
+                                              "title": "Update Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable update events.",
+                                                  "example": "always",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  }
+                                                },
+                                                "watchFieldsAuto": {
+                                                  "type": "string",
+                                                  "description": "Whether to watch fields all fields automatically.",
+                                                  "example": "all",
+                                                  "enum": [
+                                                    "all"
+                                                  ]
+                                                },
+                                                "requiredWatchFields": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "string"
+                                                  },
+                                                  "description": "The fields that should be watched.",
+                                                  "example": [
+                                                    "name",
+                                                    "description"
+                                                  ]
+                                                }
+                                              }
+                                            },
+                                            "deleteEvent": {
+                                              "title": "Delete Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable delete events.",
+                                                  "example": "always",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  },
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               },
@@ -16088,6 +16207,125 @@
                                     "type": "boolean"
                                   }
                                 }
+                              },
+                              "subscribe": {
+                                "title": "Base Subscribe Config",
+                                "type": "object",
+                                "properties": {
+                                  "objects": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "title": "Base Subscribe Config Object",
+                                      "type": "object",
+                                      "required": [
+                                        "objectName",
+                                        "destination",
+                                        "inheritFieldsAndMappings"
+                                      ],
+                                      "properties": {
+                                        "inheritFieldsAndMappings": {
+                                          "type": "boolean",
+                                          "description": "Whether to inherit fields and mappings from the read config.",
+                                          "example": true
+                                        },
+                                        "objectName": {
+                                          "description": "The name of the object to subscribe to.",
+                                          "example": "account",
+                                          "type": "string",
+                                          "x-oapi-codegen-extra-tags": {
+                                            "validate": "required"
+                                          }
+                                        },
+                                        "destination": {
+                                          "description": "The name of the destination that the result should be sent to.",
+                                          "example": "accountWebhook",
+                                          "type": "string"
+                                        },
+                                        "createEvent": {
+                                          "title": "Create Event",
+                                          "type": "object",
+                                          "required": [
+                                            "enabled"
+                                          ],
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "Conditions to enable create events.",
+                                              "enum": [
+                                                "always",
+                                                "never"
+                                              ],
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "oneof=always never"
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "updateEvent": {
+                                          "title": "Update Event",
+                                          "type": "object",
+                                          "required": [
+                                            "enabled"
+                                          ],
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "Conditions to enable update events.",
+                                              "example": "always",
+                                              "enum": [
+                                                "always",
+                                                "never"
+                                              ],
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "oneof=always never"
+                                              }
+                                            },
+                                            "watchFieldsAuto": {
+                                              "type": "string",
+                                              "description": "Whether to watch fields all fields automatically.",
+                                              "example": "all",
+                                              "enum": [
+                                                "all"
+                                              ]
+                                            },
+                                            "requiredWatchFields": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string"
+                                              },
+                                              "description": "The fields that should be watched.",
+                                              "example": [
+                                                "name",
+                                                "description"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "deleteEvent": {
+                                          "title": "Delete Event",
+                                          "type": "object",
+                                          "required": [
+                                            "enabled"
+                                          ],
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "string",
+                                              "description": "Conditions to enable delete events.",
+                                              "example": "always",
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "oneof=always never"
+                                              },
+                                              "enum": [
+                                                "always",
+                                                "never"
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           },
@@ -17836,6 +18074,125 @@
                                   "properties": {
                                     "enabled": {
                                       "type": "boolean"
+                                    }
+                                  }
+                                },
+                                "subscribe": {
+                                  "title": "Base Subscribe Config",
+                                  "type": "object",
+                                  "properties": {
+                                    "objects": {
+                                      "type": "object",
+                                      "additionalProperties": {
+                                        "title": "Base Subscribe Config Object",
+                                        "type": "object",
+                                        "required": [
+                                          "objectName",
+                                          "destination",
+                                          "inheritFieldsAndMappings"
+                                        ],
+                                        "properties": {
+                                          "inheritFieldsAndMappings": {
+                                            "type": "boolean",
+                                            "description": "Whether to inherit fields and mappings from the read config.",
+                                            "example": true
+                                          },
+                                          "objectName": {
+                                            "description": "The name of the object to subscribe to.",
+                                            "example": "account",
+                                            "type": "string",
+                                            "x-oapi-codegen-extra-tags": {
+                                              "validate": "required"
+                                            }
+                                          },
+                                          "destination": {
+                                            "description": "The name of the destination that the result should be sent to.",
+                                            "example": "accountWebhook",
+                                            "type": "string"
+                                          },
+                                          "createEvent": {
+                                            "title": "Create Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable create events.",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "updateEvent": {
+                                            "title": "Update Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable update events.",
+                                                "example": "always",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                }
+                                              },
+                                              "watchFieldsAuto": {
+                                                "type": "string",
+                                                "description": "Whether to watch fields all fields automatically.",
+                                                "example": "all",
+                                                "enum": [
+                                                  "all"
+                                                ]
+                                              },
+                                              "requiredWatchFields": {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "description": "The fields that should be watched.",
+                                                "example": [
+                                                  "name",
+                                                  "description"
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          "deleteEvent": {
+                                            "title": "Delete Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable delete events.",
+                                                "example": "always",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                },
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
                                     }
                                   }
                                 }
@@ -20410,6 +20767,125 @@
                                       "type": "boolean"
                                     }
                                   }
+                                },
+                                "subscribe": {
+                                  "title": "Base Subscribe Config",
+                                  "type": "object",
+                                  "properties": {
+                                    "objects": {
+                                      "type": "object",
+                                      "additionalProperties": {
+                                        "title": "Base Subscribe Config Object",
+                                        "type": "object",
+                                        "required": [
+                                          "objectName",
+                                          "destination",
+                                          "inheritFieldsAndMappings"
+                                        ],
+                                        "properties": {
+                                          "inheritFieldsAndMappings": {
+                                            "type": "boolean",
+                                            "description": "Whether to inherit fields and mappings from the read config.",
+                                            "example": true
+                                          },
+                                          "objectName": {
+                                            "description": "The name of the object to subscribe to.",
+                                            "example": "account",
+                                            "type": "string",
+                                            "x-oapi-codegen-extra-tags": {
+                                              "validate": "required"
+                                            }
+                                          },
+                                          "destination": {
+                                            "description": "The name of the destination that the result should be sent to.",
+                                            "example": "accountWebhook",
+                                            "type": "string"
+                                          },
+                                          "createEvent": {
+                                            "title": "Create Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable create events.",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "updateEvent": {
+                                            "title": "Update Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable update events.",
+                                                "example": "always",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                }
+                                              },
+                                              "watchFieldsAuto": {
+                                                "type": "string",
+                                                "description": "Whether to watch fields all fields automatically.",
+                                                "example": "all",
+                                                "enum": [
+                                                  "all"
+                                                ]
+                                              },
+                                              "requiredWatchFields": {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "description": "The fields that should be watched.",
+                                                "example": [
+                                                  "name",
+                                                  "description"
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          "deleteEvent": {
+                                            "title": "Delete Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable delete events.",
+                                                "example": "always",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                },
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
                                 }
                               }
                             },
@@ -22442,6 +22918,125 @@
                                         "type": "boolean"
                                       }
                                     }
+                                  },
+                                  "subscribe": {
+                                    "title": "Base Subscribe Config",
+                                    "type": "object",
+                                    "properties": {
+                                      "objects": {
+                                        "type": "object",
+                                        "additionalProperties": {
+                                          "title": "Base Subscribe Config Object",
+                                          "type": "object",
+                                          "required": [
+                                            "objectName",
+                                            "destination",
+                                            "inheritFieldsAndMappings"
+                                          ],
+                                          "properties": {
+                                            "inheritFieldsAndMappings": {
+                                              "type": "boolean",
+                                              "description": "Whether to inherit fields and mappings from the read config.",
+                                              "example": true
+                                            },
+                                            "objectName": {
+                                              "description": "The name of the object to subscribe to.",
+                                              "example": "account",
+                                              "type": "string",
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required"
+                                              }
+                                            },
+                                            "destination": {
+                                              "description": "The name of the destination that the result should be sent to.",
+                                              "example": "accountWebhook",
+                                              "type": "string"
+                                            },
+                                            "createEvent": {
+                                              "title": "Create Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable create events.",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "updateEvent": {
+                                              "title": "Update Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable update events.",
+                                                  "example": "always",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  }
+                                                },
+                                                "watchFieldsAuto": {
+                                                  "type": "string",
+                                                  "description": "Whether to watch fields all fields automatically.",
+                                                  "example": "all",
+                                                  "enum": [
+                                                    "all"
+                                                  ]
+                                                },
+                                                "requiredWatchFields": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "string"
+                                                  },
+                                                  "description": "The fields that should be watched.",
+                                                  "example": [
+                                                    "name",
+                                                    "description"
+                                                  ]
+                                                }
+                                              }
+                                            },
+                                            "deleteEvent": {
+                                              "title": "Delete Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable delete events.",
+                                                  "example": "always",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  },
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -23239,6 +23834,125 @@
                                   "properties": {
                                     "enabled": {
                                       "type": "boolean"
+                                    }
+                                  }
+                                },
+                                "subscribe": {
+                                  "title": "Base Subscribe Config",
+                                  "type": "object",
+                                  "properties": {
+                                    "objects": {
+                                      "type": "object",
+                                      "additionalProperties": {
+                                        "title": "Base Subscribe Config Object",
+                                        "type": "object",
+                                        "required": [
+                                          "objectName",
+                                          "destination",
+                                          "inheritFieldsAndMappings"
+                                        ],
+                                        "properties": {
+                                          "inheritFieldsAndMappings": {
+                                            "type": "boolean",
+                                            "description": "Whether to inherit fields and mappings from the read config.",
+                                            "example": true
+                                          },
+                                          "objectName": {
+                                            "description": "The name of the object to subscribe to.",
+                                            "example": "account",
+                                            "type": "string",
+                                            "x-oapi-codegen-extra-tags": {
+                                              "validate": "required"
+                                            }
+                                          },
+                                          "destination": {
+                                            "description": "The name of the destination that the result should be sent to.",
+                                            "example": "accountWebhook",
+                                            "type": "string"
+                                          },
+                                          "createEvent": {
+                                            "title": "Create Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable create events.",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "updateEvent": {
+                                            "title": "Update Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable update events.",
+                                                "example": "always",
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ],
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                }
+                                              },
+                                              "watchFieldsAuto": {
+                                                "type": "string",
+                                                "description": "Whether to watch fields all fields automatically.",
+                                                "example": "all",
+                                                "enum": [
+                                                  "all"
+                                                ]
+                                              },
+                                              "requiredWatchFields": {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "description": "The fields that should be watched.",
+                                                "example": [
+                                                  "name",
+                                                  "description"
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          "deleteEvent": {
+                                            "title": "Delete Event",
+                                            "type": "object",
+                                            "required": [
+                                              "enabled"
+                                            ],
+                                            "properties": {
+                                              "enabled": {
+                                                "type": "string",
+                                                "description": "Conditions to enable delete events.",
+                                                "example": "always",
+                                                "x-oapi-codegen-extra-tags": {
+                                                  "validate": "oneof=always never"
+                                                },
+                                                "enum": [
+                                                  "always",
+                                                  "never"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
                                     }
                                   }
                                 }
@@ -26121,6 +26835,125 @@
                                     "properties": {
                                       "enabled": {
                                         "type": "boolean"
+                                      }
+                                    }
+                                  },
+                                  "subscribe": {
+                                    "title": "Base Subscribe Config",
+                                    "type": "object",
+                                    "properties": {
+                                      "objects": {
+                                        "type": "object",
+                                        "additionalProperties": {
+                                          "title": "Base Subscribe Config Object",
+                                          "type": "object",
+                                          "required": [
+                                            "objectName",
+                                            "destination",
+                                            "inheritFieldsAndMappings"
+                                          ],
+                                          "properties": {
+                                            "inheritFieldsAndMappings": {
+                                              "type": "boolean",
+                                              "description": "Whether to inherit fields and mappings from the read config.",
+                                              "example": true
+                                            },
+                                            "objectName": {
+                                              "description": "The name of the object to subscribe to.",
+                                              "example": "account",
+                                              "type": "string",
+                                              "x-oapi-codegen-extra-tags": {
+                                                "validate": "required"
+                                              }
+                                            },
+                                            "destination": {
+                                              "description": "The name of the destination that the result should be sent to.",
+                                              "example": "accountWebhook",
+                                              "type": "string"
+                                            },
+                                            "createEvent": {
+                                              "title": "Create Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable create events.",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "updateEvent": {
+                                              "title": "Update Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable update events.",
+                                                  "example": "always",
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ],
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  }
+                                                },
+                                                "watchFieldsAuto": {
+                                                  "type": "string",
+                                                  "description": "Whether to watch fields all fields automatically.",
+                                                  "example": "all",
+                                                  "enum": [
+                                                    "all"
+                                                  ]
+                                                },
+                                                "requiredWatchFields": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "string"
+                                                  },
+                                                  "description": "The fields that should be watched.",
+                                                  "example": [
+                                                    "name",
+                                                    "description"
+                                                  ]
+                                                }
+                                              }
+                                            },
+                                            "deleteEvent": {
+                                              "title": "Delete Event",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "string",
+                                                  "description": "Conditions to enable delete events.",
+                                                  "example": "always",
+                                                  "x-oapi-codegen-extra-tags": {
+                                                    "validate": "oneof=always never"
+                                                  },
+                                                  "enum": [
+                                                    "always",
+                                                    "never"
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -63617,6 +64450,125 @@
                             "type": "boolean"
                           }
                         }
+                      },
+                      "subscribe": {
+                        "title": "Base Subscribe Config",
+                        "type": "object",
+                        "properties": {
+                          "objects": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "title": "Base Subscribe Config Object",
+                              "type": "object",
+                              "required": [
+                                "objectName",
+                                "destination",
+                                "inheritFieldsAndMappings"
+                              ],
+                              "properties": {
+                                "inheritFieldsAndMappings": {
+                                  "type": "boolean",
+                                  "description": "Whether to inherit fields and mappings from the read config.",
+                                  "example": true
+                                },
+                                "objectName": {
+                                  "description": "The name of the object to subscribe to.",
+                                  "example": "account",
+                                  "type": "string",
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "required"
+                                  }
+                                },
+                                "destination": {
+                                  "description": "The name of the destination that the result should be sent to.",
+                                  "example": "accountWebhook",
+                                  "type": "string"
+                                },
+                                "createEvent": {
+                                  "title": "Create Event",
+                                  "type": "object",
+                                  "required": [
+                                    "enabled"
+                                  ],
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "string",
+                                      "description": "Conditions to enable create events.",
+                                      "enum": [
+                                        "always",
+                                        "never"
+                                      ],
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "oneof=always never"
+                                      }
+                                    }
+                                  }
+                                },
+                                "updateEvent": {
+                                  "title": "Update Event",
+                                  "type": "object",
+                                  "required": [
+                                    "enabled"
+                                  ],
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "string",
+                                      "description": "Conditions to enable update events.",
+                                      "example": "always",
+                                      "enum": [
+                                        "always",
+                                        "never"
+                                      ],
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "oneof=always never"
+                                      }
+                                    },
+                                    "watchFieldsAuto": {
+                                      "type": "string",
+                                      "description": "Whether to watch fields all fields automatically.",
+                                      "example": "all",
+                                      "enum": [
+                                        "all"
+                                      ]
+                                    },
+                                    "requiredWatchFields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "description": "The fields that should be watched.",
+                                      "example": [
+                                        "name",
+                                        "description"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "deleteEvent": {
+                                  "title": "Delete Event",
+                                  "type": "object",
+                                  "required": [
+                                    "enabled"
+                                  ],
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "string",
+                                      "description": "Conditions to enable delete events.",
+                                      "example": "always",
+                                      "x-oapi-codegen-extra-tags": {
+                                        "validate": "oneof=always never"
+                                      },
+                                      "enum": [
+                                        "always",
+                                        "never"
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   },
@@ -64958,6 +65910,125 @@
                     "properties": {
                       "enabled": {
                         "type": "boolean"
+                      }
+                    }
+                  },
+                  "subscribe": {
+                    "title": "Base Subscribe Config",
+                    "type": "object",
+                    "properties": {
+                      "objects": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "title": "Base Subscribe Config Object",
+                          "type": "object",
+                          "required": [
+                            "objectName",
+                            "destination",
+                            "inheritFieldsAndMappings"
+                          ],
+                          "properties": {
+                            "inheritFieldsAndMappings": {
+                              "type": "boolean",
+                              "description": "Whether to inherit fields and mappings from the read config.",
+                              "example": true
+                            },
+                            "objectName": {
+                              "description": "The name of the object to subscribe to.",
+                              "example": "account",
+                              "type": "string",
+                              "x-oapi-codegen-extra-tags": {
+                                "validate": "required"
+                              }
+                            },
+                            "destination": {
+                              "description": "The name of the destination that the result should be sent to.",
+                              "example": "accountWebhook",
+                              "type": "string"
+                            },
+                            "createEvent": {
+                              "title": "Create Event",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "Conditions to enable create events.",
+                                  "enum": [
+                                    "always",
+                                    "never"
+                                  ],
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "oneof=always never"
+                                  }
+                                }
+                              }
+                            },
+                            "updateEvent": {
+                              "title": "Update Event",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "Conditions to enable update events.",
+                                  "example": "always",
+                                  "enum": [
+                                    "always",
+                                    "never"
+                                  ],
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "oneof=always never"
+                                  }
+                                },
+                                "watchFieldsAuto": {
+                                  "type": "string",
+                                  "description": "Whether to watch fields all fields automatically.",
+                                  "example": "all",
+                                  "enum": [
+                                    "all"
+                                  ]
+                                },
+                                "requiredWatchFields": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "description": "The fields that should be watched.",
+                                  "example": [
+                                    "name",
+                                    "description"
+                                  ]
+                                }
+                              }
+                            },
+                            "deleteEvent": {
+                              "title": "Delete Event",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "enabled": {
+                                  "type": "string",
+                                  "description": "Conditions to enable delete events.",
+                                  "example": "always",
+                                  "x-oapi-codegen-extra-tags": {
+                                    "validate": "oneof=always never"
+                                  },
+                                  "enum": [
+                                    "always",
+                                    "never"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }

@@ -26,6 +26,8 @@ components:
           $ref: '#/components/schemas/BaseWriteConfig'
         proxy:
           $ref: '#/components/schemas/BaseProxyConfig'
+        subscribe:
+          $ref: '#/components/schemas/BaseSubscribeConfig'
 
     BaseProxyConfig:
       title: Base Proxy Config
