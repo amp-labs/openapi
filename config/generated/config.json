@@ -194,7 +194,7 @@
                     },
                     "source": {
                       "title": "Read Config Object Source",
-                      "description": "Stores source specific configuration for a read object.",
+                      "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                       "type": "object"
                     }
                   }
@@ -548,7 +548,7 @@
                 },
                 "source": {
                   "title": "Read Config Object Source",
-                  "description": "Stores source specific configuration for a read object.",
+                  "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                   "type": "object"
                 }
               }
@@ -722,14 +722,14 @@
           },
           "source": {
             "title": "Read Config Object Source",
-            "description": "Stores source specific configuration for a read object.",
+            "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
             "type": "object"
           }
         }
       },
       "Source": {
         "title": "Read Config Object Source",
-        "description": "Stores source specific configuration for a read object.",
+        "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
         "type": "object"
       },
       "SelectedValueMappings": {
@@ -1587,7 +1587,7 @@
                         },
                         "source": {
                           "title": "Read Config Object Source",
-                          "description": "Stores source specific configuration for a read object.",
+                          "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                           "type": "object"
                         }
                       }
@@ -1941,7 +1941,7 @@
                             },
                             "source": {
                               "title": "Read Config Object Source",
-                              "description": "Stores source specific configuration for a read object.",
+                              "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                               "type": "object"
                             }
                           }
@@ -2125,7 +2125,7 @@
                                 },
                                 "source": {
                                   "title": "Read Config Object Source",
-                                  "description": "Stores source specific configuration for a read object.",
+                                  "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                                   "type": "object"
                                 }
                               }
@@ -2901,7 +2901,7 @@
                     },
                     "source": {
                       "title": "Read Config Object Source",
-                      "description": "Stores source specific configuration for a read object.",
+                      "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                       "type": "object"
                     }
                   }
@@ -3085,7 +3085,7 @@
                         },
                         "source": {
                           "title": "Read Config Object Source",
-                          "description": "Stores source specific configuration for a read object.",
+                          "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                           "type": "object"
                         }
                       }
@@ -3274,7 +3274,7 @@
               },
               "source": {
                 "title": "Read Config Object Source",
-                "description": "Stores source specific configuration for a read object.",
+                "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                 "type": "object"
               }
             }
@@ -4327,7 +4327,7 @@
                         },
                         "source": {
                           "title": "Read Config Object Source",
-                          "description": "Stores source specific configuration for a read object.",
+                          "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                           "type": "object"
                         }
                       }
@@ -4677,7 +4677,7 @@
                     },
                     "source": {
                       "title": "Read Config Object Source",
-                      "description": "Stores source specific configuration for a read object.",
+                      "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                       "type": "object"
                     }
                   }
@@ -4856,7 +4856,7 @@
               },
               "source": {
                 "title": "Read Config Object Source",
-                "description": "Stores source specific configuration for a read object.",
+                "description": "Stores source specific configuration for a read object. It is an experimental field and is subject to change. It stores provider specific configuration for a read object. For example, it can store the query used to define the object in snowflake. Think of it as all configuration that is required to define the object on the provider.",
                 "type": "object"
               }
             }
