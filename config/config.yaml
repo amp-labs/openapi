@@ -99,12 +99,12 @@ components:
           $ref: '#/components/schemas/SelectedFieldsAutoConfig'
         backfill:
           $ref: '#/components/schemas/BackfillConfig'
-        providerConfig:
-          $ref: '#/components/schemas/ReadConfigObjectProviderConfig'
+        source:
+          $ref: '#/components/schemas/Source'
 
-    ReadConfigObjectProviderConfig:
-      title: Read Config Object Provider Config
-      description: Stores provider specific configuration for a read object.
+    Source:
+      title: Read Config Object Source
+      description: Stores source specific configuration for a read object.
       type: object
 
     SelectedValueMappings:

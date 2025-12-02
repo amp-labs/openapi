@@ -192,9 +192,9 @@
                         }
                       }
                     },
-                    "providerConfig": {
-                      "title": "Read Config Object Provider Config",
-                      "description": "Stores provider specific configuration for a read object.",
+                    "source": {
+                      "title": "Read Config Object Source",
+                      "description": "Stores source specific configuration for a read object.",
                       "type": "object"
                     }
                   }
@@ -546,9 +546,9 @@
                     }
                   }
                 },
-                "providerConfig": {
-                  "title": "Read Config Object Provider Config",
-                  "description": "Stores provider specific configuration for a read object.",
+                "source": {
+                  "title": "Read Config Object Source",
+                  "description": "Stores source specific configuration for a read object.",
                   "type": "object"
                 }
               }
@@ -720,16 +720,16 @@
               }
             }
           },
-          "providerConfig": {
-            "title": "Read Config Object Provider Config",
-            "description": "Stores provider specific configuration for a read object.",
+          "source": {
+            "title": "Read Config Object Source",
+            "description": "Stores source specific configuration for a read object.",
             "type": "object"
           }
         }
       },
-      "ReadConfigObjectProviderConfig": {
-        "title": "Read Config Object Provider Config",
-        "description": "Stores provider specific configuration for a read object.",
+      "Source": {
+        "title": "Read Config Object Source",
+        "description": "Stores source specific configuration for a read object.",
         "type": "object"
       },
       "SelectedValueMappings": {
@@ -1585,9 +1585,9 @@
                             }
                           }
                         },
-                        "providerConfig": {
-                          "title": "Read Config Object Provider Config",
-                          "description": "Stores provider specific configuration for a read object.",
+                        "source": {
+                          "title": "Read Config Object Source",
+                          "description": "Stores source specific configuration for a read object.",
                           "type": "object"
                         }
                       }
@@ -1939,9 +1939,9 @@
                                 }
                               }
                             },
-                            "providerConfig": {
-                              "title": "Read Config Object Provider Config",
-                              "description": "Stores provider specific configuration for a read object.",
+                            "source": {
+                              "title": "Read Config Object Source",
+                              "description": "Stores source specific configuration for a read object.",
                               "type": "object"
                             }
                           }
@@ -2123,9 +2123,9 @@
                                     }
                                   }
                                 },
-                                "providerConfig": {
-                                  "title": "Read Config Object Provider Config",
-                                  "description": "Stores provider specific configuration for a read object.",
+                                "source": {
+                                  "title": "Read Config Object Source",
+                                  "description": "Stores source specific configuration for a read object.",
                                   "type": "object"
                                 }
                               }
@@ -2899,9 +2899,9 @@
                         }
                       }
                     },
-                    "providerConfig": {
-                      "title": "Read Config Object Provider Config",
-                      "description": "Stores provider specific configuration for a read object.",
+                    "source": {
+                      "title": "Read Config Object Source",
+                      "description": "Stores source specific configuration for a read object.",
                       "type": "object"
                     }
                   }
@@ -3083,9 +3083,9 @@
                             }
                           }
                         },
-                        "providerConfig": {
-                          "title": "Read Config Object Provider Config",
-                          "description": "Stores provider specific configuration for a read object.",
+                        "source": {
+                          "title": "Read Config Object Source",
+                          "description": "Stores source specific configuration for a read object.",
                           "type": "object"
                         }
                       }
@@ -3272,9 +3272,9 @@
                   }
                 }
               },
-              "providerConfig": {
-                "title": "Read Config Object Provider Config",
-                "description": "Stores provider specific configuration for a read object.",
+              "source": {
+                "title": "Read Config Object Source",
+                "description": "Stores source specific configuration for a read object.",
                 "type": "object"
               }
             }
@@ -4325,9 +4325,9 @@
                             }
                           }
                         },
-                        "providerConfig": {
-                          "title": "Read Config Object Provider Config",
-                          "description": "Stores provider specific configuration for a read object.",
+                        "source": {
+                          "title": "Read Config Object Source",
+                          "description": "Stores source specific configuration for a read object.",
                           "type": "object"
                         }
                       }
@@ -4675,9 +4675,9 @@
                         }
                       }
                     },
-                    "providerConfig": {
-                      "title": "Read Config Object Provider Config",
-                      "description": "Stores provider specific configuration for a read object.",
+                    "source": {
+                      "title": "Read Config Object Source",
+                      "description": "Stores source specific configuration for a read object.",
                       "type": "object"
                     }
                   }
@@ -4854,9 +4854,9 @@
                   }
                 }
               },
-              "providerConfig": {
-                "title": "Read Config Object Provider Config",
-                "description": "Stores provider specific configuration for a read object.",
+              "source": {
+                "title": "Read Config Object Source",
+                "description": "Stores source specific configuration for a read object.",
                 "type": "object"
               }
             }
