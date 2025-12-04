@@ -86,7 +86,7 @@ components:
           example: create
         mode:
           type: string
-          description: The mode of write operation. The only supported mode currently is synchronous.
+          description: The mode of write operation.
           enum: [synchronous, asynchronous]
           example: synchronous
         retryPolicy:
