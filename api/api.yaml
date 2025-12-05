@@ -1229,6 +1229,115 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installationUpdate
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/config-content:
+    patch:
+      summary: Update an installation object
+      description: |
+        Updates a single object's configuration within an installation using JSON Patch syntax (RFC 6902).
+        Applies JSON Patch operations (add, remove, replace) to a specific object's config.
+        Supports updating read, subscribe, and write object configurations.
+      operationId: patchObjectConfigContent
+      tags: ["Installation"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: integrationId
+          in: path
+          required: true
+          description: The integration ID.
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          description: The object name whose config content will be patched.
+          schema:
+            type: string
+          example: account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  required:
+                    - action
+                    - changes
+                  properties:
+                    action:
+                      type: string
+                      enum: [read, subscribe, write]
+                      description: The action type for the object config (read, subscribe, or write).
+                      example: read
+                    changes:
+                      type: array
+                      minItems: 1
+                      description: |
+                        Array of JSON Patch operations to apply (RFC 6902).
+                        Supported operations: add, remove, replace.
+                        All paths must start with "/" (e.g., "/schedule", "/selectedFields/phone").
+                      items:
+                        $ref: "#/components/schemas/JSONPatchOperation"
+                      example:
+                        - op: replace
+                          path: /schedule
+                          value: "*/10 * * * *"
+                        - op: add
+                          path: /selectedFields/phone
+                          value: true
+                        - op: remove
+                          path: /selectedFields/billingcity
+                - oneOf:
+                    - type: object
+                      required: [groupRef]
+                      properties:
+                        groupRef:
+                          type: string
+                          description: |
+                            The ID of the user group that has access to this installation.
+                            Either groupRef or installationId must be provided.
+                          example: group-123
+                    - type: object
+                      required: [installationId]
+                      properties:
+                        installationId:
+                          type: string
+                          description: |
+                            The installation ID.
+                            Either groupRef or installationId must be provided.
+                          example: installation-123
+        required: true
+      responses:
+        200:
+          description: The updated installation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Installation"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        404:
+          description: Installation not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: patchObjectConfigContent
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
     get:
       summary: Get object metadata for installation
@@ -4420,6 +4529,36 @@ components:
           format: date-time
         config:
           $ref: "#/components/schemas/Config"
+    JSONPatchOperation:
+      title: JSON Patch Operation
+      description: |
+        Represents a single JSON Patch operation (RFC 6902).
+        Only supports add, remove, and replace operations for config updates.
+      required:
+        - op
+        - path
+      type: object
+      properties:
+        op:
+          type: string
+          enum: [add, remove, replace]
+          description: |
+            The operation to perform.
+            - "add": Adds a new field or replaces an existing one at the specified path
+            - "remove": Removes the field at the specified path
+            - "replace": Replaces the value at the specified path 
+          example: replace
+        path:
+          type: string
+          description: |
+            JSON Pointer path to the field to operate on (RFC 6901).
+            All paths must start with "/" (e.g., "/schedule", "/selectedFields/phone").
+          example: /schedule
+        value:
+          description: |
+            The value to set for add/replace operations.
+            Not used for remove operations.
+          example: "*/10 * * * *"
     Config:
       title: Config
       required:
