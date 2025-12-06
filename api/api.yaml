@@ -1234,9 +1234,7 @@ paths:
     patch:
       summary: Update an installation object
       description: |
-        Updates a single object's configuration within an installation using JSON Patch syntax (RFC 6902).
-        Applies JSON Patch operations (add, remove, replace) to a specific object's config.
-        Supports updating read, subscribe, and write object configurations.
+        Updates a single object's configuration within an installation using JSON Patch syntax.
       operationId: patchObjectConfigContent
       tags: ["Installation"]
       parameters:
@@ -1256,7 +1254,10 @@ paths:
         - name: objectName
           in: path
           required: true
-          description: The object name whose config content will be patched.
+          description: |
+            The object name whose config content will be patched.
+            Must match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).
+            Common examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.
           schema:
             type: string
           example: account
@@ -1265,37 +1266,9 @@ paths:
           application/json:
             schema:
               allOf:
-                - type: object
-                  required:
-                    - action
-                    - changes
-                  properties:
-                    action:
-                      type: string
-                      enum: [read, subscribe, write]
-                      description: The action type for the object config (read, subscribe, or write).
-                      example: read
-                    changes:
-                      type: array
-                      minItems: 1
-                      description: |
-                        Array of JSON Patch operations to apply (RFC 6902).
-                        Supported operations: add, remove, replace.
-                        All paths must start with "/" (e.g., "/schedule", "/selectedFields/phone").
-                      items:
-                        $ref: "#/components/schemas/JSONPatchOperation"
-                      example:
-                        - op: replace
-                          path: /schedule
-                          value: "*/10 * * * *"
-                        - op: add
-                          path: /selectedFields/phone
-                          value: true
-                        - op: remove
-                          path: /selectedFields/billingcity
                 - oneOf:
                     - type: object
-                      required: [groupRef]
+                      required: [groupRef, action, changes]
                       properties:
                         groupRef:
                           type: string
@@ -1303,8 +1276,29 @@ paths:
                             The ID of the user group that has access to this installation.
                             Either groupRef or installationId must be provided.
                           example: group-123
+                        action:
+                          type: string
+                          enum: [read, subscribe, write]
+                          description: The action type for the object config (read, subscribe, or write).
+                          example: read
+                        changes:
+                          type: array
+                          minItems: 1
+                          description: |
+                            Array of JSON Patch operations to apply.
+                          items:
+                            $ref: "#/components/schemas/JSONPatchOperation"
+                          example:
+                            - op: replace
+                              path: /schedule
+                              value: "*/10 * * * *"
+                            - op: add
+                              path: /selectedFields/phone
+                              value: true
+                            - op: remove
+                              path: /selectedFields/billingcity
                     - type: object
-                      required: [installationId]
+                      required: [installationId, action, changes]
                       properties:
                         installationId:
                           type: string
@@ -1312,6 +1306,27 @@ paths:
                             The installation ID.
                             Either groupRef or installationId must be provided.
                           example: installation-123
+                        action:
+                          type: string
+                          enum: [read, subscribe, write]
+                          description: The action type for the object config (read, subscribe, or write).
+                          example: read
+                        changes:
+                          type: array
+                          minItems: 1
+                          description: |
+                            Array of JSON Patch operations to apply.
+                          items:
+                            $ref: "#/components/schemas/JSONPatchOperation"
+                          example:
+                            - op: replace
+                              path: /schedule
+                              value: "*/10 * * * *"
+                            - op: add
+                              path: /selectedFields/phone
+                              value: true
+                            - op: remove
+                              path: /selectedFields/billingcity
         required: true
       responses:
         200:
