@@ -4529,6 +4529,12 @@ components:
           type: string
           description: The health status of the installation ("healthy", "unhealthy").
           example: healthy
+        lastOperationStatus:
+          type: string
+          enum: [success, failure, in_progress]
+          description: |
+            The status of the latest operation for this installation.
+          example: success
         connection:
           $ref: "#/components/schemas/Connection"
         createTime:
