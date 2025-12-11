@@ -443,9 +443,7 @@ components:
       description: The registry of provider modules.
       additionalProperties:
         $ref: "#/components/schemas/ModuleInfo"
-      x-go-type: map[common.ModuleID]ModuleInfo
-      x-go-type-import:
-        path: "github.com/amp-labs/connectors/common"
+      x-go-type: map[string]ModuleInfo
 
     ModuleInfo:
       title: Module Info
@@ -497,9 +495,7 @@ components:
           x-oapi-codegen-extra-tags:
             validate: required
         defaultModule:
-          x-go-type: common.ModuleID
-          x-go-type-import:
-            path: "github.com/amp-labs/connectors/common"
+          x-go-type: string
         oauth2Opts:
           $ref: '#/components/schemas/Oauth2Opts'
         apiKeyOpts:
@@ -691,9 +687,7 @@ components:
       description: Does this metadata item only apply to a specific module?
       additionalProperties:
         $ref: '#/components/schemas/ModuleDependency'
-      x-go-type: map[common.ModuleID]ModuleDependency
-      x-go-type-import:
-        path: "github.com/amp-labs/connectors/common"
+      x-go-type: map[string]ModuleDependency
 
     ModuleDependency:
       title: Module Dependency
