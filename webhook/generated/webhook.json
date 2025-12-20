@@ -305,6 +305,20 @@
             "description": "The timestamp when the operation was performed.",
             "type": "string",
             "format": "date-time"
+          },
+          "readType": {
+            "description": "The type of read operation. This is only populated for Read Actions, not Subscribe Actions. Possible values are 'backfill' (initial backfill), 'triggered' (on-demand read via API), or 'scheduled' (regular scheduled read).",
+            "type": "string",
+            "enum": [
+              "backfill",
+              "scheduled",
+              "triggered"
+            ],
+            "x-enumNames": [
+              "BackfillReadType",
+              "ScheduledReadType",
+              "TriggeredReadType"
+            ]
           }
         }
       },
