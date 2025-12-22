@@ -1526,13 +1526,6 @@ paths:
           schema:
             type: string
           example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
-        - name: groupRef
-          in: query
-          required: true
-          description: The groupRef for the installation
-          schema:
-            type: string
-          example: group-123
       requestBody:
         required: true
         description: Metadata upsert request containing field definitions to create or update
@@ -1544,6 +1537,7 @@ paths:
               createTextFields:
                 summary: Create text fields on multiple objects
                 value:
+                  groupRef: "group-123"
                   fields:
                     Account:
                       - fieldName: "Industry"
@@ -1570,6 +1564,7 @@ paths:
               createNumericFields:
                 summary: Create numeric fields with constraints
                 value:
+                  groupRef: "group-123"
                   fields:
                     Opportunity:
                       - fieldName: "Deal_Score"
@@ -1586,6 +1581,7 @@ paths:
               createAssociationField:
                 summary: Create field with association to another object
                 value:
+                  groupRef: "group-123"
                   fields:
                     Task:
                       - fieldName: "Related_Contact"
@@ -1658,13 +1654,6 @@ paths:
           schema:
             type: string
           example: salesforce
-        - name: groupRef
-          in: query
-          required: true
-          description: The ID that your app uses to identify the group of users for this Connection.
-          schema:
-            type: string
-          example: group-123
       requestBody:
         required: true
         description: Metadata upsert request containing field definitions to create or update
@@ -1676,6 +1665,7 @@ paths:
               createTextFields:
                 summary: Create text fields on multiple objects
                 value:
+                  groupRef: "group-123"
                   fields:
                     Account:
                       - fieldName: "Industry"
@@ -1702,6 +1692,7 @@ paths:
               createNumericFields:
                 summary: Create numeric fields with constraints
                 value:
+                  groupRef: "group-123"
                   fields:
                     Opportunity:
                       - fieldName: "Deal_Score"
@@ -1718,6 +1709,7 @@ paths:
               createAssociationField:
                 summary: Create field with association to another object
                 value:
+                  groupRef: "group-123"
                   fields:
                     Task:
                       - fieldName: "Related_Contact"
@@ -5524,6 +5516,10 @@ components:
       type: object
       description: Request payload for upserting metadata (fields only)
       properties:
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group of users for this request.
+          example: group-123
         fields:
           type: object
           description: Maps object names to field definitions
@@ -5532,6 +5528,7 @@ components:
             items:
               $ref: '#/components/schemas/FieldDefinition'
       required:
+        - groupRef
         - fields
 
     UpsertMetadataResponse:
