@@ -184,6 +184,11 @@ components:
         id:
           description: The ID of the record. this field will be populated in case of delete event.
           type: string
+        fieldsUpdated:
+          description: A list of field names that were updated.
+          type: array
+          items:
+            type: string
 
     ResultInfo:
       title: Result Info
