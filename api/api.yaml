@@ -1363,7 +1363,9 @@ paths:
       description: |
         Retrieves metadata about an object in a customer's SaaS instance, including its fields.
         This endpoint requires that an Installation exists for the given groupRef.
-        It applies object mappings.
+        It applies object mappings. This endpoint may return nested fields as a part of the response.
+        Nested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Currently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.
       tags: ["Objects & Fields"]
       operationId: getObjectMetadataForInstallation
       parameters:
@@ -1455,7 +1457,9 @@ paths:
       description: |
         Retrieves metadata about an object in a customer's SaaS instance, including its fields.
         This endpoint only requires that a Connection exists for the given groupRef.
-        It does not apply any object mappings.
+        It does not apply any object mappings. This endpoint may return nested fields as a part of the response.
+        Nested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Currently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.
       tags: ["Objects & Fields"]
       operationId: getObjectMetadataForConnection
       parameters:
@@ -3451,7 +3455,7 @@ paths:
                 eventType:
                   type: string
                   description: The type of notification event.
-                  enum: 
+                  enum:
                     - "read.backfill.done"
                     - "connection.created"
                     - "connection.error"
@@ -3518,7 +3522,7 @@ paths:
           description: Filter by notification event type.
           schema:
             type: string
-            enum: 
+            enum:
               - "read.backfill.done"
               - "connection.created"
               - "connection.error"
@@ -4563,7 +4567,7 @@ components:
             The operation to perform.
             - "add": Adds a new field or replaces an existing one at the specified path
             - "remove": Removes the field at the specified path
-            - "replace": Replaces the value at the specified path 
+            - "replace": Replaces the value at the specified path
           example: replace
         path:
           type: string
@@ -5767,7 +5771,7 @@ components:
         eventType:
           type: string
           description: The type of notification event.
-          enum: 
+          enum:
             - "read.backfill.done"
             - "connection.created"
             - "connection.error"
