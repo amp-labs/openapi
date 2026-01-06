@@ -2512,6 +2512,13 @@ paths:
           schema:
             type: string
           example: my-project
+        - name: includeSecrets
+          in: query
+          required: false
+          description: Include secrets in the response
+          schema:
+            type: boolean
+          example: true
       responses:
         200:
           description: List of destinations
