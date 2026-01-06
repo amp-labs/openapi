@@ -46246,98 +46246,88 @@
                 "schema": {
                   "title": "DestinationWithSecrets",
                   "description": "Destination object with secrets field (returned by getDestination when includeSecrets is true)",
-                  "allOf": [
-                    {
-                      "title": "Destination",
-                      "required": [
-                        "id",
-                        "name",
-                        "type",
-                        "metadata",
-                        "createTime"
-                      ],
+                  "required": [
+                    "id",
+                    "name",
+                    "type",
+                    "metadata",
+                    "createTime"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The destination ID."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "User-defined name for the destination",
+                      "example": "leadConvertedWebhook"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "The type of the destination",
+                      "example": "webhook"
+                    },
+                    "metadata": {
                       "type": "object",
                       "properties": {
-                        "id": {
+                        "url": {
                           "type": "string",
-                          "description": "The destination ID."
+                          "description": "Webhook URL",
+                          "example": "https://webhooks.mailmonkey.com/salesforce-lead-converted"
                         },
-                        "name": {
-                          "type": "string",
-                          "description": "User-defined name for the destination",
-                          "example": "leadConvertedWebhook"
-                        },
-                        "type": {
-                          "type": "string",
-                          "description": "The type of the destination",
-                          "example": "webhook"
-                        },
-                        "metadata": {
+                        "headers": {
+                          "title": "Webhook Headers",
                           "type": "object",
-                          "properties": {
-                            "url": {
-                              "type": "string",
-                              "description": "Webhook URL",
-                              "example": "https://webhooks.mailmonkey.com/salesforce-lead-converted"
-                            },
-                            "headers": {
-                              "title": "Webhook Headers",
-                              "type": "object",
-                              "nullable": true,
-                              "description": "Additional headers to add when Ampersand sends a webhook message",
-                              "additionalProperties": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "example": {
-                                "Authorization": "Bearer 1234"
-                              }
-                            },
-                            "streamName": {
-                              "type": "string",
-                              "description": "The name of the Kinesis stream",
-                              "example": "my-data-stream"
-                            },
-                            "region": {
-                              "type": "string",
-                              "description": "The AWS region for the destination",
-                              "example": "us-east-1"
-                            },
-                            "partitionKeyTemplate": {
-                              "type": "string",
-                              "description": "Template for generating partition keys",
-                              "example": "{{.integration_id}}"
-                            }
+                          "nullable": true,
+                          "description": "Additional headers to add when Ampersand sends a webhook message",
+                          "additionalProperties": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "example": {
+                            "Authorization": "Bearer 1234"
                           }
                         },
-                        "createTime": {
+                        "streamName": {
                           "type": "string",
-                          "description": "The time the destination was created.",
-                          "format": "date-time"
+                          "description": "The name of the Kinesis stream",
+                          "example": "my-data-stream"
                         },
-                        "updateTime": {
+                        "region": {
                           "type": "string",
-                          "description": "The time the destination was updated.",
-                          "format": "date-time"
+                          "description": "The AWS region for the destination",
+                          "example": "us-east-1"
+                        },
+                        "partitionKeyTemplate": {
+                          "type": "string",
+                          "description": "Template for generating partition keys",
+                          "example": "{{.integration_id}}"
                         }
                       }
                     },
-                    {
+                    "createTime": {
+                      "type": "string",
+                      "description": "The time the destination was created.",
+                      "format": "date-time"
+                    },
+                    "updateTime": {
+                      "type": "string",
+                      "description": "The time the destination was updated.",
+                      "format": "date-time"
+                    },
+                    "secrets": {
                       "type": "object",
+                      "description": "Destination secrets (only included when includeSecrets is true)",
                       "properties": {
-                        "secrets": {
-                          "type": "object",
-                          "description": "Destination secrets (only included when includeSecrets is true)",
-                          "properties": {
-                            "webhookSigningKey": {
-                              "type": "string",
-                              "description": "Webhook signing key for the destination (only included for webhook destinations)"
-                            }
-                          }
+                        "webhookSigningKey": {
+                          "type": "string",
+                          "description": "Webhook signing key for the destination (only included for webhook destinations)"
                         }
                       }
                     }
-                  ]
+                  }
                 }
               }
             }
@@ -63944,98 +63934,88 @@
       "DestinationWithSecrets": {
         "title": "DestinationWithSecrets",
         "description": "Destination object with secrets field (returned by getDestination when includeSecrets is true)",
-        "allOf": [
-          {
-            "title": "Destination",
-            "required": [
-              "id",
-              "name",
-              "type",
-              "metadata",
-              "createTime"
-            ],
+        "required": [
+          "id",
+          "name",
+          "type",
+          "metadata",
+          "createTime"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The destination ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "User-defined name for the destination",
+            "example": "leadConvertedWebhook"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the destination",
+            "example": "webhook"
+          },
+          "metadata": {
             "type": "object",
             "properties": {
-              "id": {
+              "url": {
                 "type": "string",
-                "description": "The destination ID."
+                "description": "Webhook URL",
+                "example": "https://webhooks.mailmonkey.com/salesforce-lead-converted"
               },
-              "name": {
-                "type": "string",
-                "description": "User-defined name for the destination",
-                "example": "leadConvertedWebhook"
-              },
-              "type": {
-                "type": "string",
-                "description": "The type of the destination",
-                "example": "webhook"
-              },
-              "metadata": {
+              "headers": {
+                "title": "Webhook Headers",
                 "type": "object",
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "description": "Webhook URL",
-                    "example": "https://webhooks.mailmonkey.com/salesforce-lead-converted"
-                  },
-                  "headers": {
-                    "title": "Webhook Headers",
-                    "type": "object",
-                    "nullable": true,
-                    "description": "Additional headers to add when Ampersand sends a webhook message",
-                    "additionalProperties": {
-                      "type": "string",
-                      "nullable": false
-                    },
-                    "example": {
-                      "Authorization": "Bearer 1234"
-                    }
-                  },
-                  "streamName": {
-                    "type": "string",
-                    "description": "The name of the Kinesis stream",
-                    "example": "my-data-stream"
-                  },
-                  "region": {
-                    "type": "string",
-                    "description": "The AWS region for the destination",
-                    "example": "us-east-1"
-                  },
-                  "partitionKeyTemplate": {
-                    "type": "string",
-                    "description": "Template for generating partition keys",
-                    "example": "{{.integration_id}}"
-                  }
+                "nullable": true,
+                "description": "Additional headers to add when Ampersand sends a webhook message",
+                "additionalProperties": {
+                  "type": "string",
+                  "nullable": false
+                },
+                "example": {
+                  "Authorization": "Bearer 1234"
                 }
               },
-              "createTime": {
+              "streamName": {
                 "type": "string",
-                "description": "The time the destination was created.",
-                "format": "date-time"
+                "description": "The name of the Kinesis stream",
+                "example": "my-data-stream"
               },
-              "updateTime": {
+              "region": {
                 "type": "string",
-                "description": "The time the destination was updated.",
-                "format": "date-time"
+                "description": "The AWS region for the destination",
+                "example": "us-east-1"
+              },
+              "partitionKeyTemplate": {
+                "type": "string",
+                "description": "Template for generating partition keys",
+                "example": "{{.integration_id}}"
               }
             }
           },
-          {
+          "createTime": {
+            "type": "string",
+            "description": "The time the destination was created.",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "The time the destination was updated.",
+            "format": "date-time"
+          },
+          "secrets": {
             "type": "object",
+            "description": "Destination secrets (only included when includeSecrets is true)",
             "properties": {
-              "secrets": {
-                "type": "object",
-                "description": "Destination secrets (only included when includeSecrets is true)",
-                "properties": {
-                  "webhookSigningKey": {
-                    "type": "string",
-                    "description": "Webhook signing key for the destination (only included for webhook destinations)"
-                  }
-                }
+              "webhookSigningKey": {
+                "type": "string",
+                "description": "Webhook signing key for the destination (only included for webhook destinations)"
               }
             }
           }
-        ]
+        }
       },
       "Project": {
         "title": "Project",

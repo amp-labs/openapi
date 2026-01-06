@@ -4265,6 +4265,7 @@ components:
           type: string
           description: The time the organization was updated.
           format: date-time
+    # NOTE: If you change this schema, also update DestinationWithSecrets schema below.
     Destination:
       title: Destination
       required:
@@ -4315,20 +4316,65 @@ components:
           type: string
           description: The time the destination was updated.
           format: date-time
+    # NOTE: If you change this schema, also update Destination schema above.
     DestinationWithSecrets:
       title: DestinationWithSecrets
       description: Destination object with secrets field (returned by getDestination when includeSecrets is true)
-      allOf:
-        - $ref: "#/components/schemas/Destination"
-        - type: object
+      required:
+        - id
+        - name
+        - type
+        - metadata
+        - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The destination ID.
+        name:
+          type: string
+          description: User-defined name for the destination
+          example: leadConvertedWebhook
+        type:
+          type: string
+          description: The type of the destination
+          example: webhook
+        metadata:
+          type: object
           properties:
-            secrets:
-              type: object
-              description: Destination secrets (only included when includeSecrets is true)
-              properties:
-                webhookSigningKey:
-                  type: string
-                  description: Webhook signing key for the destination (only included for webhook destinations)
+            url:
+              type: string
+              description: Webhook URL
+              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+            headers:
+              $ref: "#/components/schemas/WebhookHeaders"
+            streamName:
+              type: string
+              description: The name of the Kinesis stream
+              example: my-data-stream
+            region:
+              type: string
+              description: The AWS region for the destination
+              example: us-east-1
+            partitionKeyTemplate:
+              type: string
+              description: Template for generating partition keys
+              example: "{{.integration_id}}"
+        createTime:
+          type: string
+          description: The time the destination was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the destination was updated.
+          format: date-time
+        secrets:
+          type: object
+          description: Destination secrets (only included when includeSecrets is true)
+          properties:
+            webhookSigningKey:
+              type: string
+              description: Webhook signing key for the destination (only included for webhook destinations)
     Project:
       title: Project
       required:
