@@ -2512,13 +2512,6 @@ paths:
           schema:
             type: string
           example: my-project
-        - name: includeSecrets
-          in: query
-          required: false
-          description: Include secrets in the response
-          schema:
-            type: boolean
-          example: true
       responses:
         200:
           description: List of destinations
@@ -2580,7 +2573,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Destination"
+                $ref: "#/components/schemas/DestinationWithSecrets"
         default:
           description: Error
           content:
@@ -4322,13 +4315,20 @@ components:
           type: string
           description: The time the destination was updated.
           format: date-time
-        secrets:
-          type: object
-          description: Destination secrets (only included when includeSecrets is true)
+    DestinationWithSecrets:
+      title: DestinationWithSecrets
+      description: Destination object with secrets field (returned by getDestination when includeSecrets is true)
+      allOf:
+        - $ref: "#/components/schemas/Destination"
+        - type: object
           properties:
-            webhookSigningKey:
-              type: string
-              description: Webhook signing key for the destination (only included for webhook destinations)
+            secrets:
+              type: object
+              description: Destination secrets (only included when includeSecrets is true)
+              properties:
+                webhookSigningKey:
+                  type: string
+                  description: Webhook signing key for the destination (only included for webhook destinations)
     Project:
       title: Project
       required:
