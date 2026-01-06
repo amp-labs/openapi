@@ -231,6 +231,32 @@ components:
           example:
             access_type: offline
             duration: permanent
+        accessTokenOpts:
+          $ref: '#/components/schemas/AccessTokenOpts'
+
+    AccessTokenOpts:
+      title: Oauth2 Access Token Options
+      type: object
+      description: |
+        Configuration that defines how an OAuth 2.0 access token is attached to
+        outbound API requests. When provided, this configuration overrides the
+        default access-token handling behavior for the connector.
+      required:
+        - attachmentType
+      properties:
+        attachmentType:
+          type: string
+          description: How the access token should be attached to requests.
+          enum: [accessTokenHeaderAttachment]
+          x-oapi-codegen-extra-tags:
+            validate: required
+        header:
+          $ref: '#/components/schemas/AccessTokenOptsHeader'
+        docsURL:
+          type: string
+          description: URL with more information about how access token is used.
+          example: https://docs.example.com/oauth2-access-token-usage
+          x-go-type-skip-optional-pointer: true
 
     ApiKeyOpts:
       title: API Key Options
@@ -284,6 +310,24 @@ components:
           type: string
           example: "Bearer "
           description: The prefix to be added to the API key value when it is sent in the header.
+          x-go-type-skip-optional-pointer: true
+
+    AccessTokenOptsHeader:
+      title: Access Token Header Options
+      type: object
+      description: Configuration for access token in header. Must be provided if type is in-header.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: X-Access-Token
+          description: The name of the header to be used for the access token.
+          x-go-type-skip-optional-pointer: true
+        valuePrefix:
+          type: string
+          example: "Bearer "
+          description: The prefix to be added to the access token value when it is sent in the header.
           x-go-type-skip-optional-pointer: true
 
     ApiKeyAsBasicOpts:
