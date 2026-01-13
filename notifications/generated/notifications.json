@@ -537,78 +537,11 @@
         "description": "Data payload for read.triggered.done notifications.",
         "allOf": [
           {
-            "title": "Installation Fields",
             "type": "object",
-            "description": "Common fields present in installation-related notifications.",
             "required": [
-              "projectId",
-              "provider",
-              "integrationId",
-              "integrationName",
+              "objectName",
               "installationId",
-              "groupRef",
-              "groupName",
-              "connectionId",
-              "consumerRef",
-              "consumerName"
-            ],
-            "properties": {
-              "projectId": {
-                "type": "string",
-                "description": "The Ampersand Project ID.",
-                "example": "550e8400-e29b-41d4-a716-446655440000"
-              },
-              "provider": {
-                "type": "string",
-                "description": "The SaaS API that we are integrating with.",
-                "example": "salesforce"
-              },
-              "integrationId": {
-                "type": "string",
-                "description": "The ID of the integration.",
-                "example": "550e8400-e29b-41d4-a716-446655440000"
-              },
-              "integrationName": {
-                "type": "string",
-                "description": "The name of the integration.",
-                "example": "Salesforce Integration"
-              },
-              "installationId": {
-                "type": "string",
-                "description": "The ID of the Ampersand installation.",
-                "example": "550e8400-e29b-41d4-a716-446655440000"
-              },
-              "connectionId": {
-                "type": "string",
-                "description": "The ID of the connection.",
-                "example": "550e8400-e29b-41d4-a716-446655440000"
-              },
-              "groupRef": {
-                "type": "string",
-                "description": "The ID that your app uses to identify the group of users.",
-                "example": "customer-group-ref"
-              },
-              "groupName": {
-                "type": "string",
-                "description": "The display name of the group of users.",
-                "example": "Customer Name"
-              },
-              "consumerRef": {
-                "type": "string",
-                "description": "The reference ID of the consumer that triggered the notification.",
-                "example": "user-123"
-              },
-              "consumerName": {
-                "type": "string",
-                "description": "The name of the consumer that triggered the notification.",
-                "example": "John Doe"
-              }
-            }
-          },
-          {
-            "type": "object",
-            "required": [
-              "objectName"
+              "projectId"
             ],
             "properties": {
               "objectName": {
@@ -1341,78 +1274,11 @@
             "description": "Data payload for read.triggered.done notifications.",
             "allOf": [
               {
-                "title": "Installation Fields",
                 "type": "object",
-                "description": "Common fields present in installation-related notifications.",
                 "required": [
-                  "projectId",
-                  "provider",
-                  "integrationId",
-                  "integrationName",
+                  "objectName",
                   "installationId",
-                  "groupRef",
-                  "groupName",
-                  "connectionId",
-                  "consumerRef",
-                  "consumerName"
-                ],
-                "properties": {
-                  "projectId": {
-                    "type": "string",
-                    "description": "The Ampersand Project ID.",
-                    "example": "550e8400-e29b-41d4-a716-446655440000"
-                  },
-                  "provider": {
-                    "type": "string",
-                    "description": "The SaaS API that we are integrating with.",
-                    "example": "salesforce"
-                  },
-                  "integrationId": {
-                    "type": "string",
-                    "description": "The ID of the integration.",
-                    "example": "550e8400-e29b-41d4-a716-446655440000"
-                  },
-                  "integrationName": {
-                    "type": "string",
-                    "description": "The name of the integration.",
-                    "example": "Salesforce Integration"
-                  },
-                  "installationId": {
-                    "type": "string",
-                    "description": "The ID of the Ampersand installation.",
-                    "example": "550e8400-e29b-41d4-a716-446655440000"
-                  },
-                  "connectionId": {
-                    "type": "string",
-                    "description": "The ID of the connection.",
-                    "example": "550e8400-e29b-41d4-a716-446655440000"
-                  },
-                  "groupRef": {
-                    "type": "string",
-                    "description": "The ID that your app uses to identify the group of users.",
-                    "example": "customer-group-ref"
-                  },
-                  "groupName": {
-                    "type": "string",
-                    "description": "The display name of the group of users.",
-                    "example": "Customer Name"
-                  },
-                  "consumerRef": {
-                    "type": "string",
-                    "description": "The reference ID of the consumer that triggered the notification.",
-                    "example": "user-123"
-                  },
-                  "consumerName": {
-                    "type": "string",
-                    "description": "The name of the consumer that triggered the notification.",
-                    "example": "John Doe"
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "required": [
-                  "objectName"
+                  "projectId"
                 ],
                 "properties": {
                   "objectName": {

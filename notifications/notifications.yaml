@@ -166,10 +166,11 @@ components:
       title: Read Triggered Done Data
       description: Data payload for read.triggered.done notifications.
       allOf:
-        - $ref: '#/components/schemas/InstallationFields'
         - type: object
           required:
             - objectName
+            - installationId
+            - projectId
           properties:
             objectName:
               type: string
