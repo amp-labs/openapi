@@ -142,7 +142,6 @@ components:
               type: string
               description: The name of the object for which the backfill completed.
               example: Account
-
     # Read schedule paused event data
     ReadSchedulePausedData:
       title: Read Schedule Paused Data
@@ -162,6 +161,36 @@ components:
               type: string
               description: Error message if applicable.
               example: "Authentication failed"
+    # Read triggered done event data
+    ReadTriggeredDoneData:
+      title: Read Triggered Done Data
+      description: Data payload for read.triggered.done notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          required:
+            - objectName
+          properties:
+            objectName:
+              type: string
+              description: The name of the object for which the triggered read completed.
+              example: Account
+            fromTimestamp:
+              type: string
+              description: The timestamp of the start of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+            untilTimestamp:
+              type: string
+              description: The timestamp of the end of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+            installationId:
+              type: string
+              description: The ID of the Ampersand installation.
+              example: "550e8400-e29b-41d4-a716-446655440000"
+            projectId:
+              type: string
+              description: The Ampersand Project ID.
+              example: "550e8400-e29b-41d4-a716-446655440000"
 
     # Connection created event data
     ConnectionData:
@@ -325,6 +354,22 @@ components:
           enum: [read.schedule.paused]
         data:
           $ref: '#/components/schemas/ReadSchedulePausedData'
+
+    ReadTriggeredDoneNotificationPayload:
+      title: Read Triggered Done Notification Payload
+      description: |
+        Payload structure for read.triggered.done notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [read.triggered.done]
+        data:
+          $ref: '#/components/schemas/ReadTriggeredDoneData'
 
     ConnectionCreatedNotificationPayload:
       title: Connection Created Notification Payload
