@@ -166,11 +166,10 @@ components:
       title: Read Triggered Done Data
       description: Data payload for read.triggered.done notifications.
       allOf:
+        - $ref: '#/components/schemas/InstallationFields'
         - type: object
           required:
             - objectName
-            - installationId
-            - projectId
           properties:
             objectName:
               type: string
@@ -184,14 +183,6 @@ components:
               type: string
               description: The timestamp of the end of the triggered read.
               example: "2026-01-01T00:00:00Z"
-            installationId:
-              type: string
-              description: The ID of the Ampersand installation.
-              example: "550e8400-e29b-41d4-a716-446655440000"
-            projectId:
-              type: string
-              description: The Ampersand Project ID.
-              example: "550e8400-e29b-41d4-a716-446655440000"
 
     # Connection created event data
     ConnectionData:
