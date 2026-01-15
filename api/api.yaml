@@ -3521,17 +3521,18 @@ paths:
           required: false
           description: Filter by notification event type.
           schema:
-            type: string
-            enum:
-              - "read.backfill.done"
-              - "connection.created"
-              - "connection.error"
-              - "installation.created"
-              - "installation.updated"
-              - "installation.deleted"
-              - "read.schedule.paused"
-              - "read.triggered.done"
-              - "destination.webhook.disabled"
+            # type: string
+            # enum:
+              # - "read.backfill.done"
+              # - "connection.created"
+              # - "connection.error"
+              # - "installation.created"
+              # - "installation.updated"
+              # - "installation.deleted"
+              # - "read.schedule.paused"
+              # - "read.triggered.done"
+              # - "destination.webhook.disabled"
+            $ref: "#/components/schemas/NotificationEventType"
       responses:
         200:
           description: List of event-topic routes
@@ -5823,18 +5824,7 @@ components:
           type: string
           description: The event-topic route ID.
         eventType:
-          type: string
-          description: The type of notification event.
-          enum:
-            - "read.backfill.done"
-            - "connection.created"
-            - "connection.error"
-            - "installation.created"
-            - "installation.updated"
-            - "installation.deleted"
-            - "read.schedule.paused"
-            - "destination.webhook.disabled"
-          example: "installation.created"
+          $ref: "#/components/schemas/NotificationEventType"
         topicId:
           type: string
           description: The ID of the topic to route events to.
@@ -5849,6 +5839,20 @@ components:
           type: string
           format: date-time
           description: The time when the event-topic route was last updated.
+
+    NotificationEventType:
+      type: string
+      description: The type of notification event.
+      enum:
+        - "connection.created"
+        - "connection.error"
+        - "installation.created"
+        - "installation.updated"
+        - "installation.deleted"
+        - "read.schedule.paused"
+        - "read.backfill.done"
+        - "read.triggered.done"
+        - "destination.webhook.disabled"
     TopicDestinationRoute:
       title: Topic Destination Route
       required:
