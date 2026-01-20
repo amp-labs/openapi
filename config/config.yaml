@@ -141,6 +141,8 @@ components:
           type: string
           x-oapi-codegen-extra-tags:
             validate: required
+        deletionSettings:
+          $ref: '#/components/schemas/DeletionSettings'
         selectedValueDefaults:
           type: object
           deprecated: true
@@ -244,6 +246,17 @@ components:
           x-oapi-codegen-extra-tags:
             validate: oneof=always never
           enum: [ always, never ]
+
+    DeletionSettings:
+      title: Deletion Settings
+      type: object
+      required:
+        - enabled
+      properties:
+        enabled:
+          type: boolean
+          description: Whether deletion is enabled for this object
+          example: true
 
     ConfigContent:
       title: Config Content

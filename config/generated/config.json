@@ -219,6 +219,20 @@
                         "validate": "required"
                       }
                     },
+                    "deletionSettings": {
+                      "title": "Deletion Settings",
+                      "type": "object",
+                      "required": [
+                        "enabled"
+                      ],
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Whether deletion is enabled for this object",
+                          "example": true
+                        }
+                      }
+                    },
                     "selectedValueDefaults": {
                       "type": "object",
                       "deprecated": true,
@@ -798,6 +812,20 @@
                     "validate": "required"
                   }
                 },
+                "deletionSettings": {
+                  "title": "Deletion Settings",
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "Whether deletion is enabled for this object",
+                      "example": true
+                    }
+                  }
+                },
                 "selectedValueDefaults": {
                   "type": "object",
                   "deprecated": true,
@@ -942,6 +970,20 @@
             "type": "string",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
+            }
+          },
+          "deletionSettings": {
+            "title": "Deletion Settings",
+            "type": "object",
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "description": "Whether deletion is enabled for this object",
+                "example": true
+              }
             }
           },
           "selectedValueDefaults": {
@@ -1382,6 +1424,20 @@
           }
         }
       },
+      "DeletionSettings": {
+        "title": "Deletion Settings",
+        "type": "object",
+        "required": [
+          "enabled"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether deletion is enabled for this object",
+            "example": true
+          }
+        }
+      },
       "ConfigContent": {
         "title": "Config Content",
         "allOf": [
@@ -1590,6 +1646,20 @@
                           "type": "string",
                           "x-oapi-codegen-extra-tags": {
                             "validate": "required"
+                          }
+                        },
+                        "deletionSettings": {
+                          "title": "Deletion Settings",
+                          "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "Whether deletion is enabled for this object",
+                              "example": true
+                            }
                           }
                         },
                         "selectedValueDefaults": {
@@ -2135,6 +2205,20 @@
                                 "validate": "required"
                               }
                             },
+                            "deletionSettings": {
+                              "title": "Deletion Settings",
+                              "type": "object",
+                              "required": [
+                                "enabled"
+                              ],
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "description": "Whether deletion is enabled for this object",
+                                  "example": true
+                                }
+                              }
+                            },
                             "selectedValueDefaults": {
                               "type": "object",
                               "deprecated": true,
@@ -2286,6 +2370,20 @@
                                   "type": "string",
                                   "x-oapi-codegen-extra-tags": {
                                     "validate": "required"
+                                  }
+                                },
+                                "deletionSettings": {
+                                  "title": "Deletion Settings",
+                                  "type": "object",
+                                  "required": [
+                                    "enabled"
+                                  ],
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "boolean",
+                                      "description": "Whether deletion is enabled for this object",
+                                      "example": true
+                                    }
                                   }
                                 },
                                 "selectedValueDefaults": {
@@ -3264,6 +3362,20 @@
                         "validate": "required"
                       }
                     },
+                    "deletionSettings": {
+                      "title": "Deletion Settings",
+                      "type": "object",
+                      "required": [
+                        "enabled"
+                      ],
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Whether deletion is enabled for this object",
+                          "example": true
+                        }
+                      }
+                    },
                     "selectedValueDefaults": {
                       "type": "object",
                       "deprecated": true,
@@ -3415,6 +3527,20 @@
                           "type": "string",
                           "x-oapi-codegen-extra-tags": {
                             "validate": "required"
+                          }
+                        },
+                        "deletionSettings": {
+                          "title": "Deletion Settings",
+                          "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "Whether deletion is enabled for this object",
+                              "example": true
+                            }
                           }
                         },
                         "selectedValueDefaults": {
@@ -3574,6 +3700,20 @@
                 "type": "string",
                 "x-oapi-codegen-extra-tags": {
                   "validate": "required"
+                }
+              },
+              "deletionSettings": {
+                "title": "Deletion Settings",
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Whether deletion is enabled for this object",
+                    "example": true
+                  }
                 }
               },
               "selectedValueDefaults": {
@@ -4300,6 +4440,20 @@
                           "type": "string",
                           "x-oapi-codegen-extra-tags": {
                             "validate": "required"
+                          }
+                        },
+                        "deletionSettings": {
+                          "title": "Deletion Settings",
+                          "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "Whether deletion is enabled for this object",
+                              "example": true
+                            }
                           }
                         },
                         "selectedValueDefaults": {
