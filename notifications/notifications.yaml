@@ -185,9 +185,9 @@ components:
               example: "2026-01-01T00:00:00Z"
 
     # Triggered read failed event data
-    TriggeredReadFailedData:
-      title: Triggered Read Failed Data
-      description: Data payload for read.triggered.failed notifications.
+    ReadTriggeredErrorData:
+      title: Triggered Read Error Data
+      description: Data payload for read.triggered.error notifications.
       allOf:
         - $ref: '#/components/schemas/InstallationFields'
         - type: object
@@ -390,10 +390,10 @@ components:
         data:
           $ref: '#/components/schemas/ReadTriggeredDoneData'
 
-    TriggeredReadFailedNotificationPayload:
-      title: Triggered Read Failed Notification Payload
+    TriggeredReadErrorNotificationPayload:
+      title: Triggered Read Error Notification Payload
       description: |
-        Payload structure for read.triggered.failed notifications sent to webhook destinations.
+        Payload structure for read.triggered.error notifications sent to webhook destinations.
         For Kinesis destinations, only the `data` object is sent.
       type: object
       required:
@@ -402,9 +402,9 @@ components:
       properties:
         notificationType:
           type: string
-          enum: [read.triggered.failed]
+          enum: [read.triggered.error]
         data:
-          $ref: '#/components/schemas/TriggeredReadFailedData'
+          $ref: '#/components/schemas/ReadTriggeredErrorData'
 
     ConnectionCreatedNotificationPayload:
       title: Connection Created Notification Payload
