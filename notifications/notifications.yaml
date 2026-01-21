@@ -184,6 +184,33 @@ components:
               description: The timestamp of the end of the triggered read.
               example: "2026-01-01T00:00:00Z"
 
+    # Triggered read failed event data
+    TriggeredReadFailedData:
+      title: Triggered Read Failed Data
+      description: Data payload for read.triggered.failed notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          required:
+            - objectName
+          properties:
+            objectName:
+              type: string
+              description: The name of the object for which the triggered read failed.
+              example: Account
+            fromTimestamp:
+              type: string
+              description: The timestamp of the start of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+            untilTimestamp:
+              type: string
+              description: The timestamp of the end of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+            error:
+              type: string
+              description: The error that occurred during the triggered read.
+              example: "Authentication failed"
+
     # Connection created event data
     ConnectionData:
       title: Connection Data
@@ -362,6 +389,22 @@ components:
           enum: [read.triggered.done]
         data:
           $ref: '#/components/schemas/ReadTriggeredDoneData'
+
+    TriggeredReadFailedNotificationPayload:
+      title: Triggered Read Failed Notification Payload
+      description: |
+        Payload structure for read.triggered.failed notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [read.triggered.failed]
+        data:
+          $ref: '#/components/schemas/TriggeredReadFailedData'
 
     ConnectionCreatedNotificationPayload:
       title: Connection Created Notification Payload
