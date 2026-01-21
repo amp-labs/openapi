@@ -5852,6 +5852,7 @@ components:
         - "read.schedule.paused"
         - "read.backfill.done"
         - "read.triggered.done"
+        - "read.triggered.failed"
         - "destination.webhook.disabled"
     TopicDestinationRoute:
       title: Topic Destination Route
