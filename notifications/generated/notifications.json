@@ -630,9 +630,9 @@
           }
         ]
       },
-      "TriggeredReadFailedData": {
-        "title": "Triggered Read Failed Data",
-        "description": "Data payload for read.triggered.failed notifications.",
+      "ReadTriggeredErrorData": {
+        "title": "Triggered Read Error Data",
+        "description": "Data payload for read.triggered.error notifications.",
         "allOf": [
           {
             "title": "Installation Fields",
@@ -1529,9 +1529,9 @@
           }
         }
       },
-      "TriggeredReadFailedNotificationPayload": {
-        "title": "Triggered Read Failed Notification Payload",
-        "description": "Payload structure for read.triggered.failed notifications sent to webhook destinations.\nFor Kinesis destinations, only the `data` object is sent.\n",
+      "TriggeredReadErrorNotificationPayload": {
+        "title": "Triggered Read Error Notification Payload",
+        "description": "Payload structure for read.triggered.error notifications sent to webhook destinations.\nFor Kinesis destinations, only the `data` object is sent.\n",
         "type": "object",
         "required": [
           "notificationType",
@@ -1541,12 +1541,12 @@
           "notificationType": {
             "type": "string",
             "enum": [
-              "read.triggered.failed"
+              "read.triggered.error"
             ]
           },
           "data": {
-            "title": "Triggered Read Failed Data",
-            "description": "Data payload for read.triggered.failed notifications.",
+            "title": "Triggered Read Error Data",
+            "description": "Data payload for read.triggered.error notifications.",
             "allOf": [
               {
                 "title": "Installation Fields",
