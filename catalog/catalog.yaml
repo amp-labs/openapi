@@ -709,7 +709,7 @@ components:
           x-go-type-skip-optional-pointer: true
         moduleDependencies:
           $ref: '#/components/schemas/ModuleDependencies'
-          description: Module-specific dependencies for this metadata item.
+          description: Which modules require this metadata item (see ModuleDependencies for naming clarification).
     MetadataItemPostAuthentication:
       title: Metadata Item (fetched post authentication)
       type: object
@@ -722,12 +722,17 @@ components:
           x-go-type-skip-optional-pointer: true
         moduleDependencies:
           $ref: '#/components/schemas/ModuleDependencies'
-          description: Module-specific dependencies for this metadata item.
+          description: Which modules require this metadata item (see ModuleDependencies for naming clarification).
 
     ModuleDependencies:
       title: Module Dependencies
       type: object
-      description: Does this metadata item only apply to a specific module?
+      description: >-
+        Specifies which modules REQUIRE (depend on) this metadata item.
+        This field lists the modules that depend on/require the metadata item.
+        Example: If "workspace" metadata has moduleDependencies: {crm: {}}, it means the CRM module requires the workspace metadata to function.
+        Each module that needs this metadata item MUST be specified in this field. Even if it is all modules.
+        The empty ModuleDependency {} is for future-proofing in case we need to add additional configuration options.
       additionalProperties:
         $ref: '#/components/schemas/ModuleDependency'
 
