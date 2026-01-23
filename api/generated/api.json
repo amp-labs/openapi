@@ -35946,7 +35946,7 @@
                           "read",
                           "subscribe",
                           "write",
-                          "Search"
+                          "search"
                         ],
                         "properties": {
                           "bulkWrite": {
@@ -36279,7 +36279,7 @@
                                 "read",
                                 "subscribe",
                                 "write",
-                                "Search"
+                                "search"
                               ],
                               "properties": {
                                 "bulkWrite": {
@@ -37162,7 +37162,7 @@
                         "read",
                         "subscribe",
                         "write",
-                        "Search"
+                        "search"
                       ],
                       "properties": {
                         "bulkWrite": {
@@ -37495,7 +37495,7 @@
                               "read",
                               "subscribe",
                               "write",
-                              "Search"
+                              "search"
                             ],
                             "properties": {
                               "bulkWrite": {

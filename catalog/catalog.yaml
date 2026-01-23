@@ -37,7 +37,7 @@ components:
         - read
         - subscribe
         - write
-        - Search
+        - search
       properties:
         bulkWrite:
           $ref: '#/components/schemas/BulkWriteSupport'
