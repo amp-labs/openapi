@@ -35945,7 +35945,8 @@
                           "proxy",
                           "read",
                           "subscribe",
-                          "write"
+                          "write",
+                          "Search"
                         ],
                         "properties": {
                           "bulkWrite": {
@@ -36102,6 +36103,9 @@
                                 }
                               }
                             }
+                          },
+                          "search": {
+                            "type": "boolean"
                           }
                         }
                       },
@@ -36274,7 +36278,8 @@
                                 "proxy",
                                 "read",
                                 "subscribe",
-                                "write"
+                                "write",
+                                "Search"
                               ],
                               "properties": {
                                 "bulkWrite": {
@@ -36431,6 +36436,9 @@
                                       }
                                     }
                                   }
+                                },
+                                "search": {
+                                  "type": "boolean"
                                 }
                               }
                             }
@@ -37153,7 +37161,8 @@
                         "proxy",
                         "read",
                         "subscribe",
-                        "write"
+                        "write",
+                        "Search"
                       ],
                       "properties": {
                         "bulkWrite": {
@@ -37310,6 +37319,9 @@
                               }
                             }
                           }
+                        },
+                        "search": {
+                          "type": "boolean"
                         }
                       }
                     },
@@ -37482,7 +37494,8 @@
                               "proxy",
                               "read",
                               "subscribe",
-                              "write"
+                              "write",
+                              "Search"
                             ],
                             "properties": {
                               "bulkWrite": {
@@ -37639,6 +37652,9 @@
                                     }
                                   }
                                 }
+                              },
+                              "search": {
+                                "type": "boolean"
                               }
                             }
                           }
