@@ -156,16 +156,29 @@
           },
           {
             "type": "object",
-            "required": [
-              "config"
-            ],
             "properties": {
               "config": {
-                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n",
                 "type": "object",
-                "additionalProperties": true
+                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n"
+              },
+              "configURL": {
+                "type": "string",
+                "format": "uri",
+                "description": "A URL where the complete installation configuration can be fetched.\n"
               }
-            }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "config"
+                ]
+              },
+              {
+                "required": [
+                  "configURL"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -244,22 +257,53 @@
           },
           {
             "type": "object",
-            "required": [
-              "config",
-              "lastConfig"
-            ],
             "properties": {
               "config": {
-                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the new configuration after the update.\n",
                 "type": "object",
-                "additionalProperties": true
+                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the new configuration after the update.\n"
+              },
+              "configURL": {
+                "type": "string",
+                "format": "uri",
+                "description": "A URL where the complete installation configuration can be fetched.\n"
               },
               "lastConfig": {
-                "description": "The previous installation configuration before the update.\n",
                 "type": "object",
-                "additionalProperties": true
+                "description": "The previous installation configuration before the update.\n"
+              },
+              "lastConfigURL": {
+                "type": "string",
+                "format": "uri",
+                "description": "A URL where the previous installation configuration can be fetched.\n"
               }
-            }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "config"
+                ]
+              },
+              {
+                "required": [
+                  "configURL"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "oneOf": [
+              {
+                "required": [
+                  "lastConfig"
+                ]
+              },
+              {
+                "required": [
+                  "lastConfigURL"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -338,16 +382,29 @@
           },
           {
             "type": "object",
-            "required": [
-              "config"
-            ],
             "properties": {
               "config": {
-                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the configuration that was deleted.\n",
                 "type": "object",
-                "additionalProperties": true
+                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the configuration that was deleted.\n"
+              },
+              "configURL": {
+                "type": "string",
+                "format": "uri",
+                "description": "A URL where the complete installation configuration can be fetched.\n"
               }
-            }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "config"
+                ]
+              },
+              {
+                "required": [
+                  "configURL"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -514,21 +571,34 @@
           },
           {
             "type": "object",
-            "required": [
-              "config"
-            ],
             "properties": {
               "config": {
-                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n",
                 "type": "object",
-                "additionalProperties": true
+                "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n"
+              },
+              "configURL": {
+                "type": "string",
+                "format": "uri",
+                "description": "A URL where the complete installation configuration can be fetched.\n"
               },
               "error": {
                 "type": "string",
                 "description": "Error message if applicable.",
                 "example": "Authentication failed"
               }
-            }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "config"
+                ]
+              },
+              {
+                "required": [
+                  "configURL"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -968,16 +1038,29 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "config"
-                ],
                 "properties": {
                   "config": {
-                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n",
                     "type": "object",
-                    "additionalProperties": true
+                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n"
+                  },
+                  "configURL": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URL where the complete installation configuration can be fetched.\n"
                   }
-                }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "config"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "configURL"
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -1073,22 +1156,53 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "config",
-                  "lastConfig"
-                ],
                 "properties": {
                   "config": {
-                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the new configuration after the update.\n",
                     "type": "object",
-                    "additionalProperties": true
+                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the new configuration after the update.\n"
+                  },
+                  "configURL": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URL where the complete installation configuration can be fetched.\n"
                   },
                   "lastConfig": {
-                    "description": "The previous installation configuration before the update.\n",
                     "type": "object",
-                    "additionalProperties": true
+                    "description": "The previous installation configuration before the update.\n"
+                  },
+                  "lastConfigURL": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URL where the previous installation configuration can be fetched.\n"
                   }
-                }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "config"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "configURL"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "required": [
+                      "lastConfig"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "lastConfigURL"
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -1184,16 +1298,29 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "config"
-                ],
                 "properties": {
                   "config": {
-                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the configuration that was deleted.\n",
                     "type": "object",
-                    "additionalProperties": true
+                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\nThis is the configuration that was deleted.\n"
+                  },
+                  "configURL": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URL where the complete installation configuration can be fetched.\n"
                   }
-                }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "config"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "configURL"
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -1394,21 +1521,34 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "config"
-                ],
                 "properties": {
                   "config": {
-                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n",
                     "type": "object",
-                    "additionalProperties": true
+                    "description": "The complete installation configuration object including read, write, subscribe, and proxy settings.\n"
+                  },
+                  "configURL": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URL where the complete installation configuration can be fetched.\n"
                   },
                   "error": {
                     "type": "string",
                     "description": "Error message if applicable.",
                     "example": "Authentication failed"
                   }
-                }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "config"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "configURL"
+                    ]
+                  }
+                ]
               }
             ]
           }

@@ -88,11 +88,11 @@ components:
               type: string
               format: uri
               description: |
-                A URL where the complete installation configuration can be fetched.
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
           oneOf:
             - required: [config]
             - required: [configURL]
-            
+
     # Installation updated event data
     InstallationUpdatedData:
       title: Installation Updated Data
@@ -110,7 +110,7 @@ components:
               type: string
               format: uri
               description: |
-                A URL where the complete installation configuration can be fetched.
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
             lastConfig:
               type: object
               description: |
@@ -119,7 +119,7 @@ components:
               type: string
               format: uri
               description: |
-                A URL where the previous installation configuration can be fetched.
+                A signed URL where the previous installation configuration can be downloaded. Used when the config contents are too large.
           oneOf:
             - required: [config]
             - required: [configURL]
@@ -145,7 +145,7 @@ components:
               type: string
               format: uri
               description: |
-                A URL where the complete installation configuration can be fetched.
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
           oneOf:
             - required: [config]
             - required: [configURL]
@@ -180,7 +180,7 @@ components:
               type: string
               format: uri
               description: |
-                A URL where the complete installation configuration can be fetched.
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
             error:
               type: string
               description: Error message if applicable.
