@@ -79,14 +79,19 @@ components:
       allOf:
         - $ref: '#/components/schemas/InstallationFields'
         - type: object
-          required:
-            - config
           properties:
             config:
+              type: object
               description: |
                 The complete installation configuration object including read, write, subscribe, and proxy settings.
-              type: object
-              additionalProperties: true
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
+          oneOf:
+            - required: [config]
+            - required: [configURL]
 
     # Installation updated event data
     InstallationUpdatedData:
@@ -95,21 +100,33 @@ components:
       allOf:
         - $ref: '#/components/schemas/InstallationFields'
         - type: object
-          required:
-            - config
-            - lastConfig
           properties:
             config:
+              type: object
               description: |
                 The complete installation configuration object including read, write, subscribe, and proxy settings.
                 This is the new configuration after the update.
-              type: object
-              additionalProperties: true
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
             lastConfig:
+              type: object
               description: |
                 The previous installation configuration before the update.
-              type: object
-              additionalProperties: true
+            lastConfigURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the previous installation configuration can be downloaded. Used when the config contents are too large.
+          oneOf:
+            - required: [config]
+            - required: [configURL]
+        - type: object
+          oneOf:
+            - required: [lastConfig]
+            - required: [lastConfigURL]
 
     # Installation deleted event data
     InstallationDeletedData:
@@ -118,15 +135,20 @@ components:
       allOf:
         - $ref: '#/components/schemas/InstallationFields'
         - type: object
-          required:
-            - config
           properties:
             config:
+              type: object
               description: |
                 The complete installation configuration object including read, write, subscribe, and proxy settings.
                 This is the configuration that was deleted.
-              type: object
-              additionalProperties: true
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
+          oneOf:
+            - required: [config]
+            - required: [configURL]
 
     # Read backfill done event data
     ReadBackfillDoneData:
@@ -149,18 +171,23 @@ components:
       allOf:
         - $ref: '#/components/schemas/InstallationFields'
         - type: object
-          required:
-            - config
           properties:
             config:
+              type: object
               description: |
                 The complete installation configuration object including read, write, subscribe, and proxy settings.
-              type: object
-              additionalProperties: true
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
             error:
               type: string
               description: Error message if applicable.
               example: "Authentication failed"
+          oneOf:
+            - required: [config]
+            - required: [configURL]
     # Read triggered done event data
     ReadTriggeredDoneData:
       title: Read Triggered Done Data
