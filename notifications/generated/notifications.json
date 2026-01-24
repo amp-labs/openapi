@@ -164,7 +164,7 @@
               "configURL": {
                 "type": "string",
                 "format": "uri",
-                "description": "A URL where the complete installation configuration can be fetched.\n"
+                "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
               }
             },
             "oneOf": [
@@ -265,7 +265,7 @@
               "configURL": {
                 "type": "string",
                 "format": "uri",
-                "description": "A URL where the complete installation configuration can be fetched.\n"
+                "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
               },
               "lastConfig": {
                 "type": "object",
@@ -274,7 +274,7 @@
               "lastConfigURL": {
                 "type": "string",
                 "format": "uri",
-                "description": "A URL where the previous installation configuration can be fetched.\n"
+                "description": "A signed URL where the previous installation configuration can be downloaded. Used when the config contents are too large.\n"
               }
             },
             "oneOf": [
@@ -390,7 +390,7 @@
               "configURL": {
                 "type": "string",
                 "format": "uri",
-                "description": "A URL where the complete installation configuration can be fetched.\n"
+                "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
               }
             },
             "oneOf": [
@@ -579,7 +579,7 @@
               "configURL": {
                 "type": "string",
                 "format": "uri",
-                "description": "A URL where the complete installation configuration can be fetched.\n"
+                "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
               },
               "error": {
                 "type": "string",
@@ -1046,7 +1046,7 @@
                   "configURL": {
                     "type": "string",
                     "format": "uri",
-                    "description": "A URL where the complete installation configuration can be fetched.\n"
+                    "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
                   }
                 },
                 "oneOf": [
@@ -1164,7 +1164,7 @@
                   "configURL": {
                     "type": "string",
                     "format": "uri",
-                    "description": "A URL where the complete installation configuration can be fetched.\n"
+                    "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
                   },
                   "lastConfig": {
                     "type": "object",
@@ -1173,7 +1173,7 @@
                   "lastConfigURL": {
                     "type": "string",
                     "format": "uri",
-                    "description": "A URL where the previous installation configuration can be fetched.\n"
+                    "description": "A signed URL where the previous installation configuration can be downloaded. Used when the config contents are too large.\n"
                   }
                 },
                 "oneOf": [
@@ -1306,7 +1306,7 @@
                   "configURL": {
                     "type": "string",
                     "format": "uri",
-                    "description": "A URL where the complete installation configuration can be fetched.\n"
+                    "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
                   }
                 },
                 "oneOf": [
@@ -1529,7 +1529,7 @@
                   "configURL": {
                     "type": "string",
                     "format": "uri",
-                    "description": "A URL where the complete installation configuration can be fetched.\n"
+                    "description": "A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.\n"
                   },
                   "error": {
                     "type": "string",
