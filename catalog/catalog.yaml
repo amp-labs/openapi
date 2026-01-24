@@ -208,6 +208,14 @@ components:
           example: ["https://api.mparticle.com"]
           description: A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.
           x-go-type-skip-optional-pointer: true
+        scopeMappings:
+          type: object
+          description: Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.
+          additionalProperties:
+            type: string
+          x-go-type-skip-optional-pointer: true
+          example:
+            default: https://{{.workspace}}.api.com/default
         tokenMetadataFields:
           $ref: '#/components/schemas/TokenMetadataFields'
         docsURL:
@@ -223,6 +231,32 @@ components:
           example:
             access_type: offline
             duration: permanent
+        accessTokenOpts:
+          $ref: '#/components/schemas/AccessTokenOpts'
+
+    AccessTokenOpts:
+      title: Oauth2 Access Token Options
+      type: object
+      description: |
+        Configuration that defines how an OAuth 2.0 access token is attached to
+        outbound API requests. When provided, this configuration overrides the
+        default access-token handling behavior for the connector.
+      required:
+        - attachmentType
+      properties:
+        attachmentType:
+          type: string
+          description: How the access token should be attached to requests.
+          enum: [accessTokenHeaderAttachment]
+          x-oapi-codegen-extra-tags:
+            validate: required
+        header:
+          $ref: '#/components/schemas/AccessTokenOptsHeader'
+        docsURL:
+          type: string
+          description: URL with more information about how access token is used.
+          example: https://docs.example.com/oauth2-access-token-usage
+          x-go-type-skip-optional-pointer: true
 
     ApiKeyOpts:
       title: API Key Options
@@ -276,6 +310,24 @@ components:
           type: string
           example: "Bearer "
           description: The prefix to be added to the API key value when it is sent in the header.
+          x-go-type-skip-optional-pointer: true
+
+    AccessTokenOptsHeader:
+      title: Access Token Header Options
+      type: object
+      description: Configuration for access token in header. Must be provided if type is in-header.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: X-Access-Token
+          description: The name of the header to be used for the access token.
+          x-go-type-skip-optional-pointer: true
+        valuePrefix:
+          type: string
+          example: "Bearer "
+          description: The prefix to be added to the access token value when it is sent in the header.
           x-go-type-skip-optional-pointer: true
 
     ApiKeyAsBasicOpts:
@@ -435,9 +487,6 @@ components:
       description: The registry of provider modules.
       additionalProperties:
         $ref: "#/components/schemas/ModuleInfo"
-      x-go-type: map[common.ModuleID]ModuleInfo
-      x-go-type-import:
-        path: "github.com/amp-labs/connectors/common"
 
     ModuleInfo:
       title: Module Info
@@ -489,9 +538,7 @@ components:
           x-oapi-codegen-extra-tags:
             validate: required
         defaultModule:
-          x-go-type: common.ModuleID
-          x-go-type-import:
-            path: "github.com/amp-labs/connectors/common"
+          type: string
         oauth2Opts:
           $ref: '#/components/schemas/Oauth2Opts'
         apiKeyOpts:
@@ -601,6 +648,7 @@ components:
     BatchWriteSupportConfig:
       required:
         - supported
+
       properties:
         supported:
           description: Whether this type of batch write operation is supported
@@ -646,6 +694,10 @@ components:
           type: string
           description: The human-readable name for the field
           x-go-type-skip-optional-pointer: true
+        prompt:
+          type: string
+          description: Human-readable description that can contain instructions on how to collect metadata
+          x-go-type-skip-optional-pointer: true
         defaultValue:
           type: string
           description: Default value for this metadata item
@@ -657,7 +709,7 @@ components:
           x-go-type-skip-optional-pointer: true
         moduleDependencies:
           $ref: '#/components/schemas/ModuleDependencies'
-          description: Module-specific dependencies for this metadata item.
+          description: Which modules require this metadata item (see ModuleDependencies for naming clarification).
     MetadataItemPostAuthentication:
       title: Metadata Item (fetched post authentication)
       type: object
@@ -670,17 +722,19 @@ components:
           x-go-type-skip-optional-pointer: true
         moduleDependencies:
           $ref: '#/components/schemas/ModuleDependencies'
-          description: Module-specific dependencies for this metadata item.
+          description: Which modules require this metadata item (see ModuleDependencies for naming clarification).
 
     ModuleDependencies:
       title: Module Dependencies
       type: object
-      description: Does this metadata item only apply to a specific module?
+      description: >-
+        Specifies which modules REQUIRE (depend on) this metadata item.
+        This field lists the modules that depend on/require the metadata item.
+        Example: If "workspace" metadata has moduleDependencies: {crm: {}}, it means the CRM module requires the workspace metadata to function.
+        Each module that needs this metadata item MUST be specified in this field. Even if it is all modules.
+        The empty ModuleDependency {} is for future-proofing in case we need to add additional configuration options.
       additionalProperties:
         $ref: '#/components/schemas/ModuleDependency'
-      x-go-type: map[common.ModuleID]ModuleDependency
-      x-go-type-import:
-        path: "github.com/amp-labs/connectors/common"
 
     ModuleDependency:
       title: Module Dependency

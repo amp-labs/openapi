@@ -1,0 +1,482 @@
+# This file defines the schema of notification payloads that Ampersand sends to destinations.
+# The payload structure depends on your destination type:
+# - Webhook destinations: Payloads include `notificationType` and `data` fields.
+# - Kinesis destinations: Payloads contain the `data` object. The `notificationType` is included in the event metadata.
+openapi: 3.0.1
+info:
+  title: Notification payload schema
+  version: 1.0.0
+  license:
+    name: MIT License
+    url: https://opensource.org/license/mit
+servers: []
+paths: {}
+
+components:
+  schemas:
+    # Common fields shared by installation-related notifications
+    InstallationFields:
+      title: Installation Fields
+      type: object
+      description: Common fields present in installation-related notifications.
+      required:
+        - projectId
+        - provider
+        - integrationId
+        - integrationName
+        - installationId
+        - groupRef
+        - groupName
+        - connectionId
+        - consumerRef
+        - consumerName
+      properties:
+        projectId:
+          type: string
+          description: The Ampersand Project ID.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        provider:
+          type: string
+          description: The SaaS API that we are integrating with.
+          example: salesforce
+        integrationId:
+          type: string
+          description: The ID of the integration.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        integrationName:
+          type: string
+          description: The name of the integration.
+          example: "Salesforce Integration"
+        installationId:
+          type: string
+          description: The ID of the Ampersand installation.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        connectionId:
+          type: string
+          description: The ID of the connection.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group of users.
+          example: customer-group-ref
+        groupName:
+          type: string
+          description: The display name of the group of users.
+          example: "Customer Name"
+        consumerRef:
+          type: string
+          description: The reference ID of the consumer that triggered the notification.
+          example: user-123
+        consumerName:
+          type: string
+          description: The name of the consumer that triggered the notification.
+          example: "John Doe"
+
+    # Installation created event data
+    InstallationCreatedData:
+      title: Installation Created Data
+      description: Data payload for installation.created notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          properties:
+            config:
+              type: object
+              description: |
+                The complete installation configuration object including read, write, subscribe, and proxy settings.
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
+          oneOf:
+            - required: [config]
+            - required: [configURL]
+
+    # Installation updated event data
+    InstallationUpdatedData:
+      title: Installation Updated Data
+      description: Data payload for installation.updated notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          properties:
+            config:
+              type: object
+              description: |
+                The complete installation configuration object including read, write, subscribe, and proxy settings.
+                This is the new configuration after the update.
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
+            lastConfig:
+              type: object
+              description: |
+                The previous installation configuration before the update.
+            lastConfigURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the previous installation configuration can be downloaded. Used when the config contents are too large.
+          oneOf:
+            - required: [config]
+            - required: [configURL]
+        - type: object
+          oneOf:
+            - required: [lastConfig]
+            - required: [lastConfigURL]
+
+    # Installation deleted event data
+    InstallationDeletedData:
+      title: Installation Deleted Data
+      description: Data payload for installation.deleted notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          properties:
+            config:
+              type: object
+              description: |
+                The complete installation configuration object including read, write, subscribe, and proxy settings.
+                This is the configuration that was deleted.
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
+          oneOf:
+            - required: [config]
+            - required: [configURL]
+
+    # Read backfill done event data
+    ReadBackfillDoneData:
+      title: Read Backfill Done Data
+      description: Data payload for read.backfill.done notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          required:
+            - objectName
+          properties:
+            objectName:
+              type: string
+              description: The name of the object for which the backfill completed.
+              example: Account
+    # Read schedule paused event data
+    ReadSchedulePausedData:
+      title: Read Schedule Paused Data
+      description: Data payload for read.schedule.paused notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          properties:
+            config:
+              type: object
+              description: |
+                The complete installation configuration object including read, write, subscribe, and proxy settings.
+            configURL:
+              type: string
+              format: uri
+              description: |
+                A signed URL where the complete installation configuration can be downloaded. Used when the config contents are too large.
+            error:
+              type: string
+              description: Error message if applicable.
+              example: "Authentication failed"
+          oneOf:
+            - required: [config]
+            - required: [configURL]
+    # Read triggered done event data
+    ReadTriggeredDoneData:
+      title: Read Triggered Done Data
+      description: Data payload for read.triggered.done notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          required:
+            - objectName
+          properties:
+            objectName:
+              type: string
+              description: The name of the object for which the triggered read completed.
+              example: Account
+            fromTimestamp:
+              type: string
+              description: The timestamp of the start of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+            untilTimestamp:
+              type: string
+              description: The timestamp of the end of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+
+    # Triggered read failed event data
+    ReadTriggeredErrorData:
+      title: Triggered Read Error Data
+      description: Data payload for read.triggered.error notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          required:
+            - objectName
+          properties:
+            objectName:
+              type: string
+              description: The name of the object for which the triggered read failed.
+              example: Account
+            fromTimestamp:
+              type: string
+              description: The timestamp of the start of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+            untilTimestamp:
+              type: string
+              description: The timestamp of the end of the triggered read.
+              example: "2026-01-01T00:00:00Z"
+            error:
+              type: string
+              description: The error that occurred during the triggered read.
+              example: "Authentication failed"
+
+    # Connection created event data
+    ConnectionData:
+      title: Connection Data
+      description: Data payload for connection.created notifications.
+      type: object
+      required:
+        - projectId
+        - connectionId
+        - provider
+        - groupRef
+        - consumerRef
+        - consumerName
+      properties:
+        projectId:
+          type: string
+          description: The Ampersand Project ID.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        connectionId:
+          type: string
+          description: The ID of the connection.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        provider:
+          type: string
+          description: The SaaS API that we are integrating with.
+          example: salesforce
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group of users.
+          example: customer-group-ref
+        consumerRef:
+          type: string
+          description: The reference ID of the consumer.
+          example: user-123
+        consumerName:
+          type: string
+          description: The name of the consumer.
+          example: "John Doe"
+
+    # Connection error event data
+    ConnectionErrorData:
+      title: Connection Error Data
+      description: Data payload for connection.error notifications.
+      allOf:
+        - $ref: '#/components/schemas/ConnectionData'
+        - type: object
+          properties:
+            error:
+              type: array
+              items:
+                type: string
+              description: Array of error messages describing the connection error.
+              example: ["Authentication failed", "Token refresh error"]
+
+    # Destination webhook disabled event data
+    DestinationWebhookDisabledData:
+      title: Destination Webhook Disabled Data
+      description: Data payload for destination.webhook.disabled notifications.
+      type: object
+      required:
+        - projectId
+        - destinationId
+        - destinationName
+        - url
+      properties:
+        projectId:
+          type: string
+          description: The Ampersand Project ID.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        destinationId:
+          type: string
+          description: The ID of the destination.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        destinationName:
+          type: string
+          description: The name of the destination.
+          example: production-alerts
+        url:
+          type: string
+          description: The webhook URL that was disabled.
+          example: "https://your-webhook.com"
+
+    # Notification payload schemas for webhook destinations
+    # For Kinesis destinations, only the `data` object is sent (the `notificationType` is included in event metadata).
+    InstallationCreatedNotificationPayload:
+      title: Installation Created Notification Payload
+      description: |
+        Payload structure for installation.created notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [installation.created]
+        data:
+          $ref: '#/components/schemas/InstallationCreatedData'
+
+    InstallationUpdatedNotificationPayload:
+      title: Installation Updated Notification Payload
+      description: |
+        Payload structure for installation.updated notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [installation.updated]
+        data:
+          $ref: '#/components/schemas/InstallationUpdatedData'
+
+    InstallationDeletedNotificationPayload:
+      title: Installation Deleted Notification Payload
+      description: |
+        Payload structure for installation.deleted notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [installation.deleted]
+        data:
+          $ref: '#/components/schemas/InstallationDeletedData'
+
+    ReadBackfillDoneNotificationPayload:
+      title: Read Backfill Done Notification Payload
+      description: |
+        Payload structure for read.backfill.done notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [read.backfill.done]
+        data:
+          $ref: '#/components/schemas/ReadBackfillDoneData'
+
+    ReadSchedulePausedNotificationPayload:
+      title: Read Schedule Paused Notification Payload
+      description: |
+        Payload structure for read.schedule.paused notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [read.schedule.paused]
+        data:
+          $ref: '#/components/schemas/ReadSchedulePausedData'
+
+    ReadTriggeredDoneNotificationPayload:
+      title: Read Triggered Done Notification Payload
+      description: |
+        Payload structure for read.triggered.done notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [read.triggered.done]
+        data:
+          $ref: '#/components/schemas/ReadTriggeredDoneData'
+
+    TriggeredReadErrorNotificationPayload:
+      title: Triggered Read Error Notification Payload
+      description: |
+        Payload structure for read.triggered.error notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [read.triggered.error]
+        data:
+          $ref: '#/components/schemas/ReadTriggeredErrorData'
+
+    ConnectionCreatedNotificationPayload:
+      title: Connection Created Notification Payload
+      description: |
+        Payload structure for connection.created notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [connection.created]
+        data:
+          $ref: '#/components/schemas/ConnectionData'
+
+    ConnectionErrorNotificationPayload:
+      title: Connection Error Notification Payload
+      description: |
+        Payload structure for connection.error notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [connection.error]
+        data:
+          $ref: '#/components/schemas/ConnectionErrorData'
+
+    DestinationWebhookDisabledNotificationPayload:
+      title: Destination Webhook Disabled Notification Payload
+      description: |
+        Payload structure for destination.webhook.disabled notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [destination.webhook.disabled]
+        data:
+          $ref: '#/components/schemas/DestinationWebhookDisabledData'

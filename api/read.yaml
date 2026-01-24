@@ -60,59 +60,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-
-  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
-    post:
-      summary: Deliver results
-      description:
-        If a read action has delivery mode set to onRequest, then use this endpoint to request for more results.
-        Learn more in [Delivery modes](https://docs.withampersand.com/define-integrations/read-actions#delivery-modes).
-      operationId: deliverResults
-      tags: ["Read"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: integrationId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: objectName
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: ResultDeliveryRequestBody
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ResultDeliveryRequestBody"
-      responses:
-        204:
-          description: The success response
-        400:
-          description: The failure response for bad request.
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        500:
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:pause:
     post:
       summary: Pause reads for an installation
@@ -227,6 +174,58 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:deliverResults:
+    post:
+      summary: Deliver results
+      description:
+        This endpoint is deprecated. If you wish you trigger a read (including backfills), use the [trigger a read](https://docs.withampersand.com/reference/read/trigger-a-read) endpoint instead.  
+      operationId: deliverResults
+      tags: ["Read"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ResultDeliveryRequestBody
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResultDeliveryRequestBody"
+      responses:
+        204:
+          description: The success response
+        400:
+          description: The failure response for bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  
 components:
   schemas:
     ReadRequest:

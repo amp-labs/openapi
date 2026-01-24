@@ -704,6 +704,7 @@ paths:
     delete:
       summary: Delete an integration
       operationId: deleteIntegration
+      description: Delete an integration and all its installations.
       tags: ["Integration"]
       parameters:
         - name: projectIdOrName
@@ -745,6 +746,7 @@ paths:
     put:
       summary: Batch upsert a group of integrations
       operationId: batchUpsertIntegrations
+      description: This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly.
       tags: ["Integration"]
       parameters:
         - name: projectIdOrName
@@ -802,6 +804,7 @@ paths:
     post:
       summary: Create a new revision.
       operationId: createRevision
+      description: We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly, unless you have an advanced use case.
       tags: ["Revision"]
       parameters:
         - name: projectIdOrName
@@ -1167,13 +1170,14 @@ paths:
                     Array of field paths specifying which fields to update. Allowed values include:
                     - connectionId
                     - config.createdBy
-                    - config.content.read.objects.<object-name>
-                    - config.content.write.objects.<object-name>
+                    - config.content.read.objects.OBJECT_NAME
+                    - config.content.write.objects.OBJECT_NAME
                     - config.content.write.objects
-                    - config.content.subscribe.objects.<object-name>
+                    - config.content.subscribe.objects.OBJECT_NAME
+                    - config.content.subscribe.objects
                     - config.content.proxy.enabled
 
-                    `<object-name>` means you can specify any object name.
+                    `OBJECT_NAME` means you can specify any object name.
                   example: ["config.content.read.objects.contacts", "config.content.write.objects.leads"]
                 installation:
                   type: object
@@ -1200,8 +1204,8 @@ paths:
                           description: The content of the config.
                       description: The config of the installation.
                   description:
-                    The installation fields to update. (Only include the
-                    fields you'd like to update.)
+                    The installation fields to update. (You only need to include the
+                    fields you'd like to update, which are specified in the update masks. The rest will be ignored.)
         required: true
       responses:
         200:
@@ -1229,13 +1233,139 @@ paths:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: installationUpdate
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/config-content:
+    patch:
+      summary: Update an installation object
+      description: |
+        Updates a single object's configuration within an installation using JSON Patch syntax.
+      operationId: patchObjectConfigContent
+      tags: ["Installation"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: integrationId
+          in: path
+          required: true
+          description: The integration ID.
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          description: |
+            The object name whose config content will be patched.
+            Must match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).
+            Common examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.
+          schema:
+            type: string
+          example: account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - oneOf:
+                    - type: object
+                      required: [groupRef, action, changes]
+                      properties:
+                        groupRef:
+                          type: string
+                          description: |
+                            The ID of the user group that has access to this installation.
+                            Either groupRef or installationId must be provided.
+                          example: group-123
+                        action:
+                          type: string
+                          enum: [read, subscribe, write]
+                          description: The action type for the object config (read, subscribe, or write).
+                          example: read
+                        changes:
+                          type: array
+                          minItems: 1
+                          description: |
+                            Array of JSON Patch operations to apply.
+                          items:
+                            $ref: "#/components/schemas/JSONPatchOperation"
+                          example:
+                            - op: replace
+                              path: /schedule
+                              value: "*/10 * * * *"
+                            - op: add
+                              path: /selectedFields/phone
+                              value: true
+                            - op: remove
+                              path: /selectedFields/billingcity
+                    - type: object
+                      required: [installationId, action, changes]
+                      properties:
+                        installationId:
+                          type: string
+                          description: |
+                            The installation ID.
+                            Either groupRef or installationId must be provided.
+                          example: installation-123
+                        action:
+                          type: string
+                          enum: [read, subscribe, write]
+                          description: The action type for the object config (read, subscribe, or write).
+                          example: read
+                        changes:
+                          type: array
+                          minItems: 1
+                          description: |
+                            Array of JSON Patch operations to apply.
+                          items:
+                            $ref: "#/components/schemas/JSONPatchOperation"
+                          example:
+                            - op: replace
+                              path: /schedule
+                              value: "*/10 * * * *"
+                            - op: add
+                              path: /selectedFields/phone
+                              value: true
+                            - op: remove
+                              path: /selectedFields/billingcity
+        required: true
+      responses:
+        200:
+          description: The updated installation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Installation"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        404:
+          description: Installation not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+      x-codegen-request-body-name: patchObjectConfigContent
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
     get:
       summary: Get object metadata for installation
       description: |
         Retrieves metadata about an object in a customer's SaaS instance, including its fields.
         This endpoint requires that an Installation exists for the given groupRef.
-        It applies object mappings.
+        It applies object mappings. This endpoint may return nested fields as a part of the response.
+        Nested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Currently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.
       tags: ["Objects & Fields"]
       operationId: getObjectMetadataForInstallation
       parameters:
@@ -1265,6 +1395,13 @@ paths:
           example: group-123
           schema:
             type: string
+        - name: excludeReadOnly
+          in: query
+          required: false
+          description: Excludes fields where `ReadOnly` is `true` from the response.
+          example: true
+          schema:
+            type: boolean
       responses:
         '200':
           description: The retrieved object metadata
@@ -1320,7 +1457,9 @@ paths:
       description: |
         Retrieves metadata about an object in a customer's SaaS instance, including its fields.
         This endpoint only requires that a Connection exists for the given groupRef.
-        It does not apply any object mappings.
+        It does not apply any object mappings. This endpoint may return nested fields as a part of the response.
+        Nested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Currently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.
       tags: ["Objects & Fields"]
       operationId: getObjectMetadataForConnection
       parameters:
@@ -1350,6 +1489,13 @@ paths:
           example: group-123
           schema:
             type: string
+        - name: excludeReadOnly
+          in: query
+          required: false
+          description: Excludes fields where `ReadOnly` is `true` from the response.
+          example: true
+          schema:
+            type: boolean
       responses:
         '200':
           description: The retrieved object metadata
@@ -1384,13 +1530,6 @@ paths:
           schema:
             type: string
           example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
-        - name: groupRef
-          in: query
-          required: true
-          description: The groupRef for the installation
-          schema:
-            type: string
-          example: group-123
       requestBody:
         required: true
         description: Metadata upsert request containing field definitions to create or update
@@ -1402,6 +1541,7 @@ paths:
               createTextFields:
                 summary: Create text fields on multiple objects
                 value:
+                  groupRef: "group-123"
                   fields:
                     Account:
                       - fieldName: "Industry"
@@ -1428,6 +1568,7 @@ paths:
               createNumericFields:
                 summary: Create numeric fields with constraints
                 value:
+                  groupRef: "group-123"
                   fields:
                     Opportunity:
                       - fieldName: "Deal_Score"
@@ -1444,6 +1585,7 @@ paths:
               createAssociationField:
                 summary: Create field with association to another object
                 value:
+                  groupRef: "group-123"
                   fields:
                     Task:
                       - fieldName: "Related_Contact"
@@ -1516,13 +1658,6 @@ paths:
           schema:
             type: string
           example: salesforce
-        - name: groupRef
-          in: query
-          required: true
-          description: The ID that your app uses to identify the group of users for this Connection.
-          schema:
-            type: string
-          example: group-123
       requestBody:
         required: true
         description: Metadata upsert request containing field definitions to create or update
@@ -1534,6 +1669,7 @@ paths:
               createTextFields:
                 summary: Create text fields on multiple objects
                 value:
+                  groupRef: "group-123"
                   fields:
                     Account:
                       - fieldName: "Industry"
@@ -1560,6 +1696,7 @@ paths:
               createNumericFields:
                 summary: Create numeric fields with constraints
                 value:
+                  groupRef: "group-123"
                   fields:
                     Opportunity:
                       - fieldName: "Deal_Score"
@@ -1576,6 +1713,7 @@ paths:
               createAssociationField:
                 summary: Create field with association to another object
                 value:
+                  groupRef: "group-123"
                   fields:
                     Task:
                       - fieldName: "Related_Contact"
@@ -2430,7 +2568,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Destination"
+                $ref: "#/components/schemas/DestinationWithSecrets"
         default:
           description: Error
           content:
@@ -3097,275 +3235,11 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/targets:
+  /projects/{projectIdOrName}/topics:
     post:
-      summary: Create a notification target
-      operationId: createTarget
-      tags: ["Notification"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          description: The Ampersand project ID or project name.
-          schema:
-            type: string
-          example: my-project
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - label
-                - type
-                - metadata
-              properties:
-                label:
-                  type: string
-                  description: A human-readable label for the notification target.
-                  example: "Production Slack Alerts"
-                type:
-                  type: string
-                  description: The type of notification target.
-                  enum: ["webhook"]
-                  example: webhook
-                metadata:
-                  type: object
-                  properties:
-                    url:
-                      type: string
-                      description: Webhook URL, must start with "https://".
-                      example: https://webhooks.mailmonkey.com/salesforce-lead-converted
-                    headers:
-                      $ref: "#/components/schemas/WebhookHeaders"
-                secrets:
-                  type: object
-                  description: Secrets for the target.
-      responses:
-        200:
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotificationTarget"
-        400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-        422:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-      x-codegen-request-body-name: target
-    get:
-      summary: List notification targets
-      operationId: listTargets
-      tags: ["Notification"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          description: The Ampersand project ID or project name.
-          schema:
-            type: string
-          example: my-project
-      responses:
-        200:
-          description: List of notification targets
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/NotificationTarget"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/targets/{targetId}:
-    patch:
-      summary: Update a notification target
-      operationId: updateTarget
-      tags: ["Notification"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          description: The Ampersand project ID or project name.
-          schema:
-            type: string
-          example: my-project
-        - name: targetId
-          in: path
-          required: true
-          description: The notification target ID.
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - updateMask
-                - target
-              properties:
-                updateMask:
-                  type: array
-                  items:
-                    type: string
-                  description: |
-                    Array of field paths specifying which fields to update. Allowed values include:
-                    - label
-                    - metadata.url
-                    - metadata.headers
-               
-                  example: ["label", "metadata.url", "metadata.headers"]
-                target:
-                  type: object
-                  properties:
-                    label:
-                      type: string
-                      description: A human-readable label for the notification target.
-                      example: "Updated Production Alerts"
-                    type:
-                      type: string
-                      description: The type of notification target.
-                      example: webhook
-                    metadata:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          description: Webhook URL, must start with "https://".
-                          example: https://webhooks.mailmonkey.com/salesforce-lead-converted
-                        headers:
-                          $ref: "#/components/schemas/WebhookHeaders"
-                    secrets:
-                      type: object
-                      description: Secrets for the target.
-      responses:
-        200:
-          description: Updated
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotificationTarget"
-        404:
-          description: Target not found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        422:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-      x-codegen-request-body-name: updateTargetRequest
-    get:
-      summary: Get a notification target
-      operationId: getTargetById
-      tags: ["Notification"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          description: The Ampersand project ID or project name.
-          schema:
-            type: string
-          example: my-project
-        - name: targetId
-          in: path
-          required: true
-          description: The notification target ID.
-          schema:
-            type: string
-      responses:
-        200:
-          description: Notification target details
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotificationTarget"
-        404:
-          description: Target not found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-    delete:
-      summary: Delete a notification target
-      operationId: deleteTarget
-      tags: ["Notification"]
-      parameters:
-        - name: projectIdOrName
-          in: path
-          required: true
-          description: The Ampersand project ID or project name.
-          schema:
-            type: string
-          example: my-project
-        - name: targetId
-          in: path
-          required: true
-          description: The notification target ID.
-          schema:
-            type: string
-      responses:
-        204:
-          description: Deleted
-        404:
-          description: Target not found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        default:
-          description: Error
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/topics:
-    post:
-      summary: Create a notification topic
-      description: Create a new notification topic for the project. Topics are used to categorize and organize notifications.
+      summary: Create a topic
       operationId: createTopic
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3381,19 +3255,20 @@ paths:
             schema:
               type: object
               required:
-                - label
+                - name
               properties:
-                label:
+                name:
                   type: string
-                  description: A human-readable label for the notification topic.
-                  example: "System Alerts"
+                  description: The name of the topic. Must contain only letters, numbers, and dashes.
+                  example: "system-alerts"
+                  maxLength: 64
       responses:
         201:
           description: Created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotificationTopic"
+                $ref: "#/components/schemas/Topic"
         400:
           description: Bad Request
           content:
@@ -3406,6 +3281,12 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A topic with this name already exists in this project. Please choose a different name
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
@@ -3414,9 +3295,9 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: topic
     get:
-      summary: List notification topics
+      summary: List topics
       operationId: listTopics
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3427,24 +3308,24 @@ paths:
           example: my-project
       responses:
         200:
-          description: List of notification topics
+          description: List of topics
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/NotificationTopic"
+                  $ref: "#/components/schemas/Topic"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/topics/{topicId}:
+  /projects/{projectIdOrName}/topics/{topicId}:
     patch:
-      summary: Update a notification topic
+      summary: Update a topic
       operationId: updateTopic
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3456,7 +3337,7 @@ paths:
         - name: topicId
           in: path
           required: true
-          description: The notification topic ID.
+          description: The topic ID.
           schema:
             type: string
       requestBody:
@@ -3466,11 +3347,11 @@ paths:
             schema:
               type: object
               required:
-                - label
+                - name
               properties:
-                label:
+                name:
                   type: string
-                  description: A human-readable label for the notification topic.
+                  description: A human-readable name for the topic.
                   example: "Updated System Alerts"
       responses:
         200:
@@ -3478,7 +3359,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotificationTopic"
+                $ref: "#/components/schemas/Topic"
         404:
           description: Topic not found
           content:
@@ -3497,6 +3378,12 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        409:
+          description: Conflict - A topic with this name already exists in this project. Please choose a different name
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
@@ -3505,9 +3392,9 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
       x-codegen-request-body-name: updateTopicRequest
     delete:
-      summary: Delete a notification topic
+      summary: Delete a topic
       operationId: deleteTopic
-      tags: ["Notification"]
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3519,7 +3406,7 @@ paths:
         - name: topicId
           in: path
           required: true
-          description: The notification topic ID.
+          description: The topic ID.
           schema:
             type: string
       responses:
@@ -3537,10 +3424,9 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/event-topic-routes:
+  /projects/{projectIdOrName}/notification-event-topic-routes:
     post:
-      summary: Create an event-topic route
-      description: Create a new event-topic route that maps specific event types to notification topics.
+      summary: Create a notification event-topic route
       operationId: createEventTopicRoute
       tags: ["Notification"]
       parameters:
@@ -3564,22 +3450,24 @@ paths:
                 eventType:
                   type: string
                   description: The type of notification event.
-                  enum: 
+                  enum:
                     - "read.backfill.done"
                     - "connection.created"
+                    - "connection.error"
                     - "installation.created"
                     - "installation.updated"
                     - "installation.deleted"
                     - "read.schedule.paused"
+                    - "destination.webhook.disabled"
                 topicId:
                   type: string
-                  description: The ID of the notification topic to route events to.
+                  description: The ID of the topic to route events to.
             examples:
               route_example:
                 summary: Create event-topic route
                 value:
                   eventType: "installation.created"
-                  topicId: "topic_1234567890abcdef"
+                  topicId: "1234567890abcdef"
       responses:
         201:
           description: Created
@@ -3620,7 +3508,7 @@ paths:
         - name: topicId
           in: query
           required: false
-          description: Filter by notification topic ID.
+          description: Filter by topic ID.
           schema:
             type: string
         - name: eventType
@@ -3628,14 +3516,18 @@ paths:
           required: false
           description: Filter by notification event type.
           schema:
-            type: string
-            enum: 
-              - "read.backfill.done"
-              - "connection.created"
-              - "installation.created"
-              - "installation.updated"
-              - "installation.deleted"
-              - "read.schedule.paused"
+            # type: string
+            # enum:
+              # - "read.backfill.done"
+              # - "connection.created"
+              # - "connection.error"
+              # - "installation.created"
+              # - "installation.updated"
+              # - "installation.deleted"
+              # - "read.schedule.paused"
+              # - "read.triggered.done"
+              # - "destination.webhook.disabled"
+            $ref: "#/components/schemas/NotificationEventType"
       responses:
         200:
           description: List of event-topic routes
@@ -3651,7 +3543,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/event-topic-routes/{routeId}:
+  /projects/{projectIdOrName}/notification-event-topic-routes/{routeId}:
     delete:
       summary: Delete a notification event-topic route
       operationId: deleteEventTopicRoute
@@ -3684,11 +3576,11 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/topic-target-routes:
+  /projects/{projectIdOrName}/topic-destination-routes:
     post:
-      summary: Create a notification topic-target route 
-      operationId: createTopicTargetRoute
-      tags: ["Notification"]
+      summary: Create a topic destination route
+      operationId: createTopicDestinationRoute
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3705,23 +3597,35 @@ paths:
               type: object
               required:
                 - topicId
-                - targetId
+                - destinationId
               properties:
                 topicId:
                   type: string
-                  description: The ID of the notification topic.
-                targetId:
+                  description: The ID of the topic.
+                destinationId:
                   type: string
-                  description: The ID of the notification target.
+                  description: The ID of the destination.
+            examples:
+              route_example:
+                summary: Create topic destination route
+                value:
+                  topicId: "1234567890abcdef"
+                  destinationId: "abcdef1234567890"
       responses:
         201:
           description: Created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotificationTopicTargetRoute"
+                $ref: "#/components/schemas/TopicDestinationRoute"
         400:
           description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        404:
+          description: Not Found
           content:
             application/problem+json:
               schema:
@@ -3738,11 +3642,11 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-      x-codegen-request-body-name: topicTargetRoute
+      x-codegen-request-body-name: topicDestinationRoute
     get:
-      summary: List notification topic-target routes
-      operationId: listTopicTargetRoutes
-      tags: ["Notification"]
+      summary: List topic destination routes
+      operationId: listTopicDestinationRoutes
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3753,35 +3657,35 @@ paths:
         - name: topicId
           in: query
           required: false
-          description: Filter by notification topic ID.
+          description: Filter by topic ID.
           schema:
             type: string
-        - name: targetId
+        - name: destinationId
           in: query
           required: false
-          description: Filter by notification target ID.
+          description: Filter by destination ID.
           schema:
             type: string
       responses:
         200:
-          description: List of topic-target routes
+          description: List of topic destination routes
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/NotificationTopicTargetRoute"
+                  $ref: "#/components/schemas/TopicDestinationRoute"
         default:
           description: Error
           content:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/notifications/topic-target-routes/{routeId}:
+  /projects/{projectIdOrName}/topic-destination-routes/{routeId}:
     delete:
-      summary: Delete a notification topic-target route
-      operationId: deleteTopicTargetRoute
-      tags: ["Notification"]
+      summary: Delete a topic destination route
+      operationId: deleteTopicDestinationRoute
+      tags: ["Destination"]
       parameters:
         - name: projectIdOrName
           in: path
@@ -3792,7 +3696,7 @@ paths:
         - name: routeId
           in: path
           required: true
-          description: The topic-target route ID.
+          description: The topic destination route ID.
           schema:
             type: string
       responses:
@@ -3803,7 +3707,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
         default:
           description: Error
           content:
@@ -4198,7 +4102,6 @@ paths:
       summary: Check if a domain is claimed
       description: Returns claimed domain information if authenticated user is an owner of the organization that claimed the domain, or if the user's email domain matches the claimed domain.
       tags: ["Org"]
-      x-excluded: true
       security: # Only bearer auth works for this endpoint
         - Bearer: []
       parameters:
@@ -4242,7 +4145,6 @@ paths:
       summary: Claim a domain
       description: Claim a domain for an organization. Accepts email, domain, or URL.
       tags: ["Org"]
-      x-excluded: true
       security: # Only bearer auth works for this endpoint
         - Bearer: []
       requestBody:
@@ -4299,7 +4201,6 @@ paths:
       summary: List organization's claimed domains
       description: Get all domains claimed by a specific organization
       tags: ["Org"]
-      x-excluded: true
       parameters:
         - name: orgId
           in: path
@@ -4361,8 +4262,61 @@ components:
           type: string
           description: The time the organization was updated.
           format: date-time
+    # NOTE: If you change this schema, also update DestinationWithSecrets schema below.
     Destination:
       title: Destination
+      required:
+        - id
+        - name
+        - type
+        - metadata
+        - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The destination ID.
+        name:
+          type: string
+          description: User-defined name for the destination
+          example: leadConvertedWebhook
+        type:
+          type: string
+          description: The type of the destination
+          example: webhook
+        metadata:
+          type: object
+          properties:
+            url:
+              type: string
+              description: Webhook URL
+              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+            headers:
+              $ref: "#/components/schemas/WebhookHeaders"
+            streamName:
+              type: string
+              description: The name of the Kinesis stream
+              example: my-data-stream
+            region:
+              type: string
+              description: The AWS region for the destination
+              example: us-east-1
+            partitionKeyTemplate:
+              type: string
+              description: Template for generating partition keys
+              example: "{{.integration_id}}"
+        createTime:
+          type: string
+          description: The time the destination was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the destination was updated.
+          format: date-time
+    # NOTE: If you change this schema, also update Destination schema above.
+    DestinationWithSecrets:
+      title: DestinationWithSecrets
+      description: Destination object with secrets field (returned by getDestination when includeSecrets is true)
       required:
         - id
         - name
@@ -4624,6 +4578,12 @@ components:
           type: string
           description: The health status of the installation ("healthy", "unhealthy").
           example: healthy
+        lastOperationStatus:
+          type: string
+          enum: [success, failure, in_progress]
+          description: |
+            The status of the latest operation for this installation.
+          example: success
         connection:
           $ref: "#/components/schemas/Connection"
         createTime:
@@ -4640,6 +4600,36 @@ components:
           format: date-time
         config:
           $ref: "#/components/schemas/Config"
+    JSONPatchOperation:
+      title: JSON Patch Operation
+      description: |
+        Represents a single JSON Patch operation (RFC 6902).
+        Only supports add, remove, and replace operations for config updates.
+      required:
+        - op
+        - path
+      type: object
+      properties:
+        op:
+          type: string
+          enum: [add, remove, replace]
+          description: |
+            The operation to perform.
+            - "add": Adds a new field or replaces an existing one at the specified path
+            - "remove": Removes the field at the specified path
+            - "replace": Replaces the value at the specified path
+          example: replace
+        path:
+          type: string
+          description: |
+            JSON Pointer path to the field to operate on (RFC 6901).
+            All paths must start with "/" (e.g., "/schedule", "/selectedFields/phone").
+          example: /schedule
+        value:
+          description: |
+            The value to set for add/replace operations.
+            Not used for remove operations.
+          example: "*/10 * * * *"
     Config:
       title: Config
       required:
@@ -5575,6 +5565,10 @@ components:
       type: object
       description: Request payload for upserting metadata (fields only)
       properties:
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group of users for this request.
+          example: group-123
         fields:
           type: object
           description: Maps object names to field definitions
@@ -5583,6 +5577,7 @@ components:
             items:
               $ref: '#/components/schemas/FieldDefinition'
       required:
+        - groupRef
         - fields
 
     UpsertMetadataResponse:
@@ -5777,77 +5772,34 @@ components:
           type: string
           description: The normalized domain name
           example: xyz.com
-    NotificationTarget:
-      title: Notification Target
+    Topic:
+      title: Topic
       required:
         - id
-        - label
-        - type
-        - metadata
-        - createTime
-      type: object
-      properties:
-        id:
-          type: string
-          description: The notification target ID.
-        label:
-          type: string
-          description: A human-readable label for the notification target.
-          example: "Production Slack Alerts"
-        type:
-          type: string
-          description: The type of notification target.
-          enum: ["webhook"]
-          example: webhook
-        metadata:
-          type: object
-          required:
-            - url
-          properties:
-            url:
-              type: string
-              description: Webhook URL, must start with "https://".
-              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
-            headers:
-              $ref: "#/components/schemas/WebhookHeaders"
-        secrets:
-          type: object
-          description: Secrets for the target.
-        createTime:
-          type: string
-          format: date-time
-          description: The time when the notification target was created.
-        updateTime:
-          type: string
-          format: date-time
-          description: The time when the notification target was last updated.
-    NotificationTopic:
-      title: Notification Topic
-      required:
-        - id
-        - label
+        - name
         - projectId
         - createTime
       type: object
       properties:
         id:
           type: string
-          description: The notification topic ID.
-        label:
+          description: The topic ID.
+        name:
           type: string
-          description: A human-readable label for the notification topic.
-          example: "System Alerts"
+          description: The name of the topic. Must contain only letters, numbers, and dashes.
+          example: "system-alerts"
+          maxLength: 64
         projectId:
           type: string
           description: The Ampersand project ID.
         createTime:
           type: string
           format: date-time
-          description: The time when the notification topic was created.
+          description: The time when the topic was created.
         updateTime:
           type: string
           format: date-time
-          description: The time when the notification topic was last updated.
+          description: The time when the topic was last updated.
     NotificationEventTopicRoute:
       title: Notification Event Topic Route
       required:
@@ -5862,19 +5814,10 @@ components:
           type: string
           description: The event-topic route ID.
         eventType:
-          type: string
-          description: The type of notification event.
-          enum: 
-            - "read.backfill.done"
-            - "connection.created"
-            - "installation.created"
-            - "installation.updated"
-            - "installation.deleted"
-            - "read.schedule.paused"
-          example: "installation.created"
+          $ref: "#/components/schemas/NotificationEventType"
         topicId:
           type: string
-          description: The ID of the notification topic to route events to.
+          description: The ID of the topic to route events to.
         projectId:
           type: string
           description: The Ampersand project ID.
@@ -5886,32 +5829,47 @@ components:
           type: string
           format: date-time
           description: The time when the event-topic route was last updated.
-    NotificationTopicTargetRoute:
-      title: Notification Topic Target Route
+
+    NotificationEventType:
+      type: string
+      description: The type of notification event.
+      enum:
+        - "connection.created"
+        - "connection.error"
+        - "installation.created"
+        - "installation.updated"
+        - "installation.deleted"
+        - "read.schedule.paused"
+        - "read.backfill.done"
+        - "read.triggered.done"
+        - "read.triggered.error"
+        - "destination.webhook.disabled"
+    TopicDestinationRoute:
+      title: Topic Destination Route
       required:
         - id
         - topicId
-        - targetId
+        - destinationId
         - projectId
         - createTime
       type: object
       properties:
         id:
           type: string
-          description: The topic-target route ID.
+          description: The topic destination route ID.
         topicId:
           type: string
-          description: The ID of the notification topic.
-        targetId:
+          description: The ID of the topic.
+        destinationId:
           type: string
-          description: The ID of the notification target.
+          description: The ID of the destination.
         projectId:
           type: string
           description: The Ampersand project ID.
         createTime:
           type: string
           format: date-time
-          description: The time when the topic-target route was created.
+          description: The time when the topic destination route was created.
 
   securitySchemes:
     APIKeyHeader:

@@ -467,6 +467,17 @@
             "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
             "x-go-type-skip-optional-pointer": true
           },
+          "scopeMappings": {
+            "type": "object",
+            "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "x-go-type-skip-optional-pointer": true,
+            "example": {
+              "default": "https://{{.workspace}}.api.com/default"
+            }
+          },
           "tokenMetadataFields": {
             "title": "Token Metadata Fields",
             "type": "object",
@@ -542,6 +553,102 @@
               "access_type": "offline",
               "duration": "permanent"
             }
+          },
+          "accessTokenOpts": {
+            "title": "Oauth2 Access Token Options",
+            "type": "object",
+            "description": "Configuration that defines how an OAuth 2.0 access token is attached to\noutbound API requests. When provided, this configuration overrides the\ndefault access-token handling behavior for the connector.\n",
+            "required": [
+              "attachmentType"
+            ],
+            "properties": {
+              "attachmentType": {
+                "type": "string",
+                "description": "How the access token should be attached to requests.",
+                "enum": [
+                  "accessTokenHeaderAttachment"
+                ],
+                "x-oapi-codegen-extra-tags": {
+                  "validate": "required"
+                }
+              },
+              "header": {
+                "title": "Access Token Header Options",
+                "type": "object",
+                "description": "Configuration for access token in header. Must be provided if type is in-header.",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "X-Access-Token",
+                    "description": "The name of the header to be used for the access token.",
+                    "x-go-type-skip-optional-pointer": true
+                  },
+                  "valuePrefix": {
+                    "type": "string",
+                    "example": "Bearer ",
+                    "description": "The prefix to be added to the access token value when it is sent in the header.",
+                    "x-go-type-skip-optional-pointer": true
+                  }
+                }
+              },
+              "docsURL": {
+                "type": "string",
+                "description": "URL with more information about how access token is used.",
+                "example": "https://docs.example.com/oauth2-access-token-usage",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          }
+        }
+      },
+      "AccessTokenOpts": {
+        "title": "Oauth2 Access Token Options",
+        "type": "object",
+        "description": "Configuration that defines how an OAuth 2.0 access token is attached to\noutbound API requests. When provided, this configuration overrides the\ndefault access-token handling behavior for the connector.\n",
+        "required": [
+          "attachmentType"
+        ],
+        "properties": {
+          "attachmentType": {
+            "type": "string",
+            "description": "How the access token should be attached to requests.",
+            "enum": [
+              "accessTokenHeaderAttachment"
+            ],
+            "x-oapi-codegen-extra-tags": {
+              "validate": "required"
+            }
+          },
+          "header": {
+            "title": "Access Token Header Options",
+            "type": "object",
+            "description": "Configuration for access token in header. Must be provided if type is in-header.",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "X-Access-Token",
+                "description": "The name of the header to be used for the access token.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "valuePrefix": {
+                "type": "string",
+                "example": "Bearer ",
+                "description": "The prefix to be added to the access token value when it is sent in the header.",
+                "x-go-type-skip-optional-pointer": true
+              }
+            }
+          },
+          "docsURL": {
+            "type": "string",
+            "description": "URL with more information about how access token is used.",
+            "example": "https://docs.example.com/oauth2-access-token-usage",
+            "x-go-type-skip-optional-pointer": true
           }
         }
       },
@@ -644,6 +751,28 @@
             "type": "string",
             "example": "Bearer ",
             "description": "The prefix to be added to the API key value when it is sent in the header.",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "AccessTokenOptsHeader": {
+        "title": "Access Token Header Options",
+        "type": "object",
+        "description": "Configuration for access token in header. Must be provided if type is in-header.",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "X-Access-Token",
+            "description": "The name of the header to be used for the access token.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "valuePrefix": {
+            "type": "string",
+            "example": "Bearer ",
+            "description": "The prefix to be added to the access token value when it is sent in the header.",
             "x-go-type-skip-optional-pointer": true
           }
         }
@@ -1130,10 +1259,6 @@
               }
             }
           }
-        },
-        "x-go-type": "map[common.ModuleID]ModuleInfo",
-        "x-go-type-import": {
-          "path": "github.com/amp-labs/connectors/common"
         }
       },
       "ModuleInfo": {
@@ -1377,10 +1502,7 @@
             }
           },
           "defaultModule": {
-            "x-go-type": "common.ModuleID",
-            "x-go-type-import": {
-              "path": "github.com/amp-labs/connectors/common"
-            }
+            "type": "string"
           },
           "oauth2Opts": {
             "title": "OAuth2 Options",
@@ -1437,6 +1559,17 @@
                 ],
                 "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
                 "x-go-type-skip-optional-pointer": true
+              },
+              "scopeMappings": {
+                "type": "object",
+                "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "x-go-type-skip-optional-pointer": true,
+                "example": {
+                  "default": "https://{{.workspace}}.api.com/default"
+                }
               },
               "tokenMetadataFields": {
                 "title": "Token Metadata Fields",
@@ -1512,6 +1645,54 @@
                 "example": {
                   "access_type": "offline",
                   "duration": "permanent"
+                }
+              },
+              "accessTokenOpts": {
+                "title": "Oauth2 Access Token Options",
+                "type": "object",
+                "description": "Configuration that defines how an OAuth 2.0 access token is attached to\noutbound API requests. When provided, this configuration overrides the\ndefault access-token handling behavior for the connector.\n",
+                "required": [
+                  "attachmentType"
+                ],
+                "properties": {
+                  "attachmentType": {
+                    "type": "string",
+                    "description": "How the access token should be attached to requests.",
+                    "enum": [
+                      "accessTokenHeaderAttachment"
+                    ],
+                    "x-oapi-codegen-extra-tags": {
+                      "validate": "required"
+                    }
+                  },
+                  "header": {
+                    "title": "Access Token Header Options",
+                    "type": "object",
+                    "description": "Configuration for access token in header. Must be provided if type is in-header.",
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "X-Access-Token",
+                        "description": "The name of the header to be used for the access token.",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "valuePrefix": {
+                        "type": "string",
+                        "example": "Bearer ",
+                        "description": "The prefix to be added to the access token value when it is sent in the header.",
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "docsURL": {
+                    "type": "string",
+                    "description": "URL with more information about how access token is used.",
+                    "example": "https://docs.example.com/oauth2-access-token-usage",
+                    "x-go-type-skip-optional-pointer": true
+                  }
                 }
               }
             }
@@ -2232,10 +2413,6 @@
                   }
                 }
               }
-            },
-            "x-go-type": "map[common.ModuleID]ModuleInfo",
-            "x-go-type-import": {
-              "path": "github.com/amp-labs/connectors/common"
             }
           },
           "metadata": {
@@ -2263,6 +2440,11 @@
                       "description": "The human-readable name for the field",
                       "x-go-type-skip-optional-pointer": true
                     },
+                    "prompt": {
+                      "type": "string",
+                      "description": "Human-readable description that can contain instructions on how to collect metadata",
+                      "x-go-type-skip-optional-pointer": true
+                    },
                     "defaultValue": {
                       "type": "string",
                       "description": "Default value for this metadata item",
@@ -2275,7 +2457,7 @@
                       "x-go-type-skip-optional-pointer": true
                     },
                     "moduleDependencies": {
-                      "description": "Module-specific dependencies for this metadata item.",
+                      "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                       "title": "Module Dependencies",
                       "type": "object",
                       "additionalProperties": {
@@ -2283,10 +2465,6 @@
                         "type": "object",
                         "description": "Dependency for a single module.",
                         "properties": {}
-                      },
-                      "x-go-type": "map[common.ModuleID]ModuleDependency",
-                      "x-go-type-import": {
-                        "path": "github.com/amp-labs/connectors/common"
                       }
                     }
                   }
@@ -2309,7 +2487,7 @@
                       "x-go-type-skip-optional-pointer": true
                     },
                     "moduleDependencies": {
-                      "description": "Module-specific dependencies for this metadata item.",
+                      "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                       "title": "Module Dependencies",
                       "type": "object",
                       "additionalProperties": {
@@ -2317,10 +2495,6 @@
                         "type": "object",
                         "description": "Dependency for a single module.",
                         "properties": {}
-                      },
-                      "x-go-type": "map[common.ModuleID]ModuleDependency",
-                      "x-go-type-import": {
-                        "path": "github.com/amp-labs/connectors/common"
                       }
                     }
                   }
@@ -2341,7 +2515,7 @@
         "properties": {
           "timestamp": {
             "type": "string",
-            "example": "2024-07-30T22:14:51.000Z",
+            "example": "2024-07-30T15:14:51-07:00",
             "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
@@ -2389,10 +2563,7 @@
                   }
                 },
                 "defaultModule": {
-                  "x-go-type": "common.ModuleID",
-                  "x-go-type-import": {
-                    "path": "github.com/amp-labs/connectors/common"
-                  }
+                  "type": "string"
                 },
                 "oauth2Opts": {
                   "title": "OAuth2 Options",
@@ -2449,6 +2620,17 @@
                       ],
                       "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
                       "x-go-type-skip-optional-pointer": true
+                    },
+                    "scopeMappings": {
+                      "type": "object",
+                      "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "x-go-type-skip-optional-pointer": true,
+                      "example": {
+                        "default": "https://{{.workspace}}.api.com/default"
+                      }
                     },
                     "tokenMetadataFields": {
                       "title": "Token Metadata Fields",
@@ -2524,6 +2706,54 @@
                       "example": {
                         "access_type": "offline",
                         "duration": "permanent"
+                      }
+                    },
+                    "accessTokenOpts": {
+                      "title": "Oauth2 Access Token Options",
+                      "type": "object",
+                      "description": "Configuration that defines how an OAuth 2.0 access token is attached to\noutbound API requests. When provided, this configuration overrides the\ndefault access-token handling behavior for the connector.\n",
+                      "required": [
+                        "attachmentType"
+                      ],
+                      "properties": {
+                        "attachmentType": {
+                          "type": "string",
+                          "description": "How the access token should be attached to requests.",
+                          "enum": [
+                            "accessTokenHeaderAttachment"
+                          ],
+                          "x-oapi-codegen-extra-tags": {
+                            "validate": "required"
+                          }
+                        },
+                        "header": {
+                          "title": "Access Token Header Options",
+                          "type": "object",
+                          "description": "Configuration for access token in header. Must be provided if type is in-header.",
+                          "required": [
+                            "name"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "X-Access-Token",
+                              "description": "The name of the header to be used for the access token.",
+                              "x-go-type-skip-optional-pointer": true
+                            },
+                            "valuePrefix": {
+                              "type": "string",
+                              "example": "Bearer ",
+                              "description": "The prefix to be added to the access token value when it is sent in the header.",
+                              "x-go-type-skip-optional-pointer": true
+                            }
+                          }
+                        },
+                        "docsURL": {
+                          "type": "string",
+                          "description": "URL with more information about how access token is used.",
+                          "example": "https://docs.example.com/oauth2-access-token-usage",
+                          "x-go-type-skip-optional-pointer": true
+                        }
                       }
                     }
                   }
@@ -3244,10 +3474,6 @@
                         }
                       }
                     }
-                  },
-                  "x-go-type": "map[common.ModuleID]ModuleInfo",
-                  "x-go-type-import": {
-                    "path": "github.com/amp-labs/connectors/common"
                   }
                 },
                 "metadata": {
@@ -3275,6 +3501,11 @@
                             "description": "The human-readable name for the field",
                             "x-go-type-skip-optional-pointer": true
                           },
+                          "prompt": {
+                            "type": "string",
+                            "description": "Human-readable description that can contain instructions on how to collect metadata",
+                            "x-go-type-skip-optional-pointer": true
+                          },
                           "defaultValue": {
                             "type": "string",
                             "description": "Default value for this metadata item",
@@ -3287,7 +3518,7 @@
                             "x-go-type-skip-optional-pointer": true
                           },
                           "moduleDependencies": {
-                            "description": "Module-specific dependencies for this metadata item.",
+                            "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                             "title": "Module Dependencies",
                             "type": "object",
                             "additionalProperties": {
@@ -3295,10 +3526,6 @@
                               "type": "object",
                               "description": "Dependency for a single module.",
                               "properties": {}
-                            },
-                            "x-go-type": "map[common.ModuleID]ModuleDependency",
-                            "x-go-type-import": {
-                              "path": "github.com/amp-labs/connectors/common"
                             }
                           }
                         }
@@ -3321,7 +3548,7 @@
                             "x-go-type-skip-optional-pointer": true
                           },
                           "moduleDependencies": {
-                            "description": "Module-specific dependencies for this metadata item.",
+                            "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                             "title": "Module Dependencies",
                             "type": "object",
                             "additionalProperties": {
@@ -3329,10 +3556,6 @@
                               "type": "object",
                               "description": "Dependency for a single module.",
                               "properties": {}
-                            },
-                            "x-go-type": "map[common.ModuleID]ModuleDependency",
-                            "x-go-type-import": {
-                              "path": "github.com/amp-labs/connectors/common"
                             }
                           }
                         }
@@ -3388,10 +3611,7 @@
               }
             },
             "defaultModule": {
-              "x-go-type": "common.ModuleID",
-              "x-go-type-import": {
-                "path": "github.com/amp-labs/connectors/common"
-              }
+              "type": "string"
             },
             "oauth2Opts": {
               "title": "OAuth2 Options",
@@ -3448,6 +3668,17 @@
                   ],
                   "description": "A list of URLs that represent the audience for the token, which is needed for some client credential grant flows.",
                   "x-go-type-skip-optional-pointer": true
+                },
+                "scopeMappings": {
+                  "type": "object",
+                  "description": "Maps input scopes to their full OAuth scope values with template variable support. Scopes not in this map are passed through unchanged. Needed for some providers.",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "x-go-type-skip-optional-pointer": true,
+                  "example": {
+                    "default": "https://{{.workspace}}.api.com/default"
+                  }
                 },
                 "tokenMetadataFields": {
                   "title": "Token Metadata Fields",
@@ -3523,6 +3754,54 @@
                   "example": {
                     "access_type": "offline",
                     "duration": "permanent"
+                  }
+                },
+                "accessTokenOpts": {
+                  "title": "Oauth2 Access Token Options",
+                  "type": "object",
+                  "description": "Configuration that defines how an OAuth 2.0 access token is attached to\noutbound API requests. When provided, this configuration overrides the\ndefault access-token handling behavior for the connector.\n",
+                  "required": [
+                    "attachmentType"
+                  ],
+                  "properties": {
+                    "attachmentType": {
+                      "type": "string",
+                      "description": "How the access token should be attached to requests.",
+                      "enum": [
+                        "accessTokenHeaderAttachment"
+                      ],
+                      "x-oapi-codegen-extra-tags": {
+                        "validate": "required"
+                      }
+                    },
+                    "header": {
+                      "title": "Access Token Header Options",
+                      "type": "object",
+                      "description": "Configuration for access token in header. Must be provided if type is in-header.",
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "X-Access-Token",
+                          "description": "The name of the header to be used for the access token.",
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "valuePrefix": {
+                          "type": "string",
+                          "example": "Bearer ",
+                          "description": "The prefix to be added to the access token value when it is sent in the header.",
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "docsURL": {
+                      "type": "string",
+                      "description": "URL with more information about how access token is used.",
+                      "example": "https://docs.example.com/oauth2-access-token-usage",
+                      "x-go-type-skip-optional-pointer": true
+                    }
                   }
                 }
               }
@@ -4243,10 +4522,6 @@
                     }
                   }
                 }
-              },
-              "x-go-type": "map[common.ModuleID]ModuleInfo",
-              "x-go-type-import": {
-                "path": "github.com/amp-labs/connectors/common"
               }
             },
             "metadata": {
@@ -4274,6 +4549,11 @@
                         "description": "The human-readable name for the field",
                         "x-go-type-skip-optional-pointer": true
                       },
+                      "prompt": {
+                        "type": "string",
+                        "description": "Human-readable description that can contain instructions on how to collect metadata",
+                        "x-go-type-skip-optional-pointer": true
+                      },
                       "defaultValue": {
                         "type": "string",
                         "description": "Default value for this metadata item",
@@ -4286,7 +4566,7 @@
                         "x-go-type-skip-optional-pointer": true
                       },
                       "moduleDependencies": {
-                        "description": "Module-specific dependencies for this metadata item.",
+                        "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                         "title": "Module Dependencies",
                         "type": "object",
                         "additionalProperties": {
@@ -4294,10 +4574,6 @@
                           "type": "object",
                           "description": "Dependency for a single module.",
                           "properties": {}
-                        },
-                        "x-go-type": "map[common.ModuleID]ModuleDependency",
-                        "x-go-type-import": {
-                          "path": "github.com/amp-labs/connectors/common"
                         }
                       }
                     }
@@ -4320,7 +4596,7 @@
                         "x-go-type-skip-optional-pointer": true
                       },
                       "moduleDependencies": {
-                        "description": "Module-specific dependencies for this metadata item.",
+                        "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                         "title": "Module Dependencies",
                         "type": "object",
                         "additionalProperties": {
@@ -4328,10 +4604,6 @@
                           "type": "object",
                           "description": "Dependency for a single module.",
                           "properties": {}
-                        },
-                        "x-go-type": "map[common.ModuleID]ModuleDependency",
-                        "x-go-type-import": {
-                          "path": "github.com/amp-labs/connectors/common"
                         }
                       }
                     }
@@ -4541,6 +4813,11 @@
                   "description": "The human-readable name for the field",
                   "x-go-type-skip-optional-pointer": true
                 },
+                "prompt": {
+                  "type": "string",
+                  "description": "Human-readable description that can contain instructions on how to collect metadata",
+                  "x-go-type-skip-optional-pointer": true
+                },
                 "defaultValue": {
                   "type": "string",
                   "description": "Default value for this metadata item",
@@ -4553,7 +4830,7 @@
                   "x-go-type-skip-optional-pointer": true
                 },
                 "moduleDependencies": {
-                  "description": "Module-specific dependencies for this metadata item.",
+                  "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                   "title": "Module Dependencies",
                   "type": "object",
                   "additionalProperties": {
@@ -4561,10 +4838,6 @@
                     "type": "object",
                     "description": "Dependency for a single module.",
                     "properties": {}
-                  },
-                  "x-go-type": "map[common.ModuleID]ModuleDependency",
-                  "x-go-type-import": {
-                    "path": "github.com/amp-labs/connectors/common"
                   }
                 }
               }
@@ -4587,7 +4860,7 @@
                   "x-go-type-skip-optional-pointer": true
                 },
                 "moduleDependencies": {
-                  "description": "Module-specific dependencies for this metadata item.",
+                  "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
                   "title": "Module Dependencies",
                   "type": "object",
                   "additionalProperties": {
@@ -4595,10 +4868,6 @@
                     "type": "object",
                     "description": "Dependency for a single module.",
                     "properties": {}
-                  },
-                  "x-go-type": "map[common.ModuleID]ModuleDependency",
-                  "x-go-type-import": {
-                    "path": "github.com/amp-labs/connectors/common"
                   }
                 }
               }
@@ -4624,6 +4893,11 @@
             "description": "The human-readable name for the field",
             "x-go-type-skip-optional-pointer": true
           },
+          "prompt": {
+            "type": "string",
+            "description": "Human-readable description that can contain instructions on how to collect metadata",
+            "x-go-type-skip-optional-pointer": true
+          },
           "defaultValue": {
             "type": "string",
             "description": "Default value for this metadata item",
@@ -4636,7 +4910,7 @@
             "x-go-type-skip-optional-pointer": true
           },
           "moduleDependencies": {
-            "description": "Module-specific dependencies for this metadata item.",
+            "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
             "title": "Module Dependencies",
             "type": "object",
             "additionalProperties": {
@@ -4644,10 +4918,6 @@
               "type": "object",
               "description": "Dependency for a single module.",
               "properties": {}
-            },
-            "x-go-type": "map[common.ModuleID]ModuleDependency",
-            "x-go-type-import": {
-              "path": "github.com/amp-labs/connectors/common"
             }
           }
         }
@@ -4665,7 +4935,7 @@
             "x-go-type-skip-optional-pointer": true
           },
           "moduleDependencies": {
-            "description": "Module-specific dependencies for this metadata item.",
+            "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
             "title": "Module Dependencies",
             "type": "object",
             "additionalProperties": {
@@ -4673,10 +4943,6 @@
               "type": "object",
               "description": "Dependency for a single module.",
               "properties": {}
-            },
-            "x-go-type": "map[common.ModuleID]ModuleDependency",
-            "x-go-type-import": {
-              "path": "github.com/amp-labs/connectors/common"
             }
           }
         }
@@ -4684,16 +4950,12 @@
       "ModuleDependencies": {
         "title": "Module Dependencies",
         "type": "object",
-        "description": "Does this metadata item only apply to a specific module?",
+        "description": "Specifies which modules REQUIRE (depend on) this metadata item. This field lists the modules that depend on/require the metadata item. Example: If \"workspace\" metadata has moduleDependencies: {crm: {}}, it means the CRM module requires the workspace metadata to function. Each module that needs this metadata item MUST be specified in this field. Even if it is all modules. The empty ModuleDependency {} is for future-proofing in case we need to add additional configuration options.",
         "additionalProperties": {
           "title": "Module Dependency",
           "type": "object",
           "description": "Dependency for a single module.",
           "properties": {}
-        },
-        "x-go-type": "map[common.ModuleID]ModuleDependency",
-        "x-go-type-import": {
-          "path": "github.com/amp-labs/connectors/common"
         }
       },
       "ModuleDependency": {

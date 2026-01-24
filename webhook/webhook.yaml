@@ -82,6 +82,20 @@ components:
           description: The timestamp when the operation was performed.
           type: string
           format: date-time
+        readType:
+          description: >-
+            The type of read operation. This is only populated for Read Actions, not Subscribe Actions.
+            Possible values are 'backfill' (initial backfill), 'triggered' (on-demand read via API),
+            or 'scheduled' (regular scheduled read).
+          type: string
+          enum:
+            - backfill
+            - scheduled
+            - triggered
+          x-enumNames:
+            - BackfillReadType
+            - ScheduledReadType
+            - TriggeredReadType
     Association:
       title: Association
       type: object
@@ -170,6 +184,11 @@ components:
         id:
           description: The ID of the record. this field will be populated in case of delete event.
           type: string
+        fieldsUpdated:
+          description: A list of field names that were updated.
+          type: array
+          items:
+            type: string
 
     ResultInfo:
       title: Result Info

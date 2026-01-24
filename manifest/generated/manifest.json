@@ -430,6 +430,88 @@
                       }
                     }
                   }
+                },
+                "watchSchema": {
+                  "title": "Provider schema watch",
+                  "type": "object",
+                  "description": "Configuration for monitoring provider schema changes.",
+                  "required": [
+                    "destination",
+                    "allObjects"
+                  ],
+                  "properties": {
+                    "destination": {
+                      "type": "string",
+                      "description": "The destination to send schema change notifications to.",
+                      "example": "fieldWatchStream",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "schedule": {
+                      "type": "string",
+                      "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour. Defaults to once a day.",
+                      "default": "0 */24 * * *",
+                      "example": "0 */6 * * *",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "allObjects": {
+                      "title": "Watch Schema All Objects",
+                      "type": "object",
+                      "description": "Schema change event configuration for all objects in the integration.",
+                      "properties": {
+                        "fieldCreated": {
+                          "title": "Field Created Event",
+                          "type": "object",
+                          "description": "Configuration for detecting when new fields are created.",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "If always, the integration will monitor for new fields by default.",
+                              "enum": [
+                                "always"
+                              ]
+                            }
+                          }
+                        },
+                        "fieldDeleted": {
+                          "title": "Field Deleted Event",
+                          "type": "object",
+                          "description": "Configuration for detecting when fields are deleted.",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "If always, the integration will monitor for deleted fields by default.",
+                              "enum": [
+                                "always"
+                              ]
+                            }
+                          }
+                        },
+                        "fieldChanged": {
+                          "title": "Field Changed Event",
+                          "type": "object",
+                          "description": "Configuration for detecting when fields are changed.",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "If always, the integration will monitor for field changes by default.",
+                              "enum": [
+                                "always"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -832,6 +914,88 @@
                         "example": [
                           "object.merged",
                           "object.restored"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "watchSchema": {
+            "title": "Provider schema watch",
+            "type": "object",
+            "description": "Configuration for monitoring provider schema changes.",
+            "required": [
+              "destination",
+              "allObjects"
+            ],
+            "properties": {
+              "destination": {
+                "type": "string",
+                "description": "The destination to send schema change notifications to.",
+                "example": "fieldWatchStream",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "schedule": {
+                "type": "string",
+                "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour. Defaults to once a day.",
+                "default": "0 */24 * * *",
+                "example": "0 */6 * * *",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "allObjects": {
+                "title": "Watch Schema All Objects",
+                "type": "object",
+                "description": "Schema change event configuration for all objects in the integration.",
+                "properties": {
+                  "fieldCreated": {
+                    "title": "Field Created Event",
+                    "type": "object",
+                    "description": "Configuration for detecting when new fields are created.",
+                    "required": [
+                      "enabled"
+                    ],
+                    "properties": {
+                      "enabled": {
+                        "type": "string",
+                        "description": "If always, the integration will monitor for new fields by default.",
+                        "enum": [
+                          "always"
+                        ]
+                      }
+                    }
+                  },
+                  "fieldDeleted": {
+                    "title": "Field Deleted Event",
+                    "type": "object",
+                    "description": "Configuration for detecting when fields are deleted.",
+                    "required": [
+                      "enabled"
+                    ],
+                    "properties": {
+                      "enabled": {
+                        "type": "string",
+                        "description": "If always, the integration will monitor for deleted fields by default.",
+                        "enum": [
+                          "always"
+                        ]
+                      }
+                    }
+                  },
+                  "fieldChanged": {
+                    "title": "Field Changed Event",
+                    "type": "object",
+                    "description": "Configuration for detecting when fields are changed.",
+                    "required": [
+                      "enabled"
+                    ],
+                    "properties": {
+                      "enabled": {
+                        "type": "string",
+                        "description": "If always, the integration will monitor for field changes by default.",
+                        "enum": [
+                          "always"
                         ]
                       }
                     }
@@ -1883,8 +2047,17 @@
                           "readOnly": {
                             "type": "boolean",
                             "description": "Whether the field is read-only.",
-                            "example": false,
-                            "x-go-type-skip-optional-pointer": true
+                            "example": false
+                          },
+                          "isCustom": {
+                            "type": "boolean",
+                            "description": "Whether the field is custom field.",
+                            "example": false
+                          },
+                          "isRequired": {
+                            "type": "boolean",
+                            "description": "Whether the field is required when creating a new record.",
+                            "example": false
                           },
                           "values": {
                             "type": "array",
@@ -2285,8 +2458,17 @@
                       "readOnly": {
                         "type": "boolean",
                         "description": "Whether the field is read-only.",
-                        "example": false,
-                        "x-go-type-skip-optional-pointer": true
+                        "example": false
+                      },
+                      "isCustom": {
+                        "type": "boolean",
+                        "description": "Whether the field is custom field.",
+                        "example": false
+                      },
+                      "isRequired": {
+                        "type": "boolean",
+                        "description": "Whether the field is required when creating a new record.",
+                        "example": false
                       },
                       "values": {
                         "type": "array",
@@ -2653,8 +2835,17 @@
                 "readOnly": {
                   "type": "boolean",
                   "description": "Whether the field is read-only.",
-                  "example": false,
-                  "x-go-type-skip-optional-pointer": true
+                  "example": false
+                },
+                "isCustom": {
+                  "type": "boolean",
+                  "description": "Whether the field is custom field.",
+                  "example": false
+                },
+                "isRequired": {
+                  "type": "boolean",
+                  "description": "Whether the field is required when creating a new record.",
+                  "example": false
                 },
                 "values": {
                   "type": "array",
@@ -3003,8 +3194,17 @@
           "readOnly": {
             "type": "boolean",
             "description": "Whether the field is read-only.",
-            "example": false,
-            "x-go-type-skip-optional-pointer": true
+            "example": false
+          },
+          "isCustom": {
+            "type": "boolean",
+            "description": "Whether the field is custom field.",
+            "example": false
+          },
+          "isRequired": {
+            "type": "boolean",
+            "description": "Whether the field is required when creating a new record.",
+            "example": false
           },
           "values": {
             "type": "array",
@@ -3167,6 +3367,197 @@
             "type": "boolean",
             "description": "If true, users can set default values for any field.",
             "example": true
+          }
+        }
+      },
+      "WatchSchema": {
+        "title": "Provider schema watch",
+        "type": "object",
+        "description": "Configuration for monitoring provider schema changes.",
+        "required": [
+          "destination",
+          "allObjects"
+        ],
+        "properties": {
+          "destination": {
+            "type": "string",
+            "description": "The destination to send schema change notifications to.",
+            "example": "fieldWatchStream",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "schedule": {
+            "type": "string",
+            "description": "Cron schedule for checking schema changes. Minimum frequency is once per hour. Defaults to once a day.",
+            "default": "0 */24 * * *",
+            "example": "0 */6 * * *",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "allObjects": {
+            "title": "Watch Schema All Objects",
+            "type": "object",
+            "description": "Schema change event configuration for all objects in the integration.",
+            "properties": {
+              "fieldCreated": {
+                "title": "Field Created Event",
+                "type": "object",
+                "description": "Configuration for detecting when new fields are created.",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "string",
+                    "description": "If always, the integration will monitor for new fields by default.",
+                    "enum": [
+                      "always"
+                    ]
+                  }
+                }
+              },
+              "fieldDeleted": {
+                "title": "Field Deleted Event",
+                "type": "object",
+                "description": "Configuration for detecting when fields are deleted.",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "string",
+                    "description": "If always, the integration will monitor for deleted fields by default.",
+                    "enum": [
+                      "always"
+                    ]
+                  }
+                }
+              },
+              "fieldChanged": {
+                "title": "Field Changed Event",
+                "type": "object",
+                "description": "Configuration for detecting when fields are changed.",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "string",
+                    "description": "If always, the integration will monitor for field changes by default.",
+                    "enum": [
+                      "always"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "WatchSchemaAllObjects": {
+        "title": "Watch Schema All Objects",
+        "type": "object",
+        "description": "Schema change event configuration for all objects in the integration.",
+        "properties": {
+          "fieldCreated": {
+            "title": "Field Created Event",
+            "type": "object",
+            "description": "Configuration for detecting when new fields are created.",
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "string",
+                "description": "If always, the integration will monitor for new fields by default.",
+                "enum": [
+                  "always"
+                ]
+              }
+            }
+          },
+          "fieldDeleted": {
+            "title": "Field Deleted Event",
+            "type": "object",
+            "description": "Configuration for detecting when fields are deleted.",
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "string",
+                "description": "If always, the integration will monitor for deleted fields by default.",
+                "enum": [
+                  "always"
+                ]
+              }
+            }
+          },
+          "fieldChanged": {
+            "title": "Field Changed Event",
+            "type": "object",
+            "description": "Configuration for detecting when fields are changed.",
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "string",
+                "description": "If always, the integration will monitor for field changes by default.",
+                "enum": [
+                  "always"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "FieldCreatedEvent": {
+        "title": "Field Created Event",
+        "type": "object",
+        "description": "Configuration for detecting when new fields are created.",
+        "required": [
+          "enabled"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "string",
+            "description": "If always, the integration will monitor for new fields by default.",
+            "enum": [
+              "always"
+            ]
+          }
+        }
+      },
+      "FieldDeletedEvent": {
+        "title": "Field Deleted Event",
+        "type": "object",
+        "description": "Configuration for detecting when fields are deleted.",
+        "required": [
+          "enabled"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "string",
+            "description": "If always, the integration will monitor for deleted fields by default.",
+            "enum": [
+              "always"
+            ]
+          }
+        }
+      },
+      "FieldChangedEvent": {
+        "title": "Field Changed Event",
+        "type": "object",
+        "description": "Configuration for detecting when fields are changed.",
+        "required": [
+          "enabled"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "string",
+            "description": "If always, the integration will monitor for field changes by default.",
+            "enum": [
+              "always"
+            ]
           }
         }
       }
