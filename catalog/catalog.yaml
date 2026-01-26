@@ -60,10 +60,20 @@ components:
       title: Search Support
       type: object
       required:
-        - or
+        - operators
       properties:
-        or: 
+        operators: 
+          $ref: '#/components/schemas/SearchOperators'
+    
+    SearchOperators:
+      title: Supported Operators for Search Action
+      type: object
+      required: 
+        - equals
+      properties:
+        equals:
           type: boolean
+
 
     BulkWriteSupport:
       title: Bulk Write Support

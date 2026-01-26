@@ -203,11 +203,20 @@
             "title": "Search Support",
             "type": "object",
             "required": [
-              "or"
+              "operators"
             ],
             "properties": {
-              "or": {
-                "type": "boolean"
+              "operators": {
+                "title": "Supported Operators for Search Action",
+                "type": "object",
+                "required": [
+                  "equals"
+                ],
+                "properties": {
+                  "equals": {
+                    "type": "boolean"
+                  }
+                }
               }
             }
           }
@@ -217,10 +226,31 @@
         "title": "Search Support",
         "type": "object",
         "required": [
-          "or"
+          "operators"
         ],
         "properties": {
-          "or": {
+          "operators": {
+            "title": "Supported Operators for Search Action",
+            "type": "object",
+            "required": [
+              "equals"
+            ],
+            "properties": {
+              "equals": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "SearchOperators": {
+        "title": "Supported Operators for Search Action",
+        "type": "object",
+        "required": [
+          "equals"
+        ],
+        "properties": {
+          "equals": {
             "type": "boolean"
           }
         }
@@ -1286,11 +1316,20 @@
                   "title": "Search Support",
                   "type": "object",
                   "required": [
-                    "or"
+                    "operators"
                   ],
                   "properties": {
-                    "or": {
-                      "type": "boolean"
+                    "operators": {
+                      "title": "Supported Operators for Search Action",
+                      "type": "object",
+                      "required": [
+                        "equals"
+                      ],
+                      "properties": {
+                        "equals": {
+                          "type": "boolean"
+                        }
+                      }
                     }
                   }
                 }
@@ -1489,11 +1528,20 @@
                 "title": "Search Support",
                 "type": "object",
                 "required": [
-                  "or"
+                  "operators"
                 ],
                 "properties": {
-                  "or": {
-                    "type": "boolean"
+                  "operators": {
+                    "title": "Supported Operators for Search Action",
+                    "type": "object",
+                    "required": [
+                      "equals"
+                    ],
+                    "properties": {
+                      "equals": {
+                        "type": "boolean"
+                      }
+                    }
                   }
                 }
               }
@@ -2137,11 +2185,20 @@
                 "title": "Search Support",
                 "type": "object",
                 "required": [
-                  "or"
+                  "operators"
                 ],
                 "properties": {
-                  "or": {
-                    "type": "boolean"
+                  "operators": {
+                    "title": "Supported Operators for Search Action",
+                    "type": "object",
+                    "required": [
+                      "equals"
+                    ],
+                    "properties": {
+                      "equals": {
+                        "type": "boolean"
+                      }
+                    }
                   }
                 }
               }
@@ -2479,11 +2536,20 @@
                       "title": "Search Support",
                       "type": "object",
                       "required": [
-                        "or"
+                        "operators"
                       ],
                       "properties": {
-                        "or": {
-                          "type": "boolean"
+                        "operators": {
+                          "title": "Supported Operators for Search Action",
+                          "type": "object",
+                          "required": [
+                            "equals"
+                          ],
+                          "properties": {
+                            "equals": {
+                              "type": "boolean"
+                            }
+                          }
                         }
                       }
                     }
@@ -3224,11 +3290,20 @@
                       "title": "Search Support",
                       "type": "object",
                       "required": [
-                        "or"
+                        "operators"
                       ],
                       "properties": {
-                        "or": {
-                          "type": "boolean"
+                        "operators": {
+                          "title": "Supported Operators for Search Action",
+                          "type": "object",
+                          "required": [
+                            "equals"
+                          ],
+                          "properties": {
+                            "equals": {
+                              "type": "boolean"
+                            }
+                          }
                         }
                       }
                     }
@@ -3566,11 +3641,20 @@
                             "title": "Search Support",
                             "type": "object",
                             "required": [
-                              "or"
+                              "operators"
                             ],
                             "properties": {
-                              "or": {
-                                "type": "boolean"
+                              "operators": {
+                                "title": "Supported Operators for Search Action",
+                                "type": "object",
+                                "required": [
+                                  "equals"
+                                ],
+                                "properties": {
+                                  "equals": {
+                                    "type": "boolean"
+                                  }
+                                }
                               }
                             }
                           }
@@ -4298,11 +4382,20 @@
                   "title": "Search Support",
                   "type": "object",
                   "required": [
-                    "or"
+                    "operators"
                   ],
                   "properties": {
-                    "or": {
-                      "type": "boolean"
+                    "operators": {
+                      "title": "Supported Operators for Search Action",
+                      "type": "object",
+                      "required": [
+                        "equals"
+                      ],
+                      "properties": {
+                        "equals": {
+                          "type": "boolean"
+                        }
+                      }
                     }
                   }
                 }
@@ -4640,11 +4733,20 @@
                         "title": "Search Support",
                         "type": "object",
                         "required": [
-                          "or"
+                          "operators"
                         ],
                         "properties": {
-                          "or": {
-                            "type": "boolean"
+                          "operators": {
+                            "title": "Supported Operators for Search Action",
+                            "type": "object",
+                            "required": [
+                              "equals"
+                            ],
+                            "properties": {
+                              "equals": {
+                                "type": "boolean"
+                              }
+                            }
                           }
                         }
                       }
