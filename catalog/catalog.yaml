@@ -37,6 +37,7 @@ components:
         - read
         - subscribe
         - write
+        - search
       properties:
         bulkWrite:
           $ref: '#/components/schemas/BulkWriteSupport'
@@ -52,6 +53,27 @@ components:
           $ref: '#/components/schemas/SubscribeSupport'
         batchWrite:
           $ref: '#/components/schemas/BatchWriteSupport'
+        search:
+          $ref: '#/components/schemas/SearchSupport'
+    
+    SearchSupport:
+      title: Search Support
+      type: object
+      required:
+        - operators
+      properties:
+        operators: 
+          $ref: '#/components/schemas/SearchOperators'
+    
+    SearchOperators:
+      title: Supported Operators for Search Action
+      type: object
+      required: 
+        - equals
+      properties:
+        equals:
+          type: boolean
+
 
     BulkWriteSupport:
       title: Bulk Write Support
