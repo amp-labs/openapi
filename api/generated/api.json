@@ -36105,7 +36105,16 @@
                             }
                           },
                           "search": {
-                            "type": "boolean"
+                            "title": "Search Support",
+                            "type": "object",
+                            "required": [
+                              "or"
+                            ],
+                            "properties": {
+                              "or": {
+                                "type": "boolean"
+                              }
+                            }
                           }
                         }
                       },
@@ -36438,7 +36447,16 @@
                                   }
                                 },
                                 "search": {
-                                  "type": "boolean"
+                                  "title": "Search Support",
+                                  "type": "object",
+                                  "required": [
+                                    "or"
+                                  ],
+                                  "properties": {
+                                    "or": {
+                                      "type": "boolean"
+                                    }
+                                  }
                                 }
                               }
                             }
@@ -37321,7 +37339,16 @@
                           }
                         },
                         "search": {
-                          "type": "boolean"
+                          "title": "Search Support",
+                          "type": "object",
+                          "required": [
+                            "or"
+                          ],
+                          "properties": {
+                            "or": {
+                              "type": "boolean"
+                            }
+                          }
                         }
                       }
                     },
@@ -37654,7 +37681,16 @@
                                 }
                               },
                               "search": {
-                                "type": "boolean"
+                                "title": "Search Support",
+                                "type": "object",
+                                "required": [
+                                  "or"
+                                ],
+                                "properties": {
+                                  "or": {
+                                    "type": "boolean"
+                                  }
+                                }
                               }
                             }
                           }

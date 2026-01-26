@@ -54,6 +54,15 @@ components:
         batchWrite:
           $ref: '#/components/schemas/BatchWriteSupport'
         search:
+          $ref: '#/components/schemas/SearchSupport'
+    
+    SearchSupport:
+      title: Search Support
+      type: object
+      required:
+        - or
+      properties:
+        or: 
           type: boolean
 
     BulkWriteSupport:
