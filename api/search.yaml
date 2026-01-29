@@ -70,16 +70,12 @@ components:
           type: string
           description: The name of the object to search.
           example: contacts
-          schema:
-            type: string
         filter:
           type: array
           items:
             $ref: "#/components/schemas/Filter"
           description: The filter to apply to the search.
           example: [{"fieldName": "name", "operator": "equals", "value": "John Doe"}]
-          schema:
-            type: array
     Filter: 
       title: Filter
       type: object
@@ -97,7 +93,10 @@ components:
           description: The operator to use for the filter. Valid operators are: equals, notEquals, contains, notContains, startsWith, endsWith, isNull, isNotNull, isEmpty, isNotEmpty.
           example: equals
         value:
-          type: any
+          oneOf:
+            - type: string
+            - type: boolean
+            - type: number
           description: The value to filter on. The type of the value is dependent on the field type.
           example: "John Doe"
     SearchResponse:
