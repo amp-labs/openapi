@@ -1,0 +1,23 @@
+name: Trigger Postman Collection Update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'api/**'
+      - 'problem/**'
+      - 'catalog/**'
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Postman Collection Update
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.AMPERSAND_OPS_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/amp-labs/postman/dispatches \
+            -d '{"event_type":"update-postman-collection","client_payload":{"repository":"${{ github.repository }}","sha":"${{ github.sha }}"}}'
