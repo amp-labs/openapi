@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Ampersand public search API
+  title: Ampersand Search API
   version: 1.0.0
 servers:
   - url: https://search.withampersand.com/v1
@@ -15,14 +15,11 @@ paths:
         - name: projectIdOrName
           in: path
           required: true
+          schema:
+            type: string
         - name: integrationId
           in: path
           required: true
-        - name: groupRef
-          in: query
-          required: true
-          description: The groupRef for the connection.
-          example: group-123
           schema:
             type: string
       requestBody:
@@ -63,21 +60,21 @@ components:
       title: Search Request
       required:
         - objectName
-        - filter
+        - filters
       type: object
       properties:
         objectName:
           type: string
           description: The name of the object to search.
           example: contacts
-        filter:
+        filters:
           type: array
           items:
-            $ref: "#/components/schemas/Filter"
-          description: The filter to apply to the search.
-          example: [{"fieldName": "name", "operator": "equals", "value": "John Doe"}]
-    Filter: 
-      title: Filter
+            $ref: "#/components/schemas/Filters"
+          description: The filters to apply to the search.
+          example: [{"fieldName": "name", "operator": "eq", "value": "John Doe"}]
+    Filters: 
+      title: Filters
       type: object
       required:
         - fieldName
@@ -90,8 +87,10 @@ components:
           example: name
         operator:
           type: string
-          description: The operator to use for the filter. Valid operators are: equals, notEquals, contains, notContains, startsWith, endsWith, isNull, isNotNull, isEmpty, isNotEmpty.
-          example: equals
+          description: The operator to use for the filter.
+          enum:
+            - eq
+          example: eq
         value:
           oneOf:
             - type: string
@@ -106,4 +105,19 @@ components:
         result:
           type: array
           items:
-            $ref: '../webhook/webhook.yaml#/components/schemas/ResultEntry'
+            $ref: "#/components/schemas/SearchResultEntry"
+    SearchResultEntry:
+      title: Search Result Entry
+      type: object
+      description: Each SearchResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
+      properties:
+        fields:
+          type: object
+          description: A key-value map of field names to values. This will only contain unmapped fields.
+        mappedFields:
+          type: object
+          description: A key-value map of mapped field names to values.
+        raw:
+          type: object
+          description: The raw data of the record, exactly as it is returned by the SaaS API.
+          additionalProperties: true
