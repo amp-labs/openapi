@@ -121,3 +121,16 @@ components:
           type: object
           description: The raw data of the record, exactly as it is returned by the SaaS API.
           additionalProperties: true
+
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - APIKeyHeader: []
+  - Bearer: []
