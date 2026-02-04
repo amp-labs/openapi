@@ -1098,6 +1098,8 @@ paths:
       summary: Delete an installation
       operationId: deleteInstallation
       tags: ["Installation"]
+      description: |
+        Delete an Installation. This will also delete the associated Connection if it is not used by any other Installations.
       parameters:
         - name: projectIdOrName
           in: path
@@ -1132,7 +1134,7 @@ paths:
       operationId: updateInstallation
       tags: ["Installation"]
       description: |
-        NOTE: Updating an installation with the Subscribe action typically takes 1–2 minutes, but it may take up to 10 minutes to take effect due to delays in the provider’s system.
+        Update an installation. NOTE: Updating an installation with the Subscribe action typically takes 1–2 minutes, but it may take up to 10 minutes to take effect due to delays in the provider’s system.
       parameters:
         - name: projectIdOrName
           in: path
