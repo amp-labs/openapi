@@ -398,10 +398,14 @@ components:
           description: Whether the default value should be applied when creating a record.
         writeOnUpdate:
           type: string
-          enum: [ always, never ]
+          enum: [ always, never, ifEmpty ]
           default: always
           x-go-type-skip-optional-pointer: true
-          description: Whether the default value should be applied when updating a record.
+          description: |
+            Whether the default value should be applied when updating a record.
+            - always: Always write to the field on update
+            - never: Never write to the field on update
+            - ifEmpty: Only write to the field if it's currently empty (unset or empty string). 
 
     FieldSettingDefault:
       title: Default value for a field

@@ -350,11 +350,12 @@
                             "type": "string",
                             "enum": [
                               "always",
-                              "never"
+                              "never",
+                              "ifEmpty"
                             ],
                             "default": "always",
                             "x-go-type-skip-optional-pointer": true,
-                            "description": "Whether the default value should be applied when updating a record."
+                            "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                           }
                         }
                       }
@@ -943,11 +944,12 @@
                         "type": "string",
                         "enum": [
                           "always",
-                          "never"
+                          "never",
+                          "ifEmpty"
                         ],
                         "default": "always",
                         "x-go-type-skip-optional-pointer": true,
-                        "description": "Whether the default value should be applied when updating a record."
+                        "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                       }
                     }
                   }
@@ -1103,11 +1105,12 @@
                   "type": "string",
                   "enum": [
                     "always",
-                    "never"
+                    "never",
+                    "ifEmpty"
                   ],
                   "default": "always",
                   "x-go-type-skip-optional-pointer": true,
-                  "description": "Whether the default value should be applied when updating a record."
+                  "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                 }
               }
             }
@@ -1779,11 +1782,12 @@
                                 "type": "string",
                                 "enum": [
                                   "always",
-                                  "never"
+                                  "never",
+                                  "ifEmpty"
                                 ],
                                 "default": "always",
                                 "x-go-type-skip-optional-pointer": true,
-                                "description": "Whether the default value should be applied when updating a record."
+                                "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                               }
                             }
                           }
@@ -2336,11 +2340,12 @@
                                     "type": "string",
                                     "enum": [
                                       "always",
-                                      "never"
+                                      "never",
+                                      "ifEmpty"
                                     ],
                                     "default": "always",
                                     "x-go-type-skip-optional-pointer": true,
-                                    "description": "Whether the default value should be applied when updating a record."
+                                    "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                                   }
                                 }
                               }
@@ -2503,11 +2508,12 @@
                                         "type": "string",
                                         "enum": [
                                           "always",
-                                          "never"
+                                          "never",
+                                          "ifEmpty"
                                         ],
                                         "default": "always",
                                         "x-go-type-skip-optional-pointer": true,
-                                        "description": "Whether the default value should be applied when updating a record."
+                                        "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                                       }
                                     }
                                   }
@@ -3493,11 +3499,12 @@
                             "type": "string",
                             "enum": [
                               "always",
-                              "never"
+                              "never",
+                              "ifEmpty"
                             ],
                             "default": "always",
                             "x-go-type-skip-optional-pointer": true,
-                            "description": "Whether the default value should be applied when updating a record."
+                            "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                           }
                         }
                       }
@@ -3660,11 +3667,12 @@
                                 "type": "string",
                                 "enum": [
                                   "always",
-                                  "never"
+                                  "never",
+                                  "ifEmpty"
                                 ],
                                 "default": "always",
                                 "x-go-type-skip-optional-pointer": true,
-                                "description": "Whether the default value should be applied when updating a record."
+                                "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                               }
                             }
                           }
@@ -3833,11 +3841,12 @@
                       "type": "string",
                       "enum": [
                         "always",
-                        "never"
+                        "never",
+                        "ifEmpty"
                       ],
                       "default": "always",
                       "x-go-type-skip-optional-pointer": true,
-                      "description": "Whether the default value should be applied when updating a record."
+                      "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                     }
                   }
                 }
@@ -4573,11 +4582,12 @@
                                 "type": "string",
                                 "enum": [
                                   "always",
-                                  "never"
+                                  "never",
+                                  "ifEmpty"
                                 ],
                                 "default": "always",
                                 "x-go-type-skip-optional-pointer": true,
-                                "description": "Whether the default value should be applied when updating a record."
+                                "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
                               }
                             }
                           }
@@ -5055,11 +5065,12 @@
             "type": "string",
             "enum": [
               "always",
-              "never"
+              "never",
+              "ifEmpty"
             ],
             "default": "always",
             "x-go-type-skip-optional-pointer": true,
-            "description": "Whether the default value should be applied when updating a record."
+            "description": "Whether the default value should be applied when updating a record.\n- always: Always write to the field on update\n- never: Never write to the field on update\n- ifEmpty: Only write to the field if it's currently empty (unset or empty string). \n"
           }
         }
       },
