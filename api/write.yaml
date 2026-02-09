@@ -395,11 +395,6 @@ components:
                 type: string
                 description: Error summary message
                 example: "Batch write failed: provider rolled back all records"
-        rawResponse:
-          type: string
-          description: Raw provider response body when available
-          example: "{\"hasErrors\": true}"
-          x-go-type-skip-optional-pointer: true
     WriteResult:
       title: Write Result
       type: object
@@ -413,7 +408,7 @@ components:
           example: true
         data:
           type: object
-          description: The data returned by the operation
+          description: The data returned by the operation. This field is only populated when there is a raw response from the provider.
           example: { "email": "david@ampersand.com" }
         recordId:
           type: string
