@@ -2658,7 +2658,7 @@
         "properties": {
           "timestamp": {
             "type": "string",
-            "example": "2024-07-30T22:14:51.000Z",
+            "example": "2024-07-30T15:14:51-07:00",
             "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
