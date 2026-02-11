@@ -1,0 +1,136 @@
+openapi: 3.0.1
+info:
+  title: Ampersand Search API
+  version: 1.0.0
+servers:
+  - url: https://search.withampersand.com/v1
+paths:
+  /projects/{projectIdOrName}/integrations/{integrationId}:
+    post:
+      summary: Search records
+      description: Search records in a SaaS instance.
+      operationId: searchRecords
+      tags: ["Search"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Search request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchRequest"
+      responses:
+        200:
+          description: The search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResponse"
+        400:
+          description: The failure response for bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+components:
+  schemas:
+    SearchRequest:
+      title: Search Request
+      required:
+        - objectName
+        - filters
+      type: object
+      properties:
+        objectName:
+          type: string
+          description: The name of the object to search.
+          example: contacts
+        filters:
+          type: array
+          items:
+            $ref: "#/components/schemas/Filters"
+          description: The filters to apply to the search.
+          example: [{"fieldName": "name", "operator": "eq", "value": "John Doe"}]
+    Filters: 
+      title: Filters
+      type: object
+      required:
+        - fieldName
+        - operator
+        - value
+      properties:
+        fieldName:
+          type: string
+          description: The name of the field to filter on.
+          example: name
+        operator:
+          type: string
+          description: The operator to use for the filter.
+          enum:
+            - eq
+          example: eq
+        value:
+          oneOf:
+            - type: string
+            - type: boolean
+            - type: number
+          description: The value to filter on. The type of the value is dependent on the field type.
+          example: "John Doe"
+    SearchResponse:
+      title: Search Response
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: "#/components/schemas/SearchResultEntry"
+    SearchResultEntry:
+      title: Search Result Entry
+      type: object
+      description: Each SearchResultEntry corresponds with a record in the SaaS provider (e.g. a Salesforce Account).
+      properties:
+        fields:
+          type: object
+          description: A key-value map of field names to values. This will only contain unmapped fields.
+        mappedFields:
+          type: object
+          description: A key-value map of mapped field names to values.
+        raw:
+          type: object
+          description: The raw data of the record, exactly as it is returned by the SaaS API.
+          additionalProperties: true
+
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - APIKeyHeader: []
+  - Bearer: []
