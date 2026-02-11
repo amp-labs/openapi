@@ -13,6 +13,7 @@ lint:
 	cd problem && rdme openapi:validate problem.yaml && cd ..
 	cd webhook && rdme openapi:validate webhook.yaml && cd ..
 	cd notifications && rdme openapi:validate notifications.yaml
+	cd api && rdme openapi:validate search.yaml
 
 .PHONY: gen
 gen:
