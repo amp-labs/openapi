@@ -46,6 +46,10 @@ const specs = [
     inputFile: path.join(__dirname, "../notifications/notifications.yaml"),
     outputFile: path.join(__dirname, "../notifications/generated/notifications.json"),
   },
+  {
+    inputFile: path.join(__dirname, "../api/search.yaml"),
+    outputFile: path.join(__dirname, "../api/generated/search.json"),
+  },
 ];
 
 async function deRefOpenApiSpecs() {
