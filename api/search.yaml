@@ -22,6 +22,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: groupRef
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The group reference for the search request.
       requestBody:
         description: Search request
         required: true
@@ -60,21 +66,21 @@ components:
       title: Search Request
       required:
         - objectName
-        - filters
+        - fieldFilters
       type: object
       properties:
         objectName:
           type: string
           description: The name of the object to search.
-          example: contacts
-        filters:
+          example: contact
+        fieldFilters:
           type: array
           items:
-            $ref: "#/components/schemas/Filters"
-          description: The filters to apply to the search.
-          example: [{"fieldName": "name", "operator": "eq", "value": "John Doe"}]
-    Filters: 
-      title: Filters
+            $ref: "#/components/schemas/FieldFilter"
+          description: The field filters to apply to the search.
+          example: [{"fieldName": "email", "operator": "eq", "value": "example@example.com"}]
+    FieldFilter:
+      title: FieldFilter
       type: object
       required:
         - fieldName
@@ -83,8 +89,8 @@ components:
       properties:
         fieldName:
           type: string
-          description: The name of the field to filter on.
-          example: name
+          description: The name of the field to filter on. Could be a raw or mapped field name.
+          example: email
         operator:
           type: string
           description: The operator to use for the filter.
