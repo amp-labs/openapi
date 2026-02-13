@@ -41,6 +41,7 @@
           "read",
           "subscribe",
           "write",
+          "delete",
           "search"
         ],
         "properties": {
@@ -81,6 +82,9 @@
             "type": "boolean"
           },
           "write": {
+            "type": "boolean"
+          },
+          "delete": {
             "type": "boolean"
           },
           "subscribeSupport": {
@@ -1154,6 +1158,7 @@
                 "read",
                 "subscribe",
                 "write",
+                "delete",
                 "search"
               ],
               "properties": {
@@ -1194,6 +1199,9 @@
                   "type": "boolean"
                 },
                 "write": {
+                  "type": "boolean"
+                },
+                "delete": {
                   "type": "boolean"
                 },
                 "subscribeSupport": {
@@ -1366,6 +1374,7 @@
               "read",
               "subscribe",
               "write",
+              "delete",
               "search"
             ],
             "properties": {
@@ -1406,6 +1415,9 @@
                 "type": "boolean"
               },
               "write": {
+                "type": "boolean"
+              },
+              "delete": {
                 "type": "boolean"
               },
               "subscribeSupport": {
@@ -2023,6 +2035,7 @@
               "read",
               "subscribe",
               "write",
+              "delete",
               "search"
             ],
             "properties": {
@@ -2063,6 +2076,9 @@
                 "type": "boolean"
               },
               "write": {
+                "type": "boolean"
+              },
+              "delete": {
                 "type": "boolean"
               },
               "subscribeSupport": {
@@ -2374,6 +2390,7 @@
                     "read",
                     "subscribe",
                     "write",
+                    "delete",
                     "search"
                   ],
                   "properties": {
@@ -2414,6 +2431,9 @@
                       "type": "boolean"
                     },
                     "write": {
+                      "type": "boolean"
+                    },
+                    "delete": {
                       "type": "boolean"
                     },
                     "subscribeSupport": {
@@ -2658,7 +2678,7 @@
         "properties": {
           "timestamp": {
             "type": "string",
-            "example": "2024-07-30T15:14:51-07:00",
+            "example": "2024-07-30T22:14:51.000Z",
             "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
@@ -3128,6 +3148,7 @@
                     "read",
                     "subscribe",
                     "write",
+                    "delete",
                     "search"
                   ],
                   "properties": {
@@ -3168,6 +3189,9 @@
                       "type": "boolean"
                     },
                     "write": {
+                      "type": "boolean"
+                    },
+                    "delete": {
                       "type": "boolean"
                     },
                     "subscribeSupport": {
@@ -3479,6 +3503,7 @@
                           "read",
                           "subscribe",
                           "write",
+                          "delete",
                           "search"
                         ],
                         "properties": {
@@ -3519,6 +3544,9 @@
                             "type": "boolean"
                           },
                           "write": {
+                            "type": "boolean"
+                          },
+                          "delete": {
                             "type": "boolean"
                           },
                           "subscribeSupport": {
@@ -4220,6 +4248,7 @@
                 "read",
                 "subscribe",
                 "write",
+                "delete",
                 "search"
               ],
               "properties": {
@@ -4260,6 +4289,9 @@
                   "type": "boolean"
                 },
                 "write": {
+                  "type": "boolean"
+                },
+                "delete": {
                   "type": "boolean"
                 },
                 "subscribeSupport": {
@@ -4571,6 +4603,7 @@
                       "read",
                       "subscribe",
                       "write",
+                      "delete",
                       "search"
                     ],
                     "properties": {
@@ -4611,6 +4644,9 @@
                         "type": "boolean"
                       },
                       "write": {
+                        "type": "boolean"
+                      },
+                      "delete": {
                         "type": "boolean"
                       },
                       "subscribeSupport": {
