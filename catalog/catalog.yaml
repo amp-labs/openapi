@@ -37,6 +37,7 @@ components:
         - read
         - subscribe
         - write
+        - delete
         - search
       properties:
         bulkWrite:
@@ -48,6 +49,8 @@ components:
         subscribe:
           type: boolean
         write:
+          type: boolean
+        delete:
           type: boolean
         subscribeSupport:
           $ref: '#/components/schemas/SubscribeSupport'
