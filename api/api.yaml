@@ -1840,6 +1840,74 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/objects/{objectName}/backfill-progress:
+    get:
+      summary: Get backfill progress for an installation object
+      operationId: getBackfillProgress
+      tags: ["Installation"]
+      description: Retrieve backfill progress (records processed, estimated total) for an object. Use to track progress of an initial data sync.
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: integrationId
+          in: path
+          required: true
+          description: The Ampersand integration ID.
+          schema:
+            type: string
+          example: 113e9685-9a51-42cc-8662-9d9725b17f14
+        - name: installationId
+          in: path
+          required: true
+          description: The Ampersand installation ID.
+          schema:
+            type: string
+          example: 66438162-5299-4669-a41d-85c5a3b1a83e
+        - name: objectName
+          in: path
+          required: true
+          description: Name of the object being synced (e.g., "contact", "account").
+          schema:
+            type: string
+          example: contact
+      responses:
+        200:
+          description: Backfill progress for the object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BackfillProgress"
+              example:
+                installationId: "66438162-5299-4669-a41d-85c5a3b1a83e"
+                objectName: "contact"
+                operationId: "3efc0f0f-4bb9-498f-996c-9893d98ca4b5"
+                recordsProcessed: 1250
+                recordsEstimatedTotal: 5000
+                createTime: "2025-02-13T10:00:00Z"
+                updateTime: "2025-02-13T10:05:00Z"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        404:
+          description: No backfill operation found or progress not available
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/operations/{operationId}:
     get:
       summary: Get an operation
@@ -5064,6 +5132,41 @@ components:
           description: The time the operation was created.
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
+    BackfillProgress:
+      title: BackfillProgress
+      description: Tracks the progress of a backfill read operation for an object.
+      type: object
+      required:
+        - installationId
+        - objectName
+        - operationId
+        - recordsProcessed
+      properties:
+        installationId:
+          type: string
+          description: The installation ID.
+        objectName:
+          type: string
+          description: The object being synced (e.g., contact, account).
+        operationId:
+          type: string
+          description: The ID of the backfill operation.
+        recordsProcessed:
+          type: integer
+          description: The number of records processed so far. Updates as more records are read during the backfill.
+          example: 1250
+        recordsEstimatedTotal:
+          type: integer
+          description: The estimated total number of records to process. Only present for Salesforce and HubSpot; other connectors omit this field.
+          example: 5000
+        createTime:
+          type: string
+          format: date-time
+          description: When the backfill operation started.
+        updateTime:
+          type: string
+          format: date-time
+          description: When progress was last updated.
     Log:
       title: Log
       type: object
