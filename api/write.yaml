@@ -82,6 +82,8 @@ paths:
                   groupRef: "<groupRef>"
                   type: create
                   mode: synchronous
+                  batchPolicy:
+                    allOrNone: true
                   batch:
                     - record:
                         email: david@withampersand.com
@@ -242,6 +244,19 @@ components:
               "email": "david@withampersand.com",
               "warmthScore": "ready-for-close",
             }
+        batchPolicy:
+          type: object
+          description: |
+            Policy settings for batch write operations. Only applicable when using the `batch` field.
+          properties:
+            allOrNone:
+              type: boolean
+              description: |
+                When set to true, the entire batch will fail if any record in the batch fails.
+                When set to false (default), partial writes are supported — successful records will be committed even if some fail.
+                Note: HubSpot batch updates always result in partial success due to a provider limitation, regardless of this setting.
+              default: false
+              example: true
         batch:
           type: array
           description: |
@@ -412,7 +427,7 @@ components:
           example: { "email": "david@ampersand.com" }
         recordId:
           type: string
-          description: The ID of the object
+          description: The ID of the record. Only present on a successful create or update.
           example: 003Dp0X#@RG7IAP
   securitySchemes:
     APIKeyHeader:
