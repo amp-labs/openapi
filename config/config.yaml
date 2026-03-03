@@ -99,6 +99,14 @@ components:
           $ref: '#/components/schemas/SelectedFieldsAutoConfig'
         backfill:
           $ref: '#/components/schemas/BackfillConfig'
+        filter:
+          type: array
+          description: >
+            Filters to apply when reading records during incremental reads and backfill.
+            Multiple conditions are joined by AND. Each field can only have one condition.
+          x-go-type-skip-optional-pointer: true
+          items:
+            $ref: '#/components/schemas/ReadFilter'
 
     SelectedValueMappings:
       title: Selected Value Mappings
@@ -365,6 +373,14 @@ components:
       properties:
         defaultPeriod:
           $ref: '#/components/schemas/DefaultPeriodConfig'
+        filter:
+          type: array
+          description: >
+            Filters to apply only during backfill. Multiple conditions are joined by AND.
+            Use this when you want different filter behavior for backfill vs. incremental reads.
+          x-go-type-skip-optional-pointer: true
+          items:
+            $ref: '#/components/schemas/ReadFilter'
 
     DefaultPeriodConfig:
       title: Default Period Config
@@ -383,6 +399,35 @@ components:
           example: false
           x-oapi-codegen-extra-tags:
             validate: required_without=Days
+
+    ReadFilter:
+      title: Read Filter
+      type: object
+      required:
+        - fieldName
+        - operator
+      properties:
+        fieldName:
+          type: string
+          description: The name of the field to filter on.
+          example: status
+        operator:
+          type: string
+          description: The comparison operator.
+          enum:
+            - eq
+          example: eq
+        value:
+          $ref: '#/components/schemas/ReadFilterValue'
+
+    ReadFilterValue:
+      title: Read Filter Value
+      description: The value to filter on.
+      example: "active"
+      oneOf:
+        - type: string
+        - type: boolean
+        - type: number
 
     FieldSetting:
       title: Field setting
