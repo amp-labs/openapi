@@ -1494,6 +1494,18 @@
                       ]
                     }
                   }
+                },
+                "otherEvents": {
+                  "title": "Other Events",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "Non-standard events that the integration will subscribe to.",
+                    "example": [
+                      "object.merged",
+                      "object.restored"
+                    ]
+                  }
                 }
               }
             }
@@ -1607,7 +1619,31 @@
                 ]
               }
             }
+          },
+          "otherEvents": {
+            "title": "Other Events",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Non-standard events that the integration will subscribe to.",
+              "example": [
+                "object.merged",
+                "object.restored"
+              ]
+            }
           }
+        }
+      },
+      "ConfigOtherEvents": {
+        "title": "Other Events",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Non-standard events that the integration will subscribe to.",
+          "example": [
+            "object.merged",
+            "object.restored"
+          ]
         }
       },
       "ConfigCreateEvent": {
@@ -3177,6 +3213,18 @@
                                   ]
                                 }
                               }
+                            },
+                            "otherEvents": {
+                              "title": "Other Events",
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "description": "Non-standard events that the integration will subscribe to.",
+                                "example": [
+                                  "object.merged",
+                                  "object.restored"
+                                ]
+                              }
                             }
                           }
                         }
@@ -3299,6 +3347,18 @@
                                         "never"
                                       ]
                                     }
+                                  }
+                                },
+                                "otherEvents": {
+                                  "title": "Other Events",
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "description": "Non-standard events that the integration will subscribe to.",
+                                    "example": [
+                                      "object.merged",
+                                      "object.restored"
+                                    ]
                                   }
                                 }
                               }
@@ -4769,6 +4829,18 @@
                           ]
                         }
                       }
+                    },
+                    "otherEvents": {
+                      "title": "Other Events",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "description": "Non-standard events that the integration will subscribe to.",
+                        "example": [
+                          "object.merged",
+                          "object.restored"
+                        ]
+                      }
                     }
                   }
                 }
@@ -4891,6 +4963,18 @@
                                 "never"
                               ]
                             }
+                          }
+                        },
+                        "otherEvents": {
+                          "title": "Other Events",
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "Non-standard events that the integration will subscribe to.",
+                            "example": [
+                              "object.merged",
+                              "object.restored"
+                            ]
                           }
                         }
                       }
@@ -5019,6 +5103,18 @@
                       "never"
                     ]
                   }
+                }
+              },
+              "otherEvents": {
+                "title": "Other Events",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "Non-standard events that the integration will subscribe to.",
+                  "example": [
+                    "object.merged",
+                    "object.restored"
+                  ]
                 }
               }
             }
