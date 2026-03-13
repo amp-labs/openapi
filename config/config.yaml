@@ -434,12 +434,8 @@ components:
 
     ReadFilterValue:
       title: Read Filter Value
-      description: The value to filter on.
+      description: The value to filter on. Allowed types are string, boolean, and number.
       example: "active"
-      oneOf:
-        - type: string
-        - type: boolean
-        - type: number
 
     FieldSetting:
       title: Field setting
