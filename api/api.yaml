@@ -3533,6 +3533,7 @@ paths:
                     - "installation.updated"
                     - "installation.deleted"
                     - "read.schedule.paused"
+                    - "write.async.done"
                     - "destination.webhook.disabled"
                 topicId:
                   type: string
@@ -5971,6 +5972,7 @@ components:
         - "read.backfill.done"
         - "read.triggered.done"
         - "read.triggered.error"
+        - "write.async.done"
         - "destination.webhook.disabled"
     TopicDestinationRoute:
       title: Topic Destination Route
