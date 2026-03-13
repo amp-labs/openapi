@@ -217,19 +217,8 @@
                               },
                               "value": {
                                 "title": "Read Filter Value",
-                                "description": "The value to filter on.",
-                                "example": "active",
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "type": "number"
-                                  }
-                                ]
+                                "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                "example": "active"
                               }
                             }
                           }
@@ -263,19 +252,8 @@
                           },
                           "value": {
                             "title": "Read Filter Value",
-                            "description": "The value to filter on.",
-                            "example": "active",
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "boolean"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
+                            "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                            "example": "active"
                           }
                         }
                       }
@@ -669,19 +647,8 @@
                           },
                           "value": {
                             "title": "Read Filter Value",
-                            "description": "The value to filter on.",
-                            "example": "active",
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "boolean"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
+                            "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                            "example": "active"
                           }
                         }
                       }
@@ -715,19 +682,8 @@
                       },
                       "value": {
                         "title": "Read Filter Value",
-                        "description": "The value to filter on.",
-                        "example": "active",
-                        "oneOf": [
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "boolean"
-                          },
-                          {
-                            "type": "number"
-                          }
-                        ]
+                        "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                        "example": "active"
                       }
                     }
                   }
@@ -926,19 +882,8 @@
                     },
                     "value": {
                       "title": "Read Filter Value",
-                      "description": "The value to filter on.",
-                      "example": "active",
-                      "oneOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "boolean"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
+                      "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                      "example": "active"
                     }
                   }
                 }
@@ -972,19 +917,8 @@
                 },
                 "value": {
                   "title": "Read Filter Value",
-                  "description": "The value to filter on.",
-                  "example": "active",
-                  "oneOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "number"
-                    }
-                  ]
+                  "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                  "example": "active"
                 }
               }
             }
@@ -1949,19 +1883,8 @@
                                   },
                                   "value": {
                                     "title": "Read Filter Value",
-                                    "description": "The value to filter on.",
-                                    "example": "active",
-                                    "oneOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "boolean"
-                                      },
-                                      {
-                                        "type": "number"
-                                      }
-                                    ]
+                                    "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                    "example": "active"
                                   }
                                 }
                               }
@@ -1995,19 +1918,8 @@
                               },
                               "value": {
                                 "title": "Read Filter Value",
-                                "description": "The value to filter on.",
-                                "example": "active",
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "type": "number"
-                                  }
-                                ]
+                                "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                "example": "active"
                               }
                             }
                           }
@@ -2401,19 +2313,8 @@
                                       },
                                       "value": {
                                         "title": "Read Filter Value",
-                                        "description": "The value to filter on.",
-                                        "example": "active",
-                                        "oneOf": [
-                                          {
-                                            "type": "string"
-                                          },
-                                          {
-                                            "type": "boolean"
-                                          },
-                                          {
-                                            "type": "number"
-                                          }
-                                        ]
+                                        "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                        "example": "active"
                                       }
                                     }
                                   }
@@ -2447,19 +2348,8 @@
                                   },
                                   "value": {
                                     "title": "Read Filter Value",
-                                    "description": "The value to filter on.",
-                                    "example": "active",
-                                    "oneOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "boolean"
-                                      },
-                                      {
-                                        "type": "number"
-                                      }
-                                    ]
+                                    "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                    "example": "active"
                                   }
                                 }
                               }
@@ -2668,19 +2558,8 @@
                                           },
                                           "value": {
                                             "title": "Read Filter Value",
-                                            "description": "The value to filter on.",
-                                            "example": "active",
-                                            "oneOf": [
-                                              {
-                                                "type": "string"
-                                              },
-                                              {
-                                                "type": "boolean"
-                                              },
-                                              {
-                                                "type": "number"
-                                              }
-                                            ]
+                                            "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                            "example": "active"
                                           }
                                         }
                                       }
@@ -2714,19 +2593,8 @@
                                       },
                                       "value": {
                                         "title": "Read Filter Value",
-                                        "description": "The value to filter on.",
-                                        "example": "active",
-                                        "oneOf": [
-                                          {
-                                            "type": "string"
-                                          },
-                                          {
-                                            "type": "boolean"
-                                          },
-                                          {
-                                            "type": "number"
-                                          }
-                                        ]
+                                        "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                        "example": "active"
                                       }
                                     }
                                   }
@@ -3581,19 +3449,8 @@
                               },
                               "value": {
                                 "title": "Read Filter Value",
-                                "description": "The value to filter on.",
-                                "example": "active",
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "type": "number"
-                                  }
-                                ]
+                                "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                "example": "active"
                               }
                             }
                           }
@@ -3627,19 +3484,8 @@
                           },
                           "value": {
                             "title": "Read Filter Value",
-                            "description": "The value to filter on.",
-                            "example": "active",
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "boolean"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
+                            "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                            "example": "active"
                           }
                         }
                       }
@@ -3848,19 +3694,8 @@
                                   },
                                   "value": {
                                     "title": "Read Filter Value",
-                                    "description": "The value to filter on.",
-                                    "example": "active",
-                                    "oneOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "boolean"
-                                      },
-                                      {
-                                        "type": "number"
-                                      }
-                                    ]
+                                    "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                    "example": "active"
                                   }
                                 }
                               }
@@ -3894,19 +3729,8 @@
                               },
                               "value": {
                                 "title": "Read Filter Value",
-                                "description": "The value to filter on.",
-                                "example": "active",
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "type": "number"
-                                  }
-                                ]
+                                "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                "example": "active"
                               }
                             }
                           }
@@ -4120,19 +3944,8 @@
                         },
                         "value": {
                           "title": "Read Filter Value",
-                          "description": "The value to filter on.",
-                          "example": "active",
-                          "oneOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "boolean"
-                            },
-                            {
-                              "type": "number"
-                            }
-                          ]
+                          "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                          "example": "active"
                         }
                       }
                     }
@@ -4166,19 +3979,8 @@
                     },
                     "value": {
                       "title": "Read Filter Value",
-                      "description": "The value to filter on.",
-                      "example": "active",
-                      "oneOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "boolean"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
+                      "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                      "example": "active"
                     }
                   }
                 }
@@ -5337,19 +5139,8 @@
                                   },
                                   "value": {
                                     "title": "Read Filter Value",
-                                    "description": "The value to filter on.",
-                                    "example": "active",
-                                    "oneOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "boolean"
-                                      },
-                                      {
-                                        "type": "number"
-                                      }
-                                    ]
+                                    "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                    "example": "active"
                                   }
                                 }
                               }
@@ -5383,19 +5174,8 @@
                               },
                               "value": {
                                 "title": "Read Filter Value",
-                                "description": "The value to filter on.",
-                                "example": "active",
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "type": "number"
-                                  }
-                                ]
+                                "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                "example": "active"
                               }
                             }
                           }
@@ -5785,19 +5565,8 @@
                               },
                               "value": {
                                 "title": "Read Filter Value",
-                                "description": "The value to filter on.",
-                                "example": "active",
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "type": "number"
-                                  }
-                                ]
+                                "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                                "example": "active"
                               }
                             }
                           }
@@ -5831,19 +5600,8 @@
                           },
                           "value": {
                             "title": "Read Filter Value",
-                            "description": "The value to filter on.",
-                            "example": "active",
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "boolean"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
+                            "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                            "example": "active"
                           }
                         }
                       }
@@ -6047,19 +5805,8 @@
                         },
                         "value": {
                           "title": "Read Filter Value",
-                          "description": "The value to filter on.",
-                          "example": "active",
-                          "oneOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "boolean"
-                            },
-                            {
-                              "type": "number"
-                            }
-                          ]
+                          "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                          "example": "active"
                         }
                       }
                     }
@@ -6093,19 +5840,8 @@
                     },
                     "value": {
                       "title": "Read Filter Value",
-                      "description": "The value to filter on.",
-                      "example": "active",
-                      "oneOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "boolean"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
+                      "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                      "example": "active"
                     }
                   }
                 }
@@ -6182,19 +5918,8 @@
                 },
                 "value": {
                   "title": "Read Filter Value",
-                  "description": "The value to filter on.",
-                  "example": "active",
-                  "oneOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "number"
-                    }
-                  ]
+                  "description": "The value to filter on. Allowed types are string, boolean, and number.",
+                  "example": "active"
                 }
               }
             }
@@ -6247,37 +5972,15 @@
           },
           "value": {
             "title": "Read Filter Value",
-            "description": "The value to filter on.",
-            "example": "active",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "number"
-              }
-            ]
+            "description": "The value to filter on. Allowed types are string, boolean, and number.",
+            "example": "active"
           }
         }
       },
       "ReadFilterValue": {
         "title": "Read Filter Value",
-        "description": "The value to filter on.",
-        "example": "active",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "boolean"
-          },
-          {
-            "type": "number"
-          }
-        ]
+        "description": "The value to filter on. Allowed types are string, boolean, and number.",
+        "example": "active"
       },
       "FieldSetting": {
         "title": "Field setting",
