@@ -1134,13 +1134,7 @@ paths:
       operationId: updateInstallation
       tags: ["Installation"]
       description: |
-        Update an installation config. Use `updateMask` to specify which fields to update; unmasked fields
-        are left unchanged. Each masked field is **replaced**, so provide the complete value for
-        each field you include.
-
-        Updates to subscribe config (`config.content.subscribe.objects` or `config.content.subscribe.objects.<objectName>`)
-        trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take
-        up to 10 minutes.
+        Update an installation using field masks. Note: subscribe config changes trigger a subscription change in the provider’s system, which typically takes 1-2 minutes but may take up to 10 minutes.
       parameters:
         - name: projectIdOrName
           in: path
@@ -1177,9 +1171,7 @@ paths:
                   items:
                     type: string
                   description: |
-                    Array of field paths specifying which fields to update. Each path must have a corresponding
-                    value in the `installation` object. A field included in `installation` but not listed here
-                    will be ignored. Allowed values:
+                    Array of field paths specifying which fields to update. Each path must have a corresponding value in the `installation` object. A field included in `installation` but not listed here will be ignored. Allowed values:
                     - `connectionId` - switch the SaaS connection tied to this installation.
                     - `config.createdBy` - change the attribution for who created this config.
                     - `config.content.read.objects.<objectName>` - replace the read config for a single object (e.g. `config.content.read.objects.contacts`).
