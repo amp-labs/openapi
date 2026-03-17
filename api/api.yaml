@@ -5133,7 +5133,50 @@ components:
         metadata:
           type: object
           description: |
-            Additional operation details. May include `objects` (array of object names), `retry` (retry attempt info), and `progress` (backfill progress with recordsProcessed, recordsEstimatedTotal) for backfill read operations.
+            Additional operation details. May include `objects` (array of object names), `retry` (retry attempt info), `progress` (backfill progress with recordsProcessed, recordsEstimatedTotal) for backfill read operations, and `resultDetails` (write operation results including successfulRecordIds) for write operations.
+          properties:
+            objects:
+              type: array
+              items:
+                type: string
+            retry:
+              type: object
+              properties:
+                attempts:
+                  type: integer
+                lastAttempt:
+                  type: string
+                  format: date-time
+                lastNotified:
+                  type: string
+                  format: date-time
+            progress:
+              type: object
+              description: Only present for backfill read operations.
+              properties:
+                installationId:
+                  type: string
+                objectName:
+                  type: string
+                operationId:
+                  type: string
+                recordsProcessed:
+                  type: integer
+                recordsEstimatedTotal:
+                  type: integer
+                  description: Only present for some providers (e.g. Salesforce, HubSpot).
+            resultDetails:
+              type: object
+              description: Only present for write operations.
+              properties:
+                write:
+                  type: object
+                  properties:
+                    successfulRecordIds:
+                      type: array
+                      items:
+                        type: string
+                      description: Provider-assigned IDs of successfully created or updated records.
           example:
             objects: [contact]
             progress:
@@ -5142,6 +5185,9 @@ components:
               operationId: "3efc0f0f-4bb9-498f-996c-9893d98ca4b5"
               recordsProcessed: 1250
               recordsEstimatedTotal: 5000
+            resultDetails:
+              write:
+                successfulRecordIds: ["001xx000003DGbYAAW", "001xx000003DGbZAAW"]
         createTime:
           type: string
           description: The time the operation was created.
