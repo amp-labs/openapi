@@ -1911,6 +1911,8 @@ paths:
   /projects/{projectIdOrName}/operations/{operationId}:
     get:
       summary: Get an operation
+      description: |
+        Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details. 
       operationId: getOperation
       tags: ["Operation"]
       parameters:
@@ -1924,34 +1926,84 @@ paths:
         - name: operationId
           in: path
           required: true
-          description: Operation ID.
+          description: Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard, or webhook payloads.
           schema:
             type: string
+          example: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
       responses:
         200:
-          description: Operation
+          description: The operation, including its current status, result summary, and metadata (e.g. backfill progress or write results).
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Operation"
-        400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        422:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+              examples:
+                readSuccess:
+                  summary: Completed read (no new data)
+                  value:
+                    projectId: "123e4567-e89b-12d3-a456-426614174000"
+                    integrationId: "113e9685-9a51-42cc-8662-9d9725b17f14"
+                    installationId: "66438162-5299-4669-a41d-85c5a3b1a83e"
+                    configId: "a1b2c3d4-e5f6-4789-a012-3456789abcde"
+                    actionType: read
+                    status: success
+                    id: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+                    result: "[contact] No new data found"
+                    metadata:
+                      objects: [contact]
+                    createTime: "2023-07-13T21:34:44.816354Z"
+                readBackfill:
+                  summary: Read with backfill progress
+                  value:
+                    projectId: "123e4567-e89b-12d3-a456-426614174000"
+                    integrationId: "113e9685-9a51-42cc-8662-9d9725b17f14"
+                    installationId: "66438162-5299-4669-a41d-85c5a3b1a83e"
+                    configId: "a1b2c3d4-e5f6-4789-a012-3456789abcde"
+                    actionType: read
+                    status: in_progress
+                    id: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+                    metadata:
+                      objects: [contact]
+                      progress:
+                        installationId: "66438162-5299-4669-a41d-85c5a3b1a83e"
+                        objectName: contact
+                        operationId: "3efc0f0f-4bb9-498f-996c-9893d98ca4b5"
+                        recordsProcessed: 1250
+                        recordsEstimatedTotal: 5000
+                    createTime: "2023-07-13T21:34:44.816354Z"
+                writeSuccess:
+                  summary: Completed write with successful record IDs
+                  value:
+                    projectId: "123e4567-e89b-12d3-a456-426614174000"
+                    integrationId: "113e9685-9a51-42cc-8662-9d9725b17f14"
+                    installationId: "66438162-5299-4669-a41d-85c5a3b1a83e"
+                    configId: "a1b2c3d4-e5f6-4789-a012-3456789abcde"
+                    actionType: write
+                    status: success
+                    id: 7a8b9c0d-1e2f-4a5b-8c9d-0e1f2a3b4c5d
+                    result: "Batch write completed (2 succeeded, 0 failed)"
+                    metadata:
+                      objects: [contact]
+                      successfulRecordIds: ["001xx000003DGbYAAW", "001xx000003DGbZAAW"]
+                    createTime: "2023-07-13T22:10:00.000000Z"
         default:
-          description: Error
+          description: |
+            Error response for any non-2xx status (e.g. operation not found, invalid project or operation ID, or server error).
+            Response body is an ApiProblem (RFC 9457 problem details) with `type`, `title`, `status`, `detail`, and optional fields such as `remedy`, `requestId`, and `retryable`.
           content:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+              example:
+                type: "https://httpstatuses.com/404"
+                title: "Not Found"
+                status: 404
+                detail: "Operation not found for the given operation ID."
+                subsystem: api
+                time: "2024-04-22T18:55:28.456076Z"
+                requestId: "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                remedy: "Verify the operation ID and project are correct, or list operations to find a valid ID."
+                retryable: false
   /projects/{projectIdOrName}/operations/{operationId}/logs:
     get:
       summary: List logs for an operation
@@ -5098,14 +5150,14 @@ components:
         projectId:
           type: string
           description: The Ampersand project ID.
-          example: project-456
+          example: "123e4567-e89b-12d3-a456-426614174000"
         integrationId:
           type: string
           description: The integration ID.
         configId:
           type: string
           description: The config ID.
-          example: config-123
+          example: "a1b2c3d4-e5f6-4789-a012-3456789abcde"
         actionType:
           type: string
           description: |
