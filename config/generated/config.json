@@ -5363,485 +5363,137 @@
                 }
               }
             }
-          }
-        ]
-      },
-      "UpdateInstallationReadConfig": {
-        "title": "Update Installation Read Config",
-        "allOf": [
+          },
           {
-            "title": "Base Read Config",
             "type": "object",
             "properties": {
-              "objects": {
+              "subscribe": {
+                "title": "Base Subscribe Config",
                 "type": "object",
-                "description": "This is a map of object names to their configuration.",
-                "additionalProperties": {
-                  "title": "Base Read Config Object",
-                  "type": "object",
-                  "properties": {
-                    "objectName": {
-                      "description": "The name of the object to read from.",
-                      "example": "account",
-                      "type": "string",
-                      "x-oapi-codegen-extra-tags": {
-                        "validate": "required"
-                      }
-                    },
-                    "schedule": {
-                      "type": "string",
-                      "description": "The schedule for reading the object, in cron syntax.",
-                      "example": "*/15 * * * *",
-                      "x-go-type-skip-optional-pointer": true
-                    },
-                    "disabled": {
-                      "type": "boolean",
-                      "description": "If this flag is set to true, scheduled reads associated with this object will be paused, and on-demand reads will not be allowed.",
-                      "default": false
-                    },
-                    "destination": {
-                      "description": "The name of the destination that the result should be sent to.",
-                      "example": "accountWebhook",
-                      "type": "string",
-                      "x-go-type-skip-optional-pointer": true
-                    },
-                    "selectedFields": {
-                      "type": "object",
-                      "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
-                      "example": "{ phone: true, fax: true }",
-                      "additionalProperties": {
-                        "type": "boolean"
-                      }
-                    },
-                    "selectedValueMappings": {
-                      "type": "object",
-                      "description": "This is a map of field names to their value mappings.",
-                      "example": {
-                        "stage": {
-                          "open": "scheduled",
-                          "closedWon": "won",
-                          "closedLost": "lost"
-                        }
-                      },
-                      "x-go-type-skip-optional-pointer": true,
-                      "additionalProperties": {
-                        "title": "Selected Value Mappings",
-                        "type": "object",
-                        "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
-                        "example": {
-                          "open": "scheduled",
-                          "closedWon": "won",
-                          "closedLost": "lost"
-                        },
-                        "x-go-type-skip-optional-pointer": true,
-                        "additionalProperties": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "dynamicMappingsInput": {
-                      "title": "Dynamic Mappings Input",
-                      "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
-                      "type": "array",
-                      "items": {
-                        "title": "Field Mapping Entry",
-                        "type": "object",
-                        "required": [
-                          "mapToName"
-                        ],
-                        "properties": {
-                          "mapToName": {
-                            "type": "string",
-                            "description": "The name of the field in your application."
-                          },
-                          "mapToDisplayName": {
-                            "type": "string",
-                            "description": "Optional display name of the field to show the user in the mapping UI."
-                          },
-                          "prompt": {
-                            "type": "string",
-                            "description": "Optional prompt to show the user in the mapping UI."
-                          },
-                          "mappedValues": {
-                            "type": "array",
-                            "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                            "items": {
-                              "title": "Mapped Value",
-                              "type": "object",
-                              "required": [
-                                "mappedValue",
-                                "mappedDisplayValue"
-                              ],
-                              "properties": {
-                                "mappedValue": {
-                                  "type": "string"
-                                },
-                                "mappedDisplayValue": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "fieldName": {
-                            "type": "string",
-                            "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
-                          }
-                        }
-                      }
-                    },
-                    "selectedFieldMappings": {
-                      "type": "object",
-                      "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.)",
-                      "example": "{ phoneNumber: phone, faxNumber: fax }",
-                      "additionalProperties": {
-                        "type": "string"
-                      }
-                    },
-                    "selectedFieldsAuto": {
-                      "title": "Selected Fields Auto Config",
-                      "description": "If selectedFieldsAuto is set to all, all fields will be read.",
-                      "type": "string",
-                      "enum": [
-                        "all"
-                      ],
-                      "x-enum-varnames": [
-                        "SelectedFieldsAll"
-                      ]
-                    },
-                    "backfill": {
-                      "title": "Backfill Config",
+                "properties": {
+                  "objects": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "title": "Base Subscribe Config Object",
                       "type": "object",
                       "required": [
-                        "defaultPeriod"
+                        "objectName",
+                        "destination",
+                        "inheritFieldsAndMappings"
                       ],
                       "properties": {
-                        "defaultPeriod": {
-                          "title": "Default Period Config",
+                        "inheritFieldsAndMappings": {
+                          "type": "boolean",
+                          "description": "Whether to inherit fields and mappings from the read config.",
+                          "example": true
+                        },
+                        "objectName": {
+                          "description": "The name of the object to subscribe to.",
+                          "example": "account",
+                          "type": "string",
+                          "x-oapi-codegen-extra-tags": {
+                            "validate": "required"
+                          }
+                        },
+                        "destination": {
+                          "description": "The name of the destination that the result should be sent to.",
+                          "example": "accountWebhook",
+                          "type": "string"
+                        },
+                        "createEvent": {
+                          "title": "Create Event",
                           "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
                           "properties": {
-                            "days": {
-                              "type": "integer",
-                              "description": "Number of days in past to backfill from. 0 is no backfill. e.g) if 10, then backfill last 10 days of data. Required if fullHistory is not set.",
-                              "minimum": 0,
-                              "example": 30,
+                            "enabled": {
+                              "type": "string",
+                              "description": "Conditions to enable create events.",
+                              "enum": [
+                                "always",
+                                "never"
+                              ],
                               "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without=FullHistory,omitempty,min=0"
+                                "validate": "oneof=always never"
+                              }
+                            }
+                          }
+                        },
+                        "updateEvent": {
+                          "title": "Update Event",
+                          "type": "object",
+                          "required": [
+                            "enabled"
+                          ],
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "Conditions to enable update events.",
+                              "example": "always",
+                              "enum": [
+                                "always",
+                                "never"
+                              ],
+                              "x-oapi-codegen-extra-tags": {
+                                "validate": "oneof=always never"
                               }
                             },
-                            "fullHistory": {
-                              "type": "boolean",
-                              "description": "If true, backfill all history. Required if days is not set.",
-                              "example": false,
-                              "x-oapi-codegen-extra-tags": {
-                                "validate": "required_without=Days"
-                              }
+                            "watchFieldsAuto": {
+                              "type": "string",
+                              "description": "Whether to watch fields all fields automatically.",
+                              "example": "all",
+                              "enum": [
+                                "all"
+                              ]
+                            },
+                            "requiredWatchFields": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "description": "The fields that should be watched.",
+                              "example": [
+                                "name",
+                                "description"
+                              ]
                             }
                           }
                         },
-                        "filter": {
-                          "type": "array",
-                          "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
-                          "x-go-type-skip-optional-pointer": true,
-                          "items": {
-                            "title": "Read Filter",
-                            "type": "object",
-                            "required": [
-                              "fieldName",
-                              "operator"
-                            ],
-                            "properties": {
-                              "fieldName": {
-                                "type": "string",
-                                "description": "The name of the field to filter on.",
-                                "example": "status"
-                              },
-                              "operator": {
-                                "type": "string",
-                                "description": "The comparison operator.",
-                                "enum": [
-                                  "eq"
-                                ],
-                                "example": "eq"
-                              },
-                              "value": {
-                                "title": "Read Filter Value",
-                                "description": "The value to filter on. Allowed types are string, boolean, and number.",
-                                "example": "active"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "filter": {
-                      "type": "array",
-                      "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
-                      "x-go-type-skip-optional-pointer": true,
-                      "items": {
-                        "title": "Read Filter",
-                        "type": "object",
-                        "required": [
-                          "fieldName",
-                          "operator"
-                        ],
-                        "properties": {
-                          "fieldName": {
-                            "type": "string",
-                            "description": "The name of the field to filter on.",
-                            "example": "status"
-                          },
-                          "operator": {
-                            "type": "string",
-                            "description": "The comparison operator.",
-                            "enum": [
-                              "eq"
-                            ],
-                            "example": "eq"
-                          },
-                          "value": {
-                            "title": "Read Filter Value",
-                            "description": "The value to filter on. Allowed types are string, boolean, and number.",
-                            "example": "active"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ]
-      },
-      "UpdateInstallationReadConfigObject": {
-        "title": "Update Installation Read Config Object",
-        "allOf": [
-          {
-            "title": "Base Read Config Object",
-            "type": "object",
-            "properties": {
-              "objectName": {
-                "description": "The name of the object to read from.",
-                "example": "account",
-                "type": "string",
-                "x-oapi-codegen-extra-tags": {
-                  "validate": "required"
-                }
-              },
-              "schedule": {
-                "type": "string",
-                "description": "The schedule for reading the object, in cron syntax.",
-                "example": "*/15 * * * *",
-                "x-go-type-skip-optional-pointer": true
-              },
-              "disabled": {
-                "type": "boolean",
-                "description": "If this flag is set to true, scheduled reads associated with this object will be paused, and on-demand reads will not be allowed.",
-                "default": false
-              },
-              "destination": {
-                "description": "The name of the destination that the result should be sent to.",
-                "example": "accountWebhook",
-                "type": "string",
-                "x-go-type-skip-optional-pointer": true
-              },
-              "selectedFields": {
-                "type": "object",
-                "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
-                "example": "{ phone: true, fax: true }",
-                "additionalProperties": {
-                  "type": "boolean"
-                }
-              },
-              "selectedValueMappings": {
-                "type": "object",
-                "description": "This is a map of field names to their value mappings.",
-                "example": {
-                  "stage": {
-                    "open": "scheduled",
-                    "closedWon": "won",
-                    "closedLost": "lost"
-                  }
-                },
-                "x-go-type-skip-optional-pointer": true,
-                "additionalProperties": {
-                  "title": "Selected Value Mappings",
-                  "type": "object",
-                  "description": "This is a map of values to their mappings. The key is the value delivered to the webhook, the value is the value coming from the provider API.",
-                  "example": {
-                    "open": "scheduled",
-                    "closedWon": "won",
-                    "closedLost": "lost"
-                  },
-                  "x-go-type-skip-optional-pointer": true,
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              },
-              "dynamicMappingsInput": {
-                "title": "Dynamic Mappings Input",
-                "description": "An array containing all available dynamic field and value mappings for this installation, provided by the InstallIntegration component. This array represents the complete set of possible mappings, regardless of which ones are currently selected. The actual selected mappings are stored separately in the selectedFieldMappings property.",
-                "type": "array",
-                "items": {
-                  "title": "Field Mapping Entry",
-                  "type": "object",
-                  "required": [
-                    "mapToName"
-                  ],
-                  "properties": {
-                    "mapToName": {
-                      "type": "string",
-                      "description": "The name of the field in your application."
-                    },
-                    "mapToDisplayName": {
-                      "type": "string",
-                      "description": "Optional display name of the field to show the user in the mapping UI."
-                    },
-                    "prompt": {
-                      "type": "string",
-                      "description": "Optional prompt to show the user in the mapping UI."
-                    },
-                    "mappedValues": {
-                      "type": "array",
-                      "description": "If you would like the user to map a set of possible values, this is the list of possible values of the field in your application.",
-                      "items": {
-                        "title": "Mapped Value",
-                        "type": "object",
-                        "required": [
-                          "mappedValue",
-                          "mappedDisplayValue"
-                        ],
-                        "properties": {
-                          "mappedValue": {
-                            "type": "string"
-                          },
-                          "mappedDisplayValue": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "fieldName": {
-                      "type": "string",
-                      "description": "The name of the field in SaaS provider, if present, then we will not prompt the user to map the field."
-                    }
-                  }
-                }
-              },
-              "selectedFieldMappings": {
-                "type": "object",
-                "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.)",
-                "example": "{ phoneNumber: phone, faxNumber: fax }",
-                "additionalProperties": {
-                  "type": "string"
-                }
-              },
-              "selectedFieldsAuto": {
-                "title": "Selected Fields Auto Config",
-                "description": "If selectedFieldsAuto is set to all, all fields will be read.",
-                "type": "string",
-                "enum": [
-                  "all"
-                ],
-                "x-enum-varnames": [
-                  "SelectedFieldsAll"
-                ]
-              },
-              "backfill": {
-                "title": "Backfill Config",
-                "type": "object",
-                "required": [
-                  "defaultPeriod"
-                ],
-                "properties": {
-                  "defaultPeriod": {
-                    "title": "Default Period Config",
-                    "type": "object",
-                    "properties": {
-                      "days": {
-                        "type": "integer",
-                        "description": "Number of days in past to backfill from. 0 is no backfill. e.g) if 10, then backfill last 10 days of data. Required if fullHistory is not set.",
-                        "minimum": 0,
-                        "example": 30,
-                        "x-oapi-codegen-extra-tags": {
-                          "validate": "required_without=FullHistory,omitempty,min=0"
-                        }
-                      },
-                      "fullHistory": {
-                        "type": "boolean",
-                        "description": "If true, backfill all history. Required if days is not set.",
-                        "example": false,
-                        "x-oapi-codegen-extra-tags": {
-                          "validate": "required_without=Days"
-                        }
-                      }
-                    }
-                  },
-                  "filter": {
-                    "type": "array",
-                    "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
-                    "x-go-type-skip-optional-pointer": true,
-                    "items": {
-                      "title": "Read Filter",
-                      "type": "object",
-                      "required": [
-                        "fieldName",
-                        "operator"
-                      ],
-                      "properties": {
-                        "fieldName": {
-                          "type": "string",
-                          "description": "The name of the field to filter on.",
-                          "example": "status"
-                        },
-                        "operator": {
-                          "type": "string",
-                          "description": "The comparison operator.",
-                          "enum": [
-                            "eq"
+                        "deleteEvent": {
+                          "title": "Delete Event",
+                          "type": "object",
+                          "required": [
+                            "enabled"
                           ],
-                          "example": "eq"
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "description": "Conditions to enable delete events.",
+                              "example": "always",
+                              "x-oapi-codegen-extra-tags": {
+                                "validate": "oneof=always never"
+                              },
+                              "enum": [
+                                "always",
+                                "never"
+                              ]
+                            }
+                          }
                         },
-                        "value": {
-                          "title": "Read Filter Value",
-                          "description": "The value to filter on. Allowed types are string, boolean, and number.",
-                          "example": "active"
+                        "otherEvents": {
+                          "title": "Other Events",
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "Non-standard events that the integration will subscribe to.",
+                            "example": [
+                              "object.merged",
+                              "object.restored"
+                            ]
+                          }
                         }
                       }
-                    }
-                  }
-                }
-              },
-              "filter": {
-                "type": "array",
-                "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
-                "x-go-type-skip-optional-pointer": true,
-                "items": {
-                  "title": "Read Filter",
-                  "type": "object",
-                  "required": [
-                    "fieldName",
-                    "operator"
-                  ],
-                  "properties": {
-                    "fieldName": {
-                      "type": "string",
-                      "description": "The name of the field to filter on.",
-                      "example": "status"
-                    },
-                    "operator": {
-                      "type": "string",
-                      "description": "The comparison operator.",
-                      "enum": [
-                        "eq"
-                      ],
-                      "example": "eq"
-                    },
-                    "value": {
-                      "title": "Read Filter Value",
-                      "description": "The value to filter on. Allowed types are string, boolean, and number.",
-                      "example": "active"
                     }
                   }
                 }
