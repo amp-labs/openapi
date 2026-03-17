@@ -1134,7 +1134,13 @@ paths:
       operationId: updateInstallation
       tags: ["Installation"]
       description: |
-        Update an installation. NOTE: Updating an installation with the Subscribe action typically takes 1–2 minutes, but it may take up to 10 minutes to take effect due to delays in the provider’s system.
+        Update an installation config. Use `updateMask` to specify which fields to update; unmasked fields
+        are left unchanged. Each masked field is **replaced**, so provide the complete value for
+        each field you include.
+
+        Updates to subscribe config (`config.content.subscribe.objects` or `config.content.subscribe.objects.<objectName>`)
+        trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take
+        up to 10 minutes.
       parameters:
         - name: projectIdOrName
           in: path
@@ -1146,15 +1152,17 @@ paths:
         - name: integrationId
           in: path
           required: true
-          description: The integration ID.
+          description: The ID of the integration that this installation belongs to.
           schema:
             type: string
+          example: e3a7f9c1-4b2d-4e8a-9f6b-2d5c8a1e3b7f
         - name: installationId
           in: path
           required: true
           description: The Ampersand installation ID.
           schema:
             type: string
+          example: 7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b
       requestBody:
         content:
           application/json:
@@ -1169,17 +1177,19 @@ paths:
                   items:
                     type: string
                   description: |
-                    Array of field paths specifying which fields to update. Allowed values include:
-                    - connectionId
-                    - config.createdBy
-                    - config.content.read.objects.OBJECT_NAME
-                    - config.content.write.objects.OBJECT_NAME
-                    - config.content.write.objects
-                    - config.content.subscribe.objects.OBJECT_NAME
-                    - config.content.subscribe.objects
-                    - config.content.proxy.enabled
+                    Array of field paths specifying which fields to update. Each path must have a corresponding
+                    value in the `installation` object. A field included in `installation` but not listed here
+                    will be ignored. Allowed values:
+                    - `connectionId` - switch the SaaS connection tied to this installation.
+                    - `config.createdBy` - change the attribution for who created this config.
+                    - `config.content.read.objects.<objectName>` - replace the read config for a single object (e.g. `config.content.read.objects.contacts`).
+                    - `config.content.write.objects.<objectName>` - replace the write config for a single object.
+                    - `config.content.write.objects` - replace the entire write objects map.
+                    - `config.content.subscribe.objects.<objectName>` - replace the subscribe config for a single object.
+                    - `config.content.subscribe.objects` - replace the entire subscribe objects map.
+                    - `config.content.proxy.enabled` - enable or disable the proxy.
 
-                    `OBJECT_NAME` means you can specify any object name.
+                    Replace `<objectName>` with the provider object name (e.g. `contacts`, `leads`, `accounts`).
                   example: ["config.content.read.objects.contacts", "config.content.write.objects.leads"]
                 installation:
                   type: object
@@ -1187,7 +1197,7 @@ paths:
                     connectionId:
                       type: string
                       description: The ID of the SaaS connection tied to this installation.
-                      example: connection-123
+                      example: a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c
                     config:
                       type: object
                       properties:
@@ -1205,25 +1215,34 @@ paths:
                           $ref: "../config/config.yaml#/components/schemas/UpdateInstallationConfigContent"
                           description: The content of the config.
                       description: The config of the installation.
-                  description:
-                    The installation fields to update. (You only need to include the
-                    fields you'd like to update, which are specified in the update masks. The rest will be ignored.)
+                  description: |
+                    The installation fields to update. Only fields whose paths are listed in `updateMask` will be
+                    applied; all other fields in this object are ignored.
+            example:
+              updateMask:
+                - "config.content.read.objects.contacts"
+              installation:
+                config:
+                  content:
+                    read:
+                      objects:
+                        contacts:
+                          objectName: contacts
+                          schedule: "*/30 * * * *"
+                          destination: contactsWebhook
+                          selectedFields:
+                            email: true
+                            phone: true
         required: true
       responses:
         200:
-          description: The updated installation
+          description: The updated installation.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Installation"
         400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        422:
-          description: Unprocessable Entity
+          description: Invalid input (e.g. unrecognized update mask path, missing value for a mask, or malformed request body).
           content:
             application/problem+json:
               schema:

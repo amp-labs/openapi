@@ -358,16 +358,10 @@ components:
       title: Update Installation Config Content
       allOf:
         - $ref: '#/components/schemas/BaseConfigContent'
-
-    UpdateInstallationReadConfig:
-      title: Update Installation Read Config
-      allOf:
-        - $ref: '#/components/schemas/BaseReadConfig'
-
-    UpdateInstallationReadConfigObject:
-      title: Update Installation Read Config Object
-      allOf:
-        - $ref: '#/components/schemas/BaseReadConfigObject'
+        - type: object
+          properties:
+            subscribe:
+              $ref: '#/components/schemas/BaseSubscribeConfig'
 
     SelectedFieldsAutoConfig:
       title: Selected Fields Auto Config
