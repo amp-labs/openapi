@@ -1822,18 +1822,22 @@
         ],
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "example": "readSalesforceAccounts"
           },
           "displayName": {
             "type": "string",
+            "example": "Salesforce Accounts",
             "x-go-type-skip-optional-pointer": true
           },
           "module": {
             "type": "string",
+            "example": "crm",
             "x-go-type-skip-optional-pointer": true
           },
           "provider": {
-            "type": "string"
+            "type": "string",
+            "example": "salesforce"
           },
           "read": {
             "title": "Hydrated Read Integration",
@@ -1854,32 +1858,35 @@
                     "error": {
                       "type": "string",
                       "description": "Error message if there was an issue hydrating this object.",
-                      "example": "Failed to fetch fields from provider",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "objectName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "account"
                     },
                     "displayName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Account"
                     },
                     "mapToName": {
                       "type": "string",
                       "description": "An object name to map to.",
-                      "example": "people",
+                      "example": "accounts",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "mapToDisplayName": {
                       "type": "string",
                       "description": "A display name to map to.",
-                      "example": "People",
+                      "example": "Accounts",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "destination": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "accountWebhook"
                     },
                     "schedule": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "*/10 * * * *"
                     },
                     "requiredFields": {
                       "type": "array",
@@ -1894,21 +1901,23 @@
                             ],
                             "properties": {
                               "fieldName": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "billingcity"
                               },
                               "displayName": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "Billing City"
                               },
                               "mapToName": {
                                 "type": "string",
                                 "description": "The field name to map to in the destination.",
-                                "example": "account_id",
+                                "example": "billing_city",
                                 "x-go-type-skip-optional-pointer": true
                               },
                               "mapToDisplayName": {
                                 "type": "string",
                                 "description": "The display name to map to in the destination.",
-                                "example": "Account ID",
+                                "example": "Billing City",
                                 "x-go-type-skip-optional-pointer": true
                               }
                             }
@@ -1950,21 +1959,23 @@
                             ],
                             "properties": {
                               "fieldName": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "billingcity"
                               },
                               "displayName": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "Billing City"
                               },
                               "mapToName": {
                                 "type": "string",
                                 "description": "The field name to map to in the destination.",
-                                "example": "account_id",
+                                "example": "billing_city",
                                 "x-go-type-skip-optional-pointer": true
                               },
                               "mapToDisplayName": {
                                 "type": "string",
                                 "description": "The display name to map to in the destination.",
-                                "example": "Account ID",
+                                "example": "Billing City",
                                 "x-go-type-skip-optional-pointer": true
                               }
                             }
@@ -2015,7 +2026,7 @@
                           "fieldName": {
                             "type": "string",
                             "description": "The name of the field from the provider API.",
-                            "example": "Account ID"
+                            "example": "accountid"
                           },
                           "displayName": {
                             "type": "string",
@@ -2086,6 +2097,36 @@
                             }
                           }
                         }
+                      },
+                      "example": {
+                        "name": {
+                          "fieldName": "name",
+                          "displayName": "Account Name",
+                          "valueType": "string",
+                          "providerType": "string",
+                          "readOnly": false,
+                          "isCustom": false,
+                          "isRequired": true
+                        },
+                        "type": {
+                          "fieldName": "type",
+                          "displayName": "Account Type",
+                          "valueType": "singleSelect",
+                          "providerType": "picklist",
+                          "readOnly": false,
+                          "isCustom": false,
+                          "isRequired": false,
+                          "values": [
+                            {
+                              "value": "prospect",
+                              "displayValue": "Prospect"
+                            },
+                            {
+                              "value": "customer",
+                              "displayValue": "Customer - Direct"
+                            }
+                          ]
+                        }
                       }
                     },
                     "allFields": {
@@ -2103,21 +2144,23 @@
                             ],
                             "properties": {
                               "fieldName": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "billingcity"
                               },
                               "displayName": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "Billing City"
                               },
                               "mapToName": {
                                 "type": "string",
                                 "description": "The field name to map to in the destination.",
-                                "example": "account_id",
+                                "example": "billing_city",
                                 "x-go-type-skip-optional-pointer": true
                               },
                               "mapToDisplayName": {
                                 "type": "string",
                                 "description": "The display name to map to in the destination.",
-                                "example": "Account ID",
+                                "example": "Billing City",
                                 "x-go-type-skip-optional-pointer": true
                               }
                             }
@@ -2196,10 +2239,12 @@
                   ],
                   "properties": {
                     "objectName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "account"
                     },
                     "displayName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Account"
                     },
                     "valueDefaults": {
                       "title": "Value Defaults",
@@ -2265,32 +2310,35 @@
                 "error": {
                   "type": "string",
                   "description": "Error message if there was an issue hydrating this object.",
-                  "example": "Failed to fetch fields from provider",
                   "x-go-type-skip-optional-pointer": true
                 },
                 "objectName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "account"
                 },
                 "displayName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Account"
                 },
                 "mapToName": {
                   "type": "string",
                   "description": "An object name to map to.",
-                  "example": "people",
+                  "example": "accounts",
                   "x-go-type-skip-optional-pointer": true
                 },
                 "mapToDisplayName": {
                   "type": "string",
                   "description": "A display name to map to.",
-                  "example": "People",
+                  "example": "Accounts",
                   "x-go-type-skip-optional-pointer": true
                 },
                 "destination": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "accountWebhook"
                 },
                 "schedule": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "*/10 * * * *"
                 },
                 "requiredFields": {
                   "type": "array",
@@ -2305,21 +2353,23 @@
                         ],
                         "properties": {
                           "fieldName": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "billingcity"
                           },
                           "displayName": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Billing City"
                           },
                           "mapToName": {
                             "type": "string",
                             "description": "The field name to map to in the destination.",
-                            "example": "account_id",
+                            "example": "billing_city",
                             "x-go-type-skip-optional-pointer": true
                           },
                           "mapToDisplayName": {
                             "type": "string",
                             "description": "The display name to map to in the destination.",
-                            "example": "Account ID",
+                            "example": "Billing City",
                             "x-go-type-skip-optional-pointer": true
                           }
                         }
@@ -2361,21 +2411,23 @@
                         ],
                         "properties": {
                           "fieldName": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "billingcity"
                           },
                           "displayName": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Billing City"
                           },
                           "mapToName": {
                             "type": "string",
                             "description": "The field name to map to in the destination.",
-                            "example": "account_id",
+                            "example": "billing_city",
                             "x-go-type-skip-optional-pointer": true
                           },
                           "mapToDisplayName": {
                             "type": "string",
                             "description": "The display name to map to in the destination.",
-                            "example": "Account ID",
+                            "example": "Billing City",
                             "x-go-type-skip-optional-pointer": true
                           }
                         }
@@ -2426,7 +2478,7 @@
                       "fieldName": {
                         "type": "string",
                         "description": "The name of the field from the provider API.",
-                        "example": "Account ID"
+                        "example": "accountid"
                       },
                       "displayName": {
                         "type": "string",
@@ -2497,6 +2549,36 @@
                         }
                       }
                     }
+                  },
+                  "example": {
+                    "name": {
+                      "fieldName": "name",
+                      "displayName": "Account Name",
+                      "valueType": "string",
+                      "providerType": "string",
+                      "readOnly": false,
+                      "isCustom": false,
+                      "isRequired": true
+                    },
+                    "type": {
+                      "fieldName": "type",
+                      "displayName": "Account Type",
+                      "valueType": "singleSelect",
+                      "providerType": "picklist",
+                      "readOnly": false,
+                      "isCustom": false,
+                      "isRequired": false,
+                      "values": [
+                        {
+                          "value": "prospect",
+                          "displayValue": "Prospect"
+                        },
+                        {
+                          "value": "customer",
+                          "displayValue": "Customer - Direct"
+                        }
+                      ]
+                    }
                   }
                 },
                 "allFields": {
@@ -2514,21 +2596,23 @@
                         ],
                         "properties": {
                           "fieldName": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "billingcity"
                           },
                           "displayName": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Billing City"
                           },
                           "mapToName": {
                             "type": "string",
                             "description": "The field name to map to in the destination.",
-                            "example": "account_id",
+                            "example": "billing_city",
                             "x-go-type-skip-optional-pointer": true
                           },
                           "mapToDisplayName": {
                             "type": "string",
                             "description": "The display name to map to in the destination.",
-                            "example": "Account ID",
+                            "example": "Billing City",
                             "x-go-type-skip-optional-pointer": true
                           }
                         }
@@ -2607,10 +2691,12 @@
               ],
               "properties": {
                 "objectName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "account"
                 },
                 "displayName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Account"
                 },
                 "valueDefaults": {
                   "title": "Value Defaults",
@@ -2642,32 +2728,35 @@
           "error": {
             "type": "string",
             "description": "Error message if there was an issue hydrating this object.",
-            "example": "Failed to fetch fields from provider",
             "x-go-type-skip-optional-pointer": true
           },
           "objectName": {
-            "type": "string"
+            "type": "string",
+            "example": "account"
           },
           "displayName": {
-            "type": "string"
+            "type": "string",
+            "example": "Account"
           },
           "mapToName": {
             "type": "string",
             "description": "An object name to map to.",
-            "example": "people",
+            "example": "accounts",
             "x-go-type-skip-optional-pointer": true
           },
           "mapToDisplayName": {
             "type": "string",
             "description": "A display name to map to.",
-            "example": "People",
+            "example": "Accounts",
             "x-go-type-skip-optional-pointer": true
           },
           "destination": {
-            "type": "string"
+            "type": "string",
+            "example": "accountWebhook"
           },
           "schedule": {
-            "type": "string"
+            "type": "string",
+            "example": "*/10 * * * *"
           },
           "requiredFields": {
             "type": "array",
@@ -2682,21 +2771,23 @@
                   ],
                   "properties": {
                     "fieldName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "billingcity"
                     },
                     "displayName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Billing City"
                     },
                     "mapToName": {
                       "type": "string",
                       "description": "The field name to map to in the destination.",
-                      "example": "account_id",
+                      "example": "billing_city",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "mapToDisplayName": {
                       "type": "string",
                       "description": "The display name to map to in the destination.",
-                      "example": "Account ID",
+                      "example": "Billing City",
                       "x-go-type-skip-optional-pointer": true
                     }
                   }
@@ -2738,21 +2829,23 @@
                   ],
                   "properties": {
                     "fieldName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "billingcity"
                     },
                     "displayName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Billing City"
                     },
                     "mapToName": {
                       "type": "string",
                       "description": "The field name to map to in the destination.",
-                      "example": "account_id",
+                      "example": "billing_city",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "mapToDisplayName": {
                       "type": "string",
                       "description": "The display name to map to in the destination.",
-                      "example": "Account ID",
+                      "example": "Billing City",
                       "x-go-type-skip-optional-pointer": true
                     }
                   }
@@ -2803,7 +2896,7 @@
                 "fieldName": {
                   "type": "string",
                   "description": "The name of the field from the provider API.",
-                  "example": "Account ID"
+                  "example": "accountid"
                 },
                 "displayName": {
                   "type": "string",
@@ -2874,6 +2967,36 @@
                   }
                 }
               }
+            },
+            "example": {
+              "name": {
+                "fieldName": "name",
+                "displayName": "Account Name",
+                "valueType": "string",
+                "providerType": "string",
+                "readOnly": false,
+                "isCustom": false,
+                "isRequired": true
+              },
+              "type": {
+                "fieldName": "type",
+                "displayName": "Account Type",
+                "valueType": "singleSelect",
+                "providerType": "picklist",
+                "readOnly": false,
+                "isCustom": false,
+                "isRequired": false,
+                "values": [
+                  {
+                    "value": "prospect",
+                    "displayValue": "Prospect"
+                  },
+                  {
+                    "value": "customer",
+                    "displayValue": "Customer - Direct"
+                  }
+                ]
+              }
             }
           },
           "allFields": {
@@ -2891,21 +3014,23 @@
                   ],
                   "properties": {
                     "fieldName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "billingcity"
                     },
                     "displayName": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Billing City"
                     },
                     "mapToName": {
                       "type": "string",
                       "description": "The field name to map to in the destination.",
-                      "example": "account_id",
+                      "example": "billing_city",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "mapToDisplayName": {
                       "type": "string",
                       "description": "The display name to map to in the destination.",
-                      "example": "Account ID",
+                      "example": "Billing City",
                       "x-go-type-skip-optional-pointer": true
                     }
                   }
@@ -2976,10 +3101,12 @@
         ],
         "properties": {
           "objectName": {
-            "type": "string"
+            "type": "string",
+            "example": "account"
           },
           "displayName": {
-            "type": "string"
+            "type": "string",
+            "example": "Account"
           },
           "valueDefaults": {
             "title": "Value Defaults",
@@ -3108,21 +3235,23 @@
             ],
             "properties": {
               "fieldName": {
-                "type": "string"
+                "type": "string",
+                "example": "billingcity"
               },
               "displayName": {
-                "type": "string"
+                "type": "string",
+                "example": "Billing City"
               },
               "mapToName": {
                 "type": "string",
                 "description": "The field name to map to in the destination.",
-                "example": "account_id",
+                "example": "billing_city",
                 "x-go-type-skip-optional-pointer": true
               },
               "mapToDisplayName": {
                 "type": "string",
                 "description": "The display name to map to in the destination.",
-                "example": "Account ID",
+                "example": "Billing City",
                 "x-go-type-skip-optional-pointer": true
               }
             }
@@ -3162,7 +3291,7 @@
           "fieldName": {
             "type": "string",
             "description": "The name of the field from the provider API.",
-            "example": "Account ID"
+            "example": "accountid"
           },
           "displayName": {
             "type": "string",
@@ -3263,21 +3392,23 @@
         ],
         "properties": {
           "fieldName": {
-            "type": "string"
+            "type": "string",
+            "example": "billingcity"
           },
           "displayName": {
-            "type": "string"
+            "type": "string",
+            "example": "Billing City"
           },
           "mapToName": {
             "type": "string",
             "description": "The field name to map to in the destination.",
-            "example": "account_id",
+            "example": "billing_city",
             "x-go-type-skip-optional-pointer": true
           },
           "mapToDisplayName": {
             "type": "string",
             "description": "The display name to map to in the destination.",
-            "example": "Account ID",
+            "example": "Billing City",
             "x-go-type-skip-optional-pointer": true
           }
         }

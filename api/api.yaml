@@ -906,8 +906,9 @@ paths:
       x-codegen-request-body-name: revision
   /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate:
     get:
-      summary: Hydrate a revision
-      description: Hydrate a revision with information from the consumer's SaaS instance.
+      summary: Get a hydrated revision
+      description: |
+        Returns the integration revision enriched with live field metadata from the consumer's connected SaaS instance, such as available fields, display names, and type for each object defined in the integration.
       operationId: getHydratedRevision
       tags: ["Revision"]
       parameters:
@@ -924,37 +925,28 @@ paths:
           description: The integration ID.
           schema:
             type: string
+          example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
         - name: revisionId
           in: path
           required: true
-          description: The revision ID.
+          description: The revision ID. You can find this on the integration object's `latestRevision.id` field.
           schema:
             type: string
+          example: "f0e1d2c3-b4a5-6789-0abc-def123456789"
         - name: connectionId
           in: query
           required: true
-          description: The connection ID.
+          description: The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API.
           schema:
             type: string
+          example: "1a2b3c4d-5e6f-7890-abcd-ef0123456789"
       responses:
         200:
-          description: Hydrated revision
+          description: Hydrated revision.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/HydratedRevision"
-        400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        422:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
@@ -4714,7 +4706,7 @@ components:
         id:
           type: string
           description: The revision ID.
-          example: revision-id-1
+          example: "f0e1d2c3-b4a5-6789-0abc-def123456789"
         specVersion:
           type: string
           description: The spec version string.

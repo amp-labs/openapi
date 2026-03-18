@@ -252,14 +252,18 @@ components:
       properties:
         name:
           type: string
+          example: readSalesforceAccounts
         displayName:
           type: string
+          example: Salesforce Accounts
           x-go-type-skip-optional-pointer: true
         module:
           type: string
+          example: crm
           x-go-type-skip-optional-pointer: true
         provider:
           type: string
+          example: salesforce
         read:
           $ref: '#/components/schemas/HydratedIntegrationRead'
         write:
@@ -309,26 +313,29 @@ components:
         error:
           type: string
           description: Error message if there was an issue hydrating this object.
-          example: "Failed to fetch fields from provider"
           x-go-type-skip-optional-pointer: true
         objectName:
           type: string
+          example: account
         displayName:
           type: string
+          example: Account
         mapToName:
           type: string
           description: An object name to map to.
-          example: people
+          example: accounts
           x-go-type-skip-optional-pointer: true
         mapToDisplayName:
           type: string
           description: A display name to map to.
-          example: People
+          example: Accounts
           x-go-type-skip-optional-pointer: true
         destination:
           type: string
+          example: accountWebhook
         schedule:
           type: string
+          example: "*/10 * * * *"
         requiredFields:
           type: array
           items:
@@ -344,6 +351,28 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/FieldMetadata'
+          example:
+            name:
+              fieldName: name
+              displayName: Account Name
+              valueType: string
+              providerType: string
+              readOnly: false
+              isCustom: false
+              isRequired: true
+            type:
+              fieldName: type
+              displayName: Account Type
+              valueType: singleSelect
+              providerType: picklist
+              readOnly: false
+              isCustom: false
+              isRequired: false
+              values:
+                - value: prospect
+                  displayValue: Prospect
+                - value: customer
+                  displayValue: "Customer - Direct"
         allFields:
           description: This is a list of all fields on the object for a particular SaaS instance, including their display names. Prefer using allFieldsMetadata instead.
           type: array
@@ -364,8 +393,10 @@ components:
       properties:
         objectName:
           type: string
+          example: account
         displayName:
           type: string
+          example: Account
         valueDefaults:
           $ref: '#/components/schemas/ValueDefaults'
 
@@ -431,7 +462,7 @@ components:
         fieldName:
           type: string
           description: The name of the field from the provider API.
-          example: Account ID
+          example: accountid
         displayName:
           type: string
           description: The display name of the field from the provider API.
@@ -499,17 +530,19 @@ components:
       properties:
         fieldName:
           type: string
+          example: billingcity
         displayName:
           type: string
+          example: Billing City
         mapToName:
           type: string
           description: The field name to map to in the destination.
-          example: account_id
+          example: billing_city
           x-go-type-skip-optional-pointer: true
         mapToDisplayName:
           type: string
           description: The display name to map to in the destination.
-          example: Account ID
+          example: Billing City
           x-go-type-skip-optional-pointer: true
 
     Backfill:
