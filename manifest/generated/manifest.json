@@ -2059,6 +2059,14 @@
                             "description": "Whether the field is required when creating a new record.",
                             "example": false
                           },
+                          "referenceTo": {
+                            "type": "array",
+                            "description": "The list of object types this field references. Only applicable if the providerType is a lookup/reference field.",
+                            "x-go-type-skip-optional-pointer": true,
+                            "items": {
+                              "type": "string"
+                            }
+                          },
                           "values": {
                             "type": "array",
                             "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
@@ -2470,6 +2478,14 @@
                         "description": "Whether the field is required when creating a new record.",
                         "example": false
                       },
+                      "referenceTo": {
+                        "type": "array",
+                        "description": "The list of object types this field references. Only applicable if the providerType is a lookup/reference field.",
+                        "x-go-type-skip-optional-pointer": true,
+                        "items": {
+                          "type": "string"
+                        }
+                      },
                       "values": {
                         "type": "array",
                         "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
@@ -2847,6 +2863,14 @@
                   "description": "Whether the field is required when creating a new record.",
                   "example": false
                 },
+                "referenceTo": {
+                  "type": "array",
+                  "description": "The list of object types this field references. Only applicable if the providerType is a lookup/reference field.",
+                  "x-go-type-skip-optional-pointer": true,
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "values": {
                   "type": "array",
                   "description": "If the valueType is singleSelect or multiSelect, this is a list of possible values",
@@ -3205,6 +3229,14 @@
             "type": "boolean",
             "description": "Whether the field is required when creating a new record.",
             "example": false
+          },
+          "referenceTo": {
+            "type": "array",
+            "description": "The list of object types this field references. Only applicable if the providerType is a lookup/reference field.",
+            "x-go-type-skip-optional-pointer": true,
+            "items": {
+              "type": "string"
+            }
           },
           "values": {
             "type": "array",
