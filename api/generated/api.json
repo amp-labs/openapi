@@ -13,7 +13,7 @@
     "/oauth-connect": {
       "post": {
         "operationId": "oauthConnect",
-        "summary": "Generate OAuth authorization URL",
+        "summary": "Get URL for OAuth flow",
         "description": "Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).",
         "tags": [
           "OAuth"
@@ -42,7 +42,7 @@
                   },
                   "groupRef": {
                     "type": "string",
-                    "description": "Your application's identifier for the organization or workspace that this connection belongs to (e.g. an org ID or team ID).",
+                    "description": "The ID that your app uses to identify the group of users for this Connection, this can be an Org ID, workspace ID, etc.",
                     "example": "group-123"
                   },
                   "groupName": {
@@ -63,16 +63,9 @@
                   "providerWorkspaceRef": {
                     "type": "string",
                     "description": "The identifier for the provider workspace (e.g. the Salesforce subdomain).",
-                    "example": "acme-corp"
+                    "example": "salesforce-instance-domain"
                   },
                   "providerMetadata": {
-                    "description": "Additional provider-specific metadata required by certain providers (e.g., account ID for NetSuite). See provider documentation for which fields are needed.",
-                    "example": {
-                      "accountId": {
-                        "value": "1234567890",
-                        "source": "input"
-                      }
-                    },
                     "title": "Provider Metadata",
                     "type": "object",
                     "additionalProperties": {
@@ -108,52 +101,13 @@
                   },
                   "providerAppId": {
                     "type": "string",
-                    "description": "ID of the provider app, returned from the [Create Provider App endpoint](https://docs.withampersand.com/reference/provider-apps/create-provider-app). If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
+                    "description": "ID of the provider app, returned from a CreateProviderApp call. If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.",
                     "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
                   },
                   "enableCSRFProtection": {
                     "type": "boolean",
                     "description": "This boolean flag is used by the UI library internally. Set it to false or omit it when manually calling this API.",
                     "example": false
-                  }
-                }
-              },
-              "examples": {
-                "basicOAuth": {
-                  "summary": "Basic OAuth flow (required fields only)",
-                  "value": {
-                    "projectId": "my-project",
-                    "provider": "salesforce",
-                    "groupRef": "group-123",
-                    "consumerRef": "user_123456"
-                  }
-                },
-                "withProviderWorkspace": {
-                  "summary": "With provider workspace and provider app",
-                  "value": {
-                    "projectId": "my-project",
-                    "provider": "salesforce",
-                    "groupRef": "group-123",
-                    "groupName": "Acme Corp",
-                    "consumerRef": "user_123456",
-                    "consumerName": "John Doe",
-                    "providerWorkspaceRef": "acme-corp",
-                    "providerAppId": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
-                  }
-                },
-                "withProviderMetadata": {
-                  "summary": "With provider metadata (e.g. NetSuite account ID)",
-                  "value": {
-                    "projectId": "my-project",
-                    "provider": "netsuite",
-                    "groupRef": "group-456",
-                    "consumerRef": "user_789012",
-                    "providerMetadata": {
-                      "accountId": {
-                        "value": "1234567890",
-                        "source": "input"
-                      }
-                    }
                   }
                 }
               }
@@ -168,8 +122,7 @@
               "text/plain": {
                 "schema": {
                   "type": "string",
-                  "description": "URL to render",
-                  "example": "https://login.salesforce.com/services/oauth2/authorize?client_id=xxx&redirect_uri=https%3A%2F%2Fapi.withampersand.com%2Fcallbacks%2Fv1%2Foauth&state=xxx"
+                  "description": "URL to render"
                 }
               }
             }
@@ -641,7 +594,7 @@
       "patch": {
         "operationId": "oauthUpdate",
         "summary": "Get URL for updating OAuth connection",
-        "description": "Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection's credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) instead.\n",
+        "description": "Generate a URL for the browser to render to kick off OAuth flow that updates an existing connection.",
         "tags": [
           "OAuth"
         ],
@@ -653,7 +606,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Ampersand project ID or name."
+            "description": "Ampersand Project ID or name."
           },
           {
             "name": "connectionId",
@@ -662,18 +615,17 @@
             "schema": {
               "type": "string"
             },
-            "description": "The ID of the connection to update."
+            "description": "ID of connection to update."
           }
         ],
         "responses": {
           "200": {
-            "description": "URL generated successfully",
+            "description": "OAuth update initiated successfully",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string",
-                  "description": "URL to initiate OAuth flow",
-                  "example": "https://login.salesforce.com/services/oauth2/authorize?client_id=xxx&redirect_uri=https%3A%2F%2Fapi.withampersand.com%2Fcallbacks%2Fv1%2Foauth&state=xxx"
+                  "description": "URL to initiate OAuth flow"
                 }
               }
             }
@@ -12194,8 +12146,8 @@
     },
     "/projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate": {
       "get": {
-        "summary": "Get a hydrated revision",
-        "description": "Returns the integration revision enriched with live field metadata from the consumer's connected SaaS instance, such as available fields, display names, and type for each object defined in the integration.\n",
+        "summary": "Hydrate a revision",
+        "description": "Hydrate a revision with information from the consumer's SaaS instance.",
         "operationId": "getHydratedRevision",
         "tags": [
           "Revision"
@@ -12218,33 +12170,30 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+            }
           },
           {
             "name": "revisionId",
             "in": "path",
             "required": true,
-            "description": "The revision ID. You can find this on the integration object's `latestRevision.id` field.",
+            "description": "The revision ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "f0e1d2c3-b4a5-6789-0abc-def123456789"
+            }
           },
           {
             "name": "connectionId",
             "in": "query",
             "required": true,
-            "description": "The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API.",
+            "description": "The connection ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "1a2b3c4d-5e6f-7890-abcd-ef0123456789"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Hydrated revision.",
+            "description": "Hydrated revision",
             "content": {
               "application/json": {
                 "schema": {
@@ -12260,7 +12209,7 @@
                     "id": {
                       "type": "string",
                       "description": "The revision ID.",
-                      "example": "f0e1d2c3-b4a5-6789-0abc-def123456789"
+                      "example": "revision-id-1"
                     },
                     "specVersion": {
                       "type": "string",
@@ -12742,6 +12691,654 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "title": "Input Validation Problem",
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "title": "API Problem",
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "title": "Problem",
+                          "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that identifies the problem type",
+                              "default": "about:blank"
+                            },
+                            "href": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that, when dereferenced, provides human-readable documentation for the problem type (e.g. using HTML)."
+                            },
+                            "title": {
+                              "type": "string",
+                              "description": "A short summary of the problem type. Written in English and readable for engineers (usually not suited for non technical stakeholders and not localized).",
+                              "example": "Service Unavailable"
+                            },
+                            "status": {
+                              "type": "integer",
+                              "format": "int32",
+                              "description": "The HTTP status code generated by the origin server for this occurrence of the problem.",
+                              "minimum": 400,
+                              "maximum": 600,
+                              "exclusiveMaximum": true,
+                              "example": 503
+                            },
+                            "detail": {
+                              "type": "string",
+                              "description": "A human-readable explanation specific to this occurrence of the problem"
+                            },
+                            "instance": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced."
+                            }
+                          },
+                          "example": {
+                            "type": "urn:problem-type:exampleOrganization:exampleProblem",
+                            "href": "https://www.belgif.be/specification/rest/api-guide/#standardized-problem-types",
+                            "title": "Description of the type of problem that occurred",
+                            "status": 400,
+                            "detail": "Description of specific occurrence of the problem",
+                            "instance": "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+                          }
+                        }
+                      ],
+                      "properties": {
+                        "subsystem": {
+                          "type": "string",
+                          "description": "The subsystem that generated the problem",
+                          "example": "api"
+                        },
+                        "time": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "The time the problem occurred, formatted as RFC-3339",
+                          "example": "2024-04-22T18:55:28.456076Z"
+                        },
+                        "requestId": {
+                          "type": "string",
+                          "description": "A unique identifier for the request, useful for debugging",
+                          "example": "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                        },
+                        "causes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "A brief description of something which caused the problem",
+                            "example": "database connection failed"
+                          },
+                          "example": [
+                            "database connection failed",
+                            "database query failed",
+                            "unable to fetch user"
+                          ],
+                          "description": "A list of problems that caused this problem. This can be used to represent multiple\nroot causes. There is no guaranteed ordering of the causes.\n"
+                        },
+                        "remedy": {
+                          "type": "string",
+                          "description": "A brief description of how to resolve the problem",
+                          "example": "Shorten your input to be under 100 characters"
+                        },
+                        "supportEmail": {
+                          "type": "string",
+                          "format": "email",
+                          "description": "An email address to contact for support",
+                          "example": "support@withampersand.com"
+                        },
+                        "supportPhone": {
+                          "type": "string",
+                          "description": "A phone number to contact for support",
+                          "example": "+1-555-555-5555"
+                        },
+                        "supportUrl": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "A URL to contact for support",
+                          "example": "https://withampersand.com/support"
+                        },
+                        "retryable": {
+                          "type": "boolean",
+                          "description": "Whether the request can be retried",
+                          "example": false
+                        },
+                        "retryAfter": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "A timestamp after which the request can be retried, formatted as RFC-3339",
+                          "example": "2024-04-22T18:55:28.456076Z"
+                        },
+                        "context": {
+                          "type": "object",
+                          "description": "Additional context for the problem",
+                          "additionalProperties": true,
+                          "example": {
+                            "name": "Rick Sanchez"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "properties": {
+                    "issues": {
+                      "type": "array",
+                      "items": {
+                        "title": "Input Validation Issue",
+                        "type": "object",
+                        "description": "An issue detected during input validation.\n",
+                        "allOf": [
+                          {
+                            "title": "API Problem",
+                            "type": "object",
+                            "allOf": [
+                              {
+                                "title": "Problem",
+                                "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that identifies the problem type",
+                                    "default": "about:blank"
+                                  },
+                                  "href": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that, when dereferenced, provides human-readable documentation for the problem type (e.g. using HTML)."
+                                  },
+                                  "title": {
+                                    "type": "string",
+                                    "description": "A short summary of the problem type. Written in English and readable for engineers (usually not suited for non technical stakeholders and not localized).",
+                                    "example": "Service Unavailable"
+                                  },
+                                  "status": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "description": "The HTTP status code generated by the origin server for this occurrence of the problem.",
+                                    "minimum": 400,
+                                    "maximum": 600,
+                                    "exclusiveMaximum": true,
+                                    "example": 503
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "description": "A human-readable explanation specific to this occurrence of the problem"
+                                  },
+                                  "instance": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced."
+                                  }
+                                },
+                                "example": {
+                                  "type": "urn:problem-type:exampleOrganization:exampleProblem",
+                                  "href": "https://www.belgif.be/specification/rest/api-guide/#standardized-problem-types",
+                                  "title": "Description of the type of problem that occurred",
+                                  "status": 400,
+                                  "detail": "Description of specific occurrence of the problem",
+                                  "instance": "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+                                }
+                              }
+                            ],
+                            "properties": {
+                              "subsystem": {
+                                "type": "string",
+                                "description": "The subsystem that generated the problem",
+                                "example": "api"
+                              },
+                              "time": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time the problem occurred, formatted as RFC-3339",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "requestId": {
+                                "type": "string",
+                                "description": "A unique identifier for the request, useful for debugging",
+                                "example": "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                              },
+                              "causes": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "description": "A brief description of something which caused the problem",
+                                  "example": "database connection failed"
+                                },
+                                "example": [
+                                  "database connection failed",
+                                  "database query failed",
+                                  "unable to fetch user"
+                                ],
+                                "description": "A list of problems that caused this problem. This can be used to represent multiple\nroot causes. There is no guaranteed ordering of the causes.\n"
+                              },
+                              "remedy": {
+                                "type": "string",
+                                "description": "A brief description of how to resolve the problem",
+                                "example": "Shorten your input to be under 100 characters"
+                              },
+                              "supportEmail": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "An email address to contact for support",
+                                "example": "support@withampersand.com"
+                              },
+                              "supportPhone": {
+                                "type": "string",
+                                "description": "A phone number to contact for support",
+                                "example": "+1-555-555-5555"
+                              },
+                              "supportUrl": {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "A URL to contact for support",
+                                "example": "https://withampersand.com/support"
+                              },
+                              "retryable": {
+                                "type": "boolean",
+                                "description": "Whether the request can be retried",
+                                "example": false
+                              },
+                              "retryAfter": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "A timestamp after which the request can be retried, formatted as RFC-3339",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "context": {
+                                "type": "object",
+                                "description": "Additional context for the problem",
+                                "additionalProperties": true,
+                                "example": {
+                                  "name": "Rick Sanchez"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "properties": {
+                          "in": {
+                            "type": "string",
+                            "description": "The location of the invalid input",
+                            "enum": [
+                              "body",
+                              "header",
+                              "path",
+                              "query"
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the invalid input"
+                          },
+                          "value": {
+                            "description": "The value of the erroneous input"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "type": "about:blank",
+                    "title": "Bad Request",
+                    "status": 400,
+                    "detail": "The input message is incorrect",
+                    "instance": "123456-1234-1235-4567489798",
+                    "issues": [
+                      {
+                        "type": "about:blank",
+                        "detail": "exampleNumericProperty should be numeric",
+                        "in": "path",
+                        "name": "exampleNumericProperty",
+                        "value": "abc"
+                      },
+                      {
+                        "type": "about:blank",
+                        "title": "Input isn't valid with respect to schema",
+                        "detail": "examplePropertyWithPattern a2345678901 doesn't match pattern '^\\d{11}$'",
+                        "in": "body",
+                        "name": "items[0].examplePropertyWithPattern",
+                        "value": "a2345678901"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "title": "Input Validation Problem",
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "title": "API Problem",
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "title": "Problem",
+                          "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that identifies the problem type",
+                              "default": "about:blank"
+                            },
+                            "href": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that, when dereferenced, provides human-readable documentation for the problem type (e.g. using HTML)."
+                            },
+                            "title": {
+                              "type": "string",
+                              "description": "A short summary of the problem type. Written in English and readable for engineers (usually not suited for non technical stakeholders and not localized).",
+                              "example": "Service Unavailable"
+                            },
+                            "status": {
+                              "type": "integer",
+                              "format": "int32",
+                              "description": "The HTTP status code generated by the origin server for this occurrence of the problem.",
+                              "minimum": 400,
+                              "maximum": 600,
+                              "exclusiveMaximum": true,
+                              "example": 503
+                            },
+                            "detail": {
+                              "type": "string",
+                              "description": "A human-readable explanation specific to this occurrence of the problem"
+                            },
+                            "instance": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced."
+                            }
+                          },
+                          "example": {
+                            "type": "urn:problem-type:exampleOrganization:exampleProblem",
+                            "href": "https://www.belgif.be/specification/rest/api-guide/#standardized-problem-types",
+                            "title": "Description of the type of problem that occurred",
+                            "status": 400,
+                            "detail": "Description of specific occurrence of the problem",
+                            "instance": "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+                          }
+                        }
+                      ],
+                      "properties": {
+                        "subsystem": {
+                          "type": "string",
+                          "description": "The subsystem that generated the problem",
+                          "example": "api"
+                        },
+                        "time": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "The time the problem occurred, formatted as RFC-3339",
+                          "example": "2024-04-22T18:55:28.456076Z"
+                        },
+                        "requestId": {
+                          "type": "string",
+                          "description": "A unique identifier for the request, useful for debugging",
+                          "example": "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                        },
+                        "causes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "A brief description of something which caused the problem",
+                            "example": "database connection failed"
+                          },
+                          "example": [
+                            "database connection failed",
+                            "database query failed",
+                            "unable to fetch user"
+                          ],
+                          "description": "A list of problems that caused this problem. This can be used to represent multiple\nroot causes. There is no guaranteed ordering of the causes.\n"
+                        },
+                        "remedy": {
+                          "type": "string",
+                          "description": "A brief description of how to resolve the problem",
+                          "example": "Shorten your input to be under 100 characters"
+                        },
+                        "supportEmail": {
+                          "type": "string",
+                          "format": "email",
+                          "description": "An email address to contact for support",
+                          "example": "support@withampersand.com"
+                        },
+                        "supportPhone": {
+                          "type": "string",
+                          "description": "A phone number to contact for support",
+                          "example": "+1-555-555-5555"
+                        },
+                        "supportUrl": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "A URL to contact for support",
+                          "example": "https://withampersand.com/support"
+                        },
+                        "retryable": {
+                          "type": "boolean",
+                          "description": "Whether the request can be retried",
+                          "example": false
+                        },
+                        "retryAfter": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "A timestamp after which the request can be retried, formatted as RFC-3339",
+                          "example": "2024-04-22T18:55:28.456076Z"
+                        },
+                        "context": {
+                          "type": "object",
+                          "description": "Additional context for the problem",
+                          "additionalProperties": true,
+                          "example": {
+                            "name": "Rick Sanchez"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "properties": {
+                    "issues": {
+                      "type": "array",
+                      "items": {
+                        "title": "Input Validation Issue",
+                        "type": "object",
+                        "description": "An issue detected during input validation.\n",
+                        "allOf": [
+                          {
+                            "title": "API Problem",
+                            "type": "object",
+                            "allOf": [
+                              {
+                                "title": "Problem",
+                                "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that identifies the problem type",
+                                    "default": "about:blank"
+                                  },
+                                  "href": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that, when dereferenced, provides human-readable documentation for the problem type (e.g. using HTML)."
+                                  },
+                                  "title": {
+                                    "type": "string",
+                                    "description": "A short summary of the problem type. Written in English and readable for engineers (usually not suited for non technical stakeholders and not localized).",
+                                    "example": "Service Unavailable"
+                                  },
+                                  "status": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "description": "The HTTP status code generated by the origin server for this occurrence of the problem.",
+                                    "minimum": 400,
+                                    "maximum": 600,
+                                    "exclusiveMaximum": true,
+                                    "example": 503
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "description": "A human-readable explanation specific to this occurrence of the problem"
+                                  },
+                                  "instance": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced."
+                                  }
+                                },
+                                "example": {
+                                  "type": "urn:problem-type:exampleOrganization:exampleProblem",
+                                  "href": "https://www.belgif.be/specification/rest/api-guide/#standardized-problem-types",
+                                  "title": "Description of the type of problem that occurred",
+                                  "status": 400,
+                                  "detail": "Description of specific occurrence of the problem",
+                                  "instance": "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+                                }
+                              }
+                            ],
+                            "properties": {
+                              "subsystem": {
+                                "type": "string",
+                                "description": "The subsystem that generated the problem",
+                                "example": "api"
+                              },
+                              "time": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time the problem occurred, formatted as RFC-3339",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "requestId": {
+                                "type": "string",
+                                "description": "A unique identifier for the request, useful for debugging",
+                                "example": "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                              },
+                              "causes": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "description": "A brief description of something which caused the problem",
+                                  "example": "database connection failed"
+                                },
+                                "example": [
+                                  "database connection failed",
+                                  "database query failed",
+                                  "unable to fetch user"
+                                ],
+                                "description": "A list of problems that caused this problem. This can be used to represent multiple\nroot causes. There is no guaranteed ordering of the causes.\n"
+                              },
+                              "remedy": {
+                                "type": "string",
+                                "description": "A brief description of how to resolve the problem",
+                                "example": "Shorten your input to be under 100 characters"
+                              },
+                              "supportEmail": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "An email address to contact for support",
+                                "example": "support@withampersand.com"
+                              },
+                              "supportPhone": {
+                                "type": "string",
+                                "description": "A phone number to contact for support",
+                                "example": "+1-555-555-5555"
+                              },
+                              "supportUrl": {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "A URL to contact for support",
+                                "example": "https://withampersand.com/support"
+                              },
+                              "retryable": {
+                                "type": "boolean",
+                                "description": "Whether the request can be retried",
+                                "example": false
+                              },
+                              "retryAfter": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "A timestamp after which the request can be retried, formatted as RFC-3339",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "context": {
+                                "type": "object",
+                                "description": "Additional context for the problem",
+                                "additionalProperties": true,
+                                "example": {
+                                  "name": "Rick Sanchez"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "properties": {
+                          "in": {
+                            "type": "string",
+                            "description": "The location of the invalid input",
+                            "enum": [
+                              "body",
+                              "header",
+                              "path",
+                              "query"
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the invalid input"
+                          },
+                          "value": {
+                            "description": "The value of the erroneous input"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "type": "about:blank",
+                    "title": "Bad Request",
+                    "status": 400,
+                    "detail": "The input message is incorrect",
+                    "instance": "123456-1234-1235-4567489798",
+                    "issues": [
+                      {
+                        "type": "about:blank",
+                        "detail": "exampleNumericProperty should be numeric",
+                        "in": "path",
+                        "name": "exampleNumericProperty",
+                        "value": "abc"
+                      },
+                      {
+                        "type": "about:blank",
+                        "title": "Input isn't valid with respect to schema",
+                        "detail": "examplePropertyWithPattern a2345678901 doesn't match pattern '^\\d{11}$'",
+                        "in": "body",
+                        "name": "items[0].examplePropertyWithPattern",
+                        "value": "a2345678901"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
           "default": {
             "description": "Error",
             "content": {
@@ -12882,7 +13479,8 @@
     },
     "/projects/{projectIdOrName}/integrations/{integrationId}/installations": {
       "get": {
-        "summary": "List installations",
+        "summary": "List installations for an integration",
+        "description": "Lists all installations for a specific integration within a project. To list installations across all integrations, use listInstallationsForProject instead.\n",
         "operationId": "listInstallations",
         "tags": [
           "Installation"
@@ -12902,14 +13500,16 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
+            "description": "The unique identifier (UUID) of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "550e8400-e29b-41d4-a716-446655440000"
           },
           {
             "name": "groupRef",
             "in": "query",
-            "description": "The ID of the user group that has access to this installation.",
+            "description": "The reference ID of a group (a company, team, or workspace in your app). When provided, only returns installations belonging to this group.",
             "example": "group-123",
             "schema": {
               "type": "string"
@@ -12991,12 +13591,12 @@
                       },
                       "healthStatus": {
                         "type": "string",
+                        "description": "The health status of the installation.",
+                        "example": "healthy",
                         "enum": [
                           "healthy",
                           "unhealthy"
-                        ],
-                        "description": "The health status of the installation.",
-                        "example": "healthy"
+                        ]
                       },
                       "lastOperationStatus": {
                         "type": "string",
@@ -13321,7 +13921,7 @@
                       },
                       "createTime": {
                         "type": "string",
-                        "description": "The time the integration was first installed.",
+                        "description": "The time the installation was created.",
                         "format": "date-time"
                       },
                       "createdBy": {
@@ -13352,7 +13952,7 @@
                           },
                           "revisionId": {
                             "type": "string",
-                            "description": "The ID of the revision that was current when this config was created or last updated. \n",
+                            "description": "The ID of the revision that this config is based on.",
                             "example": "revision-123"
                           },
                           "createTime": {
@@ -14944,7 +15544,65 @@
                       }
                     }
                   }
-                }
+                },
+                "example": [
+                  {
+                    "id": "inst-abc-123",
+                    "projectId": "project-456",
+                    "integrationId": "550e8400-e29b-41d4-a716-446655440000",
+                    "group": {
+                      "groupRef": "group-123",
+                      "groupName": "Acme Corp",
+                      "projectId": "project-456",
+                      "createTime": "2024-01-15T10:30:00.000000Z"
+                    },
+                    "healthStatus": "healthy",
+                    "connection": {
+                      "id": "connection-123",
+                      "projectId": "project-456",
+                      "provider": "salesforce",
+                      "group": {
+                        "groupRef": "group-123",
+                        "groupName": "Acme Corp",
+                        "projectId": "project-456",
+                        "createTime": "2024-01-15T10:30:00.000000Z"
+                      },
+                      "consumer": {
+                        "consumerRef": "consumer-123",
+                        "consumerName": "Jane Smith",
+                        "projectId": "project-456",
+                        "createTime": "2024-01-15T10:30:00.000000Z"
+                      },
+                      "createTime": "2024-01-15T10:30:00.000000Z",
+                      "authScheme": "oauth2/authorizationCode",
+                      "status": "working"
+                    },
+                    "createTime": "2024-01-15T10:30:00.000000Z",
+                    "createdBy": "consumer:consumer-123",
+                    "config": {
+                      "id": "config-123",
+                      "revisionId": "revision-123",
+                      "createTime": "2024-01-15T10:30:00.000000Z",
+                      "createdBy": "consumer:consumer-123",
+                      "content": {
+                        "provider": "salesforce",
+                        "read": {
+                          "objects": {
+                            "account": {
+                              "objectName": "account",
+                              "schedule": "*/15 * * * *",
+                              "destination": "accountWebhook",
+                              "selectedFields": {
+                                "name": true,
+                                "industry": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             }
           },
@@ -15412,7 +16070,6 @@
       "post": {
         "summary": "Create a new installation",
         "operationId": "createInstallation",
-        "description": "Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group's default. To create a connection, use the [OAuth Connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) or the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).\n",
         "tags": [
           "Installation"
         ],
@@ -15434,8 +16091,7 @@
             "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "113e9685-9a51-42cc-8662-9d9725b17f14"
+            }
           }
         ],
         "requestBody": {
@@ -15455,8 +16111,7 @@
                   },
                   "connectionId": {
                     "type": "string",
-                    "description": "The ID of the SaaS connection tied to this installation. If omitted the default connection for this group will be used.",
-                    "example": "a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c"
+                    "description": "The ID of the SaaS connection tied to this installation. If omitted the default connection for this group will be used."
                   },
                   "config": {
                     "required": [
@@ -15471,11 +16126,10 @@
                       },
                       "createdBy": {
                         "type": "string",
-                        "description": "The person who created the config, in the format of \"consumer:{consumer-id}\", \"builder:{builder-id}\", or \"api:{api-caller}\".",
+                        "description": "The person who created the config, in the format of \"consumer:{consumer-id}\" or \"builder:{builder-id}\".",
                         "default": "api:create-installation"
                       },
                       "content": {
-                        "description": "The content of the config.",
                         "title": "Config Content",
                         "allOf": [
                           {
@@ -17054,71 +17708,6 @@
                     "description": "The config of the installation."
                   }
                 }
-              },
-              "examples": {
-                "writeOnly": {
-                  "summary": "Minimal write-only installation",
-                  "value": {
-                    "groupRef": "group-123",
-                    "connectionId": "a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c",
-                    "config": {
-                      "content": {
-                        "provider": "salesforce",
-                        "write": {
-                          "objects": {
-                            "contacts": {
-                              "objectName": "contacts"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "readWriteAndSubscribe": {
-                  "summary": "Read, write, and subscribe",
-                  "value": {
-                    "groupRef": "group-456",
-                    "connectionId": "b2d5f8a3-9e4c-4b7f-8d1a-6c9e2f5b8d4a",
-                    "config": {
-                      "content": {
-                        "provider": "salesforce",
-                        "read": {
-                          "objects": {
-                            "contacts": {
-                              "objectName": "contacts",
-                              "schedule": "*/15 * * * *",
-                              "selectedFields": {
-                                "phone": true,
-                                "email": true
-                              },
-                              "selectedFieldMappings": {
-                                "phoneNumber": "phone",
-                                "emailAddress": "email"
-                              }
-                            }
-                          }
-                        },
-                        "write": {
-                          "objects": {
-                            "contacts": {
-                              "objectName": "contacts"
-                            }
-                          }
-                        },
-                        "subscribe": {
-                          "objects": {
-                            "contacts": {
-                              "objectName": "contacts",
-                              "destination": "contactWebhook",
-                              "inheritFieldsAndMappings": true
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
               }
             }
           },
@@ -17197,12 +17786,12 @@
                     },
                     "healthStatus": {
                       "type": "string",
+                      "description": "The health status of the installation.",
+                      "example": "healthy",
                       "enum": [
                         "healthy",
                         "unhealthy"
-                      ],
-                      "description": "The health status of the installation.",
-                      "example": "healthy"
+                      ]
                     },
                     "lastOperationStatus": {
                       "type": "string",
@@ -17527,7 +18116,7 @@
                     },
                     "createTime": {
                       "type": "string",
-                      "description": "The time the integration was first installed.",
+                      "description": "The time the installation was created.",
                       "format": "date-time"
                     },
                     "createdBy": {
@@ -17558,7 +18147,7 @@
                         },
                         "revisionId": {
                           "type": "string",
-                          "description": "The ID of the revision that was current when this config was created or last updated. \n",
+                          "description": "The ID of the revision that this config is based on.",
                           "example": "revision-123"
                         },
                         "createTime": {
@@ -19943,6 +20532,7 @@
     "/projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}": {
       "get": {
         "summary": "Get an installation",
+        "description": "Retrieves a single installation by ID, including its connection details, config, and health status.\n",
         "operationId": "getInstallation",
         "tags": [
           "Installation"
@@ -19962,19 +20552,21 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The integration ID.",
+            "description": "The unique identifier (UUID) of the integration.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "550e8400-e29b-41d4-a716-446655440000"
           },
           {
             "name": "installationId",
             "in": "path",
             "required": true,
-            "description": "The installation ID.",
+            "description": "The unique identifier (UUID) of the installation.",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b"
           }
         ],
         "responses": {
@@ -20050,12 +20642,12 @@
                     },
                     "healthStatus": {
                       "type": "string",
+                      "description": "The health status of the installation.",
+                      "example": "healthy",
                       "enum": [
                         "healthy",
                         "unhealthy"
-                      ],
-                      "description": "The health status of the installation.",
-                      "example": "healthy"
+                      ]
                     },
                     "lastOperationStatus": {
                       "type": "string",
@@ -20380,7 +20972,7 @@
                     },
                     "createTime": {
                       "type": "string",
-                      "description": "The time the integration was first installed.",
+                      "description": "The time the installation was created.",
                       "format": "date-time"
                     },
                     "createdBy": {
@@ -20411,7 +21003,7 @@
                         },
                         "revisionId": {
                           "type": "string",
-                          "description": "The ID of the revision that was current when this config was created or last updated. \n",
+                          "description": "The ID of the revision that this config is based on.",
                           "example": "revision-123"
                         },
                         "createTime": {
@@ -22002,6 +22594,62 @@
                       }
                     }
                   }
+                },
+                "example": {
+                  "id": "inst-abc-123",
+                  "projectId": "project-456",
+                  "integrationId": "550e8400-e29b-41d4-a716-446655440000",
+                  "group": {
+                    "groupRef": "group-123",
+                    "groupName": "Acme Corp",
+                    "projectId": "project-456",
+                    "createTime": "2024-01-15T10:30:00.000000Z"
+                  },
+                  "healthStatus": "healthy",
+                  "connection": {
+                    "id": "connection-123",
+                    "projectId": "project-456",
+                    "provider": "salesforce",
+                    "group": {
+                      "groupRef": "group-123",
+                      "groupName": "Acme Corp",
+                      "projectId": "project-456",
+                      "createTime": "2024-01-15T10:30:00.000000Z"
+                    },
+                    "consumer": {
+                      "consumerRef": "consumer-123",
+                      "consumerName": "Jane Smith",
+                      "projectId": "project-456",
+                      "createTime": "2024-01-15T10:30:00.000000Z"
+                    },
+                    "createTime": "2024-01-15T10:30:00.000000Z",
+                    "authScheme": "oauth2/authorizationCode",
+                    "status": "working"
+                  },
+                  "createTime": "2024-01-15T10:30:00.000000Z",
+                  "createdBy": "consumer:consumer-123",
+                  "config": {
+                    "id": "config-123",
+                    "revisionId": "revision-123",
+                    "createTime": "2024-01-15T10:30:00.000000Z",
+                    "createdBy": "consumer:consumer-123",
+                    "content": {
+                      "provider": "salesforce",
+                      "read": {
+                        "objects": {
+                          "account": {
+                            "objectName": "account",
+                            "schedule": "*/15 * * * *",
+                            "destination": "accountWebhook",
+                            "selectedFields": {
+                              "name": true,
+                              "industry": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -22651,7 +23299,7 @@
         "tags": [
           "Installation"
         ],
-        "description": "Update an installation using field masks. Note: subscribe config changes trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take up to 10 minutes.\n",
+        "description": "Update an installation config. Use `updateMask` to specify which fields to update; unmasked fields\nare left unchanged. Each masked field is **replaced**, so provide the complete value for\neach field you include.\n\nUpdates to subscribe config (`config.content.subscribe.objects` or `config.content.subscribe.objects.<objectName>`)\ntrigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take\nup to 10 minutes.\n",
         "parameters": [
           {
             "name": "projectIdOrName",
@@ -22699,7 +23347,7 @@
                     "items": {
                       "type": "string"
                     },
-                    "description": "Array of field paths specifying which fields to update. Each path must have a corresponding value in the `installation` object. A field included in `installation` but not listed here will be ignored. Allowed values:\n- `connectionId` - switch the SaaS connection tied to this installation.\n- `config.createdBy` - change the attribution for who created this config.\n- `config.content.read.objects.<objectName>` - replace the read config for a single object (e.g. `config.content.read.objects.contacts`).\n- `config.content.write.objects.<objectName>` - replace the write config for a single object.\n- `config.content.write.objects` - replace the entire write objects map.\n- `config.content.subscribe.objects.<objectName>` - replace the subscribe config for a single object.\n- `config.content.subscribe.objects` - replace the entire subscribe objects map.\n- `config.content.proxy.enabled` - enable or disable the proxy.\n\nReplace `<objectName>` with the provider object name (e.g. `contacts`, `leads`, `accounts`).\n",
+                    "description": "Array of field paths specifying which fields to update. Each path must have a corresponding\nvalue in the `installation` object. A field included in `installation` but not listed here\nwill be ignored. Allowed values:\n- `connectionId` - switch the SaaS connection tied to this installation.\n- `config.createdBy` - change the attribution for who created this config.\n- `config.content.read.objects.<objectName>` - replace the read config for a single object (e.g. `config.content.read.objects.contacts`).\n- `config.content.write.objects.<objectName>` - replace the write config for a single object.\n- `config.content.write.objects` - replace the entire write objects map.\n- `config.content.subscribe.objects.<objectName>` - replace the subscribe config for a single object.\n- `config.content.subscribe.objects` - replace the entire subscribe objects map.\n- `config.content.proxy.enabled` - enable or disable the proxy.\n\nReplace `<objectName>` with the provider object name (e.g. `contacts`, `leads`, `accounts`).\n",
                     "example": [
                       "config.content.read.objects.contacts",
                       "config.content.write.objects.leads"
@@ -23406,12 +24054,12 @@
                     },
                     "healthStatus": {
                       "type": "string",
+                      "description": "The health status of the installation.",
+                      "example": "healthy",
                       "enum": [
                         "healthy",
                         "unhealthy"
-                      ],
-                      "description": "The health status of the installation.",
-                      "example": "healthy"
+                      ]
                     },
                     "lastOperationStatus": {
                       "type": "string",
@@ -23736,7 +24384,7 @@
                     },
                     "createTime": {
                       "type": "string",
-                      "description": "The time the integration was first installed.",
+                      "description": "The time the installation was created.",
                       "format": "date-time"
                     },
                     "createdBy": {
@@ -23767,7 +24415,7 @@
                         },
                         "revisionId": {
                           "type": "string",
-                          "description": "The ID of the revision that was current when this config was created or last updated. \n",
+                          "description": "The ID of the revision that this config is based on.",
                           "example": "revision-123"
                         },
                         "createTime": {
@@ -26104,12 +26752,12 @@
                     },
                     "healthStatus": {
                       "type": "string",
+                      "description": "The health status of the installation.",
+                      "example": "healthy",
                       "enum": [
                         "healthy",
                         "unhealthy"
-                      ],
-                      "description": "The health status of the installation.",
-                      "example": "healthy"
+                      ]
                     },
                     "lastOperationStatus": {
                       "type": "string",
@@ -26434,7 +27082,7 @@
                     },
                     "createTime": {
                       "type": "string",
-                      "description": "The time the integration was first installed.",
+                      "description": "The time the installation was created.",
                       "format": "date-time"
                     },
                     "createdBy": {
@@ -26465,7 +27113,7 @@
                         },
                         "revisionId": {
                           "type": "string",
-                          "description": "The ID of the revision that was current when this config was created or last updated. \n",
+                          "description": "The ID of the revision that this config is based on.",
                           "example": "revision-123"
                         },
                         "createTime": {
@@ -28849,8 +29497,8 @@
     },
     "/projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata": {
       "get": {
-        "summary": "Get object metadata via installation",
-        "description": "Retrieves metadata about an object in a customer's SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\n",
+        "summary": "Get object metadata for installation",
+        "description": "Retrieves metadata about an object in a customer's SaaS instance, including its fields.\nThis endpoint requires that an Installation exists for the given groupRef.\nIt applies object mappings. This endpoint may return nested fields as a part of the response.\nNested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\nCurrently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.\n",
         "tags": [
           "Objects & Fields"
         ],
@@ -28860,7 +29508,7 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
-            "description": "The Ampersand project ID or project name.",
+            "description": "The unique identifier or name of the project.",
             "schema": {
               "type": "string"
             },
@@ -28870,27 +29518,25 @@
             "name": "integrationId",
             "in": "path",
             "required": true,
-            "description": "The unique identifier of the integration.",
+            "description": "The integration ID.",
             "schema": {
               "type": "string"
-            },
-            "example": "e3a7f9c1-4b2d-4e8a-9f6b-2d5c8a1e3b7f"
+            }
           },
           {
             "name": "objectName",
             "in": "path",
             "required": true,
-            "description": "The name of the object to retrieve metadata for. You can use either the mapped name from your integration config (e.g. `people`) or the native provider object name (e.g. `contact`).\n",
+            "description": "Object name (mapped or unmapped)",
             "schema": {
               "type": "string"
-            },
-            "example": "account"
+            }
           },
           {
             "name": "groupRef",
             "in": "query",
-            "required": true,
-            "description": "The ID of the user group that has access to this installation.",
+            "required": false,
+            "description": "The groupRef for the installation",
             "example": "group-123",
             "schema": {
               "type": "string"
@@ -28909,7 +29555,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The retrieved object metadata.",
+            "description": "The retrieved object metadata",
             "content": {
               "application/json": {
                 "schema": {
@@ -28932,7 +29578,6 @@
                     },
                     "mappedObjectName": {
                       "type": "string",
-                      "description": "The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.",
                       "example": "people"
                     },
                     "fields": {
@@ -29022,50 +29667,6 @@
                           }
                         }
                       }
-                    }
-                  }
-                },
-                "example": {
-                  "name": "account",
-                  "displayName": "Account",
-                  "mappedObjectName": "companies",
-                  "fields": {
-                    "name": {
-                      "fieldName": "name",
-                      "displayName": "Account Name",
-                      "valueType": "string",
-                      "providerType": "string",
-                      "readOnly": false,
-                      "isCustom": false,
-                      "isRequired": true
-                    },
-                    "billingcity": {
-                      "fieldName": "billingcity",
-                      "displayName": "Billing City",
-                      "valueType": "string",
-                      "providerType": "string",
-                      "readOnly": false,
-                      "isCustom": false,
-                      "isRequired": false
-                    },
-                    "industry": {
-                      "fieldName": "industry",
-                      "displayName": "Industry",
-                      "valueType": "singleSelect",
-                      "providerType": "picklist",
-                      "readOnly": false,
-                      "isCustom": false,
-                      "isRequired": false,
-                      "values": [
-                        {
-                          "value": "technology",
-                          "displayValue": "Technology"
-                        },
-                        {
-                          "value": "finance",
-                          "displayValue": "Finance"
-                        }
-                      ]
                     }
                   }
                 }
@@ -29212,8 +29813,8 @@
     },
     "/projects/{projectIdOrName}/installations": {
       "get": {
-        "summary": "List installations for a project",
-        "description": "Lists all installations for a given project and query parameters.\n",
+        "summary": "List all installations",
+        "description": "Lists all installations across every integration in a project, giving you a complete view of all active customer integrations. To narrow results to a single integration, use listInstallations instead.\n",
         "operationId": "listInstallationsForProject",
         "tags": [
           "Installation"
@@ -29232,8 +29833,8 @@
           {
             "name": "groupRef",
             "in": "query",
-            "description": "The group ref to filter by.",
-            "example": "groupRef123",
+            "description": "The reference ID of a group (a company, team, or workspace in your app). When provided, only returns installations belonging to this group.",
+            "example": "group-123",
             "schema": {
               "type": "string"
             }
@@ -29314,12 +29915,12 @@
                       },
                       "healthStatus": {
                         "type": "string",
+                        "description": "The health status of the installation.",
+                        "example": "healthy",
                         "enum": [
                           "healthy",
                           "unhealthy"
-                        ],
-                        "description": "The health status of the installation.",
-                        "example": "healthy"
+                        ]
                       },
                       "lastOperationStatus": {
                         "type": "string",
@@ -29644,7 +30245,7 @@
                       },
                       "createTime": {
                         "type": "string",
-                        "description": "The time the integration was first installed.",
+                        "description": "The time the installation was created.",
                         "format": "date-time"
                       },
                       "createdBy": {
@@ -29675,7 +30276,7 @@
                           },
                           "revisionId": {
                             "type": "string",
-                            "description": "The ID of the revision that was current when this config was created or last updated. \n",
+                            "description": "The ID of the revision that this config is based on.",
                             "example": "revision-123"
                           },
                           "createTime": {
@@ -31267,7 +31868,65 @@
                       }
                     }
                   }
-                }
+                },
+                "example": [
+                  {
+                    "id": "inst-abc-123",
+                    "projectId": "project-456",
+                    "integrationId": "550e8400-e29b-41d4-a716-446655440000",
+                    "group": {
+                      "groupRef": "group-123",
+                      "groupName": "Acme Corp",
+                      "projectId": "project-456",
+                      "createTime": "2024-01-15T10:30:00.000000Z"
+                    },
+                    "healthStatus": "healthy",
+                    "connection": {
+                      "id": "connection-123",
+                      "projectId": "project-456",
+                      "provider": "salesforce",
+                      "group": {
+                        "groupRef": "group-123",
+                        "groupName": "Acme Corp",
+                        "projectId": "project-456",
+                        "createTime": "2024-01-15T10:30:00.000000Z"
+                      },
+                      "consumer": {
+                        "consumerRef": "consumer-123",
+                        "consumerName": "Jane Smith",
+                        "projectId": "project-456",
+                        "createTime": "2024-01-15T10:30:00.000000Z"
+                      },
+                      "createTime": "2024-01-15T10:30:00.000000Z",
+                      "authScheme": "oauth2/authorizationCode",
+                      "status": "working"
+                    },
+                    "createTime": "2024-01-15T10:30:00.000000Z",
+                    "createdBy": "consumer:consumer-123",
+                    "config": {
+                      "id": "config-123",
+                      "revisionId": "revision-123",
+                      "createTime": "2024-01-15T10:30:00.000000Z",
+                      "createdBy": "consumer:consumer-123",
+                      "content": {
+                        "provider": "salesforce",
+                        "read": {
+                          "objects": {
+                            "account": {
+                              "objectName": "account",
+                              "schedule": "*/15 * * * *",
+                              "destination": "accountWebhook",
+                              "selectedFields": {
+                                "name": true,
+                                "industry": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             }
           },
@@ -31411,8 +32070,8 @@
     },
     "/projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata": {
       "get": {
-        "summary": "Get object metadata via connection",
-        "description": "Retrieves metadata about an object in a customer's SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\n",
+        "summary": "Get object metadata for connection",
+        "description": "Retrieves metadata about an object in a customer's SaaS instance, including its fields.\nThis endpoint only requires that a Connection exists for the given groupRef.\nIt does not apply any object mappings. This endpoint may return nested fields as a part of the response.\nNested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\nCurrently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.\n",
         "tags": [
           "Objects & Fields"
         ],
@@ -31422,7 +32081,7 @@
             "name": "projectIdOrName",
             "in": "path",
             "required": true,
-            "description": "The Ampersand project ID or project name.",
+            "description": "The unique identifier or name of the project.",
             "schema": {
               "type": "string"
             },
@@ -31432,27 +32091,25 @@
             "name": "provider",
             "in": "path",
             "required": true,
-            "description": "The provider name (e.g. `salesforce`, `hubspot`).",
+            "description": "The API Provider",
             "schema": {
               "type": "string"
-            },
-            "example": "salesforce"
+            }
           },
           {
             "name": "objectName",
             "in": "path",
             "required": true,
-            "description": "The native provider object name to retrieve metadata for.",
+            "description": "Object name (mapped or unmapped)",
             "schema": {
               "type": "string"
-            },
-            "example": "contact"
+            }
           },
           {
             "name": "groupRef",
             "in": "query",
-            "required": true,
-            "description": "The ID of the user group whose connection should be used to fetch the metadata.",
+            "required": false,
+            "description": "The groupRef for the connection.",
             "example": "group-123",
             "schema": {
               "type": "string"
@@ -31471,7 +32128,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The retrieved object metadata.",
+            "description": "The retrieved object metadata",
             "content": {
               "application/json": {
                 "schema": {
@@ -31494,7 +32151,6 @@
                     },
                     "mappedObjectName": {
                       "type": "string",
-                      "description": "The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.",
                       "example": "people"
                     },
                     "fields": {
@@ -31584,49 +32240,6 @@
                           }
                         }
                       }
-                    }
-                  }
-                },
-                "example": {
-                  "name": "contact",
-                  "displayName": "Contact",
-                  "fields": {
-                    "firstname": {
-                      "fieldName": "firstname",
-                      "displayName": "First Name",
-                      "valueType": "string",
-                      "providerType": "string",
-                      "readOnly": false,
-                      "isCustom": false,
-                      "isRequired": true
-                    },
-                    "email": {
-                      "fieldName": "email",
-                      "displayName": "Email",
-                      "valueType": "string",
-                      "providerType": "string",
-                      "readOnly": false,
-                      "isCustom": false,
-                      "isRequired": false
-                    },
-                    "lifecyclestage": {
-                      "fieldName": "lifecyclestage",
-                      "displayName": "Lifecycle Stage",
-                      "valueType": "singleSelect",
-                      "providerType": "enumeration",
-                      "readOnly": false,
-                      "isCustom": false,
-                      "isRequired": false,
-                      "values": [
-                        {
-                          "value": "lead",
-                          "displayValue": "Lead"
-                        },
-                        {
-                          "value": "customer",
-                          "displayValue": "Customer"
-                        }
-                      ]
                     }
                   }
                 }
@@ -36858,15 +37471,13 @@
     "/providers": {
       "get": {
         "summary": "List providers",
-        "description": "Returns all supported SaaS providers and their capabilities. The response is a JSON object keyed by provider name (e.g. `salesforce`, `hubspot`). Each value describes the provider's authentication type, supported operations, modules, and configuration options. No authentication is required.\n",
         "operationId": "listProviders",
         "tags": [
           "Provider"
         ],
-        "security": [],
         "responses": {
           "200": {
-            "description": "All available providers and their capabilities.\n",
+            "description": "List of providers & their information",
             "content": {
               "application/json": {
                 "schema": {
@@ -37966,60 +38577,6 @@
                       }
                     }
                   }
-                },
-                "example": {
-                  "salesforce": {
-                    "name": "salesforce",
-                    "displayName": "Salesforce",
-                    "authType": "oauth2",
-                    "baseURL": "https://{{.workspace}}.my.salesforce.com",
-                    "defaultModule": "crm",
-                    "support": {
-                      "read": true,
-                      "write": true,
-                      "delete": true,
-                      "subscribe": true,
-                      "proxy": true,
-                      "bulkWrite": {
-                        "insert": true,
-                        "update": true,
-                        "upsert": true,
-                        "delete": true
-                      },
-                      "search": {
-                        "operators": {
-                          "equals": true
-                        }
-                      }
-                    },
-                    "providerOpts": {}
-                  },
-                  "hubspot": {
-                    "name": "hubspot",
-                    "displayName": "HubSpot",
-                    "authType": "oauth2",
-                    "baseURL": "https://api.hubapi.com",
-                    "defaultModule": "",
-                    "support": {
-                      "read": true,
-                      "write": true,
-                      "delete": true,
-                      "subscribe": true,
-                      "proxy": true,
-                      "bulkWrite": {
-                        "insert": false,
-                        "update": false,
-                        "upsert": false,
-                        "delete": false
-                      },
-                      "search": {
-                        "operators": {
-                          "equals": true
-                        }
-                      }
-                    },
-                    "providerOpts": {}
-                  }
                 }
               }
             }
@@ -38165,18 +38722,16 @@
     "/providers/{provider}": {
       "get": {
         "summary": "Get provider",
-        "description": "Returns information about a single provider. No authentication is required.\n",
         "operationId": "getProvider",
         "tags": [
           "Provider"
         ],
-        "security": [],
         "parameters": [
           {
             "name": "provider",
             "in": "path",
             "required": true,
-            "description": "The provider name (e.g. `salesforce`, `hubspot`).",
+            "description": "The API provider.",
             "example": "hubspot",
             "schema": {
               "type": "string"
@@ -38185,7 +38740,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The requested provider.",
+            "description": "ProviderInfo",
             "content": {
               "application/json": {
                 "schema": {
@@ -67185,7 +67740,7 @@
           "id": {
             "type": "string",
             "description": "The revision ID.",
-            "example": "f0e1d2c3-b4a5-6789-0abc-def123456789"
+            "example": "revision-id-1"
           },
           "specVersion": {
             "type": "string",
@@ -67732,12 +68287,12 @@
           },
           "healthStatus": {
             "type": "string",
+            "description": "The health status of the installation.",
+            "example": "healthy",
             "enum": [
               "healthy",
               "unhealthy"
-            ],
-            "description": "The health status of the installation.",
-            "example": "healthy"
+            ]
           },
           "lastOperationStatus": {
             "type": "string",
@@ -68062,7 +68617,7 @@
           },
           "createTime": {
             "type": "string",
-            "description": "The time the integration was first installed.",
+            "description": "The time the installation was created.",
             "format": "date-time"
           },
           "createdBy": {
@@ -68093,7 +68648,7 @@
               },
               "revisionId": {
                 "type": "string",
-                "description": "The ID of the revision that was current when this config was created or last updated. \n",
+                "description": "The ID of the revision that this config is based on.",
                 "example": "revision-123"
               },
               "createTime": {
@@ -69733,7 +70288,7 @@
           },
           "revisionId": {
             "type": "string",
-            "description": "The ID of the revision that was current when this config was created or last updated. \n",
+            "description": "The ID of the revision that this config is based on.",
             "example": "revision-123"
           },
           "createTime": {
@@ -73245,7 +73800,6 @@
           },
           "mappedObjectName": {
             "type": "string",
-            "description": "The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.",
             "example": "people"
           },
           "fields": {

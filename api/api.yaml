@@ -8,7 +8,7 @@ paths:
   /oauth-connect:
     post:
       operationId: oauthConnect
-      summary: Generate OAuth authorization URL
+      summary: Get URL for OAuth flow
       description: Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).
       tags: ["OAuth"]
       requestBody:
@@ -32,7 +32,7 @@ paths:
                   example: salesforce
                 groupRef:
                   type: string
-                  description: Your application's identifier for the organization or workspace that this connection belongs to (e.g. an org ID or team ID).
+                  description: The ID that your app uses to identify the group of users for this Connection, this can be an Org ID, workspace ID, etc.
                   example: group-123
                 groupName:
                   type: string
@@ -49,54 +49,19 @@ paths:
                 providerWorkspaceRef:
                   type: string
                   description: The identifier for the provider workspace (e.g. the Salesforce subdomain).
-                  example: acme-corp
+                  example: salesforce-instance-domain
                 providerMetadata:
-                  description: Additional provider-specific metadata required by certain providers (e.g., account ID for NetSuite). See provider documentation for which fields are needed.
                   $ref: "#/components/schemas/ProviderMetadata"
-                  example:
-                    accountId:
-                      value: "1234567890"
-                      source: input
                 providerAppId:
                   type: string
                   description:
-                    ID of the provider app, returned from the [Create Provider App endpoint](https://docs.withampersand.com/reference/provider-apps/create-provider-app).
+                    ID of the provider app, returned from a CreateProviderApp call.
                     If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
                   example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
                 enableCSRFProtection:
                   type: boolean
                   description: This boolean flag is used by the UI library internally. Set it to false or omit it when manually calling this API.
                   example: false
-            examples:
-              basicOAuth:
-                summary: Basic OAuth flow (required fields only)
-                value:
-                  projectId: my-project
-                  provider: salesforce
-                  groupRef: group-123
-                  consumerRef: user_123456
-              withProviderWorkspace:
-                summary: With provider workspace and provider app
-                value:
-                  projectId: my-project
-                  provider: salesforce
-                  groupRef: group-123
-                  groupName: Acme Corp
-                  consumerRef: user_123456
-                  consumerName: John Doe
-                  providerWorkspaceRef: acme-corp
-                  providerAppId: 32356abe-d2fd-49c7-9030-abdcbc6456d4
-              withProviderMetadata:
-                summary: With provider metadata (e.g. NetSuite account ID)
-                value:
-                  projectId: my-project
-                  provider: netsuite
-                  groupRef: group-456
-                  consumerRef: user_789012
-                  providerMetadata:
-                    accountId:
-                      value: "1234567890"
-                      source: input
         required: true
       responses:
         200:
@@ -106,7 +71,6 @@ paths:
               schema:
                 type: string
                 description: URL to render
-                example: "https://login.salesforce.com/services/oauth2/authorize?client_id=xxx&redirect_uri=https%3A%2F%2Fapi.withampersand.com%2Fcallbacks%2Fv1%2Foauth&state=xxx"
         400:
           description: Bad Request
           content:
@@ -124,8 +88,7 @@ paths:
     patch:
       operationId: oauthUpdate
       summary: Get URL for updating OAuth connection
-      description: >
-        Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection's credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) instead.
+      description: Generate a URL for the browser to render to kick off OAuth flow that updates an existing connection.
       tags: ["OAuth"]
       parameters:
         - name: projectIdOrName
@@ -133,22 +96,21 @@ paths:
           required: true
           schema:
             type: string
-          description: Ampersand project ID or name.
+          description: Ampersand Project ID or name.
         - name: connectionId
           in: path
           required: true
           schema:
             type: string
-          description: The ID of the connection to update.
+          description: ID of connection to update.
       responses:
         200:
-          description: URL generated successfully
+          description: OAuth update initiated successfully
           content:
             text/plain:
               schema:
                 type: string
                 description: URL to initiate OAuth flow
-                example: "https://login.salesforce.com/services/oauth2/authorize?client_id=xxx&redirect_uri=https%3A%2F%2Fapi.withampersand.com%2Fcallbacks%2Fv1%2Foauth&state=xxx"
         400:
           description: Bad Request
           content:
@@ -906,9 +868,8 @@ paths:
       x-codegen-request-body-name: revision
   /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate:
     get:
-      summary: Get a hydrated revision
-      description: |
-        Returns the integration revision enriched with live field metadata from the consumer's connected SaaS instance, such as available fields, display names, and type for each object defined in the integration.
+      summary: Hydrate a revision
+      description: Hydrate a revision with information from the consumer's SaaS instance.
       operationId: getHydratedRevision
       tags: ["Revision"]
       parameters:
@@ -925,28 +886,37 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
         - name: revisionId
           in: path
           required: true
-          description: The revision ID. You can find this on the integration object's `latestRevision.id` field.
+          description: The revision ID.
           schema:
             type: string
-          example: "f0e1d2c3-b4a5-6789-0abc-def123456789"
         - name: connectionId
           in: query
           required: true
-          description: The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API.
+          description: The connection ID.
           schema:
             type: string
-          example: "1a2b3c4d-5e6f-7890-abcd-ef0123456789"
       responses:
         200:
-          description: Hydrated revision.
+          description: Hydrated revision
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/HydratedRevision"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
@@ -955,7 +925,9 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/integrations/{integrationId}/installations:
     get:
-      summary: List installations
+      summary: List installations for an integration
+      description: |
+        Lists all installations for a specific integration within a project. To list installations across all integrations, use listInstallationsForProject instead.
       operationId: listInstallations
       tags: ["Installation"]
       parameters:
@@ -969,11 +941,13 @@ paths:
         - name: integrationId
           in: path
           required: true
+          description: The unique identifier (UUID) of the integration.
           schema:
             type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
         - name: groupRef
           in: query
-          description: The ID of the user group that has access to this installation.
+          description: The reference ID of a group (a company, team, or workspace in your app). When provided, only returns installations belonging to this group.
           example: group-123
           schema:
             type: string
@@ -986,6 +960,51 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Installation"
+              example:
+                - id: inst-abc-123
+                  projectId: project-456
+                  integrationId: 550e8400-e29b-41d4-a716-446655440000
+                  group:
+                    groupRef: group-123
+                    groupName: Acme Corp
+                    projectId: project-456
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                  healthStatus: healthy
+                  connection:
+                    id: connection-123
+                    projectId: project-456
+                    provider: salesforce
+                    group:
+                      groupRef: group-123
+                      groupName: Acme Corp
+                      projectId: project-456
+                      createTime: "2024-01-15T10:30:00.000000Z"
+                    consumer:
+                      consumerRef: consumer-123
+                      consumerName: Jane Smith
+                      projectId: project-456
+                      createTime: "2024-01-15T10:30:00.000000Z"
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                    authScheme: oauth2/authorizationCode
+                    status: working
+                  createTime: "2024-01-15T10:30:00.000000Z"
+                  createdBy: "consumer:consumer-123"
+                  config:
+                    id: config-123
+                    revisionId: revision-123
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                    createdBy: "consumer:consumer-123"
+                    content:
+                      provider: salesforce
+                      read:
+                        objects:
+                          account:
+                            objectName: account
+                            schedule: "*/15 * * * *"
+                            destination: accountWebhook
+                            selectedFields:
+                              name: true
+                              industry: true
         400:
           description: Bad Request
           content:
@@ -1001,8 +1020,6 @@ paths:
     post:
       summary: Create a new installation
       operationId: createInstallation
-      description: |
-        Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group's default. To create a connection, use the [OAuth Connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) or the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).
       tags: ["Installation"]
       parameters:
         - name: projectIdOrName
@@ -1018,7 +1035,6 @@ paths:
           description: The integration ID.
           schema:
             type: string
-          example: "113e9685-9a51-42cc-8662-9d9725b17f14"
       requestBody:
         content:
           application/json:
@@ -1037,7 +1053,6 @@ paths:
                   description:
                     The ID of the SaaS connection tied to this installation.
                     If omitted the default connection for this group will be used.
-                  example: a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c
                 config:
                   required:
                     - content
@@ -1052,54 +1067,11 @@ paths:
                       type: string
                       description:
                         The person who created the config, in the format
-                        of "consumer:{consumer-id}", "builder:{builder-id}", or "api:{api-caller}".
+                        of "consumer:{consumer-id}" or "builder:{builder-id}".
                       default: "api:create-installation"
                     content:
                       $ref: "../config/config.yaml#/components/schemas/ConfigContent"
-                      description: The content of the config.
                   description: The config of the installation.
-            examples:
-              writeOnly:
-                summary: Minimal write-only installation
-                value:
-                  groupRef: group-123
-                  connectionId: a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c
-                  config:
-                    content:
-                      provider: salesforce
-                      write:
-                        objects:
-                          contacts:
-                            objectName: contacts
-              readWriteAndSubscribe:
-                summary: Read, write, and subscribe
-                value:
-                  groupRef: group-456
-                  connectionId: b2d5f8a3-9e4c-4b7f-8d1a-6c9e2f5b8d4a
-                  config:
-                    content:
-                      provider: salesforce
-                      read:
-                        objects:
-                          contacts:
-                            objectName: contacts
-                            schedule: "*/15 * * * *"
-                            selectedFields:
-                              phone: true
-                              email: true
-                            selectedFieldMappings:
-                              phoneNumber: phone
-                              emailAddress: email
-                      write:
-                        objects:
-                          contacts:
-                            objectName: contacts
-                      subscribe:
-                        objects:
-                          contacts:
-                            objectName: contacts
-                            destination: contactWebhook
-                            inheritFieldsAndMappings: true
         required: true
       responses:
         201:
@@ -1130,6 +1102,8 @@ paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:
     get:
       summary: Get an installation
+      description: |
+        Retrieves a single installation by ID, including its connection details, config, and health status.
       operationId: getInstallation
       tags: ["Installation"]
       parameters:
@@ -1143,15 +1117,17 @@ paths:
         - name: integrationId
           in: path
           required: true
-          description: The integration ID.
+          description: The unique identifier (UUID) of the integration.
           schema:
             type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
         - name: installationId
           in: path
           required: true
-          description: The installation ID.
+          description: The unique identifier (UUID) of the installation.
           schema:
             type: string
+          example: 7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b
       responses:
         200:
           description: The installation
@@ -1159,6 +1135,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Installation"
+              example:
+                id: inst-abc-123
+                projectId: project-456
+                integrationId: 550e8400-e29b-41d4-a716-446655440000
+                group:
+                  groupRef: group-123
+                  groupName: Acme Corp
+                  projectId: project-456
+                  createTime: "2024-01-15T10:30:00.000000Z"
+                healthStatus: healthy
+                connection:
+                  id: connection-123
+                  projectId: project-456
+                  provider: salesforce
+                  group:
+                    groupRef: group-123
+                    groupName: Acme Corp
+                    projectId: project-456
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                  consumer:
+                    consumerRef: consumer-123
+                    consumerName: Jane Smith
+                    projectId: project-456
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                  createTime: "2024-01-15T10:30:00.000000Z"
+                  authScheme: oauth2/authorizationCode
+                  status: working
+                createTime: "2024-01-15T10:30:00.000000Z"
+                createdBy: "consumer:consumer-123"
+                config:
+                  id: config-123
+                  revisionId: revision-123
+                  createTime: "2024-01-15T10:30:00.000000Z"
+                  createdBy: "consumer:consumer-123"
+                  content:
+                    provider: salesforce
+                    read:
+                      objects:
+                        account:
+                          objectName: account
+                          schedule: "*/15 * * * *"
+                          destination: accountWebhook
+                          selectedFields:
+                            name: true
+                            industry: true
         400:
           description: Unprocessable Entity
           content:
@@ -1211,7 +1232,13 @@ paths:
       operationId: updateInstallation
       tags: ["Installation"]
       description: |
-        Update an installation using field masks. Note: subscribe config changes trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take up to 10 minutes.
+        Update an installation config. Use `updateMask` to specify which fields to update; unmasked fields
+        are left unchanged. Each masked field is **replaced**, so provide the complete value for
+        each field you include.
+
+        Updates to subscribe config (`config.content.subscribe.objects` or `config.content.subscribe.objects.<objectName>`)
+        trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take
+        up to 10 minutes.
       parameters:
         - name: projectIdOrName
           in: path
@@ -1248,7 +1275,9 @@ paths:
                   items:
                     type: string
                   description: |
-                    Array of field paths specifying which fields to update. Each path must have a corresponding value in the `installation` object. A field included in `installation` but not listed here will be ignored. Allowed values:
+                    Array of field paths specifying which fields to update. Each path must have a corresponding
+                    value in the `installation` object. A field included in `installation` but not listed here
+                    will be ignored. Allowed values:
                     - `connectionId` - switch the SaaS connection tied to this installation.
                     - `config.createdBy` - change the attribution for who created this config.
                     - `config.content.read.objects.<objectName>` - replace the read config for a single object (e.g. `config.content.read.objects.contacts`).
@@ -1449,38 +1478,39 @@ paths:
       x-codegen-request-body-name: patchObjectConfigContent
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
     get:
-      summary: Get object metadata via installation
+      summary: Get object metadata for installation
       description: |
-        Retrieves metadata about an object in a customer's SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Retrieves metadata about an object in a customer's SaaS instance, including its fields.
+        This endpoint requires that an Installation exists for the given groupRef.
+        It applies object mappings. This endpoint may return nested fields as a part of the response.
+        Nested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Currently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.
       tags: ["Objects & Fields"]
       operationId: getObjectMetadataForInstallation
       parameters:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name.
+          description: The unique identifier or name of the project.
           schema:
             type: string
           example: my-project
         - name: integrationId
           in: path
           required: true
-          description: The unique identifier of the integration.
+          description: The integration ID.
           schema:
             type: string
-          example: "e3a7f9c1-4b2d-4e8a-9f6b-2d5c8a1e3b7f"
         - name: objectName
           in: path
           required: true
-          description: |
-            The name of the object to retrieve metadata for. You can use either the mapped name from your integration config (e.g. `people`) or the native provider object name (e.g. `contact`).
+          description: Object name (mapped or unmapped)
           schema:
             type: string
-          example: account
         - name: groupRef
           in: query
-          required: true
-          description: The ID of the user group that has access to this installation. 
+          required: false
+          description: The groupRef for the installation
           example: group-123
           schema:
             type: string
@@ -1493,45 +1523,11 @@ paths:
             type: boolean
       responses:
         '200':
-          description: The retrieved object metadata.
+          description: The retrieved object metadata
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ObjectMetadata'
-              example:
-                name: "account"
-                displayName: "Account"
-                mappedObjectName: "companies"
-                fields:
-                  name:
-                    fieldName: "name"
-                    displayName: "Account Name"
-                    valueType: "string"
-                    providerType: "string"
-                    readOnly: false
-                    isCustom: false
-                    isRequired: true
-                  billingcity:
-                    fieldName: "billingcity"
-                    displayName: "Billing City"
-                    valueType: "string"
-                    providerType: "string"
-                    readOnly: false
-                    isCustom: false
-                    isRequired: false
-                  industry:
-                    fieldName: "industry"
-                    displayName: "Industry"
-                    valueType: "singleSelect"
-                    providerType: "picklist"
-                    readOnly: false
-                    isCustom: false
-                    isRequired: false
-                    values:
-                      - value: "technology"
-                        displayValue: "Technology"
-                      - value: "finance"
-                        displayValue: "Finance"
         default:
           description: Error
           content:
@@ -1540,9 +1536,9 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/installations:
     get:
-      summary: List installations for a project
+      summary: List all installations
       description: |
-        Lists all installations for a given project and query parameters.
+        Lists all installations across every integration in a project, giving you a complete view of all active customer integrations. To narrow results to a single integration, use listInstallations instead.
       operationId: listInstallationsForProject
       tags: ["Installation"]
       parameters:
@@ -1555,8 +1551,8 @@ paths:
           example: my-project
         - name: groupRef
           in: query
-          description: The group ref to filter by.
-          example: groupRef123
+          description: The reference ID of a group (a company, team, or workspace in your app). When provided, only returns installations belonging to this group.
+          example: group-123
           schema:
             type: string
       responses:
@@ -1568,6 +1564,51 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Installation"
+              example:
+                - id: inst-abc-123
+                  projectId: project-456
+                  integrationId: 550e8400-e29b-41d4-a716-446655440000
+                  group:
+                    groupRef: group-123
+                    groupName: Acme Corp
+                    projectId: project-456
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                  healthStatus: healthy
+                  connection:
+                    id: connection-123
+                    projectId: project-456
+                    provider: salesforce
+                    group:
+                      groupRef: group-123
+                      groupName: Acme Corp
+                      projectId: project-456
+                      createTime: "2024-01-15T10:30:00.000000Z"
+                    consumer:
+                      consumerRef: consumer-123
+                      consumerName: Jane Smith
+                      projectId: project-456
+                      createTime: "2024-01-15T10:30:00.000000Z"
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                    authScheme: oauth2/authorizationCode
+                    status: working
+                  createTime: "2024-01-15T10:30:00.000000Z"
+                  createdBy: "consumer:consumer-123"
+                  config:
+                    id: config-123
+                    revisionId: revision-123
+                    createTime: "2024-01-15T10:30:00.000000Z"
+                    createdBy: "consumer:consumer-123"
+                    content:
+                      provider: salesforce
+                      read:
+                        objects:
+                          account:
+                            objectName: account
+                            schedule: "*/15 * * * *"
+                            destination: accountWebhook
+                            selectedFields:
+                              name: true
+                              industry: true
         default:
           description: Error
           content:
@@ -1576,37 +1617,39 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata:
     get:
-      summary: Get object metadata via connection
+      summary: Get object metadata for connection
       description: |
-        Retrieves metadata about an object in a customer's SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Retrieves metadata about an object in a customer's SaaS instance, including its fields.
+        This endpoint only requires that a Connection exists for the given groupRef.
+        It does not apply any object mappings. This endpoint may return nested fields as a part of the response.
+        Nested fields are returned in JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+        Currently, nested fields are only returned for Salesforce, but this may be expanded to other providers in the future.
       tags: ["Objects & Fields"]
       operationId: getObjectMetadataForConnection
       parameters:
         - name: projectIdOrName
           in: path
           required: true
-          description: The Ampersand project ID or project name.
+          description: The unique identifier or name of the project.
           schema:
             type: string
           example: my-project
         - name: provider
           in: path
           required: true
-          description: The provider name (e.g. `salesforce`, `hubspot`).
+          description: The API Provider
           schema:
             type: string
-          example: salesforce
         - name: objectName
           in: path
           required: true
-          description: The native provider object name to retrieve metadata for.
+          description: Object name (mapped or unmapped)
           schema:
             type: string
-          example: contact
         - name: groupRef
           in: query
-          required: true
-          description: The ID of the user group whose connection should be used to fetch the metadata.
+          required: false
+          description: The groupRef for the connection.
           example: group-123
           schema:
             type: string
@@ -1619,44 +1662,11 @@ paths:
             type: boolean
       responses:
         '200':
-          description: The retrieved object metadata.
+          description: The retrieved object metadata
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ObjectMetadata'
-              example:
-                name: "contact"
-                displayName: "Contact"
-                fields:
-                  firstname:
-                    fieldName: "firstname"
-                    displayName: "First Name"
-                    valueType: "string"
-                    providerType: "string"
-                    readOnly: false
-                    isCustom: false
-                    isRequired: true
-                  email:
-                    fieldName: "email"
-                    displayName: "Email"
-                    valueType: "string"
-                    providerType: "string"
-                    readOnly: false
-                    isCustom: false
-                    isRequired: false
-                  lifecyclestage:
-                    fieldName: "lifecyclestage"
-                    displayName: "Lifecycle Stage"
-                    valueType: "singleSelect"
-                    providerType: "enumeration"
-                    readOnly: false
-                    isCustom: false
-                    isRequired: false
-                    values:
-                      - value: "lead"
-                        displayValue: "Lead"
-                      - value: "customer"
-                        displayValue: "Customer"
         default:
           description: Error
           content:
@@ -2204,62 +2214,15 @@ paths:
   /providers:
     get:
       summary: List providers
-      description: |
-        Returns all supported SaaS providers and their capabilities. The response is a JSON object keyed by provider name (e.g. `salesforce`, `hubspot`). Each value describes the provider's authentication type, supported operations, modules, and configuration options. No authentication is required.
       operationId: listProviders
       tags: ["Provider"]
-      security: []
       responses:
         200:
-          description: |
-            All available providers and their capabilities.
+          description: List of providers & their information
           content:
             application/json:
               schema:
                 $ref: "../catalog/catalog.yaml#/components/schemas/CatalogType"
-              example:
-                salesforce:
-                  name: salesforce
-                  displayName: Salesforce
-                  authType: oauth2
-                  baseURL: "https://{{.workspace}}.my.salesforce.com"
-                  defaultModule: crm
-                  support:
-                    read: true
-                    write: true
-                    delete: true
-                    subscribe: true
-                    proxy: true
-                    bulkWrite:
-                      insert: true
-                      update: true
-                      upsert: true
-                      delete: true
-                    search:
-                      operators:
-                        equals: true
-                  providerOpts: {}
-                hubspot:
-                  name: hubspot
-                  displayName: HubSpot
-                  authType: oauth2
-                  baseURL: "https://api.hubapi.com"
-                  defaultModule: ""
-                  support:
-                    read: true
-                    write: true
-                    delete: true
-                    subscribe: true
-                    proxy: true
-                    bulkWrite:
-                      insert: false
-                      update: false
-                      upsert: false
-                      delete: false
-                    search:
-                      operators:
-                        equals: true
-                  providerOpts: {}
         default:
           description: Error
           content:
@@ -2269,22 +2232,19 @@ paths:
   /providers/{provider}:
     get:
       summary: Get provider
-      description: |
-        Returns information about a single provider. No authentication is required.
       operationId: getProvider
       tags: ["Provider"]
-      security: []
       parameters:
         - name: provider
           in: path
           required: true
-          description: The provider name (e.g. `salesforce`, `hubspot`).
+          description: The API provider.
           example: hubspot
           schema:
             type: string
       responses:
         200:
-          description: The requested provider.
+          description: ProviderInfo
           content:
             application/json:
               schema:
@@ -4867,7 +4827,7 @@ components:
         id:
           type: string
           description: The revision ID.
-          example: "f0e1d2c3-b4a5-6789-0abc-def123456789"
+          example: revision-id-1
         specVersion:
           type: string
           description: The spec version string.
@@ -4905,9 +4865,11 @@ components:
           $ref: "#/components/schemas/Group"
         healthStatus:
           type: string
-          enum: [healthy, unhealthy]
           description: The health status of the installation.
           example: healthy
+          enum:
+            - healthy
+            - unhealthy
         lastOperationStatus:
           type: string
           enum: [success, failure, in_progress]
@@ -4918,7 +4880,7 @@ components:
           $ref: "#/components/schemas/Connection"
         createTime:
           type: string
-          description: The time the integration was first installed.
+          description: The time the installation was created.
           format: date-time
         createdBy:
           type: string
@@ -4976,8 +4938,7 @@ components:
           example: config-123
         revisionId:
           type: string
-          description: >
-            The ID of the revision that was current when this config was created or last updated. 
+          description: The ID of the revision that this config is based on.
           example: revision-123
         createTime:
           type: string
@@ -5795,7 +5756,6 @@ components:
           example: "Contact"
         mappedObjectName:
           type: string
-          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
           example: "people"
         fields:
           type: object
