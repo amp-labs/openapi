@@ -303,6 +303,7 @@ paths:
     patch:
       summary: Update a project
       operationId: updateProject
+      description: Update a project's mutable fields using field masks. Currently, the updatable fields are `appName` (the display name shown to end users) and `name` (the unique project identifier).
       tags: ["Project"]
       parameters:
         - name: projectIdOrName
@@ -326,23 +327,31 @@ paths:
                   items:
                     type: string
                   description: |
-                    Array of field paths specifying which fields to update. Allowed values include:
-                    - appName
-                    - name
-                  example: ["appName", "name"]
+                    Array of field paths specifying which fields to update. Each path must have a
+                    corresponding value in the `project` object. A field included in `project` but
+                    not listed here will be ignored. Allowed values:
+                    - `appName` - the display name of the application, shown to end users during the connection flow.
+                    - `name` - the unique project identifier (must be unique within your organization).
+                  example: ["appName"]
                 project:
                   type: object
                   properties:
                     appName:
                       type: string
-                      description: The app name.
+                      description: The display name of the application, shown to end users during the connection flow.
                       example: MailMonkey
                     name:
                       type: string
-                      description: The project name.
+                      description: The unique name for the project. Must be unique within the organization.
                       example: mailmonkey-staging
-                  description: The project fields to update. (Only include the
-                    fields you'd like to update.)
+                  description: |
+                    The project fields to update. Only fields whose paths are listed in `updateMask`
+                    will be applied; all other fields in this object are ignored.
+            example:
+              updateMask:
+                - "appName"
+              project:
+                appName: "MailMonkey Pro"
         required: true
       responses:
         200:
@@ -351,18 +360,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Project"
-        400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
-        422:
-          description: Unprocessable Entity
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
