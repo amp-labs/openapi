@@ -183,13 +183,13 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     post:
       summary: Create a new project
+      description: Creates a new project within an organization. A project is a container for provider apps, integrations, and connections. 
       operationId: createProject
       tags: ["Project"]
       requestBody:
         content:
           application/json:
             schema:
-              # TODO(ENG-1029): once all projects have been backfilled with org ID, add orgId to required list
               required:
                 - appName
                 - name
@@ -198,26 +198,35 @@ paths:
               properties:
                 appName:
                   type: string
-                  description: The app name.
+                  description: The display name of your application, shown to end users during the connection flow.
+                  minLength: 1
+                  maxLength: 128
                   example: MailMonkey
                 name:
                   type: string
-                  description: The project name. Must be alphanumerics and hyphens only. Project names will be save in lowercase.
+                  description: The unique name for the project. Must contain only letters, numbers, and hyphens. Values are normalized to lowercase on save.
+                  pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$"
+                  minLength: 2
+                  maxLength: 128
                   example: mailmonkey-staging
                 orgId:
                   type: string
-                  description: The organization ID.
+                  description: The ID of the organization this project belongs to. Obtain this from the Ampersand Dashboard or by calling `GET /orgs`.
                   example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+            example:
+              appName: MailMonkey
+              name: mailmonkey-staging
+              orgId: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
         required: true
       responses:
         201:
-          description: The newly created project
+          description: The newly created project.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Project"
         422:
-          description: Unprocessable Entity
+          description: Unprocessable Entity — the request body failed validation (e.g. invalid characters in project name, missing required fields).
           content:
             application/problem+json:
               schema:
@@ -4851,24 +4860,24 @@ components:
         - createTime
         - id
         - name
-      # TODO(ENG-1029): once all projects have been backfilled with org ID, add orgId to required list
+        - orgId
       type: object
       properties:
         id:
           type: string
-          description: The project ID.
-          example: my-project
+          description: The unique identifier for the project.
+          example: proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
         name:
           type: string
-          description: The project name.
+          description: The unique name for the project.
           example: mailmonkey-staging
         appName:
           type: string
-          description: The name of the application, which is displayed to end users.
+          description: The display name of the application, shown to end users during the connection flow.
           example: MailMonkey
         orgId:
           type: string
-          description: The organization ID that this project belongs to.
+          description: The ID of the organization that this project belongs to.
           example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
         createTime:
           type: string
@@ -4880,18 +4889,18 @@ components:
           format: date-time
         entitlements:
           type: object
-          description: The entitlements for the project.
+          description: Plan-based feature flags for the project. These are managed by Ampersand and cannot be set via the API.
           properties:
             brandingRemoval:
               type: object
               required:
                 - value
               x-go-type-skip-optional-pointer: true
-              description: Whether branding can be removed from the UI library.
+              description: Controls whether Ampersand branding is removed from the embeddable UI components.
               properties:
                 value:
                   type: boolean
-                  description: Whether branding has been removed from the project.
+                  description: True if Ampersand branding has been removed for this project.
     ProviderApp:
       title: Provider App
       required:
