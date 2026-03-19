@@ -241,6 +241,7 @@ paths:
   /projects/{projectIdOrName}:
     get:
       summary: Get a project
+      description: Get a project by its ID or name.
       operationId: getProject
       tags: ["Project"]
       parameters:
@@ -254,22 +255,17 @@ paths:
         - name: includeEntitlements
           in: query
           required: false
+          description: If true, the response includes the project's entitlements (plan-based feature flags). Defaults to false.
           schema:
             type: boolean
             default: false
       responses:
         200:
-          description: Project
+          description: The requested project.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Project"
-        404:
-          description: Project not found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
         default:
           description: Error
           content:
