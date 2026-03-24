@@ -6180,7 +6180,7 @@ components:
           description: Optional description of the field
         valueType:
           type: string
-          description: The data type of the field. Valid values are string, boolean, date, datetime, singleSelect, multiSelect, int, float
+          description: The data type of the field. Valid values are string, boolean, date, datetime, singleSelect, multiSelect, int, float, reference
           example: "string"
         required:
           type: boolean

@@ -479,6 +479,7 @@ components:
             - datetime
             - int
             - float
+            - reference
             - other
           x-go-type-skip-optional-pointer: true
         providerType:
