@@ -2793,7 +2793,7 @@ paths:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
     patch:
       summary: Update a connection.
-      description: Update an existing connection.
+      description: Rotate credentials or update metadata (such as the provider workspace reference) for an existing connection.
       operationId: updateConnection
       tags: ["Connection"]
       parameters:
@@ -2802,19 +2802,42 @@ paths:
           required: true
           schema:
             type: string
-          description: Project ID or Name.
+          description: The Ampersand project ID or project name.
+          example: my-project
         - name: connectionId
           in: path
           required: true
           schema:
             type: string
-          description: Connection ID.
+          description: The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections).
+          example: connection-123
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateConnectionRequest'
+            examples:
+              rotateApiKey:
+                summary: Rotate an API key
+                value:
+                  updateMask: ["apiKey"]
+                  connection:
+                    apiKey: "new-api-key-value"
+              updateBasicAuth:
+                summary: Update basic auth credentials
+                value:
+                  updateMask: ["basicAuth"]
+                  connection:
+                    basicAuth:
+                      username: "new-username"
+                      password: "new-password"
+              updateWorkspaceRef:
+                summary: Update provider workspace reference
+                value:
+                  updateMask: ["providerWorkspaceRef"]
+                  connection:
+                    providerWorkspaceRef: "new-workspace-id"
       responses:
         '200':
           description: Connection updated successfully.
@@ -2822,14 +2845,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Connection'
+              example:
+                id: "c3a1f9d2-7b4e-4f8a-9e6d-2c5b8a3f1e7d"
+                projectId: "a1b2c3d4-e5f6-4789-a012-3456789abcde"
+                provider: "salesforce"
+                group:
+                  groupRef: "8f2e4a6b-1c3d-4e5f-9a7b-0d8e6f2c4a1b"
+                  groupName: "my-group"
+                consumer:
+                  consumerRef: "d4e5f6a7-b8c9-4d0e-a1f2-3b4c5d6e7f8a"
+                  consumerName: "my-consumer"
+                providerWorkspaceRef: "my-org.my.salesforce.com"
+                authScheme: "apiKey"
+                status: "working"
+                createTime: "2023-07-13T21:34:44.816354Z"
+                updateTime: "2024-01-15T10:22:33.000000Z"
         400:
-          description: Bad request.
+          description: Invalid update mask or request body. The response includes the list of allowed mask values.
           content:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+              example:
+                type: "about:blank"
+                title: "Bad Request"
+                status: 400
+                detail: "Invalid update mask"
+                subsystem: "api"
+                time: "2024-04-22T18:55:28.456076Z"
+                requestId: "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                remedy: "Allowed masks: 'providerWorkspaceRef, providerMetadata, apiKey, basicAuth, oauth2ClientCredentials, oauth2PasswordCredentials'"
+                retryable: false
         default:
-          description: Error
+          description: Error (e.g. connection not found, auth scheme mismatch, or server error).
           content:
             application/problem+json:
               schema:
@@ -5298,6 +5346,7 @@ components:
           description: The scopes for the tokens.
     UpdateConnectionRequest:
       title: Update Connection Request
+      description: Specify which fields to update in `updateMask` and provide corresponding values in `connection`. Fields in `connection` not listed in `updateMask` are ignored.
       type: object
       required:
         - updateMask
@@ -5307,15 +5356,15 @@ components:
           type: array
           items:
             type: string
-          description: |
-            Array of field paths specifying which fields to update. Allowed values include:
-            - providerWorkspaceRef
-            - providerMetadata
-            - apiKey
-            - basicAuth
-            - oauth2ClientCredentials
-            - oauth2PasswordCredentials
-          example: ["providerWorkspaceRef", "providerMetadata"]
+            enum:
+              - providerWorkspaceRef
+              - providerMetadata
+              - apiKey
+              - basicAuth
+              - oauth2ClientCredentials
+              - oauth2PasswordCredentials
+          description: Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme.
+          example: ["apiKey"]
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
     ConnectionRequest:
