@@ -190,7 +190,7 @@
                             }
                           }
                         },
-                        "filter": {
+                        "fieldFilters": {
                           "type": "array",
                           "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                           "x-go-type-skip-optional-pointer": true,
@@ -225,7 +225,7 @@
                         }
                       }
                     },
-                    "filter": {
+                    "fieldFilters": {
                       "type": "array",
                       "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                       "x-go-type-skip-optional-pointer": true,
@@ -620,7 +620,7 @@
                         }
                       }
                     },
-                    "filter": {
+                    "fieldFilters": {
                       "type": "array",
                       "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                       "x-go-type-skip-optional-pointer": true,
@@ -655,7 +655,7 @@
                     }
                   }
                 },
-                "filter": {
+                "fieldFilters": {
                   "type": "array",
                   "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                   "x-go-type-skip-optional-pointer": true,
@@ -855,7 +855,7 @@
                   }
                 }
               },
-              "filter": {
+              "fieldFilters": {
                 "type": "array",
                 "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                 "x-go-type-skip-optional-pointer": true,
@@ -890,7 +890,7 @@
               }
             }
           },
-          "filter": {
+          "fieldFilters": {
             "type": "array",
             "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
             "x-go-type-skip-optional-pointer": true,
@@ -1856,7 +1856,7 @@
                                 }
                               }
                             },
-                            "filter": {
+                            "fieldFilters": {
                               "type": "array",
                               "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                               "x-go-type-skip-optional-pointer": true,
@@ -1891,7 +1891,7 @@
                             }
                           }
                         },
-                        "filter": {
+                        "fieldFilters": {
                           "type": "array",
                           "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                           "x-go-type-skip-optional-pointer": true,
@@ -2286,7 +2286,7 @@
                                     }
                                   }
                                 },
-                                "filter": {
+                                "fieldFilters": {
                                   "type": "array",
                                   "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                                   "x-go-type-skip-optional-pointer": true,
@@ -2321,7 +2321,7 @@
                                 }
                               }
                             },
-                            "filter": {
+                            "fieldFilters": {
                               "type": "array",
                               "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                               "x-go-type-skip-optional-pointer": true,
@@ -2531,7 +2531,7 @@
                                         }
                                       }
                                     },
-                                    "filter": {
+                                    "fieldFilters": {
                                       "type": "array",
                                       "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                                       "x-go-type-skip-optional-pointer": true,
@@ -2566,7 +2566,7 @@
                                     }
                                   }
                                 },
-                                "filter": {
+                                "fieldFilters": {
                                   "type": "array",
                                   "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                                   "x-go-type-skip-optional-pointer": true,
@@ -3422,7 +3422,7 @@
                             }
                           }
                         },
-                        "filter": {
+                        "fieldFilters": {
                           "type": "array",
                           "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                           "x-go-type-skip-optional-pointer": true,
@@ -3457,7 +3457,7 @@
                         }
                       }
                     },
-                    "filter": {
+                    "fieldFilters": {
                       "type": "array",
                       "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                       "x-go-type-skip-optional-pointer": true,
@@ -3667,7 +3667,7 @@
                                 }
                               }
                             },
-                            "filter": {
+                            "fieldFilters": {
                               "type": "array",
                               "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                               "x-go-type-skip-optional-pointer": true,
@@ -3702,7 +3702,7 @@
                             }
                           }
                         },
-                        "filter": {
+                        "fieldFilters": {
                           "type": "array",
                           "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                           "x-go-type-skip-optional-pointer": true,
@@ -3917,7 +3917,7 @@
                       }
                     }
                   },
-                  "filter": {
+                  "fieldFilters": {
                     "type": "array",
                     "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                     "x-go-type-skip-optional-pointer": true,
@@ -3952,7 +3952,7 @@
                   }
                 }
               },
-              "filter": {
+              "fieldFilters": {
                 "type": "array",
                 "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                 "x-go-type-skip-optional-pointer": true,
@@ -5112,7 +5112,7 @@
                                 }
                               }
                             },
-                            "filter": {
+                            "fieldFilters": {
                               "type": "array",
                               "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
                               "x-go-type-skip-optional-pointer": true,
@@ -5147,7 +5147,7 @@
                             }
                           }
                         },
-                        "filter": {
+                        "fieldFilters": {
                           "type": "array",
                           "description": "Filters to apply when reading records during incremental reads and backfill. Multiple conditions are joined by AND. Each field can only have one condition.\n",
                           "x-go-type-skip-optional-pointer": true,
@@ -5543,7 +5543,7 @@
               }
             }
           },
-          "filter": {
+          "fieldFilters": {
             "type": "array",
             "description": "Filters to apply only during backfill. Multiple conditions are joined by AND. Use this when you want different filter behavior for backfill vs. incremental reads.\n",
             "x-go-type-skip-optional-pointer": true,

@@ -1016,12 +1016,24 @@
           {
             "type": "object",
             "properties": {
-              "error": {
+              "errors": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 },
                 "description": "Array of error messages describing the connection error.",
+                "example": [
+                  "Authentication failed",
+                  "Token refresh error"
+                ]
+              },
+              "error": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Deprecated. Use `errors` instead. Array of error messages describing the connection error. Kept for backward compatibility.",
+                "deprecated": true,
                 "example": [
                   "Authentication failed",
                   "Token refresh error"
@@ -2167,12 +2179,24 @@
               {
                 "type": "object",
                 "properties": {
-                  "error": {
+                  "errors": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     },
                     "description": "Array of error messages describing the connection error.",
+                    "example": [
+                      "Authentication failed",
+                      "Token refresh error"
+                    ]
+                  },
+                  "error": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Deprecated. Use `errors` instead. Array of error messages describing the connection error. Kept for backward compatibility.",
+                    "deprecated": true,
                     "example": [
                       "Authentication failed",
                       "Token refresh error"
