@@ -407,6 +407,8 @@ paths:
                     example:
                       - read
                       - write
+                metadata:
+                  $ref: "#/components/schemas/ProviderAppMetadata"
         required: true
       responses:
         200:
@@ -508,6 +510,7 @@ paths:
                     - clientSecret
                     - provider
                     - scopes
+                    - metadata
                   example: ["externalRef", "clientId"]
                 providerApp:
                   type: object
@@ -538,6 +541,8 @@ paths:
                         example:
                           - read
                           - write
+                    metadata:
+                      $ref: "#/components/schemas/ProviderAppMetadata"
                   description:
                     The provider app fields to update. (Only include the
                     fields you'd like to update.)
@@ -4534,6 +4539,8 @@ components:
               - oauth
               - offline
               - crm.read
+        metadata:
+          $ref: "#/components/schemas/ProviderAppMetadata"
         createTime:
           type: string
           description: The time the provider app was created.
@@ -4542,6 +4549,25 @@ components:
           type: string
           description: The time the provider app was updated.
           format: date-time
+    ProviderAppMetadata:
+      title: Provider App Metadata
+      type: object
+      description: Provider-specific configuration that extends the standard OAuth flow.
+      properties:
+        authQueryParams:
+          type: object
+          description: Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            optional_scope:
+              - automation.sequences.read
+        packageInstallUrl:
+          type: string
+          description: URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).
+          example: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
     Integration:
       title: Integration
       required:

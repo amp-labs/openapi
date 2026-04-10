@@ -3431,6 +3431,33 @@
                           ]
                         }
                       },
+                      "metadata": {
+                        "title": "Provider App Metadata",
+                        "type": "object",
+                        "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                        "properties": {
+                          "authQueryParams": {
+                            "type": "object",
+                            "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                            "additionalProperties": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "example": {
+                              "optional_scope": [
+                                "automation.sequences.read"
+                              ]
+                            }
+                          },
+                          "packageInstallUrl": {
+                            "type": "string",
+                            "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                            "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                          }
+                        }
+                      },
                       "createTime": {
                         "type": "string",
                         "description": "The time the provider app was created.",
@@ -3967,6 +3994,33 @@
                         "write"
                       ]
                     }
+                  },
+                  "metadata": {
+                    "title": "Provider App Metadata",
+                    "type": "object",
+                    "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                    "properties": {
+                      "authQueryParams": {
+                        "type": "object",
+                        "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                        "additionalProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "example": {
+                          "optional_scope": [
+                            "automation.sequences.read"
+                          ]
+                        }
+                      },
+                      "packageInstallUrl": {
+                        "type": "string",
+                        "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                        "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                      }
+                    }
                   }
                 }
               }
@@ -4025,6 +4079,33 @@
                           "offline",
                           "crm.read"
                         ]
+                      }
+                    },
+                    "metadata": {
+                      "title": "Provider App Metadata",
+                      "type": "object",
+                      "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                      "properties": {
+                        "authQueryParams": {
+                          "type": "object",
+                          "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                          "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "example": {
+                            "optional_scope": [
+                              "automation.sequences.read"
+                            ]
+                          }
+                        },
+                        "packageInstallUrl": {
+                          "type": "string",
+                          "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                          "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                        }
                       }
                     },
                     "createTime": {
@@ -5366,7 +5447,7 @@
                     "items": {
                       "type": "string"
                     },
-                    "description": "Array of field paths specifying which fields to update. Allowed values include:\n- externalRef\n- clientId\n- clientSecret\n- provider\n- scopes\n",
+                    "description": "Array of field paths specifying which fields to update. Allowed values include:\n- externalRef\n- clientId\n- clientSecret\n- provider\n- scopes\n- metadata\n",
                     "example": [
                       "externalRef",
                       "clientId"
@@ -5404,6 +5485,33 @@
                             "read",
                             "write"
                           ]
+                        }
+                      },
+                      "metadata": {
+                        "title": "Provider App Metadata",
+                        "type": "object",
+                        "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                        "properties": {
+                          "authQueryParams": {
+                            "type": "object",
+                            "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                            "additionalProperties": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "example": {
+                              "optional_scope": [
+                                "automation.sequences.read"
+                              ]
+                            }
+                          },
+                          "packageInstallUrl": {
+                            "type": "string",
+                            "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                            "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                          }
                         }
                       }
                     },
@@ -5466,6 +5574,33 @@
                           "offline",
                           "crm.read"
                         ]
+                      }
+                    },
+                    "metadata": {
+                      "title": "Provider App Metadata",
+                      "type": "object",
+                      "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                      "properties": {
+                        "authQueryParams": {
+                          "type": "object",
+                          "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                          "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "example": {
+                            "optional_scope": [
+                              "automation.sequences.read"
+                            ]
+                          }
+                        },
+                        "packageInstallUrl": {
+                          "type": "string",
+                          "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                          "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                        }
                       }
                     },
                     "createTime": {
@@ -13633,6 +13768,33 @@
                                   ]
                                 }
                               },
+                              "metadata": {
+                                "title": "Provider App Metadata",
+                                "type": "object",
+                                "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                                "properties": {
+                                  "authQueryParams": {
+                                    "type": "object",
+                                    "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                    "additionalProperties": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "example": {
+                                      "optional_scope": [
+                                        "automation.sequences.read"
+                                      ]
+                                    }
+                                  },
+                                  "packageInstallUrl": {
+                                    "type": "string",
+                                    "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                                    "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                                  }
+                                }
+                              },
                               "createTime": {
                                 "type": "string",
                                 "description": "The time the provider app was created.",
@@ -17322,6 +17484,33 @@
                                 ]
                               }
                             },
+                            "metadata": {
+                              "title": "Provider App Metadata",
+                              "type": "object",
+                              "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                              "properties": {
+                                "authQueryParams": {
+                                  "type": "object",
+                                  "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                  "additionalProperties": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "example": {
+                                    "optional_scope": [
+                                      "automation.sequences.read"
+                                    ]
+                                  }
+                                },
+                                "packageInstallUrl": {
+                                  "type": "string",
+                                  "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                                  "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                                }
+                              }
+                            },
                             "createTime": {
                               "type": "string",
                               "description": "The time the provider app was created.",
@@ -19947,6 +20136,33 @@
                                   "offline",
                                   "crm.read"
                                 ]
+                              }
+                            },
+                            "metadata": {
+                              "title": "Provider App Metadata",
+                              "type": "object",
+                              "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                              "properties": {
+                                "authQueryParams": {
+                                  "type": "object",
+                                  "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                  "additionalProperties": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "example": {
+                                    "optional_scope": [
+                                      "automation.sequences.read"
+                                    ]
+                                  }
+                                },
+                                "packageInstallUrl": {
+                                  "type": "string",
+                                  "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                                  "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                                }
                               }
                             },
                             "createTime": {
@@ -22851,6 +23067,33 @@
                                 ]
                               }
                             },
+                            "metadata": {
+                              "title": "Provider App Metadata",
+                              "type": "object",
+                              "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                              "properties": {
+                                "authQueryParams": {
+                                  "type": "object",
+                                  "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                  "additionalProperties": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "example": {
+                                    "optional_scope": [
+                                      "automation.sequences.read"
+                                    ]
+                                  }
+                                },
+                                "packageInstallUrl": {
+                                  "type": "string",
+                                  "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                                  "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                                }
+                              }
+                            },
                             "createTime": {
                               "type": "string",
                               "description": "The time the provider app was created.",
@@ -25645,6 +25888,33 @@
                                   "offline",
                                   "crm.read"
                                 ]
+                              }
+                            },
+                            "metadata": {
+                              "title": "Provider App Metadata",
+                              "type": "object",
+                              "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                              "properties": {
+                                "authQueryParams": {
+                                  "type": "object",
+                                  "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                  "additionalProperties": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "example": {
+                                    "optional_scope": [
+                                      "automation.sequences.read"
+                                    ]
+                                  }
+                                },
+                                "packageInstallUrl": {
+                                  "type": "string",
+                                  "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                                  "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                                }
                               }
                             },
                             "createTime": {
@@ -28582,6 +28852,33 @@
                                     "offline",
                                     "crm.read"
                                   ]
+                                }
+                              },
+                              "metadata": {
+                                "title": "Provider App Metadata",
+                                "type": "object",
+                                "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                                "properties": {
+                                  "authQueryParams": {
+                                    "type": "object",
+                                    "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                    "additionalProperties": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "example": {
+                                      "optional_scope": [
+                                        "automation.sequences.read"
+                                      ]
+                                    }
+                                  },
+                                  "packageInstallUrl": {
+                                    "type": "string",
+                                    "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                                    "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                                  }
                                 }
                               },
                               "createTime": {
@@ -42117,6 +42414,33 @@
                               ]
                             }
                           },
+                          "metadata": {
+                            "title": "Provider App Metadata",
+                            "type": "object",
+                            "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                            "properties": {
+                              "authQueryParams": {
+                                "type": "object",
+                                "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                "additionalProperties": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "example": {
+                                  "optional_scope": [
+                                    "automation.sequences.read"
+                                  ]
+                                }
+                              },
+                              "packageInstallUrl": {
+                                "type": "string",
+                                "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                                "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                              }
+                            }
+                          },
                           "createTime": {
                             "type": "string",
                             "description": "The time the provider app was created.",
@@ -43145,6 +43469,33 @@
                               "offline",
                               "crm.read"
                             ]
+                          }
+                        },
+                        "metadata": {
+                          "title": "Provider App Metadata",
+                          "type": "object",
+                          "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                          "properties": {
+                            "authQueryParams": {
+                              "type": "object",
+                              "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                              "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "example": {
+                                "optional_scope": [
+                                  "automation.sequences.read"
+                                ]
+                              }
+                            },
+                            "packageInstallUrl": {
+                              "type": "string",
+                              "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                              "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                            }
                           }
                         },
                         "createTime": {
@@ -44308,6 +44659,33 @@
                             ]
                           }
                         },
+                        "metadata": {
+                          "title": "Provider App Metadata",
+                          "type": "object",
+                          "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                          "properties": {
+                            "authQueryParams": {
+                              "type": "object",
+                              "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                              "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "example": {
+                                "optional_scope": [
+                                  "automation.sequences.read"
+                                ]
+                              }
+                            },
+                            "packageInstallUrl": {
+                              "type": "string",
+                              "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                              "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                            }
+                          }
+                        },
                         "createTime": {
                           "type": "string",
                           "description": "The time the provider app was created.",
@@ -45350,6 +45728,33 @@
                               "offline",
                               "crm.read"
                             ]
+                          }
+                        },
+                        "metadata": {
+                          "title": "Provider App Metadata",
+                          "type": "object",
+                          "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                          "properties": {
+                            "authQueryParams": {
+                              "type": "object",
+                              "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                              "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "example": {
+                                "optional_scope": [
+                                  "automation.sequences.read"
+                                ]
+                              }
+                            },
+                            "packageInstallUrl": {
+                              "type": "string",
+                              "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                              "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                            }
                           }
                         },
                         "createTime": {
@@ -65393,6 +65798,33 @@
               ]
             }
           },
+          "metadata": {
+            "title": "Provider App Metadata",
+            "type": "object",
+            "description": "Provider-specific configuration that extends the standard OAuth flow.",
+            "properties": {
+              "authQueryParams": {
+                "type": "object",
+                "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "optional_scope": [
+                    "automation.sequences.read"
+                  ]
+                }
+              },
+              "packageInstallUrl": {
+                "type": "string",
+                "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+              }
+            }
+          },
           "createTime": {
             "type": "string",
             "description": "The time the provider app was created.",
@@ -65402,6 +65834,33 @@
             "type": "string",
             "description": "The time the provider app was updated.",
             "format": "date-time"
+          }
+        }
+      },
+      "ProviderAppMetadata": {
+        "title": "Provider App Metadata",
+        "type": "object",
+        "description": "Provider-specific configuration that extends the standard OAuth flow.",
+        "properties": {
+          "authQueryParams": {
+            "type": "object",
+            "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": {
+              "optional_scope": [
+                "automation.sequences.read"
+              ]
+            }
+          },
+          "packageInstallUrl": {
+            "type": "string",
+            "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+            "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
           }
         }
       },
@@ -67081,6 +67540,33 @@
                         "offline",
                         "crm.read"
                       ]
+                    }
+                  },
+                  "metadata": {
+                    "title": "Provider App Metadata",
+                    "type": "object",
+                    "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                    "properties": {
+                      "authQueryParams": {
+                        "type": "object",
+                        "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                        "additionalProperties": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "example": {
+                          "optional_scope": [
+                            "automation.sequences.read"
+                          ]
+                        }
+                      },
+                      "packageInstallUrl": {
+                        "type": "string",
+                        "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                        "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                      }
                     }
                   },
                   "createTime": {
@@ -70211,6 +70697,33 @@
                     "offline",
                     "crm.read"
                   ]
+                }
+              },
+              "metadata": {
+                "title": "Provider App Metadata",
+                "type": "object",
+                "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                "properties": {
+                  "authQueryParams": {
+                    "type": "object",
+                    "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                    "additionalProperties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "optional_scope": [
+                        "automation.sequences.read"
+                      ]
+                    }
+                  },
+                  "packageInstallUrl": {
+                    "type": "string",
+                    "description": "URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).",
+                    "example": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789"
+                  }
                 }
               },
               "createTime": {
