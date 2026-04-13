@@ -3975,6 +3975,8 @@ paths:
                     - "read.backfill.done"
                     - "connection.created"
                     - "connection.error"
+                    - "connection.refreshed"
+                    - "connection.deleted"
                     - "installation.created"
                     - "installation.updated"
                     - "installation.deleted"
@@ -6450,6 +6452,8 @@ components:
       enum:
         - "connection.created"
         - "connection.error"
+        - "connection.refreshed"
+        - "connection.deleted"
         - "installation.created"
         - "installation.updated"
         - "installation.deleted"

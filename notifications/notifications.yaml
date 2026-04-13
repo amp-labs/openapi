@@ -270,10 +270,10 @@ components:
                 type: string
               example: ["field validation failed", "duplicate record"]
 
-    # Connection created event data
+    # Connection event data
     ConnectionData:
       title: Connection Data
-      description: Data payload for connection.created notifications.
+      description: Data payload for connection.created, connection.refreshed, and connection.deleted notifications.
       type: object
       required:
         - projectId
@@ -521,6 +521,38 @@ components:
           enum: [connection.error]
         data:
           $ref: '#/components/schemas/ConnectionErrorData'
+
+    ConnectionRefreshedNotificationPayload:
+      title: Connection Refreshed Notification Payload
+      description: |
+        Payload structure for connection.refreshed notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [connection.refreshed]
+        data:
+          $ref: '#/components/schemas/ConnectionData'
+
+    ConnectionDeletedNotificationPayload:
+      title: Connection Deleted Notification Payload
+      description: |
+        Payload structure for connection.deleted notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [connection.deleted]
+        data:
+          $ref: '#/components/schemas/ConnectionData'
 
     DestinationWebhookDisabledNotificationPayload:
       title: Destination Webhook Disabled Notification Payload
