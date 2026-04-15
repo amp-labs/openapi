@@ -37703,6 +37703,115 @@
                             "x-go-type-skip-optional-pointer": true
                           }
                         }
+                      },
+                      "providerAppMetadata": {
+                        "title": "Provider App Input Metadata",
+                        "type": "object",
+                        "description": "Describes the provider-app-level fields that the Ampersand dashboard should collect from the builder when creating a ProviderApp for this provider. These descriptors tell the dashboard which form fields to render; the submitted values are stored in ProviderApp.metadata.",
+                        "properties": {
+                          "providerParams": {
+                            "type": "array",
+                            "description": "Descriptors for fields stored in ProviderApp.metadata.providerParams (e.g., packageInstallURL for Salesforce, gcpProjectId for Gmail).",
+                            "items": {
+                              "title": "Metadata Item (as input)",
+                              "type": "object",
+                              "required": [
+                                "name"
+                              ],
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "The internal identifier for the metadata field",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "displayName": {
+                                  "type": "string",
+                                  "description": "The human-readable name for the field",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "prompt": {
+                                  "type": "string",
+                                  "description": "Human-readable description that can contain instructions on how to collect metadata",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "defaultValue": {
+                                  "type": "string",
+                                  "description": "Default value for this metadata item",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "docsURL": {
+                                  "type": "string",
+                                  "description": "URL with more information about how to locate this value",
+                                  "example": "https://example.com/how-to-find-subdomain",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "moduleDependencies": {
+                                  "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
+                                  "title": "Module Dependencies",
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "title": "Module Dependency",
+                                    "type": "object",
+                                    "description": "Dependency for a single module.",
+                                    "properties": {}
+                                  }
+                                }
+                              }
+                            },
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "authQueryParams": {
+                            "type": "array",
+                            "description": "Descriptors for fields stored in ProviderApp.metadata.authQueryParams (e.g., optional_scope for HubSpot).",
+                            "items": {
+                              "title": "Metadata Item (as input)",
+                              "type": "object",
+                              "required": [
+                                "name"
+                              ],
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "The internal identifier for the metadata field",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "displayName": {
+                                  "type": "string",
+                                  "description": "The human-readable name for the field",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "prompt": {
+                                  "type": "string",
+                                  "description": "Human-readable description that can contain instructions on how to collect metadata",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "defaultValue": {
+                                  "type": "string",
+                                  "description": "Default value for this metadata item",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "docsURL": {
+                                  "type": "string",
+                                  "description": "URL with more information about how to locate this value",
+                                  "example": "https://example.com/how-to-find-subdomain",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
+                                "moduleDependencies": {
+                                  "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
+                                  "title": "Module Dependencies",
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "title": "Module Dependency",
+                                    "type": "object",
+                                    "description": "Dependency for a single module.",
+                                    "properties": {}
+                                  }
+                                }
+                              }
+                            },
+                            "x-go-type-skip-optional-pointer": true
+                          }
+                        }
                       }
                     }
                   }
@@ -38945,6 +39054,115 @@
                               "name": {
                                 "type": "string",
                                 "description": "The internal identifier for the metadata field",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "moduleDependencies": {
+                                "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
+                                "title": "Module Dependencies",
+                                "type": "object",
+                                "additionalProperties": {
+                                  "title": "Module Dependency",
+                                  "type": "object",
+                                  "description": "Dependency for a single module.",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        }
+                      }
+                    },
+                    "providerAppMetadata": {
+                      "title": "Provider App Input Metadata",
+                      "type": "object",
+                      "description": "Describes the provider-app-level fields that the Ampersand dashboard should collect from the builder when creating a ProviderApp for this provider. These descriptors tell the dashboard which form fields to render; the submitted values are stored in ProviderApp.metadata.",
+                      "properties": {
+                        "providerParams": {
+                          "type": "array",
+                          "description": "Descriptors for fields stored in ProviderApp.metadata.providerParams (e.g., packageInstallURL for Salesforce, gcpProjectId for Gmail).",
+                          "items": {
+                            "title": "Metadata Item (as input)",
+                            "type": "object",
+                            "required": [
+                              "name"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "The internal identifier for the metadata field",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "displayName": {
+                                "type": "string",
+                                "description": "The human-readable name for the field",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "prompt": {
+                                "type": "string",
+                                "description": "Human-readable description that can contain instructions on how to collect metadata",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "defaultValue": {
+                                "type": "string",
+                                "description": "Default value for this metadata item",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "docsURL": {
+                                "type": "string",
+                                "description": "URL with more information about how to locate this value",
+                                "example": "https://example.com/how-to-find-subdomain",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "moduleDependencies": {
+                                "description": "Which modules require this metadata item (see ModuleDependencies for naming clarification).",
+                                "title": "Module Dependencies",
+                                "type": "object",
+                                "additionalProperties": {
+                                  "title": "Module Dependency",
+                                  "type": "object",
+                                  "description": "Dependency for a single module.",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          },
+                          "x-go-type-skip-optional-pointer": true
+                        },
+                        "authQueryParams": {
+                          "type": "array",
+                          "description": "Descriptors for fields stored in ProviderApp.metadata.authQueryParams (e.g., optional_scope for HubSpot).",
+                          "items": {
+                            "title": "Metadata Item (as input)",
+                            "type": "object",
+                            "required": [
+                              "name"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "The internal identifier for the metadata field",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "displayName": {
+                                "type": "string",
+                                "description": "The human-readable name for the field",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "prompt": {
+                                "type": "string",
+                                "description": "Human-readable description that can contain instructions on how to collect metadata",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "defaultValue": {
+                                "type": "string",
+                                "description": "Default value for this metadata item",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "docsURL": {
+                                "type": "string",
+                                "description": "URL with more information about how to locate this value",
+                                "example": "https://example.com/how-to-find-subdomain",
                                 "x-go-type-skip-optional-pointer": true
                               },
                               "moduleDependencies": {
