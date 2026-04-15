@@ -4564,10 +4564,15 @@ components:
           example:
             optional_scope:
               - automation.sequences.read
-        packageInstallUrl:
-          type: string
-          description: URL for installing a package associated with this provider app (e.g., Salesforce external client app packages).
-          example: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
+        providerParams:
+          type: object
+          description: Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).
+          additionalProperties:
+            type: string
+          example:
+            packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
+            gcpProjectId: my-gcp-project
+            gcpPubSubTopicName: my-topic
     Integration:
       title: Integration
       required:
