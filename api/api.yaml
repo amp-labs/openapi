@@ -186,6 +186,8 @@ paths:
       description: Creates a new project within an organization. A project is a container for provider apps, integrations, and connections. 
       operationId: createProject
       tags: ["Project"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       requestBody:
         content:
           application/json:
