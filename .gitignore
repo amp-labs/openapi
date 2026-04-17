@@ -170,3 +170,5 @@ node_modules
 #DS Store
 .DS_Store
 
+#Local sample files (Lauren likes to create these locally to look at effect of openapi changes)
+samples/**

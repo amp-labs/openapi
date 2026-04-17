@@ -528,13 +528,6 @@ components:
         support:
           $ref: '#/components/schemas/Support'
 
-    ProviderOpts:
-      title: Provider Options
-      description: Additional provider-specific metadata.
-      type: object
-      additionalProperties:
-        type: string
-
     Provider:
       title: Provider
       type: string
@@ -548,7 +541,6 @@ components:
         - baseURL
         - authType
         - support
-        - providerOpts
         - defaultModule
       properties:
         name:
@@ -574,8 +566,6 @@ components:
           $ref: '#/components/schemas/CustomAuthOpts'
         support:
           $ref: '#/components/schemas/Support'
-        providerOpts:
-          $ref: '#/components/schemas/ProviderOpts'
         authHealthCheck:
           $ref: '#/components/schemas/AuthHealthCheck'
         displayName:
