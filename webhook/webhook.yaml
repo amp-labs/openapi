@@ -127,6 +127,11 @@ components:
           description: The raw data of the record, exactly as it is returned by the SaaS API.
           additionalProperties: true
           x-go-type-skip-optional-pointer: true
+        providerAssociationMetadata:
+          type: object
+          description: Provider-specific metadata about the association type (e.g. HubSpot association category, typeId, and label).
+          additionalProperties: true
+          x-go-type-skip-optional-pointer: true
     ResultEntry:
       title: Result Entry
       type: object
