@@ -582,8 +582,6 @@ components:
           $ref: '#/components/schemas/Media'
         labels:
           $ref: '#/components/schemas/Labels'
-        subscribeOpts:
-          $ref: '#/components/schemas/SubscribeOpts'
         modules:
           $ref: '#/components/schemas/Modules'
         metadata:
@@ -630,26 +628,6 @@ components:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/ProviderInfo'
-
-    SubscribeOpts:
-      title: Subscribe Options
-      type: object
-      required:
-        - subscriptionScope
-        - targetURLScope
-        - registrationTiming
-      properties:
-        subscriptionScope:
-          type: string
-          enum: [integration, installation]
-          description: The scope of the subscription.
-        targetURLScope:
-          enum: [integration, installation]
-          description: The scope of the target URL.
-        registrationTiming:
-          type: string
-          enum: [providerApp, integration, installation]
-          description: The timing of the registration.
 
     SubscribeSupport:
       title: Subscribe Support
