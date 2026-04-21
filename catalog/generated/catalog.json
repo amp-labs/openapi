@@ -2306,6 +2306,21 @@
               "type": "string"
             }
           },
+          "subscribeSupportConfig": {
+            "title": "Subscribe Support Config",
+            "type": "object",
+            "properties": {
+              "registration": {
+                "type": "boolean"
+              },
+              "maintenance": {
+                "type": "boolean"
+              },
+              "postProcess": {
+                "type": "boolean"
+              }
+            }
+          },
           "modules": {
             "title": "Modules that this provider supports",
             "type": "object",
@@ -3593,6 +3608,21 @@
                     "type": "string"
                   }
                 },
+                "subscribeSupportConfig": {
+                  "title": "Subscribe Support Config",
+                  "type": "object",
+                  "properties": {
+                    "registration": {
+                      "type": "boolean"
+                    },
+                    "maintenance": {
+                      "type": "boolean"
+                    },
+                    "postProcess": {
+                      "type": "boolean"
+                    }
+                  }
+                },
                 "modules": {
                   "title": "Modules that this provider supports",
                   "type": "object",
@@ -4758,6 +4788,21 @@
                 "type": "string"
               }
             },
+            "subscribeSupportConfig": {
+              "title": "Subscribe Support Config",
+              "type": "object",
+              "properties": {
+                "registration": {
+                  "type": "boolean"
+                },
+                "maintenance": {
+                  "type": "boolean"
+                },
+                "postProcess": {
+                  "type": "boolean"
+                }
+              }
+            },
             "modules": {
               "title": "Modules that this provider supports",
               "type": "object",
@@ -5192,6 +5237,21 @@
             "type": "boolean"
           },
           "passThrough": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SubscribeSupportConfig": {
+        "title": "Subscribe Support Config",
+        "type": "object",
+        "properties": {
+          "registration": {
+            "type": "boolean"
+          },
+          "maintenance": {
+            "type": "boolean"
+          },
+          "postProcess": {
             "type": "boolean"
           }
         }

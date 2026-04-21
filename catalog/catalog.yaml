@@ -582,6 +582,8 @@ components:
           $ref: '#/components/schemas/Media'
         labels:
           $ref: '#/components/schemas/Labels'
+        subscribeSupportConfig:
+          $ref: '#/components/schemas/SubscribeSupportConfig'
         modules:
           $ref: '#/components/schemas/Modules'
         metadata:
@@ -640,6 +642,17 @@ components:
         delete:
           type: boolean
         passThrough:
+          type: boolean
+
+    SubscribeSupportConfig:
+      title: Subscribe Support Config
+      type: object
+      properties:
+        registration:
+          type: boolean
+        maintenance:
+          type: boolean
+        postProcess:
           type: boolean
 
     BatchWriteSupport:
