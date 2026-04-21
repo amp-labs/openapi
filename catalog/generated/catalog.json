@@ -2306,41 +2306,6 @@
               "type": "string"
             }
           },
-          "subscribeOpts": {
-            "title": "Subscribe Options",
-            "type": "object",
-            "required": [
-              "subscriptionScope",
-              "targetURLScope",
-              "registrationTiming"
-            ],
-            "properties": {
-              "subscriptionScope": {
-                "type": "string",
-                "enum": [
-                  "integration",
-                  "installation"
-                ],
-                "description": "The scope of the subscription."
-              },
-              "targetURLScope": {
-                "enum": [
-                  "integration",
-                  "installation"
-                ],
-                "description": "The scope of the target URL."
-              },
-              "registrationTiming": {
-                "type": "string",
-                "enum": [
-                  "providerApp",
-                  "integration",
-                  "installation"
-                ],
-                "description": "The timing of the registration."
-              }
-            }
-          },
           "modules": {
             "title": "Modules that this provider supports",
             "type": "object",
@@ -2879,7 +2844,7 @@
         "properties": {
           "timestamp": {
             "type": "string",
-            "example": "2024-07-30T22:14:51.000Z",
+            "example": "2024-07-30T15:14:51-07:00",
             "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
@@ -3626,41 +3591,6 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "string"
-                  }
-                },
-                "subscribeOpts": {
-                  "title": "Subscribe Options",
-                  "type": "object",
-                  "required": [
-                    "subscriptionScope",
-                    "targetURLScope",
-                    "registrationTiming"
-                  ],
-                  "properties": {
-                    "subscriptionScope": {
-                      "type": "string",
-                      "enum": [
-                        "integration",
-                        "installation"
-                      ],
-                      "description": "The scope of the subscription."
-                    },
-                    "targetURLScope": {
-                      "enum": [
-                        "integration",
-                        "installation"
-                      ],
-                      "description": "The scope of the target URL."
-                    },
-                    "registrationTiming": {
-                      "type": "string",
-                      "enum": [
-                        "providerApp",
-                        "integration",
-                        "installation"
-                      ],
-                      "description": "The timing of the registration."
-                    }
                   }
                 },
                 "modules": {
@@ -4828,41 +4758,6 @@
                 "type": "string"
               }
             },
-            "subscribeOpts": {
-              "title": "Subscribe Options",
-              "type": "object",
-              "required": [
-                "subscriptionScope",
-                "targetURLScope",
-                "registrationTiming"
-              ],
-              "properties": {
-                "subscriptionScope": {
-                  "type": "string",
-                  "enum": [
-                    "integration",
-                    "installation"
-                  ],
-                  "description": "The scope of the subscription."
-                },
-                "targetURLScope": {
-                  "enum": [
-                    "integration",
-                    "installation"
-                  ],
-                  "description": "The scope of the target URL."
-                },
-                "registrationTiming": {
-                  "type": "string",
-                  "enum": [
-                    "providerApp",
-                    "integration",
-                    "installation"
-                  ],
-                  "description": "The timing of the registration."
-                }
-              }
-            },
             "modules": {
               "title": "Modules that this provider supports",
               "type": "object",
@@ -5280,41 +5175,6 @@
                 }
               }
             }
-          }
-        }
-      },
-      "SubscribeOpts": {
-        "title": "Subscribe Options",
-        "type": "object",
-        "required": [
-          "subscriptionScope",
-          "targetURLScope",
-          "registrationTiming"
-        ],
-        "properties": {
-          "subscriptionScope": {
-            "type": "string",
-            "enum": [
-              "integration",
-              "installation"
-            ],
-            "description": "The scope of the subscription."
-          },
-          "targetURLScope": {
-            "enum": [
-              "integration",
-              "installation"
-            ],
-            "description": "The scope of the target URL."
-          },
-          "registrationTiming": {
-            "type": "string",
-            "enum": [
-              "providerApp",
-              "integration",
-              "installation"
-            ],
-            "description": "The timing of the registration."
           }
         }
       },
