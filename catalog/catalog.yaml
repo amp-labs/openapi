@@ -582,8 +582,8 @@ components:
           $ref: '#/components/schemas/Media'
         labels:
           $ref: '#/components/schemas/Labels'
-        subscribeSupportConfig:
-          $ref: '#/components/schemas/SubscribeSupportConfig'
+        subscribeRequirements:
+          $ref: '#/components/schemas/SubscribeRequirements'
         modules:
           $ref: '#/components/schemas/Modules'
         metadata:
@@ -644,7 +644,7 @@ components:
         passThrough:
           type: boolean
 
-    SubscribeSupportConfig:
+    SubscribeRequirements:
       title: Subscribe Support Config
       type: object
       description: Declares which auxiliary steps a provider requires to support subscriptions, beyond the per-object subscribe call itself.

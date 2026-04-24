@@ -2306,7 +2306,7 @@
               "type": "string"
             }
           },
-          "subscribeSupportConfig": {
+          "subscribeRequirements": {
             "title": "Subscribe Support Config",
             "type": "object",
             "description": "Declares which auxiliary steps a provider requires to support subscriptions, beyond the per-object subscribe call itself.",
@@ -3612,7 +3612,7 @@
                     "type": "string"
                   }
                 },
-                "subscribeSupportConfig": {
+                "subscribeRequirements": {
                   "title": "Subscribe Support Config",
                   "type": "object",
                   "description": "Declares which auxiliary steps a provider requires to support subscriptions, beyond the per-object subscribe call itself.",
@@ -4796,7 +4796,7 @@
                 "type": "string"
               }
             },
-            "subscribeSupportConfig": {
+            "subscribeRequirements": {
               "title": "Subscribe Support Config",
               "type": "object",
               "description": "Declares which auxiliary steps a provider requires to support subscriptions, beyond the per-object subscribe call itself.",
@@ -5253,7 +5253,7 @@
           }
         }
       },
-      "SubscribeSupportConfig": {
+      "SubscribeRequirements": {
         "title": "Subscribe Support Config",
         "type": "object",
         "description": "Declares which auxiliary steps a provider requires to support subscriptions, beyond the per-object subscribe call itself.",
