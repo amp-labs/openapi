@@ -17,14 +17,14 @@ paths:
             schema:
               type: object
               required:
-                - projectId
+                - projectIdOrName
                 - groupRef
                 - consumerRef
                 - provider
               properties:
-                projectId:
+                projectIdOrName:
                   type: string
-                  description: The Ampersand project ID.
+                  description: The Ampersand project ID or project name.
                   example: my-project
                 provider:
                   type: string
@@ -71,14 +71,14 @@ paths:
               basicOAuth:
                 summary: Basic OAuth flow (required fields only)
                 value:
-                  projectId: my-project
+                  projectIdOrName: my-project
                   provider: salesforce
                   groupRef: group-123
                   consumerRef: user_123456
               withProviderWorkspace:
                 summary: With provider workspace and provider app
                 value:
-                  projectId: my-project
+                  projectIdOrName: my-project
                   provider: salesforce
                   groupRef: group-123
                   groupName: Acme Corp
@@ -89,7 +89,7 @@ paths:
               withProviderMetadata:
                 summary: With provider metadata (e.g. NetSuite account ID)
                 value:
-                  projectId: my-project
+                  projectIdOrName: my-project
                   provider: netsuite
                   groupRef: group-456
                   consumerRef: user_789012
