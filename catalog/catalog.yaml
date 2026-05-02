@@ -527,6 +527,8 @@ components:
           type: string
         support:
           $ref: '#/components/schemas/Support'
+        subscribeRequirements:
+          $ref: '#/components/schemas/SubscribeRequirements'
 
     Provider:
       title: Provider
