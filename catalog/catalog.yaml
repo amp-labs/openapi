@@ -668,7 +668,7 @@ components:
             Whether subscribing requires a third-party setup step that the connector instance itself cannot perform.
             Examples: Salesforce requires AWS EventBridge configuration; Gmail requires a Google Pub/Sub topic to be
             configured. Any configuration that must happen outside the connector falls into post-process.
-        subscription:
+        subscribeByAPI:
           type: boolean
           description: >-
             Whether the provider supports programmatic subscription via API.
