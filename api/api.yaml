@@ -2216,7 +2216,7 @@ paths:
     get:
       summary: Get an operation
       description: |
-        Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details.
+        Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as read progress or write outcome details.
       operationId: getOperation
       tags: ["Operation"]
       parameters:
@@ -2236,7 +2236,7 @@ paths:
           example: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
       responses:
         200:
-          description: The operation, including its current status, result summary, and metadata (e.g. backfill progress or write results).
+          description: The operation, including its current status, result summary, and metadata (e.g. read progress or write results).
           content:
             application/json:
               schema:
@@ -2256,8 +2256,8 @@ paths:
                     metadata:
                       objects: [contact]
                     createTime: "2023-07-13T21:34:44.816354Z"
-                readBackfill:
-                  summary: Read with backfill progress
+                readProgress:
+                  summary: Read with progress
                   value:
                     projectId: "123e4567-e89b-12d3-a456-426614174000"
                     integrationId: "113e9685-9a51-42cc-8662-9d9725b17f14"
@@ -5620,7 +5620,7 @@ components:
           example: "[contact] No new data found"
         metadata:
           type: object
-          description: Additional operation details (e.g. objects, retry info, backfill progress, successfulRecordIds).
+          description: Additional operation details (e.g. objects, retry info, read progress, successfulRecordIds).
           properties:
             objects:
               type: array
@@ -5639,7 +5639,7 @@ components:
                   format: date-time
             progress:
               type: object
-              description: Only present for backfill read operations.
+              description: Read progress for the operation, reporting records processed and, where available, the estimated total. Present for all read operations.
               properties:
                 installationId:
                   type: string
