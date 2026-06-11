@@ -1213,7 +1213,7 @@
                               }
                             }
                           },
-                          "logRetention": {
+                          "logRetentionDays": {
                             "type": "object",
                             "required": [
                               "value"
@@ -1490,7 +1490,7 @@
                             }
                           }
                         },
-                        "logRetention": {
+                        "logRetentionDays": {
                           "type": "object",
                           "required": [
                             "value"
@@ -2068,7 +2068,7 @@
                             }
                           }
                         },
-                        "logRetention": {
+                        "logRetentionDays": {
                           "type": "object",
                           "required": [
                             "value"
@@ -2359,7 +2359,7 @@
                             }
                           }
                         },
-                        "logRetention": {
+                        "logRetentionDays": {
                           "type": "object",
                           "required": [
                             "value"
@@ -54792,7 +54792,7 @@
                                       }
                                     }
                                   },
-                                  "logRetention": {
+                                  "logRetentionDays": {
                                     "type": "object",
                                     "required": [
                                       "value"
@@ -55198,7 +55198,7 @@
                                       }
                                     }
                                   },
-                                  "logRetention": {
+                                  "logRetentionDays": {
                                     "type": "object",
                                     "required": [
                                       "value"
@@ -66180,7 +66180,7 @@
                   }
                 }
               },
-              "logRetention": {
+              "logRetentionDays": {
                 "type": "object",
                 "required": [
                   "value"
@@ -73464,7 +73464,7 @@
                             }
                           }
                         },
-                        "logRetention": {
+                        "logRetentionDays": {
                           "type": "object",
                           "required": [
                             "value"

@@ -4951,7 +4951,7 @@ components:
                 value:
                   type: boolean
                   description: True if Ampersand branding has been removed for this project.
-            logRetention:
+            logRetentionDays:
               type: object
               required:
                 - value
