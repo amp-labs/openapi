@@ -1726,6 +1726,91 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
+  /projects/{projectIdOrName}/groups:
+    get:
+      summary: List groups
+      description: |
+        Lists the groups (customers) in a project as lightweight summaries — one row per group with its installation count and most-recent activity, rather than every installation. Powers the Customers list view without shipping each installation's config and connection.
+
+        Pagination and server-side search/sort are optional. When pageSize is omitted the full set of group summaries is returned in a single page (pagination.done = true) and the client filters/sorts locally. When pageSize is provided the results are paginated and the query/sortBy/order parameters drive server-side search and ordering.
+      operationId: listGroups
+      tags: ["Group"]
+      parameters:
+        - name: projectIdOrName
+          in: path
+          required: true
+          description: The Ampersand project ID or project name.
+          schema:
+            type: string
+          example: my-project
+        - name: pageSize
+          in: query
+          description: The number of group summaries to return per page. Omit to return all groups in a single page.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+        - name: pageToken
+          in: query
+          description: A cursor that can be passed to paginate through multiple pages of groups.
+          schema:
+            type: string
+        - name: query
+          in: query
+          description: Server-side search filter applied when paginating. When provided, only groups whose groupRef, groupName, or integration match are returned. With no pagination the client filters locally instead.
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          description: Field to order results by when paginating server-side. Defaults to lastUpdated.
+          schema:
+            type: string
+            enum: [groupName, groupRef, installationCount, lastUpdated]
+        - name: order
+          in: query
+          description: Sort direction for sortBy. Defaults to desc.
+          schema:
+            type: string
+            enum: [asc, desc]
+      responses:
+        200:
+          description: List of group summaries
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - results
+                  - pagination
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GroupSummary'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationInfo'
+              example:
+                results:
+                  - groupRef: org_12345
+                    groupName: Acme Corp
+                    installationCount: 4
+                    lastUpdated: "2024-01-15T10:30:00.000000Z"
+                    integrationIds:
+                      - 550e8400-e29b-41d4-a716-446655440000
+                pagination:
+                  done: true
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/InputValidationProblem"
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
   /projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata:
     get:
       summary: Get object metadata via connection
@@ -5550,6 +5635,41 @@ components:
           description: The time the group was last updated.
           format: date-time
           example: 2023-07-13T21:34:44.816354Z
+    GroupSummary:
+      title: Group Summary
+      description: |
+        A lightweight, pre-aggregated view of a group (customer) for list views. Carries only what the Customers table renders plus the integration IDs used for search — it deliberately omits each installation's config and connection.
+      required:
+        - groupRef
+        - groupName
+        - installationCount
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group (e.g. an org ID, workspace ID, or team ID).
+          example: org_12345
+        groupName:
+          type: string
+          description: The display name of the group.
+          example: Acme Corp
+        installationCount:
+          type: integer
+          description: The number of installations belonging to this group.
+          example: 4
+        lastUpdated:
+          type: string
+          format: date-time
+          nullable: true
+          description: The most recent update (or create) time across the group's installations. Null when the group has no installations with timestamps.
+          example: 2024-01-15T10:30:00.000000Z
+        integrationIds:
+          type: array
+          items:
+            type: string
+          description: The distinct integration IDs the group has installations on. Provided so list views can match a group by integration during client-side search. Not rendered; may be dropped in future for payload size.
+          example:
+            - 550e8400-e29b-41d4-a716-446655440000
     Consumer:
       title: Consumer
       required:
