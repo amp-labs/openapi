@@ -4008,20 +4008,7 @@ paths:
                 - topicId
               properties:
                 eventType:
-                  type: string
-                  description: The type of notification event.
-                  enum:
-                    - "read.backfill.done"
-                    - "connection.created"
-                    - "connection.error"
-                    - "connection.refreshed"
-                    - "connection.deleted"
-                    - "installation.created"
-                    - "installation.updated"
-                    - "installation.deleted"
-                    - "read.schedule.paused"
-                    - "write.async.done"
-                    - "destination.webhook.disabled"
+                  $ref: "#/components/schemas/NotificationEventType"
                 topicId:
                   type: string
                   description: The ID of the topic to route events to.
@@ -6541,6 +6528,7 @@ components:
         - "read.triggered.done"
         - "read.triggered.error"
         - "write.async.done"
+        - "subscribe.create.error"
         - "destination.webhook.disabled"
     TopicDestinationRoute:
       title: Topic Destination Route

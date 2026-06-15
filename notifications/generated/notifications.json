@@ -919,6 +919,91 @@
           }
         ]
       },
+      "SubscribeCreateErrorData": {
+        "title": "Subscribe Create Error Data",
+        "description": "Data payload for subscribe.create.error notifications.",
+        "allOf": [
+          {
+            "title": "Installation Fields",
+            "type": "object",
+            "description": "Common fields present in installation-related notifications.",
+            "required": [
+              "projectId",
+              "provider",
+              "integrationId",
+              "integrationName",
+              "installationId",
+              "groupRef",
+              "groupName",
+              "connectionId",
+              "consumerRef",
+              "consumerName"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The Ampersand Project ID.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "provider": {
+                "type": "string",
+                "description": "The SaaS API that we are integrating with.",
+                "example": "salesforce"
+              },
+              "integrationId": {
+                "type": "string",
+                "description": "The ID of the integration.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "integrationName": {
+                "type": "string",
+                "description": "The name of the integration.",
+                "example": "Salesforce Integration"
+              },
+              "installationId": {
+                "type": "string",
+                "description": "The ID of the Ampersand installation.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "connectionId": {
+                "type": "string",
+                "description": "The ID of the connection.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "groupRef": {
+                "type": "string",
+                "description": "The ID that your app uses to identify the group of users.",
+                "example": "customer-group-ref"
+              },
+              "groupName": {
+                "type": "string",
+                "description": "The display name of the group of users.",
+                "example": "Customer Name"
+              },
+              "consumerRef": {
+                "type": "string",
+                "description": "The reference ID of the consumer that triggered the notification.",
+                "example": "user-123"
+              },
+              "consumerName": {
+                "type": "string",
+                "description": "The name of the consumer that triggered the notification.",
+                "example": "John Doe"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "The error that occurred while setting up the subscribe action.",
+                "example": "Failed to create subscription"
+              }
+            }
+          }
+        ]
+      },
       "ConnectionData": {
         "title": "Connection Data",
         "description": "Data payload for connection.created, connection.refreshed, and connection.deleted notifications.",
@@ -2043,6 +2128,108 @@
                       "field validation failed",
                       "duplicate record"
                     ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "SubscribeCreateErrorNotificationPayload": {
+        "title": "Subscribe Create Error Notification Payload",
+        "description": "Payload structure for subscribe.create.error notifications sent to webhook destinations.\nFor Kinesis destinations, only the `data` object is sent.\n",
+        "type": "object",
+        "required": [
+          "notificationType",
+          "data"
+        ],
+        "properties": {
+          "notificationType": {
+            "type": "string",
+            "enum": [
+              "subscribe.create.error"
+            ]
+          },
+          "data": {
+            "title": "Subscribe Create Error Data",
+            "description": "Data payload for subscribe.create.error notifications.",
+            "allOf": [
+              {
+                "title": "Installation Fields",
+                "type": "object",
+                "description": "Common fields present in installation-related notifications.",
+                "required": [
+                  "projectId",
+                  "provider",
+                  "integrationId",
+                  "integrationName",
+                  "installationId",
+                  "groupRef",
+                  "groupName",
+                  "connectionId",
+                  "consumerRef",
+                  "consumerName"
+                ],
+                "properties": {
+                  "projectId": {
+                    "type": "string",
+                    "description": "The Ampersand Project ID.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "provider": {
+                    "type": "string",
+                    "description": "The SaaS API that we are integrating with.",
+                    "example": "salesforce"
+                  },
+                  "integrationId": {
+                    "type": "string",
+                    "description": "The ID of the integration.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "integrationName": {
+                    "type": "string",
+                    "description": "The name of the integration.",
+                    "example": "Salesforce Integration"
+                  },
+                  "installationId": {
+                    "type": "string",
+                    "description": "The ID of the Ampersand installation.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The ID of the connection.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "groupRef": {
+                    "type": "string",
+                    "description": "The ID that your app uses to identify the group of users.",
+                    "example": "customer-group-ref"
+                  },
+                  "groupName": {
+                    "type": "string",
+                    "description": "The display name of the group of users.",
+                    "example": "Customer Name"
+                  },
+                  "consumerRef": {
+                    "type": "string",
+                    "description": "The reference ID of the consumer that triggered the notification.",
+                    "example": "user-123"
+                  },
+                  "consumerName": {
+                    "type": "string",
+                    "description": "The name of the consumer that triggered the notification.",
+                    "example": "John Doe"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string",
+                    "description": "The error that occurred while setting up the subscribe action.",
+                    "example": "Failed to create subscription"
                   }
                 }
               }
