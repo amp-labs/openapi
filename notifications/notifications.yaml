@@ -270,6 +270,19 @@ components:
                 type: string
               example: ["field validation failed", "duplicate record"]
 
+    # Subscribe create error event data
+    SubscribeCreateErrorData:
+      title: Subscribe Create Error Data
+      description: Data payload for subscribe.create.error notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          properties:
+            error:
+              type: string
+              description: The error that occurred while setting up the subscribe action.
+              example: "Failed to create subscription"
+
     # Connection event data
     ConnectionData:
       title: Connection Data
@@ -489,6 +502,22 @@ components:
           enum: [write.async.done]
         data:
           $ref: '#/components/schemas/WriteAsyncDoneData'
+
+    SubscribeCreateErrorNotificationPayload:
+      title: Subscribe Create Error Notification Payload
+      description: |
+        Payload structure for subscribe.create.error notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [subscribe.create.error]
+        data:
+          $ref: '#/components/schemas/SubscribeCreateErrorData'
 
     ConnectionCreatedNotificationPayload:
       title: Connection Created Notification Payload
