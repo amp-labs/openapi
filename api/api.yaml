@@ -2980,24 +2980,24 @@ paths:
                   type: string
                   description: The type of the destination.
                   example: webhook
-                  enum: [webhook, kinesis]
+                  enum: [webhook, kinesis, s3]
                 secrets:
                   type: object
                   description: Secrets for the destination.
                   properties:
                     awsKeyId:
                       type: string
-                      description: The AWS access key ID for the Kinesis destination.
+                      description: The AWS access key ID for the Kinesis or S3 destination.
                       example: AKIAIOSFODNN7EXAMPLE
                       x-go-type-skip-optional-pointer: true
                     awsSecretKey:
                       type: string
-                      description: The AWS secret access key for the Kinesis destination.
+                      description: The AWS secret access key for the Kinesis or S3 destination.
                       example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
                       x-go-type-skip-optional-pointer: true
                     awsSessionToken:
                       type: string
-                      description: The AWS session token for the Kinesis destination.
+                      description: The AWS session token for the Kinesis or S3 destination.
                       example: AQoEXAMPLEH4aoAH0gNCAPy...
                       x-go-type-skip-optional-pointer: true
                 metadata:
@@ -3011,7 +3011,7 @@ paths:
                       $ref: "#/components/schemas/WebhookHeaders"
                     region:
                       type: string
-                      description: The AWS region where the kinesis destination is hosted.
+                      description: The AWS region where the Kinesis or S3 destination is hosted.
                       example: us-east-1
                       x-go-type-skip-optional-pointer: true
                     streamName:
@@ -3028,6 +3028,21 @@ paths:
                       type: string
                       description: The template for the partition key to use when sending events to Kinesis (a JMESPath template)
                       example: "data.user_id"
+                      x-go-type-skip-optional-pointer: true
+                    bucket:
+                      type: string
+                      description: The name of the S3 bucket to write objects to.
+                      example: ampersand-integration-bucket
+                      x-go-type-skip-optional-pointer: true
+                    keyTemplate:
+                      type: string
+                      description: The template for the S3 object key to use when writing objects (a JMESPath template). If omitted, the key defaults to the message timestamp followed by the message ID.
+                      example: "join('/', [metadata.objectName, metadata.operationId])"
+                      x-go-type-skip-optional-pointer: true
+                    storageClass:
+                      type: string
+                      description: The S3 storage class for written objects. Defaults to STANDARD. Common values include STANDARD, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, GLACIER_IR, and DEEP_ARCHIVE.
+                      example: STANDARD
                       x-go-type-skip-optional-pointer: true
       responses:
         201:
@@ -3176,6 +3191,9 @@ paths:
                     - metadata.streamName
                     - metadata.endpointUrl
                     - metadata.partitionKeyTemplate
+                    - metadata.bucket
+                    - metadata.keyTemplate
+                    - metadata.storageClass
                     - secrets.awsKeyId
                     - secrets.awsSecretKey
                     - secrets.awsSessionToken
@@ -3199,7 +3217,7 @@ paths:
                           $ref: "#/components/schemas/WebhookHeaders"
                         region:
                           type: string
-                          description: The AWS region where the kinesis destination is hosted.
+                          description: The AWS region where the Kinesis or S3 destination is hosted.
                           example: us-east-1
                         streamName:
                           type: string
@@ -3213,21 +3231,33 @@ paths:
                           type: string
                           description: The template for the partition key to use when sending events to Kinesis (a JMESPath template)
                           example: "data.user_id"
+                        bucket:
+                          type: string
+                          description: The name of the S3 bucket to write objects to.
+                          example: ampersand-integration-bucket
+                        keyTemplate:
+                          type: string
+                          description: The template for the S3 object key to use when writing objects (a JMESPath template). If omitted, the key defaults to the message timestamp followed by the message ID.
+                          example: "join('/', [metadata.objectName, metadata.operationId])"
+                        storageClass:
+                          type: string
+                          description: The S3 storage class for written objects. Defaults to STANDARD. Common values include STANDARD, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, GLACIER_IR, and DEEP_ARCHIVE.
+                          example: STANDARD
                     secrets:
                       type: object
                       description: Secrets for the destination.
                       properties:
                         awsKeyId:
                           type: string
-                          description: The AWS access key ID for the Kinesis destination.
+                          description: The AWS access key ID for the Kinesis or S3 destination.
                           example: AKIAIOSFODNN7EXAMPLE
                         awsSecretKey:
                           type: string
-                          description: The AWS secret access key for the Kinesis destination.
+                          description: The AWS secret access key for the Kinesis or S3 destination.
                           example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
                         awsSessionToken:
                           type: string
-                          description: The AWS session token for the Kinesis destination.
+                          description: The AWS session token for the Kinesis or S3 destination.
                           example: AQoEXAMPLEH4aoAH0gNCAPy...
       responses:
         404:
@@ -4855,6 +4885,18 @@ components:
               type: string
               description: Template for generating partition keys
               example: "{{.integration_id}}"
+            bucket:
+              type: string
+              description: The name of the S3 bucket
+              example: ampersand-integration-bucket
+            keyTemplate:
+              type: string
+              description: JMESPath template for generating S3 object keys
+              example: "join('/', [metadata.objectName, metadata.operationId])"
+            storageClass:
+              type: string
+              description: The S3 storage class for written objects (defaults to STANDARD)
+              example: STANDARD
         createTime:
           type: string
           description: The time the destination was created.
@@ -4907,6 +4949,18 @@ components:
               type: string
               description: Template for generating partition keys
               example: "{{.integration_id}}"
+            bucket:
+              type: string
+              description: The name of the S3 bucket
+              example: ampersand-integration-bucket
+            keyTemplate:
+              type: string
+              description: JMESPath template for generating S3 object keys
+              example: "join('/', [metadata.objectName, metadata.operationId])"
+            storageClass:
+              type: string
+              description: The S3 storage class for written objects (defaults to STANDARD)
+              example: STANDARD
         createTime:
           type: string
           description: The time the destination was created.
