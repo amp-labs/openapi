@@ -747,7 +747,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: "../problem/problem.yaml#/components/schemas/ApiProblem"
-  /projects/{projectIdOrName}/integrations/{integrationId}:
     delete:
       summary: Delete an integration
       operationId: deleteIntegration
@@ -761,10 +760,10 @@ paths:
           schema:
             type: string
           example: my-project
-        - name: integrationId
+        - name: integrationIdOrName
           in: path
           required: true
-          description: The integration ID.
+          description: The integration ID or name.
           schema:
             type: string
           example: 123e4567-e89b-12d3-a456-426614174000
