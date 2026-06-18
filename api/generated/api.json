@@ -31435,6 +31435,639 @@
         }
       }
     },
+    "/projects/{projectIdOrName}/groups": {
+      "get": {
+        "summary": "List groups",
+        "description": "Lists the groups (customers) in a project as lightweight summaries — one row per group with its installation count and most-recent activity, rather than every installation. Powers the Customers list view without shipping each installation's config and connection.\n\nPagination and server-side search/sort are optional. When pageSize is omitted the full set of group summaries is returned in a single page (pagination.done = true) and the client filters/sorts locally. When pageSize is provided the results are paginated and the query/sortBy/order parameters drive server-side search and ordering.\n",
+        "operationId": "listGroups",
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "name": "projectIdOrName",
+            "in": "path",
+            "required": true,
+            "description": "The Ampersand project ID or project name.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "my-project"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of group summaries to return per page. Omit to return all groups in a single page.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "A cursor that can be passed to paginate through multiple pages of groups.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Server-side search filter applied when paginating. When provided, only groups whose groupRef, groupName, or integration match are returned. With no pagination the client filters locally instead.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Field to order results by when paginating server-side. Defaults to lastUpdated.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "groupName",
+                "groupRef",
+                "installationCount",
+                "lastUpdated"
+              ]
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort direction for sortBy. Defaults to desc.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of group summaries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "results",
+                    "pagination"
+                  ],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "title": "Group Summary",
+                        "description": "A lightweight, pre-aggregated view of a group (customer) for list views. Carries only what the Customers table renders plus the integration IDs used for search — it deliberately omits each installation's config and connection.\n",
+                        "required": [
+                          "groupRef",
+                          "groupName",
+                          "installationCount"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "groupRef": {
+                            "type": "string",
+                            "description": "The ID that your app uses to identify the group (e.g. an org ID, workspace ID, or team ID).",
+                            "example": "org_12345"
+                          },
+                          "groupName": {
+                            "type": "string",
+                            "description": "The display name of the group.",
+                            "example": "Acme Corp"
+                          },
+                          "installationCount": {
+                            "type": "integer",
+                            "description": "The number of installations belonging to this group.",
+                            "example": 4
+                          },
+                          "lastUpdated": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true,
+                            "description": "The most recent update (or create) time across the group's installations. Null when the group has no installations with timestamps.",
+                            "example": "2024-01-15T10:30:00.000Z"
+                          },
+                          "integrationIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "The distinct integration IDs the group has installations on. Provided so list views can match a group by integration during client-side search. Not rendered; may be dropped in future for payload size.",
+                            "example": [
+                              "550e8400-e29b-41d4-a716-446655440000"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "title": "Pagination Information",
+                      "type": "object",
+                      "required": [
+                        "done"
+                      ],
+                      "properties": {
+                        "done": {
+                          "type": "boolean",
+                          "description": "If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.",
+                          "example": false
+                        },
+                        "nextPageToken": {
+                          "type": "string",
+                          "description": "If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.",
+                          "example": "Q9JT+2qfys28V4ODN+UayA=="
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "results": [
+                    {
+                      "groupRef": "org_12345",
+                      "groupName": "Acme Corp",
+                      "installationCount": 4,
+                      "lastUpdated": "2024-01-15T10:30:00.000000Z",
+                      "integrationIds": [
+                        "550e8400-e29b-41d4-a716-446655440000"
+                      ]
+                    }
+                  ],
+                  "pagination": {
+                    "done": true
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "title": "Input Validation Problem",
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "title": "API Problem",
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "title": "Problem",
+                          "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that identifies the problem type",
+                              "default": "about:blank"
+                            },
+                            "href": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that, when dereferenced, provides human-readable documentation for the problem type (e.g. using HTML)."
+                            },
+                            "title": {
+                              "type": "string",
+                              "description": "A short summary of the problem type. Written in English and readable for engineers (usually not suited for non technical stakeholders and not localized).",
+                              "example": "Service Unavailable"
+                            },
+                            "status": {
+                              "type": "integer",
+                              "format": "int32",
+                              "description": "The HTTP status code generated by the origin server for this occurrence of the problem.",
+                              "minimum": 400,
+                              "maximum": 600,
+                              "exclusiveMaximum": true,
+                              "example": 503
+                            },
+                            "detail": {
+                              "type": "string",
+                              "description": "A human-readable explanation specific to this occurrence of the problem"
+                            },
+                            "instance": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "An absolute URI that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced."
+                            }
+                          },
+                          "example": {
+                            "type": "urn:problem-type:exampleOrganization:exampleProblem",
+                            "href": "https://www.belgif.be/specification/rest/api-guide/#standardized-problem-types",
+                            "title": "Description of the type of problem that occurred",
+                            "status": 400,
+                            "detail": "Description of specific occurrence of the problem",
+                            "instance": "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+                          }
+                        }
+                      ],
+                      "properties": {
+                        "subsystem": {
+                          "type": "string",
+                          "description": "The subsystem that generated the problem",
+                          "example": "api"
+                        },
+                        "time": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "The time the problem occurred, formatted as RFC-3339",
+                          "example": "2024-04-22T18:55:28.456076Z"
+                        },
+                        "requestId": {
+                          "type": "string",
+                          "description": "A unique identifier for the request, useful for debugging",
+                          "example": "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                        },
+                        "causes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "A brief description of something which caused the problem",
+                            "example": "database connection failed"
+                          },
+                          "example": [
+                            "database connection failed",
+                            "database query failed",
+                            "unable to fetch user"
+                          ],
+                          "description": "A list of problems that caused this problem. This can be used to represent multiple\nroot causes. There is no guaranteed ordering of the causes.\n"
+                        },
+                        "remedy": {
+                          "type": "string",
+                          "description": "A brief description of how to resolve the problem",
+                          "example": "Shorten your input to be under 100 characters"
+                        },
+                        "supportEmail": {
+                          "type": "string",
+                          "format": "email",
+                          "description": "An email address to contact for support",
+                          "example": "support@withampersand.com"
+                        },
+                        "supportPhone": {
+                          "type": "string",
+                          "description": "A phone number to contact for support",
+                          "example": "+1-555-555-5555"
+                        },
+                        "supportUrl": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "A URL to contact for support",
+                          "example": "https://withampersand.com/support"
+                        },
+                        "retryable": {
+                          "type": "boolean",
+                          "description": "Whether the request can be retried",
+                          "example": false
+                        },
+                        "retryAfter": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "A timestamp after which the request can be retried, formatted as RFC-3339",
+                          "example": "2024-04-22T18:55:28.456076Z"
+                        },
+                        "context": {
+                          "type": "object",
+                          "description": "Additional context for the problem",
+                          "additionalProperties": true,
+                          "example": {
+                            "name": "Rick Sanchez"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "properties": {
+                    "issues": {
+                      "type": "array",
+                      "items": {
+                        "title": "Input Validation Issue",
+                        "type": "object",
+                        "description": "An issue detected during input validation.\n",
+                        "allOf": [
+                          {
+                            "title": "API Problem",
+                            "type": "object",
+                            "allOf": [
+                              {
+                                "title": "Problem",
+                                "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that identifies the problem type",
+                                    "default": "about:blank"
+                                  },
+                                  "href": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that, when dereferenced, provides human-readable documentation for the problem type (e.g. using HTML)."
+                                  },
+                                  "title": {
+                                    "type": "string",
+                                    "description": "A short summary of the problem type. Written in English and readable for engineers (usually not suited for non technical stakeholders and not localized).",
+                                    "example": "Service Unavailable"
+                                  },
+                                  "status": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "description": "The HTTP status code generated by the origin server for this occurrence of the problem.",
+                                    "minimum": 400,
+                                    "maximum": 600,
+                                    "exclusiveMaximum": true,
+                                    "example": 503
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "description": "A human-readable explanation specific to this occurrence of the problem"
+                                  },
+                                  "instance": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An absolute URI that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced."
+                                  }
+                                },
+                                "example": {
+                                  "type": "urn:problem-type:exampleOrganization:exampleProblem",
+                                  "href": "https://www.belgif.be/specification/rest/api-guide/#standardized-problem-types",
+                                  "title": "Description of the type of problem that occurred",
+                                  "status": 400,
+                                  "detail": "Description of specific occurrence of the problem",
+                                  "instance": "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+                                }
+                              }
+                            ],
+                            "properties": {
+                              "subsystem": {
+                                "type": "string",
+                                "description": "The subsystem that generated the problem",
+                                "example": "api"
+                              },
+                              "time": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time the problem occurred, formatted as RFC-3339",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "requestId": {
+                                "type": "string",
+                                "description": "A unique identifier for the request, useful for debugging",
+                                "example": "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                              },
+                              "causes": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "description": "A brief description of something which caused the problem",
+                                  "example": "database connection failed"
+                                },
+                                "example": [
+                                  "database connection failed",
+                                  "database query failed",
+                                  "unable to fetch user"
+                                ],
+                                "description": "A list of problems that caused this problem. This can be used to represent multiple\nroot causes. There is no guaranteed ordering of the causes.\n"
+                              },
+                              "remedy": {
+                                "type": "string",
+                                "description": "A brief description of how to resolve the problem",
+                                "example": "Shorten your input to be under 100 characters"
+                              },
+                              "supportEmail": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "An email address to contact for support",
+                                "example": "support@withampersand.com"
+                              },
+                              "supportPhone": {
+                                "type": "string",
+                                "description": "A phone number to contact for support",
+                                "example": "+1-555-555-5555"
+                              },
+                              "supportUrl": {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "A URL to contact for support",
+                                "example": "https://withampersand.com/support"
+                              },
+                              "retryable": {
+                                "type": "boolean",
+                                "description": "Whether the request can be retried",
+                                "example": false
+                              },
+                              "retryAfter": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "A timestamp after which the request can be retried, formatted as RFC-3339",
+                                "example": "2024-04-22T18:55:28.456076Z"
+                              },
+                              "context": {
+                                "type": "object",
+                                "description": "Additional context for the problem",
+                                "additionalProperties": true,
+                                "example": {
+                                  "name": "Rick Sanchez"
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "properties": {
+                          "in": {
+                            "type": "string",
+                            "description": "The location of the invalid input",
+                            "enum": [
+                              "body",
+                              "header",
+                              "path",
+                              "query"
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the invalid input"
+                          },
+                          "value": {
+                            "description": "The value of the erroneous input"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "type": "about:blank",
+                    "title": "Bad Request",
+                    "status": 400,
+                    "detail": "The input message is incorrect",
+                    "instance": "123456-1234-1235-4567489798",
+                    "issues": [
+                      {
+                        "type": "about:blank",
+                        "detail": "exampleNumericProperty should be numeric",
+                        "in": "path",
+                        "name": "exampleNumericProperty",
+                        "value": "abc"
+                      },
+                      {
+                        "type": "about:blank",
+                        "title": "Input isn't valid with respect to schema",
+                        "detail": "examplePropertyWithPattern a2345678901 doesn't match pattern '^\\d{11}$'",
+                        "in": "body",
+                        "name": "items[0].examplePropertyWithPattern",
+                        "value": "a2345678901"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "title": "API Problem",
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "title": "Problem",
+                      "description": "A Problem Details object (RFC 9457).\n\nAdditional properties specific to the problem type may be present.\n",
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "An absolute URI that identifies the problem type",
+                          "default": "about:blank"
+                        },
+                        "href": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "An absolute URI that, when dereferenced, provides human-readable documentation for the problem type (e.g. using HTML)."
+                        },
+                        "title": {
+                          "type": "string",
+                          "description": "A short summary of the problem type. Written in English and readable for engineers (usually not suited for non technical stakeholders and not localized).",
+                          "example": "Service Unavailable"
+                        },
+                        "status": {
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "The HTTP status code generated by the origin server for this occurrence of the problem.",
+                          "minimum": 400,
+                          "maximum": 600,
+                          "exclusiveMaximum": true,
+                          "example": 503
+                        },
+                        "detail": {
+                          "type": "string",
+                          "description": "A human-readable explanation specific to this occurrence of the problem"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "An absolute URI that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced."
+                        }
+                      },
+                      "example": {
+                        "type": "urn:problem-type:exampleOrganization:exampleProblem",
+                        "href": "https://www.belgif.be/specification/rest/api-guide/#standardized-problem-types",
+                        "title": "Description of the type of problem that occurred",
+                        "status": 400,
+                        "detail": "Description of specific occurrence of the problem",
+                        "instance": "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+                      }
+                    }
+                  ],
+                  "properties": {
+                    "subsystem": {
+                      "type": "string",
+                      "description": "The subsystem that generated the problem",
+                      "example": "api"
+                    },
+                    "time": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The time the problem occurred, formatted as RFC-3339",
+                      "example": "2024-04-22T18:55:28.456076Z"
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "A unique identifier for the request, useful for debugging",
+                      "example": "89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715"
+                    },
+                    "causes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "description": "A brief description of something which caused the problem",
+                        "example": "database connection failed"
+                      },
+                      "example": [
+                        "database connection failed",
+                        "database query failed",
+                        "unable to fetch user"
+                      ],
+                      "description": "A list of problems that caused this problem. This can be used to represent multiple\nroot causes. There is no guaranteed ordering of the causes.\n"
+                    },
+                    "remedy": {
+                      "type": "string",
+                      "description": "A brief description of how to resolve the problem",
+                      "example": "Shorten your input to be under 100 characters"
+                    },
+                    "supportEmail": {
+                      "type": "string",
+                      "format": "email",
+                      "description": "An email address to contact for support",
+                      "example": "support@withampersand.com"
+                    },
+                    "supportPhone": {
+                      "type": "string",
+                      "description": "A phone number to contact for support",
+                      "example": "+1-555-555-5555"
+                    },
+                    "supportUrl": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "A URL to contact for support",
+                      "example": "https://withampersand.com/support"
+                    },
+                    "retryable": {
+                      "type": "boolean",
+                      "description": "Whether the request can be retried",
+                      "example": false
+                    },
+                    "retryAfter": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "A timestamp after which the request can be retried, formatted as RFC-3339",
+                      "example": "2024-04-22T18:55:28.456076Z"
+                    },
+                    "context": {
+                      "type": "object",
+                      "description": "Additional context for the problem",
+                      "additionalProperties": true,
+                      "example": {
+                        "name": "Rick Sanchez"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata": {
       "get": {
         "summary": "Get object metadata via connection",
@@ -73247,6 +73880,50 @@
             "description": "The time the group was last updated.",
             "format": "date-time",
             "example": "2023-07-13T21:34:44.816354Z"
+          }
+        }
+      },
+      "GroupSummary": {
+        "title": "Group Summary",
+        "description": "A lightweight, pre-aggregated view of a group (customer) for list views. Carries only what the Customers table renders plus the integration IDs used for search — it deliberately omits each installation's config and connection.\n",
+        "required": [
+          "groupRef",
+          "groupName",
+          "installationCount"
+        ],
+        "type": "object",
+        "properties": {
+          "groupRef": {
+            "type": "string",
+            "description": "The ID that your app uses to identify the group (e.g. an org ID, workspace ID, or team ID).",
+            "example": "org_12345"
+          },
+          "groupName": {
+            "type": "string",
+            "description": "The display name of the group.",
+            "example": "Acme Corp"
+          },
+          "installationCount": {
+            "type": "integer",
+            "description": "The number of installations belonging to this group.",
+            "example": 4
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "The most recent update (or create) time across the group's installations. Null when the group has no installations with timestamps.",
+            "example": "2024-01-15T10:30:00.000Z"
+          },
+          "integrationIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The distinct integration IDs the group has installations on. Provided so list views can match a group by integration during client-side search. Not rendered; may be dropped in future for payload size.",
+            "example": [
+              "550e8400-e29b-41d4-a716-446655440000"
+            ]
           }
         }
       },
