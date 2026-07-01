@@ -1,0 +1,26 @@
+name: Trigger amp-common Go type generation
+
+# When the API spec changes on main, tell amp-common to regenerate the Go types
+# it derives from api/api.yaml (via api/generated/api.json) and open a PR.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'api/**'
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch to amp-common
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.AMPERSAND_OPS_PAT }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/amp-labs/amp-common/dispatches \
+            -d '{"event_type":"gen-openapi-types","client_payload":{"repository":"${{ github.repository }}","sha":"${{ github.sha }}"}}'
