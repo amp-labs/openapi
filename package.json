@@ -4,6 +4,7 @@
     "@apidevtools/swagger-parser": "^10.1.0"
   },
   "devDependencies": {
+    "@redocly/openapi-core": "^2.36.0",
     "@types/node": "^20.14.10",
     "husky": "^9.0.11",
     "typescript": "^5.4.5"
