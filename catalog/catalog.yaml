@@ -258,6 +258,14 @@ components:
             duration: permanent
         accessTokenOpts:
           $ref: '#/components/schemas/AccessTokenOpts'
+        keepAliveInterval:
+          type: string
+          description: |
+            How long between proactive token keep-alive refreshes for this provider.
+            Uses Go duration syntax (e.g. "120h" for 5 days). Token-manager adds a
+            random stagger offset on top. If absent, defaults to 24h.
+          example: "120h"
+          x-go-type-skip-optional-pointer: true
 
     AccessTokenOpts:
       title: Oauth2 Access Token Options
