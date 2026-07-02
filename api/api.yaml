@@ -4835,7 +4835,7 @@ components:
           description: The ID of the Everyone team for the org.
         createTime:
           type: string
-          description: The time the organization was created.
+          description: The time at which the organization was created.
           format: date-time
         updateTime:
           type: string
