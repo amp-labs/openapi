@@ -6,6 +6,7 @@
  */
 
 import SwaggerParser from "@apidevtools/swagger-parser";
+import { bundle, createConfig } from "@redocly/openapi-core";
 import fs from "fs";
 import path from "path";
 
@@ -72,4 +73,51 @@ async function deRefOpenApiSpecs() {
   }
 }
 
-deRefOpenApiSpecs();
+/**
+ * Bundled (as opposed to dereferenced) specs. Bundling merges external-file
+ * $refs into a single document's components while preserving *internal* $refs
+ * (e.g. Installation.connection stays `$ref: '#/components/schemas/Connection'`).
+ *
+ * The dereferenced api.json above inlines every $ref, which makes code
+ * generators (e.g. oapi-codegen consumed by amp-common) emit anonymous nested
+ * structs instead of reusing named component types. The bundled artifact keeps
+ * those references so generated code gets shared, named types. It does not
+ * replace the dereferenced JSON, which downstream docs generation relies on.
+ *
+ * We use Redocly (rather than swagger-parser's bundle) because it hoists every
+ * shared schema into components/schemas with clean `#/components/schemas/...`
+ * refs. swagger-parser's bundle instead points duplicate refs into the first
+ * occurrence's `properties`, which oapi-codegen's loader cannot consume.
+ */
+const bundledSpecs = [
+  {
+    inputFile: path.join(__dirname, "../api/api.yaml"),
+    outputFile: path.join(__dirname, "../api/generated/api.bundled.json"),
+  },
+];
+
+async function bundleOpenApiSpecs() {
+  try {
+    const config = await createConfig({});
+
+    await Promise.all(bundledSpecs.map(async (spec) => {
+      const result = await bundle({
+        ref: spec.inputFile,
+        config,
+        dereference: false,
+      });
+      const bundledSpec = JSON.stringify(result.bundle.parsed, null, 2);
+      fs.writeFileSync(spec.outputFile, bundledSpec);
+      console.log(`Bundled OpenAPI spec saved to ${spec.outputFile}`);
+    }));
+  } catch (error) {
+    console.error(`Error bundling OpenAPI spec: ${error.message}`);
+  }
+}
+
+async function main() {
+  await deRefOpenApiSpecs();
+  await bundleOpenApiSpecs();
+}
+
+main();
