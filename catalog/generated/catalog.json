@@ -661,10 +661,10 @@
               }
             }
           },
-          "keepAliveInterval": {
-            "type": "string",
-            "description": "How long between proactive token keep-alive refreshes for this provider.\nUses Go duration syntax (e.g. \"120h\" for 5 days). Token-manager adds a\nrandom stagger offset on top. If absent, defaults to 24h.\n",
-            "example": "120h",
+          "keepAliveIntervalHours": {
+            "type": "integer",
+            "description": "How many hours between proactive token keep-alive refreshes for this provider.\nToken-manager adds a random stagger offset on top. If absent, defaults to 24.\n",
+            "example": 120,
             "x-go-type-skip-optional-pointer": true
           }
         }
@@ -1849,10 +1849,10 @@
                   }
                 }
               },
-              "keepAliveInterval": {
-                "type": "string",
-                "description": "How long between proactive token keep-alive refreshes for this provider.\nUses Go duration syntax (e.g. \"120h\" for 5 days). Token-manager adds a\nrandom stagger offset on top. If absent, defaults to 24h.\n",
-                "example": "120h",
+              "keepAliveIntervalHours": {
+                "type": "integer",
+                "description": "How many hours between proactive token keep-alive refreshes for this provider.\nToken-manager adds a random stagger offset on top. If absent, defaults to 24.\n",
+                "example": 120,
                 "x-go-type-skip-optional-pointer": true
               }
             }
@@ -3188,10 +3188,10 @@
                         }
                       }
                     },
-                    "keepAliveInterval": {
-                      "type": "string",
-                      "description": "How long between proactive token keep-alive refreshes for this provider.\nUses Go duration syntax (e.g. \"120h\" for 5 days). Token-manager adds a\nrandom stagger offset on top. If absent, defaults to 24h.\n",
-                      "example": "120h",
+                    "keepAliveIntervalHours": {
+                      "type": "integer",
+                      "description": "How many hours between proactive token keep-alive refreshes for this provider.\nToken-manager adds a random stagger offset on top. If absent, defaults to 24.\n",
+                      "example": 120,
                       "x-go-type-skip-optional-pointer": true
                     }
                   }
@@ -4405,10 +4405,10 @@
                     }
                   }
                 },
-                "keepAliveInterval": {
-                  "type": "string",
-                  "description": "How long between proactive token keep-alive refreshes for this provider.\nUses Go duration syntax (e.g. \"120h\" for 5 days). Token-manager adds a\nrandom stagger offset on top. If absent, defaults to 24h.\n",
-                  "example": "120h",
+                "keepAliveIntervalHours": {
+                  "type": "integer",
+                  "description": "How many hours between proactive token keep-alive refreshes for this provider.\nToken-manager adds a random stagger offset on top. If absent, defaults to 24.\n",
+                  "example": 120,
                   "x-go-type-skip-optional-pointer": true
                 }
               }
