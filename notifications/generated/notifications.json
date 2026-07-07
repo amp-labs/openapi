@@ -1006,7 +1006,7 @@
       },
       "ConnectionData": {
         "title": "Connection Data",
-        "description": "Data payload for connection.created, connection.refreshed, and connection.deleted notifications.",
+        "description": "Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.",
         "type": "object",
         "required": [
           "projectId",
@@ -1055,7 +1055,7 @@
         "allOf": [
           {
             "title": "Connection Data",
-            "description": "Data payload for connection.created, connection.refreshed, and connection.deleted notifications.",
+            "description": "Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.",
             "type": "object",
             "required": [
               "projectId",
@@ -2254,7 +2254,7 @@
           },
           "data": {
             "title": "Connection Data",
-            "description": "Data payload for connection.created, connection.refreshed, and connection.deleted notifications.",
+            "description": "Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.",
             "type": "object",
             "required": [
               "projectId",
@@ -2320,7 +2320,7 @@
             "allOf": [
               {
                 "title": "Connection Data",
-                "description": "Data payload for connection.created, connection.refreshed, and connection.deleted notifications.",
+                "description": "Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.",
                 "type": "object",
                 "required": [
                   "projectId",
@@ -2412,7 +2412,69 @@
           },
           "data": {
             "title": "Connection Data",
-            "description": "Data payload for connection.created, connection.refreshed, and connection.deleted notifications.",
+            "description": "Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.",
+            "type": "object",
+            "required": [
+              "projectId",
+              "connectionId",
+              "provider",
+              "groupRef",
+              "consumerRef",
+              "consumerName"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The Ampersand Project ID.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "connectionId": {
+                "type": "string",
+                "description": "The ID of the connection.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "provider": {
+                "type": "string",
+                "description": "The SaaS API that we are integrating with.",
+                "example": "salesforce"
+              },
+              "groupRef": {
+                "type": "string",
+                "description": "The ID that your app uses to identify the group of users.",
+                "example": "customer-group-ref"
+              },
+              "consumerRef": {
+                "type": "string",
+                "description": "The reference ID of the consumer.",
+                "example": "user-123"
+              },
+              "consumerName": {
+                "type": "string",
+                "description": "The name of the consumer.",
+                "example": "John Doe"
+              }
+            }
+          }
+        }
+      },
+      "ConnectionUpdatedNotificationPayload": {
+        "title": "Connection Updated Notification Payload",
+        "description": "Payload structure for connection.updated notifications sent to webhook destinations.\nFor Kinesis destinations, only the `data` object is sent.\n",
+        "type": "object",
+        "required": [
+          "notificationType",
+          "data"
+        ],
+        "properties": {
+          "notificationType": {
+            "type": "string",
+            "enum": [
+              "connection.updated"
+            ]
+          },
+          "data": {
+            "title": "Connection Data",
+            "description": "Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.",
             "type": "object",
             "required": [
               "projectId",
@@ -2474,7 +2536,7 @@
           },
           "data": {
             "title": "Connection Data",
-            "description": "Data payload for connection.created, connection.refreshed, and connection.deleted notifications.",
+            "description": "Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.",
             "type": "object",
             "required": [
               "projectId",

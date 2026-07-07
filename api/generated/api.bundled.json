@@ -9526,6 +9526,7 @@
           "connection.created",
           "connection.error",
           "connection.refreshed",
+          "connection.updated",
           "connection.deleted",
           "installation.created",
           "installation.updated",
@@ -11606,6 +11607,12 @@
           },
           "accessTokenOpts": {
             "$ref": "#/components/schemas/AccessTokenOpts"
+          },
+          "keepAliveIntervalHours": {
+            "type": "integer",
+            "description": "How many hours between proactive token keep-alive refreshes for this provider.\nToken-manager adds a random stagger offset on top. If absent, defaults to 24.\n",
+            "example": 120,
+            "x-go-type-skip-optional-pointer": true
           }
         }
       },
