@@ -286,7 +286,7 @@ components:
     # Connection event data
     ConnectionData:
       title: Connection Data
-      description: Data payload for connection.created, connection.refreshed, and connection.deleted notifications.
+      description: Data payload for connection.created, connection.refreshed, connection.updated, and connection.deleted notifications.
       type: object
       required:
         - projectId
@@ -564,6 +564,22 @@ components:
         notificationType:
           type: string
           enum: [connection.refreshed]
+        data:
+          $ref: '#/components/schemas/ConnectionData'
+
+    ConnectionUpdatedNotificationPayload:
+      title: Connection Updated Notification Payload
+      description: |
+        Payload structure for connection.updated notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [connection.updated]
         data:
           $ref: '#/components/schemas/ConnectionData'
 

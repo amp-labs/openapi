@@ -6572,6 +6572,7 @@ components:
         - "connection.created"
         - "connection.error"
         - "connection.refreshed"
+        - "connection.updated"
         - "connection.deleted"
         - "installation.created"
         - "installation.updated"
