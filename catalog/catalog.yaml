@@ -446,6 +446,35 @@ components:
           example: https://docs.example.com/custom-auth-input
           description: URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.
           x-go-type-skip-optional-pointer: true
+        fieldType:
+          type: string
+          enum: [text, password, select]
+          example: password
+          description: How the frontend should render this input. "text" is an unmasked field (not sensitive), "password" is a masked field (sensitive), and "select" is a dropdown populated from options. Defaults to "password" when omitted.
+          x-go-type-skip-optional-pointer: true
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAuthInputOption'
+          description: The dropdown options, used only when fieldType is "select".
+          x-go-type-skip-optional-pointer: true
+
+    CustomAuthInputOption:
+      title: Custom Auth Input Option
+      type: object
+      description: A selectable option for a custom auth input whose fieldType is "select".
+      required:
+        - value
+        - label
+      properties:
+        value:
+          type: string
+          example: prod
+          description: The value stored when this option is selected.
+        label:
+          type: string
+          example: Production
+          description: The human-readable label shown for this option.
 
     CustomAuthOpts:
       title: Custom Auth Options
@@ -469,6 +498,17 @@ components:
           items:
             $ref: '#/components/schemas/CustomAuthInput'
           description: A list of custom input fields for authentication. The frontend will render these input fields and the backend will receive the values of these fields before making a request.
+          x-go-type-skip-optional-pointer: true
+        providerInputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAuthInput'
+          description: Input fields the builder configures on their provider app (e.g. client secrets, subscription keys) rather than the consumer. Routed to storage by fieldType. Optional.
+          x-go-type-skip-optional-pointer: true
+        multiStep:
+          type: boolean
+          example: true
+          description: Whether this provider uses a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls) driven by the /custom-auth/connect endpoint, rather than static header/query-param injection. The step definitions and handlers live in the connectors library, not the catalog; this flag is the signal that lets clients tell "multi-step custom" apart from plain "custom" at a glance.
           x-go-type-skip-optional-pointer: true
 
     BasicAuthOpts:
