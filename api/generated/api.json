@@ -664,7 +664,7 @@
                   },
                   "provider": {
                     "type": "string",
-                    "description": "The provider that this app connects to. Required on the first call.",
+                    "description": "The provider that this app connects to. Required on the first call (when sessionId is not present); ignored on resume calls. Conditional requirement is enforced at the application layer.",
                     "example": "bill"
                   },
                   "groupRef": {
@@ -735,7 +735,7 @@
                   "customAuth": {
                     "type": "object",
                     "additionalProperties": true,
-                    "description": "The consumer-supplied custom auth inputs (keyed by CustomAuthInput.name). Supplied on the first call.",
+                    "description": "The consumer-supplied custom auth inputs (keyed by CustomAuthInput.name). Supplied on the first call (when sessionId is not present).",
                     "example": {
                       "userName": "admin@acme.com",
                       "password": "hunter2"
@@ -743,7 +743,7 @@
                   },
                   "sessionId": {
                     "type": "string",
-                    "description": "Identifies an in-progress flow to resume after a redirect. Returned in a prior redirect response.",
+                    "description": "Identifies an in-progress flow to resume after a redirect. Returned in a prior redirect response. When present, provider and customAuth are not required.",
                     "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
                   },
                   "callbackParams": {
@@ -770,374 +770,388 @@
                   "title": "Custom Auth Connect Response",
                   "type": "object",
                   "description": "Response from /custom-auth/connect. Exactly one of redirect or connection is set. A redirect means the client should open the URL and call again with sessionId + callbackParams; a connection means the flow is complete.",
-                  "properties": {
-                    "redirect": {
-                      "title": "Redirect Response",
-                      "type": "object",
-                      "description": "Instructs the client to open a URL (e.g. in a popup) to continue a custom auth flow, then resume by calling /custom-auth/connect with the sessionId.",
+                  "oneOf": [
+                    {
                       "required": [
-                        "url",
-                        "sessionId"
+                        "redirect"
                       ],
                       "properties": {
-                        "url": {
-                          "type": "string",
-                          "description": "The URL the client should open to continue the flow.",
-                          "example": "https://login.microsoftonline.com/common/adminconsent?client_id=xxx"
-                        },
-                        "sessionId": {
-                          "type": "string",
-                          "description": "The flow identifier to pass back to /custom-auth/connect once the provider redirects to the callback.",
-                          "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
+                        "redirect": {
+                          "title": "Redirect Response",
+                          "type": "object",
+                          "description": "Instructs the client to open a URL (e.g. in a popup) to continue a custom auth flow, then resume by calling /custom-auth/connect with the sessionId.",
+                          "required": [
+                            "url",
+                            "sessionId"
+                          ],
+                          "properties": {
+                            "url": {
+                              "type": "string",
+                              "description": "The URL the client should open to continue the flow.",
+                              "example": "https://login.microsoftonline.com/common/adminconsent?client_id=xxx"
+                            },
+                            "sessionId": {
+                              "type": "string",
+                              "description": "The flow identifier to pass back to /custom-auth/connect once the provider redirects to the callback.",
+                              "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
+                            }
+                          }
                         }
                       }
                     },
-                    "connection": {
-                      "title": "Connection",
+                    {
                       "required": [
-                        "id",
-                        "createTime",
-                        "group",
-                        "consumer",
-                        "projectId",
-                        "provider",
-                        "authScheme",
-                        "status"
+                        "connection"
                       ],
-                      "type": "object",
                       "properties": {
-                        "id": {
-                          "type": "string",
-                          "description": "The connection ID.",
-                          "example": "connection-123"
-                        },
-                        "projectId": {
-                          "type": "string",
-                          "description": "The Ampersand project ID.",
-                          "example": "project-456"
-                        },
-                        "provider": {
-                          "type": "string",
-                          "description": "The SaaS provider that this Connection is for.",
-                          "example": "salesforce"
-                        },
-                        "providerApp": {
-                          "title": "Provider App",
+                        "connection": {
+                          "title": "Connection",
                           "required": [
-                            "clientId",
-                            "createTime",
                             "id",
+                            "createTime",
+                            "group",
+                            "consumer",
                             "projectId",
-                            "provider"
+                            "provider",
+                            "authScheme",
+                            "status"
                           ],
                           "type": "object",
                           "properties": {
                             "id": {
                               "type": "string",
-                              "description": "The provider app ID.",
-                              "example": "provider-app-123"
+                              "description": "The connection ID.",
+                              "example": "connection-123"
                             },
                             "projectId": {
                               "type": "string",
                               "description": "The Ampersand project ID.",
                               "example": "project-456"
-                            },
-                            "externalRef": {
-                              "type": "string",
-                              "description": "The ID used by the provider to identify the app (optional).",
-                              "example": "external-id-123"
                             },
                             "provider": {
                               "type": "string",
-                              "description": "The SaaS provider that this app connects to.",
+                              "description": "The SaaS provider that this Connection is for.",
                               "example": "salesforce"
                             },
-                            "clientId": {
-                              "type": "string",
-                              "description": "The OAuth client ID for this app.",
-                              "example": "client-id-123"
-                            },
-                            "scopes": {
-                              "type": "array",
-                              "description": "The OAuth scopes for this app.",
-                              "items": {
-                                "type": "string",
-                                "example": [
-                                  "oauth",
-                                  "offline",
-                                  "crm.read"
-                                ]
-                              }
-                            },
-                            "metadata": {
-                              "title": "Provider App Metadata",
+                            "providerApp": {
+                              "title": "Provider App",
+                              "required": [
+                                "clientId",
+                                "createTime",
+                                "id",
+                                "projectId",
+                                "provider"
+                              ],
                               "type": "object",
-                              "description": "Provider-specific configuration that extends the standard OAuth flow.",
                               "properties": {
-                                "authQueryParams": {
-                                  "type": "object",
-                                  "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
-                                  "additionalProperties": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "example": {
-                                    "optional_scope": [
-                                      "automation.sequences.read"
+                                "id": {
+                                  "type": "string",
+                                  "description": "The provider app ID.",
+                                  "example": "provider-app-123"
+                                },
+                                "projectId": {
+                                  "type": "string",
+                                  "description": "The Ampersand project ID.",
+                                  "example": "project-456"
+                                },
+                                "externalRef": {
+                                  "type": "string",
+                                  "description": "The ID used by the provider to identify the app (optional).",
+                                  "example": "external-id-123"
+                                },
+                                "provider": {
+                                  "type": "string",
+                                  "description": "The SaaS provider that this app connects to.",
+                                  "example": "salesforce"
+                                },
+                                "clientId": {
+                                  "type": "string",
+                                  "description": "The OAuth client ID for this app.",
+                                  "example": "client-id-123"
+                                },
+                                "scopes": {
+                                  "type": "array",
+                                  "description": "The OAuth scopes for this app.",
+                                  "items": {
+                                    "type": "string",
+                                    "example": [
+                                      "oauth",
+                                      "offline",
+                                      "crm.read"
                                     ]
                                   }
                                 },
-                                "providerParams": {
+                                "metadata": {
+                                  "title": "Provider App Metadata",
                                   "type": "object",
-                                  "description": "Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).",
-                                  "additionalProperties": {
+                                  "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                                  "properties": {
+                                    "authQueryParams": {
+                                      "type": "object",
+                                      "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                                      "additionalProperties": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "example": {
+                                        "optional_scope": [
+                                          "automation.sequences.read"
+                                        ]
+                                      }
+                                    },
+                                    "providerParams": {
+                                      "type": "object",
+                                      "description": "Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).",
+                                      "additionalProperties": {
+                                        "type": "string"
+                                      },
+                                      "example": {
+                                        "packageInstallURL": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789",
+                                        "gcpProjectId": "my-gcp-project",
+                                        "gcpPubSubTopicName": "my-topic"
+                                      }
+                                    }
+                                  }
+                                },
+                                "createTime": {
+                                  "type": "string",
+                                  "description": "The time the provider app was created.",
+                                  "format": "date-time"
+                                },
+                                "updateTime": {
+                                  "type": "string",
+                                  "description": "The time the provider app was updated.",
+                                  "format": "date-time"
+                                }
+                              }
+                            },
+                            "group": {
+                              "title": "Group",
+                              "required": [
+                                "createTime",
+                                "groupName",
+                                "groupRef",
+                                "projectId"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "groupRef": {
+                                  "type": "string",
+                                  "description": "The ID of the user group that has access to this installation.",
+                                  "example": "group-123"
+                                },
+                                "groupName": {
+                                  "type": "string",
+                                  "description": "The name of the user group that has access to this installation.",
+                                  "example": "Super Customer"
+                                },
+                                "projectId": {
+                                  "type": "string",
+                                  "description": "The Ampersand project ID.",
+                                  "example": "project-456"
+                                },
+                                "createTime": {
+                                  "type": "string",
+                                  "description": "The time the group was created.",
+                                  "format": "date-time",
+                                  "example": "2023-07-13T21:34:44.816354Z"
+                                },
+                                "updateTime": {
+                                  "type": "string",
+                                  "description": "The time the group was last updated.",
+                                  "format": "date-time",
+                                  "example": "2023-07-13T21:34:44.816354Z"
+                                }
+                              }
+                            },
+                            "consumer": {
+                              "title": "Consumer",
+                              "required": [
+                                "consumerName",
+                                "consumerRef",
+                                "createTime",
+                                "projectId"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "consumerRef": {
+                                  "type": "string",
+                                  "description": "The consumer reference.",
+                                  "example": "consumer-123"
+                                },
+                                "consumerName": {
+                                  "type": "string",
+                                  "description": "The name of the consumer.",
+                                  "example": "Super Customer"
+                                },
+                                "projectId": {
+                                  "type": "string",
+                                  "description": "The Ampersand project ID.",
+                                  "example": "project-456"
+                                },
+                                "createTime": {
+                                  "type": "string",
+                                  "description": "The time the consumer was created.",
+                                  "format": "date-time",
+                                  "example": "2023-07-13T21:34:44.816354Z"
+                                },
+                                "updateTime": {
+                                  "type": "string",
+                                  "description": "The time the consumer was last updated.",
+                                  "format": "date-time",
+                                  "example": "2023-07-13T21:34:44.816354Z"
+                                }
+                              }
+                            },
+                            "providerWorkspaceRef": {
+                              "type": "string",
+                              "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
+                              "example": "provider-workspace-123"
+                            },
+                            "providerConsumerRef": {
+                              "type": "string",
+                              "description": "If available, the ID that Salesforce/Hubspot uses to identify this user (e.g. Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)",
+                              "example": "provider-consumer-123"
+                            },
+                            "createTime": {
+                              "type": "string",
+                              "description": "The time the connection was created.",
+                              "format": "date-time",
+                              "example": "2023-07-13T21:34:44.816354Z"
+                            },
+                            "updateTime": {
+                              "type": "string",
+                              "description": "The time the connection was last updated.",
+                              "format": "date-time",
+                              "example": "2023-07-13T21:34:44.816354Z"
+                            },
+                            "authScheme": {
+                              "type": "string",
+                              "description": "The authentication scheme used for this connection.",
+                              "example": "oauth2/authorizationCode",
+                              "enum": [
+                                "none",
+                                "apiKey",
+                                "basic",
+                                "oauth2/authorizationCode",
+                                "oauth2/authorizationCodePKCE",
+                                "oauth2/clientCredentials",
+                                "oauth2/password"
+                              ]
+                            },
+                            "status": {
+                              "type": "string",
+                              "description": "The status of the connection.\n- `created`: The connection has just been created or the access token was just refreshed.\n- `working`: The connection has successfully been used to make a request.\n- `bad_credentials`: The connection encountered credential-related issues when making a request, or when attempting to refresh the access token.\n",
+                              "example": "working",
+                              "enum": [
+                                "created",
+                                "working",
+                                "bad_credentials"
+                              ]
+                            },
+                            "oauth2AuthorizationCode": {
+                              "title": "OAuth2 AuthorizationCode Token",
+                              "type": "object",
+                              "properties": {
+                                "accessToken": {
+                                  "type": "object",
+                                  "required": [
+                                    "token"
+                                  ],
+                                  "description": "The access token for the connection.",
+                                  "properties": {
+                                    "token": {
+                                      "type": "string"
+                                    },
+                                    "issuedAt": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "example": "2024-04-22T18:55:28.456076Z"
+                                    },
+                                    "expiresAt": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "example": "2024-10-22T18:55:28.456076Z"
+                                    }
+                                  }
+                                },
+                                "refreshToken": {
+                                  "type": "object",
+                                  "required": [
+                                    "token"
+                                  ],
+                                  "description": "The refresh token to use for the connection.",
+                                  "properties": {
+                                    "token": {
+                                      "type": "string"
+                                    },
+                                    "issuedAt": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "example": "2024-04-22T18:55:28.456076Z"
+                                    },
+                                    "expiresAt": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "example": "2024-10-22T18:55:28.456076Z"
+                                    }
+                                  }
+                                },
+                                "scopes": {
+                                  "type": "array",
+                                  "items": {
                                     "type": "string"
                                   },
-                                  "example": {
-                                    "packageInstallURL": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789",
-                                    "gcpProjectId": "my-gcp-project",
-                                    "gcpPubSubTopicName": "my-topic"
+                                  "description": "The scopes for the tokens."
+                                }
+                              }
+                            },
+                            "apiKey": {
+                              "type": "string",
+                              "description": "The API key used while making the connection.",
+                              "example": "api-key-123"
+                            },
+                            "providerMetadata": {
+                              "title": "Provider Metadata",
+                              "type": "object",
+                              "additionalProperties": {
+                                "title": "Provider Metadata Info",
+                                "type": "object",
+                                "required": [
+                                  "value",
+                                  "source"
+                                ],
+                                "properties": {
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value of the metadata field",
+                                    "example": "1234567890"
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "description": "The source of the metadata field",
+                                    "enum": [
+                                      "input",
+                                      "token",
+                                      "provider"
+                                    ],
+                                    "example": "input"
+                                  },
+                                  "displayName": {
+                                    "type": "string",
+                                    "description": "The human-readable name for the field",
+                                    "example": "Account ID"
                                   }
                                 }
-                              }
-                            },
-                            "createTime": {
-                              "type": "string",
-                              "description": "The time the provider app was created.",
-                              "format": "date-time"
-                            },
-                            "updateTime": {
-                              "type": "string",
-                              "description": "The time the provider app was updated.",
-                              "format": "date-time"
-                            }
-                          }
-                        },
-                        "group": {
-                          "title": "Group",
-                          "required": [
-                            "createTime",
-                            "groupName",
-                            "groupRef",
-                            "projectId"
-                          ],
-                          "type": "object",
-                          "properties": {
-                            "groupRef": {
-                              "type": "string",
-                              "description": "The ID of the user group that has access to this installation.",
-                              "example": "group-123"
-                            },
-                            "groupName": {
-                              "type": "string",
-                              "description": "The name of the user group that has access to this installation.",
-                              "example": "Super Customer"
-                            },
-                            "projectId": {
-                              "type": "string",
-                              "description": "The Ampersand project ID.",
-                              "example": "project-456"
-                            },
-                            "createTime": {
-                              "type": "string",
-                              "description": "The time the group was created.",
-                              "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
-                            },
-                            "updateTime": {
-                              "type": "string",
-                              "description": "The time the group was last updated.",
-                              "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
-                            }
-                          }
-                        },
-                        "consumer": {
-                          "title": "Consumer",
-                          "required": [
-                            "consumerName",
-                            "consumerRef",
-                            "createTime",
-                            "projectId"
-                          ],
-                          "type": "object",
-                          "properties": {
-                            "consumerRef": {
-                              "type": "string",
-                              "description": "The consumer reference.",
-                              "example": "consumer-123"
-                            },
-                            "consumerName": {
-                              "type": "string",
-                              "description": "The name of the consumer.",
-                              "example": "Super Customer"
-                            },
-                            "projectId": {
-                              "type": "string",
-                              "description": "The Ampersand project ID.",
-                              "example": "project-456"
-                            },
-                            "createTime": {
-                              "type": "string",
-                              "description": "The time the consumer was created.",
-                              "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
-                            },
-                            "updateTime": {
-                              "type": "string",
-                              "description": "The time the consumer was last updated.",
-                              "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
-                            }
-                          }
-                        },
-                        "providerWorkspaceRef": {
-                          "type": "string",
-                          "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
-                          "example": "provider-workspace-123"
-                        },
-                        "providerConsumerRef": {
-                          "type": "string",
-                          "description": "If available, the ID that Salesforce/Hubspot uses to identify this user (e.g. Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)",
-                          "example": "provider-consumer-123"
-                        },
-                        "createTime": {
-                          "type": "string",
-                          "description": "The time the connection was created.",
-                          "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
-                        },
-                        "updateTime": {
-                          "type": "string",
-                          "description": "The time the connection was last updated.",
-                          "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
-                        },
-                        "authScheme": {
-                          "type": "string",
-                          "description": "The authentication scheme used for this connection.",
-                          "example": "oauth2/authorizationCode",
-                          "enum": [
-                            "none",
-                            "apiKey",
-                            "basic",
-                            "oauth2/authorizationCode",
-                            "oauth2/authorizationCodePKCE",
-                            "oauth2/clientCredentials",
-                            "oauth2/password"
-                          ]
-                        },
-                        "status": {
-                          "type": "string",
-                          "description": "The status of the connection.\n- `created`: The connection has just been created or the access token was just refreshed.\n- `working`: The connection has successfully been used to make a request.\n- `bad_credentials`: The connection encountered credential-related issues when making a request, or when attempting to refresh the access token.\n",
-                          "example": "working",
-                          "enum": [
-                            "created",
-                            "working",
-                            "bad_credentials"
-                          ]
-                        },
-                        "oauth2AuthorizationCode": {
-                          "title": "OAuth2 AuthorizationCode Token",
-                          "type": "object",
-                          "properties": {
-                            "accessToken": {
-                              "type": "object",
-                              "required": [
-                                "token"
-                              ],
-                              "description": "The access token for the connection.",
-                              "properties": {
-                                "token": {
-                                  "type": "string"
-                                },
-                                "issuedAt": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "example": "2024-04-22T18:55:28.456076Z"
-                                },
-                                "expiresAt": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "example": "2024-10-22T18:55:28.456076Z"
-                                }
-                              }
-                            },
-                            "refreshToken": {
-                              "type": "object",
-                              "required": [
-                                "token"
-                              ],
-                              "description": "The refresh token to use for the connection.",
-                              "properties": {
-                                "token": {
-                                  "type": "string"
-                                },
-                                "issuedAt": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "example": "2024-04-22T18:55:28.456076Z"
-                                },
-                                "expiresAt": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "example": "2024-10-22T18:55:28.456076Z"
-                                }
-                              }
-                            },
-                            "scopes": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              },
-                              "description": "The scopes for the tokens."
-                            }
-                          }
-                        },
-                        "apiKey": {
-                          "type": "string",
-                          "description": "The API key used while making the connection.",
-                          "example": "api-key-123"
-                        },
-                        "providerMetadata": {
-                          "title": "Provider Metadata",
-                          "type": "object",
-                          "additionalProperties": {
-                            "title": "Provider Metadata Info",
-                            "type": "object",
-                            "required": [
-                              "value",
-                              "source"
-                            ],
-                            "properties": {
-                              "value": {
-                                "type": "string",
-                                "description": "The value of the metadata field",
-                                "example": "1234567890"
-                              },
-                              "source": {
-                                "type": "string",
-                                "description": "The source of the metadata field",
-                                "enum": [
-                                  "input",
-                                  "token",
-                                  "provider"
-                                ],
-                                "example": "input"
-                              },
-                              "displayName": {
-                                "type": "string",
-                                "description": "The human-readable name for the field",
-                                "example": "Account ID"
                               }
                             }
                           }
                         }
                       }
                     }
-                  }
+                  ]
                 }
               }
             }
@@ -67623,7 +67637,7 @@
           },
           "provider": {
             "type": "string",
-            "description": "The provider that this app connects to. Required on the first call.",
+            "description": "The provider that this app connects to. Required on the first call (when sessionId is not present); ignored on resume calls. Conditional requirement is enforced at the application layer.",
             "example": "bill"
           },
           "groupRef": {
@@ -67694,7 +67708,7 @@
           "customAuth": {
             "type": "object",
             "additionalProperties": true,
-            "description": "The consumer-supplied custom auth inputs (keyed by CustomAuthInput.name). Supplied on the first call.",
+            "description": "The consumer-supplied custom auth inputs (keyed by CustomAuthInput.name). Supplied on the first call (when sessionId is not present).",
             "example": {
               "userName": "admin@acme.com",
               "password": "hunter2"
@@ -67702,7 +67716,7 @@
           },
           "sessionId": {
             "type": "string",
-            "description": "Identifies an in-progress flow to resume after a redirect. Returned in a prior redirect response.",
+            "description": "Identifies an in-progress flow to resume after a redirect. Returned in a prior redirect response. When present, provider and customAuth are not required.",
             "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
           },
           "callbackParams": {
@@ -67721,374 +67735,388 @@
         "title": "Custom Auth Connect Response",
         "type": "object",
         "description": "Response from /custom-auth/connect. Exactly one of redirect or connection is set. A redirect means the client should open the URL and call again with sessionId + callbackParams; a connection means the flow is complete.",
-        "properties": {
-          "redirect": {
-            "title": "Redirect Response",
-            "type": "object",
-            "description": "Instructs the client to open a URL (e.g. in a popup) to continue a custom auth flow, then resume by calling /custom-auth/connect with the sessionId.",
+        "oneOf": [
+          {
             "required": [
-              "url",
-              "sessionId"
+              "redirect"
             ],
             "properties": {
-              "url": {
-                "type": "string",
-                "description": "The URL the client should open to continue the flow.",
-                "example": "https://login.microsoftonline.com/common/adminconsent?client_id=xxx"
-              },
-              "sessionId": {
-                "type": "string",
-                "description": "The flow identifier to pass back to /custom-auth/connect once the provider redirects to the callback.",
-                "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
+              "redirect": {
+                "title": "Redirect Response",
+                "type": "object",
+                "description": "Instructs the client to open a URL (e.g. in a popup) to continue a custom auth flow, then resume by calling /custom-auth/connect with the sessionId.",
+                "required": [
+                  "url",
+                  "sessionId"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "description": "The URL the client should open to continue the flow.",
+                    "example": "https://login.microsoftonline.com/common/adminconsent?client_id=xxx"
+                  },
+                  "sessionId": {
+                    "type": "string",
+                    "description": "The flow identifier to pass back to /custom-auth/connect once the provider redirects to the callback.",
+                    "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
+                  }
+                }
               }
             }
           },
-          "connection": {
-            "title": "Connection",
+          {
             "required": [
-              "id",
-              "createTime",
-              "group",
-              "consumer",
-              "projectId",
-              "provider",
-              "authScheme",
-              "status"
+              "connection"
             ],
-            "type": "object",
             "properties": {
-              "id": {
-                "type": "string",
-                "description": "The connection ID.",
-                "example": "connection-123"
-              },
-              "projectId": {
-                "type": "string",
-                "description": "The Ampersand project ID.",
-                "example": "project-456"
-              },
-              "provider": {
-                "type": "string",
-                "description": "The SaaS provider that this Connection is for.",
-                "example": "salesforce"
-              },
-              "providerApp": {
-                "title": "Provider App",
+              "connection": {
+                "title": "Connection",
                 "required": [
-                  "clientId",
-                  "createTime",
                   "id",
+                  "createTime",
+                  "group",
+                  "consumer",
                   "projectId",
-                  "provider"
+                  "provider",
+                  "authScheme",
+                  "status"
                 ],
                 "type": "object",
                 "properties": {
                   "id": {
                     "type": "string",
-                    "description": "The provider app ID.",
-                    "example": "provider-app-123"
+                    "description": "The connection ID.",
+                    "example": "connection-123"
                   },
                   "projectId": {
                     "type": "string",
                     "description": "The Ampersand project ID.",
                     "example": "project-456"
-                  },
-                  "externalRef": {
-                    "type": "string",
-                    "description": "The ID used by the provider to identify the app (optional).",
-                    "example": "external-id-123"
                   },
                   "provider": {
                     "type": "string",
-                    "description": "The SaaS provider that this app connects to.",
+                    "description": "The SaaS provider that this Connection is for.",
                     "example": "salesforce"
                   },
-                  "clientId": {
-                    "type": "string",
-                    "description": "The OAuth client ID for this app.",
-                    "example": "client-id-123"
-                  },
-                  "scopes": {
-                    "type": "array",
-                    "description": "The OAuth scopes for this app.",
-                    "items": {
-                      "type": "string",
-                      "example": [
-                        "oauth",
-                        "offline",
-                        "crm.read"
-                      ]
-                    }
-                  },
-                  "metadata": {
-                    "title": "Provider App Metadata",
+                  "providerApp": {
+                    "title": "Provider App",
+                    "required": [
+                      "clientId",
+                      "createTime",
+                      "id",
+                      "projectId",
+                      "provider"
+                    ],
                     "type": "object",
-                    "description": "Provider-specific configuration that extends the standard OAuth flow.",
                     "properties": {
-                      "authQueryParams": {
-                        "type": "object",
-                        "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
-                        "additionalProperties": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "example": {
-                          "optional_scope": [
-                            "automation.sequences.read"
+                      "id": {
+                        "type": "string",
+                        "description": "The provider app ID.",
+                        "example": "provider-app-123"
+                      },
+                      "projectId": {
+                        "type": "string",
+                        "description": "The Ampersand project ID.",
+                        "example": "project-456"
+                      },
+                      "externalRef": {
+                        "type": "string",
+                        "description": "The ID used by the provider to identify the app (optional).",
+                        "example": "external-id-123"
+                      },
+                      "provider": {
+                        "type": "string",
+                        "description": "The SaaS provider that this app connects to.",
+                        "example": "salesforce"
+                      },
+                      "clientId": {
+                        "type": "string",
+                        "description": "The OAuth client ID for this app.",
+                        "example": "client-id-123"
+                      },
+                      "scopes": {
+                        "type": "array",
+                        "description": "The OAuth scopes for this app.",
+                        "items": {
+                          "type": "string",
+                          "example": [
+                            "oauth",
+                            "offline",
+                            "crm.read"
                           ]
                         }
                       },
-                      "providerParams": {
+                      "metadata": {
+                        "title": "Provider App Metadata",
                         "type": "object",
-                        "description": "Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).",
-                        "additionalProperties": {
+                        "description": "Provider-specific configuration that extends the standard OAuth flow.",
+                        "properties": {
+                          "authQueryParams": {
+                            "type": "object",
+                            "description": "Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).",
+                            "additionalProperties": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "example": {
+                              "optional_scope": [
+                                "automation.sequences.read"
+                              ]
+                            }
+                          },
+                          "providerParams": {
+                            "type": "object",
+                            "description": "Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).",
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "example": {
+                              "packageInstallURL": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789",
+                              "gcpProjectId": "my-gcp-project",
+                              "gcpPubSubTopicName": "my-topic"
+                            }
+                          }
+                        }
+                      },
+                      "createTime": {
+                        "type": "string",
+                        "description": "The time the provider app was created.",
+                        "format": "date-time"
+                      },
+                      "updateTime": {
+                        "type": "string",
+                        "description": "The time the provider app was updated.",
+                        "format": "date-time"
+                      }
+                    }
+                  },
+                  "group": {
+                    "title": "Group",
+                    "required": [
+                      "createTime",
+                      "groupName",
+                      "groupRef",
+                      "projectId"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "groupRef": {
+                        "type": "string",
+                        "description": "The ID of the user group that has access to this installation.",
+                        "example": "group-123"
+                      },
+                      "groupName": {
+                        "type": "string",
+                        "description": "The name of the user group that has access to this installation.",
+                        "example": "Super Customer"
+                      },
+                      "projectId": {
+                        "type": "string",
+                        "description": "The Ampersand project ID.",
+                        "example": "project-456"
+                      },
+                      "createTime": {
+                        "type": "string",
+                        "description": "The time the group was created.",
+                        "format": "date-time",
+                        "example": "2023-07-13T21:34:44.816354Z"
+                      },
+                      "updateTime": {
+                        "type": "string",
+                        "description": "The time the group was last updated.",
+                        "format": "date-time",
+                        "example": "2023-07-13T21:34:44.816354Z"
+                      }
+                    }
+                  },
+                  "consumer": {
+                    "title": "Consumer",
+                    "required": [
+                      "consumerName",
+                      "consumerRef",
+                      "createTime",
+                      "projectId"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "consumerRef": {
+                        "type": "string",
+                        "description": "The consumer reference.",
+                        "example": "consumer-123"
+                      },
+                      "consumerName": {
+                        "type": "string",
+                        "description": "The name of the consumer.",
+                        "example": "Super Customer"
+                      },
+                      "projectId": {
+                        "type": "string",
+                        "description": "The Ampersand project ID.",
+                        "example": "project-456"
+                      },
+                      "createTime": {
+                        "type": "string",
+                        "description": "The time the consumer was created.",
+                        "format": "date-time",
+                        "example": "2023-07-13T21:34:44.816354Z"
+                      },
+                      "updateTime": {
+                        "type": "string",
+                        "description": "The time the consumer was last updated.",
+                        "format": "date-time",
+                        "example": "2023-07-13T21:34:44.816354Z"
+                      }
+                    }
+                  },
+                  "providerWorkspaceRef": {
+                    "type": "string",
+                    "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
+                    "example": "provider-workspace-123"
+                  },
+                  "providerConsumerRef": {
+                    "type": "string",
+                    "description": "If available, the ID that Salesforce/Hubspot uses to identify this user (e.g. Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)",
+                    "example": "provider-consumer-123"
+                  },
+                  "createTime": {
+                    "type": "string",
+                    "description": "The time the connection was created.",
+                    "format": "date-time",
+                    "example": "2023-07-13T21:34:44.816354Z"
+                  },
+                  "updateTime": {
+                    "type": "string",
+                    "description": "The time the connection was last updated.",
+                    "format": "date-time",
+                    "example": "2023-07-13T21:34:44.816354Z"
+                  },
+                  "authScheme": {
+                    "type": "string",
+                    "description": "The authentication scheme used for this connection.",
+                    "example": "oauth2/authorizationCode",
+                    "enum": [
+                      "none",
+                      "apiKey",
+                      "basic",
+                      "oauth2/authorizationCode",
+                      "oauth2/authorizationCodePKCE",
+                      "oauth2/clientCredentials",
+                      "oauth2/password"
+                    ]
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "The status of the connection.\n- `created`: The connection has just been created or the access token was just refreshed.\n- `working`: The connection has successfully been used to make a request.\n- `bad_credentials`: The connection encountered credential-related issues when making a request, or when attempting to refresh the access token.\n",
+                    "example": "working",
+                    "enum": [
+                      "created",
+                      "working",
+                      "bad_credentials"
+                    ]
+                  },
+                  "oauth2AuthorizationCode": {
+                    "title": "OAuth2 AuthorizationCode Token",
+                    "type": "object",
+                    "properties": {
+                      "accessToken": {
+                        "type": "object",
+                        "required": [
+                          "token"
+                        ],
+                        "description": "The access token for the connection.",
+                        "properties": {
+                          "token": {
+                            "type": "string"
+                          },
+                          "issuedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2024-04-22T18:55:28.456076Z"
+                          },
+                          "expiresAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2024-10-22T18:55:28.456076Z"
+                          }
+                        }
+                      },
+                      "refreshToken": {
+                        "type": "object",
+                        "required": [
+                          "token"
+                        ],
+                        "description": "The refresh token to use for the connection.",
+                        "properties": {
+                          "token": {
+                            "type": "string"
+                          },
+                          "issuedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2024-04-22T18:55:28.456076Z"
+                          },
+                          "expiresAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2024-10-22T18:55:28.456076Z"
+                          }
+                        }
+                      },
+                      "scopes": {
+                        "type": "array",
+                        "items": {
                           "type": "string"
                         },
-                        "example": {
-                          "packageInstallURL": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789",
-                          "gcpProjectId": "my-gcp-project",
-                          "gcpPubSubTopicName": "my-topic"
+                        "description": "The scopes for the tokens."
+                      }
+                    }
+                  },
+                  "apiKey": {
+                    "type": "string",
+                    "description": "The API key used while making the connection.",
+                    "example": "api-key-123"
+                  },
+                  "providerMetadata": {
+                    "title": "Provider Metadata",
+                    "type": "object",
+                    "additionalProperties": {
+                      "title": "Provider Metadata Info",
+                      "type": "object",
+                      "required": [
+                        "value",
+                        "source"
+                      ],
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "description": "The value of the metadata field",
+                          "example": "1234567890"
+                        },
+                        "source": {
+                          "type": "string",
+                          "description": "The source of the metadata field",
+                          "enum": [
+                            "input",
+                            "token",
+                            "provider"
+                          ],
+                          "example": "input"
+                        },
+                        "displayName": {
+                          "type": "string",
+                          "description": "The human-readable name for the field",
+                          "example": "Account ID"
                         }
                       }
-                    }
-                  },
-                  "createTime": {
-                    "type": "string",
-                    "description": "The time the provider app was created.",
-                    "format": "date-time"
-                  },
-                  "updateTime": {
-                    "type": "string",
-                    "description": "The time the provider app was updated.",
-                    "format": "date-time"
-                  }
-                }
-              },
-              "group": {
-                "title": "Group",
-                "required": [
-                  "createTime",
-                  "groupName",
-                  "groupRef",
-                  "projectId"
-                ],
-                "type": "object",
-                "properties": {
-                  "groupRef": {
-                    "type": "string",
-                    "description": "The ID of the user group that has access to this installation.",
-                    "example": "group-123"
-                  },
-                  "groupName": {
-                    "type": "string",
-                    "description": "The name of the user group that has access to this installation.",
-                    "example": "Super Customer"
-                  },
-                  "projectId": {
-                    "type": "string",
-                    "description": "The Ampersand project ID.",
-                    "example": "project-456"
-                  },
-                  "createTime": {
-                    "type": "string",
-                    "description": "The time the group was created.",
-                    "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
-                  },
-                  "updateTime": {
-                    "type": "string",
-                    "description": "The time the group was last updated.",
-                    "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
-                  }
-                }
-              },
-              "consumer": {
-                "title": "Consumer",
-                "required": [
-                  "consumerName",
-                  "consumerRef",
-                  "createTime",
-                  "projectId"
-                ],
-                "type": "object",
-                "properties": {
-                  "consumerRef": {
-                    "type": "string",
-                    "description": "The consumer reference.",
-                    "example": "consumer-123"
-                  },
-                  "consumerName": {
-                    "type": "string",
-                    "description": "The name of the consumer.",
-                    "example": "Super Customer"
-                  },
-                  "projectId": {
-                    "type": "string",
-                    "description": "The Ampersand project ID.",
-                    "example": "project-456"
-                  },
-                  "createTime": {
-                    "type": "string",
-                    "description": "The time the consumer was created.",
-                    "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
-                  },
-                  "updateTime": {
-                    "type": "string",
-                    "description": "The time the consumer was last updated.",
-                    "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
-                  }
-                }
-              },
-              "providerWorkspaceRef": {
-                "type": "string",
-                "description": "If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)",
-                "example": "provider-workspace-123"
-              },
-              "providerConsumerRef": {
-                "type": "string",
-                "description": "If available, the ID that Salesforce/Hubspot uses to identify this user (e.g. Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)",
-                "example": "provider-consumer-123"
-              },
-              "createTime": {
-                "type": "string",
-                "description": "The time the connection was created.",
-                "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
-              },
-              "updateTime": {
-                "type": "string",
-                "description": "The time the connection was last updated.",
-                "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
-              },
-              "authScheme": {
-                "type": "string",
-                "description": "The authentication scheme used for this connection.",
-                "example": "oauth2/authorizationCode",
-                "enum": [
-                  "none",
-                  "apiKey",
-                  "basic",
-                  "oauth2/authorizationCode",
-                  "oauth2/authorizationCodePKCE",
-                  "oauth2/clientCredentials",
-                  "oauth2/password"
-                ]
-              },
-              "status": {
-                "type": "string",
-                "description": "The status of the connection.\n- `created`: The connection has just been created or the access token was just refreshed.\n- `working`: The connection has successfully been used to make a request.\n- `bad_credentials`: The connection encountered credential-related issues when making a request, or when attempting to refresh the access token.\n",
-                "example": "working",
-                "enum": [
-                  "created",
-                  "working",
-                  "bad_credentials"
-                ]
-              },
-              "oauth2AuthorizationCode": {
-                "title": "OAuth2 AuthorizationCode Token",
-                "type": "object",
-                "properties": {
-                  "accessToken": {
-                    "type": "object",
-                    "required": [
-                      "token"
-                    ],
-                    "description": "The access token for the connection.",
-                    "properties": {
-                      "token": {
-                        "type": "string"
-                      },
-                      "issuedAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2024-04-22T18:55:28.456076Z"
-                      },
-                      "expiresAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2024-10-22T18:55:28.456076Z"
-                      }
-                    }
-                  },
-                  "refreshToken": {
-                    "type": "object",
-                    "required": [
-                      "token"
-                    ],
-                    "description": "The refresh token to use for the connection.",
-                    "properties": {
-                      "token": {
-                        "type": "string"
-                      },
-                      "issuedAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2024-04-22T18:55:28.456076Z"
-                      },
-                      "expiresAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2024-10-22T18:55:28.456076Z"
-                      }
-                    }
-                  },
-                  "scopes": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "The scopes for the tokens."
-                  }
-                }
-              },
-              "apiKey": {
-                "type": "string",
-                "description": "The API key used while making the connection.",
-                "example": "api-key-123"
-              },
-              "providerMetadata": {
-                "title": "Provider Metadata",
-                "type": "object",
-                "additionalProperties": {
-                  "title": "Provider Metadata Info",
-                  "type": "object",
-                  "required": [
-                    "value",
-                    "source"
-                  ],
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "description": "The value of the metadata field",
-                      "example": "1234567890"
-                    },
-                    "source": {
-                      "type": "string",
-                      "description": "The source of the metadata field",
-                      "enum": [
-                        "input",
-                        "token",
-                        "provider"
-                      ],
-                      "example": "input"
-                    },
-                    "displayName": {
-                      "type": "string",
-                      "description": "The human-readable name for the field",
-                      "example": "Account ID"
                     }
                   }
                 }
               }
             }
           }
-        }
+        ]
       },
       "RedirectResponse": {
         "title": "Redirect Response",

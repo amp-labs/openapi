@@ -4864,7 +4864,7 @@ components:
           example: my-project
         provider:
           type: string
-          description: The provider that this app connects to. Required on the first call.
+          description: The provider that this app connects to. Required on the first call (when sessionId is not present); ignored on resume calls. Conditional requirement is enforced at the application layer.
           example: bill
         groupRef:
           type: string
@@ -4896,13 +4896,13 @@ components:
         customAuth:
           type: object
           additionalProperties: true
-          description: The consumer-supplied custom auth inputs (keyed by CustomAuthInput.name). Supplied on the first call.
+          description: The consumer-supplied custom auth inputs (keyed by CustomAuthInput.name). Supplied on the first call (when sessionId is not present).
           example:
             userName: admin@acme.com
             password: hunter2
         sessionId:
           type: string
-          description: Identifies an in-progress flow to resume after a redirect. Returned in a prior redirect response.
+          description: Identifies an in-progress flow to resume after a redirect. Returned in a prior redirect response. When present, provider and customAuth are not required.
           example: 7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d
         callbackParams:
           type: object
@@ -4915,11 +4915,15 @@ components:
       title: Custom Auth Connect Response
       type: object
       description: Response from /custom-auth/connect. Exactly one of redirect or connection is set. A redirect means the client should open the URL and call again with sessionId + callbackParams; a connection means the flow is complete.
-      properties:
-        redirect:
-          $ref: "#/components/schemas/RedirectResponse"
-        connection:
-          $ref: "#/components/schemas/Connection"
+      oneOf:
+        - required: [redirect]
+          properties:
+            redirect:
+              $ref: "#/components/schemas/RedirectResponse"
+        - required: [connection]
+          properties:
+            connection:
+              $ref: "#/components/schemas/Connection"
     RedirectResponse:
       title: Redirect Response
       type: object
