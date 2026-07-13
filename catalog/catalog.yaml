@@ -448,9 +448,12 @@ components:
           x-go-type-skip-optional-pointer: true
         fieldType:
           type: string
-          enum: [text, password, select]
-          example: password
-          description: How the frontend should render this input. "text" is an unmasked field (not sensitive), "password" is a masked field (sensitive), and "select" is a dropdown populated from options. Defaults to "password" when omitted.
+          # Values are self-prefixed so they don't collide with other enums that
+          # share bare value names (e.g. Oauth2Opts grantType's "password"),
+          # which would otherwise force oapi-codegen to prefix every enum const.
+          enum: [fieldTypeText, fieldTypePassword, fieldTypeSelect]
+          example: fieldTypePassword
+          description: How the frontend should render this input. "fieldTypeText" is an unmasked field (not sensitive), "fieldTypePassword" is a masked field (sensitive), and "fieldTypeSelect" is a dropdown populated from options. Defaults to "fieldTypePassword" when omitted.
           x-go-type-skip-optional-pointer: true
         options:
           type: array

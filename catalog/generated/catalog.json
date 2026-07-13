@@ -951,12 +951,12 @@
           "fieldType": {
             "type": "string",
             "enum": [
-              "text",
-              "password",
-              "select"
+              "fieldTypeText",
+              "fieldTypePassword",
+              "fieldTypeSelect"
             ],
-            "example": "password",
-            "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+            "example": "fieldTypePassword",
+            "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
             "x-go-type-skip-optional-pointer": true
           },
           "options": {
@@ -1107,12 +1107,12 @@
                 "fieldType": {
                   "type": "string",
                   "enum": [
-                    "text",
-                    "password",
-                    "select"
+                    "fieldTypeText",
+                    "fieldTypePassword",
+                    "fieldTypeSelect"
                   ],
-                  "example": "password",
-                  "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                  "example": "fieldTypePassword",
+                  "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                   "x-go-type-skip-optional-pointer": true
                 },
                 "options": {
@@ -1182,12 +1182,12 @@
                 "fieldType": {
                   "type": "string",
                   "enum": [
-                    "text",
-                    "password",
-                    "select"
+                    "fieldTypeText",
+                    "fieldTypePassword",
+                    "fieldTypeSelect"
                   ],
-                  "example": "password",
-                  "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                  "example": "fieldTypePassword",
+                  "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                   "x-go-type-skip-optional-pointer": true
                 },
                 "options": {
@@ -2243,12 +2243,12 @@
                     "fieldType": {
                       "type": "string",
                       "enum": [
-                        "text",
-                        "password",
-                        "select"
+                        "fieldTypeText",
+                        "fieldTypePassword",
+                        "fieldTypeSelect"
                       ],
-                      "example": "password",
-                      "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                      "example": "fieldTypePassword",
+                      "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "options": {
@@ -2318,12 +2318,12 @@
                     "fieldType": {
                       "type": "string",
                       "enum": [
-                        "text",
-                        "password",
-                        "select"
+                        "fieldTypeText",
+                        "fieldTypePassword",
+                        "fieldTypeSelect"
                       ],
-                      "example": "password",
-                      "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                      "example": "fieldTypePassword",
+                      "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                       "x-go-type-skip-optional-pointer": true
                     },
                     "options": {
@@ -3700,12 +3700,12 @@
                           "fieldType": {
                             "type": "string",
                             "enum": [
-                              "text",
-                              "password",
-                              "select"
+                              "fieldTypeText",
+                              "fieldTypePassword",
+                              "fieldTypeSelect"
                             ],
-                            "example": "password",
-                            "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                            "example": "fieldTypePassword",
+                            "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                             "x-go-type-skip-optional-pointer": true
                           },
                           "options": {
@@ -3775,12 +3775,12 @@
                           "fieldType": {
                             "type": "string",
                             "enum": [
-                              "text",
-                              "password",
-                              "select"
+                              "fieldTypeText",
+                              "fieldTypePassword",
+                              "fieldTypeSelect"
                             ],
-                            "example": "password",
-                            "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                            "example": "fieldTypePassword",
+                            "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                             "x-go-type-skip-optional-pointer": true
                           },
                           "options": {
@@ -5035,12 +5035,12 @@
                       "fieldType": {
                         "type": "string",
                         "enum": [
-                          "text",
-                          "password",
-                          "select"
+                          "fieldTypeText",
+                          "fieldTypePassword",
+                          "fieldTypeSelect"
                         ],
-                        "example": "password",
-                        "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                        "example": "fieldTypePassword",
+                        "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                         "x-go-type-skip-optional-pointer": true
                       },
                       "options": {
@@ -5110,12 +5110,12 @@
                       "fieldType": {
                         "type": "string",
                         "enum": [
-                          "text",
-                          "password",
-                          "select"
+                          "fieldTypeText",
+                          "fieldTypePassword",
+                          "fieldTypeSelect"
                         ],
-                        "example": "password",
-                        "description": "How the frontend should render this input. \"text\" is an unmasked field (not sensitive), \"password\" is a masked field (sensitive), and \"select\" is a dropdown populated from options. Defaults to \"password\" when omitted.",
+                        "example": "fieldTypePassword",
+                        "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
                         "x-go-type-skip-optional-pointer": true
                       },
                       "options": {
