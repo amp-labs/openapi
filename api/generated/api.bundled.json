@@ -167,6 +167,59 @@
         "x-codegen-request-body-name": "connectOAuthParams"
       }
     },
+    "/custom-auth/connect": {
+      "post": {
+        "operationId": "customAuthConnect",
+        "summary": "Start or continue a multi-step custom auth flow",
+        "description": "Drives a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls). Call it once with the flow inputs to start; if the response contains a redirect, open it, then call again with the returned sessionId and the provider's callback params to continue. Repeat until the response contains a connection. Used by the prebuilt UI components; only providers whose ProviderInfo has customOpts.multiStep present can use this endpoint.\n",
+        "tags": [
+          "Connection"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomAuthConnectRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomAuthConnectResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InputValidationProblem"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiProblem"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "customAuthConnectParams"
+      }
+    },
     "/projects/{projectIdOrName}/connections/{connectionId}:oauth-update": {
       "patch": {
         "operationId": "oauthUpdate",
@@ -7247,6 +7300,127 @@
   },
   "components": {
     "schemas": {
+      "CustomAuthConnectRequest": {
+        "title": "Custom Auth Connect Request",
+        "type": "object",
+        "description": "Request body for the /custom-auth/connect endpoint. The first call supplies the flow inputs; subsequent calls supply sessionId and callbackParams to resume after a redirect.",
+        "required": [
+          "projectIdOrName"
+        ],
+        "properties": {
+          "projectIdOrName": {
+            "type": "string",
+            "description": "The Ampersand project ID or project name. Required on the first call.",
+            "example": "my-project"
+          },
+          "provider": {
+            "type": "string",
+            "description": "The provider that this app connects to. Required on the first call (when sessionId is not present); ignored on resume calls. Conditional requirement is enforced at the application layer.",
+            "example": "bill"
+          },
+          "groupRef": {
+            "type": "string",
+            "description": "Your application's identifier for the organization or workspace that this connection belongs to. Supplied on the first call; ignored on resume calls (the parked flow's identity is used).",
+            "example": "group-123"
+          },
+          "groupName": {
+            "type": "string",
+            "description": "The display name for the group. Defaults to groupRef if not provided. Supplied on the first call; ignored on resume calls.",
+            "example": "Organization Name"
+          },
+          "consumerRef": {
+            "type": "string",
+            "description": "The ID that your app uses to identify the user whose SaaS credential will be used. Supplied on the first call; ignored on resume calls (the parked flow's identity is used).",
+            "example": "user_123456"
+          },
+          "consumerName": {
+            "type": "string",
+            "description": "The display name for the consumer. Defaults to consumerRef if not provided. Supplied on the first call; ignored on resume calls.",
+            "example": "John Doe"
+          },
+          "providerMetadata": {
+            "description": "Additional provider-specific metadata collected from the user.",
+            "$ref": "#/components/schemas/ProviderMetadata"
+          },
+          "providerAppId": {
+            "type": "string",
+            "description": "ID of the provider app. If omitted, the default provider app set up on the Dashboard is assumed.",
+            "example": "32356abe-d2fd-49c7-9030-abdcbc6456d4"
+          },
+          "customAuth": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "The consumer-supplied custom auth inputs (keyed by CustomAuthInput.name). Supplied on the first call (when sessionId is not present).",
+            "example": {
+              "userName": "admin@acme.com",
+              "password": "hunter2"
+            }
+          },
+          "sessionId": {
+            "type": "string",
+            "description": "Identifies an in-progress flow to resume after a redirect. Returned in a prior redirect response. When present, provider and customAuth are not required.",
+            "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
+          },
+          "callbackParams": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "The query/body params the provider sent to the callback, forwarded to resume the flow.",
+            "example": {
+              "tenant": "9e1477fd-54ef-41fe-b747-bc9e6a11a925"
+            }
+          }
+        }
+      },
+      "CustomAuthConnectResponse": {
+        "title": "Custom Auth Connect Response",
+        "type": "object",
+        "description": "Response from /custom-auth/connect. Exactly one of redirect or connection is set. A redirect means the client should open the URL and call again with sessionId + callbackParams; a connection means the flow is complete.",
+        "oneOf": [
+          {
+            "required": [
+              "redirect"
+            ],
+            "properties": {
+              "redirect": {
+                "$ref": "#/components/schemas/RedirectResponse"
+              }
+            }
+          },
+          {
+            "required": [
+              "connection"
+            ],
+            "properties": {
+              "connection": {
+                "$ref": "#/components/schemas/Connection"
+              }
+            }
+          }
+        ]
+      },
+      "RedirectResponse": {
+        "title": "Redirect Response",
+        "type": "object",
+        "description": "Instructs the client to open a URL (e.g. in a popup) to continue a custom auth flow, then resume by calling /custom-auth/connect with the sessionId.",
+        "required": [
+          "url",
+          "sessionId"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL the client should open to continue the flow.",
+            "example": "https://login.microsoftonline.com/common/adminconsent?client_id=xxx"
+          },
+          "sessionId": {
+            "type": "string",
+            "description": "The flow identifier to pass back to /custom-auth/connect once the provider redirects to the callback.",
+            "example": "7f3c1e2a-9b0d-4a1f-8c2e-1d2f3a4b5c6d"
+          }
+        }
+      },
       "Org": {
         "title": "Organization",
         "required": [
@@ -11784,6 +11958,27 @@
           }
         }
       },
+      "CustomAuthInputOption": {
+        "title": "Custom Auth Input Option",
+        "type": "object",
+        "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+        "required": [
+          "value",
+          "label"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "prod",
+            "description": "The value stored when this option is selected."
+          },
+          "label": {
+            "type": "string",
+            "example": "Production",
+            "description": "The human-readable label shown for this option."
+          }
+        }
+      },
       "CustomAuthInput": {
         "title": "Custom Auth Input",
         "type": "object",
@@ -11813,6 +12008,25 @@
             "type": "string",
             "example": "https://docs.example.com/custom-auth-input",
             "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "fieldType": {
+            "type": "string",
+            "enum": [
+              "fieldTypeText",
+              "fieldTypePassword",
+              "fieldTypeSelect"
+            ],
+            "example": "fieldTypePassword",
+            "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomAuthInputOption"
+            },
+            "description": "The dropdown options, used only when fieldType is \"select\".",
             "x-go-type-skip-optional-pointer": true
           }
         }
@@ -11844,6 +12058,20 @@
               "$ref": "#/components/schemas/CustomAuthInput"
             },
             "description": "A list of custom input fields for authentication. The frontend will render these input fields and the backend will receive the values of these fields before making a request.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "providerInputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomAuthInput"
+            },
+            "description": "Input fields the builder configures on their provider app (e.g. client secrets, subscription keys) rather than the consumer. Routed to storage by fieldType. Optional.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "multiStep": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether this provider uses a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls) driven by the /custom-auth/connect endpoint, rather than static header/query-param injection. The step definitions and handlers live in the connectors library, not the catalog; this flag is the signal that lets clients tell \"multi-step custom\" apart from plain \"custom\" at a glance.",
             "x-go-type-skip-optional-pointer": true
           }
         }

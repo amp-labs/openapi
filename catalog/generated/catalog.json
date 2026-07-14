@@ -947,6 +947,64 @@
             "example": "https://docs.example.com/custom-auth-input",
             "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
             "x-go-type-skip-optional-pointer": true
+          },
+          "fieldType": {
+            "type": "string",
+            "enum": [
+              "fieldTypeText",
+              "fieldTypePassword",
+              "fieldTypeSelect"
+            ],
+            "example": "fieldTypePassword",
+            "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "title": "Custom Auth Input Option",
+              "type": "object",
+              "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+              "required": [
+                "value",
+                "label"
+              ],
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "example": "prod",
+                  "description": "The value stored when this option is selected."
+                },
+                "label": {
+                  "type": "string",
+                  "example": "Production",
+                  "description": "The human-readable label shown for this option."
+                }
+              }
+            },
+            "description": "The dropdown options, used only when fieldType is \"select\".",
+            "x-go-type-skip-optional-pointer": true
+          }
+        }
+      },
+      "CustomAuthInputOption": {
+        "title": "Custom Auth Input Option",
+        "type": "object",
+        "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+        "required": [
+          "value",
+          "label"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "prod",
+            "description": "The value stored when this option is selected."
+          },
+          "label": {
+            "type": "string",
+            "example": "Production",
+            "description": "The human-readable label shown for this option."
           }
         }
       },
@@ -1045,10 +1103,128 @@
                   "example": "https://docs.example.com/custom-auth-input",
                   "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
                   "x-go-type-skip-optional-pointer": true
+                },
+                "fieldType": {
+                  "type": "string",
+                  "enum": [
+                    "fieldTypeText",
+                    "fieldTypePassword",
+                    "fieldTypeSelect"
+                  ],
+                  "example": "fieldTypePassword",
+                  "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "title": "Custom Auth Input Option",
+                    "type": "object",
+                    "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                    "required": [
+                      "value",
+                      "label"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "string",
+                        "example": "prod",
+                        "description": "The value stored when this option is selected."
+                      },
+                      "label": {
+                        "type": "string",
+                        "example": "Production",
+                        "description": "The human-readable label shown for this option."
+                      }
+                    }
+                  },
+                  "description": "The dropdown options, used only when fieldType is \"select\".",
+                  "x-go-type-skip-optional-pointer": true
                 }
               }
             },
             "description": "A list of custom input fields for authentication. The frontend will render these input fields and the backend will receive the values of these fields before making a request.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "providerInputs": {
+            "type": "array",
+            "items": {
+              "title": "Custom Auth Input",
+              "type": "object",
+              "description": "A custom input field for authentication. This is used by the frontend to dynamically render input fields for custom auth. The backend will not interpret this. It will however receive the value of this field before making a request (in the connection secrets).",
+              "required": [
+                "name",
+                "displayName"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "custom_auth_input",
+                  "description": "The internal identifier for the custom auth input field."
+                },
+                "displayName": {
+                  "type": "string",
+                  "example": "Custom Auth Input",
+                  "description": "The human-readable name for the custom auth input field."
+                },
+                "prompt": {
+                  "type": "string",
+                  "example": "See Authorization section of provider docs to obtain this value",
+                  "description": "Some helpful text or context to be displayed to the user when asking for this input.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "docsURL": {
+                  "type": "string",
+                  "example": "https://docs.example.com/custom-auth-input",
+                  "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "fieldType": {
+                  "type": "string",
+                  "enum": [
+                    "fieldTypeText",
+                    "fieldTypePassword",
+                    "fieldTypeSelect"
+                  ],
+                  "example": "fieldTypePassword",
+                  "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "title": "Custom Auth Input Option",
+                    "type": "object",
+                    "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                    "required": [
+                      "value",
+                      "label"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "string",
+                        "example": "prod",
+                        "description": "The value stored when this option is selected."
+                      },
+                      "label": {
+                        "type": "string",
+                        "example": "Production",
+                        "description": "The human-readable label shown for this option."
+                      }
+                    }
+                  },
+                  "description": "The dropdown options, used only when fieldType is \"select\".",
+                  "x-go-type-skip-optional-pointer": true
+                }
+              }
+            },
+            "description": "Input fields the builder configures on their provider app (e.g. client secrets, subscription keys) rather than the consumer. Routed to storage by fieldType. Optional.",
+            "x-go-type-skip-optional-pointer": true
+          },
+          "multiStep": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether this provider uses a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls) driven by the /custom-auth/connect endpoint, rather than static header/query-param injection. The step definitions and handlers live in the connectors library, not the catalog; this flag is the signal that lets clients tell \"multi-step custom\" apart from plain \"custom\" at a glance.",
             "x-go-type-skip-optional-pointer": true
           }
         }
@@ -2063,10 +2239,128 @@
                       "example": "https://docs.example.com/custom-auth-input",
                       "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
                       "x-go-type-skip-optional-pointer": true
+                    },
+                    "fieldType": {
+                      "type": "string",
+                      "enum": [
+                        "fieldTypeText",
+                        "fieldTypePassword",
+                        "fieldTypeSelect"
+                      ],
+                      "example": "fieldTypePassword",
+                      "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "options": {
+                      "type": "array",
+                      "items": {
+                        "title": "Custom Auth Input Option",
+                        "type": "object",
+                        "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                        "required": [
+                          "value",
+                          "label"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "string",
+                            "example": "prod",
+                            "description": "The value stored when this option is selected."
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "Production",
+                            "description": "The human-readable label shown for this option."
+                          }
+                        }
+                      },
+                      "description": "The dropdown options, used only when fieldType is \"select\".",
+                      "x-go-type-skip-optional-pointer": true
                     }
                   }
                 },
                 "description": "A list of custom input fields for authentication. The frontend will render these input fields and the backend will receive the values of these fields before making a request.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "providerInputs": {
+                "type": "array",
+                "items": {
+                  "title": "Custom Auth Input",
+                  "type": "object",
+                  "description": "A custom input field for authentication. This is used by the frontend to dynamically render input fields for custom auth. The backend will not interpret this. It will however receive the value of this field before making a request (in the connection secrets).",
+                  "required": [
+                    "name",
+                    "displayName"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "custom_auth_input",
+                      "description": "The internal identifier for the custom auth input field."
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "example": "Custom Auth Input",
+                      "description": "The human-readable name for the custom auth input field."
+                    },
+                    "prompt": {
+                      "type": "string",
+                      "example": "See Authorization section of provider docs to obtain this value",
+                      "description": "Some helpful text or context to be displayed to the user when asking for this input.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "docsURL": {
+                      "type": "string",
+                      "example": "https://docs.example.com/custom-auth-input",
+                      "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "fieldType": {
+                      "type": "string",
+                      "enum": [
+                        "fieldTypeText",
+                        "fieldTypePassword",
+                        "fieldTypeSelect"
+                      ],
+                      "example": "fieldTypePassword",
+                      "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "options": {
+                      "type": "array",
+                      "items": {
+                        "title": "Custom Auth Input Option",
+                        "type": "object",
+                        "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                        "required": [
+                          "value",
+                          "label"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "string",
+                            "example": "prod",
+                            "description": "The value stored when this option is selected."
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "Production",
+                            "description": "The human-readable label shown for this option."
+                          }
+                        }
+                      },
+                      "description": "The dropdown options, used only when fieldType is \"select\".",
+                      "x-go-type-skip-optional-pointer": true
+                    }
+                  }
+                },
+                "description": "Input fields the builder configures on their provider app (e.g. client secrets, subscription keys) rather than the consumer. Routed to storage by fieldType. Optional.",
+                "x-go-type-skip-optional-pointer": true
+              },
+              "multiStep": {
+                "type": "boolean",
+                "example": true,
+                "description": "Whether this provider uses a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls) driven by the /custom-auth/connect endpoint, rather than static header/query-param injection. The step definitions and handlers live in the connectors library, not the catalog; this flag is the signal that lets clients tell \"multi-step custom\" apart from plain \"custom\" at a glance.",
                 "x-go-type-skip-optional-pointer": true
               }
             }
@@ -2948,7 +3242,7 @@
         "properties": {
           "timestamp": {
             "type": "string",
-            "example": "2024-07-30T22:14:51.000Z",
+            "example": "2024-07-30T15:14:51-07:00",
             "description": "An RFC3339 formatted timestamp of when the catalog was generated.",
             "x-oapi-codegen-extra-tags": {
               "validate": "required"
@@ -3402,10 +3696,128 @@
                             "example": "https://docs.example.com/custom-auth-input",
                             "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
                             "x-go-type-skip-optional-pointer": true
+                          },
+                          "fieldType": {
+                            "type": "string",
+                            "enum": [
+                              "fieldTypeText",
+                              "fieldTypePassword",
+                              "fieldTypeSelect"
+                            ],
+                            "example": "fieldTypePassword",
+                            "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "options": {
+                            "type": "array",
+                            "items": {
+                              "title": "Custom Auth Input Option",
+                              "type": "object",
+                              "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                              "required": [
+                                "value",
+                                "label"
+                              ],
+                              "properties": {
+                                "value": {
+                                  "type": "string",
+                                  "example": "prod",
+                                  "description": "The value stored when this option is selected."
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "example": "Production",
+                                  "description": "The human-readable label shown for this option."
+                                }
+                              }
+                            },
+                            "description": "The dropdown options, used only when fieldType is \"select\".",
+                            "x-go-type-skip-optional-pointer": true
                           }
                         }
                       },
                       "description": "A list of custom input fields for authentication. The frontend will render these input fields and the backend will receive the values of these fields before making a request.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "providerInputs": {
+                      "type": "array",
+                      "items": {
+                        "title": "Custom Auth Input",
+                        "type": "object",
+                        "description": "A custom input field for authentication. This is used by the frontend to dynamically render input fields for custom auth. The backend will not interpret this. It will however receive the value of this field before making a request (in the connection secrets).",
+                        "required": [
+                          "name",
+                          "displayName"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "custom_auth_input",
+                            "description": "The internal identifier for the custom auth input field."
+                          },
+                          "displayName": {
+                            "type": "string",
+                            "example": "Custom Auth Input",
+                            "description": "The human-readable name for the custom auth input field."
+                          },
+                          "prompt": {
+                            "type": "string",
+                            "example": "See Authorization section of provider docs to obtain this value",
+                            "description": "Some helpful text or context to be displayed to the user when asking for this input.",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "docsURL": {
+                            "type": "string",
+                            "example": "https://docs.example.com/custom-auth-input",
+                            "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "fieldType": {
+                            "type": "string",
+                            "enum": [
+                              "fieldTypeText",
+                              "fieldTypePassword",
+                              "fieldTypeSelect"
+                            ],
+                            "example": "fieldTypePassword",
+                            "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                            "x-go-type-skip-optional-pointer": true
+                          },
+                          "options": {
+                            "type": "array",
+                            "items": {
+                              "title": "Custom Auth Input Option",
+                              "type": "object",
+                              "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                              "required": [
+                                "value",
+                                "label"
+                              ],
+                              "properties": {
+                                "value": {
+                                  "type": "string",
+                                  "example": "prod",
+                                  "description": "The value stored when this option is selected."
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "example": "Production",
+                                  "description": "The human-readable label shown for this option."
+                                }
+                              }
+                            },
+                            "description": "The dropdown options, used only when fieldType is \"select\".",
+                            "x-go-type-skip-optional-pointer": true
+                          }
+                        }
+                      },
+                      "description": "Input fields the builder configures on their provider app (e.g. client secrets, subscription keys) rather than the consumer. Routed to storage by fieldType. Optional.",
+                      "x-go-type-skip-optional-pointer": true
+                    },
+                    "multiStep": {
+                      "type": "boolean",
+                      "example": true,
+                      "description": "Whether this provider uses a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls) driven by the /custom-auth/connect endpoint, rather than static header/query-param injection. The step definitions and handlers live in the connectors library, not the catalog; this flag is the signal that lets clients tell \"multi-step custom\" apart from plain \"custom\" at a glance.",
                       "x-go-type-skip-optional-pointer": true
                     }
                   }
@@ -4619,10 +5031,128 @@
                         "example": "https://docs.example.com/custom-auth-input",
                         "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
                         "x-go-type-skip-optional-pointer": true
+                      },
+                      "fieldType": {
+                        "type": "string",
+                        "enum": [
+                          "fieldTypeText",
+                          "fieldTypePassword",
+                          "fieldTypeSelect"
+                        ],
+                        "example": "fieldTypePassword",
+                        "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "options": {
+                        "type": "array",
+                        "items": {
+                          "title": "Custom Auth Input Option",
+                          "type": "object",
+                          "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                          "required": [
+                            "value",
+                            "label"
+                          ],
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "example": "prod",
+                              "description": "The value stored when this option is selected."
+                            },
+                            "label": {
+                              "type": "string",
+                              "example": "Production",
+                              "description": "The human-readable label shown for this option."
+                            }
+                          }
+                        },
+                        "description": "The dropdown options, used only when fieldType is \"select\".",
+                        "x-go-type-skip-optional-pointer": true
                       }
                     }
                   },
                   "description": "A list of custom input fields for authentication. The frontend will render these input fields and the backend will receive the values of these fields before making a request.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "providerInputs": {
+                  "type": "array",
+                  "items": {
+                    "title": "Custom Auth Input",
+                    "type": "object",
+                    "description": "A custom input field for authentication. This is used by the frontend to dynamically render input fields for custom auth. The backend will not interpret this. It will however receive the value of this field before making a request (in the connection secrets).",
+                    "required": [
+                      "name",
+                      "displayName"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "custom_auth_input",
+                        "description": "The internal identifier for the custom auth input field."
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "example": "Custom Auth Input",
+                        "description": "The human-readable name for the custom auth input field."
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "example": "See Authorization section of provider docs to obtain this value",
+                        "description": "Some helpful text or context to be displayed to the user when asking for this input.",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "docsURL": {
+                        "type": "string",
+                        "example": "https://docs.example.com/custom-auth-input",
+                        "description": "URL with details about this authentication mechanism and how to use it. Might be specific to this field, or a general URL for the provider. Optional.",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "fieldType": {
+                        "type": "string",
+                        "enum": [
+                          "fieldTypeText",
+                          "fieldTypePassword",
+                          "fieldTypeSelect"
+                        ],
+                        "example": "fieldTypePassword",
+                        "description": "How the frontend should render this input. \"fieldTypeText\" is an unmasked field (not sensitive), \"fieldTypePassword\" is a masked field (sensitive), and \"fieldTypeSelect\" is a dropdown populated from options. Defaults to \"fieldTypePassword\" when omitted.",
+                        "x-go-type-skip-optional-pointer": true
+                      },
+                      "options": {
+                        "type": "array",
+                        "items": {
+                          "title": "Custom Auth Input Option",
+                          "type": "object",
+                          "description": "A selectable option for a custom auth input whose fieldType is \"select\".",
+                          "required": [
+                            "value",
+                            "label"
+                          ],
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "example": "prod",
+                              "description": "The value stored when this option is selected."
+                            },
+                            "label": {
+                              "type": "string",
+                              "example": "Production",
+                              "description": "The human-readable label shown for this option."
+                            }
+                          }
+                        },
+                        "description": "The dropdown options, used only when fieldType is \"select\".",
+                        "x-go-type-skip-optional-pointer": true
+                      }
+                    }
+                  },
+                  "description": "Input fields the builder configures on their provider app (e.g. client secrets, subscription keys) rather than the consumer. Routed to storage by fieldType. Optional.",
+                  "x-go-type-skip-optional-pointer": true
+                },
+                "multiStep": {
+                  "type": "boolean",
+                  "example": true,
+                  "description": "Whether this provider uses a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls) driven by the /custom-auth/connect endpoint, rather than static header/query-param injection. The step definitions and handlers live in the connectors library, not the catalog; this flag is the signal that lets clients tell \"multi-step custom\" apart from plain \"custom\" at a glance.",
                   "x-go-type-skip-optional-pointer": true
                 }
               }
