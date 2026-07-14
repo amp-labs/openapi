@@ -171,7 +171,7 @@
       "post": {
         "operationId": "customAuthConnect",
         "summary": "Start or continue a multi-step custom auth flow",
-        "description": "Drives a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls). Call it once with the flow inputs to start; if the response contains a redirect, open it, then call again with the returned sessionId and the provider's callback params to continue. Repeat until the response contains a connection. Used by the prebuilt UI components; only providers whose ProviderInfo has customOpts.multiStep set use this endpoint.\n",
+        "description": "Drives a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls). Call it once with the flow inputs to start; if the response contains a redirect, open it, then call again with the returned sessionId and the provider's callback params to continue. Repeat until the response contains a connection. Used by the prebuilt UI components; only providers whose ProviderInfo has customOpts.multiStep present can use this endpoint.\n",
         "tags": [
           "Connection"
         ],
@@ -7320,28 +7320,23 @@
           },
           "groupRef": {
             "type": "string",
-            "description": "Your application's identifier for the organization or workspace that this connection belongs to.",
+            "description": "Your application's identifier for the organization or workspace that this connection belongs to. Supplied on the first call; ignored on resume calls (the parked flow's identity is used).",
             "example": "group-123"
           },
           "groupName": {
             "type": "string",
-            "description": "The display name for the group. Defaults to groupRef if not provided.",
+            "description": "The display name for the group. Defaults to groupRef if not provided. Supplied on the first call; ignored on resume calls.",
             "example": "Organization Name"
           },
           "consumerRef": {
             "type": "string",
-            "description": "The ID that your app uses to identify the user whose SaaS credential will be used.",
+            "description": "The ID that your app uses to identify the user whose SaaS credential will be used. Supplied on the first call; ignored on resume calls (the parked flow's identity is used).",
             "example": "user_123456"
           },
           "consumerName": {
             "type": "string",
-            "description": "The display name for the consumer. Defaults to consumerRef if not provided.",
+            "description": "The display name for the consumer. Defaults to consumerRef if not provided. Supplied on the first call; ignored on resume calls.",
             "example": "John Doe"
-          },
-          "providerWorkspaceRef": {
-            "type": "string",
-            "description": "The identifier for the provider workspace (e.g. a subdomain).",
-            "example": "acme-corp"
           },
           "providerMetadata": {
             "description": "Additional provider-specific metadata collected from the user.",
