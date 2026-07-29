@@ -3418,6 +3418,8 @@ paths:
       summary: Get an organization
       operationId: getOrg
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -3450,6 +3452,8 @@ paths:
       summary: Update an organization
       operationId: updateOrg
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -3508,6 +3512,8 @@ paths:
       summary: List builders for an organization
       operationId: listOrgBuilders
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -3537,6 +3543,8 @@ paths:
       summary: Invite a user to an organization
       operationId: createOrgInvite
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -3582,6 +3590,8 @@ paths:
       summary: List invites for an organization
       operationId: listOrgInvites
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -3611,6 +3621,8 @@ paths:
       summary: Get an invite
       operationId: getOrgInvite
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -3642,6 +3654,8 @@ paths:
       summary: Revoke an invite
       operationId: deleteOrgInvite
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -3786,6 +3800,8 @@ paths:
       summary: Get the billing account for an organization
       operationId: getOrgBillingAccount
       tags: ["Billing Account"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
@@ -4818,6 +4834,8 @@ paths:
       summary: List organization's claimed domains
       description: Get all domains claimed by a specific organization
       tags: ["Org"]
+      security: # Only bearer auth works for this endpoint
+        - Bearer: []
       parameters:
         - name: orgId
           in: path
