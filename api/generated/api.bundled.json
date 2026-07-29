@@ -5067,6 +5067,11 @@
         "tags": [
           "Org"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "orgId",
@@ -5118,6 +5123,11 @@
         "operationId": "updateOrg",
         "tags": [
           "Org"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -5209,6 +5219,11 @@
         "tags": [
           "Org"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "orgId",
@@ -5255,6 +5270,11 @@
         "operationId": "createOrgInvite",
         "tags": [
           "Org"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -5328,6 +5348,11 @@
         "tags": [
           "Org"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "orgId",
@@ -5374,6 +5399,11 @@
         "operationId": "getOrgInvite",
         "tags": [
           "Org"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -5424,6 +5454,11 @@
         "operationId": "deleteOrgInvite",
         "tags": [
           "Org"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -5664,6 +5699,11 @@
         "operationId": "getOrgBillingAccount",
         "tags": [
           "Billing Account"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -7247,6 +7287,11 @@
         "description": "Get all domains claimed by a specific organization",
         "tags": [
           "Org"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
