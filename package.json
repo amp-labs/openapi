@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^11.6.4",
-    "@apidevtools/swagger-parser": "^10.1.0"
+    "@apidevtools/swagger-parser": "^12.1.0"
   },
   "devDependencies": {
     "@redocly/openapi-core": "^2.36.0",
