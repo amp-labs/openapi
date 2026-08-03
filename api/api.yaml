@@ -3016,8 +3016,9 @@ paths:
                 type:
                   type: string
                   description: The type of the destination.
+                    For `slack`, set `metadata.url` to a Slack incoming webhook URL.
                   example: webhook
-                  enum: [webhook, kinesis, s3]
+                  enum: [webhook, kinesis, s3, slack]
                 secrets:
                   type: object
                   description: Secrets for the destination.
@@ -3043,6 +3044,7 @@ paths:
                     url:
                       type: string
                       description: Webhook URL, must start with "https://".
+                        For `slack` destinations, this is the Slack incoming webhook URL.
                       example: https://webhooks.mailmonkey.com/salesforce-lead-converted
                     headers:
                       $ref: "#/components/schemas/WebhookHeaders"
