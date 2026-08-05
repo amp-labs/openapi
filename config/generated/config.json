@@ -1448,7 +1448,7 @@
                   "properties": {
                     "quotaOptimization": {
                       "title": "Quota Optimization Config",
-                      "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                      "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                       "type": "object",
                       "required": [
                         "enabled"
@@ -1595,7 +1595,7 @@
             "properties": {
               "quotaOptimization": {
                 "title": "Quota Optimization Config",
-                "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                 "type": "object",
                 "required": [
                   "enabled"
@@ -1619,7 +1619,7 @@
         "properties": {
           "quotaOptimization": {
             "title": "Quota Optimization Config",
-            "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+            "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
             "type": "object",
             "required": [
               "enabled"
@@ -1636,7 +1636,7 @@
       },
       "QuotaOptimizationConfig": {
         "title": "Quota Optimization Config",
-        "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+        "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
         "type": "object",
         "required": [
           "enabled"
@@ -3182,7 +3182,7 @@
                               "properties": {
                                 "quotaOptimization": {
                                   "title": "Quota Optimization Config",
-                                  "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                                  "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                                   "type": "object",
                                   "required": [
                                     "enabled"
@@ -3339,7 +3339,7 @@
                                   "properties": {
                                     "quotaOptimization": {
                                       "title": "Quota Optimization Config",
-                                      "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                                      "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -4776,7 +4776,7 @@
                       "properties": {
                         "quotaOptimization": {
                           "title": "Quota Optimization Config",
-                          "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                          "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                           "type": "object",
                           "required": [
                             "enabled"
@@ -4933,7 +4933,7 @@
                           "properties": {
                             "quotaOptimization": {
                               "title": "Quota Optimization Config",
-                              "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                              "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                               "type": "object",
                               "required": [
                                 "enabled"
@@ -5095,7 +5095,7 @@
                 "properties": {
                   "quotaOptimization": {
                     "title": "Quota Optimization Config",
-                    "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                    "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                     "type": "object",
                     "required": [
                       "enabled"
@@ -5691,7 +5691,7 @@
                           "properties": {
                             "quotaOptimization": {
                               "title": "Quota Optimization Config",
-                              "description": "Salesforce only. Reduces Salesforce API quota consumption for update events by filtering irrelevant change events at the source: Ampersand creates a checkbox field on the object and an Apex trigger that sets it when a watched field changes, then only delivers update events where the checkbox is set. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`.\n",
+                              "description": "Reduces API quota consumption for update events by filtering irrelevant change events at the source, so only updates that affect watched fields are delivered. Requires `updateEvent.requiredWatchFields` to be non-empty; it cannot be used with `updateEvent.watchFieldsAuto: all`. Currently supported for Salesforce.\n",
                               "type": "object",
                               "required": [
                                 "enabled"
