@@ -10,6 +10,13 @@ Ensure you have pnpm installed globally
 npm install -g pnpm
 ```
 
+As well as `rdme`:
+
+```shell 
+npm install -g rdme
+```
+
+
 Install dependencies 
 
 ```shell
