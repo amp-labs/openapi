@@ -3017,8 +3017,12 @@ paths:
                   type: string
                   description: The type of the destination.
                     For `slack`, set `metadata.url` to a Slack incoming webhook URL.
+                    The warehouse, object-storage, and message-queue types (`clickhouse`,
+                    `snowflake`, `bigquery`, `redshift`, `azureblob`, `gcs`, `sqs`, `sns`,
+                    `eventbridge`, `pubsub`, `rabbitmq`) are configured via the `metadata`
+                    and `secrets` fields documented below.
                   example: webhook
-                  enum: [webhook, kinesis, s3, slack]
+                  enum: [webhook, kinesis, s3, slack, clickhouse, snowflake, bigquery, redshift, azureblob, gcs, sqs, sns, eventbridge, pubsub, rabbitmq]
                 secrets:
                   type: object
                   description: Secrets for the destination.
@@ -3037,6 +3041,44 @@ paths:
                       type: string
                       description: The AWS session token for the Kinesis or S3 destination.
                       example: AQoEXAMPLEH4aoAH0gNCAPy...
+                      x-go-type-skip-optional-pointer: true
+                    password:
+                      type: string
+                      description: The password for the `clickhouse` destination.
+                      example: my-clickhouse-password
+                      x-go-type-skip-optional-pointer: true
+                    privateKey:
+                      type: string
+                      description: The PEM-encoded RSA private key for the `snowflake` destination.
+                      example: "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----"
+                      x-go-type-skip-optional-pointer: true
+                    credentials:
+                      type: string
+                      description: The service-account credentials JSON for the `bigquery`,
+                        `gcs`, and `pubsub` destinations.
+                      example: '{"type":"service_account", ...}'
+                      x-go-type-skip-optional-pointer: true
+                    accessKeyId:
+                      type: string
+                      description: The AWS access key ID for the `redshift`, `sqs`, `sns`,
+                        and `eventbridge` destinations.
+                      example: AKIAIOSFODNN7EXAMPLE
+                      x-go-type-skip-optional-pointer: true
+                    secretAccessKey:
+                      type: string
+                      description: The AWS secret access key for the `redshift`, `sqs`, `sns`,
+                        and `eventbridge` destinations.
+                      example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+                      x-go-type-skip-optional-pointer: true
+                    accessKey:
+                      type: string
+                      description: The account access key for the `azureblob` destination.
+                      example: my-azure-access-key
+                      x-go-type-skip-optional-pointer: true
+                    uri:
+                      type: string
+                      description: The connection URI (embeds credentials) for the `rabbitmq` destination.
+                      example: amqp://user:pass@rabbit.example.com:5672
                       x-go-type-skip-optional-pointer: true
                 metadata:
                   type: object
@@ -3082,6 +3124,111 @@ paths:
                       type: string
                       description: The S3 storage class for written objects. Defaults to STANDARD. Common values include STANDARD, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, GLACIER_IR, and DEEP_ARCHIVE.
                       example: STANDARD
+                      x-go-type-skip-optional-pointer: true
+                    username:
+                      type: string
+                      description: The username for the `clickhouse` destination.
+                      example: default
+                      x-go-type-skip-optional-pointer: true
+                    tableName:
+                      type: string
+                      description: The destination table name (`clickhouse`, `snowflake`, `redshift`).
+                      example: events
+                      x-go-type-skip-optional-pointer: true
+                    database:
+                      type: string
+                      description: The database name for the `clickhouse` destination.
+                      example: analytics
+                      x-go-type-skip-optional-pointer: true
+                    accountIdentifier:
+                      type: string
+                      description: The Snowflake account identifier for the `snowflake` destination.
+                      example: myorg-myaccount
+                      x-go-type-skip-optional-pointer: true
+                    userId:
+                      type: string
+                      description: The user ID for the `snowflake` destination.
+                      example: SVC_AMPERSAND
+                      x-go-type-skip-optional-pointer: true
+                    dbName:
+                      type: string
+                      description: The database name (`snowflake`, `redshift`).
+                      example: ANALYTICS
+                      x-go-type-skip-optional-pointer: true
+                    schemaName:
+                      type: string
+                      description: The schema name (`snowflake`, `redshift`).
+                      example: PUBLIC
+                      x-go-type-skip-optional-pointer: true
+                    projectId:
+                      type: string
+                      description: The Google Cloud project ID (`bigquery`, `pubsub`).
+                      example: my-gcp-project
+                      x-go-type-skip-optional-pointer: true
+                    datasetId:
+                      type: string
+                      description: The BigQuery dataset ID for the `bigquery` destination.
+                      example: analytics
+                      x-go-type-skip-optional-pointer: true
+                    tableId:
+                      type: string
+                      description: The BigQuery table ID for the `bigquery` destination.
+                      example: events
+                      x-go-type-skip-optional-pointer: true
+                    workgroupName:
+                      type: string
+                      description: The Redshift Serverless workgroup name for the `redshift` destination.
+                      example: my-workgroup
+                      x-go-type-skip-optional-pointer: true
+                    clusterIdentifier:
+                      type: string
+                      description: The Redshift provisioned cluster identifier for the `redshift` destination.
+                      example: my-cluster
+                      x-go-type-skip-optional-pointer: true
+                    dbUser:
+                      type: string
+                      description: The database user for the `redshift` destination.
+                      example: ampersand
+                      x-go-type-skip-optional-pointer: true
+                    account:
+                      type: string
+                      description: The storage account name for the `azureblob` destination.
+                      example: mystorageaccount
+                      x-go-type-skip-optional-pointer: true
+                    container:
+                      type: string
+                      description: The blob container name for the `azureblob` destination.
+                      example: ampersand-data
+                      x-go-type-skip-optional-pointer: true
+                    queueUrl:
+                      type: string
+                      description: The SQS queue URL for the `sqs` destination.
+                      example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
+                      x-go-type-skip-optional-pointer: true
+                    topicArn:
+                      type: string
+                      description: The SNS topic ARN for the `sns` destination.
+                      example: arn:aws:sns:us-east-1:123456789012:my-topic
+                      x-go-type-skip-optional-pointer: true
+                    eventBusName:
+                      type: string
+                      description: The EventBridge event bus name for the `eventbridge` destination.
+                      example: default
+                      x-go-type-skip-optional-pointer: true
+                    detailType:
+                      type: string
+                      description: The EventBridge detail-type for published events (`eventbridge`).
+                      example: ampersand.record
+                      x-go-type-skip-optional-pointer: true
+                    topicId:
+                      type: string
+                      description: The Pub/Sub topic ID for the `pubsub` destination.
+                      example: ampersand-events
+                      x-go-type-skip-optional-pointer: true
+                    routingKey:
+                      type: string
+                      description: The routing key for the `rabbitmq` destination.
+                      example: ampersand.events
                       x-go-type-skip-optional-pointer: true
       responses:
         201:
@@ -3233,9 +3380,37 @@ paths:
                     - metadata.bucket
                     - metadata.keyTemplate
                     - metadata.storageClass
+                    - metadata.username
+                    - metadata.tableName
+                    - metadata.database
+                    - metadata.accountIdentifier
+                    - metadata.userId
+                    - metadata.dbName
+                    - metadata.schemaName
+                    - metadata.projectId
+                    - metadata.datasetId
+                    - metadata.tableId
+                    - metadata.workgroupName
+                    - metadata.clusterIdentifier
+                    - metadata.dbUser
+                    - metadata.account
+                    - metadata.container
+                    - metadata.queueUrl
+                    - metadata.topicArn
+                    - metadata.eventBusName
+                    - metadata.detailType
+                    - metadata.topicId
+                    - metadata.routingKey
                     - secrets.awsKeyId
                     - secrets.awsSecretKey
                     - secrets.awsSessionToken
+                    - secrets.password
+                    - secrets.privateKey
+                    - secrets.credentials
+                    - secrets.accessKeyId
+                    - secrets.secretAccessKey
+                    - secrets.accessKey
+                    - secrets.uri
 
                   example: ["name", "metadata.url", "metadata.region", "metadata.streamName"]
                 destination:
@@ -3282,6 +3457,90 @@ paths:
                           type: string
                           description: The S3 storage class for written objects. Defaults to STANDARD. Common values include STANDARD, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, GLACIER_IR, and DEEP_ARCHIVE.
                           example: STANDARD
+                        username:
+                          type: string
+                          description: The username for the `clickhouse` destination.
+                          example: default
+                        tableName:
+                          type: string
+                          description: The destination table name (`clickhouse`, `snowflake`, `redshift`).
+                          example: events
+                        database:
+                          type: string
+                          description: The database name for the `clickhouse` destination.
+                          example: analytics
+                        accountIdentifier:
+                          type: string
+                          description: The Snowflake account identifier for the `snowflake` destination.
+                          example: myorg-myaccount
+                        userId:
+                          type: string
+                          description: The user ID for the `snowflake` destination.
+                          example: SVC_AMPERSAND
+                        dbName:
+                          type: string
+                          description: The database name (`snowflake`, `redshift`).
+                          example: ANALYTICS
+                        schemaName:
+                          type: string
+                          description: The schema name (`snowflake`, `redshift`).
+                          example: PUBLIC
+                        projectId:
+                          type: string
+                          description: The Google Cloud project ID (`bigquery`, `pubsub`).
+                          example: my-gcp-project
+                        datasetId:
+                          type: string
+                          description: The BigQuery dataset ID for the `bigquery` destination.
+                          example: analytics
+                        tableId:
+                          type: string
+                          description: The BigQuery table ID for the `bigquery` destination.
+                          example: events
+                        workgroupName:
+                          type: string
+                          description: The Redshift Serverless workgroup name for the `redshift` destination.
+                          example: my-workgroup
+                        clusterIdentifier:
+                          type: string
+                          description: The Redshift provisioned cluster identifier for the `redshift` destination.
+                          example: my-cluster
+                        dbUser:
+                          type: string
+                          description: The database user for the `redshift` destination.
+                          example: ampersand
+                        account:
+                          type: string
+                          description: The storage account name for the `azureblob` destination.
+                          example: mystorageaccount
+                        container:
+                          type: string
+                          description: The blob container name for the `azureblob` destination.
+                          example: ampersand-data
+                        queueUrl:
+                          type: string
+                          description: The SQS queue URL for the `sqs` destination.
+                          example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
+                        topicArn:
+                          type: string
+                          description: The SNS topic ARN for the `sns` destination.
+                          example: arn:aws:sns:us-east-1:123456789012:my-topic
+                        eventBusName:
+                          type: string
+                          description: The EventBridge event bus name for the `eventbridge` destination.
+                          example: default
+                        detailType:
+                          type: string
+                          description: The EventBridge detail-type for published events (`eventbridge`).
+                          example: ampersand.record
+                        topicId:
+                          type: string
+                          description: The Pub/Sub topic ID for the `pubsub` destination.
+                          example: ampersand-events
+                        routingKey:
+                          type: string
+                          description: The routing key for the `rabbitmq` destination.
+                          example: ampersand.events
                     secrets:
                       type: object
                       description: Secrets for the destination.
@@ -3298,6 +3557,34 @@ paths:
                           type: string
                           description: The AWS session token for the Kinesis or S3 destination.
                           example: AQoEXAMPLEH4aoAH0gNCAPy...
+                        password:
+                          type: string
+                          description: The password for the `clickhouse` destination.
+                          example: my-clickhouse-password
+                        privateKey:
+                          type: string
+                          description: The PEM-encoded RSA private key for the `snowflake` destination.
+                          example: "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----"
+                        credentials:
+                          type: string
+                          description: The service-account credentials JSON for the `bigquery`, `gcs`, and `pubsub` destinations.
+                          example: '{"type":"service_account", ...}'
+                        accessKeyId:
+                          type: string
+                          description: The AWS access key ID for the `redshift`, `sqs`, `sns`, and `eventbridge` destinations.
+                          example: AKIAIOSFODNN7EXAMPLE
+                        secretAccessKey:
+                          type: string
+                          description: The AWS secret access key for the `redshift`, `sqs`, `sns`, and `eventbridge` destinations.
+                          example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+                        accessKey:
+                          type: string
+                          description: The account access key for the `azureblob` destination.
+                          example: my-azure-access-key
+                        uri:
+                          type: string
+                          description: The connection URI (embeds credentials) for the `rabbitmq` destination.
+                          example: amqp://user:pass@rabbit.example.com:5672
       responses:
         404:
           description: Destination not found
@@ -5039,6 +5326,90 @@ components:
               type: string
               description: The S3 storage class for written objects (defaults to STANDARD)
               example: STANDARD
+            username:
+              type: string
+              description: The username for the clickhouse destination
+              example: default
+            tableName:
+              type: string
+              description: The destination table name (clickhouse, snowflake, redshift)
+              example: events
+            database:
+              type: string
+              description: The database name for the clickhouse destination
+              example: analytics
+            accountIdentifier:
+              type: string
+              description: The Snowflake account identifier for the snowflake destination
+              example: myorg-myaccount
+            userId:
+              type: string
+              description: The user ID for the snowflake destination
+              example: SVC_AMPERSAND
+            dbName:
+              type: string
+              description: The database name (snowflake, redshift)
+              example: ANALYTICS
+            schemaName:
+              type: string
+              description: The schema name (snowflake, redshift)
+              example: PUBLIC
+            projectId:
+              type: string
+              description: The Google Cloud project ID (bigquery, pubsub)
+              example: my-gcp-project
+            datasetId:
+              type: string
+              description: The BigQuery dataset ID for the bigquery destination
+              example: analytics
+            tableId:
+              type: string
+              description: The BigQuery table ID for the bigquery destination
+              example: events
+            workgroupName:
+              type: string
+              description: The Redshift Serverless workgroup name for the redshift destination
+              example: my-workgroup
+            clusterIdentifier:
+              type: string
+              description: The Redshift provisioned cluster identifier for the redshift destination
+              example: my-cluster
+            dbUser:
+              type: string
+              description: The database user for the redshift destination
+              example: ampersand
+            account:
+              type: string
+              description: The storage account name for the azureblob destination
+              example: mystorageaccount
+            container:
+              type: string
+              description: The blob container name for the azureblob destination
+              example: ampersand-data
+            queueUrl:
+              type: string
+              description: The SQS queue URL for the sqs destination
+              example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
+            topicArn:
+              type: string
+              description: The SNS topic ARN for the sns destination
+              example: arn:aws:sns:us-east-1:123456789012:my-topic
+            eventBusName:
+              type: string
+              description: The EventBridge event bus name for the eventbridge destination
+              example: default
+            detailType:
+              type: string
+              description: The EventBridge detail-type for published events (eventbridge)
+              example: ampersand.record
+            topicId:
+              type: string
+              description: The Pub/Sub topic ID for the pubsub destination
+              example: ampersand-events
+            routingKey:
+              type: string
+              description: The routing key for the rabbitmq destination
+              example: ampersand.events
         createTime:
           type: string
           description: The time the destination was created.
@@ -5103,6 +5474,90 @@ components:
               type: string
               description: The S3 storage class for written objects (defaults to STANDARD)
               example: STANDARD
+            username:
+              type: string
+              description: The username for the clickhouse destination
+              example: default
+            tableName:
+              type: string
+              description: The destination table name (clickhouse, snowflake, redshift)
+              example: events
+            database:
+              type: string
+              description: The database name for the clickhouse destination
+              example: analytics
+            accountIdentifier:
+              type: string
+              description: The Snowflake account identifier for the snowflake destination
+              example: myorg-myaccount
+            userId:
+              type: string
+              description: The user ID for the snowflake destination
+              example: SVC_AMPERSAND
+            dbName:
+              type: string
+              description: The database name (snowflake, redshift)
+              example: ANALYTICS
+            schemaName:
+              type: string
+              description: The schema name (snowflake, redshift)
+              example: PUBLIC
+            projectId:
+              type: string
+              description: The Google Cloud project ID (bigquery, pubsub)
+              example: my-gcp-project
+            datasetId:
+              type: string
+              description: The BigQuery dataset ID for the bigquery destination
+              example: analytics
+            tableId:
+              type: string
+              description: The BigQuery table ID for the bigquery destination
+              example: events
+            workgroupName:
+              type: string
+              description: The Redshift Serverless workgroup name for the redshift destination
+              example: my-workgroup
+            clusterIdentifier:
+              type: string
+              description: The Redshift provisioned cluster identifier for the redshift destination
+              example: my-cluster
+            dbUser:
+              type: string
+              description: The database user for the redshift destination
+              example: ampersand
+            account:
+              type: string
+              description: The storage account name for the azureblob destination
+              example: mystorageaccount
+            container:
+              type: string
+              description: The blob container name for the azureblob destination
+              example: ampersand-data
+            queueUrl:
+              type: string
+              description: The SQS queue URL for the sqs destination
+              example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
+            topicArn:
+              type: string
+              description: The SNS topic ARN for the sns destination
+              example: arn:aws:sns:us-east-1:123456789012:my-topic
+            eventBusName:
+              type: string
+              description: The EventBridge event bus name for the eventbridge destination
+              example: default
+            detailType:
+              type: string
+              description: The EventBridge detail-type for published events (eventbridge)
+              example: ampersand.record
+            topicId:
+              type: string
+              description: The Pub/Sub topic ID for the pubsub destination
+              example: ampersand-events
+            routingKey:
+              type: string
+              description: The routing key for the rabbitmq destination
+              example: ampersand.events
         createTime:
           type: string
           description: The time the destination was created.
