@@ -3230,6 +3230,20 @@ paths:
                       description: The routing key for the `rabbitmq` destination.
                       example: ampersand.events
                       x-go-type-skip-optional-pointer: true
+                    batchSize:
+                      type: integer
+                      description: For warehouse destinations (`clickhouse`, `snowflake`,
+                        `bigquery`, `redshift`), the number of rows to buffer before flushing
+                        a batch. Defaults to 1000.
+                      example: 1000
+                      x-go-type-skip-optional-pointer: true
+                    maxWaitSecs:
+                      type: integer
+                      description: For warehouse destinations, the maximum number of seconds to
+                        wait before flushing a batch (whichever comes first with `batchSize`).
+                        Defaults to 30.
+                      example: 30
+                      x-go-type-skip-optional-pointer: true
       responses:
         201:
           description: Created
@@ -3401,6 +3415,8 @@ paths:
                     - metadata.detailType
                     - metadata.topicId
                     - metadata.routingKey
+                    - metadata.batchSize
+                    - metadata.maxWaitSecs
                     - secrets.awsKeyId
                     - secrets.awsSecretKey
                     - secrets.awsSessionToken
@@ -3541,6 +3557,14 @@ paths:
                           type: string
                           description: The routing key for the `rabbitmq` destination.
                           example: ampersand.events
+                        batchSize:
+                          type: integer
+                          description: For warehouse destinations, rows to buffer before flushing a batch (default 1000).
+                          example: 1000
+                        maxWaitSecs:
+                          type: integer
+                          description: For warehouse destinations, max seconds before flushing a batch (default 30).
+                          example: 30
                     secrets:
                       type: object
                       description: Secrets for the destination.
@@ -5410,6 +5434,14 @@ components:
               type: string
               description: The routing key for the rabbitmq destination
               example: ampersand.events
+            batchSize:
+              type: integer
+              description: For warehouse destinations, rows to buffer before flushing a batch (default 1000)
+              example: 1000
+            maxWaitSecs:
+              type: integer
+              description: For warehouse destinations, max seconds before flushing a batch (default 30)
+              example: 30
         createTime:
           type: string
           description: The time the destination was created.
@@ -5558,6 +5590,14 @@ components:
               type: string
               description: The routing key for the rabbitmq destination
               example: ampersand.events
+            batchSize:
+              type: integer
+              description: For warehouse destinations, rows to buffer before flushing a batch (default 1000)
+              example: 1000
+            maxWaitSecs:
+              type: integer
+              description: For warehouse destinations, max seconds before flushing a batch (default 30)
+              example: 30
         createTime:
           type: string
           description: The time the destination was created.
