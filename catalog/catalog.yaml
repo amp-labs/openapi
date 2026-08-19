@@ -265,6 +265,14 @@ components:
             Token-manager adds a random stagger offset on top. If absent, defaults to 24.
           example: 120
           x-go-type-skip-optional-pointer: true
+        scopeQueryParam:
+          type: string
+          description: |
+            The query parameter name used to pass OAuth scopes in the authorization URL.
+            Defaults to "scope" when not specified. Some providers use a different
+            parameter name, such as "user_scope" for Slack user scopes.
+          example: user_scope
+          x-go-type-skip-optional-pointer: true
 
     AccessTokenOpts:
       title: Oauth2 Access Token Options
