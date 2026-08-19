@@ -3018,11 +3018,11 @@ paths:
                   description: The type of the destination.
                     For `slack`, set `metadata.url` to a Slack incoming webhook URL.
                     The warehouse and message-queue types (`clickhouse`,
-                    `snowflake`, `bigquery`, `redshift`, `sqs`, `eventbridge`,
+                    `snowflake`, `bigquery`, `redshift`, `sqs`,
                     `pubsub`, `rabbitmq`, `azureservicebus`, `kafka`) are configured via the `metadata`
                     and `secrets` fields documented below.
                   example: webhook
-                  enum: [webhook, kinesis, s3, slack, clickhouse, snowflake, bigquery, redshift, sqs, eventbridge, pubsub, rabbitmq, azureservicebus, kafka]
+                  enum: [webhook, kinesis, s3, slack, clickhouse, snowflake, bigquery, redshift, sqs, pubsub, rabbitmq, azureservicebus, kafka]
                 secrets:
                   type: object
                   description: Secrets for the destination.
@@ -3064,14 +3064,12 @@ paths:
                       x-go-type-skip-optional-pointer: true
                     accessKeyId:
                       type: string
-                      description: The AWS access key ID for the `redshift` and `eventbridge`
-                        destinations.
+                      description: The AWS access key ID for the `redshift` destination.
                       example: AKIAIOSFODNN7EXAMPLE
                       x-go-type-skip-optional-pointer: true
                     secretAccessKey:
                       type: string
-                      description: The AWS secret access key for the `redshift` and `eventbridge`
-                        destinations.
+                      description: The AWS secret access key for the `redshift` destination.
                       example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
                       x-go-type-skip-optional-pointer: true
                     accessKey:
@@ -3219,16 +3217,6 @@ paths:
                       description: The SQS queue URL for the `sqs` destination.
                         Required for `sqs`.
                       example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
-                      x-go-type-skip-optional-pointer: true
-                    eventBusName:
-                      type: string
-                      description: The EventBridge event bus name for the `eventbridge` destination.
-                      example: default
-                      x-go-type-skip-optional-pointer: true
-                    detailType:
-                      type: string
-                      description: The EventBridge detail-type for published events (`eventbridge`).
-                      example: ampersand.record
                       x-go-type-skip-optional-pointer: true
                     topicId:
                       type: string
@@ -3459,8 +3447,6 @@ paths:
                     - metadata.account
                     - metadata.container
                     - metadata.queueUrl
-                    - metadata.eventBusName
-                    - metadata.detailType
                     - metadata.topicId
                     - metadata.serverUrl
                     - metadata.exchange
@@ -3596,14 +3582,6 @@ paths:
                           description: The SQS queue URL for the `sqs` destination.
                             Required for `sqs`.
                           example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
-                        eventBusName:
-                          type: string
-                          description: The EventBridge event bus name for the `eventbridge` destination.
-                          example: default
-                        detailType:
-                          type: string
-                          description: The EventBridge detail-type for published events (`eventbridge`).
-                          example: ampersand.record
                         topicId:
                           type: string
                           description: The Pub/Sub topic ID for the `pubsub` destination.
@@ -3687,11 +3665,11 @@ paths:
                           example: '{"type":"service_account", ...}'
                         accessKeyId:
                           type: string
-                          description: The AWS access key ID for the `redshift` and `eventbridge` destinations.
+                          description: The AWS access key ID for the `redshift` destination.
                           example: AKIAIOSFODNN7EXAMPLE
                         secretAccessKey:
                           type: string
-                          description: The AWS secret access key for the `redshift` and `eventbridge` destinations.
+                          description: The AWS secret access key for the `redshift` destination.
                           example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
                         accessKey:
                           type: string
@@ -5512,14 +5490,6 @@ components:
               type: string
               description: The SQS queue URL for the sqs destination
               example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
-            eventBusName:
-              type: string
-              description: The EventBridge event bus name for the eventbridge destination
-              example: default
-            detailType:
-              type: string
-              description: The EventBridge detail-type for published events (eventbridge)
-              example: ampersand.record
             topicId:
               type: string
               description: The Pub/Sub topic ID for the pubsub destination
@@ -5689,14 +5659,6 @@ components:
               type: string
               description: The SQS queue URL for the sqs destination
               example: https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
-            eventBusName:
-              type: string
-              description: The EventBridge event bus name for the eventbridge destination
-              example: default
-            detailType:
-              type: string
-              description: The EventBridge detail-type for published events (eventbridge)
-              example: ampersand.record
             topicId:
               type: string
               description: The Pub/Sub topic ID for the pubsub destination

@@ -4469,7 +4469,7 @@
                   },
                   "type": {
                     "type": "string",
-                    "description": "The type of the destination. For `slack`, set `metadata.url` to a Slack incoming webhook URL. The warehouse and message-queue types (`clickhouse`, `snowflake`, `bigquery`, `redshift`, `sqs`, `eventbridge`, `pubsub`, `rabbitmq`, `azureservicebus`, `kafka`) are configured via the `metadata` and `secrets` fields documented below.",
+                    "description": "The type of the destination. For `slack`, set `metadata.url` to a Slack incoming webhook URL. The warehouse and message-queue types (`clickhouse`, `snowflake`, `bigquery`, `redshift`, `sqs`, `pubsub`, `rabbitmq`, `azureservicebus`, `kafka`) are configured via the `metadata` and `secrets` fields documented below.",
                     "example": "webhook",
                     "enum": [
                       "webhook",
@@ -4481,7 +4481,6 @@
                       "bigquery",
                       "redshift",
                       "sqs",
-                      "eventbridge",
                       "pubsub",
                       "rabbitmq",
                       "azureservicebus",
@@ -4530,13 +4529,13 @@
                       },
                       "accessKeyId": {
                         "type": "string",
-                        "description": "The AWS access key ID for the `redshift` and `eventbridge` destinations.",
+                        "description": "The AWS access key ID for the `redshift` destination.",
                         "example": "AKIAIOSFODNN7EXAMPLE",
                         "x-go-type-skip-optional-pointer": true
                       },
                       "secretAccessKey": {
                         "type": "string",
-                        "description": "The AWS secret access key for the `redshift` and `eventbridge` destinations.",
+                        "description": "The AWS secret access key for the `redshift` destination.",
                         "example": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                         "x-go-type-skip-optional-pointer": true
                       },
@@ -4707,18 +4706,6 @@
                         "type": "string",
                         "description": "The SQS queue URL for the `sqs` destination. Required for `sqs`.",
                         "example": "https://sqs.us-east-1.amazonaws.com/123456789012/my-queue",
-                        "x-go-type-skip-optional-pointer": true
-                      },
-                      "eventBusName": {
-                        "type": "string",
-                        "description": "The EventBridge event bus name for the `eventbridge` destination.",
-                        "example": "default",
-                        "x-go-type-skip-optional-pointer": true
-                      },
-                      "detailType": {
-                        "type": "string",
-                        "description": "The EventBridge detail-type for published events (`eventbridge`).",
-                        "example": "ampersand.record",
                         "x-go-type-skip-optional-pointer": true
                       },
                       "topicId": {
@@ -5007,7 +4994,7 @@
                     "items": {
                       "type": "string"
                     },
-                    "description": "Array of field paths specifying which fields to update. Allowed values include:\n- name\n- metadata.url\n- metadata.headers\n- metadata.region\n- metadata.streamName\n- metadata.endpointUrl\n- metadata.partitionKeyTemplate\n- metadata.bucket\n- metadata.keyTemplate\n- metadata.storageClass\n- metadata.username\n- metadata.tableName\n- metadata.database\n- metadata.accountIdentifier\n- metadata.userId\n- metadata.dbName\n- metadata.schemaName\n- metadata.projectId\n- metadata.datasetId\n- metadata.tableId\n- metadata.workgroupName\n- metadata.clusterIdentifier\n- metadata.dbUser\n- metadata.account\n- metadata.container\n- metadata.queueUrl\n- metadata.eventBusName\n- metadata.detailType\n- metadata.topicId\n- metadata.serverUrl\n- metadata.exchange\n- metadata.tls\n- metadata.name\n- metadata.brokers\n- metadata.topic\n- metadata.saslMechanism\n- metadata.batchSize\n- metadata.maxWaitSecs\n- secrets.awsKeyId\n- secrets.awsSecretKey\n- secrets.awsSessionToken\n- secrets.password\n- secrets.privateKey\n- secrets.credentials\n- secrets.accessKeyId\n- secrets.secretAccessKey\n- secrets.accessKey\n- secrets.username\n- secrets.connectionString\n",
+                    "description": "Array of field paths specifying which fields to update. Allowed values include:\n- name\n- metadata.url\n- metadata.headers\n- metadata.region\n- metadata.streamName\n- metadata.endpointUrl\n- metadata.partitionKeyTemplate\n- metadata.bucket\n- metadata.keyTemplate\n- metadata.storageClass\n- metadata.username\n- metadata.tableName\n- metadata.database\n- metadata.accountIdentifier\n- metadata.userId\n- metadata.dbName\n- metadata.schemaName\n- metadata.projectId\n- metadata.datasetId\n- metadata.tableId\n- metadata.workgroupName\n- metadata.clusterIdentifier\n- metadata.dbUser\n- metadata.account\n- metadata.container\n- metadata.queueUrl\n- metadata.topicId\n- metadata.serverUrl\n- metadata.exchange\n- metadata.tls\n- metadata.name\n- metadata.brokers\n- metadata.topic\n- metadata.saslMechanism\n- metadata.batchSize\n- metadata.maxWaitSecs\n- secrets.awsKeyId\n- secrets.awsSecretKey\n- secrets.awsSessionToken\n- secrets.password\n- secrets.privateKey\n- secrets.credentials\n- secrets.accessKeyId\n- secrets.secretAccessKey\n- secrets.accessKey\n- secrets.username\n- secrets.connectionString\n",
                     "example": [
                       "name",
                       "metadata.url",
@@ -5149,16 +5136,6 @@
                             "description": "The SQS queue URL for the `sqs` destination. Required for `sqs`.",
                             "example": "https://sqs.us-east-1.amazonaws.com/123456789012/my-queue"
                           },
-                          "eventBusName": {
-                            "type": "string",
-                            "description": "The EventBridge event bus name for the `eventbridge` destination.",
-                            "example": "default"
-                          },
-                          "detailType": {
-                            "type": "string",
-                            "description": "The EventBridge detail-type for published events (`eventbridge`).",
-                            "example": "ampersand.record"
-                          },
                           "topicId": {
                             "type": "string",
                             "description": "The Pub/Sub topic ID for the `pubsub` destination. Required for `pubsub`.",
@@ -5252,12 +5229,12 @@
                           },
                           "accessKeyId": {
                             "type": "string",
-                            "description": "The AWS access key ID for the `redshift` and `eventbridge` destinations.",
+                            "description": "The AWS access key ID for the `redshift` destination.",
                             "example": "AKIAIOSFODNN7EXAMPLE"
                           },
                           "secretAccessKey": {
                             "type": "string",
-                            "description": "The AWS secret access key for the `redshift` and `eventbridge` destinations.",
+                            "description": "The AWS secret access key for the `redshift` destination.",
                             "example": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
                           },
                           "accessKey": {
@@ -8065,16 +8042,6 @@
                 "description": "The SQS queue URL for the sqs destination",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789012/my-queue"
               },
-              "eventBusName": {
-                "type": "string",
-                "description": "The EventBridge event bus name for the eventbridge destination",
-                "example": "default"
-              },
-              "detailType": {
-                "type": "string",
-                "description": "The EventBridge detail-type for published events (eventbridge)",
-                "example": "ampersand.record"
-              },
               "topicId": {
                 "type": "string",
                 "description": "The Pub/Sub topic ID for the pubsub destination",
@@ -8290,16 +8257,6 @@
                 "type": "string",
                 "description": "The SQS queue URL for the sqs destination",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789012/my-queue"
-              },
-              "eventBusName": {
-                "type": "string",
-                "description": "The EventBridge event bus name for the eventbridge destination",
-                "example": "default"
-              },
-              "detailType": {
-                "type": "string",
-                "description": "The EventBridge detail-type for published events (eventbridge)",
-                "example": "ampersand.record"
               },
               "topicId": {
                 "type": "string",
