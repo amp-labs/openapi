@@ -489,6 +489,13 @@ paths:
                       - write
                 metadata:
                   $ref: "#/components/schemas/ProviderAppMetadata"
+                providerInputs:
+                  type: object
+                  description: Builder-supplied custom-auth input values keyed by CustomAuthInput.name (excluding the reserved clientId/clientSecret). Routed by fieldType — sensitive (password) values are stored encrypted, non-sensitive (text/select) values are stored in metadata.
+                  additionalProperties:
+                    type: string
+                  example:
+                    subscriptionKey: my-subscription-key
         required: true
       responses:
         200:
@@ -591,6 +598,7 @@ paths:
                     - provider
                     - scopes
                     - metadata
+                    - providerInputs
                   example: ["externalRef", "clientId"]
                 providerApp:
                   type: object
@@ -623,6 +631,13 @@ paths:
                           - write
                     metadata:
                       $ref: "#/components/schemas/ProviderAppMetadata"
+                    providerInputs:
+                      type: object
+                      description: Builder-supplied custom-auth input values keyed by CustomAuthInput.name (excluding the reserved clientId/clientSecret). A providerInputs update replaces the full set. Routed by fieldType — sensitive (password) values are stored encrypted, non-sensitive (text/select) values are stored in metadata.
+                      additionalProperties:
+                        type: string
+                      example:
+                        subscriptionKey: my-subscription-key
                   description:
                     The provider app fields to update. (Only include the
                     fields you'd like to update.)
@@ -5782,6 +5797,10 @@ components:
             packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
             gcpProjectId: my-gcp-project
             gcpPubSubTopicName: my-topic
+        customInputs:
+          description: Non-sensitive builder ProviderInput values (fieldType text/select), keyed by input name. Read-only in responses; set via the request's providerInputs field.
+          allOf:
+            - $ref: "#/components/schemas/ProviderMetadata"
     Integration:
       title: Integration
       required:
