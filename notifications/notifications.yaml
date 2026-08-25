@@ -283,6 +283,15 @@ components:
               description: The error that occurred while setting up the subscribe action.
               example: "Failed to create subscription"
 
+    # Subscribe create success event data
+    SubscribeCreateSuccessData:
+      title: Subscribe Create Success Data
+      description: |
+        Data payload for subscribe.create.success notifications, sent when a subscription
+        becomes active after its first event is delivered.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+
     # Connection event data
     ConnectionData:
       title: Connection Data
@@ -518,6 +527,22 @@ components:
           enum: [subscribe.create.error]
         data:
           $ref: '#/components/schemas/SubscribeCreateErrorData'
+
+    SubscribeCreateSuccessNotificationPayload:
+      title: Subscribe Create Success Notification Payload
+      description: |
+        Payload structure for subscribe.create.success notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [subscribe.create.success]
+        data:
+          $ref: '#/components/schemas/SubscribeCreateSuccessData'
 
     ConnectionCreatedNotificationPayload:
       title: Connection Created Notification Payload
