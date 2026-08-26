@@ -10336,6 +10336,9 @@
           "read.triggered.error",
           "write.async.done",
           "subscribe.create.error",
+          "subscribe.create.success",
+          "subscribe.update.success",
+          "subscribe.delete.success",
           "destination.webhook.disabled"
         ]
       },
