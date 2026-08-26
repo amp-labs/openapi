@@ -288,7 +288,28 @@ components:
       title: Subscribe Create Success Data
       description: |
         Data payload for subscribe.create.success notifications, sent when a subscription
-        becomes active after its first event is delivered.
+        becomes active: for providers subscribed programmatically via API, when the creation
+        workflow completes with an active subscription; for providers whose webhooks are
+        configured manually at the provider, when the first event is delivered.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+
+    # Subscribe update success event data
+    SubscribeUpdateSuccessData:
+      title: Subscribe Update Success Data
+      description: |
+        Data payload for subscribe.update.success notifications, sent when a subscription
+        update completes successfully.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+
+    # Subscribe delete success event data
+    SubscribeDeleteSuccessData:
+      title: Subscribe Delete Success Data
+      description: |
+        Data payload for subscribe.delete.success notifications, sent when a subscription
+        deletion completes successfully - the provider-side subscription was torn down and
+        the subscription records were removed.
       allOf:
         - $ref: '#/components/schemas/InstallationFields'
 
@@ -543,6 +564,38 @@ components:
           enum: [subscribe.create.success]
         data:
           $ref: '#/components/schemas/SubscribeCreateSuccessData'
+
+    SubscribeUpdateSuccessNotificationPayload:
+      title: Subscribe Update Success Notification Payload
+      description: |
+        Payload structure for subscribe.update.success notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [subscribe.update.success]
+        data:
+          $ref: '#/components/schemas/SubscribeUpdateSuccessData'
+
+    SubscribeDeleteSuccessNotificationPayload:
+      title: Subscribe Delete Success Notification Payload
+      description: |
+        Payload structure for subscribe.delete.success notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [subscribe.delete.success]
+        data:
+          $ref: '#/components/schemas/SubscribeDeleteSuccessData'
 
     ConnectionCreatedNotificationPayload:
       title: Connection Created Notification Payload
