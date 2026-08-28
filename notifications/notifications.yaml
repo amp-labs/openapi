@@ -283,6 +283,37 @@ components:
               description: The error that occurred while setting up the subscribe action.
               example: "Failed to create subscription"
 
+    # Subscribe update error event data
+    SubscribeUpdateErrorData:
+      title: Subscribe Update Error Data
+      description: |
+        Data payload for subscribe.update.error notifications, sent when a subscription
+        update workflow fails after retries are exhausted.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          properties:
+            error:
+              type: string
+              description: The error that occurred while updating the subscribe action.
+              example: "Failed to update subscription"
+
+    # Subscribe delete error event data
+    SubscribeDeleteErrorData:
+      title: Subscribe Delete Error Data
+      description: |
+        Data payload for subscribe.delete.error notifications, sent when a subscription
+        delete workflow fails, or completes the database cleanup but could not tear down
+        the provider-side subscription (which may still be active and consuming quota).
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          properties:
+            error:
+              type: string
+              description: The error that occurred while deleting the subscribe action.
+              example: "Failed to delete subscription"
+
     # Subscribe create success event data
     SubscribeCreateSuccessData:
       title: Subscribe Create Success Data
@@ -548,6 +579,38 @@ components:
           enum: [subscribe.create.error]
         data:
           $ref: '#/components/schemas/SubscribeCreateErrorData'
+
+    SubscribeUpdateErrorNotificationPayload:
+      title: Subscribe Update Error Notification Payload
+      description: |
+        Payload structure for subscribe.update.error notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [subscribe.update.error]
+        data:
+          $ref: '#/components/schemas/SubscribeUpdateErrorData'
+
+    SubscribeDeleteErrorNotificationPayload:
+      title: Subscribe Delete Error Notification Payload
+      description: |
+        Payload structure for subscribe.delete.error notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [subscribe.delete.error]
+        data:
+          $ref: '#/components/schemas/SubscribeDeleteErrorData'
 
     SubscribeCreateSuccessNotificationPayload:
       title: Subscribe Create Success Notification Payload

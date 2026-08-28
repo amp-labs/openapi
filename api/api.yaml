@@ -7259,6 +7259,8 @@ components:
         - "read.triggered.error"
         - "write.async.done"
         - "subscribe.create.error"
+        - "subscribe.update.error"
+        - "subscribe.delete.error"
         - "subscribe.create.success"
         - "subscribe.update.success"
         - "subscribe.delete.success"
