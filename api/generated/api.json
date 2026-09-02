@@ -13718,6 +13718,12 @@
                                               "type": "string",
                                               "x-go-type-skip-optional-pointer": true
                                             },
+                                            "mapToName": {
+                                              "type": "string",
+                                              "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                              "example": "people",
+                                              "x-go-type-skip-optional-pointer": true
+                                            },
                                             "selectedFields": {
                                               "type": "object",
                                               "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -14148,6 +14154,12 @@
                                                   "type": "string",
                                                   "x-go-type-skip-optional-pointer": true
                                                 },
+                                                "mapToName": {
+                                                  "type": "string",
+                                                  "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                  "example": "people",
+                                                  "x-go-type-skip-optional-pointer": true
+                                                },
                                                 "selectedFields": {
                                                   "type": "object",
                                                   "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -14391,6 +14403,12 @@
                                                       "description": "The name of the destination that the result should be sent to.",
                                                       "example": "accountWebhook",
                                                       "type": "string",
+                                                      "x-go-type-skip-optional-pointer": true
+                                                    },
+                                                    "mapToName": {
+                                                      "type": "string",
+                                                      "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                      "example": "people",
                                                       "x-go-type-skip-optional-pointer": true
                                                     },
                                                     "selectedFields": {
@@ -15939,6 +15957,12 @@
                                           "type": "string",
                                           "x-go-type-skip-optional-pointer": true
                                         },
+                                        "mapToName": {
+                                          "type": "string",
+                                          "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                          "example": "people",
+                                          "x-go-type-skip-optional-pointer": true
+                                        },
                                         "selectedFields": {
                                           "type": "object",
                                           "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -16369,6 +16393,12 @@
                                               "type": "string",
                                               "x-go-type-skip-optional-pointer": true
                                             },
+                                            "mapToName": {
+                                              "type": "string",
+                                              "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                              "example": "people",
+                                              "x-go-type-skip-optional-pointer": true
+                                            },
                                             "selectedFields": {
                                               "type": "object",
                                               "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -16612,6 +16642,12 @@
                                                   "description": "The name of the destination that the result should be sent to.",
                                                   "example": "accountWebhook",
                                                   "type": "string",
+                                                  "x-go-type-skip-optional-pointer": true
+                                                },
+                                                "mapToName": {
+                                                  "type": "string",
+                                                  "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                  "example": "people",
                                                   "x-go-type-skip-optional-pointer": true
                                                 },
                                                 "selectedFields": {
@@ -18114,6 +18150,12 @@
                                             "type": "string",
                                             "x-go-type-skip-optional-pointer": true
                                           },
+                                          "mapToName": {
+                                            "type": "string",
+                                            "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                            "example": "people",
+                                            "x-go-type-skip-optional-pointer": true
+                                          },
                                           "selectedFields": {
                                             "type": "object",
                                             "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -18544,6 +18586,12 @@
                                                 "type": "string",
                                                 "x-go-type-skip-optional-pointer": true
                                               },
+                                              "mapToName": {
+                                                "type": "string",
+                                                "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                "example": "people",
+                                                "x-go-type-skip-optional-pointer": true
+                                              },
                                               "selectedFields": {
                                                 "type": "object",
                                                 "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -18787,6 +18835,12 @@
                                                     "description": "The name of the destination that the result should be sent to.",
                                                     "example": "accountWebhook",
                                                     "type": "string",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  },
+                                                  "mapToName": {
+                                                    "type": "string",
+                                                    "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                    "example": "people",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "selectedFields": {
@@ -21048,6 +21102,12 @@
                                             "type": "string",
                                             "x-go-type-skip-optional-pointer": true
                                           },
+                                          "mapToName": {
+                                            "type": "string",
+                                            "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                            "example": "people",
+                                            "x-go-type-skip-optional-pointer": true
+                                          },
                                           "selectedFields": {
                                             "type": "object",
                                             "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -21478,6 +21538,12 @@
                                                 "type": "string",
                                                 "x-go-type-skip-optional-pointer": true
                                               },
+                                              "mapToName": {
+                                                "type": "string",
+                                                "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                "example": "people",
+                                                "x-go-type-skip-optional-pointer": true
+                                              },
                                               "selectedFields": {
                                                 "type": "object",
                                                 "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -21721,6 +21787,12 @@
                                                     "description": "The name of the destination that the result should be sent to.",
                                                     "example": "accountWebhook",
                                                     "type": "string",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  },
+                                                  "mapToName": {
+                                                    "type": "string",
+                                                    "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                    "example": "people",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "selectedFields": {
@@ -23460,6 +23532,12 @@
                                               "type": "string",
                                               "x-go-type-skip-optional-pointer": true
                                             },
+                                            "mapToName": {
+                                              "type": "string",
+                                              "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                              "example": "people",
+                                              "x-go-type-skip-optional-pointer": true
+                                            },
                                             "selectedFields": {
                                               "type": "object",
                                               "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -24570,6 +24648,12 @@
                                             "type": "string",
                                             "x-go-type-skip-optional-pointer": true
                                           },
+                                          "mapToName": {
+                                            "type": "string",
+                                            "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                            "example": "people",
+                                            "x-go-type-skip-optional-pointer": true
+                                          },
                                           "selectedFields": {
                                             "type": "object",
                                             "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -25000,6 +25084,12 @@
                                                 "type": "string",
                                                 "x-go-type-skip-optional-pointer": true
                                               },
+                                              "mapToName": {
+                                                "type": "string",
+                                                "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                "example": "people",
+                                                "x-go-type-skip-optional-pointer": true
+                                              },
                                               "selectedFields": {
                                                 "type": "object",
                                                 "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -25243,6 +25333,12 @@
                                                     "description": "The name of the destination that the result should be sent to.",
                                                     "example": "accountWebhook",
                                                     "type": "string",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  },
+                                                  "mapToName": {
+                                                    "type": "string",
+                                                    "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                    "example": "people",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "selectedFields": {
@@ -27670,6 +27766,12 @@
                                             "type": "string",
                                             "x-go-type-skip-optional-pointer": true
                                           },
+                                          "mapToName": {
+                                            "type": "string",
+                                            "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                            "example": "people",
+                                            "x-go-type-skip-optional-pointer": true
+                                          },
                                           "selectedFields": {
                                             "type": "object",
                                             "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -28100,6 +28202,12 @@
                                                 "type": "string",
                                                 "x-go-type-skip-optional-pointer": true
                                               },
+                                              "mapToName": {
+                                                "type": "string",
+                                                "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                "example": "people",
+                                                "x-go-type-skip-optional-pointer": true
+                                              },
                                               "selectedFields": {
                                                 "type": "object",
                                                 "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -28343,6 +28451,12 @@
                                                     "description": "The name of the destination that the result should be sent to.",
                                                     "example": "accountWebhook",
                                                     "type": "string",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  },
+                                                  "mapToName": {
+                                                    "type": "string",
+                                                    "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                    "example": "people",
                                                     "x-go-type-skip-optional-pointer": true
                                                   },
                                                   "selectedFields": {
@@ -30967,6 +31081,12 @@
                                               "type": "string",
                                               "x-go-type-skip-optional-pointer": true
                                             },
+                                            "mapToName": {
+                                              "type": "string",
+                                              "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                              "example": "people",
+                                              "x-go-type-skip-optional-pointer": true
+                                            },
                                             "selectedFields": {
                                               "type": "object",
                                               "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -31397,6 +31517,12 @@
                                                   "type": "string",
                                                   "x-go-type-skip-optional-pointer": true
                                                 },
+                                                "mapToName": {
+                                                  "type": "string",
+                                                  "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                  "example": "people",
+                                                  "x-go-type-skip-optional-pointer": true
+                                                },
                                                 "selectedFields": {
                                                   "type": "object",
                                                   "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -31640,6 +31766,12 @@
                                                       "description": "The name of the destination that the result should be sent to.",
                                                       "example": "accountWebhook",
                                                       "type": "string",
+                                                      "x-go-type-skip-optional-pointer": true
+                                                    },
+                                                    "mapToName": {
+                                                      "type": "string",
+                                                      "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                                      "example": "people",
                                                       "x-go-type-skip-optional-pointer": true
                                                     },
                                                     "selectedFields": {
@@ -72106,6 +72238,12 @@
                                   "type": "string",
                                   "x-go-type-skip-optional-pointer": true
                                 },
+                                "mapToName": {
+                                  "type": "string",
+                                  "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                  "example": "people",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
                                 "selectedFields": {
                                   "type": "object",
                                   "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -72536,6 +72674,12 @@
                                       "type": "string",
                                       "x-go-type-skip-optional-pointer": true
                                     },
+                                    "mapToName": {
+                                      "type": "string",
+                                      "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                      "example": "people",
+                                      "x-go-type-skip-optional-pointer": true
+                                    },
                                     "selectedFields": {
                                       "type": "object",
                                       "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -72779,6 +72923,12 @@
                                           "description": "The name of the destination that the result should be sent to.",
                                           "example": "accountWebhook",
                                           "type": "string",
+                                          "x-go-type-skip-optional-pointer": true
+                                        },
+                                        "mapToName": {
+                                          "type": "string",
+                                          "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                          "example": "people",
                                           "x-go-type-skip-optional-pointer": true
                                         },
                                         "selectedFields": {
@@ -73790,6 +73940,12 @@
                               "type": "string",
                               "x-go-type-skip-optional-pointer": true
                             },
+                            "mapToName": {
+                              "type": "string",
+                              "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                              "example": "people",
+                              "x-go-type-skip-optional-pointer": true
+                            },
                             "selectedFields": {
                               "type": "object",
                               "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -74220,6 +74376,12 @@
                                   "type": "string",
                                   "x-go-type-skip-optional-pointer": true
                                 },
+                                "mapToName": {
+                                  "type": "string",
+                                  "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                  "example": "people",
+                                  "x-go-type-skip-optional-pointer": true
+                                },
                                 "selectedFields": {
                                   "type": "object",
                                   "description": "This is a map of field names to booleans indicating whether they should be read. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
@@ -74463,6 +74625,12 @@
                                       "description": "The name of the destination that the result should be sent to.",
                                       "example": "accountWebhook",
                                       "type": "string",
+                                      "x-go-type-skip-optional-pointer": true
+                                    },
+                                    "mapToName": {
+                                      "type": "string",
+                                      "description": "An object name to map to when the result is delivered to the destination. Overrides the manifest's mapToName for this object.",
+                                      "example": "people",
                                       "x-go-type-skip-optional-pointer": true
                                     },
                                     "selectedFields": {
