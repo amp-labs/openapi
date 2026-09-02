@@ -3143,7 +3143,7 @@ paths:
                       x-go-type-skip-optional-pointer: true
                     tableName:
                       type: string
-                      description: The destination table name (`clickhouse`, `snowflake`, `redshift`).
+                      description: The destination table name. Required for `clickhouse`, `snowflake`, and `redshift`.
                       example: events
                       x-go-type-skip-optional-pointer: true
                     database:
@@ -3163,12 +3163,12 @@ paths:
                       x-go-type-skip-optional-pointer: true
                     dbName:
                       type: string
-                      description: The database name (`snowflake`, `redshift`).
+                      description: The database name. Required for `snowflake` and `redshift`.
                       example: ANALYTICS
                       x-go-type-skip-optional-pointer: true
                     schemaName:
                       type: string
-                      description: The schema name (`snowflake`, `redshift`).
+                      description: The schema name. Required for `snowflake`; optional for `redshift`.
                       example: PUBLIC
                       x-go-type-skip-optional-pointer: true
                     projectId:
@@ -3500,7 +3500,7 @@ paths:
                           example: default
                         tableName:
                           type: string
-                          description: The destination table name (`clickhouse`, `snowflake`, `redshift`).
+                          description: The destination table name. Required for `clickhouse`, `snowflake`, and `redshift`.
                           example: events
                         database:
                           type: string
@@ -3516,11 +3516,11 @@ paths:
                           example: SVC_AMPERSAND
                         dbName:
                           type: string
-                          description: The database name (`snowflake`, `redshift`).
+                          description: The database name. Required for `snowflake` and `redshift`.
                           example: ANALYTICS
                         schemaName:
                           type: string
-                          description: The schema name (`snowflake`, `redshift`).
+                          description: The schema name. Required for `snowflake`; optional for `redshift`.
                           example: PUBLIC
                         projectId:
                           type: string
