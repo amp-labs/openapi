@@ -458,8 +458,6 @@ paths:
           application/json:
             schema:
               required:
-                - clientId
-                - clientSecret
                 - provider
               type: object
               properties:
