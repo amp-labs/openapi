@@ -10332,6 +10332,7 @@
           "installation.deleted",
           "read.schedule.paused",
           "read.backfill.done",
+          "read.backfill.error",
           "read.triggered.done",
           "read.triggered.error",
           "write.async.done",
