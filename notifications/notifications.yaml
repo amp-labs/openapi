@@ -171,8 +171,10 @@ components:
       allOf:
         - $ref: '#/components/schemas/InstallationFields'
         - type: object
+
           required:
             - objectName
+            - error
           properties:
             objectName:
               type: string
@@ -182,6 +184,7 @@ components:
               type: string
               description: The error that occurred during the backfill.
               example: "Authentication failed"
+
     # Read schedule paused event data
     ReadSchedulePausedData:
       title: Read Schedule Paused Data
