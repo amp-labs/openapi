@@ -7265,6 +7265,7 @@ components:
         - "subscribe.update.success"
         - "subscribe.delete.success"
         - "destination.webhook.disabled"
+        - "destination.delivery.error"
     TopicDestinationRoute:
       title: Topic Destination Route
       required:

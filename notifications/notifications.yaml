@@ -434,6 +434,49 @@ components:
           description: The webhook URL that was disabled.
           example: "https://your-webhook.com"
 
+    # Destination delivery error event data
+    DestinationDeliveryErrorData:
+      title: Destination Delivery Error Data
+      description: |
+        Data payload for destination.delivery.error notifications, sent when a read or subscribe
+        delivery to a destination fails after every retry attempt has been exhausted. Applies to
+        all destination types (webhooks, Kinesis, S3, and other sinks).
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+          required:
+            - destinationId
+            - destinationName
+            - objectName
+            - action
+            - error
+          properties:
+            destinationId:
+              type: string
+              description: The ID of the destination that could not be reached.
+              example: "550e8400-e29b-41d4-a716-446655440000"
+            destinationName:
+              type: string
+              description: The name of the destination that could not be reached.
+              example: production-kinesis
+            url:
+              type: string
+              description: The webhook URL, present only when the destination is a webhook.
+              example: "https://your-webhook.com"
+            objectName:
+              type: string
+              description: The name of the object whose data could not be delivered.
+              example: account
+            action:
+              type: string
+              description: The Ampersand action whose results were being delivered.
+              enum: [read, subscribe]
+              example: subscribe
+            error:
+              type: string
+              description: The error that caused the delivery to fail.
+              example: "Delivery to aws_kinesis destination exhausted retries after 3 attempts. ResourceNotFoundException: Stream not found."
+
     # Notification payload schemas for webhook destinations
     # For Kinesis destinations, only the `data` object is sent (the `notificationType` is included in event metadata).
     InstallationCreatedNotificationPayload:
@@ -755,3 +798,19 @@ components:
           enum: [destination.webhook.disabled]
         data:
           $ref: '#/components/schemas/DestinationWebhookDisabledData'
+
+    DestinationDeliveryErrorNotificationPayload:
+      title: Destination Delivery Error Notification Payload
+      description: |
+        Payload structure for destination.delivery.error notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [destination.delivery.error]
+        data:
+          $ref: '#/components/schemas/DestinationDeliveryErrorData'
