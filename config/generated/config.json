@@ -1463,7 +1463,7 @@
                     },
                     "useSalesforceFlows": {
                       "title": "Use Salesforce Flows Config",
-                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                       "type": "object",
                       "required": [
                         "enabled"
@@ -1625,7 +1625,7 @@
               },
               "useSalesforceFlows": {
                 "title": "Use Salesforce Flows Config",
-                "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                 "type": "object",
                 "required": [
                   "enabled"
@@ -1664,7 +1664,7 @@
           },
           "useSalesforceFlows": {
             "title": "Use Salesforce Flows Config",
-            "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+            "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
             "type": "object",
             "required": [
               "enabled"
@@ -1696,7 +1696,7 @@
       },
       "UseSalesforceFlowsConfig": {
         "title": "Use Salesforce Flows Config",
-        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
         "type": "object",
         "required": [
           "enabled"
@@ -3257,7 +3257,7 @@
                                 },
                                 "useSalesforceFlows": {
                                   "title": "Use Salesforce Flows Config",
-                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                                   "type": "object",
                                   "required": [
                                     "enabled"
@@ -3429,7 +3429,7 @@
                                     },
                                     "useSalesforceFlows": {
                                       "title": "Use Salesforce Flows Config",
-                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -4881,7 +4881,7 @@
                         },
                         "useSalesforceFlows": {
                           "title": "Use Salesforce Flows Config",
-                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                           "type": "object",
                           "required": [
                             "enabled"
@@ -5053,7 +5053,7 @@
                             },
                             "useSalesforceFlows": {
                               "title": "Use Salesforce Flows Config",
-                              "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                              "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                               "type": "object",
                               "required": [
                                 "enabled"
@@ -5230,7 +5230,7 @@
                   },
                   "useSalesforceFlows": {
                     "title": "Use Salesforce Flows Config",
-                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                     "type": "object",
                     "required": [
                       "enabled"
@@ -5841,7 +5841,7 @@
                             },
                             "useSalesforceFlows": {
                               "title": "Use Salesforce Flows Config",
-                              "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                              "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Delete events are not supported on this path. Defaults to false (CDC). \n",
                               "type": "object",
                               "required": [
                                 "enabled"

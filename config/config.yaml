@@ -242,8 +242,7 @@ components:
         outbound messages instead of Change Data Capture. An installation uses
         only one subscribe method: if any object sets this to enabled, every
         object with a subscribe event in that installation must set it too.
-        Mixed opt-in is rejected. Delete events are not supported on this path.
-        Defaults to false (CDC). Currently supported for Salesforce.
+        Delete events are not supported on this path. Defaults to false (CDC). 
       type: object
       required:
         - enabled
