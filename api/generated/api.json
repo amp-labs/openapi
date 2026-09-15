@@ -15108,6 +15108,21 @@
                                                           "example": true
                                                         }
                                                       }
+                                                    },
+                                                    "useSalesforceFlows": {
+                                                      "title": "Use Salesforce Flows Config",
+                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "enabled"
+                                                      ],
+                                                      "properties": {
+                                                        "enabled": {
+                                                          "type": "boolean",
+                                                          "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                                          "example": true
+                                                        }
+                                                      }
                                                     }
                                                   }
                                                 }
@@ -15262,6 +15277,21 @@
                                                             "enabled": {
                                                               "type": "boolean",
                                                               "description": "Whether quota optimization is enabled for this object.",
+                                                              "example": true
+                                                            }
+                                                          }
+                                                        },
+                                                        "useSalesforceFlows": {
+                                                          "title": "Use Salesforce Flows Config",
+                                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "enabled"
+                                                          ],
+                                                          "properties": {
+                                                            "enabled": {
+                                                              "type": "boolean",
+                                                              "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                               "example": true
                                                             }
                                                           }
@@ -17329,6 +17359,21 @@
                                                       "example": true
                                                     }
                                                   }
+                                                },
+                                                "useSalesforceFlows": {
+                                                  "title": "Use Salesforce Flows Config",
+                                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                  "type": "object",
+                                                  "required": [
+                                                    "enabled"
+                                                  ],
+                                                  "properties": {
+                                                    "enabled": {
+                                                      "type": "boolean",
+                                                      "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                                      "example": true
+                                                    }
+                                                  }
                                                 }
                                               }
                                             }
@@ -17483,6 +17528,21 @@
                                                         "enabled": {
                                                           "type": "boolean",
                                                           "description": "Whether quota optimization is enabled for this object.",
+                                                          "example": true
+                                                        }
+                                                      }
+                                                    },
+                                                    "useSalesforceFlows": {
+                                                      "title": "Use Salesforce Flows Config",
+                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "enabled"
+                                                      ],
+                                                      "properties": {
+                                                        "enabled": {
+                                                          "type": "boolean",
+                                                          "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                           "example": true
                                                         }
                                                       }
@@ -19504,6 +19564,21 @@
                                                         "example": true
                                                       }
                                                     }
+                                                  },
+                                                  "useSalesforceFlows": {
+                                                    "title": "Use Salesforce Flows Config",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "type": "object",
+                                                    "required": [
+                                                      "enabled"
+                                                    ],
+                                                    "properties": {
+                                                      "enabled": {
+                                                        "type": "boolean",
+                                                        "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                                        "example": true
+                                                      }
+                                                    }
                                                   }
                                                 }
                                               }
@@ -19658,6 +19733,21 @@
                                                           "enabled": {
                                                             "type": "boolean",
                                                             "description": "Whether quota optimization is enabled for this object.",
+                                                            "example": true
+                                                          }
+                                                        }
+                                                      },
+                                                      "useSalesforceFlows": {
+                                                        "title": "Use Salesforce Flows Config",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "enabled"
+                                                        ],
+                                                        "properties": {
+                                                          "enabled": {
+                                                            "type": "boolean",
+                                                            "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                             "example": true
                                                           }
                                                         }
@@ -22438,6 +22528,21 @@
                                                         "example": true
                                                       }
                                                     }
+                                                  },
+                                                  "useSalesforceFlows": {
+                                                    "title": "Use Salesforce Flows Config",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "type": "object",
+                                                    "required": [
+                                                      "enabled"
+                                                    ],
+                                                    "properties": {
+                                                      "enabled": {
+                                                        "type": "boolean",
+                                                        "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                                        "example": true
+                                                      }
+                                                    }
                                                   }
                                                 }
                                               }
@@ -22592,6 +22697,21 @@
                                                           "enabled": {
                                                             "type": "boolean",
                                                             "description": "Whether quota optimization is enabled for this object.",
+                                                            "example": true
+                                                          }
+                                                        }
+                                                      },
+                                                      "useSalesforceFlows": {
+                                                        "title": "Use Salesforce Flows Config",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "enabled"
+                                                        ],
+                                                        "properties": {
+                                                          "enabled": {
+                                                            "type": "boolean",
+                                                            "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                             "example": true
                                                           }
                                                         }
@@ -23990,6 +24110,21 @@
                                                     "enabled": {
                                                       "type": "boolean",
                                                       "description": "Whether quota optimization is enabled for this object.",
+                                                      "example": true
+                                                    }
+                                                  }
+                                                },
+                                                "useSalesforceFlows": {
+                                                  "title": "Use Salesforce Flows Config",
+                                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                  "type": "object",
+                                                  "required": [
+                                                    "enabled"
+                                                  ],
+                                                  "properties": {
+                                                    "enabled": {
+                                                      "type": "boolean",
+                                                      "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                       "example": true
                                                     }
                                                   }
@@ -25960,6 +26095,21 @@
                                                         "example": true
                                                       }
                                                     }
+                                                  },
+                                                  "useSalesforceFlows": {
+                                                    "title": "Use Salesforce Flows Config",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "type": "object",
+                                                    "required": [
+                                                      "enabled"
+                                                    ],
+                                                    "properties": {
+                                                      "enabled": {
+                                                        "type": "boolean",
+                                                        "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                                        "example": true
+                                                      }
+                                                    }
                                                   }
                                                 }
                                               }
@@ -26114,6 +26264,21 @@
                                                           "enabled": {
                                                             "type": "boolean",
                                                             "description": "Whether quota optimization is enabled for this object.",
+                                                            "example": true
+                                                          }
+                                                        }
+                                                      },
+                                                      "useSalesforceFlows": {
+                                                        "title": "Use Salesforce Flows Config",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "enabled"
+                                                        ],
+                                                        "properties": {
+                                                          "enabled": {
+                                                            "type": "boolean",
+                                                            "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                             "example": true
                                                           }
                                                         }
@@ -29060,6 +29225,21 @@
                                                         "example": true
                                                       }
                                                     }
+                                                  },
+                                                  "useSalesforceFlows": {
+                                                    "title": "Use Salesforce Flows Config",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "type": "object",
+                                                    "required": [
+                                                      "enabled"
+                                                    ],
+                                                    "properties": {
+                                                      "enabled": {
+                                                        "type": "boolean",
+                                                        "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                                        "example": true
+                                                      }
+                                                    }
                                                   }
                                                 }
                                               }
@@ -29214,6 +29394,21 @@
                                                           "enabled": {
                                                             "type": "boolean",
                                                             "description": "Whether quota optimization is enabled for this object.",
+                                                            "example": true
+                                                          }
+                                                        }
+                                                      },
+                                                      "useSalesforceFlows": {
+                                                        "title": "Use Salesforce Flows Config",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "type": "object",
+                                                        "required": [
+                                                          "enabled"
+                                                        ],
+                                                        "properties": {
+                                                          "enabled": {
+                                                            "type": "boolean",
+                                                            "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                             "example": true
                                                           }
                                                         }
@@ -32357,6 +32552,21 @@
                                                           "example": true
                                                         }
                                                       }
+                                                    },
+                                                    "useSalesforceFlows": {
+                                                      "title": "Use Salesforce Flows Config",
+                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                      "type": "object",
+                                                      "required": [
+                                                        "enabled"
+                                                      ],
+                                                      "properties": {
+                                                        "enabled": {
+                                                          "type": "boolean",
+                                                          "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                                          "example": true
+                                                        }
+                                                      }
                                                     }
                                                   }
                                                 }
@@ -32511,6 +32721,21 @@
                                                             "enabled": {
                                                               "type": "boolean",
                                                               "description": "Whether quota optimization is enabled for this object.",
+                                                              "example": true
+                                                            }
+                                                          }
+                                                        },
+                                                        "useSalesforceFlows": {
+                                                          "title": "Use Salesforce Flows Config",
+                                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                          "type": "object",
+                                                          "required": [
+                                                            "enabled"
+                                                          ],
+                                                          "properties": {
+                                                            "enabled": {
+                                                              "type": "boolean",
+                                                              "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                               "example": true
                                                             }
                                                           }
@@ -73496,6 +73721,21 @@
                                               "example": true
                                             }
                                           }
+                                        },
+                                        "useSalesforceFlows": {
+                                          "title": "Use Salesforce Flows Config",
+                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                          "type": "object",
+                                          "required": [
+                                            "enabled"
+                                          ],
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                              "example": true
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -73650,6 +73890,21 @@
                                                 "enabled": {
                                                   "type": "boolean",
                                                   "description": "Whether quota optimization is enabled for this object.",
+                                                  "example": true
+                                                }
+                                              }
+                                            },
+                                            "useSalesforceFlows": {
+                                              "title": "Use Salesforce Flows Config",
+                                              "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                              "type": "object",
+                                              "required": [
+                                                "enabled"
+                                              ],
+                                              "properties": {
+                                                "enabled": {
+                                                  "type": "boolean",
+                                                  "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                                   "example": true
                                                 }
                                               }
@@ -75180,6 +75435,21 @@
                                           "example": true
                                         }
                                       }
+                                    },
+                                    "useSalesforceFlows": {
+                                      "title": "Use Salesforce Flows Config",
+                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                      "type": "object",
+                                      "required": [
+                                        "enabled"
+                                      ],
+                                      "properties": {
+                                        "enabled": {
+                                          "type": "boolean",
+                                          "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
+                                          "example": true
+                                        }
+                                      }
                                     }
                                   }
                                 }
@@ -75334,6 +75604,21 @@
                                             "enabled": {
                                               "type": "boolean",
                                               "description": "Whether quota optimization is enabled for this object.",
+                                              "example": true
+                                            }
+                                          }
+                                        },
+                                        "useSalesforceFlows": {
+                                          "title": "Use Salesforce Flows Config",
+                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                          "type": "object",
+                                          "required": [
+                                            "enabled"
+                                          ],
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean",
+                                              "description": "Whether this object uses Salesforce record-triggered flows for subscribe.",
                                               "example": true
                                             }
                                           }
