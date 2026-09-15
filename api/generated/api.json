@@ -951,13 +951,13 @@
                                   "type": "string",
                                   "description": "The time the group was created.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816354Z"
+                                  "example": "2023-07-13T21:34:44.816Z"
                                 },
                                 "updateTime": {
                                   "type": "string",
                                   "description": "The time the group was last updated.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816354Z"
+                                  "example": "2023-07-13T21:34:44.816Z"
                                 }
                               }
                             },
@@ -990,13 +990,13 @@
                                   "type": "string",
                                   "description": "The time the consumer was created.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816354Z"
+                                  "example": "2023-07-13T21:34:44.816Z"
                                 },
                                 "updateTime": {
                                   "type": "string",
                                   "description": "The time the consumer was last updated.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816354Z"
+                                  "example": "2023-07-13T21:34:44.816Z"
                                 }
                               }
                             },
@@ -1014,13 +1014,13 @@
                               "type": "string",
                               "description": "The time the connection was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the connection was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "authScheme": {
                               "type": "string",
@@ -13250,13 +13250,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           }
                         }
                       },
@@ -13431,13 +13431,13 @@
                                 "type": "string",
                                 "description": "The time the group was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the group was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               }
                             }
                           },
@@ -13470,13 +13470,13 @@
                                 "type": "string",
                                 "description": "The time the consumer was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the consumer was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               }
                             }
                           },
@@ -13494,13 +13494,13 @@
                             "type": "string",
                             "description": "The time the connection was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the connection was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "authScheme": {
                             "type": "string",
@@ -15111,7 +15111,7 @@
                                                     },
                                                     "useSalesforceFlows": {
                                                       "title": "Use Salesforce Flows Config",
-                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                       "type": "object",
                                                       "required": [
                                                         "enabled"
@@ -15283,7 +15283,7 @@
                                                         },
                                                         "useSalesforceFlows": {
                                                           "title": "Use Salesforce Flows Config",
-                                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                           "type": "object",
                                                           "required": [
                                                             "enabled"
@@ -15922,6 +15922,7 @@
                         "default": "api:create-installation"
                       },
                       "content": {
+                        "description": "The content of the config.",
                         "title": "Config Content",
                         "allOf": [
                           {
@@ -17362,7 +17363,7 @@
                                                 },
                                                 "useSalesforceFlows": {
                                                   "title": "Use Salesforce Flows Config",
-                                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -17534,7 +17535,7 @@
                                                     },
                                                     "useSalesforceFlows": {
                                                       "title": "Use Salesforce Flows Config",
-                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                       "type": "object",
                                                       "required": [
                                                         "enabled"
@@ -17568,8 +17569,7 @@
                               }
                             }
                           }
-                        ],
-                        "description": "The content of the config."
+                        ]
                       }
                     },
                     "description": "The config of the installation."
@@ -17706,13 +17706,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -17887,13 +17887,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -17926,13 +17926,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -17950,13 +17950,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -19567,7 +19567,7 @@
                                                   },
                                                   "useSalesforceFlows": {
                                                     "title": "Use Salesforce Flows Config",
-                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -19739,7 +19739,7 @@
                                                       },
                                                       "useSalesforceFlows": {
                                                         "title": "Use Salesforce Flows Config",
-                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                         "type": "object",
                                                         "required": [
                                                           "enabled"
@@ -20670,13 +20670,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -20851,13 +20851,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -20890,13 +20890,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -20914,13 +20914,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -22531,7 +22531,7 @@
                                                   },
                                                   "useSalesforceFlows": {
                                                     "title": "Use Salesforce Flows Config",
-                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -22703,7 +22703,7 @@
                                                       },
                                                       "useSalesforceFlows": {
                                                         "title": "Use Salesforce Flows Config",
-                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                         "type": "object",
                                                         "required": [
                                                           "enabled"
@@ -24116,7 +24116,7 @@
                                                 },
                                                 "useSalesforceFlows": {
                                                   "title": "Use Salesforce Flows Config",
-                                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                  "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                   "type": "object",
                                                   "required": [
                                                     "enabled"
@@ -24237,13 +24237,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -24418,13 +24418,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -24457,13 +24457,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -24481,13 +24481,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -26098,7 +26098,7 @@
                                                   },
                                                   "useSalesforceFlows": {
                                                     "title": "Use Salesforce Flows Config",
-                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -26270,7 +26270,7 @@
                                                       },
                                                       "useSalesforceFlows": {
                                                         "title": "Use Salesforce Flows Config",
-                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                         "type": "object",
                                                         "required": [
                                                           "enabled"
@@ -27367,13 +27367,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -27548,13 +27548,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -27587,13 +27587,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816354Z"
+                              "example": "2023-07-13T21:34:44.816Z"
                             }
                           }
                         },
@@ -27611,13 +27611,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -29228,7 +29228,7 @@
                                                   },
                                                   "useSalesforceFlows": {
                                                     "title": "Use Salesforce Flows Config",
-                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                    "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                     "type": "object",
                                                     "required": [
                                                       "enabled"
@@ -29400,7 +29400,7 @@
                                                       },
                                                       "useSalesforceFlows": {
                                                         "title": "Use Salesforce Flows Config",
-                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                        "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                         "type": "object",
                                                         "required": [
                                                           "enabled"
@@ -30694,13 +30694,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           }
                         }
                       },
@@ -30875,13 +30875,13 @@
                                 "type": "string",
                                 "description": "The time the group was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the group was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               }
                             }
                           },
@@ -30914,13 +30914,13 @@
                                 "type": "string",
                                 "description": "The time the consumer was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the consumer was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816354Z"
+                                "example": "2023-07-13T21:34:44.816Z"
                               }
                             }
                           },
@@ -30938,13 +30938,13 @@
                             "type": "string",
                             "description": "The time the connection was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the connection was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "authScheme": {
                             "type": "string",
@@ -32555,7 +32555,7 @@
                                                     },
                                                     "useSalesforceFlows": {
                                                       "title": "Use Salesforce Flows Config",
-                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                       "type": "object",
                                                       "required": [
                                                         "enabled"
@@ -32727,7 +32727,7 @@
                                                         },
                                                         "useSalesforceFlows": {
                                                           "title": "Use Salesforce Flows Config",
-                                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                                           "type": "object",
                                                           "required": [
                                                             "enabled"
@@ -35637,7 +35637,7 @@
                             "type": "string",
                             "description": "The time the operation was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           }
                         }
                       }
@@ -37318,7 +37318,7 @@
                       "type": "string",
                       "description": "The time the operation was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816354Z"
+                      "example": "2023-07-13T21:34:44.816Z"
                     }
                   }
                 },
@@ -37590,7 +37590,7 @@
                       "timestamp": {
                         "type": "string",
                         "description": "The time the log was created.",
-                        "example": "2023-07-13T21:34:44.816354Z"
+                        "example": "2023-07-13T21:34:44.816Z"
                       },
                       "message": {
                         "type": "object",
@@ -44931,13 +44931,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           }
                         }
                       },
@@ -44970,13 +44970,13 @@
                             "type": "string",
                             "description": "The time the consumer was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the consumer was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816354Z"
+                            "example": "2023-07-13T21:34:44.816Z"
                           }
                         }
                       },
@@ -44994,13 +44994,13 @@
                         "type": "string",
                         "description": "The time the connection was created.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816354Z"
+                        "example": "2023-07-13T21:34:44.816Z"
                       },
                       "updateTime": {
                         "type": "string",
                         "description": "The time the connection was last updated.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816354Z"
+                        "example": "2023-07-13T21:34:44.816Z"
                       },
                       "authScheme": {
                         "type": "string",
@@ -45995,13 +45995,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -46034,13 +46034,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -46058,13 +46058,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816354Z"
+                      "example": "2023-07-13T21:34:44.816Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816354Z"
+                      "example": "2023-07-13T21:34:44.816Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -47190,13 +47190,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -47229,13 +47229,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -47253,13 +47253,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816354Z"
+                      "example": "2023-07-13T21:34:44.816Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816354Z"
+                      "example": "2023-07-13T21:34:44.816Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -48316,13 +48316,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -48355,13 +48355,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816354Z"
+                          "example": "2023-07-13T21:34:44.816Z"
                         }
                       }
                     },
@@ -48379,13 +48379,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816354Z"
+                      "example": "2023-07-13T21:34:44.816Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816354Z"
+                      "example": "2023-07-13T21:34:44.816Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -69353,13 +69353,13 @@
                         "type": "string",
                         "description": "The time the group was created.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816354Z"
+                        "example": "2023-07-13T21:34:44.816Z"
                       },
                       "updateTime": {
                         "type": "string",
                         "description": "The time the group was last updated.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816354Z"
+                        "example": "2023-07-13T21:34:44.816Z"
                       }
                     }
                   },
@@ -69392,13 +69392,13 @@
                         "type": "string",
                         "description": "The time the consumer was created.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816354Z"
+                        "example": "2023-07-13T21:34:44.816Z"
                       },
                       "updateTime": {
                         "type": "string",
                         "description": "The time the consumer was last updated.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816354Z"
+                        "example": "2023-07-13T21:34:44.816Z"
                       }
                     }
                   },
@@ -69416,13 +69416,13 @@
                     "type": "string",
                     "description": "The time the connection was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
+                    "example": "2023-07-13T21:34:44.816Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the connection was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
+                    "example": "2023-07-13T21:34:44.816Z"
                   },
                   "authScheme": {
                     "type": "string",
@@ -71863,13 +71863,13 @@
                 "type": "string",
                 "description": "The time the group was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the group was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               }
             }
           },
@@ -72044,13 +72044,13 @@
                     "type": "string",
                     "description": "The time the group was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
+                    "example": "2023-07-13T21:34:44.816Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the group was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
+                    "example": "2023-07-13T21:34:44.816Z"
                   }
                 }
               },
@@ -72083,13 +72083,13 @@
                     "type": "string",
                     "description": "The time the consumer was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
+                    "example": "2023-07-13T21:34:44.816Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the consumer was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816354Z"
+                    "example": "2023-07-13T21:34:44.816Z"
                   }
                 }
               },
@@ -72107,13 +72107,13 @@
                 "type": "string",
                 "description": "The time the connection was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the connection was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               },
               "authScheme": {
                 "type": "string",
@@ -73724,7 +73724,7 @@
                                         },
                                         "useSalesforceFlows": {
                                           "title": "Use Salesforce Flows Config",
-                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                           "type": "object",
                                           "required": [
                                             "enabled"
@@ -73896,7 +73896,7 @@
                                             },
                                             "useSalesforceFlows": {
                                               "title": "Use Salesforce Flows Config",
-                                              "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                              "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                               "type": "object",
                                               "required": [
                                                 "enabled"
@@ -75438,7 +75438,7 @@
                                     },
                                     "useSalesforceFlows": {
                                       "title": "Use Salesforce Flows Config",
-                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                      "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                       "type": "object",
                                       "required": [
                                         "enabled"
@@ -75610,7 +75610,7 @@
                                         },
                                         "useSalesforceFlows": {
                                           "title": "Use Salesforce Flows Config",
-                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. Declared per object; the server resolves it to one installation-level mode. Mixed opt-in across objects in the same installation is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
+                                          "description": "Opt a Salesforce subscribe installation into record-triggered flows and outbound messages instead of Change Data Capture. An installation uses only one subscribe method: if any object sets this to enabled, every object with a subscribe event in that installation must set it too. Mixed opt-in is rejected. Delete events are not supported on this path. Defaults to false (CDC). Currently supported for Salesforce.\n",
                                           "type": "object",
                                           "required": [
                                             "enabled"
@@ -75800,13 +75800,13 @@
                 "type": "string",
                 "description": "The time the group was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the group was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               }
             }
           },
@@ -75839,13 +75839,13 @@
                 "type": "string",
                 "description": "The time the consumer was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the consumer was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816354Z"
+                "example": "2023-07-13T21:34:44.816Z"
               }
             }
           },
@@ -75863,13 +75863,13 @@
             "type": "string",
             "description": "The time the connection was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the connection was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           },
           "authScheme": {
             "type": "string",
@@ -76801,13 +76801,13 @@
             "type": "string",
             "description": "The time the group was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the group was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           }
         }
       },
@@ -76840,13 +76840,13 @@
             "type": "string",
             "description": "The time the consumer was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the consumer was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           }
         }
       },
@@ -76973,7 +76973,7 @@
             "type": "string",
             "description": "The time the operation was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           }
         }
       },
@@ -77033,7 +77033,7 @@
           "timestamp": {
             "type": "string",
             "description": "The time the log was created.",
-            "example": "2023-07-13T21:34:44.816354Z"
+            "example": "2023-07-13T21:34:44.816Z"
           },
           "message": {
             "type": "object",
