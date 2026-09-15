@@ -1556,6 +1556,127 @@
           }
         }
       },
+      "DestinationDeliveryErrorData": {
+        "title": "Destination Delivery Error Data",
+        "description": "Data payload for destination.delivery.error notifications, sent when a read or subscribe\ndelivery to a destination fails after every retry attempt has been exhausted. Applies to\nall destination types (webhooks, Kinesis, S3, and other sinks).\n",
+        "allOf": [
+          {
+            "title": "Installation Fields",
+            "type": "object",
+            "description": "Common fields present in installation-related notifications.",
+            "required": [
+              "projectId",
+              "provider",
+              "integrationId",
+              "integrationName",
+              "installationId",
+              "groupRef",
+              "groupName",
+              "connectionId",
+              "consumerRef",
+              "consumerName"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The Ampersand Project ID.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "provider": {
+                "type": "string",
+                "description": "The SaaS API that we are integrating with.",
+                "example": "salesforce"
+              },
+              "integrationId": {
+                "type": "string",
+                "description": "The ID of the integration.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "integrationName": {
+                "type": "string",
+                "description": "The name of the integration.",
+                "example": "Salesforce Integration"
+              },
+              "installationId": {
+                "type": "string",
+                "description": "The ID of the Ampersand installation.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "connectionId": {
+                "type": "string",
+                "description": "The ID of the connection.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "groupRef": {
+                "type": "string",
+                "description": "The ID that your app uses to identify the group of users.",
+                "example": "customer-group-ref"
+              },
+              "groupName": {
+                "type": "string",
+                "description": "The display name of the group of users.",
+                "example": "Customer Name"
+              },
+              "consumerRef": {
+                "type": "string",
+                "description": "The reference ID of the consumer that triggered the notification.",
+                "example": "user-123"
+              },
+              "consumerName": {
+                "type": "string",
+                "description": "The name of the consumer that triggered the notification.",
+                "example": "John Doe"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "destinationId",
+              "destinationName",
+              "objectName",
+              "action",
+              "error"
+            ],
+            "properties": {
+              "destinationId": {
+                "type": "string",
+                "description": "The ID of the destination that could not be reached.",
+                "example": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "destinationName": {
+                "type": "string",
+                "description": "The name of the destination that could not be reached.",
+                "example": "production-kinesis"
+              },
+              "url": {
+                "type": "string",
+                "description": "The webhook URL, present only when the destination is a webhook.",
+                "example": "https://your-webhook.com"
+              },
+              "objectName": {
+                "type": "string",
+                "description": "The name of the object whose data could not be delivered.",
+                "example": "account"
+              },
+              "action": {
+                "type": "string",
+                "description": "The Ampersand action whose results were being delivered.",
+                "enum": [
+                  "read",
+                  "subscribe"
+                ],
+                "example": "subscribe"
+              },
+              "error": {
+                "type": "string",
+                "description": "The error that caused the delivery to fail.",
+                "example": "Delivery to aws_kinesis destination exhausted retries after 3 attempts. ResourceNotFoundException: Stream not found."
+              }
+            }
+          }
+        ]
+      },
       "InstallationCreatedNotificationPayload": {
         "title": "Installation Created Notification Payload",
         "description": "Payload structure for installation.created notifications sent to webhook destinations.\nFor Kinesis destinations, only the `data` object is sent.\n",
@@ -3503,6 +3624,144 @@
                 "example": "https://your-webhook.com"
               }
             }
+          }
+        }
+      },
+      "DestinationDeliveryErrorNotificationPayload": {
+        "title": "Destination Delivery Error Notification Payload",
+        "description": "Payload structure for destination.delivery.error notifications sent to webhook destinations.\nFor Kinesis destinations, only the `data` object is sent.\n",
+        "type": "object",
+        "required": [
+          "notificationType",
+          "data"
+        ],
+        "properties": {
+          "notificationType": {
+            "type": "string",
+            "enum": [
+              "destination.delivery.error"
+            ]
+          },
+          "data": {
+            "title": "Destination Delivery Error Data",
+            "description": "Data payload for destination.delivery.error notifications, sent when a read or subscribe\ndelivery to a destination fails after every retry attempt has been exhausted. Applies to\nall destination types (webhooks, Kinesis, S3, and other sinks).\n",
+            "allOf": [
+              {
+                "title": "Installation Fields",
+                "type": "object",
+                "description": "Common fields present in installation-related notifications.",
+                "required": [
+                  "projectId",
+                  "provider",
+                  "integrationId",
+                  "integrationName",
+                  "installationId",
+                  "groupRef",
+                  "groupName",
+                  "connectionId",
+                  "consumerRef",
+                  "consumerName"
+                ],
+                "properties": {
+                  "projectId": {
+                    "type": "string",
+                    "description": "The Ampersand Project ID.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "provider": {
+                    "type": "string",
+                    "description": "The SaaS API that we are integrating with.",
+                    "example": "salesforce"
+                  },
+                  "integrationId": {
+                    "type": "string",
+                    "description": "The ID of the integration.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "integrationName": {
+                    "type": "string",
+                    "description": "The name of the integration.",
+                    "example": "Salesforce Integration"
+                  },
+                  "installationId": {
+                    "type": "string",
+                    "description": "The ID of the Ampersand installation.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The ID of the connection.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "groupRef": {
+                    "type": "string",
+                    "description": "The ID that your app uses to identify the group of users.",
+                    "example": "customer-group-ref"
+                  },
+                  "groupName": {
+                    "type": "string",
+                    "description": "The display name of the group of users.",
+                    "example": "Customer Name"
+                  },
+                  "consumerRef": {
+                    "type": "string",
+                    "description": "The reference ID of the consumer that triggered the notification.",
+                    "example": "user-123"
+                  },
+                  "consumerName": {
+                    "type": "string",
+                    "description": "The name of the consumer that triggered the notification.",
+                    "example": "John Doe"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "destinationId",
+                  "destinationName",
+                  "objectName",
+                  "action",
+                  "error"
+                ],
+                "properties": {
+                  "destinationId": {
+                    "type": "string",
+                    "description": "The ID of the destination that could not be reached.",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "destinationName": {
+                    "type": "string",
+                    "description": "The name of the destination that could not be reached.",
+                    "example": "production-kinesis"
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "The webhook URL, present only when the destination is a webhook.",
+                    "example": "https://your-webhook.com"
+                  },
+                  "objectName": {
+                    "type": "string",
+                    "description": "The name of the object whose data could not be delivered.",
+                    "example": "account"
+                  },
+                  "action": {
+                    "type": "string",
+                    "description": "The Ampersand action whose results were being delivered.",
+                    "enum": [
+                      "read",
+                      "subscribe"
+                    ],
+                    "example": "subscribe"
+                  },
+                  "error": {
+                    "type": "string",
+                    "description": "The error that caused the delivery to fail.",
+                    "example": "Delivery to aws_kinesis destination exhausted retries after 3 attempts. ResourceNotFoundException: Stream not found."
+                  }
+                }
+              }
+            ]
           }
         }
       }
