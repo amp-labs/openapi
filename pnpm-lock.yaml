@@ -250,10 +250,6 @@ packages:
     resolution: {integrity: sha512-muutsYr+e2+d3rTgUGslq5rxbBlUy3cJ61IsHag2QNDQV+7zXWjkUpmALIajhrlLlrgRUiymj6U3zUr/TMK84Q==}
     hasBin: true
 
-  js-yaml@5.3.0:
-    resolution: {integrity: sha512-muutsYr+e2+d3rTgUGslq5rxbBlUy3cJ61IsHag2QNDQV+7zXWjkUpmALIajhrlLlrgRUiymj6U3zUr/TMK84Q==}
-    hasBin: true
-
   json-schema-to-ts@2.7.2:
     resolution: {integrity: sha512-R1JfqKqbBR4qE8UyBR56Ms30LL62/nlhoz+1UkfI/VE7p54Awu919FZ6ZUPG8zIa3XB65usPJgr1ONVncUGSaQ==}
     engines: {node: '>=16'}
@@ -448,10 +444,6 @@ snapshots:
   js-levenshtein@1.1.6: {}
 
   js-yaml@4.3.1:
-    dependencies:
-      argparse: 2.0.1
-
-  js-yaml@5.3.0:
     dependencies:
       argparse: 2.0.1
 
