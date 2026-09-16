@@ -16,8 +16,8 @@ importers:
         version: 12.1.0(openapi-types@12.1.3)
     devDependencies:
       '@redocly/openapi-core':
-        specifier: ^2.46.2
-        version: 2.46.2
+        specifier: ^2.52.1
+        version: 2.52.1
       '@types/node':
         specifier: ^26.5.1
         version: 26.5.1
@@ -59,11 +59,11 @@ packages:
   '@redocly/ajv@8.18.3':
     resolution: {integrity: sha512-l42u0of3hY98sN2A+M4qTX1O/KrpgGH32Hu9kP2GtHyD5Dfqq86PKFLe5dwaD8DEnNmlOlll2BAmeEtf0DaySg==}
 
-  '@redocly/config@0.53.1':
-    resolution: {integrity: sha512-aOldTWynKS3ZM6u8WkL72d94QBobITv9X6UECiZykgVjdLiAqV737bPVLGKJYPWf0Ryf3zSHgUYALjCj66BkdA==}
+  '@redocly/config@0.56.0':
+    resolution: {integrity: sha512-sGEC13BWOSKgFEHSPmFmTHpRt+zfNOc4+5+COe3Z4TD37glshCzM8qaeX7fIddGf6akRSs1tz3j+2FZVEQtCWw==}
 
-  '@redocly/openapi-core@2.46.2':
-    resolution: {integrity: sha512-RWbV3vc5/w1L/ye8uC+WtEZ3jwdAxfCokLrGd7fB1sZ8hEzkNVmPUv2+y+ainRsoNyahPP9nM4wtdL2Tb6kYWA==}
+  '@redocly/openapi-core@2.52.1':
+    resolution: {integrity: sha512-5P+fS+nfkM2gE4ujWVBuQw1+npBXU+nyqRQBozsNtUFp+dInhx/hXF9w/dv0hQtUzbEgQpHrSVPyuCcqlxgVrQ==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
   '@types/json-schema@7.0.15':
@@ -326,14 +326,14 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  '@redocly/config@0.53.1':
+  '@redocly/config@0.56.0':
     dependencies:
       json-schema-to-ts: 2.7.2
 
-  '@redocly/openapi-core@2.46.2':
+  '@redocly/openapi-core@2.52.1':
     dependencies:
       '@redocly/ajv': 8.18.3
-      '@redocly/config': 0.53.1
+      '@redocly/config': 0.56.0
       ajv: '@redocly/ajv@8.18.3'
       ajv-formats: 3.0.1(@redocly/ajv@8.18.3)
       colorette: 1.4.0
