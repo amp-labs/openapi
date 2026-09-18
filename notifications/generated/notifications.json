@@ -904,9 +904,15 @@
                   "rec-2"
                 ]
               },
+              "error": {
+                "type": "string",
+                "description": "The error that occurred during the asynchronous write operation. When multiple records fail, their error messages are joined into a single string.",
+                "example": "field validation failed; duplicate record"
+              },
               "errors": {
                 "type": "array",
-                "description": "Error messages for records that failed during the asynchronous write operation.",
+                "description": "Deprecated. Use `error` instead. Error messages for records that failed during the asynchronous write operation. Kept for backward compatibility; it will be removed once consumers have migrated to `error`.",
+                "deprecated": true,
                 "items": {
                   "type": "string"
                 },
@@ -2634,9 +2640,15 @@
                       "rec-2"
                     ]
                   },
+                  "error": {
+                    "type": "string",
+                    "description": "The error that occurred during the asynchronous write operation. When multiple records fail, their error messages are joined into a single string.",
+                    "example": "field validation failed; duplicate record"
+                  },
                   "errors": {
                     "type": "array",
-                    "description": "Error messages for records that failed during the asynchronous write operation.",
+                    "description": "Deprecated. Use `error` instead. Error messages for records that failed during the asynchronous write operation. Kept for backward compatibility; it will be removed once consumers have migrated to `error`.",
+                    "deprecated": true,
                     "items": {
                       "type": "string"
                     },
