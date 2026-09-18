@@ -904,16 +904,10 @@
                   "rec-2"
                 ]
               },
-              "errors": {
-                "type": "array",
-                "description": "Error messages for records that failed during the asynchronous write operation.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "field validation failed",
-                  "duplicate record"
-                ]
+              "error": {
+                "type": "string",
+                "description": "The error that occurred during the asynchronous write operation. When multiple records fail, their error messages are joined into a single string.",
+                "example": "field validation failed; duplicate record"
               }
             }
           }
@@ -2634,16 +2628,10 @@
                       "rec-2"
                     ]
                   },
-                  "errors": {
-                    "type": "array",
-                    "description": "Error messages for records that failed during the asynchronous write operation.",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": [
-                      "field validation failed",
-                      "duplicate record"
-                    ]
+                  "error": {
+                    "type": "string",
+                    "description": "The error that occurred during the asynchronous write operation. When multiple records fail, their error messages are joined into a single string.",
+                    "example": "field validation failed; duplicate record"
                   }
                 }
               }
