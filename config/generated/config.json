@@ -1475,6 +1475,22 @@
                   "example": "accountWebhook",
                   "type": "string"
                 },
+                "selectedFields": {
+                  "type": "object",
+                  "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+                  "example": "{ phone: true, fax: true }",
+                  "additionalProperties": {
+                    "type": "boolean"
+                  }
+                },
+                "selectedFieldMappings": {
+                  "type": "object",
+                  "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+                  "example": "{ phoneNumber: phone, faxNumber: fax }",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
                 "createEvent": {
                   "title": "Create Event",
                   "type": "object",
@@ -1644,6 +1660,22 @@
             "description": "The name of the destination that the result should be sent to.",
             "example": "accountWebhook",
             "type": "string"
+          },
+          "selectedFields": {
+            "type": "object",
+            "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+            "example": "{ phone: true, fax: true }",
+            "additionalProperties": {
+              "type": "boolean"
+            }
+          },
+          "selectedFieldMappings": {
+            "type": "object",
+            "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+            "example": "{ phoneNumber: phone, faxNumber: fax }",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "createEvent": {
             "title": "Create Event",
@@ -3396,6 +3428,22 @@
                               "example": "accountWebhook",
                               "type": "string"
                             },
+                            "selectedFields": {
+                              "type": "object",
+                              "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+                              "example": "{ phone: true, fax: true }",
+                              "additionalProperties": {
+                                "type": "boolean"
+                              }
+                            },
+                            "selectedFieldMappings": {
+                              "type": "object",
+                              "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+                              "example": "{ phoneNumber: phone, faxNumber: fax }",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            },
                             "createEvent": {
                               "title": "Create Event",
                               "type": "object",
@@ -3573,6 +3621,22 @@
                                   "description": "The name of the destination that the result should be sent to.",
                                   "example": "accountWebhook",
                                   "type": "string"
+                                },
+                                "selectedFields": {
+                                  "type": "object",
+                                  "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+                                  "example": "{ phone: true, fax: true }",
+                                  "additionalProperties": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "selectedFieldMappings": {
+                                  "type": "object",
+                                  "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+                                  "example": "{ phoneNumber: phone, faxNumber: fax }",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
                                 },
                                 "createEvent": {
                                   "title": "Create Event",
@@ -5138,6 +5202,22 @@
                       "example": "accountWebhook",
                       "type": "string"
                     },
+                    "selectedFields": {
+                      "type": "object",
+                      "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+                      "example": "{ phone: true, fax: true }",
+                      "additionalProperties": {
+                        "type": "boolean"
+                      }
+                    },
+                    "selectedFieldMappings": {
+                      "type": "object",
+                      "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+                      "example": "{ phoneNumber: phone, faxNumber: fax }",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
                     "createEvent": {
                       "title": "Create Event",
                       "type": "object",
@@ -5316,6 +5396,22 @@
                           "example": "accountWebhook",
                           "type": "string"
                         },
+                        "selectedFields": {
+                          "type": "object",
+                          "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+                          "example": "{ phone: true, fax: true }",
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        },
+                        "selectedFieldMappings": {
+                          "type": "object",
+                          "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+                          "example": "{ phoneNumber: phone, faxNumber: fax }",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        },
                         "createEvent": {
                           "title": "Create Event",
                           "type": "object",
@@ -5478,6 +5574,22 @@
                 "description": "The name of the destination that the result should be sent to.",
                 "example": "accountWebhook",
                 "type": "string"
+              },
+              "selectedFields": {
+                "type": "object",
+                "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+                "example": "{ phone: true, fax: true }",
+                "additionalProperties": {
+                  "type": "boolean"
+                }
+              },
+              "selectedFieldMappings": {
+                "type": "object",
+                "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+                "example": "{ phoneNumber: phone, faxNumber: fax }",
+                "additionalProperties": {
+                  "type": "string"
+                }
               },
               "createEvent": {
                 "title": "Create Event",
@@ -6117,6 +6229,22 @@
                           "description": "The name of the destination that the result should be sent to.",
                           "example": "accountWebhook",
                           "type": "string"
+                        },
+                        "selectedFields": {
+                          "type": "object",
+                          "description": "This is a map of field names to booleans indicating whether they should be included in subscription events. Only used when `inheritFieldsAndMappings` is false; otherwise fields are inherited from the read config. If a field is already included in `selectedFieldMappings`, it does not need to be included here.",
+                          "example": "{ phone: true, fax: true }",
+                          "additionalProperties": {
+                            "type": "boolean"
+                          }
+                        },
+                        "selectedFieldMappings": {
+                          "type": "object",
+                          "description": "This is a map of mapToNames to field names. (A mapTo name is the name the builder wants to map a field to when it lands in their destination.) Only used when `inheritFieldsAndMappings` is false; otherwise mappings are inherited from the read config.",
+                          "example": "{ phoneNumber: phone, faxNumber: fax }",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
                         },
                         "createEvent": {
                           "title": "Create Event",
