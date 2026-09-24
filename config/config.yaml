@@ -187,7 +187,10 @@ components:
         inheritFieldsAndMappings:
           type: boolean
           nullable: true
-          description: Whether to inherit fields and mappings from the read config.
+          description:
+            Whether to inherit fields and mappings from the read config.
+            If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used.
+            If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.
           example: true
         objectName:
           description: The name of the object to subscribe to.
