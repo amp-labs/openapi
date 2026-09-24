@@ -164,6 +164,27 @@ components:
               type: string
               description: The name of the object for which the backfill completed.
               example: Account
+    # Read backfill failed event data
+    ReadBackfillErrorData:
+      title: Read Backfill Error Data
+      description: Data payload for read.backfill.error notifications.
+      allOf:
+        - $ref: '#/components/schemas/InstallationFields'
+        - type: object
+
+          required:
+            - objectName
+            - error
+          properties:
+            objectName:
+              type: string
+              description: The name of the object for which the backfill failed.
+              example: Account
+            error:
+              type: string
+              description: The error that occurred during the backfill.
+              example: "Authentication failed"
+
     # Read schedule paused event data
     ReadSchedulePausedData:
       title: Read Schedule Paused Data
@@ -542,6 +563,22 @@ components:
           enum: [read.backfill.done]
         data:
           $ref: '#/components/schemas/ReadBackfillDoneData'
+
+    ReadBackfillErrorNotificationPayload:
+      title: Read Backfill Error Notification Payload
+      description: |
+        Payload structure for read.backfill.error notifications sent to webhook destinations.
+        For Kinesis destinations, only the `data` object is sent.
+      type: object
+      required:
+        - notificationType
+        - data
+      properties:
+        notificationType:
+          type: string
+          enum: [read.backfill.error]
+        data:
+          $ref: '#/components/schemas/ReadBackfillErrorData'
 
     ReadSchedulePausedNotificationPayload:
       title: Read Schedule Paused Notification Payload
