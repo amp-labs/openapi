@@ -951,13 +951,13 @@
                                   "type": "string",
                                   "description": "The time the group was created.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816Z"
+                                  "example": "2023-07-13T21:34:44.816354Z"
                                 },
                                 "updateTime": {
                                   "type": "string",
                                   "description": "The time the group was last updated.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816Z"
+                                  "example": "2023-07-13T21:34:44.816354Z"
                                 }
                               }
                             },
@@ -990,13 +990,13 @@
                                   "type": "string",
                                   "description": "The time the consumer was created.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816Z"
+                                  "example": "2023-07-13T21:34:44.816354Z"
                                 },
                                 "updateTime": {
                                   "type": "string",
                                   "description": "The time the consumer was last updated.",
                                   "format": "date-time",
-                                  "example": "2023-07-13T21:34:44.816Z"
+                                  "example": "2023-07-13T21:34:44.816354Z"
                                 }
                               }
                             },
@@ -1014,13 +1014,13 @@
                               "type": "string",
                               "description": "The time the connection was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the connection was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "authScheme": {
                               "type": "string",
@@ -13309,13 +13309,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -13490,13 +13490,13 @@
                                 "type": "string",
                                 "description": "The time the group was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the group was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -13529,13 +13529,13 @@
                                 "type": "string",
                                 "description": "The time the consumer was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the consumer was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -13553,13 +13553,13 @@
                             "type": "string",
                             "description": "The time the connection was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the connection was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "authScheme": {
                             "type": "string",
@@ -15166,7 +15166,7 @@
                                                 "inheritFieldsAndMappings": {
                                                   "type": "boolean",
                                                   "nullable": true,
-                                                  "description": "Whether to inherit fields and mappings from the read config.",
+                                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                   "example": true
                                                 },
                                                 "objectName": {
@@ -15360,7 +15360,7 @@
                                                     "inheritFieldsAndMappings": {
                                                       "type": "boolean",
                                                       "nullable": true,
-                                                      "description": "Whether to inherit fields and mappings from the read config.",
+                                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                       "example": true
                                                     },
                                                     "objectName": {
@@ -16131,7 +16131,6 @@
                         "default": "api:create-installation"
                       },
                       "content": {
-                        "description": "The content of the config.",
                         "title": "Config Content",
                         "allOf": [
                           {
@@ -17568,7 +17567,7 @@
                                             "inheritFieldsAndMappings": {
                                               "type": "boolean",
                                               "nullable": true,
-                                              "description": "Whether to inherit fields and mappings from the read config.",
+                                              "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                               "example": true
                                             },
                                             "objectName": {
@@ -17762,7 +17761,7 @@
                                                 "inheritFieldsAndMappings": {
                                                   "type": "boolean",
                                                   "nullable": true,
-                                                  "description": "Whether to inherit fields and mappings from the read config.",
+                                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                   "example": true
                                                 },
                                                 "objectName": {
@@ -17928,7 +17927,8 @@
                               }
                             }
                           }
-                        ]
+                        ],
+                        "description": "The content of the config."
                       }
                     },
                     "description": "The config of the installation."
@@ -18065,13 +18065,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -18246,13 +18246,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -18285,13 +18285,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -18309,13 +18309,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -19922,7 +19922,7 @@
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config.",
+                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -20116,7 +20116,7 @@
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -21179,13 +21179,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -21360,13 +21360,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -21399,13 +21399,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -21423,13 +21423,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -23036,7 +23036,7 @@
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config.",
+                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -23230,7 +23230,7 @@
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -24687,7 +24687,7 @@
                                             "inheritFieldsAndMappings": {
                                               "type": "boolean",
                                               "nullable": true,
-                                              "description": "Whether to inherit fields and mappings from the read config.",
+                                              "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                               "example": true
                                             },
                                             "objectName": {
@@ -24962,13 +24962,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -25143,13 +25143,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -25182,13 +25182,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -25206,13 +25206,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -26819,7 +26819,7 @@
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config.",
+                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -27013,7 +27013,7 @@
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -28242,13 +28242,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -28423,13 +28423,13 @@
                               "type": "string",
                               "description": "The time the group was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the group was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -28462,13 +28462,13 @@
                               "type": "string",
                               "description": "The time the consumer was created.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             },
                             "updateTime": {
                               "type": "string",
                               "description": "The time the consumer was last updated.",
                               "format": "date-time",
-                              "example": "2023-07-13T21:34:44.816Z"
+                              "example": "2023-07-13T21:34:44.816354Z"
                             }
                           }
                         },
@@ -28486,13 +28486,13 @@
                           "type": "string",
                           "description": "The time the connection was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the connection was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "authScheme": {
                           "type": "string",
@@ -30099,7 +30099,7 @@
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config.",
+                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -30293,7 +30293,7 @@
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -31719,13 +31719,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -31900,13 +31900,13 @@
                                 "type": "string",
                                 "description": "The time the group was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the group was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -31939,13 +31939,13 @@
                                 "type": "string",
                                 "description": "The time the consumer was created.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               },
                               "updateTime": {
                                 "type": "string",
                                 "description": "The time the consumer was last updated.",
                                 "format": "date-time",
-                                "example": "2023-07-13T21:34:44.816Z"
+                                "example": "2023-07-13T21:34:44.816354Z"
                               }
                             }
                           },
@@ -31963,13 +31963,13 @@
                             "type": "string",
                             "description": "The time the connection was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the connection was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "authScheme": {
                             "type": "string",
@@ -33576,7 +33576,7 @@
                                                 "inheritFieldsAndMappings": {
                                                   "type": "boolean",
                                                   "nullable": true,
-                                                  "description": "Whether to inherit fields and mappings from the read config.",
+                                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                   "example": true
                                                 },
                                                 "objectName": {
@@ -33770,7 +33770,7 @@
                                                     "inheritFieldsAndMappings": {
                                                       "type": "boolean",
                                                       "nullable": true,
-                                                      "description": "Whether to inherit fields and mappings from the read config.",
+                                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                                       "example": true
                                                     },
                                                     "objectName": {
@@ -36820,7 +36820,7 @@
                             "type": "string",
                             "description": "The time the operation was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       }
@@ -38501,7 +38501,7 @@
                       "type": "string",
                       "description": "The time the operation was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     }
                   }
                 },
@@ -38773,7 +38773,7 @@
                       "timestamp": {
                         "type": "string",
                         "description": "The time the log was created.",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "message": {
                         "type": "object",
@@ -46114,13 +46114,13 @@
                             "type": "string",
                             "description": "The time the group was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the group was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -46153,13 +46153,13 @@
                             "type": "string",
                             "description": "The time the consumer was created.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           },
                           "updateTime": {
                             "type": "string",
                             "description": "The time the consumer was last updated.",
                             "format": "date-time",
-                            "example": "2023-07-13T21:34:44.816Z"
+                            "example": "2023-07-13T21:34:44.816354Z"
                           }
                         }
                       },
@@ -46177,13 +46177,13 @@
                         "type": "string",
                         "description": "The time the connection was created.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "updateTime": {
                         "type": "string",
                         "description": "The time the connection was last updated.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "authScheme": {
                         "type": "string",
@@ -47178,13 +47178,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -47217,13 +47217,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -47241,13 +47241,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -48373,13 +48373,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -48412,13 +48412,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -48436,13 +48436,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -49499,13 +49499,13 @@
                           "type": "string",
                           "description": "The time the group was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the group was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -49538,13 +49538,13 @@
                           "type": "string",
                           "description": "The time the consumer was created.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         },
                         "updateTime": {
                           "type": "string",
                           "description": "The time the consumer was last updated.",
                           "format": "date-time",
-                          "example": "2023-07-13T21:34:44.816Z"
+                          "example": "2023-07-13T21:34:44.816354Z"
                         }
                       }
                     },
@@ -49562,13 +49562,13 @@
                       "type": "string",
                       "description": "The time the connection was created.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "updateTime": {
                       "type": "string",
                       "description": "The time the connection was last updated.",
                       "format": "date-time",
-                      "example": "2023-07-13T21:34:44.816Z"
+                      "example": "2023-07-13T21:34:44.816354Z"
                     },
                     "authScheme": {
                       "type": "string",
@@ -70570,13 +70570,13 @@
                         "type": "string",
                         "description": "The time the group was created.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "updateTime": {
                         "type": "string",
                         "description": "The time the group was last updated.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       }
                     }
                   },
@@ -70609,13 +70609,13 @@
                         "type": "string",
                         "description": "The time the consumer was created.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       },
                       "updateTime": {
                         "type": "string",
                         "description": "The time the consumer was last updated.",
                         "format": "date-time",
-                        "example": "2023-07-13T21:34:44.816Z"
+                        "example": "2023-07-13T21:34:44.816354Z"
                       }
                     }
                   },
@@ -70633,13 +70633,13 @@
                     "type": "string",
                     "description": "The time the connection was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the connection was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   },
                   "authScheme": {
                     "type": "string",
@@ -73100,13 +73100,13 @@
                 "type": "string",
                 "description": "The time the group was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the group was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               }
             }
           },
@@ -73281,13 +73281,13 @@
                     "type": "string",
                     "description": "The time the group was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the group was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   }
                 }
               },
@@ -73320,13 +73320,13 @@
                     "type": "string",
                     "description": "The time the consumer was created.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   },
                   "updateTime": {
                     "type": "string",
                     "description": "The time the consumer was last updated.",
                     "format": "date-time",
-                    "example": "2023-07-13T21:34:44.816Z"
+                    "example": "2023-07-13T21:34:44.816354Z"
                   }
                 }
               },
@@ -73344,13 +73344,13 @@
                 "type": "string",
                 "description": "The time the connection was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the connection was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "authScheme": {
                 "type": "string",
@@ -74957,7 +74957,7 @@
                                     "inheritFieldsAndMappings": {
                                       "type": "boolean",
                                       "nullable": true,
-                                      "description": "Whether to inherit fields and mappings from the read config.",
+                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                       "example": true
                                     },
                                     "objectName": {
@@ -75151,7 +75151,7 @@
                                         "inheritFieldsAndMappings": {
                                           "type": "boolean",
                                           "nullable": true,
-                                          "description": "Whether to inherit fields and mappings from the read config.",
+                                          "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                           "example": true
                                         },
                                         "objectName": {
@@ -76821,7 +76821,7 @@
                                 "inheritFieldsAndMappings": {
                                   "type": "boolean",
                                   "nullable": true,
-                                  "description": "Whether to inherit fields and mappings from the read config.",
+                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                   "example": true
                                 },
                                 "objectName": {
@@ -77015,7 +77015,7 @@
                                     "inheritFieldsAndMappings": {
                                       "type": "boolean",
                                       "nullable": true,
-                                      "description": "Whether to inherit fields and mappings from the read config.",
+                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
                                       "example": true
                                     },
                                     "objectName": {
@@ -77337,13 +77337,13 @@
                 "type": "string",
                 "description": "The time the group was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the group was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               }
             }
           },
@@ -77376,13 +77376,13 @@
                 "type": "string",
                 "description": "The time the consumer was created.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               },
               "updateTime": {
                 "type": "string",
                 "description": "The time the consumer was last updated.",
                 "format": "date-time",
-                "example": "2023-07-13T21:34:44.816Z"
+                "example": "2023-07-13T21:34:44.816354Z"
               }
             }
           },
@@ -77400,13 +77400,13 @@
             "type": "string",
             "description": "The time the connection was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the connection was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "authScheme": {
             "type": "string",
@@ -78338,13 +78338,13 @@
             "type": "string",
             "description": "The time the group was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the group was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           }
         }
       },
@@ -78377,13 +78377,13 @@
             "type": "string",
             "description": "The time the consumer was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "updateTime": {
             "type": "string",
             "description": "The time the consumer was last updated.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           }
         }
       },
@@ -78510,7 +78510,7 @@
             "type": "string",
             "description": "The time the operation was created.",
             "format": "date-time",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           }
         }
       },
@@ -78570,7 +78570,7 @@
           "timestamp": {
             "type": "string",
             "description": "The time the log was created.",
-            "example": "2023-07-13T21:34:44.816Z"
+            "example": "2023-07-13T21:34:44.816354Z"
           },
           "message": {
             "type": "object",
