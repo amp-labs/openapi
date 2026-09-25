@@ -384,6 +384,13 @@ components:
             $ref: '#/components/schemas/HydratedIntegrationField'
         backfill:
           $ref: '#/components/schemas/Backfill'
+        enabled:
+          type: string
+          description: >
+            If set to `always`, Ampersand reads this object for every installation
+            even if the customer never selects it (or it isn't present) in the
+            installation config.
+          enum: [always]
 
     # We might end up using the same HydratedIntegrationObject type for both read and write,
     # But for now, we're introducing a new typee to keep them separate, and not renaming the
