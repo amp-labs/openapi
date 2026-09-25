@@ -12107,6 +12107,7 @@
         "properties": {
           "inheritFieldsAndMappings": {
             "type": "boolean",
+            "nullable": true,
             "description": "Whether to inherit fields and mappings from the read config.",
             "example": true
           },
