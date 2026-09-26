@@ -14981,14 +14981,13 @@
                                               "type": "object",
                                               "required": [
                                                 "objectName",
-                                                "destination",
-                                                "inheritFieldsAndMappings"
+                                                "destination"
                                               ],
                                               "properties": {
                                                 "inheritFieldsAndMappings": {
                                                   "type": "boolean",
                                                   "nullable": true,
-                                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                  "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                   "example": true
                                                 },
                                                 "objectName": {
@@ -15177,14 +15176,13 @@
                                                   "type": "object",
                                                   "required": [
                                                     "objectName",
-                                                    "destination",
-                                                    "inheritFieldsAndMappings"
+                                                    "destination"
                                                   ],
                                                   "properties": {
                                                     "inheritFieldsAndMappings": {
                                                       "type": "boolean",
                                                       "nullable": true,
-                                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                      "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                       "example": true
                                                     },
                                                     "objectName": {
@@ -15337,8 +15335,7 @@
                                                   "type": "object",
                                                   "required": [
                                                     "objectName",
-                                                    "destination",
-                                                    "inheritFieldsAndMappings"
+                                                    "destination"
                                                   ]
                                                 }
                                               ]
@@ -17258,14 +17255,13 @@
                                           "type": "object",
                                           "required": [
                                             "objectName",
-                                            "destination",
-                                            "inheritFieldsAndMappings"
+                                            "destination"
                                           ],
                                           "properties": {
                                             "inheritFieldsAndMappings": {
                                               "type": "boolean",
                                               "nullable": true,
-                                              "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                              "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                               "example": true
                                             },
                                             "objectName": {
@@ -17454,14 +17450,13 @@
                                               "type": "object",
                                               "required": [
                                                 "objectName",
-                                                "destination",
-                                                "inheritFieldsAndMappings"
+                                                "destination"
                                               ],
                                               "properties": {
                                                 "inheritFieldsAndMappings": {
                                                   "type": "boolean",
                                                   "nullable": true,
-                                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                  "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                   "example": true
                                                 },
                                                 "objectName": {
@@ -17614,8 +17609,7 @@
                                               "type": "object",
                                               "required": [
                                                 "objectName",
-                                                "destination",
-                                                "inheritFieldsAndMappings"
+                                                "destination"
                                               ]
                                             }
                                           ]
@@ -19489,14 +19483,13 @@
                                             "type": "object",
                                             "required": [
                                               "objectName",
-                                              "destination",
-                                              "inheritFieldsAndMappings"
+                                              "destination"
                                             ],
                                             "properties": {
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -19685,14 +19678,13 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ],
                                                 "properties": {
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -19845,8 +19837,7 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ]
                                               }
                                             ]
@@ -22479,14 +22470,13 @@
                                             "type": "object",
                                             "required": [
                                               "objectName",
-                                              "destination",
-                                              "inheritFieldsAndMappings"
+                                              "destination"
                                             ],
                                             "properties": {
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -22675,14 +22665,13 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ],
                                                 "properties": {
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -22835,8 +22824,7 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ]
                                               }
                                             ]
@@ -24090,14 +24078,13 @@
                                           "type": "object",
                                           "required": [
                                             "objectName",
-                                            "destination",
-                                            "inheritFieldsAndMappings"
+                                            "destination"
                                           ],
                                           "properties": {
                                             "inheritFieldsAndMappings": {
                                               "type": "boolean",
                                               "nullable": true,
-                                              "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                              "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                               "example": true
                                             },
                                             "objectName": {
@@ -26096,14 +26083,13 @@
                                             "type": "object",
                                             "required": [
                                               "objectName",
-                                              "destination",
-                                              "inheritFieldsAndMappings"
+                                              "destination"
                                             ],
                                             "properties": {
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -26292,14 +26278,13 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ],
                                                 "properties": {
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -26452,8 +26437,7 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ]
                                               }
                                             ]
@@ -29252,14 +29236,13 @@
                                             "type": "object",
                                             "required": [
                                               "objectName",
-                                              "destination",
-                                              "inheritFieldsAndMappings"
+                                              "destination"
                                             ],
                                             "properties": {
                                               "inheritFieldsAndMappings": {
                                                 "type": "boolean",
                                                 "nullable": true,
-                                                "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                 "example": true
                                               },
                                               "objectName": {
@@ -29448,14 +29431,13 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ],
                                                 "properties": {
                                                   "inheritFieldsAndMappings": {
                                                     "type": "boolean",
                                                     "nullable": true,
-                                                    "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                    "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                     "example": true
                                                   },
                                                   "objectName": {
@@ -29608,8 +29590,7 @@
                                                 "type": "object",
                                                 "required": [
                                                   "objectName",
-                                                  "destination",
-                                                  "inheritFieldsAndMappings"
+                                                  "destination"
                                                 ]
                                               }
                                             ]
@@ -32605,14 +32586,13 @@
                                               "type": "object",
                                               "required": [
                                                 "objectName",
-                                                "destination",
-                                                "inheritFieldsAndMappings"
+                                                "destination"
                                               ],
                                               "properties": {
                                                 "inheritFieldsAndMappings": {
                                                   "type": "boolean",
                                                   "nullable": true,
-                                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                  "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                   "example": true
                                                 },
                                                 "objectName": {
@@ -32801,14 +32781,13 @@
                                                   "type": "object",
                                                   "required": [
                                                     "objectName",
-                                                    "destination",
-                                                    "inheritFieldsAndMappings"
+                                                    "destination"
                                                   ],
                                                   "properties": {
                                                     "inheritFieldsAndMappings": {
                                                       "type": "boolean",
                                                       "nullable": true,
-                                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                                      "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                                       "example": true
                                                     },
                                                     "objectName": {
@@ -32961,8 +32940,7 @@
                                                   "type": "object",
                                                   "required": [
                                                     "objectName",
-                                                    "destination",
-                                                    "inheritFieldsAndMappings"
+                                                    "destination"
                                                   ]
                                                 }
                                               ]
@@ -73815,14 +73793,13 @@
                                   "type": "object",
                                   "required": [
                                     "objectName",
-                                    "destination",
-                                    "inheritFieldsAndMappings"
+                                    "destination"
                                   ],
                                   "properties": {
                                     "inheritFieldsAndMappings": {
                                       "type": "boolean",
                                       "nullable": true,
-                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                      "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                       "example": true
                                     },
                                     "objectName": {
@@ -74011,14 +73988,13 @@
                                       "type": "object",
                                       "required": [
                                         "objectName",
-                                        "destination",
-                                        "inheritFieldsAndMappings"
+                                        "destination"
                                       ],
                                       "properties": {
                                         "inheritFieldsAndMappings": {
                                           "type": "boolean",
                                           "nullable": true,
-                                          "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                          "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                           "example": true
                                         },
                                         "objectName": {
@@ -74171,8 +74147,7 @@
                                       "type": "object",
                                       "required": [
                                         "objectName",
-                                        "destination",
-                                        "inheritFieldsAndMappings"
+                                        "destination"
                                       ]
                                     }
                                   ]
@@ -75555,14 +75530,13 @@
                               "type": "object",
                               "required": [
                                 "objectName",
-                                "destination",
-                                "inheritFieldsAndMappings"
+                                "destination"
                               ],
                               "properties": {
                                 "inheritFieldsAndMappings": {
                                   "type": "boolean",
                                   "nullable": true,
-                                  "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                  "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                   "example": true
                                 },
                                 "objectName": {
@@ -75751,14 +75725,13 @@
                                   "type": "object",
                                   "required": [
                                     "objectName",
-                                    "destination",
-                                    "inheritFieldsAndMappings"
+                                    "destination"
                                   ],
                                   "properties": {
                                     "inheritFieldsAndMappings": {
                                       "type": "boolean",
                                       "nullable": true,
-                                      "description": "Whether to inherit fields and mappings from the read config. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead.",
+                                      "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
                                       "example": true
                                     },
                                     "objectName": {
@@ -75911,8 +75884,7 @@
                                   "type": "object",
                                   "required": [
                                     "objectName",
-                                    "destination",
-                                    "inheritFieldsAndMappings"
+                                    "destination"
                                   ]
                                 }
                               ]
