@@ -222,6 +222,30 @@
                               }
                             }
                           }
+                        },
+                        "rawFilter": {
+                          "title": "Raw Filter",
+                          "type": "object",
+                          "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                          "required": [
+                            "type",
+                            "filter"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                              "enum": [
+                                "soql"
+                              ],
+                              "example": "soql"
+                            },
+                            "filter": {
+                              "title": "Raw Filter Value",
+                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "example": "IsDeleted = true OR IsDeleted = false"
+                            }
+                          }
                         }
                       }
                     },
@@ -255,6 +279,30 @@
                             "description": "The value to filter on. Allowed types are string, boolean, and number.",
                             "example": "active"
                           }
+                        }
+                      }
+                    },
+                    "rawFilter": {
+                      "title": "Raw Filter",
+                      "type": "object",
+                      "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                      "required": [
+                        "type",
+                        "filter"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                          "enum": [
+                            "soql"
+                          ],
+                          "example": "soql"
+                        },
+                        "filter": {
+                          "title": "Raw Filter Value",
+                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                          "example": "IsDeleted = true OR IsDeleted = false"
                         }
                       }
                     }
@@ -652,6 +700,30 @@
                           }
                         }
                       }
+                    },
+                    "rawFilter": {
+                      "title": "Raw Filter",
+                      "type": "object",
+                      "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                      "required": [
+                        "type",
+                        "filter"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                          "enum": [
+                            "soql"
+                          ],
+                          "example": "soql"
+                        },
+                        "filter": {
+                          "title": "Raw Filter Value",
+                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                          "example": "IsDeleted = true OR IsDeleted = false"
+                        }
+                      }
                     }
                   }
                 },
@@ -685,6 +757,30 @@
                         "description": "The value to filter on. Allowed types are string, boolean, and number.",
                         "example": "active"
                       }
+                    }
+                  }
+                },
+                "rawFilter": {
+                  "title": "Raw Filter",
+                  "type": "object",
+                  "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                  "required": [
+                    "type",
+                    "filter"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                      "enum": [
+                        "soql"
+                      ],
+                      "example": "soql"
+                    },
+                    "filter": {
+                      "title": "Raw Filter Value",
+                      "description": "The filter expression. For the `soql` type, a non-empty string.",
+                      "example": "IsDeleted = true OR IsDeleted = false"
                     }
                   }
                 }
@@ -887,6 +983,30 @@
                     }
                   }
                 }
+              },
+              "rawFilter": {
+                "title": "Raw Filter",
+                "type": "object",
+                "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                "required": [
+                  "type",
+                  "filter"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                    "enum": [
+                      "soql"
+                    ],
+                    "example": "soql"
+                  },
+                  "filter": {
+                    "title": "Raw Filter Value",
+                    "description": "The filter expression. For the `soql` type, a non-empty string.",
+                    "example": "IsDeleted = true OR IsDeleted = false"
+                  }
+                }
               }
             }
           },
@@ -920,6 +1040,30 @@
                   "description": "The value to filter on. Allowed types are string, boolean, and number.",
                   "example": "active"
                 }
+              }
+            }
+          },
+          "rawFilter": {
+            "title": "Raw Filter",
+            "type": "object",
+            "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+            "required": [
+              "type",
+              "filter"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                "enum": [
+                  "soql"
+                ],
+                "example": "soql"
+              },
+              "filter": {
+                "title": "Raw Filter Value",
+                "description": "The filter expression. For the `soql` type, a non-empty string.",
+                "example": "IsDeleted = true OR IsDeleted = false"
               }
             }
           }
@@ -2030,6 +2174,30 @@
                                   }
                                 }
                               }
+                            },
+                            "rawFilter": {
+                              "title": "Raw Filter",
+                              "type": "object",
+                              "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                              "required": [
+                                "type",
+                                "filter"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                                  "enum": [
+                                    "soql"
+                                  ],
+                                  "example": "soql"
+                                },
+                                "filter": {
+                                  "title": "Raw Filter Value",
+                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "example": "IsDeleted = true OR IsDeleted = false"
+                                }
+                              }
                             }
                           }
                         },
@@ -2063,6 +2231,30 @@
                                 "description": "The value to filter on. Allowed types are string, boolean, and number.",
                                 "example": "active"
                               }
+                            }
+                          }
+                        },
+                        "rawFilter": {
+                          "title": "Raw Filter",
+                          "type": "object",
+                          "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                          "required": [
+                            "type",
+                            "filter"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                              "enum": [
+                                "soql"
+                              ],
+                              "example": "soql"
+                            },
+                            "filter": {
+                              "title": "Raw Filter Value",
+                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
                         }
@@ -2460,6 +2652,30 @@
                                       }
                                     }
                                   }
+                                },
+                                "rawFilter": {
+                                  "title": "Raw Filter",
+                                  "type": "object",
+                                  "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                                  "required": [
+                                    "type",
+                                    "filter"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                                      "enum": [
+                                        "soql"
+                                      ],
+                                      "example": "soql"
+                                    },
+                                    "filter": {
+                                      "title": "Raw Filter Value",
+                                      "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                      "example": "IsDeleted = true OR IsDeleted = false"
+                                    }
+                                  }
                                 }
                               }
                             },
@@ -2493,6 +2709,30 @@
                                     "description": "The value to filter on. Allowed types are string, boolean, and number.",
                                     "example": "active"
                                   }
+                                }
+                              }
+                            },
+                            "rawFilter": {
+                              "title": "Raw Filter",
+                              "type": "object",
+                              "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                              "required": [
+                                "type",
+                                "filter"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                                  "enum": [
+                                    "soql"
+                                  ],
+                                  "example": "soql"
+                                },
+                                "filter": {
+                                  "title": "Raw Filter Value",
+                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "example": "IsDeleted = true OR IsDeleted = false"
                                 }
                               }
                             }
@@ -2705,6 +2945,30 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "rawFilter": {
+                                      "title": "Raw Filter",
+                                      "type": "object",
+                                      "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                                      "required": [
+                                        "type",
+                                        "filter"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                                          "enum": [
+                                            "soql"
+                                          ],
+                                          "example": "soql"
+                                        },
+                                        "filter": {
+                                          "title": "Raw Filter Value",
+                                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                          "example": "IsDeleted = true OR IsDeleted = false"
+                                        }
+                                      }
                                     }
                                   }
                                 },
@@ -2738,6 +3002,30 @@
                                         "description": "The value to filter on. Allowed types are string, boolean, and number.",
                                         "example": "active"
                                       }
+                                    }
+                                  }
+                                },
+                                "rawFilter": {
+                                  "title": "Raw Filter",
+                                  "type": "object",
+                                  "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                                  "required": [
+                                    "type",
+                                    "filter"
+                                  ],
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                                      "enum": [
+                                        "soql"
+                                      ],
+                                      "example": "soql"
+                                    },
+                                    "filter": {
+                                      "title": "Raw Filter Value",
+                                      "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                      "example": "IsDeleted = true OR IsDeleted = false"
                                     }
                                   }
                                 }
@@ -3664,6 +3952,30 @@
                               }
                             }
                           }
+                        },
+                        "rawFilter": {
+                          "title": "Raw Filter",
+                          "type": "object",
+                          "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                          "required": [
+                            "type",
+                            "filter"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                              "enum": [
+                                "soql"
+                              ],
+                              "example": "soql"
+                            },
+                            "filter": {
+                              "title": "Raw Filter Value",
+                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "example": "IsDeleted = true OR IsDeleted = false"
+                            }
+                          }
                         }
                       }
                     },
@@ -3697,6 +4009,30 @@
                             "description": "The value to filter on. Allowed types are string, boolean, and number.",
                             "example": "active"
                           }
+                        }
+                      }
+                    },
+                    "rawFilter": {
+                      "title": "Raw Filter",
+                      "type": "object",
+                      "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                      "required": [
+                        "type",
+                        "filter"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                          "enum": [
+                            "soql"
+                          ],
+                          "example": "soql"
+                        },
+                        "filter": {
+                          "title": "Raw Filter Value",
+                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                          "example": "IsDeleted = true OR IsDeleted = false"
                         }
                       }
                     }
@@ -3909,6 +4245,30 @@
                                   }
                                 }
                               }
+                            },
+                            "rawFilter": {
+                              "title": "Raw Filter",
+                              "type": "object",
+                              "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                              "required": [
+                                "type",
+                                "filter"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                                  "enum": [
+                                    "soql"
+                                  ],
+                                  "example": "soql"
+                                },
+                                "filter": {
+                                  "title": "Raw Filter Value",
+                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "example": "IsDeleted = true OR IsDeleted = false"
+                                }
+                              }
                             }
                           }
                         },
@@ -3942,6 +4302,30 @@
                                 "description": "The value to filter on. Allowed types are string, boolean, and number.",
                                 "example": "active"
                               }
+                            }
+                          }
+                        },
+                        "rawFilter": {
+                          "title": "Raw Filter",
+                          "type": "object",
+                          "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                          "required": [
+                            "type",
+                            "filter"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                              "enum": [
+                                "soql"
+                              ],
+                              "example": "soql"
+                            },
+                            "filter": {
+                              "title": "Raw Filter Value",
+                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
                         }
@@ -4159,6 +4543,30 @@
                         }
                       }
                     }
+                  },
+                  "rawFilter": {
+                    "title": "Raw Filter",
+                    "type": "object",
+                    "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                    "required": [
+                      "type",
+                      "filter"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                        "enum": [
+                          "soql"
+                        ],
+                        "example": "soql"
+                      },
+                      "filter": {
+                        "title": "Raw Filter Value",
+                        "description": "The filter expression. For the `soql` type, a non-empty string.",
+                        "example": "IsDeleted = true OR IsDeleted = false"
+                      }
+                    }
                   }
                 }
               },
@@ -4192,6 +4600,30 @@
                       "description": "The value to filter on. Allowed types are string, boolean, and number.",
                       "example": "active"
                     }
+                  }
+                }
+              },
+              "rawFilter": {
+                "title": "Raw Filter",
+                "type": "object",
+                "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                "required": [
+                  "type",
+                  "filter"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                    "enum": [
+                      "soql"
+                    ],
+                    "example": "soql"
+                  },
+                  "filter": {
+                    "title": "Raw Filter Value",
+                    "description": "The filter expression. For the `soql` type, a non-empty string.",
+                    "example": "IsDeleted = true OR IsDeleted = false"
                   }
                 }
               }
@@ -5445,6 +5877,30 @@
                                   }
                                 }
                               }
+                            },
+                            "rawFilter": {
+                              "title": "Raw Filter",
+                              "type": "object",
+                              "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                              "required": [
+                                "type",
+                                "filter"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                                  "enum": [
+                                    "soql"
+                                  ],
+                                  "example": "soql"
+                                },
+                                "filter": {
+                                  "title": "Raw Filter Value",
+                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "example": "IsDeleted = true OR IsDeleted = false"
+                                }
+                              }
                             }
                           }
                         },
@@ -5478,6 +5934,30 @@
                                 "description": "The value to filter on. Allowed types are string, boolean, and number.",
                                 "example": "active"
                               }
+                            }
+                          }
+                        },
+                        "rawFilter": {
+                          "title": "Raw Filter",
+                          "type": "object",
+                          "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+                          "required": [
+                            "type",
+                            "filter"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                              "enum": [
+                                "soql"
+                              ],
+                              "example": "soql"
+                            },
+                            "filter": {
+                              "title": "Raw Filter Value",
+                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
                         }
@@ -5921,6 +6401,30 @@
                 }
               }
             }
+          },
+          "rawFilter": {
+            "title": "Raw Filter",
+            "type": "object",
+            "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+            "required": [
+              "type",
+              "filter"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+                "enum": [
+                  "soql"
+                ],
+                "example": "soql"
+              },
+              "filter": {
+                "title": "Raw Filter Value",
+                "description": "The filter expression. For the `soql` type, a non-empty string.",
+                "example": "IsDeleted = true OR IsDeleted = false"
+              }
+            }
           }
         }
       },
@@ -5979,6 +6483,35 @@
         "title": "Read Filter Value",
         "description": "The value to filter on. Allowed types are string, boolean, and number.",
         "example": "active"
+      },
+      "RawFilter": {
+        "title": "Raw Filter",
+        "type": "object",
+        "description": "A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters at the same level. On a read object it applies to incremental reads and backfill; inside a backfill block it applies only during backfill and replaces the read object's filter (rawFilter or fieldFilters) for that backfill. In a search request it is applied the same way as in a read.\n",
+        "required": [
+          "type",
+          "filter"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The syntax of the filter. Supported values per provider: `soql` (Salesforce), a SOQL condition as it would appear after WHERE. Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).\n",
+            "enum": [
+              "soql"
+            ],
+            "example": "soql"
+          },
+          "filter": {
+            "title": "Raw Filter Value",
+            "description": "The filter expression. For the `soql` type, a non-empty string.",
+            "example": "IsDeleted = true OR IsDeleted = false"
+          }
+        }
+      },
+      "RawFilterValue": {
+        "title": "Raw Filter Value",
+        "description": "The filter expression. For the `soql` type, a non-empty string.",
+        "example": "IsDeleted = true OR IsDeleted = false"
       },
       "FieldSetting": {
         "title": "Field setting",
