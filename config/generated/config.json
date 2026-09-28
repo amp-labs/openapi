@@ -239,7 +239,7 @@
                             },
                             "filter": {
                               "title": "Raw Filter Value",
-                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "description": "The filter expression.",
                               "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
@@ -295,7 +295,7 @@
                         },
                         "filter": {
                           "title": "Raw Filter Value",
-                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                          "description": "The filter expression.",
                           "example": "IsDeleted = true OR IsDeleted = false"
                         }
                       }
@@ -711,7 +711,7 @@
                         },
                         "filter": {
                           "title": "Raw Filter Value",
-                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                          "description": "The filter expression.",
                           "example": "IsDeleted = true OR IsDeleted = false"
                         }
                       }
@@ -767,7 +767,7 @@
                     },
                     "filter": {
                       "title": "Raw Filter Value",
-                      "description": "The filter expression. For the `soql` type, a non-empty string.",
+                      "description": "The filter expression.",
                       "example": "IsDeleted = true OR IsDeleted = false"
                     }
                   }
@@ -988,7 +988,7 @@
                   },
                   "filter": {
                     "title": "Raw Filter Value",
-                    "description": "The filter expression. For the `soql` type, a non-empty string.",
+                    "description": "The filter expression.",
                     "example": "IsDeleted = true OR IsDeleted = false"
                   }
                 }
@@ -1044,7 +1044,7 @@
               },
               "filter": {
                 "title": "Raw Filter Value",
-                "description": "The filter expression. For the `soql` type, a non-empty string.",
+                "description": "The filter expression.",
                 "example": "IsDeleted = true OR IsDeleted = false"
               }
             }
@@ -2173,7 +2173,7 @@
                                 },
                                 "filter": {
                                   "title": "Raw Filter Value",
-                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "description": "The filter expression.",
                                   "example": "IsDeleted = true OR IsDeleted = false"
                                 }
                               }
@@ -2229,7 +2229,7 @@
                             },
                             "filter": {
                               "title": "Raw Filter Value",
-                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "description": "The filter expression.",
                               "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
@@ -2645,7 +2645,7 @@
                                     },
                                     "filter": {
                                       "title": "Raw Filter Value",
-                                      "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                      "description": "The filter expression.",
                                       "example": "IsDeleted = true OR IsDeleted = false"
                                     }
                                   }
@@ -2701,7 +2701,7 @@
                                 },
                                 "filter": {
                                   "title": "Raw Filter Value",
-                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "description": "The filter expression.",
                                   "example": "IsDeleted = true OR IsDeleted = false"
                                 }
                               }
@@ -2932,7 +2932,7 @@
                                         },
                                         "filter": {
                                           "title": "Raw Filter Value",
-                                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                          "description": "The filter expression.",
                                           "example": "IsDeleted = true OR IsDeleted = false"
                                         }
                                       }
@@ -2988,7 +2988,7 @@
                                     },
                                     "filter": {
                                       "title": "Raw Filter Value",
-                                      "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                      "description": "The filter expression.",
                                       "example": "IsDeleted = true OR IsDeleted = false"
                                     }
                                   }
@@ -3933,7 +3933,7 @@
                             },
                             "filter": {
                               "title": "Raw Filter Value",
-                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "description": "The filter expression.",
                               "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
@@ -3989,7 +3989,7 @@
                         },
                         "filter": {
                           "title": "Raw Filter Value",
-                          "description": "The filter expression. For the `soql` type, a non-empty string.",
+                          "description": "The filter expression.",
                           "example": "IsDeleted = true OR IsDeleted = false"
                         }
                       }
@@ -4220,7 +4220,7 @@
                                 },
                                 "filter": {
                                   "title": "Raw Filter Value",
-                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "description": "The filter expression.",
                                   "example": "IsDeleted = true OR IsDeleted = false"
                                 }
                               }
@@ -4276,7 +4276,7 @@
                             },
                             "filter": {
                               "title": "Raw Filter Value",
-                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "description": "The filter expression.",
                               "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
@@ -4512,7 +4512,7 @@
                       },
                       "filter": {
                         "title": "Raw Filter Value",
-                        "description": "The filter expression. For the `soql` type, a non-empty string.",
+                        "description": "The filter expression.",
                         "example": "IsDeleted = true OR IsDeleted = false"
                       }
                     }
@@ -4568,7 +4568,7 @@
                   },
                   "filter": {
                     "title": "Raw Filter Value",
-                    "description": "The filter expression. For the `soql` type, a non-empty string.",
+                    "description": "The filter expression.",
                     "example": "IsDeleted = true OR IsDeleted = false"
                   }
                 }
@@ -5840,7 +5840,7 @@
                                 },
                                 "filter": {
                                   "title": "Raw Filter Value",
-                                  "description": "The filter expression. For the `soql` type, a non-empty string.",
+                                  "description": "The filter expression.",
                                   "example": "IsDeleted = true OR IsDeleted = false"
                                 }
                               }
@@ -5896,7 +5896,7 @@
                             },
                             "filter": {
                               "title": "Raw Filter Value",
-                              "description": "The filter expression. For the `soql` type, a non-empty string.",
+                              "description": "The filter expression.",
                               "example": "IsDeleted = true OR IsDeleted = false"
                             }
                           }
@@ -6358,7 +6358,7 @@
               },
               "filter": {
                 "title": "Raw Filter Value",
-                "description": "The filter expression. For the `soql` type, a non-empty string.",
+                "description": "The filter expression.",
                 "example": "IsDeleted = true OR IsDeleted = false"
               }
             }
@@ -6437,14 +6437,14 @@
           },
           "filter": {
             "title": "Raw Filter Value",
-            "description": "The filter expression. For the `soql` type, a non-empty string.",
+            "description": "The filter expression.",
             "example": "IsDeleted = true OR IsDeleted = false"
           }
         }
       },
       "RawFilterValue": {
         "title": "Raw Filter Value",
-        "description": "The filter expression. For the `soql` type, a non-empty string.",
+        "description": "The filter expression.",
         "example": "IsDeleted = true OR IsDeleted = false"
       },
       "FieldSetting": {
