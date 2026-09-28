@@ -449,6 +449,8 @@ components:
           x-go-type-skip-optional-pointer: true
           items:
             $ref: '#/components/schemas/ReadFilter'
+        rawFilter:
+          $ref: '#/components/schemas/RawFilter'
 
     DefaultPeriodConfig:
       title: Default Period Config
@@ -497,9 +499,11 @@ components:
       title: Raw Filter
       type: object
       description: >
-        A filter in the provider's native query syntax, applied during incremental reads and backfill.
-        It is joined by AND to the time window Ampersand uses for incremental reads, so it can only narrow
-        the records read. It cannot be combined with fieldFilters.
+        A filter in the provider's native query syntax. It is joined by AND to the time window Ampersand
+        uses for reads, so it can only narrow the records read. It cannot be combined with fieldFilters
+        at the same level. On a read object it applies to incremental reads and backfill; inside a backfill
+        block it applies only during backfill and replaces the read object's filter (rawFilter or
+        fieldFilters) for that backfill. In a search request it is applied the same way as in a read.
       required:
         - type
         - filter

@@ -64,9 +64,9 @@ components:
   schemas:
     SearchRequest:
       title: Search Request
+      description: Exactly one of fieldFilters or rawFilter must be given.
       required:
         - objectName
-        - fieldFilters
       type: object
       properties:
         objectName:
@@ -79,6 +79,8 @@ components:
             $ref: "#/components/schemas/FieldFilter"
           description: The field filters to apply to the search.
           example: [{"fieldName": "email", "operator": "eq", "value": "example@example.com"}]
+        rawFilter:
+          $ref: "../config/config.yaml#/components/schemas/RawFilter"
     FieldFilter:
       title: FieldFilter
       type: object
