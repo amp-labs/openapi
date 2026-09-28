@@ -107,6 +107,8 @@ components:
           x-go-type-skip-optional-pointer: true
           items:
             $ref: '#/components/schemas/ReadFilter'
+        rawFilter:
+          $ref: '#/components/schemas/RawFilter'
 
     SelectedValueMappings:
       title: Selected Value Mappings
@@ -490,6 +492,35 @@ components:
       title: Read Filter Value
       description: The value to filter on. Allowed types are string, boolean, and number.
       example: "active"
+
+    RawFilter:
+      title: Raw Filter
+      type: object
+      description: >
+        A filter in the provider's native query syntax, applied during incremental reads and backfill.
+        It is joined by AND to the time window Ampersand uses for incremental reads, so it can only narrow
+        the records read. It cannot be combined with fieldFilters.
+      required:
+        - type
+        - filter
+      properties:
+        type:
+          type: string
+          description: >
+            The syntax of the filter. Supported values per provider:
+            `soql` (Salesforce), a SOQL condition as it would appear after WHERE.
+            Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether
+            deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).
+          enum:
+            - soql
+          example: soql
+        filter:
+          $ref: '#/components/schemas/RawFilterValue'
+
+    RawFilterValue:
+      title: Raw Filter Value
+      description: The filter expression. For the `soql` type, a non-empty string.
+      example: "IsDeleted = true OR IsDeleted = false"
 
     FieldSetting:
       title: Field setting
