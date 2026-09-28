@@ -508,12 +508,8 @@ components:
         type:
           type: string
           description: >
-            The syntax of the filter. Supported values per provider:
-            `soql` (Salesforce), a SOQL condition as it would appear after WHERE.
-            Salesforce reads with a raw filter use the queryAll endpoint, so the filter decides whether
-            deleted and archived records are returned, and each record includes IsDeleted (and IsArchived where the object has it).
-          enum:
-            - soql
+            The syntax of the filter. Supported values are documented in each provider's guide.
+            For example, `soql` is a supported filter type for Salesforce.
           example: soql
         filter:
           $ref: '#/components/schemas/RawFilterValue'
