@@ -5,7 +5,7 @@
   },
   "devDependencies": {
     "@redocly/openapi-core": "^2.54.3",
-    "@types/node": "^26.6.2",
+    "@types/node": "^26.6.3",
     "husky": "^9.0.11",
     "typescript": "^7.0.2"
   },
