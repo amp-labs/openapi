@@ -3288,11 +3288,9 @@
                   },
                   {
                     "type": "object",
-                    "required": [
-                      "objects"
-                    ],
                     "properties": {
                       "objects": {
+                        "description": "Per-object subscribe configuration. Optional: when omitted, the subscribe objects come from the integration revision, and the config may carry only `providerOptions`.",
                         "additionalProperties": {
                           "title": "Subscribe Config Object",
                           "allOf": [
@@ -4906,11 +4904,9 @@
           },
           {
             "type": "object",
-            "required": [
-              "objects"
-            ],
             "properties": {
               "objects": {
+                "description": "Per-object subscribe configuration. Optional: when omitted, the subscribe objects come from the integration revision, and the config may carry only `providerOptions`.",
                 "additionalProperties": {
                   "title": "Subscribe Config Object",
                   "allOf": [
