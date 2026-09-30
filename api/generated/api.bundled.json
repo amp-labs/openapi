@@ -11576,6 +11576,30 @@
           }
         }
       },
+      "RawFilterValue": {
+        "title": "Raw Filter Value",
+        "description": "The filter expression.",
+        "example": "IsDeleted = true OR IsDeleted = false"
+      },
+      "RawFilter": {
+        "title": "Raw Filter",
+        "type": "object",
+        "description": "A filter in the provider's native query syntax. It cannot be combined with fieldFilters.  It can apply to incremental reads, backfills or a search API call.\n",
+        "required": [
+          "type",
+          "filter"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The syntax of the filter. Supported values are documented in each provider's guide. For example, `soql` is a supported filter type for Salesforce.\n",
+            "example": "soql"
+          },
+          "filter": {
+            "$ref": "#/components/schemas/RawFilterValue"
+          }
+        }
+      },
       "BackfillConfig": {
         "title": "Backfill Config",
         "type": "object",
@@ -11593,6 +11617,9 @@
             "items": {
               "$ref": "#/components/schemas/ReadFilter"
             }
+          },
+          "rawFilter": {
+            "$ref": "#/components/schemas/RawFilter"
           }
         }
       },
@@ -11672,6 +11699,9 @@
             "items": {
               "$ref": "#/components/schemas/ReadFilter"
             }
+          },
+          "rawFilter": {
+            "$ref": "#/components/schemas/RawFilter"
           }
         }
       },

@@ -107,6 +107,8 @@ components:
           x-go-type-skip-optional-pointer: true
           items:
             $ref: '#/components/schemas/ReadFilter'
+        rawFilter:
+          $ref: '#/components/schemas/RawFilter'
 
     SelectedValueMappings:
       title: Selected Value Mappings
@@ -448,6 +450,8 @@ components:
           x-go-type-skip-optional-pointer: true
           items:
             $ref: '#/components/schemas/ReadFilter'
+        rawFilter:
+          $ref: '#/components/schemas/RawFilter'
 
     DefaultPeriodConfig:
       title: Default Period Config
@@ -491,6 +495,30 @@ components:
       title: Read Filter Value
       description: The value to filter on. Allowed types are string, boolean, and number.
       example: "active"
+
+    RawFilter:
+      title: Raw Filter
+      type: object
+      description: >
+        A filter in the provider's native query syntax. It cannot be combined with fieldFilters. 
+        It can apply to incremental reads, backfills or a search API call.
+      required:
+        - type
+        - filter
+      properties:
+        type:
+          type: string
+          description: >
+            The syntax of the filter. Supported values are documented in each provider's guide.
+            For example, `soql` is a supported filter type for Salesforce.
+          example: soql
+        filter:
+          $ref: '#/components/schemas/RawFilterValue'
+
+    RawFilterValue:
+      title: Raw Filter Value
+      description: The filter expression.
+      example: "IsDeleted = true OR IsDeleted = false"
 
     FieldSetting:
       title: Field setting
