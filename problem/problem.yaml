@@ -114,7 +114,7 @@ components:
           type: string
           format: uri
           description: A URL to contact for support
-          example: "https://withampersand.com/support"
+          example: "mailto:support@withampersand.com"
         retryable:
           type: boolean
           description: Whether the request can be retried

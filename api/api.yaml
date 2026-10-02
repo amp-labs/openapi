@@ -9,7 +9,7 @@ paths:
     post:
       operationId: oauthConnect
       summary: Generate OAuth authorization URL
-      description: Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).
+      description: Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.ampersand.ai/embeddable-ui-components).
       tags: ["OAuth"]
       requestBody:
         content:
@@ -60,7 +60,7 @@ paths:
                 providerAppId:
                   type: string
                   description:
-                    ID of the provider app, returned from the [Create Provider App endpoint](https://docs.withampersand.com/reference/provider-apps/create-provider-app).
+                    ID of the provider app, returned from the [Create Provider App endpoint](https://docs.ampersand.ai/reference/provider-app/create-a-new-provider-app).
                     If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
                   example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
                 enableCSRFProtection:
@@ -163,7 +163,7 @@ paths:
       operationId: oauthUpdate
       summary: Generate OAuth authorization URL for existing connection
       description: >
-        Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection's credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) instead.
+        Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection's credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) instead.
       tags: ["OAuth"]
       parameters:
         - name: projectIdOrName
@@ -830,7 +830,7 @@ paths:
     put:
       summary: Batch upsert a group of integrations
       operationId: batchUpsertIntegrations
-      description: This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly.
+      description: This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the [CLI's deploy command](https://docs.ampersand.ai/cli/overview#deploy-integrations) rather than this API endpoint directly.
       tags: ["Integration"]
       parameters:
         - name: projectIdOrName
@@ -888,7 +888,7 @@ paths:
     post:
       summary: Create a new revision.
       operationId: createRevision
-      description: We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly, unless you have an advanced use case.
+      description: We recommend using the [CLI's deploy command](https://docs.ampersand.ai/cli/overview#deploy-integrations) rather than this API endpoint directly, unless you have an advanced use case.
       tags: ["Revision"]
       parameters:
         - name: projectIdOrName
@@ -1097,7 +1097,7 @@ paths:
       summary: Create a new installation
       operationId: createInstallation
       description: |
-        Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group's default. To create a connection, use the [OAuth Connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) or the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).
+        Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group's default. To create a connection, use the [OAuth Connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) or the [prebuilt UI components](https://docs.ampersand.ai/embeddable-ui-components).
       tags: ["Installation"]
       parameters:
         - name: projectIdOrName
@@ -2772,7 +2772,7 @@ paths:
   /projects/{projectIdOrName}/connections:generate:
     post:
       summary: Generate a new connection
-      description: All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/get-url-for-oauth-flow) instead, unless you already have the refresh token and are importing it into Ampersand.
+      description: All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) instead, unless you already have the refresh token and are importing it into Ampersand.
       operationId: generateConnection
       tags: ["Connection"]
       parameters:
@@ -2886,7 +2886,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections).
+          description: The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.ampersand.ai/reference/connection/list-connections).
           example: connection-123
       requestBody:
         required: true
