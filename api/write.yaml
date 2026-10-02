@@ -8,7 +8,7 @@ paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:
       summary: Write records
-      description: Create, update, or delete records in a SaaS instance. Create and update support synchronous or asynchronous mode; delete is synchronous only. See [Write actions](https://docs.withampersand.com/write-actions) for details.
+      description: Create, update, or delete records in a SaaS instance. Create and update support synchronous or asynchronous mode; delete is synchronous only. See [Write actions](https://docs.ampersand.ai/write-actions) for details.
       operationId: writeRecords
       tags: ["Write"]
       parameters:

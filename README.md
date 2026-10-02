@@ -28,7 +28,7 @@ pnpm i
 * Create a new pull request
 * Run `make lint` to ensure that the linter passes
 * Request review, and merge the PR once it is approved. Please note that if the full spec has already been approved in a doc, or if you are simply updating descriptions or examples, you do not neeed to request PR review.
-* After a few minutes, a Github Action on the [docs repo](https://github.com/amp-labs/docs) will auto-update the [online API reference](https://docs.withampersand.com/reference).
+* After a few minutes, a Github Action on the [docs repo](https://github.com/amp-labs/docs) will auto-update the [online API reference](https://docs.ampersand.ai/reference).
 
 ## Generating OpenAPI json definition
 
