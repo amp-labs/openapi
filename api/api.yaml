@@ -5710,6 +5710,15 @@ components:
                 value:
                   type: integer
                   description: The log retention period for this project, in days.
+            andiChat:
+              type: object
+              required:
+                - value
+              x-go-type-skip-optional-pointer: true
+              properties:
+                value:
+                  type: boolean
+                  description: True if Andi is available for this project.
     ProviderApp:
       title: Provider App
       required:
