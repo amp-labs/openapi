@@ -5710,12 +5710,12 @@ components:
                 value:
                   type: integer
                   description: The log retention period for this project, in days.
-            andi:
+            andiChat:
               type: object
               required:
                 - value
               x-go-type-skip-optional-pointer: true
-              description: Controls whether Andi, Ampersand's assistant for requesting connectors, is available in the dashboard for this project.
+              description: Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.
               properties:
                 value:
                   type: boolean
