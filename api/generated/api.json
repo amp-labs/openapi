@@ -2210,7 +2210,6 @@
                               "value"
                             ],
                             "x-go-type-skip-optional-pointer": true,
-                            "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                             "properties": {
                               "value": {
                                 "type": "boolean",
@@ -2501,7 +2500,6 @@
                             "value"
                           ],
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                           "properties": {
                             "value": {
                               "type": "boolean",
@@ -3093,7 +3091,6 @@
                             "value"
                           ],
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                           "properties": {
                             "value": {
                               "type": "boolean",
@@ -3398,7 +3395,6 @@
                             "value"
                           ],
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                           "properties": {
                             "value": {
                               "type": "boolean",
@@ -58846,7 +58842,6 @@
                                       "value"
                                     ],
                                     "x-go-type-skip-optional-pointer": true,
-                                    "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
@@ -59266,7 +59261,6 @@
                                       "value"
                                     ],
                                     "x-go-type-skip-optional-pointer": true,
-                                    "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                                     "properties": {
                                       "value": {
                                         "type": "boolean",
@@ -71082,7 +71076,6 @@
                   "value"
                 ],
                 "x-go-type-skip-optional-pointer": true,
-                "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                 "properties": {
                   "value": {
                     "type": "boolean",
@@ -78771,7 +78764,6 @@
                             "value"
                           ],
                           "x-go-type-skip-optional-pointer": true,
-                          "description": "Controls whether Andi, Ampersand's chat assistant for requesting connectors, is available in the dashboard for this project.",
                           "properties": {
                             "value": {
                               "type": "boolean",
