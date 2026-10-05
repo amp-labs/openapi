@@ -8325,6 +8325,20 @@
                     "description": "The log retention period for this project, in days."
                   }
                 }
+              },
+              "andi": {
+                "type": "object",
+                "required": [
+                  "value"
+                ],
+                "x-go-type-skip-optional-pointer": true,
+                "description": "Controls whether Andi, Ampersand's assistant for requesting connectors, is available in the dashboard for this project.",
+                "properties": {
+                  "value": {
+                    "type": "boolean",
+                    "description": "True if Andi is available for this project."
+                  }
+                }
               }
             }
           }
