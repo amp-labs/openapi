@@ -7044,6 +7044,11 @@ components:
         unique:
           type: boolean
           description: Indicates if the field must be unique across all records
+        externalId:
+          type: boolean
+          description: >-
+            Marks the field as an ID from an external system, which can be used as an upsert or relationship key.
+            Salesforce only; supported on Text and Number fields. Ignored by other providers.
         indexed:
           type: boolean
           description: Indicates if the field should be indexed for faster search
