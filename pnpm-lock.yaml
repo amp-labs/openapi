@@ -16,8 +16,8 @@ importers:
         version: 13.1.0(openapi-types@12.1.3)
     devDependencies:
       '@redocly/openapi-core':
-        specifier: ^2.58.2
-        version: 2.58.2
+        specifier: ^2.62.1
+        version: 2.62.1
       '@types/node':
         specifier: ^26.6.4
         version: 26.6.4
@@ -62,11 +62,11 @@ packages:
   '@redocly/ajv@8.18.3':
     resolution: {integrity: sha512-l42u0of3hY98sN2A+M4qTX1O/KrpgGH32Hu9kP2GtHyD5Dfqq86PKFLe5dwaD8DEnNmlOlll2BAmeEtf0DaySg==}
 
-  '@redocly/config@0.61.1':
-    resolution: {integrity: sha512-5JPwWyvrTlfOLlqz1yERbp+UHt68hNZwmHXtDOr7BQlA3uWckAfPpFA+PEUXu/bDAkdEXXeoghRBXwiODMrkkA==}
+  '@redocly/config@0.65.0':
+    resolution: {integrity: sha512-qjvfG2T7xrKYyiy6GtjPO6N8rESlVGHVYPoR2a14XYxhlXcgz83ZJf07nCE7nPS+Z1RR5yKLplMSUZK/UPxkgQ==}
 
-  '@redocly/openapi-core@2.58.2':
-    resolution: {integrity: sha512-wPg8VJJ9HxJr8duOMK0lxu+tnSX3gliZnm4yJVfQivU5+Z2As/mHsX4Cafk8rj7cJitFMPLmvPvcSIwLT8IY0Q==}
+  '@redocly/openapi-core@2.62.1':
+    resolution: {integrity: sha512-yZwoIHI73tZ5YJvp38dXC4MFafD5uVBIQ3N5x9Gx+gJyHJbHyEikRDpJMdMkBmlv9VCwX1JAXzEtwzvOoP1bVw==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
   '@types/json-schema@7.0.15':
@@ -205,11 +205,6 @@ packages:
 
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
-    peerDependencies:
-      ajv: ^8.0.0
-    peerDependenciesMeta:
-      ajv:
-        optional: true
 
   ajv@8.20.0:
     resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
@@ -246,8 +241,8 @@ packages:
     resolution: {integrity: sha512-m+aqu+LwO1O6sIopafj8HUVl5aawITwZQe/yHpMCKjaWBaA/d07B/QdMb3529REftiU+RMMHL3Vlsw3hON7vWg==}
     hasBin: true
 
-  json-schema-to-ts@2.7.2:
-    resolution: {integrity: sha512-R1JfqKqbBR4qE8UyBR56Ms30LL62/nlhoz+1UkfI/VE7p54Awu919FZ6ZUPG8zIa3XB65usPJgr1ONVncUGSaQ==}
+  json-schema-to-ts@3.1.1:
+    resolution: {integrity: sha512-+DWg8jCJG2TEnpy7kOm/7/AxaYoaRbjVB4LFZLySZlWn8exGs3A4OLJR966cVvU26N7X9TWxl+Jsw7dzAqKT6g==}
     engines: {node: '>=16'}
 
   json-schema-traverse@1.0.0:
@@ -272,8 +267,8 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
 
-  ts-algebra@1.2.2:
-    resolution: {integrity: sha512-kloPhf1hq3JbCPOTYoOWDKxebWjNb2o/LKnNfkWhxVVisFFmMJPPdJeGoGmM+iRLyoXAR61e08Pb+vUXINg8aA==}
+  ts-algebra@2.0.0:
+    resolution: {integrity: sha512-FPAhNPFMrkwz76P7cdjdmiShwMynZYN6SgOujD1urY4oNm80Ou9oMdmbR45LotcKOXoy7wSmHkRFE6Mxbrhefw==}
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -328,20 +323,19 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  '@redocly/config@0.61.1':
-    dependencies:
-      json-schema-to-ts: 2.7.2
+  '@redocly/config@0.65.0': {}
 
-  '@redocly/openapi-core@2.58.2':
+  '@redocly/openapi-core@2.62.1':
     dependencies:
       '@redocly/ajv': 8.18.3
-      '@redocly/config': 0.61.1
+      '@redocly/config': 0.65.0
       ajv: '@redocly/ajv@8.18.3'
-      ajv-formats: 3.0.1(@redocly/ajv@8.18.3)
+      ajv-formats: 3.0.1
       colorette: 1.4.0
       graphql: 16.14.2
       js-levenshtein: 1.1.6
       js-yaml: 5.4.2
+      json-schema-to-ts: 3.1.1
       jsonpath-rfc9535: 1.3.0
       picomatch: 4.0.5
       pluralize: 8.0.0
@@ -417,9 +411,9 @@ snapshots:
     optionalDependencies:
       ajv: 8.20.0
 
-  ajv-formats@3.0.1(@redocly/ajv@8.18.3):
-    optionalDependencies:
-      ajv: '@redocly/ajv@8.18.3'
+  ajv-formats@3.0.1:
+    dependencies:
+      ajv: 8.20.0
 
   ajv@8.20.0:
     dependencies:
@@ -448,11 +442,10 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  json-schema-to-ts@2.7.2:
+  json-schema-to-ts@3.1.1:
     dependencies:
       '@babel/runtime': 7.29.7
-      '@types/json-schema': 7.0.15
-      ts-algebra: 1.2.2
+      ts-algebra: 2.0.0
 
   json-schema-traverse@1.0.0: {}
 
@@ -466,7 +459,7 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
-  ts-algebra@1.2.2: {}
+  ts-algebra@2.0.0: {}
 
   typescript@7.0.2:
     optionalDependencies:
