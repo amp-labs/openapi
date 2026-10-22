@@ -266,6 +266,14 @@ components:
           type: boolean
           description: Whether this installation uses Salesforce record-triggered flows for subscribe.
           example: true
+        manualManagement:
+          type: boolean
+          description: >
+            Whether the customer creates and maintains the flows and outbound messages in their
+            Salesforce org themselves. When true, Ampersand never creates, updates or deletes them;
+            the customer's outbound messages post to the installation's subscribe webhook URL.
+            Requires `enabled` to be true. Defaults to false.
+          example: false
 
     ConfigOtherEvents:
       title: Other Events
