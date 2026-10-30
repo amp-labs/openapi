@@ -12077,7 +12077,7 @@
             "items": {
               "type": "string"
             },
-            "description": "The fields that should be watched.",
+            "description": "The fields whose changes trigger an update event. For an object with `inheritFieldsAndMappings` false, these fields are also delivered with every event, including when `enabled` is `never`.",
             "example": [
               "name",
               "description"
@@ -12154,7 +12154,7 @@
           "inheritFieldsAndMappings": {
             "type": "boolean",
             "nullable": true,
-            "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config, and the object's own `selectedFields` and `selectedFieldMappings` are used instead; at least one of them must be set.",
+            "description": "Whether to inherit fields and mappings from the read config. When omitted, the integration's `inheritFieldsAndMapping` from amp.yaml is used; if amp.yaml has no matching subscribe object, it must be set. If true, fields and mappings come from the matching read config object, and `selectedFields` and `selectedFieldMappings` cannot be used. If false, nothing is inherited from the read config. The fields come from `selectedFields`, `selectedFieldMappings` and `updateEvent.requiredWatchFields`, and at least one of the three must be set.",
             "example": true
           },
           "objectName": {
