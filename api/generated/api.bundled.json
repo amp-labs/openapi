@@ -2464,6 +2464,71 @@
         }
       }
     },
+    "/projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:resubscribe": {
+      "post": {
+        "summary": "Reconnect an installation's event subscription",
+        "description": "Restarts subscription setup for an installation whose subscription never finished setting up,\ntypically after the consumer has reauthenticated and repaired the credential that broke it.\n\nThe work runs asynchronously and the response carries no body; follow it through the\ninstallation's operations.\n\nThis is a no-op, still returning 200, when the installation has no subscribe configuration,\nwhen its subscription is healthy or already being set up, or when a reconnect is already\nrunning.\n",
+        "operationId": "resubscribeInstallation",
+        "tags": [
+          "Installation"
+        ],
+        "parameters": [
+          {
+            "name": "projectIdOrName",
+            "in": "path",
+            "required": true,
+            "description": "The Ampersand project ID or project name.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "my-project"
+          },
+          {
+            "name": "integrationId",
+            "in": "path",
+            "required": true,
+            "description": "The integration ID.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "installationId",
+            "in": "path",
+            "required": true,
+            "description": "The Ampersand installation ID.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reconnect started, already running, or not needed."
+          },
+          "404": {
+            "description": "Installation not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiProblem"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiProblem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/projects/{projectIdOrName}/installations": {
       "get": {
         "summary": "List installations for a project",
