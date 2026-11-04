@@ -6,7 +6,11 @@
   },
   "servers": [
     {
-      "url": "https://api.withampersand.com/v1"
+      "url": "https://api.ampersand.ai/v1"
+    },
+    {
+      "url": "https://api.withampersand.com/v1",
+      "description": "Still supported; prefer https://api.ampersand.ai/v1."
     }
   ],
   "paths": {
@@ -16133,6 +16137,7 @@
                         "default": "api:create-installation"
                       },
                       "content": {
+                        "description": "The content of the config.",
                         "title": "Config Content",
                         "allOf": [
                           {
@@ -17931,8 +17936,7 @@
                               }
                             }
                           }
-                        ],
-                        "description": "The content of the config."
+                        ]
                       }
                     },
                     "description": "The config of the installation."

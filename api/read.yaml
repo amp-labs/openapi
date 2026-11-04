@@ -3,7 +3,9 @@ info:
   title: Ampersand public read API
   version: 1.0.0
 servers:
+  - url: https://read.ampersand.ai/v1
   - url: https://read.withampersand.com/v1
+    description: Still supported; prefer https://read.ampersand.ai/v1.
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}:
     post:

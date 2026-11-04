@@ -3,7 +3,9 @@ info:
   title: Ampersand public API
   version: 1.0.0
 servers:
+  - url: https://api.ampersand.ai/v1
   - url: https://api.withampersand.com/v1
+    description: Still supported; prefer https://api.ampersand.ai/v1.
 paths:
   /oauth-connect:
     post:

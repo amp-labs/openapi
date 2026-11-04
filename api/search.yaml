@@ -3,7 +3,9 @@ info:
   title: Ampersand Search API
   version: 1.0.0
 servers:
+  - url: https://search.ampersand.ai/v1
   - url: https://search.withampersand.com/v1
+    description: Still supported; prefer https://search.ampersand.ai/v1.
 paths:
   /projects/{projectIdOrName}/integrations/{integrationId}:
     post:
