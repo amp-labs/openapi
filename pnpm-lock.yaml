@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@apidevtools/json-schema-ref-parser':
-        specifier: ^16.0.5
-        version: 16.0.5(@types/json-schema@7.0.15)
+        specifier: ^16.0.6
+        version: 16.0.6(@types/json-schema@7.0.15)
       '@apidevtools/swagger-parser':
         specifier: ^13.1.0
         version: 13.1.0(openapi-types@12.1.3)
@@ -30,8 +30,8 @@ importers:
 
 packages:
 
-  '@apidevtools/json-schema-ref-parser@16.0.5':
-    resolution: {integrity: sha512-z3LiEMqTP2FNu6u8bdUgBYErVuwMSZReOJy1MCEIB0BDHMoNgBtkciby32HOlcrfWwrOSzRU8YIsZ0CogYRuYQ==}
+  '@apidevtools/json-schema-ref-parser@16.0.6':
+    resolution: {integrity: sha512-cJXhmvqCn4Ud7X7d4L/BtAiJRIrLNiuIZ48ZTuDfN0mYejVXxdzMGR07teW6eKzLwcN0FwMi7gykE2Kr09LS1g==}
     engines: {node: '>=22.19.0'}
     peerDependencies:
       '@types/json-schema': ^7.0.15
@@ -282,7 +282,7 @@ packages:
 
 snapshots:
 
-  '@apidevtools/json-schema-ref-parser@16.0.5(@types/json-schema@7.0.15)':
+  '@apidevtools/json-schema-ref-parser@16.0.6(@types/json-schema@7.0.15)':
     dependencies:
       '@types/json-schema': 7.0.15
       js-yaml: 5.4.2
@@ -293,7 +293,7 @@ snapshots:
 
   '@apidevtools/swagger-parser@13.1.0(openapi-types@12.1.3)':
     dependencies:
-      '@apidevtools/json-schema-ref-parser': 16.0.5(@types/json-schema@7.0.15)
+      '@apidevtools/json-schema-ref-parser': 16.0.6(@types/json-schema@7.0.15)
       '@apidevtools/openapi-schemas': 2.1.0
       '@apidevtools/swagger-methods': 3.0.2
       '@types/json-schema': 7.0.15
