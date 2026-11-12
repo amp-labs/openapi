@@ -6715,6 +6715,59 @@
                                           "description": "If true, the integration will inherit the fields and mapping from the read object.",
                                           "example": true
                                         },
+                                        "requiredFields": {
+                                          "type": "array",
+                                          "items": {
+                                            "title": "Integration Field",
+                                            "oneOf": [
+                                              {
+                                                "title": "Integration Field Existent",
+                                                "type": "object",
+                                                "required": [
+                                                  "fieldName"
+                                                ],
+                                                "properties": {
+                                                  "fieldName": {
+                                                    "type": "string"
+                                                  },
+                                                  "mapToName": {
+                                                    "type": "string",
+                                                    "description": "The field name to map to.",
+                                                    "example": "account_id",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  },
+                                                  "mapToDisplayName": {
+                                                    "type": "string",
+                                                    "description": "The display name to map to.",
+                                                    "example": "Account ID",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "title": "Integration Field Mapping",
+                                                "type": "object",
+                                                "required": [
+                                                  "mapToName"
+                                                ],
+                                                "properties": {
+                                                  "mapToName": {
+                                                    "type": "string"
+                                                  },
+                                                  "mapToDisplayName": {
+                                                    "type": "string"
+                                                  },
+                                                  "default": {
+                                                    "type": "string"
+                                                  },
+                                                  "prompt": {
+                                                    "type": "string"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
                                         "createEvent": {
                                           "type": "object",
                                           "properties": {
@@ -7721,6 +7774,59 @@
                                       "x-go-type-skip-optional-pointer": true,
                                       "description": "If true, the integration will inherit the fields and mapping from the read object.",
                                       "example": true
+                                    },
+                                    "requiredFields": {
+                                      "type": "array",
+                                      "items": {
+                                        "title": "Integration Field",
+                                        "oneOf": [
+                                          {
+                                            "title": "Integration Field Existent",
+                                            "type": "object",
+                                            "required": [
+                                              "fieldName"
+                                            ],
+                                            "properties": {
+                                              "fieldName": {
+                                                "type": "string"
+                                              },
+                                              "mapToName": {
+                                                "type": "string",
+                                                "description": "The field name to map to.",
+                                                "example": "account_id",
+                                                "x-go-type-skip-optional-pointer": true
+                                              },
+                                              "mapToDisplayName": {
+                                                "type": "string",
+                                                "description": "The display name to map to.",
+                                                "example": "Account ID",
+                                                "x-go-type-skip-optional-pointer": true
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "title": "Integration Field Mapping",
+                                            "type": "object",
+                                            "required": [
+                                              "mapToName"
+                                            ],
+                                            "properties": {
+                                              "mapToName": {
+                                                "type": "string"
+                                              },
+                                              "mapToDisplayName": {
+                                                "type": "string"
+                                              },
+                                              "default": {
+                                                "type": "string"
+                                              },
+                                              "prompt": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
                                     },
                                     "createEvent": {
                                       "type": "object",
@@ -9109,6 +9215,59 @@
                                         "x-go-type-skip-optional-pointer": true,
                                         "description": "If true, the integration will inherit the fields and mapping from the read object.",
                                         "example": true
+                                      },
+                                      "requiredFields": {
+                                        "type": "array",
+                                        "items": {
+                                          "title": "Integration Field",
+                                          "oneOf": [
+                                            {
+                                              "title": "Integration Field Existent",
+                                              "type": "object",
+                                              "required": [
+                                                "fieldName"
+                                              ],
+                                              "properties": {
+                                                "fieldName": {
+                                                  "type": "string"
+                                                },
+                                                "mapToName": {
+                                                  "type": "string",
+                                                  "description": "The field name to map to.",
+                                                  "example": "account_id",
+                                                  "x-go-type-skip-optional-pointer": true
+                                                },
+                                                "mapToDisplayName": {
+                                                  "type": "string",
+                                                  "description": "The display name to map to.",
+                                                  "example": "Account ID",
+                                                  "x-go-type-skip-optional-pointer": true
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "title": "Integration Field Mapping",
+                                              "type": "object",
+                                              "required": [
+                                                "mapToName"
+                                              ],
+                                              "properties": {
+                                                "mapToName": {
+                                                  "type": "string"
+                                                },
+                                                "mapToDisplayName": {
+                                                  "type": "string"
+                                                },
+                                                "default": {
+                                                  "type": "string"
+                                                },
+                                                "prompt": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
                                       },
                                       "createEvent": {
                                         "type": "object",
@@ -11008,6 +11167,59 @@
                                           "x-go-type-skip-optional-pointer": true,
                                           "description": "If true, the integration will inherit the fields and mapping from the read object.",
                                           "example": true
+                                        },
+                                        "requiredFields": {
+                                          "type": "array",
+                                          "items": {
+                                            "title": "Integration Field",
+                                            "oneOf": [
+                                              {
+                                                "title": "Integration Field Existent",
+                                                "type": "object",
+                                                "required": [
+                                                  "fieldName"
+                                                ],
+                                                "properties": {
+                                                  "fieldName": {
+                                                    "type": "string"
+                                                  },
+                                                  "mapToName": {
+                                                    "type": "string",
+                                                    "description": "The field name to map to.",
+                                                    "example": "account_id",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  },
+                                                  "mapToDisplayName": {
+                                                    "type": "string",
+                                                    "description": "The display name to map to.",
+                                                    "example": "Account ID",
+                                                    "x-go-type-skip-optional-pointer": true
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "title": "Integration Field Mapping",
+                                                "type": "object",
+                                                "required": [
+                                                  "mapToName"
+                                                ],
+                                                "properties": {
+                                                  "mapToName": {
+                                                    "type": "string"
+                                                  },
+                                                  "mapToDisplayName": {
+                                                    "type": "string"
+                                                  },
+                                                  "default": {
+                                                    "type": "string"
+                                                  },
+                                                  "prompt": {
+                                                    "type": "string"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
                                         },
                                         "createEvent": {
                                           "type": "object",
@@ -71873,6 +72085,59 @@
                               "description": "If true, the integration will inherit the fields and mapping from the read object.",
                               "example": true
                             },
+                            "requiredFields": {
+                              "type": "array",
+                              "items": {
+                                "title": "Integration Field",
+                                "oneOf": [
+                                  {
+                                    "title": "Integration Field Existent",
+                                    "type": "object",
+                                    "required": [
+                                      "fieldName"
+                                    ],
+                                    "properties": {
+                                      "fieldName": {
+                                        "type": "string"
+                                      },
+                                      "mapToName": {
+                                        "type": "string",
+                                        "description": "The field name to map to.",
+                                        "example": "account_id",
+                                        "x-go-type-skip-optional-pointer": true
+                                      },
+                                      "mapToDisplayName": {
+                                        "type": "string",
+                                        "description": "The display name to map to.",
+                                        "example": "Account ID",
+                                        "x-go-type-skip-optional-pointer": true
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "Integration Field Mapping",
+                                    "type": "object",
+                                    "required": [
+                                      "mapToName"
+                                    ],
+                                    "properties": {
+                                      "mapToName": {
+                                        "type": "string"
+                                      },
+                                      "mapToDisplayName": {
+                                        "type": "string"
+                                      },
+                                      "default": {
+                                        "type": "string"
+                                      },
+                                      "prompt": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
                             "createEvent": {
                               "type": "object",
                               "properties": {
@@ -72389,6 +72654,59 @@
                           "x-go-type-skip-optional-pointer": true,
                           "description": "If true, the integration will inherit the fields and mapping from the read object.",
                           "example": true
+                        },
+                        "requiredFields": {
+                          "type": "array",
+                          "items": {
+                            "title": "Integration Field",
+                            "oneOf": [
+                              {
+                                "title": "Integration Field Existent",
+                                "type": "object",
+                                "required": [
+                                  "fieldName"
+                                ],
+                                "properties": {
+                                  "fieldName": {
+                                    "type": "string"
+                                  },
+                                  "mapToName": {
+                                    "type": "string",
+                                    "description": "The field name to map to.",
+                                    "example": "account_id",
+                                    "x-go-type-skip-optional-pointer": true
+                                  },
+                                  "mapToDisplayName": {
+                                    "type": "string",
+                                    "description": "The display name to map to.",
+                                    "example": "Account ID",
+                                    "x-go-type-skip-optional-pointer": true
+                                  }
+                                }
+                              },
+                              {
+                                "title": "Integration Field Mapping",
+                                "type": "object",
+                                "required": [
+                                  "mapToName"
+                                ],
+                                "properties": {
+                                  "mapToName": {
+                                    "type": "string"
+                                  },
+                                  "mapToDisplayName": {
+                                    "type": "string"
+                                  },
+                                  "default": {
+                                    "type": "string"
+                                  },
+                                  "prompt": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            ]
+                          }
                         },
                         "createEvent": {
                           "type": "object",

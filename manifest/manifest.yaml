@@ -179,6 +179,10 @@ components:
           x-go-type-skip-optional-pointer: true
           description: If true, the integration will inherit the fields and mapping from the read object.
           example: true
+        requiredFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationField'
         createEvent:
           $ref: '#/components/schemas/CreateEvent'
         updateEvent:
