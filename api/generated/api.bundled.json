@@ -10965,7 +10965,7 @@
           "requiredFields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IntegrationField"
+              "$ref": "#/components/schemas/IntegrationFieldExistent"
             }
           },
           "createEvent": {

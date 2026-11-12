@@ -6718,54 +6718,28 @@
                                         "requiredFields": {
                                           "type": "array",
                                           "items": {
-                                            "title": "Integration Field",
-                                            "oneOf": [
-                                              {
-                                                "title": "Integration Field Existent",
-                                                "type": "object",
-                                                "required": [
-                                                  "fieldName"
-                                                ],
-                                                "properties": {
-                                                  "fieldName": {
-                                                    "type": "string"
-                                                  },
-                                                  "mapToName": {
-                                                    "type": "string",
-                                                    "description": "The field name to map to.",
-                                                    "example": "account_id",
-                                                    "x-go-type-skip-optional-pointer": true
-                                                  },
-                                                  "mapToDisplayName": {
-                                                    "type": "string",
-                                                    "description": "The display name to map to.",
-                                                    "example": "Account ID",
-                                                    "x-go-type-skip-optional-pointer": true
-                                                  }
-                                                }
+                                            "title": "Integration Field Existent",
+                                            "type": "object",
+                                            "required": [
+                                              "fieldName"
+                                            ],
+                                            "properties": {
+                                              "fieldName": {
+                                                "type": "string"
                                               },
-                                              {
-                                                "title": "Integration Field Mapping",
-                                                "type": "object",
-                                                "required": [
-                                                  "mapToName"
-                                                ],
-                                                "properties": {
-                                                  "mapToName": {
-                                                    "type": "string"
-                                                  },
-                                                  "mapToDisplayName": {
-                                                    "type": "string"
-                                                  },
-                                                  "default": {
-                                                    "type": "string"
-                                                  },
-                                                  "prompt": {
-                                                    "type": "string"
-                                                  }
-                                                }
+                                              "mapToName": {
+                                                "type": "string",
+                                                "description": "The field name to map to.",
+                                                "example": "account_id",
+                                                "x-go-type-skip-optional-pointer": true
+                                              },
+                                              "mapToDisplayName": {
+                                                "type": "string",
+                                                "description": "The display name to map to.",
+                                                "example": "Account ID",
+                                                "x-go-type-skip-optional-pointer": true
                                               }
-                                            ]
+                                            }
                                           }
                                         },
                                         "createEvent": {
@@ -7778,54 +7752,28 @@
                                     "requiredFields": {
                                       "type": "array",
                                       "items": {
-                                        "title": "Integration Field",
-                                        "oneOf": [
-                                          {
-                                            "title": "Integration Field Existent",
-                                            "type": "object",
-                                            "required": [
-                                              "fieldName"
-                                            ],
-                                            "properties": {
-                                              "fieldName": {
-                                                "type": "string"
-                                              },
-                                              "mapToName": {
-                                                "type": "string",
-                                                "description": "The field name to map to.",
-                                                "example": "account_id",
-                                                "x-go-type-skip-optional-pointer": true
-                                              },
-                                              "mapToDisplayName": {
-                                                "type": "string",
-                                                "description": "The display name to map to.",
-                                                "example": "Account ID",
-                                                "x-go-type-skip-optional-pointer": true
-                                              }
-                                            }
+                                        "title": "Integration Field Existent",
+                                        "type": "object",
+                                        "required": [
+                                          "fieldName"
+                                        ],
+                                        "properties": {
+                                          "fieldName": {
+                                            "type": "string"
                                           },
-                                          {
-                                            "title": "Integration Field Mapping",
-                                            "type": "object",
-                                            "required": [
-                                              "mapToName"
-                                            ],
-                                            "properties": {
-                                              "mapToName": {
-                                                "type": "string"
-                                              },
-                                              "mapToDisplayName": {
-                                                "type": "string"
-                                              },
-                                              "default": {
-                                                "type": "string"
-                                              },
-                                              "prompt": {
-                                                "type": "string"
-                                              }
-                                            }
+                                          "mapToName": {
+                                            "type": "string",
+                                            "description": "The field name to map to.",
+                                            "example": "account_id",
+                                            "x-go-type-skip-optional-pointer": true
+                                          },
+                                          "mapToDisplayName": {
+                                            "type": "string",
+                                            "description": "The display name to map to.",
+                                            "example": "Account ID",
+                                            "x-go-type-skip-optional-pointer": true
                                           }
-                                        ]
+                                        }
                                       }
                                     },
                                     "createEvent": {
@@ -9219,54 +9167,28 @@
                                       "requiredFields": {
                                         "type": "array",
                                         "items": {
-                                          "title": "Integration Field",
-                                          "oneOf": [
-                                            {
-                                              "title": "Integration Field Existent",
-                                              "type": "object",
-                                              "required": [
-                                                "fieldName"
-                                              ],
-                                              "properties": {
-                                                "fieldName": {
-                                                  "type": "string"
-                                                },
-                                                "mapToName": {
-                                                  "type": "string",
-                                                  "description": "The field name to map to.",
-                                                  "example": "account_id",
-                                                  "x-go-type-skip-optional-pointer": true
-                                                },
-                                                "mapToDisplayName": {
-                                                  "type": "string",
-                                                  "description": "The display name to map to.",
-                                                  "example": "Account ID",
-                                                  "x-go-type-skip-optional-pointer": true
-                                                }
-                                              }
+                                          "title": "Integration Field Existent",
+                                          "type": "object",
+                                          "required": [
+                                            "fieldName"
+                                          ],
+                                          "properties": {
+                                            "fieldName": {
+                                              "type": "string"
                                             },
-                                            {
-                                              "title": "Integration Field Mapping",
-                                              "type": "object",
-                                              "required": [
-                                                "mapToName"
-                                              ],
-                                              "properties": {
-                                                "mapToName": {
-                                                  "type": "string"
-                                                },
-                                                "mapToDisplayName": {
-                                                  "type": "string"
-                                                },
-                                                "default": {
-                                                  "type": "string"
-                                                },
-                                                "prompt": {
-                                                  "type": "string"
-                                                }
-                                              }
+                                            "mapToName": {
+                                              "type": "string",
+                                              "description": "The field name to map to.",
+                                              "example": "account_id",
+                                              "x-go-type-skip-optional-pointer": true
+                                            },
+                                            "mapToDisplayName": {
+                                              "type": "string",
+                                              "description": "The display name to map to.",
+                                              "example": "Account ID",
+                                              "x-go-type-skip-optional-pointer": true
                                             }
-                                          ]
+                                          }
                                         }
                                       },
                                       "createEvent": {
@@ -11171,54 +11093,28 @@
                                         "requiredFields": {
                                           "type": "array",
                                           "items": {
-                                            "title": "Integration Field",
-                                            "oneOf": [
-                                              {
-                                                "title": "Integration Field Existent",
-                                                "type": "object",
-                                                "required": [
-                                                  "fieldName"
-                                                ],
-                                                "properties": {
-                                                  "fieldName": {
-                                                    "type": "string"
-                                                  },
-                                                  "mapToName": {
-                                                    "type": "string",
-                                                    "description": "The field name to map to.",
-                                                    "example": "account_id",
-                                                    "x-go-type-skip-optional-pointer": true
-                                                  },
-                                                  "mapToDisplayName": {
-                                                    "type": "string",
-                                                    "description": "The display name to map to.",
-                                                    "example": "Account ID",
-                                                    "x-go-type-skip-optional-pointer": true
-                                                  }
-                                                }
+                                            "title": "Integration Field Existent",
+                                            "type": "object",
+                                            "required": [
+                                              "fieldName"
+                                            ],
+                                            "properties": {
+                                              "fieldName": {
+                                                "type": "string"
                                               },
-                                              {
-                                                "title": "Integration Field Mapping",
-                                                "type": "object",
-                                                "required": [
-                                                  "mapToName"
-                                                ],
-                                                "properties": {
-                                                  "mapToName": {
-                                                    "type": "string"
-                                                  },
-                                                  "mapToDisplayName": {
-                                                    "type": "string"
-                                                  },
-                                                  "default": {
-                                                    "type": "string"
-                                                  },
-                                                  "prompt": {
-                                                    "type": "string"
-                                                  }
-                                                }
+                                              "mapToName": {
+                                                "type": "string",
+                                                "description": "The field name to map to.",
+                                                "example": "account_id",
+                                                "x-go-type-skip-optional-pointer": true
+                                              },
+                                              "mapToDisplayName": {
+                                                "type": "string",
+                                                "description": "The display name to map to.",
+                                                "example": "Account ID",
+                                                "x-go-type-skip-optional-pointer": true
                                               }
-                                            ]
+                                            }
                                           }
                                         },
                                         "createEvent": {
@@ -72088,54 +71984,28 @@
                             "requiredFields": {
                               "type": "array",
                               "items": {
-                                "title": "Integration Field",
-                                "oneOf": [
-                                  {
-                                    "title": "Integration Field Existent",
-                                    "type": "object",
-                                    "required": [
-                                      "fieldName"
-                                    ],
-                                    "properties": {
-                                      "fieldName": {
-                                        "type": "string"
-                                      },
-                                      "mapToName": {
-                                        "type": "string",
-                                        "description": "The field name to map to.",
-                                        "example": "account_id",
-                                        "x-go-type-skip-optional-pointer": true
-                                      },
-                                      "mapToDisplayName": {
-                                        "type": "string",
-                                        "description": "The display name to map to.",
-                                        "example": "Account ID",
-                                        "x-go-type-skip-optional-pointer": true
-                                      }
-                                    }
+                                "title": "Integration Field Existent",
+                                "type": "object",
+                                "required": [
+                                  "fieldName"
+                                ],
+                                "properties": {
+                                  "fieldName": {
+                                    "type": "string"
                                   },
-                                  {
-                                    "title": "Integration Field Mapping",
-                                    "type": "object",
-                                    "required": [
-                                      "mapToName"
-                                    ],
-                                    "properties": {
-                                      "mapToName": {
-                                        "type": "string"
-                                      },
-                                      "mapToDisplayName": {
-                                        "type": "string"
-                                      },
-                                      "default": {
-                                        "type": "string"
-                                      },
-                                      "prompt": {
-                                        "type": "string"
-                                      }
-                                    }
+                                  "mapToName": {
+                                    "type": "string",
+                                    "description": "The field name to map to.",
+                                    "example": "account_id",
+                                    "x-go-type-skip-optional-pointer": true
+                                  },
+                                  "mapToDisplayName": {
+                                    "type": "string",
+                                    "description": "The display name to map to.",
+                                    "example": "Account ID",
+                                    "x-go-type-skip-optional-pointer": true
                                   }
-                                ]
+                                }
                               }
                             },
                             "createEvent": {
@@ -72658,54 +72528,28 @@
                         "requiredFields": {
                           "type": "array",
                           "items": {
-                            "title": "Integration Field",
-                            "oneOf": [
-                              {
-                                "title": "Integration Field Existent",
-                                "type": "object",
-                                "required": [
-                                  "fieldName"
-                                ],
-                                "properties": {
-                                  "fieldName": {
-                                    "type": "string"
-                                  },
-                                  "mapToName": {
-                                    "type": "string",
-                                    "description": "The field name to map to.",
-                                    "example": "account_id",
-                                    "x-go-type-skip-optional-pointer": true
-                                  },
-                                  "mapToDisplayName": {
-                                    "type": "string",
-                                    "description": "The display name to map to.",
-                                    "example": "Account ID",
-                                    "x-go-type-skip-optional-pointer": true
-                                  }
-                                }
+                            "title": "Integration Field Existent",
+                            "type": "object",
+                            "required": [
+                              "fieldName"
+                            ],
+                            "properties": {
+                              "fieldName": {
+                                "type": "string"
                               },
-                              {
-                                "title": "Integration Field Mapping",
-                                "type": "object",
-                                "required": [
-                                  "mapToName"
-                                ],
-                                "properties": {
-                                  "mapToName": {
-                                    "type": "string"
-                                  },
-                                  "mapToDisplayName": {
-                                    "type": "string"
-                                  },
-                                  "default": {
-                                    "type": "string"
-                                  },
-                                  "prompt": {
-                                    "type": "string"
-                                  }
-                                }
+                              "mapToName": {
+                                "type": "string",
+                                "description": "The field name to map to.",
+                                "example": "account_id",
+                                "x-go-type-skip-optional-pointer": true
+                              },
+                              "mapToDisplayName": {
+                                "type": "string",
+                                "description": "The display name to map to.",
+                                "example": "Account ID",
+                                "x-go-type-skip-optional-pointer": true
                               }
-                            ]
+                            }
                           }
                         },
                         "createEvent": {
