@@ -1204,6 +1204,7 @@ paths:
                           contacts:
                             objectName: contacts
                             destination: contactWebhook
+                            inheritFieldsAndMappings: true
         required: true
       responses:
         201:
