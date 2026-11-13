@@ -10962,6 +10962,12 @@
             "description": "If true, the integration will inherit the fields and mapping from the read object.",
             "example": true
           },
+          "requiredFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IntegrationFieldExistent"
+            }
+          },
           "createEvent": {
             "$ref": "#/components/schemas/CreateEvent"
           },
