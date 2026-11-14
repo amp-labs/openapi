@@ -273,6 +273,20 @@ components:
             parameter name, such as "user_scope" for Slack user scopes.
           example: user_scope
           x-go-type-skip-optional-pointer: true
+        tokenParams:
+          type: object
+          description: |
+            Extra parameters to send in the body of every request to the token URL
+            (authorization code exchange, refresh, client credentials and password grants),
+            for providers whose token endpoint needs fields beyond the OAuth 2.0 ones.
+            Values may use catalog variables such as {{.workspace}}. A parameter here never
+            replaces one that the grant itself sets. A client_id or client_secret here is a
+            default that is used only when the connection has no client credentials of its own.
+          additionalProperties:
+            type: string
+          x-go-type-skip-optional-pointer: true
+          example:
+            platform: "{{.platform}}"
 
     AccessTokenOpts:
       title: Oauth2 Access Token Options

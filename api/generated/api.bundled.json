@@ -4100,7 +4100,7 @@
     "/projects/{projectIdOrName}/connections:generate": {
       "post": {
         "summary": "Generate a new connection",
-        "description": "All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) instead, unless you already have the refresh token and are importing it into Ampersand.",
+        "description": "All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) instead, unless you already have the refresh token and are importing it into Ampersand. For providers that use the OAuth2 password grant, pass `oauth2PasswordCredentials` and any `providerMetadata` the provider requires; the credentials are exchanged for tokens before the connection is created, and a provider that rejects them results in a 422 response.",
         "operationId": "generateConnection",
         "tags": [
           "Connection"
@@ -9024,11 +9024,10 @@
           },
           "oauth2PasswordCredentials": {
             "type": "object",
+            "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n",
             "required": [
               "username",
-              "password",
-              "clientId",
-              "clientSecret"
+              "password"
             ],
             "properties": {
               "username": {
@@ -9041,11 +9040,11 @@
               },
               "clientId": {
                 "type": "string",
-                "description": "The client ID to use for the connection."
+                "description": "The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client."
               },
               "clientSecret": {
                 "type": "string",
-                "description": "The client secret to use for the connection."
+                "description": "The client secret to use for the connection. Omit it when the client has no secret."
               },
               "scopes": {
                 "type": "array",
@@ -12547,6 +12546,17 @@
             "description": "The query parameter name used to pass OAuth scopes in the authorization URL.\nDefaults to \"scope\" when not specified. Some providers use a different\nparameter name, such as \"user_scope\" for Slack user scopes.\n",
             "example": "user_scope",
             "x-go-type-skip-optional-pointer": true
+          },
+          "tokenParams": {
+            "type": "object",
+            "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "x-go-type-skip-optional-pointer": true,
+            "example": {
+              "platform": "{{.platform}}"
+            }
           }
         }
       },

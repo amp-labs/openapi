@@ -672,6 +672,17 @@
             "description": "The query parameter name used to pass OAuth scopes in the authorization URL.\nDefaults to \"scope\" when not specified. Some providers use a different\nparameter name, such as \"user_scope\" for Slack user scopes.\n",
             "example": "user_scope",
             "x-go-type-skip-optional-pointer": true
+          },
+          "tokenParams": {
+            "type": "object",
+            "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "x-go-type-skip-optional-pointer": true,
+            "example": {
+              "platform": "{{.platform}}"
+            }
           }
         }
       },
@@ -2042,6 +2053,17 @@
                 "description": "The query parameter name used to pass OAuth scopes in the authorization URL.\nDefaults to \"scope\" when not specified. Some providers use a different\nparameter name, such as \"user_scope\" for Slack user scopes.\n",
                 "example": "user_scope",
                 "x-go-type-skip-optional-pointer": true
+              },
+              "tokenParams": {
+                "type": "object",
+                "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "x-go-type-skip-optional-pointer": true,
+                "example": {
+                  "platform": "{{.platform}}"
+                }
               }
             }
           },
@@ -3505,6 +3527,17 @@
                       "description": "The query parameter name used to pass OAuth scopes in the authorization URL.\nDefaults to \"scope\" when not specified. Some providers use a different\nparameter name, such as \"user_scope\" for Slack user scopes.\n",
                       "example": "user_scope",
                       "x-go-type-skip-optional-pointer": true
+                    },
+                    "tokenParams": {
+                      "type": "object",
+                      "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "x-go-type-skip-optional-pointer": true,
+                      "example": {
+                        "platform": "{{.platform}}"
+                      }
                     }
                   }
                 },
@@ -4846,6 +4879,17 @@
                   "description": "The query parameter name used to pass OAuth scopes in the authorization URL.\nDefaults to \"scope\" when not specified. Some providers use a different\nparameter name, such as \"user_scope\" for Slack user scopes.\n",
                   "example": "user_scope",
                   "x-go-type-skip-optional-pointer": true
+                },
+                "tokenParams": {
+                  "type": "object",
+                  "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "x-go-type-skip-optional-pointer": true,
+                  "example": {
+                    "platform": "{{.platform}}"
+                  }
                 }
               }
             },
