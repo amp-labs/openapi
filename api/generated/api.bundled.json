@@ -9030,11 +9030,11 @@
               },
               "clientId": {
                 "type": "string",
-                "description": "The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client."
+                "description": "The client ID to use for the connection. When creating a connection, omit it if the provider does not require one, or to use the provider's default client. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
               },
               "clientSecret": {
                 "type": "string",
-                "description": "The client secret to use for the connection. Omit it when the client has no secret."
+                "description": "The client secret to use for the connection. Omit it when the client has no secret. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
               },
               "scopes": {
                 "type": "array",
