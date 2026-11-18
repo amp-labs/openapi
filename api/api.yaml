@@ -6166,7 +6166,14 @@ components:
               - basicAuth
               - oauth2ClientCredentials
               - oauth2PasswordCredentials
-          description: Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme.
+              - oauth2PasswordCredentials.username
+              - oauth2PasswordCredentials.password
+              - oauth2PasswordCredentials.clientId
+              - oauth2PasswordCredentials.clientSecret
+          description: |
+            Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme, and replace all of its credentials.
+
+            A password grant connection can also update single credential fields: `oauth2PasswordCredentials.username`, `oauth2PasswordCredentials.password`, `oauth2PasswordCredentials.clientId` and `oauth2PasswordCredentials.clientSecret`. The fields not named keep their current values, and a named field with no value in `connection` is cleared. For example, naming `oauth2PasswordCredentials.clientId` and `oauth2PasswordCredentials.clientSecret` with no values switches the connection to the provider's default client.
           example: ["apiKey"]
         connection:
           $ref: "#/components/schemas/ConnectionRequest"
@@ -6248,6 +6255,10 @@ components:
             are updated, so invalid credentials are rejected immediately. The username and password
             are kept (encrypted) so that Ampersand can sign in again when the provider's refresh
             token expires.
+
+            To update some of a connection's credentials and keep the others (for example, a new
+            password with the connection's current client), name only those fields in `updateMask`,
+            such as `oauth2PasswordCredentials.password`.
           required:
             - username
             - password
@@ -6260,10 +6271,10 @@ components:
               description: The password to use for the connection.
             clientId:
               type: string
-              description: The client ID to use for the connection. When creating a connection, omit it if the provider does not require one, or to use the provider's default client. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client.
+              description: The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client.
             clientSecret:
               type: string
-              description: The client secret to use for the connection. Omit it when the client has no secret. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client.
+              description: The client secret to use for the connection. Omit it when the client has no secret.
             scopes:
               type: array
               items:

@@ -46961,7 +46961,7 @@
                       },
                       "oauth2PasswordCredentials": {
                         "type": "object",
-                        "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n",
+                        "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n\nTo update some of a connection's credentials and keep the others (for example, a new\npassword with the connection's current client), name only those fields in `updateMask`,\nsuch as `oauth2PasswordCredentials.password`.\n",
                         "required": [
                           "username",
                           "password"
@@ -46977,11 +46977,11 @@
                           },
                           "clientId": {
                             "type": "string",
-                            "description": "The client ID to use for the connection. When creating a connection, omit it if the provider does not require one, or to use the provider's default client. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                            "description": "The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client."
                           },
                           "clientSecret": {
                             "type": "string",
-                            "description": "The client secret to use for the connection. Omit it when the client has no secret. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                            "description": "The client secret to use for the connection. Omit it when the client has no secret."
                           },
                           "scopes": {
                             "type": "array",
@@ -49121,10 +49121,14 @@
                         "apiKey",
                         "basicAuth",
                         "oauth2ClientCredentials",
-                        "oauth2PasswordCredentials"
+                        "oauth2PasswordCredentials",
+                        "oauth2PasswordCredentials.username",
+                        "oauth2PasswordCredentials.password",
+                        "oauth2PasswordCredentials.clientId",
+                        "oauth2PasswordCredentials.clientSecret"
                       ]
                     },
-                    "description": "Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme.",
+                    "description": "Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme, and replace all of its credentials.\n\nA password grant connection can also update single credential fields: `oauth2PasswordCredentials.username`, `oauth2PasswordCredentials.password`, `oauth2PasswordCredentials.clientId` and `oauth2PasswordCredentials.clientSecret`. The fields not named keep their current values, and a named field with no value in `connection` is cleared. For example, naming `oauth2PasswordCredentials.clientId` and `oauth2PasswordCredentials.clientSecret` with no values switches the connection to the provider's default client.\n",
                     "example": [
                       "apiKey"
                     ]
@@ -49251,7 +49255,7 @@
                       },
                       "oauth2PasswordCredentials": {
                         "type": "object",
-                        "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n",
+                        "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n\nTo update some of a connection's credentials and keep the others (for example, a new\npassword with the connection's current client), name only those fields in `updateMask`,\nsuch as `oauth2PasswordCredentials.password`.\n",
                         "required": [
                           "username",
                           "password"
@@ -49267,11 +49271,11 @@
                           },
                           "clientId": {
                             "type": "string",
-                            "description": "The client ID to use for the connection. When creating a connection, omit it if the provider does not require one, or to use the provider's default client. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                            "description": "The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client."
                           },
                           "clientSecret": {
                             "type": "string",
-                            "description": "The client secret to use for the connection. Omit it when the client has no secret. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                            "description": "The client secret to use for the connection. Omit it when the client has no secret."
                           },
                           "scopes": {
                             "type": "array",
@@ -77701,10 +77705,14 @@
                 "apiKey",
                 "basicAuth",
                 "oauth2ClientCredentials",
-                "oauth2PasswordCredentials"
+                "oauth2PasswordCredentials",
+                "oauth2PasswordCredentials.username",
+                "oauth2PasswordCredentials.password",
+                "oauth2PasswordCredentials.clientId",
+                "oauth2PasswordCredentials.clientSecret"
               ]
             },
-            "description": "Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme.",
+            "description": "Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme, and replace all of its credentials.\n\nA password grant connection can also update single credential fields: `oauth2PasswordCredentials.username`, `oauth2PasswordCredentials.password`, `oauth2PasswordCredentials.clientId` and `oauth2PasswordCredentials.clientSecret`. The fields not named keep their current values, and a named field with no value in `connection` is cleared. For example, naming `oauth2PasswordCredentials.clientId` and `oauth2PasswordCredentials.clientSecret` with no values switches the connection to the provider's default client.\n",
             "example": [
               "apiKey"
             ]
@@ -77831,7 +77839,7 @@
               },
               "oauth2PasswordCredentials": {
                 "type": "object",
-                "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n",
+                "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n\nTo update some of a connection's credentials and keep the others (for example, a new\npassword with the connection's current client), name only those fields in `updateMask`,\nsuch as `oauth2PasswordCredentials.password`.\n",
                 "required": [
                   "username",
                   "password"
@@ -77847,11 +77855,11 @@
                   },
                   "clientId": {
                     "type": "string",
-                    "description": "The client ID to use for the connection. When creating a connection, omit it if the provider does not require one, or to use the provider's default client. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                    "description": "The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client."
                   },
                   "clientSecret": {
                     "type": "string",
-                    "description": "The client secret to use for the connection. Omit it when the client has no secret. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                    "description": "The client secret to use for the connection. Omit it when the client has no secret."
                   },
                   "scopes": {
                     "type": "array",
@@ -78041,7 +78049,7 @@
           },
           "oauth2PasswordCredentials": {
             "type": "object",
-            "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n",
+            "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n\nTo update some of a connection's credentials and keep the others (for example, a new\npassword with the connection's current client), name only those fields in `updateMask`,\nsuch as `oauth2PasswordCredentials.password`.\n",
             "required": [
               "username",
               "password"
@@ -78057,11 +78065,11 @@
               },
               "clientId": {
                 "type": "string",
-                "description": "The client ID to use for the connection. When creating a connection, omit it if the provider does not require one, or to use the provider's default client. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                "description": "The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client."
               },
               "clientSecret": {
                 "type": "string",
-                "description": "The client secret to use for the connection. Omit it when the client has no secret. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                "description": "The client secret to use for the connection. Omit it when the client has no secret."
               },
               "scopes": {
                 "type": "array",
@@ -78252,7 +78260,7 @@
               },
               "oauth2PasswordCredentials": {
                 "type": "object",
-                "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n",
+                "description": "Credentials for a provider that uses the OAuth 2.0 resource owner password grant.\nAmpersand exchanges them for tokens when the connection is created or its credentials\nare updated, so invalid credentials are rejected immediately. The username and password\nare kept (encrypted) so that Ampersand can sign in again when the provider's refresh\ntoken expires.\n\nTo update some of a connection's credentials and keep the others (for example, a new\npassword with the connection's current client), name only those fields in `updateMask`,\nsuch as `oauth2PasswordCredentials.password`.\n",
                 "required": [
                   "username",
                   "password"
@@ -78268,11 +78276,11 @@
                   },
                   "clientId": {
                     "type": "string",
-                    "description": "The client ID to use for the connection. When creating a connection, omit it if the provider does not require one, or to use the provider's default client. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                    "description": "The client ID to use for the connection. Omit it when the provider does not require one, or to use the provider's default client."
                   },
                   "clientSecret": {
                     "type": "string",
-                    "description": "The client secret to use for the connection. Omit it when the client has no secret. When updating a connection's credentials, omit both the client ID and the client secret to keep the connection's current client."
+                    "description": "The client secret to use for the connection. Omit it when the client has no secret."
                   },
                   "scopes": {
                     "type": "array",
