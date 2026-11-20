@@ -179,6 +179,15 @@ components:
           x-go-type-skip-optional-pointer: true
           description: If true, the integration will inherit the fields and mapping from the read object.
           example: true
+        requiredFields:
+          type: array
+          description: >
+            Fields this subscribe object uses when it does not inherit fields and mappings from the read object.
+            Each entry names a provider field in `fieldName` and can rename it with `mapToName`.
+            Cannot be set when `inheritFieldsAndMapping` is true.
+            Required when `inheritFieldsAndMapping` is false and create or update events are enabled.
+          items:
+            $ref: '#/components/schemas/IntegrationFieldExistent'
         createEvent:
           $ref: '#/components/schemas/CreateEvent'
         updateEvent:
