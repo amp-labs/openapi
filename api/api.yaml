@@ -2772,7 +2772,7 @@ paths:
   /projects/{projectIdOrName}/connections:generate:
     post:
       summary: Generate a new connection
-      description: All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) instead, unless you already have the refresh token and are importing it into Ampersand. For providers that use the OAuth2 password grant, pass `oauth2PasswordCredentials` and any `providerMetadata` the provider requires; the credentials are exchanged for tokens before the connection is created, and a provider that rejects them results in a 422 response.
+      description: All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) instead, unless you already have the refresh token and are importing it into Ampersand.
       operationId: generateConnection
       tags: ["Connection"]
       parameters:
@@ -6250,9 +6250,10 @@ components:
         oauth2PasswordCredentials:
           type: object
           description: |
-            Credentials for a provider that uses the OAuth 2.0 resource owner password grant.
-            Ampersand exchanges them for tokens when the connection is created or its credentials
-            are updated, so invalid credentials are rejected immediately. The username and password
+            Credentials for a provider that uses the OAuth 2.0 password grant (called the resource
+            owner password credentials grant in RFC 6749). Ampersand signs in to the provider with
+            them before it creates the connection or saves updated credentials, so credentials that
+            the provider rejects return a 422 response and are not saved. The username and password
             are kept (encrypted) so that Ampersand can sign in again when the provider's refresh
             token expires.
 

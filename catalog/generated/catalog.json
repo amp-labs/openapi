@@ -673,7 +673,7 @@
             "example": "user_scope",
             "x-go-type-skip-optional-pointer": true
           },
-          "tokenParams": {
+          "tokenReqBodyParams": {
             "type": "object",
             "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
             "additionalProperties": {
@@ -2054,7 +2054,7 @@
                 "example": "user_scope",
                 "x-go-type-skip-optional-pointer": true
               },
-              "tokenParams": {
+              "tokenReqBodyParams": {
                 "type": "object",
                 "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
                 "additionalProperties": {
@@ -3528,7 +3528,7 @@
                       "example": "user_scope",
                       "x-go-type-skip-optional-pointer": true
                     },
-                    "tokenParams": {
+                    "tokenReqBodyParams": {
                       "type": "object",
                       "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
                       "additionalProperties": {
@@ -4880,7 +4880,7 @@
                   "example": "user_scope",
                   "x-go-type-skip-optional-pointer": true
                 },
-                "tokenParams": {
+                "tokenReqBodyParams": {
                   "type": "object",
                   "description": "Extra parameters to send in the body of every request to the token URL\n(authorization code exchange, refresh, client credentials and password grants),\nfor providers whose token endpoint needs fields beyond the OAuth 2.0 ones.\nValues may use catalog variables such as {{.workspace}}. A parameter here never\nreplaces one that the grant itself sets. A client_id or client_secret here is a\ndefault that is used only when the connection has no client credentials of its own.\n",
                   "additionalProperties": {
