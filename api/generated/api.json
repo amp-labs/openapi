@@ -6717,7 +6717,7 @@
                                         },
                                         "requiredFields": {
                                           "type": "array",
-                                          "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false and create or update events are enabled.\n",
+                                          "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false, whichever events are enabled, because an installation can turn on create or update events that the manifest leaves out.\n",
                                           "items": {
                                             "title": "Integration Field Existent",
                                             "type": "object",
@@ -7752,7 +7752,7 @@
                                     },
                                     "requiredFields": {
                                       "type": "array",
-                                      "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false and create or update events are enabled.\n",
+                                      "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false, whichever events are enabled, because an installation can turn on create or update events that the manifest leaves out.\n",
                                       "items": {
                                         "title": "Integration Field Existent",
                                         "type": "object",
@@ -9168,7 +9168,7 @@
                                       },
                                       "requiredFields": {
                                         "type": "array",
-                                        "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false and create or update events are enabled.\n",
+                                        "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false, whichever events are enabled, because an installation can turn on create or update events that the manifest leaves out.\n",
                                         "items": {
                                           "title": "Integration Field Existent",
                                           "type": "object",
@@ -11095,7 +11095,7 @@
                                         },
                                         "requiredFields": {
                                           "type": "array",
-                                          "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false and create or update events are enabled.\n",
+                                          "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false, whichever events are enabled, because an installation can turn on create or update events that the manifest leaves out.\n",
                                           "items": {
                                             "title": "Integration Field Existent",
                                             "type": "object",
@@ -71771,7 +71771,7 @@
                             },
                             "requiredFields": {
                               "type": "array",
-                              "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false and create or update events are enabled.\n",
+                              "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false, whichever events are enabled, because an installation can turn on create or update events that the manifest leaves out.\n",
                               "items": {
                                 "title": "Integration Field Existent",
                                 "type": "object",
@@ -72316,7 +72316,7 @@
                         },
                         "requiredFields": {
                           "type": "array",
-                          "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false and create or update events are enabled.\n",
+                          "description": "Fields this subscribe object uses when it does not inherit fields and mappings from the read object. Each entry names a provider field in `fieldName` and can rename it with `mapToName`. Cannot be set when `inheritFieldsAndMapping` is true. Required when `inheritFieldsAndMapping` is false, whichever events are enabled, because an installation can turn on create or update events that the manifest leaves out.\n",
                           "items": {
                             "title": "Integration Field Existent",
                             "type": "object",
