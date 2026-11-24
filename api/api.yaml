@@ -1264,6 +1264,16 @@ paths:
           schema:
             type: string
           example: 7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b
+        - name: includeResolvedConfig
+          in: query
+          required: false
+          description:
+            When `true`, the response includes `resolvedConfig`, the installation's
+            config with the integration's latest revision merged in. Defaults to
+            `false`.
+          schema:
+            type: boolean
+            default: false
       responses:
         200:
           description: The installation
@@ -5937,6 +5947,23 @@ components:
           format: date-time
         config:
           $ref: "#/components/schemas/Config"
+        resolvedConfig:
+          allOf:
+            - $ref: "#/components/schemas/Config"
+          description: |
+            The installation's config with the integration's latest revision merged in: the
+            values reads, subscriptions and proxy calls use. Values set in `config` win over the
+            revision. Only returned by getInstallation when `includeResolvedConfig=true`.
+
+            - `revisionId` is the revision the config was resolved against.
+            - `read.objects` lists the objects in `config`. Revision fields marked required are
+              always selected, and `schedule`, `destination` and `backfill` fall back
+              to the revision.
+            - `subscribe.objects` lists every object in `config` or the revision. Objects with no
+              enabled event are listed but not subscribed. When `inheritFieldsAndMappings` is
+              true, the object uses the fields and mappings of the matching `read.objects` entry.
+            - `write` is the same as in `config`.
+            - `proxy.enabled` falls back to the revision.
     JSONPatchOperation:
       title: JSON Patch Operation
       description: |
