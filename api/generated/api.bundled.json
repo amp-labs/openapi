@@ -1820,6 +1820,16 @@
               "type": "string"
             },
             "example": "7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b"
+          },
+          {
+            "name": "includeResolvedConfig",
+            "in": "query",
+            "required": false,
+            "description": "When `true`, the response includes `resolvedConfig`, the installation's config with the integration's latest revision merged in. Defaults to `false`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "responses": {
@@ -8625,6 +8635,14 @@
           },
           "config": {
             "$ref": "#/components/schemas/Config"
+          },
+          "resolvedConfig": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Config"
+              }
+            ],
+            "description": "The installation's config with the integration's latest revision merged in: the\nvalues reads, subscriptions and proxy calls use. Values set in `config` win over the\nrevision. Only returned by getInstallation when `includeResolvedConfig=true`.\n\n- `revisionId` is the revision the config was resolved against.\n- `read.objects` lists the objects in `config`. Revision fields marked required are\n  always selected, and `schedule`, `destination` and `backfill` fall back\n  to the revision.\n- `subscribe.objects` lists every object in `config` or the revision. Objects with no\n  enabled event are listed but not subscribed. When `inheritFieldsAndMappings` is\n  true, the object uses the fields and mappings of the matching `read.objects` entry.\n- `write` is the same as in `config`.\n- `proxy.enabled` falls back to the revision.\n"
           }
         }
       },
